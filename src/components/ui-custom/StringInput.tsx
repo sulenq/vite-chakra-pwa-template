@@ -1,0 +1,74 @@
+import {
+  Box,
+  BoxProps,
+  Input as ChakraInput,
+  InputProps,
+} from "@chakra-ui/react";
+import { css, Global } from "@emotion/react";
+import { useRef } from "react";
+import { useColorMode } from "../ui/color-mode";
+
+interface Props extends InputProps {
+  fRef?: any;
+  name?: string;
+  onChangeSetter?: (inputValue: string | undefined) => void;
+  inputValue?: string | undefined;
+  isError?: boolean;
+  placeholder?: string;
+  boxProps?: BoxProps;
+}
+
+export default function StringInput({
+  fRef,
+  name,
+  onChangeSetter,
+  inputValue,
+  isError,
+  placeholder = "",
+  boxProps,
+  ...props
+}: Props) {
+  // SX
+  const { colorMode } = useColorMode();
+  const darkLightColorManual =
+    colorMode === "light" ? "#FAFAFC" : "var(--dark)";
+
+  // Track first render
+  const isFirstRender = useRef(true);
+
+  // Utils
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (onChangeSetter) {
+      onChangeSetter(e.target.value);
+    }
+    if (isFirstRender.current) isFirstRender.current = false;
+  };
+
+  return (
+    <>
+      <Global
+        styles={css`
+          input:-webkit-autofill,
+          input:-webkit-autofill:hover,
+          input:-webkit-autofill:focus,
+          input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px ${darkLightColorManual} inset !important;
+            box-shadow: 0 0 0 30px ${darkLightColorManual} inset !important;
+          }
+        `}
+      />
+
+      <Box position={"relative"} w={"full"} overflow={"visible"} {...boxProps}>
+        <ChakraInput
+          ref={fRef}
+          name={name}
+          onChange={handleChange}
+          value={inputValue}
+          placeholder={placeholder}
+          autoComplete="off"
+          {...props}
+        />
+      </Box>
+    </>
+  );
+}
