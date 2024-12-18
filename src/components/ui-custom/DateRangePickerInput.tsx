@@ -10,6 +10,7 @@ import countDay from "@/utils/countDay";
 import dateInRange from "@/utils/dateInRange";
 import formatDate from "@/utils/formatDate";
 import {
+  Box,
   HStack,
   Icon,
   SimpleGrid,
@@ -182,7 +183,7 @@ const DateRangePickerInput = ({
   const renderPresets = {
     thisMonth: (
       <BButton
-        w={"50%"}
+        w={"100%"}
         variant={"outline"}
         onClick={setSelectedToThisMonth}
         disabled={!!(maxRange && maxRange < 31)}
@@ -192,7 +193,7 @@ const DateRangePickerInput = ({
     ),
     nextMonth: (
       <BButton
-        w={"50%"}
+        w={"100%"}
         variant={"outline"}
         onClick={setSelectedToNextMonth}
         disabled={!!(maxRange && maxRange < 31)}
@@ -202,7 +203,7 @@ const DateRangePickerInput = ({
     ),
     thisWeek: (
       <BButton
-        w={"50%"}
+        w={"100%"}
         variant={"outline"}
         onClick={setSelectedToThisWeek}
         disabled={!!(maxRange && maxRange < 7)}
@@ -212,7 +213,7 @@ const DateRangePickerInput = ({
     ),
     nextWeek: (
       <BButton
-        w={"50%"}
+        w={"100%"}
         variant={"outline"}
         onClick={setSelectedToNextWeek}
         disabled={!!(maxRange && maxRange < 7)}
@@ -319,7 +320,11 @@ const DateRangePickerInput = ({
             <DisclosureHeaderContent title={title} />
           </DisclosureHeader>
 
-          <DisclosureBody pt={0}>
+          <DisclosureBody
+            pt={0}
+            overflowY={"auto"}
+            maxH={"calc(100dvh - 180px)"}
+          >
             {maxRange && (
               <Alert
                 variant={"surface"}
@@ -461,8 +466,10 @@ const DateRangePickerInput = ({
             </CContainer>
 
             <HStack mt={2}>
-              {preset?.map((item) => (
-                <>{renderPresets[item]}</>
+              {preset?.map((item, i) => (
+                <Box w={"50%"} key={i}>
+                  {renderPresets[item]}
+                </Box>
               ))}
             </HStack>
           </DisclosureBody>

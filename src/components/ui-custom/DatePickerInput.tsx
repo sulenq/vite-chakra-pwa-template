@@ -199,7 +199,11 @@ const DatePickerInput = ({
             <DisclosureHeaderContent title={title} />
           </DisclosureHeader>
 
-          <DisclosureBody pt={0}>
+          <DisclosureBody
+            pt={0}
+            overflowY={"auto"}
+            maxH={"calc(100dvh - 180px)"}
+          >
             {/* Period picker */}
             <HStack mb={5}>
               <BButton iconButton variant={"outline"} onClick={prevMonth}>
