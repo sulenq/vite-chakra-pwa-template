@@ -3,6 +3,7 @@ import {
   Type__DisclosureSizes,
   Type__PrefixDateFormat,
 } from "@/constant/interfaces";
+import { drawerbodyMaxH } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
 import formatDate from "@/utils/formatDate";
@@ -199,11 +200,7 @@ const DatePickerInput = ({
             <DisclosureHeaderContent title={title} />
           </DisclosureHeader>
 
-          <DisclosureBody
-            pt={0}
-            overflowY={"auto"}
-            maxH={"calc(100dvh - 180px)"}
-          >
+          <DisclosureBody pt={0} overflowY={"auto"} maxH={drawerbodyMaxH}>
             {/* Period picker */}
             <HStack mb={5}>
               <BButton iconButton variant={"outline"} onClick={prevMonth}>

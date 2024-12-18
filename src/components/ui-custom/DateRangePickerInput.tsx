@@ -35,6 +35,7 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
+import { drawerbodyMaxH } from "@/constant/sizes";
 
 type Type__DateRangePresets =
   | "thisWeek"
@@ -320,11 +321,7 @@ const DateRangePickerInput = ({
             <DisclosureHeaderContent title={title} />
           </DisclosureHeader>
 
-          <DisclosureBody
-            pt={0}
-            overflowY={"auto"}
-            maxH={"calc(100dvh - 180px)"}
-          >
+          <DisclosureBody pt={0} overflowY={"auto"} maxH={drawerbodyMaxH}>
             {maxRange && (
               <Alert
                 variant={"surface"}
