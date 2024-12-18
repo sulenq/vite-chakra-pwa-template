@@ -2,6 +2,7 @@ import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { useEffect, useRef, useState } from "react";
 import request from "../utils/request";
 import { toaster } from "../components/ui/toaster";
+import useIsSmScreenWidth from "./useIsSmScreenWidth";
 
 interface Props {
   showSuccessToast?: boolean;
@@ -28,6 +29,7 @@ const useRequest = ({
 
   // Utils
   const abortControllerRef = useRef<AbortController | null>(null);
+  const iss = useIsSmScreenWidth();
 
   // Make request func
   function req({ config, onResolve }: Interface__Req) {
@@ -107,6 +109,7 @@ const useRequest = ({
               // ? response?.data?.message
               // : "Format pesan response bukan string"
               // duration: 3000,
+              placement: iss ? "top" : "bottom-end",
               action: {
                 label: "Close",
                 onClick: () => {},
@@ -131,6 +134,8 @@ const useRequest = ({
               // ? response?.data?.message
               // : "Format pesan response bukan string"
               // duration: 3000,
+
+              placement: iss ? "top" : "bottom-end",
               action: {
                 label: "Close",
                 onClick: () => {},

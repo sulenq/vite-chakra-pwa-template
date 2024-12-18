@@ -36,6 +36,7 @@ import {
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
 import { drawerbodyMaxH } from "@/constant/sizes";
+import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 
 type Type__DateRangePresets =
   | "thisWeek"
@@ -79,6 +80,7 @@ const DateRangePickerInput = ({
     onOpen,
     onClose
   );
+  const iss = useIsSmScreenWidth();
 
   const [date, setDate] = useState<Date>(
     inputValue?.from || inputValue?.to || new Date()
@@ -417,6 +419,7 @@ const DateRangePickerInput = ({
                                 type: "error",
                                 title: `Tidak boleh melebihi maksimal rentang ${maxRange} hari `,
                                 description: "",
+                                placement: iss ? "top" : "bottom-end",
                                 action: {
                                   label: "Close",
                                   onClick: () => {},
