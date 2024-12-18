@@ -1,7 +1,7 @@
-import useScreenWidth from "./useScreen";
+import useScreen from "./useScreen";
 
 const useIsSmScreenWidth = () => {
-  const { sw } = useScreenWidth();
+  const { sw } = useScreen();
 
   return sw < 768;
 };

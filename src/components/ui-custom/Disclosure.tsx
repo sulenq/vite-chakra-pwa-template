@@ -1,4 +1,5 @@
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
+import useScreen from "@/hooks/useScreen";
 import back from "@/utils/back";
 import {
   DialogActionTriggerProps,
@@ -42,7 +43,9 @@ import {
 import CContainer from "./CContainer";
 
 const DisclosureRoot = ({ children, ...props }: any) => {
-  const iss = useIsSmScreenWidth();
+  const { sw } = useScreen(0);
+
+  const iss = sw < 768;
 
   return iss ? (
     <DrawerRoot placement={"bottom"} {...props}>
