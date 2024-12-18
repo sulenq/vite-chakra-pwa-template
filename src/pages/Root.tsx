@@ -385,14 +385,14 @@ export default function Root() {
         // backdropFilter={"blur(5px)"}
       >
         <HStack gap={3}>
-          <Image
+          {/* <Image
             alt="Distro Studio Logo"
             src="/assets/images/logo_color.png"
             w={"20px"}
-          />
+          /> */}
 
           <Text fontSize={"1.25rem"} fontWeight={"bold"}>
-            Exium
+            Mahaoo
           </Text>
         </HStack>
 
@@ -918,7 +918,7 @@ export default function Root() {
       {/* Footer */}
       <HStack wrap={"wrap"} mt={8} gap={4} justify={"space-between"}>
         <HStack pointerEvents={"none"} gap={0}>
-          <Image src="/assets/images/logo_color.png" w={"16px"} mr={3} />
+          {/* <Image src="/assets/images/logo_color.png" w={"16px"} mr={3} /> */}
           <HStack wrap={"wrap"} gapY={0} gap={1}>
             <Text fontSize={"sm"} whiteSpace={"nowrap"}>
               Beautifully Crafted by{" "}
@@ -932,7 +932,7 @@ export default function Root() {
                 transition={"200ms"}
                 fontWeight={700}
               >
-                Exium
+                Mahaoo
               </Text>
             </a>
           </HStack>
