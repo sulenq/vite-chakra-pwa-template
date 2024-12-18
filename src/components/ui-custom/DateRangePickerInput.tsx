@@ -393,7 +393,6 @@ const DateRangePickerInput = ({
                       <BButton
                         key={ii}
                         borderRadius={"full"}
-                        variant={"ghost"}
                         onClick={() => {
                           if (
                             (!selected?.from && !selected?.to) ||
@@ -442,7 +441,11 @@ const DateRangePickerInput = ({
                             }
                           }
                         }}
-                        bg={dateInRange(date.fullDate, selected) ? "d2" : ""}
+                        variant={
+                          dateInRange(date.fullDate, selected, true, true)
+                            ? "surface"
+                            : "ghost"
+                        }
                         borderColor={dateSelected ? "ibody" : ""}
                         aspectRatio={1}
                       >

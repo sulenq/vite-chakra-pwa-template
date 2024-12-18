@@ -256,11 +256,11 @@ const DatePickerInput = ({
                       <BButton
                         key={ii}
                         borderRadius={"full"}
-                        variant={"ghost"}
                         onClick={() => {
                           setSelected(date.fullDate);
                         }}
                         borderColor={dateSelected ? "ibody" : ""}
+                        variant={dateSelected ? "surface" : "ghost"}
                         aspectRatio={1}
                       >
                         <Text
