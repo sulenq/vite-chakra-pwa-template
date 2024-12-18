@@ -276,10 +276,13 @@ const DateRangePickerInput = ({
     return weekDates;
   };
 
-  const dateRangeValue = `${formatDate(
-    inputValue?.from,
-    dateFormatOptions
-  )} - ${formatDate(inputValue?.to, dateFormatOptions)}`;
+  const dateRangeValue =
+    inputValue?.from && inputValue?.to
+      ? `${formatDate(inputValue?.from, dateFormatOptions)} - ${formatDate(
+          inputValue?.to,
+          dateFormatOptions
+        )} (${countDay(inputValue?.from, inputValue?.to)} hari)`
+      : placeholder;
 
   return (
     <>
