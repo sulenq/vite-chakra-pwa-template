@@ -342,7 +342,17 @@ const DateRangePickerDemo = () => {
           formik.setFieldValue("date", inputValue);
         }}
         inputValue={formik.values.date}
+        // nonNullable
+      />
+
+      <DateRangePickerInput
+        name="date2"
+        onConfirm={(inputValue) => {
+          formik.setFieldValue("date2", inputValue);
+        }}
+        inputValue={formik.values.date2}
         maxRange={7}
+        placeholder="Dengan max rentang"
         // nonNullable
       />
     </>
