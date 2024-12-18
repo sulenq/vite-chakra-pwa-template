@@ -73,6 +73,7 @@ import {
   HStack,
   Icon,
   IconButton,
+  Image,
   Menu,
   SimpleGrid,
   Text,
@@ -337,22 +338,10 @@ const DateRangePickerDemo = () => {
   return (
     <>
       <DateRangePickerInput
-        name="date1"
         onConfirm={(inputValue) => {
           formik.setFieldValue("date", inputValue);
         }}
         inputValue={formik.values.date}
-        // maxRange={7}
-        // nonNullable
-      />
-
-      <DateRangePickerInput
-        name="date2"
-        onConfirm={(inputValue) => {
-          formik.setFieldValue("date2", inputValue);
-        }}
-        inputValue={formik.values.date2}
-        placeholder="With max range"
         maxRange={7}
         // nonNullable
       />
@@ -384,14 +373,14 @@ export default function Root() {
         // backdropFilter={"blur(5px)"}
       >
         <HStack gap={3}>
-          {/* <Image
+          <Image
             alt="Distro Studio Logo"
             src="/assets/images/logo_color.png"
             w={"20px"}
-          /> */}
+          />
 
           <Text fontSize={"1.25rem"} fontWeight={"bold"}>
-            Mahaoo
+            Exium
           </Text>
         </HStack>
 
@@ -917,7 +906,7 @@ export default function Root() {
       {/* Footer */}
       <HStack wrap={"wrap"} mt={8} gap={4} justify={"space-between"}>
         <HStack pointerEvents={"none"} gap={0}>
-          {/* <Image src="/assets/images/logo_color.png" w={"16px"} mr={3} /> */}
+          <Image src="/assets/images/logo_color.png" w={"16px"} mr={3} />
           <HStack wrap={"wrap"} gapY={0} gap={1}>
             <Text fontSize={"sm"} whiteSpace={"nowrap"}>
               Beautifully Crafted by{" "}
@@ -931,7 +920,7 @@ export default function Root() {
                 transition={"200ms"}
                 fontWeight={700}
               >
-                Mahaoo
+                Exium
               </Text>
             </a>
           </HStack>
