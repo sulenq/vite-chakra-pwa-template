@@ -73,7 +73,6 @@ import {
   HStack,
   Icon,
   IconButton,
-  Image,
   Menu,
   SimpleGrid,
   Text,
