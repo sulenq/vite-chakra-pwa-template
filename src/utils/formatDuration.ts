@@ -12,7 +12,7 @@ function formatDuration(
         return formatDurationShort(seconds);
     }
   } else {
-    return "00h 00m";
+    return "0 detik";
   }
 }
 
