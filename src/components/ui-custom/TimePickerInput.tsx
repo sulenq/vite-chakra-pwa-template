@@ -183,7 +183,9 @@ const TimePickerInput = ({
         >
           <HStack w={"100%"}>
             {inputValue ? (
-              <Text>{withSeconds ? inputValue : formatTime(inputValue)}</Text>
+              <Text truncate>
+                {withSeconds ? inputValue : formatTime(inputValue)}
+              </Text>
             ) : (
               <Text //@ts-ignore
                 color={props?._placeholder?.color || "#96969691"}
