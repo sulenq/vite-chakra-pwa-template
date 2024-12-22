@@ -33,10 +33,10 @@ import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
 
 interface Props extends ButtonProps {
   id?: string;
+  name: string;
+  title?: string;
   onConfirm?: (inputValue: Date | undefined) => void;
   inputValue?: Date | undefined;
-  name?: string;
-  title?: string;
   dateFormatOptions?: Type__PrefixDateFormat | object;
   placeholder?: string;
   nonNullable?: boolean;
@@ -158,6 +158,8 @@ const DatePickerInput = ({
     return weekDates;
   };
 
+  const renderValue = formatDate(inputValue, dateFormatOptions);
+
   return (
     <>
       <Tooltip content={inputValue ? formatDate(inputValue) : placeholder}>
@@ -177,9 +179,7 @@ const DatePickerInput = ({
           <HStack w={"100%"}>
             {inputValue ? (
               <Text fontWeight={"normal"} truncate>
-                {inputValue
-                  ? formatDate(inputValue, dateFormatOptions)
-                  : placeholder}
+                {renderValue}
               </Text>
             ) : (
               <Text opacity={0.3} fontWeight={"normal"} truncate>

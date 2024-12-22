@@ -25,6 +25,7 @@ import NumberInput from "@/components/ui-custom/NumberInput";
 import Retry from "@/components/ui-custom/Retry";
 import SelectInput from "@/components/ui-custom/SelectInput";
 import StringInput from "@/components/ui-custom/StringInput";
+import TimePickerInput from "@/components/ui-custom/TimePickerInput";
 import {
   AccordionItem,
   AccordionItemContent,
@@ -312,6 +313,7 @@ const DatePickerDemo = () => {
   return (
     <>
       <DatePickerInput
+        name="date"
         onConfirm={(inputValue) => {
           formik.setFieldValue("date", inputValue);
         }}
@@ -338,6 +340,7 @@ const DateRangePickerDemo = () => {
   return (
     <>
       <DateRangePickerInput
+        name="date"
         onConfirm={(inputValue) => {
           formik.setFieldValue("date", inputValue);
         }}
@@ -353,6 +356,44 @@ const DateRangePickerDemo = () => {
         inputValue={formik.values.date2}
         maxRange={7}
         placeholder="Dengan max rentang"
+        // nonNullable
+      />
+    </>
+  );
+};
+
+const TimePickerDemo = () => {
+  const formik = useFormik({
+    validateOnChange: false,
+    initialValues: {
+      time: undefined as any,
+      time2: undefined as any,
+    },
+    validationSchema: yup.object().shape({}),
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
+  return (
+    <>
+      <TimePickerInput
+        name="time"
+        onConfirm={(inputValue) => {
+          formik.setFieldValue("time", inputValue);
+        }}
+        inputValue={formik.values.time}
+        // nonNullable
+      />
+
+      <TimePickerInput
+        name="time2"
+        onConfirm={(inputValue) => {
+          formik.setFieldValue("time2", inputValue);
+        }}
+        inputValue={formik.values.time2}
+        placeholder="Dengan input detik"
+        withSeconds
         // nonNullable
       />
     </>
@@ -907,6 +948,16 @@ export default function Root() {
             <CenterContainer>
               <CContainer gap={4}>
                 <DateRangePickerDemo />
+              </CContainer>
+            </CenterContainer>
+          </CContainer>
+
+          {/* Time Picker Input */}
+          <CContainer flex={0} gap={4}>
+            <Heading6>Time Picker Input</Heading6>
+            <CenterContainer>
+              <CContainer gap={4}>
+                <TimePickerDemo />
               </CContainer>
             </CenterContainer>
           </CContainer>

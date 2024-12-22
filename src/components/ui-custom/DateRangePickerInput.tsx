@@ -45,10 +45,10 @@ type Type__DateRangePresets =
   | "nextMonth";
 interface Props extends ButtonProps {
   id?: string;
+  name: string;
+  title?: string;
   onConfirm?: (inputValue: Type__DateRange) => void;
   inputValue?: Type__DateRange;
-  name?: string;
-  title?: string;
   dateFormatOptions?: Type__PrefixDateFormat | object;
   placeholder?: string;
   nonNullable?: boolean;
@@ -278,7 +278,7 @@ const DateRangePickerInput = ({
     return weekDates;
   };
 
-  const dateRangeValue =
+  const renderValue =
     inputValue?.from && inputValue?.to
       ? `${formatDate(inputValue?.from, dateFormatOptions)} - ${formatDate(
           inputValue?.to,
@@ -288,7 +288,7 @@ const DateRangePickerInput = ({
 
   return (
     <>
-      <Tooltip content={inputValue ? dateRangeValue : placeholder}>
+      <Tooltip content={inputValue ? renderValue : placeholder}>
         <BButton
           unclicky
           variant={"ghost"}
@@ -305,7 +305,7 @@ const DateRangePickerInput = ({
           <HStack w={"100%"}>
             {inputValue ? (
               <Text fontWeight={"normal"} truncate>
-                {inputValue ? dateRangeValue : placeholder}
+                {inputValue ? renderValue : placeholder}
               </Text>
             ) : (
               <Text opacity={0.3} fontWeight={"normal"} truncate>
