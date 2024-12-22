@@ -1,15 +1,25 @@
 import { Type__DisclosureSizes } from "@/constant/interfaces";
 import { drawerbodyMaxH } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
+import useScreen from "@/hooks/useScreen";
 import back from "@/utils/back";
 import formatTime from "@/utils/formatTime";
 import { getHours, getMinutes, getSeconds } from "@/utils/getTime";
-import { HStack, Icon, Text, useDisclosure, VStack } from "@chakra-ui/react";
+import {
+  Center,
+  HStack,
+  Icon,
+  Stack,
+  Text,
+  useDisclosure,
+  VStack,
+} from "@chakra-ui/react";
 import { CaretDown, CaretUp, Clock } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
 import { ButtonProps } from "../ui/button";
 import { Tooltip } from "../ui/tooltip";
 import BButton from "./BButton";
+import CContainer from "./CContainer";
 import {
   DisclosureBody,
   DisclosureContent,
@@ -43,7 +53,8 @@ const TimeRangePickerInput = ({
   placeholder = "Pilih rentang waktu",
   nonNullable,
   isError,
-  size = withSeconds ? "sm" : "xs",
+  // size = withSeconds ? "sm" : "xs",
+  size = "lg",
   ...props
 }: Props) => {
   const { open, onOpen, onClose } = useDisclosure();
@@ -53,6 +64,8 @@ const TimeRangePickerInput = ({
     onOpen,
     onClose
   );
+  const { sw } = useScreen();
+  const overflow = sw < 450 && withSeconds;
 
   const defaultTime = "00:00:00";
   const [selected, setSelected] = useState<string | undefined>(
@@ -203,184 +216,118 @@ const TimeRangePickerInput = ({
           </DisclosureHeader>
 
           <DisclosureBody pt={0} overflowY={"auto"} maxH={drawerbodyMaxH}>
-            <Text fontSize={"lg"} fontWeight={"semibold"} mb={2}>
-              Mulai
-            </Text>
-            <HStack justify={"space-between"} gap={1}>
-              <VStack flex={"1 1 0"} align={"stretch"} gap={0}>
-                <BButton
-                  iconButton
-                  aria-label="add hour button"
-                  variant={"outline"}
-                  onClick={() => {
-                    setHours((ps) => (ps < 23 ? ps + 1 : 0));
-                    if (!selected) {
-                      setSelected(defaultTime);
-                    }
-                  }}
-                  onMouseDown={() => {
-                    handleMouseDownIncrement("hours");
-                  }}
-                  onMouseUp={handleMouseUpIncrement}
-                  onMouseLeave={handleMouseUpIncrement}
-                  onTouchStart={() => {
-                    handleMouseDownIncrement("hours");
-                  }}
-                  onTouchEnd={handleMouseUpIncrement}
+            <Stack
+              gap={5}
+              align={"stretch"}
+              flexDir={sw < 680 ? "column" : "row"}
+            >
+              <CContainer>
+                {/* <Text fontSize={"lg"} fontWeight={"semibold"} mb={2}>
+                  Mulai
+                </Text> */}
+                <HStack
+                  justify={"space-between"}
+                  gap={1}
+                  wrap={overflow ? "wrap" : ""}
+                  gapY={overflow ? 4 : 0}
                 >
-                  <Icon fontSize={"md"}>
-                    <CaretUp />
-                  </Icon>
-                </BButton>
-
-                <VStack my={4}>
-                  <StringInput
-                    name="jam"
-                    onChangeSetter={(input) => {
-                      if (parseInt(input as string) < 24) {
-                        setHours(parseInt(input as string));
-                      }
-                    }}
-                    inputValue={
-                      selected ? String(hours).padStart(2, "0") : "--"
-                    }
-                    fontSize={"64px !important"}
-                    fontWeight={600}
-                    h={"64px"}
-                    textAlign={"center"}
-                    border={"none !important"}
-                    _focus={{ border: "none !important" }}
-                  />
-                  <Text textAlign={"center"}>Jam</Text>
-                </VStack>
-
-                <BButton
-                  iconButton
-                  aria-label="reduce hour button"
-                  variant={"outline"}
-                  onClick={() => {
-                    setHours((ps) => (ps > 0 ? ps - 1 : 23));
-                    if (!selected) {
-                      setSelected(defaultTime);
-                    }
-                  }}
-                  onMouseDown={() => {
-                    handleMouseDownDecrement("hours");
-                  }}
-                  onMouseUp={handleMouseUpDecrement}
-                  onMouseLeave={handleMouseUpDecrement}
-                  onTouchStart={() => {
-                    handleMouseDownDecrement("hours");
-                  }}
-                  onTouchEnd={handleMouseUpDecrement}
-                >
-                  <Icon fontSize={"md"}>
-                    <CaretDown />
-                  </Icon>
-                </BButton>
-              </VStack>
-
-              <Text fontSize={50} opacity={0.2} mt={-9}>
-                :
-              </Text>
-
-              <VStack flex={"1 1 0"} align={"stretch"} gap={0}>
-                <BButton
-                  iconButton
-                  aria-label="add hour button"
-                  variant={"outline"}
-                  onClick={() => {
-                    setMinutes((ps) => (ps < 59 ? ps + 1 : 0));
-                    if (!selected) {
-                      setSelected(defaultTime);
-                    }
-                  }}
-                  onMouseDown={() => {
-                    handleMouseDownIncrement("minutes");
-                  }}
-                  onMouseUp={handleMouseUpIncrement}
-                  onMouseLeave={handleMouseUpIncrement}
-                  onTouchStart={() => {
-                    handleMouseDownIncrement("minutes");
-                  }}
-                  onTouchEnd={handleMouseUpIncrement}
-                >
-                  <Icon fontSize={"md"}>
-                    <CaretUp />
-                  </Icon>
-                </BButton>
-
-                <VStack my={4}>
-                  <StringInput
-                    name="jam"
-                    onChangeSetter={(input) => {
-                      if (parseInt(input as string) < 60) {
-                        setMinutes(parseInt(input as string));
-                      }
-                    }}
-                    inputValue={
-                      selected ? String(minutes).padStart(2, "0") : "--"
-                    }
-                    fontSize={"64px !important"}
-                    fontWeight={600}
-                    h={"64px"}
-                    textAlign={"center"}
-                    border={"none !important"}
-                    _focus={{ border: "none !important" }}
-                  />
-                  <Text textAlign={"center"}>Menit</Text>
-                </VStack>
-
-                <BButton
-                  iconButton
-                  aria-label="reduce hour button"
-                  variant={"outline"}
-                  onClick={() => {
-                    setMinutes((ps) => (ps > 0 ? ps - 1 : 59));
-                    if (!selected) {
-                      setSelected(defaultTime);
-                    }
-                  }}
-                  onMouseDown={() => {
-                    handleMouseDownDecrement("minutes");
-                  }}
-                  onMouseUp={handleMouseUpDecrement}
-                  onMouseLeave={handleMouseUpDecrement}
-                  onTouchStart={() => {
-                    handleMouseDownDecrement("minutes");
-                  }}
-                  onTouchEnd={handleMouseUpDecrement}
-                >
-                  <Icon fontSize={"md"}>
-                    <CaretDown />
-                  </Icon>
-                </BButton>
-              </VStack>
-
-              {withSeconds && (
-                <>
-                  <Text fontSize={50} opacity={0.2} mt={-9}>
-                    :
-                  </Text>
-
-                  <VStack flex={"1 1 0"} align={"stretch"} gap={0}>
+                  <VStack flex={"1 1 120"} align={"stretch"} gap={0}>
                     <BButton
                       iconButton
                       aria-label="add hour button"
                       variant={"outline"}
                       onClick={() => {
-                        setSeconds((ps) => (ps < 59 ? ps + 1 : 0));
+                        setHours((ps) => (ps < 23 ? ps + 1 : 0));
                         if (!selected) {
                           setSelected(defaultTime);
                         }
                       }}
                       onMouseDown={() => {
-                        handleMouseDownIncrement("seconds");
+                        handleMouseDownIncrement("hours");
                       }}
                       onMouseUp={handleMouseUpIncrement}
                       onMouseLeave={handleMouseUpIncrement}
                       onTouchStart={() => {
-                        handleMouseDownIncrement("seconds");
+                        handleMouseDownIncrement("hours");
+                      }}
+                      onTouchEnd={handleMouseUpIncrement}
+                    >
+                      <Icon fontSize={"md"}>
+                        <CaretUp />
+                      </Icon>
+                    </BButton>
+
+                    <VStack my={4}>
+                      <StringInput
+                        name="jam"
+                        onChangeSetter={(input) => {
+                          if (parseInt(input as string) < 24) {
+                            setHours(parseInt(input as string));
+                          }
+                        }}
+                        inputValue={
+                          selected ? String(hours).padStart(2, "0") : "--"
+                        }
+                        fontSize={"64px !important"}
+                        fontWeight={600}
+                        h={"64px"}
+                        textAlign={"center"}
+                        border={"none !important"}
+                        _focus={{ border: "none !important" }}
+                      />
+                      <Text textAlign={"center"}>Jam</Text>
+                    </VStack>
+
+                    <BButton
+                      iconButton
+                      aria-label="reduce hour button"
+                      variant={"outline"}
+                      onClick={() => {
+                        setHours((ps) => (ps > 0 ? ps - 1 : 23));
+                        if (!selected) {
+                          setSelected(defaultTime);
+                        }
+                      }}
+                      onMouseDown={() => {
+                        handleMouseDownDecrement("hours");
+                      }}
+                      onMouseUp={handleMouseUpDecrement}
+                      onMouseLeave={handleMouseUpDecrement}
+                      onTouchStart={() => {
+                        handleMouseDownDecrement("hours");
+                      }}
+                      onTouchEnd={handleMouseUpDecrement}
+                    >
+                      <Icon fontSize={"md"}>
+                        <CaretDown />
+                      </Icon>
+                    </BButton>
+                  </VStack>
+
+                  {!overflow && (
+                    <Text fontSize={50} opacity={0.2} mt={-9}>
+                      :
+                    </Text>
+                  )}
+
+                  <VStack flex={"1 1 120"} align={"stretch"} gap={0}>
+                    <BButton
+                      iconButton
+                      aria-label="add hour button"
+                      variant={"outline"}
+                      onClick={() => {
+                        setMinutes((ps) => (ps < 59 ? ps + 1 : 0));
+                        if (!selected) {
+                          setSelected(defaultTime);
+                        }
+                      }}
+                      onMouseDown={() => {
+                        handleMouseDownIncrement("minutes");
+                      }}
+                      onMouseUp={handleMouseUpIncrement}
+                      onMouseLeave={handleMouseUpIncrement}
+                      onTouchStart={() => {
+                        handleMouseDownIncrement("minutes");
                       }}
                       onTouchEnd={handleMouseUpIncrement}
                     >
@@ -394,11 +341,11 @@ const TimeRangePickerInput = ({
                         name="jam"
                         onChangeSetter={(input) => {
                           if (parseInt(input as string) < 60) {
-                            setSeconds(parseInt(input as string));
+                            setMinutes(parseInt(input as string));
                           }
                         }}
                         inputValue={
-                          selected ? String(seconds).padStart(2, "0") : "--"
+                          selected ? String(minutes).padStart(2, "0") : "--"
                         }
                         fontSize={"64px !important"}
                         fontWeight={600}
@@ -407,7 +354,7 @@ const TimeRangePickerInput = ({
                         border={"none !important"}
                         _focus={{ border: "none !important" }}
                       />
-                      <Text textAlign={"center"}>Detik</Text>
+                      <Text textAlign={"center"}>Menit</Text>
                     </VStack>
 
                     <BButton
@@ -415,18 +362,18 @@ const TimeRangePickerInput = ({
                       aria-label="reduce hour button"
                       variant={"outline"}
                       onClick={() => {
-                        setSeconds((ps) => (ps > 0 ? ps - 1 : 59));
+                        setMinutes((ps) => (ps > 0 ? ps - 1 : 59));
                         if (!selected) {
                           setSelected(defaultTime);
                         }
                       }}
                       onMouseDown={() => {
-                        handleMouseDownDecrement("seconds");
+                        handleMouseDownDecrement("minutes");
                       }}
                       onMouseUp={handleMouseUpDecrement}
                       onMouseLeave={handleMouseUpDecrement}
                       onTouchStart={() => {
-                        handleMouseDownDecrement("seconds");
+                        handleMouseDownDecrement("minutes");
                       }}
                       onTouchEnd={handleMouseUpDecrement}
                     >
@@ -435,188 +382,203 @@ const TimeRangePickerInput = ({
                       </Icon>
                     </BButton>
                   </VStack>
-                </>
-              )}
-            </HStack>
 
-            <Text fontSize={"lg"} fontWeight={"semibold"} mb={2} mt={5}>
-              Selesai
-            </Text>
-            <HStack justify={"space-between"} gap={1}>
-              <VStack flex={"1 1 0"} align={"stretch"} gap={0}>
-                <BButton
-                  iconButton
-                  aria-label="add hour button"
-                  variant={"outline"}
-                  onClick={() => {
-                    setHours((ps) => (ps < 23 ? ps + 1 : 0));
-                    if (!selected) {
-                      setSelected(defaultTime);
-                    }
-                  }}
-                  onMouseDown={() => {
-                    handleMouseDownIncrement("hours");
-                  }}
-                  onMouseUp={handleMouseUpIncrement}
-                  onMouseLeave={handleMouseUpIncrement}
-                  onTouchStart={() => {
-                    handleMouseDownIncrement("hours");
-                  }}
-                  onTouchEnd={handleMouseUpIncrement}
+                  {withSeconds && (
+                    <>
+                      {!overflow && (
+                        <Text fontSize={50} opacity={0.2} mt={-9}>
+                          :
+                        </Text>
+                      )}
+
+                      <VStack flex={"1 1 120"} align={"stretch"} gap={0}>
+                        <BButton
+                          iconButton
+                          aria-label="add hour button"
+                          variant={"outline"}
+                          onClick={() => {
+                            setSeconds((ps) => (ps < 59 ? ps + 1 : 0));
+                            if (!selected) {
+                              setSelected(defaultTime);
+                            }
+                          }}
+                          onMouseDown={() => {
+                            handleMouseDownIncrement("seconds");
+                          }}
+                          onMouseUp={handleMouseUpIncrement}
+                          onMouseLeave={handleMouseUpIncrement}
+                          onTouchStart={() => {
+                            handleMouseDownIncrement("seconds");
+                          }}
+                          onTouchEnd={handleMouseUpIncrement}
+                        >
+                          <Icon fontSize={"md"}>
+                            <CaretUp />
+                          </Icon>
+                        </BButton>
+
+                        <VStack my={4}>
+                          <StringInput
+                            name="jam"
+                            onChangeSetter={(input) => {
+                              if (parseInt(input as string) < 60) {
+                                setSeconds(parseInt(input as string));
+                              }
+                            }}
+                            inputValue={
+                              selected ? String(seconds).padStart(2, "0") : "--"
+                            }
+                            fontSize={"64px !important"}
+                            fontWeight={600}
+                            h={"64px"}
+                            textAlign={"center"}
+                            border={"none !important"}
+                            _focus={{ border: "none !important" }}
+                          />
+                          <Text textAlign={"center"}>Detik</Text>
+                        </VStack>
+
+                        <BButton
+                          iconButton
+                          aria-label="reduce hour button"
+                          variant={"outline"}
+                          onClick={() => {
+                            setSeconds((ps) => (ps > 0 ? ps - 1 : 59));
+                            if (!selected) {
+                              setSelected(defaultTime);
+                            }
+                          }}
+                          onMouseDown={() => {
+                            handleMouseDownDecrement("seconds");
+                          }}
+                          onMouseUp={handleMouseUpDecrement}
+                          onMouseLeave={handleMouseUpDecrement}
+                          onTouchStart={() => {
+                            handleMouseDownDecrement("seconds");
+                          }}
+                          onTouchEnd={handleMouseUpDecrement}
+                        >
+                          <Icon fontSize={"md"}>
+                            <CaretDown />
+                          </Icon>
+                        </BButton>
+                      </VStack>
+                    </>
+                  )}
+                </HStack>
+              </CContainer>
+
+              <Center>
+                <Text fontSize={"md"}>s/d</Text>
+              </Center>
+
+              <CContainer>
+                {/* <Text fontSize={"lg"} fontWeight={"semibold"} mb={2}>
+                  Selesai
+                </Text> */}
+                <HStack
+                  justify={"space-between"}
+                  gap={1}
+                  wrap={overflow ? "wrap" : ""}
+                  gapY={overflow ? 4 : 0}
                 >
-                  <Icon fontSize={"md"}>
-                    <CaretUp />
-                  </Icon>
-                </BButton>
-
-                <VStack my={4}>
-                  <StringInput
-                    name="jam"
-                    onChangeSetter={(input) => {
-                      if (parseInt(input as string) < 24) {
-                        setHours(parseInt(input as string));
-                      }
-                    }}
-                    inputValue={
-                      selected ? String(hours).padStart(2, "0") : "--"
-                    }
-                    fontSize={"64px !important"}
-                    fontWeight={600}
-                    h={"64px"}
-                    textAlign={"center"}
-                    border={"none !important"}
-                    _focus={{ border: "none !important" }}
-                  />
-                  <Text textAlign={"center"}>Jam</Text>
-                </VStack>
-
-                <BButton
-                  iconButton
-                  aria-label="reduce hour button"
-                  variant={"outline"}
-                  onClick={() => {
-                    setHours((ps) => (ps > 0 ? ps - 1 : 23));
-                    if (!selected) {
-                      setSelected(defaultTime);
-                    }
-                  }}
-                  onMouseDown={() => {
-                    handleMouseDownDecrement("hours");
-                  }}
-                  onMouseUp={handleMouseUpDecrement}
-                  onMouseLeave={handleMouseUpDecrement}
-                  onTouchStart={() => {
-                    handleMouseDownDecrement("hours");
-                  }}
-                  onTouchEnd={handleMouseUpDecrement}
-                >
-                  <Icon fontSize={"md"}>
-                    <CaretDown />
-                  </Icon>
-                </BButton>
-              </VStack>
-
-              <Text fontSize={50} opacity={0.2} mt={-9}>
-                :
-              </Text>
-
-              <VStack flex={"1 1 0"} align={"stretch"} gap={0}>
-                <BButton
-                  iconButton
-                  aria-label="add hour button"
-                  variant={"outline"}
-                  onClick={() => {
-                    setMinutes((ps) => (ps < 59 ? ps + 1 : 0));
-                    if (!selected) {
-                      setSelected(defaultTime);
-                    }
-                  }}
-                  onMouseDown={() => {
-                    handleMouseDownIncrement("minutes");
-                  }}
-                  onMouseUp={handleMouseUpIncrement}
-                  onMouseLeave={handleMouseUpIncrement}
-                  onTouchStart={() => {
-                    handleMouseDownIncrement("minutes");
-                  }}
-                  onTouchEnd={handleMouseUpIncrement}
-                >
-                  <Icon fontSize={"md"}>
-                    <CaretUp />
-                  </Icon>
-                </BButton>
-
-                <VStack my={4}>
-                  <StringInput
-                    name="jam"
-                    onChangeSetter={(input) => {
-                      if (parseInt(input as string) < 60) {
-                        setMinutes(parseInt(input as string));
-                      }
-                    }}
-                    inputValue={
-                      selected ? String(minutes).padStart(2, "0") : "--"
-                    }
-                    fontSize={"64px !important"}
-                    fontWeight={600}
-                    h={"64px"}
-                    textAlign={"center"}
-                    border={"none !important"}
-                    _focus={{ border: "none !important" }}
-                  />
-                  <Text textAlign={"center"}>Menit</Text>
-                </VStack>
-
-                <BButton
-                  iconButton
-                  aria-label="reduce hour button"
-                  variant={"outline"}
-                  onClick={() => {
-                    setMinutes((ps) => (ps > 0 ? ps - 1 : 59));
-                    if (!selected) {
-                      setSelected(defaultTime);
-                    }
-                  }}
-                  onMouseDown={() => {
-                    handleMouseDownDecrement("minutes");
-                  }}
-                  onMouseUp={handleMouseUpDecrement}
-                  onMouseLeave={handleMouseUpDecrement}
-                  onTouchStart={() => {
-                    handleMouseDownDecrement("minutes");
-                  }}
-                  onTouchEnd={handleMouseUpDecrement}
-                >
-                  <Icon fontSize={"md"}>
-                    <CaretDown />
-                  </Icon>
-                </BButton>
-              </VStack>
-
-              {withSeconds && (
-                <>
-                  <Text fontSize={50} opacity={0.2} mt={-9}>
-                    :
-                  </Text>
-
-                  <VStack flex={"1 1 0"} align={"stretch"} gap={0}>
+                  <VStack flex={"1 1 120"} align={"stretch"} gap={0}>
                     <BButton
                       iconButton
                       aria-label="add hour button"
                       variant={"outline"}
                       onClick={() => {
-                        setSeconds((ps) => (ps < 59 ? ps + 1 : 0));
+                        setHours((ps) => (ps < 23 ? ps + 1 : 0));
                         if (!selected) {
                           setSelected(defaultTime);
                         }
                       }}
                       onMouseDown={() => {
-                        handleMouseDownIncrement("seconds");
+                        handleMouseDownIncrement("hours");
                       }}
                       onMouseUp={handleMouseUpIncrement}
                       onMouseLeave={handleMouseUpIncrement}
                       onTouchStart={() => {
-                        handleMouseDownIncrement("seconds");
+                        handleMouseDownIncrement("hours");
+                      }}
+                      onTouchEnd={handleMouseUpIncrement}
+                    >
+                      <Icon fontSize={"md"}>
+                        <CaretUp />
+                      </Icon>
+                    </BButton>
+
+                    <VStack my={4}>
+                      <StringInput
+                        name="jam"
+                        onChangeSetter={(input) => {
+                          if (parseInt(input as string) < 24) {
+                            setHours(parseInt(input as string));
+                          }
+                        }}
+                        inputValue={
+                          selected ? String(hours).padStart(2, "0") : "--"
+                        }
+                        fontSize={"64px !important"}
+                        fontWeight={600}
+                        h={"64px"}
+                        textAlign={"center"}
+                        border={"none !important"}
+                        _focus={{ border: "none !important" }}
+                      />
+                      <Text textAlign={"center"}>Jam</Text>
+                    </VStack>
+
+                    <BButton
+                      iconButton
+                      aria-label="reduce hour button"
+                      variant={"outline"}
+                      onClick={() => {
+                        setHours((ps) => (ps > 0 ? ps - 1 : 23));
+                        if (!selected) {
+                          setSelected(defaultTime);
+                        }
+                      }}
+                      onMouseDown={() => {
+                        handleMouseDownDecrement("hours");
+                      }}
+                      onMouseUp={handleMouseUpDecrement}
+                      onMouseLeave={handleMouseUpDecrement}
+                      onTouchStart={() => {
+                        handleMouseDownDecrement("hours");
+                      }}
+                      onTouchEnd={handleMouseUpDecrement}
+                    >
+                      <Icon fontSize={"md"}>
+                        <CaretDown />
+                      </Icon>
+                    </BButton>
+                  </VStack>
+
+                  {!overflow && (
+                    <Text fontSize={50} opacity={0.2} mt={-9}>
+                      :
+                    </Text>
+                  )}
+
+                  <VStack flex={"1 1 120"} align={"stretch"} gap={0}>
+                    <BButton
+                      iconButton
+                      aria-label="add hour button"
+                      variant={"outline"}
+                      onClick={() => {
+                        setMinutes((ps) => (ps < 59 ? ps + 1 : 0));
+                        if (!selected) {
+                          setSelected(defaultTime);
+                        }
+                      }}
+                      onMouseDown={() => {
+                        handleMouseDownIncrement("minutes");
+                      }}
+                      onMouseUp={handleMouseUpIncrement}
+                      onMouseLeave={handleMouseUpIncrement}
+                      onTouchStart={() => {
+                        handleMouseDownIncrement("minutes");
                       }}
                       onTouchEnd={handleMouseUpIncrement}
                     >
@@ -630,11 +592,11 @@ const TimeRangePickerInput = ({
                         name="jam"
                         onChangeSetter={(input) => {
                           if (parseInt(input as string) < 60) {
-                            setSeconds(parseInt(input as string));
+                            setMinutes(parseInt(input as string));
                           }
                         }}
                         inputValue={
-                          selected ? String(seconds).padStart(2, "0") : "--"
+                          selected ? String(minutes).padStart(2, "0") : "--"
                         }
                         fontSize={"64px !important"}
                         fontWeight={600}
@@ -643,7 +605,7 @@ const TimeRangePickerInput = ({
                         border={"none !important"}
                         _focus={{ border: "none !important" }}
                       />
-                      <Text textAlign={"center"}>Detik</Text>
+                      <Text textAlign={"center"}>Menit</Text>
                     </VStack>
 
                     <BButton
@@ -651,18 +613,18 @@ const TimeRangePickerInput = ({
                       aria-label="reduce hour button"
                       variant={"outline"}
                       onClick={() => {
-                        setSeconds((ps) => (ps > 0 ? ps - 1 : 59));
+                        setMinutes((ps) => (ps > 0 ? ps - 1 : 59));
                         if (!selected) {
                           setSelected(defaultTime);
                         }
                       }}
                       onMouseDown={() => {
-                        handleMouseDownDecrement("seconds");
+                        handleMouseDownDecrement("minutes");
                       }}
                       onMouseUp={handleMouseUpDecrement}
                       onMouseLeave={handleMouseUpDecrement}
                       onTouchStart={() => {
-                        handleMouseDownDecrement("seconds");
+                        handleMouseDownDecrement("minutes");
                       }}
                       onTouchEnd={handleMouseUpDecrement}
                     >
@@ -671,9 +633,92 @@ const TimeRangePickerInput = ({
                       </Icon>
                     </BButton>
                   </VStack>
-                </>
-              )}
-            </HStack>
+
+                  {withSeconds && (
+                    <>
+                      {!overflow && (
+                        <Text fontSize={50} opacity={0.2} mt={-9}>
+                          :
+                        </Text>
+                      )}
+
+                      <VStack flex={"1 1 120"} align={"stretch"} gap={0}>
+                        <BButton
+                          iconButton
+                          aria-label="add hour button"
+                          variant={"outline"}
+                          onClick={() => {
+                            setSeconds((ps) => (ps < 59 ? ps + 1 : 0));
+                            if (!selected) {
+                              setSelected(defaultTime);
+                            }
+                          }}
+                          onMouseDown={() => {
+                            handleMouseDownIncrement("seconds");
+                          }}
+                          onMouseUp={handleMouseUpIncrement}
+                          onMouseLeave={handleMouseUpIncrement}
+                          onTouchStart={() => {
+                            handleMouseDownIncrement("seconds");
+                          }}
+                          onTouchEnd={handleMouseUpIncrement}
+                        >
+                          <Icon fontSize={"md"}>
+                            <CaretUp />
+                          </Icon>
+                        </BButton>
+
+                        <VStack my={4}>
+                          <StringInput
+                            name="jam"
+                            onChangeSetter={(input) => {
+                              if (parseInt(input as string) < 60) {
+                                setSeconds(parseInt(input as string));
+                              }
+                            }}
+                            inputValue={
+                              selected ? String(seconds).padStart(2, "0") : "--"
+                            }
+                            fontSize={"64px !important"}
+                            fontWeight={600}
+                            h={"64px"}
+                            textAlign={"center"}
+                            border={"none !important"}
+                            _focus={{ border: "none !important" }}
+                          />
+                          <Text textAlign={"center"}>Detik</Text>
+                        </VStack>
+
+                        <BButton
+                          iconButton
+                          aria-label="reduce hour button"
+                          variant={"outline"}
+                          onClick={() => {
+                            setSeconds((ps) => (ps > 0 ? ps - 1 : 59));
+                            if (!selected) {
+                              setSelected(defaultTime);
+                            }
+                          }}
+                          onMouseDown={() => {
+                            handleMouseDownDecrement("seconds");
+                          }}
+                          onMouseUp={handleMouseUpDecrement}
+                          onMouseLeave={handleMouseUpDecrement}
+                          onTouchStart={() => {
+                            handleMouseDownDecrement("seconds");
+                          }}
+                          onTouchEnd={handleMouseUpDecrement}
+                        >
+                          <Icon fontSize={"md"}>
+                            <CaretDown />
+                          </Icon>
+                        </BButton>
+                      </VStack>
+                    </>
+                  )}
+                </HStack>
+              </CContainer>
+            </Stack>
           </DisclosureBody>
 
           <DisclosureFooter>

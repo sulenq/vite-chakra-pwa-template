@@ -424,6 +424,17 @@ const TimeRangePickerDemo = () => {
         inputValue={formik.values.time}
         // nonNullable
       />
+
+      <TimeRangePickerInput
+        name="time2"
+        withSeconds
+        onConfirm={(inputValue) => {
+          formik.setFieldValue("time2", inputValue);
+        }}
+        inputValue={formik.values.time2}
+        placeholder="Dengan input detik"
+        // nonNullable
+      />
     </>
   );
 };
