@@ -29,6 +29,8 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import StringInput from "./StringInput";
+import formatDuration from "@/utils/formatDuration";
+import getSecondsDurationFromTimeRange from "@/utils/getSecondsDurationFromTimeRange";
 
 interface Props extends ButtonProps {
   id?: string;
@@ -235,8 +237,14 @@ const TimeRangePickerInput = ({
   }
 
   const renderValue = withSeconds
-    ? `${inputValue?.from} - ${inputValue?.to} ()`
-    : `${formatTime(inputValue?.from)} - ${formatTime(inputValue?.to)} ()`;
+    ? `${inputValue?.from} - ${inputValue?.to} (${formatDuration(
+        getSecondsDurationFromTimeRange(inputValue?.from, inputValue?.to)
+      )})`
+    : `${formatTime(inputValue?.from)} - ${formatTime(
+        inputValue?.to
+      )} (${formatDuration(
+        getSecondsDurationFromTimeRange(inputValue?.from, inputValue?.to)
+      )})`;
 
   return (
     <>
@@ -255,7 +263,7 @@ const TimeRangePickerInput = ({
           {...props}
         >
           <HStack w={"100%"}>
-            {inputValue ? (
+            {inputValue?.from && inputValue?.to ? (
               <Text>{renderValue}</Text>
             ) : (
               <Text color={props?._placeholder?.color || "#96969691"}>
