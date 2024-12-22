@@ -519,7 +519,7 @@ export default function Root() {
             <Heading6>Tooltip</Heading6>
             <CenterContainer>
               <Tooltip content={"Ciluk baa"}>
-                <Text>Hover me</Text>
+                <Text>Hover me wait</Text>
               </Tooltip>
             </CenterContainer>
           </CContainer>
