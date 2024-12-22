@@ -123,8 +123,9 @@ const DisclosureDemo = () => {
 
         <DisclosureBody pb={5}>
           <p>
-            Dislosure andalan kami, kamu bisa back untuk menutupnya, ga seperti
-            library komponen lain hehe.
+            Dislosure responsive, jika viewport large maka render dialog modal,
+            jika viewport small maka render bottom drawer, kamu bisa back untuk
+            menutupnya, ga seperti library komponen lain hehe.
           </p>
         </DisclosureBody>
 
@@ -383,14 +384,14 @@ export default function Root() {
         // backdropFilter={"blur(5px)"}
       >
         <HStack gap={3}>
-          <Image
+          {/* <Image
             alt="Distro Studio Logo"
             src="/assets/images/logo_color.png"
             w={"20px"}
-          />
+          /> */}
 
           <Text fontSize={"1.25rem"} fontWeight={"bold"}>
-            Exium
+            Mahaooo
           </Text>
         </HStack>
 
@@ -916,7 +917,7 @@ export default function Root() {
       {/* Footer */}
       <HStack wrap={"wrap"} mt={8} gap={4} justify={"space-between"}>
         <HStack pointerEvents={"none"} gap={0}>
-          <Image src="/assets/images/logo_color.png" w={"16px"} mr={3} />
+          {/* <Image src="/assets/images/logo_color.png" w={"16px"} mr={3} /> */}
           <HStack wrap={"wrap"} gapY={0} gap={1}>
             <Text fontSize={"sm"} whiteSpace={"nowrap"}>
               Beautifully Crafted by{" "}
@@ -930,7 +931,7 @@ export default function Root() {
                 transition={"200ms"}
                 fontWeight={700}
               >
-                Exium
+                Mahaooo
               </Text>
             </a>
           </HStack>
