@@ -225,7 +225,7 @@ const SelectInput = ({
                   borderRadius={"full"}
                   position={"absolute"}
                   right={"30px"}
-                  mb={"1px"}
+                  // mb={"1px"}
                   onClick={() => {
                     setOptions(undefined);
                     fetch(setOptions);
