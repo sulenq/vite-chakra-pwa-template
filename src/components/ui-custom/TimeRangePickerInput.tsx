@@ -1,4 +1,4 @@
-import { Type__DisclosureSizes } from "@/constant/interfaces";
+import { Type__DisclosureSizes, Type__TimeRange } from "@/constant/interfaces";
 import { drawerbodyMaxH } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useScreen from "@/hooks/useScreen";
@@ -34,8 +34,8 @@ interface Props extends ButtonProps {
   id?: string;
   name: string;
   title?: string;
-  onConfirm?: (inputValue: string | undefined) => void;
-  inputValue?: string | undefined;
+  onConfirm?: (inputValue: Type__TimeRange | undefined) => void;
+  inputValue?: Type__TimeRange | undefined;
   withSeconds?: boolean;
   placeholder?: string;
   nonNullable?: boolean;
@@ -66,27 +66,59 @@ const TimeRangePickerInput = ({
   const { sw } = useScreen();
   const overflow = sw < 450 && withSeconds;
 
-  const defaultTime = "00:00:00";
-  const [selected, setSelected] = useState<string | undefined>(
+  const defaultTime = {
+    from: "00:00:00",
+    to: "00:00:00",
+  };
+  const [selected, setSelected] = useState<any>(
     inputValue ? inputValue : defaultTime
   );
-  const [hours, setHours] = useState<number>(getHours(inputValue));
-  const [minutes, setMinutes] = useState<number>(getMinutes(inputValue));
-  const [seconds, setSeconds] = useState<number>(getSeconds(inputValue));
+  const [hoursFrom, setHoursFrom] = useState<number>(
+    getHours(inputValue?.from)
+  );
+  const [minutesFrom, setMinutesFrom] = useState<number>(
+    getMinutes(inputValue?.from)
+  );
+  const [secondsFrom, setSecondsFrom] = useState<number>(
+    getSeconds(inputValue?.from)
+  );
+  const [hoursTo, setHoursTo] = useState<number>(getHours(inputValue?.to));
+  const [minutesTo, setMinutesTo] = useState<number>(
+    getMinutes(inputValue?.to)
+  );
+  const [secondsTo, setSecondsTo] = useState<number>(
+    getSeconds(inputValue?.to)
+  );
   useEffect(() => {
     if (inputValue) {
-      setHours(getHours(inputValue));
-      setMinutes(getMinutes(inputValue));
-      setSeconds(getSeconds(inputValue));
+      setHoursFrom(getHours(inputValue?.from));
+      setMinutesFrom(getMinutes(inputValue?.from));
+      setSecondsFrom(getSeconds(inputValue?.from));
+      setHoursTo(getHours(inputValue?.to));
+      setMinutesTo(getMinutes(inputValue?.to));
+      setSecondsTo(getSeconds(inputValue?.to));
     }
   }, [inputValue]);
 
   useEffect(() => {
-    const fHours = String(hours).padStart(2, "0");
-    const fMinutes = String(minutes).padStart(2, "0");
-    const fSeconds = String(seconds).padStart(2, "0");
-    setSelected(`${fHours}:${fMinutes}:${fSeconds}`);
-  }, [hours, minutes, seconds]);
+    const fHours = String(hoursFrom).padStart(2, "0");
+    const fMinutes = String(minutesFrom).padStart(2, "0");
+    const fSeconds = String(secondsFrom).padStart(2, "0");
+    setSelected((ps: any) => ({
+      ...ps,
+      from: `${fHours}:${fMinutes}:${fSeconds}`,
+    }));
+  }, [hoursFrom, minutesFrom, secondsFrom]);
+
+  useEffect(() => {
+    const fHours = String(hoursTo).padStart(2, "0");
+    const fMinutes = String(minutesTo).padStart(2, "0");
+    const fSeconds = String(secondsTo).padStart(2, "0");
+    setSelected((ps: any) => ({
+      ...ps,
+      to: `${fHours}:${fMinutes}:${fSeconds}`,
+    }));
+  }, [hoursTo, minutesTo, secondsTo]);
 
   // console.log(inputValue, time, hours, minutes, seconds);
 
@@ -103,17 +135,32 @@ const TimeRangePickerInput = ({
     null
   );
 
-  function handleMouseDownIncrement(type: string) {
+  function handleMouseDownIncrementFrom(type: string) {
     if (timeoutIncrementRef.current || intervalIncrementRef.current) return;
 
     timeoutIncrementRef.current = setTimeout(() => {
       intervalIncrementRef.current = setInterval(() => {
         if (type === "hours") {
-          setHours((ps) => (ps < 23 ? ps + 1 : 0));
+          setHoursFrom((ps) => (ps < 23 ? ps + 1 : 0));
         } else if (type === "minutes") {
-          setMinutes((ps) => (ps < 59 ? ps + 1 : 0));
+          setMinutesFrom((ps) => (ps < 59 ? ps + 1 : 0));
         } else if (type === "seconds") {
-          setSeconds((ps) => (ps < 59 ? ps + 1 : 0));
+          setSecondsFrom((ps) => (ps < 59 ? ps + 1 : 0));
+        }
+      }, 100);
+    }, 300);
+  }
+  function handleMouseDownIncrementTo(type: string) {
+    if (timeoutIncrementRef.current || intervalIncrementRef.current) return;
+
+    timeoutIncrementRef.current = setTimeout(() => {
+      intervalIncrementRef.current = setInterval(() => {
+        if (type === "hours") {
+          setHoursTo((ps) => (ps < 23 ? ps + 1 : 0));
+        } else if (type === "minutes") {
+          setMinutesTo((ps) => (ps < 59 ? ps + 1 : 0));
+        } else if (type === "seconds") {
+          setSecondsTo((ps) => (ps < 59 ? ps + 1 : 0));
         }
       }, 100);
     }, 300);
@@ -128,17 +175,32 @@ const TimeRangePickerInput = ({
       intervalIncrementRef.current = null;
     }
   }
-  function handleMouseDownDecrement(type: string) {
+  function handleMouseDownDecrementFrom(type: string) {
     if (timeoutDecrementRef.current || intervalDecrementRef.current) return;
 
     timeoutDecrementRef.current = setTimeout(() => {
       intervalDecrementRef.current = setInterval(() => {
         if (type === "hours") {
-          setHours((ps) => (ps > 0 ? ps - 1 : 23));
+          setHoursFrom((ps) => (ps > 0 ? ps - 1 : 23));
         } else if (type === "minutes") {
-          setMinutes((ps) => (ps > 0 ? ps - 1 : 59));
+          setMinutesFrom((ps) => (ps > 0 ? ps - 1 : 59));
         } else if (type === "seconds") {
-          setSeconds((ps) => (ps > 0 ? ps - 1 : 59));
+          setSecondsFrom((ps) => (ps > 0 ? ps - 1 : 59));
+        }
+      }, 100);
+    }, 300);
+  }
+  function handleMouseDownDecrementTo(type: string) {
+    if (timeoutDecrementRef.current || intervalDecrementRef.current) return;
+
+    timeoutDecrementRef.current = setTimeout(() => {
+      intervalDecrementRef.current = setInterval(() => {
+        if (type === "hours") {
+          setHoursTo((ps) => (ps > 0 ? ps - 1 : 23));
+        } else if (type === "minutes") {
+          setMinutesTo((ps) => (ps > 0 ? ps - 1 : 59));
+        } else if (type === "seconds") {
+          setSecondsTo((ps) => (ps > 0 ? ps - 1 : 59));
         }
       }, 100);
     }, 300);
@@ -172,7 +234,9 @@ const TimeRangePickerInput = ({
     }
   }
 
-  const renderValue = formatTime(inputValue);
+  const renderValue = withSeconds
+    ? `${inputValue?.from} - ${inputValue?.to} ()`
+    : `${formatTime(inputValue?.from)} - ${formatTime(inputValue?.to)} ()`;
 
   return (
     <>
@@ -192,11 +256,9 @@ const TimeRangePickerInput = ({
         >
           <HStack w={"100%"}>
             {inputValue ? (
-              <Text>{withSeconds ? inputValue : formatTime(inputValue)}</Text>
+              <Text>{renderValue}</Text>
             ) : (
-              <Text //@ts-ignore
-                color={props?._placeholder?.color || "#96969691"}
-              >
+              <Text color={props?._placeholder?.color || "#96969691"}>
                 {placeholder}
               </Text>
             )}
@@ -240,18 +302,18 @@ const TimeRangePickerInput = ({
                       aria-label="add hour button"
                       variant={"outline"}
                       onClick={() => {
-                        setHours((ps) => (ps < 23 ? ps + 1 : 0));
+                        setHoursFrom((ps) => (ps < 23 ? ps + 1 : 0));
                         if (!selected) {
                           setSelected(defaultTime);
                         }
                       }}
                       onMouseDown={() => {
-                        handleMouseDownIncrement("hours");
+                        handleMouseDownIncrementFrom("hours");
                       }}
                       onMouseUp={handleMouseUpIncrement}
                       onMouseLeave={handleMouseUpIncrement}
                       onTouchStart={() => {
-                        handleMouseDownIncrement("hours");
+                        handleMouseDownIncrementFrom("hours");
                       }}
                       onTouchEnd={handleMouseUpIncrement}
                     >
@@ -265,11 +327,11 @@ const TimeRangePickerInput = ({
                         name="jam"
                         onChangeSetter={(input) => {
                           if (parseInt(input as string) < 24) {
-                            setHours(parseInt(input as string));
+                            setHoursFrom(parseInt(input as string));
                           }
                         }}
                         inputValue={
-                          selected ? String(hours).padStart(2, "0") : "--"
+                          selected ? String(hoursFrom).padStart(2, "0") : "--"
                         }
                         fontSize={"64px !important"}
                         fontWeight={600}
@@ -286,18 +348,18 @@ const TimeRangePickerInput = ({
                       aria-label="reduce hour button"
                       variant={"outline"}
                       onClick={() => {
-                        setHours((ps) => (ps > 0 ? ps - 1 : 23));
+                        setHoursFrom((ps) => (ps > 0 ? ps - 1 : 23));
                         if (!selected) {
                           setSelected(defaultTime);
                         }
                       }}
                       onMouseDown={() => {
-                        handleMouseDownDecrement("hours");
+                        handleMouseDownDecrementFrom("hours");
                       }}
                       onMouseUp={handleMouseUpDecrement}
                       onMouseLeave={handleMouseUpDecrement}
                       onTouchStart={() => {
-                        handleMouseDownDecrement("hours");
+                        handleMouseDownDecrementFrom("hours");
                       }}
                       onTouchEnd={handleMouseUpDecrement}
                     >
@@ -319,18 +381,18 @@ const TimeRangePickerInput = ({
                       aria-label="add hour button"
                       variant={"outline"}
                       onClick={() => {
-                        setMinutes((ps) => (ps < 59 ? ps + 1 : 0));
+                        setMinutesFrom((ps) => (ps < 59 ? ps + 1 : 0));
                         if (!selected) {
                           setSelected(defaultTime);
                         }
                       }}
                       onMouseDown={() => {
-                        handleMouseDownIncrement("minutes");
+                        handleMouseDownIncrementFrom("minutes");
                       }}
                       onMouseUp={handleMouseUpIncrement}
                       onMouseLeave={handleMouseUpIncrement}
                       onTouchStart={() => {
-                        handleMouseDownIncrement("minutes");
+                        handleMouseDownIncrementFrom("minutes");
                       }}
                       onTouchEnd={handleMouseUpIncrement}
                     >
@@ -344,11 +406,11 @@ const TimeRangePickerInput = ({
                         name="jam"
                         onChangeSetter={(input) => {
                           if (parseInt(input as string) < 60) {
-                            setMinutes(parseInt(input as string));
+                            setMinutesFrom(parseInt(input as string));
                           }
                         }}
                         inputValue={
-                          selected ? String(minutes).padStart(2, "0") : "--"
+                          selected ? String(minutesFrom).padStart(2, "0") : "--"
                         }
                         fontSize={"64px !important"}
                         fontWeight={600}
@@ -365,18 +427,18 @@ const TimeRangePickerInput = ({
                       aria-label="reduce hour button"
                       variant={"outline"}
                       onClick={() => {
-                        setMinutes((ps) => (ps > 0 ? ps - 1 : 59));
+                        setMinutesFrom((ps) => (ps > 0 ? ps - 1 : 59));
                         if (!selected) {
                           setSelected(defaultTime);
                         }
                       }}
                       onMouseDown={() => {
-                        handleMouseDownDecrement("minutes");
+                        handleMouseDownDecrementFrom("minutes");
                       }}
                       onMouseUp={handleMouseUpDecrement}
                       onMouseLeave={handleMouseUpDecrement}
                       onTouchStart={() => {
-                        handleMouseDownDecrement("minutes");
+                        handleMouseDownDecrementFrom("minutes");
                       }}
                       onTouchEnd={handleMouseUpDecrement}
                     >
@@ -400,18 +462,18 @@ const TimeRangePickerInput = ({
                           aria-label="add hour button"
                           variant={"outline"}
                           onClick={() => {
-                            setSeconds((ps) => (ps < 59 ? ps + 1 : 0));
+                            setSecondsFrom((ps) => (ps < 59 ? ps + 1 : 0));
                             if (!selected) {
                               setSelected(defaultTime);
                             }
                           }}
                           onMouseDown={() => {
-                            handleMouseDownIncrement("seconds");
+                            handleMouseDownIncrementFrom("seconds");
                           }}
                           onMouseUp={handleMouseUpIncrement}
                           onMouseLeave={handleMouseUpIncrement}
                           onTouchStart={() => {
-                            handleMouseDownIncrement("seconds");
+                            handleMouseDownIncrementFrom("seconds");
                           }}
                           onTouchEnd={handleMouseUpIncrement}
                         >
@@ -425,11 +487,13 @@ const TimeRangePickerInput = ({
                             name="jam"
                             onChangeSetter={(input) => {
                               if (parseInt(input as string) < 60) {
-                                setSeconds(parseInt(input as string));
+                                setSecondsFrom(parseInt(input as string));
                               }
                             }}
                             inputValue={
-                              selected ? String(seconds).padStart(2, "0") : "--"
+                              selected
+                                ? String(secondsFrom).padStart(2, "0")
+                                : "--"
                             }
                             fontSize={"64px !important"}
                             fontWeight={600}
@@ -446,18 +510,18 @@ const TimeRangePickerInput = ({
                           aria-label="reduce hour button"
                           variant={"outline"}
                           onClick={() => {
-                            setSeconds((ps) => (ps > 0 ? ps - 1 : 59));
+                            setSecondsFrom((ps) => (ps > 0 ? ps - 1 : 59));
                             if (!selected) {
                               setSelected(defaultTime);
                             }
                           }}
                           onMouseDown={() => {
-                            handleMouseDownDecrement("seconds");
+                            handleMouseDownDecrementFrom("seconds");
                           }}
                           onMouseUp={handleMouseUpDecrement}
                           onMouseLeave={handleMouseUpDecrement}
                           onTouchStart={() => {
-                            handleMouseDownDecrement("seconds");
+                            handleMouseDownDecrementFrom("seconds");
                           }}
                           onTouchEnd={handleMouseUpDecrement}
                         >
@@ -491,18 +555,18 @@ const TimeRangePickerInput = ({
                       aria-label="add hour button"
                       variant={"outline"}
                       onClick={() => {
-                        setHours((ps) => (ps < 23 ? ps + 1 : 0));
+                        setHoursTo((ps) => (ps < 23 ? ps + 1 : 0));
                         if (!selected) {
                           setSelected(defaultTime);
                         }
                       }}
                       onMouseDown={() => {
-                        handleMouseDownIncrement("hours");
+                        handleMouseDownIncrementTo("hours");
                       }}
                       onMouseUp={handleMouseUpIncrement}
                       onMouseLeave={handleMouseUpIncrement}
                       onTouchStart={() => {
-                        handleMouseDownIncrement("hours");
+                        handleMouseDownIncrementTo("hours");
                       }}
                       onTouchEnd={handleMouseUpIncrement}
                     >
@@ -516,11 +580,11 @@ const TimeRangePickerInput = ({
                         name="jam"
                         onChangeSetter={(input) => {
                           if (parseInt(input as string) < 24) {
-                            setHours(parseInt(input as string));
+                            setHoursTo(parseInt(input as string));
                           }
                         }}
                         inputValue={
-                          selected ? String(hours).padStart(2, "0") : "--"
+                          selected ? String(hoursTo).padStart(2, "0") : "--"
                         }
                         fontSize={"64px !important"}
                         fontWeight={600}
@@ -537,18 +601,18 @@ const TimeRangePickerInput = ({
                       aria-label="reduce hour button"
                       variant={"outline"}
                       onClick={() => {
-                        setHours((ps) => (ps > 0 ? ps - 1 : 23));
+                        setHoursTo((ps) => (ps > 0 ? ps - 1 : 23));
                         if (!selected) {
                           setSelected(defaultTime);
                         }
                       }}
                       onMouseDown={() => {
-                        handleMouseDownDecrement("hours");
+                        handleMouseDownDecrementTo("hours");
                       }}
                       onMouseUp={handleMouseUpDecrement}
                       onMouseLeave={handleMouseUpDecrement}
                       onTouchStart={() => {
-                        handleMouseDownDecrement("hours");
+                        handleMouseDownDecrementTo("hours");
                       }}
                       onTouchEnd={handleMouseUpDecrement}
                     >
@@ -570,18 +634,18 @@ const TimeRangePickerInput = ({
                       aria-label="add hour button"
                       variant={"outline"}
                       onClick={() => {
-                        setMinutes((ps) => (ps < 59 ? ps + 1 : 0));
+                        setMinutesTo((ps) => (ps < 59 ? ps + 1 : 0));
                         if (!selected) {
                           setSelected(defaultTime);
                         }
                       }}
                       onMouseDown={() => {
-                        handleMouseDownIncrement("minutes");
+                        handleMouseDownIncrementTo("minutes");
                       }}
                       onMouseUp={handleMouseUpIncrement}
                       onMouseLeave={handleMouseUpIncrement}
                       onTouchStart={() => {
-                        handleMouseDownIncrement("minutes");
+                        handleMouseDownIncrementTo("minutes");
                       }}
                       onTouchEnd={handleMouseUpIncrement}
                     >
@@ -595,11 +659,11 @@ const TimeRangePickerInput = ({
                         name="jam"
                         onChangeSetter={(input) => {
                           if (parseInt(input as string) < 60) {
-                            setMinutes(parseInt(input as string));
+                            setMinutesTo(parseInt(input as string));
                           }
                         }}
                         inputValue={
-                          selected ? String(minutes).padStart(2, "0") : "--"
+                          selected ? String(minutesTo).padStart(2, "0") : "--"
                         }
                         fontSize={"64px !important"}
                         fontWeight={600}
@@ -616,18 +680,18 @@ const TimeRangePickerInput = ({
                       aria-label="reduce hour button"
                       variant={"outline"}
                       onClick={() => {
-                        setMinutes((ps) => (ps > 0 ? ps - 1 : 59));
+                        setMinutesTo((ps) => (ps > 0 ? ps - 1 : 59));
                         if (!selected) {
                           setSelected(defaultTime);
                         }
                       }}
                       onMouseDown={() => {
-                        handleMouseDownDecrement("minutes");
+                        handleMouseDownDecrementTo("minutes");
                       }}
                       onMouseUp={handleMouseUpDecrement}
                       onMouseLeave={handleMouseUpDecrement}
                       onTouchStart={() => {
-                        handleMouseDownDecrement("minutes");
+                        handleMouseDownDecrementTo("minutes");
                       }}
                       onTouchEnd={handleMouseUpDecrement}
                     >
@@ -651,18 +715,18 @@ const TimeRangePickerInput = ({
                           aria-label="add hour button"
                           variant={"outline"}
                           onClick={() => {
-                            setSeconds((ps) => (ps < 59 ? ps + 1 : 0));
+                            setSecondsTo((ps) => (ps < 59 ? ps + 1 : 0));
                             if (!selected) {
                               setSelected(defaultTime);
                             }
                           }}
                           onMouseDown={() => {
-                            handleMouseDownIncrement("seconds");
+                            handleMouseDownIncrementTo("seconds");
                           }}
                           onMouseUp={handleMouseUpIncrement}
                           onMouseLeave={handleMouseUpIncrement}
                           onTouchStart={() => {
-                            handleMouseDownIncrement("seconds");
+                            handleMouseDownIncrementTo("seconds");
                           }}
                           onTouchEnd={handleMouseUpIncrement}
                         >
@@ -676,11 +740,13 @@ const TimeRangePickerInput = ({
                             name="jam"
                             onChangeSetter={(input) => {
                               if (parseInt(input as string) < 60) {
-                                setSeconds(parseInt(input as string));
+                                setSecondsTo(parseInt(input as string));
                               }
                             }}
                             inputValue={
-                              selected ? String(seconds).padStart(2, "0") : "--"
+                              selected
+                                ? String(secondsTo).padStart(2, "0")
+                                : "--"
                             }
                             fontSize={"64px !important"}
                             fontWeight={600}
@@ -697,18 +763,18 @@ const TimeRangePickerInput = ({
                           aria-label="reduce hour button"
                           variant={"outline"}
                           onClick={() => {
-                            setSeconds((ps) => (ps > 0 ? ps - 1 : 59));
+                            setSecondsTo((ps) => (ps > 0 ? ps - 1 : 59));
                             if (!selected) {
                               setSelected(defaultTime);
                             }
                           }}
                           onMouseDown={() => {
-                            handleMouseDownDecrement("seconds");
+                            handleMouseDownDecrementTo("seconds");
                           }}
                           onMouseUp={handleMouseUpDecrement}
                           onMouseLeave={handleMouseUpDecrement}
                           onTouchStart={() => {
-                            handleMouseDownDecrement("seconds");
+                            handleMouseDownDecrementTo("seconds");
                           }}
                           onTouchEnd={handleMouseUpDecrement}
                         >
@@ -728,20 +794,40 @@ const TimeRangePickerInput = ({
             <BButton
               variant={"subtle"}
               onClick={() => {
-                if (selected && hours === 0 && minutes === 0 && seconds === 0) {
+                if (
+                  selected &&
+                  hoursFrom === 0 &&
+                  minutesFrom === 0 &&
+                  secondsFrom === 0 &&
+                  hoursTo === 0 &&
+                  minutesTo === 0 &&
+                  secondsTo === 0
+                ) {
                   setSelected(undefined);
-                  setHours(0);
-                  setMinutes(0);
-                  setSeconds(0);
+                  setHoursFrom(0);
+                  setMinutesFrom(0);
+                  setSecondsFrom(0);
+                  setHoursTo(0);
+                  setMinutesTo(0);
+                  setSecondsTo(0);
                 } else {
                   setSelected(defaultTime);
-                  setHours(0);
-                  setMinutes(0);
-                  setSeconds(0);
+                  setHoursFrom(0);
+                  setMinutesFrom(0);
+                  setSecondsFrom(0);
+                  setHoursTo(0);
+                  setMinutesTo(0);
+                  setSecondsTo(0);
                 }
               }}
             >
-              {selected && hours === 0 && minutes === 0 && seconds === 0
+              {selected &&
+              hoursFrom === 0 &&
+              minutesFrom === 0 &&
+              secondsFrom === 0 &&
+              hoursTo === 0 &&
+              minutesTo === 0 &&
+              secondsTo === 0
                 ? "Clear"
                 : "Reset"}
             </BButton>

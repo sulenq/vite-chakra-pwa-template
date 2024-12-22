@@ -70,3 +70,8 @@ export type Type__DateRange = {
   from: Date | undefined;
   to: Date | undefined;
 };
+
+export type Type__TimeRange = {
+  from: string | undefined;
+  to: string | undefined;
+};
