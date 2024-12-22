@@ -53,8 +53,7 @@ const TimeRangePickerInput = ({
   placeholder = "Pilih rentang waktu",
   nonNullable,
   isError,
-  // size = withSeconds ? "sm" : "xs",
-  size = "lg",
+  size = withSeconds ? "xl" : "lg",
   ...props
 }: Props) => {
   const { open, onOpen, onClose } = useDisclosure();
@@ -219,7 +218,11 @@ const TimeRangePickerInput = ({
             <Stack
               gap={5}
               align={"stretch"}
-              flexDir={sw < 680 ? "column" : "row"}
+              flexDir={
+                (!withSeconds && sw < 680) || (withSeconds && sw < 900)
+                  ? "column"
+                  : "row"
+              }
             >
               <CContainer>
                 {/* <Text fontSize={"lg"} fontWeight={"semibold"} mb={2}>
