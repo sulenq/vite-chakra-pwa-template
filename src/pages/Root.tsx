@@ -26,6 +26,7 @@ import Retry from "@/components/ui-custom/Retry";
 import SelectInput from "@/components/ui-custom/SelectInput";
 import StringInput from "@/components/ui-custom/StringInput";
 import TimePickerInput from "@/components/ui-custom/TimePickerInput";
+import TimeRangePickerInput from "@/components/ui-custom/TimeRangePickerInput";
 import {
   AccordionItem,
   AccordionItemContent,
@@ -394,6 +395,33 @@ const TimePickerDemo = () => {
         inputValue={formik.values.time2}
         placeholder="Dengan input detik"
         withSeconds
+        // nonNullable
+      />
+    </>
+  );
+};
+
+const TimeRangePickerDemo = () => {
+  const formik = useFormik({
+    validateOnChange: false,
+    initialValues: {
+      time: undefined as any,
+      time2: undefined as any,
+    },
+    validationSchema: yup.object().shape({}),
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
+  return (
+    <>
+      <TimeRangePickerInput
+        name="time"
+        onConfirm={(inputValue) => {
+          formik.setFieldValue("time", inputValue);
+        }}
+        inputValue={formik.values.time}
         // nonNullable
       />
     </>
@@ -958,6 +986,16 @@ export default function Root() {
             <CenterContainer>
               <CContainer gap={4}>
                 <TimePickerDemo />
+              </CContainer>
+            </CenterContainer>
+          </CContainer>
+
+          {/* Time Range Picker Input */}
+          <CContainer flex={0} gap={4}>
+            <Heading6>Time Range Picker Input</Heading6>
+            <CenterContainer>
+              <CContainer gap={4}>
+                <TimeRangePickerDemo />
               </CContainer>
             </CenterContainer>
           </CContainer>
