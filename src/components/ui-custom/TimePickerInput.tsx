@@ -441,10 +441,22 @@ const TimePickerInput = ({
             <BButton
               variant={"subtle"}
               onClick={() => {
-                setSelected(undefined);
+                if (selected && hours === 0 && minutes === 0 && seconds === 0) {
+                  setSelected(undefined);
+                  setHours(0);
+                  setMinutes(0);
+                  setSeconds(0);
+                } else {
+                  setSelected(defaultTime);
+                  setHours(0);
+                  setMinutes(0);
+                  setSeconds(0);
+                }
               }}
             >
-              Clear
+              {selected && hours === 0 && minutes === 0 && seconds === 0
+                ? "Clear"
+                : "Reset"}
             </BButton>
             <BButton
               onClick={confirmSelected}
