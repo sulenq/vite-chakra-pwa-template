@@ -1,5 +1,4 @@
 import { Button, ButtonProps } from "@/components/ui/button";
-import { mainButtonSize } from "@/constant/sizes";
 import { IconButton } from "@chakra-ui/react";
 
 interface Props extends ButtonProps {
@@ -14,7 +13,7 @@ export default function BButton({
   unclicky = false,
   iconButton = false,
   className = "",
-  size = mainButtonSize,
+  size = "md",
   ...props
 }: Props) {
   const finalClassName = `${!unclicky ? "clicky" : ""} ${className}`.trim();

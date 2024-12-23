@@ -1,5 +1,5 @@
 import { Interface__TimePicker } from "@/constant/interfaces";
-import { drawerbodyMaxH } from "@/constant/sizes";
+import { drawerbodyMaxH, mainButtonSize } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useScreen from "@/hooks/useScreen";
 import back from "@/utils/back";
@@ -462,6 +462,7 @@ const TimePickerInput = ({
                   setSeconds(0);
                 }
               }}
+              size={mainButtonSize}
             >
               {selected && hours === 0 && minutes === 0 && seconds === 0
                 ? "Clear"
@@ -470,6 +471,7 @@ const TimePickerInput = ({
             <BButton
               onClick={confirmSelected}
               disabled={nonNullable ? (selected ? false : true) : false}
+              size={mainButtonSize}
             >
               Konfirmasi
             </BButton>

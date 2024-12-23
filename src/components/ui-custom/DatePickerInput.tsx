@@ -1,6 +1,6 @@
 import days from "@/constant/days";
 import { Interface__DatePicker } from "@/constant/interfaces";
-import { drawerbodyMaxH } from "@/constant/sizes";
+import { drawerbodyMaxH, mainButtonSize } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
 import formatDate from "@/utils/formatDate";
@@ -303,12 +303,14 @@ const DatePickerInput = ({
               onClick={() => {
                 setSelected(undefined);
               }}
+              size={mainButtonSize}
             >
               Clear
             </BButton>
             <BButton
               onClick={confirmSelected}
               disabled={nonNullable && !selected}
+              size={mainButtonSize}
             >
               Konfirmasi
             </BButton>

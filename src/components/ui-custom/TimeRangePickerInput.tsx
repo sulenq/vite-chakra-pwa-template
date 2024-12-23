@@ -1,5 +1,5 @@
 import { Interface__TimeRangePicker } from "@/constant/interfaces";
-import { drawerbodyMaxH } from "@/constant/sizes";
+import { drawerbodyMaxH, mainButtonSize } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useScreen from "@/hooks/useScreen";
 import back from "@/utils/back";
@@ -817,6 +817,7 @@ const TimeRangePickerInput = ({
                   setSecondsTo(0);
                 }
               }}
+              size={mainButtonSize}
             >
               {selected &&
               hoursFrom === 0 &&
@@ -831,6 +832,7 @@ const TimeRangePickerInput = ({
             <BButton
               onClick={confirmSelected}
               disabled={nonNullable ? (selected ? false : true) : false}
+              size={mainButtonSize}
             >
               Konfirmasi
             </BButton>

@@ -32,6 +32,7 @@ import Heading6 from "./Heading6";
 import NoData from "./NoData";
 import NotFound from "./NotFound";
 import SearchComponent from "./SearchComponent";
+import { mainButtonSize } from "@/constant/sizes";
 
 const SelectInput = ({
   id,
@@ -319,10 +320,13 @@ const SelectInput = ({
                 onClick={() => {
                   setSelected(undefined);
                 }}
+                size={mainButtonSize}
               >
                 Clear
               </BButton>
-              <BButton onClick={confirmSelected}>Konfirmasi</BButton>
+              <BButton onClick={confirmSelected} size={mainButtonSize}>
+                Konfirmasi
+              </BButton>
             </DisclosureFooter>
           )}
         </DisclosureContent>
