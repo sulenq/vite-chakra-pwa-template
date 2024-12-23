@@ -274,7 +274,7 @@ const DateRangePickerInput = ({
           unclicky
           variant={"ghost"}
           border={"1px solid"}
-          borderColor={fc?.invalid || invalid ? "border.error" : "d3"}
+          borderColor={fc?.invalid || invalid ? "border.error" : "gray.muted"}
           onClick={() => {
             if (inputValue) {
               setSelected(inputValue);
@@ -294,7 +294,7 @@ const DateRangePickerInput = ({
               </Text>
             )}
 
-            <Icon fontSize={"lg"} opacity={0.3}>
+            <Icon fontSize={"md"} opacity={0.3}>
               <CalendarDots />
             </Icon>
           </HStack>

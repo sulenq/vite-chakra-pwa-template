@@ -210,7 +210,7 @@ const SelectInput = ({
               </Text>
             )}
 
-            <Icon opacity={0.3}>
+            <Icon opacity={0.3} fontSize={"sm"}>
               <CaretDown weight="bold" />
             </Icon>
           </HStack>

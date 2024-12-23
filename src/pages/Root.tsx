@@ -460,17 +460,18 @@ const TimePickerDemo = () => {
         // nonNullable
       />
 
-      <TimePickerInput
-        name="time3"
-        onConfirm={(inputValue) => {
-          formik.setFieldValue("time3", inputValue);
-        }}
-        inputValue={formik.values.time3}
-        placeholder="Invalid state"
-        withSeconds
-        invalid
-        // nonNullable
-      />
+      <Field invalid>
+        <TimePickerInput
+          name="time3"
+          onConfirm={(inputValue) => {
+            formik.setFieldValue("time3", inputValue);
+          }}
+          inputValue={formik.values.time3}
+          placeholder="Invalid state"
+          withSeconds
+          // nonNullable
+        />
+      </Field>
     </>
   );
 };

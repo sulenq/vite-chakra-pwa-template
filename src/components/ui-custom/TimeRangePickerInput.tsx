@@ -238,10 +238,11 @@ const TimeRangePickerInput = ({
     <>
       <Tooltip content={inputValue ? renderValue : placeholder}>
         <BButton
+          w={"full"}
           unclicky
           variant={"ghost"}
           border={"1px solid"}
-          borderColor={fc?.invalid || invalid ? "border.error" : "d3"}
+          borderColor={fc?.invalid || invalid ? "border.error" : "gray.muted"}
           onClick={() => {
             if (inputValue) {
               setSelected(inputValue);
@@ -250,7 +251,7 @@ const TimeRangePickerInput = ({
           }}
           {...props}
         >
-          <HStack w={"full"}>
+          <HStack w={"full"} justify={"space-between"}>
             {inputValue?.from && inputValue?.to ? (
               <Text truncate>{renderValue}</Text>
             ) : (
@@ -259,7 +260,7 @@ const TimeRangePickerInput = ({
               </Text>
             )}
 
-            <Icon ml={"auto"} fontSize={"md"} opacity={0.3}>
+            <Icon fontSize={"md"} opacity={0.3}>
               <HourglassMedium />
             </Icon>
           </HStack>

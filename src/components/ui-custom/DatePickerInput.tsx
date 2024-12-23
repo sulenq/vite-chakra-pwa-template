@@ -173,7 +173,7 @@ const DatePickerInput = ({
               </Text>
             )}
 
-            <Icon fontSize={"lg"} opacity={0.3}>
+            <Icon fontSize={"md"} opacity={0.3}>
               <CalendarDot />
             </Icon>
           </HStack>
