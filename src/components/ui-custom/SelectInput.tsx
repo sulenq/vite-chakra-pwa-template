@@ -263,6 +263,7 @@ const SelectInput = ({
                     setSearch(inputValue);
                   }}
                   inputValue={search}
+                  invalid={false}
                 />
               </HStack>
             )}

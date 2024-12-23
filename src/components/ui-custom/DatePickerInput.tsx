@@ -144,6 +144,7 @@ const DatePickerInput = ({
   };
 
   const renderValue = formatDate(inputValue, dateFormatOptions);
+  const selectedRenderValue = formatDate(selected);
 
   return (
     <>
@@ -264,6 +265,7 @@ const DatePickerInput = ({
               ))}
             </CContainer>
 
+            {/* Preset Buttons */}
             <HStack mt={2}>
               <BButton
                 flex={"1 1 120px"}
@@ -280,6 +282,19 @@ const DatePickerInput = ({
                 Besok
               </BButton>
             </HStack>
+
+            <CContainer
+              // border={"1px solid"}
+              borderColor={"gray.muted"}
+              bg={"bg.muted"}
+              p={3}
+              borderRadius={6}
+              mt={2}
+            >
+              <Text textAlign={"center"} fontWeight={"bold"}>
+                {selectedRenderValue || placeholder}
+              </Text>
+            </CContainer>
           </DisclosureBody>
 
           <DisclosureFooter>

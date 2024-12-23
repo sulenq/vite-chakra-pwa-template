@@ -14,6 +14,7 @@ interface Props {
   inputRef?: any;
   inputProps?: InputProps;
   icon?: any;
+  invalid?: boolean;
 }
 
 export default function SearchComponent({
@@ -25,6 +26,7 @@ export default function SearchComponent({
   placeholder = "Pencarian",
   inputProps,
   icon,
+  invalid = false,
 }: Props) {
   const [searchLocal, setSearchLocal] = useState(inputValue);
 
@@ -73,6 +75,7 @@ export default function SearchComponent({
             }}
             inputValue={searchLocal}
             boxShadow={"none !important"}
+            borderColor={invalid ? "border.error" : "gray.muted"}
             {...inputProps}
           />
 

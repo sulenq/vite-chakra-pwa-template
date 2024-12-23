@@ -265,6 +265,13 @@ const DateRangePickerInput = ({
           dateFormatOptions
         )} (${countDay(inputValue?.from, inputValue?.to)} hari)`
       : placeholder;
+  const selectedRenderValue =
+    selected?.from && selected?.to
+      ? `${formatDate(selected?.from, dateFormatOptions)} - ${formatDate(
+          selected?.to,
+          dateFormatOptions
+        )} (${countDay(selected?.from, selected?.to)} hari)`
+      : placeholder;
 
   return (
     <>
@@ -452,6 +459,7 @@ const DateRangePickerInput = ({
               ))}
             </CContainer>
 
+            {/* Preset Buttons */}
             <HStack mt={2}>
               {preset?.map((item, i) => (
                 <Box w={"50%"} key={i}>
@@ -459,6 +467,19 @@ const DateRangePickerInput = ({
                 </Box>
               ))}
             </HStack>
+
+            <CContainer
+              // border={"1px solid"}
+              borderColor={"gray.muted"}
+              bg={"bg.muted"}
+              p={3}
+              borderRadius={6}
+              mt={2}
+            >
+              <Text textAlign={"center"} fontWeight={"bold"}>
+                {selectedRenderValue || placeholder}
+              </Text>
+            </CContainer>
           </DisclosureBody>
 
           <DisclosureFooter>
