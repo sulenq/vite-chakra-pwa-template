@@ -35,7 +35,6 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
             ref={ref}
             zIndex={6}
             h={"100%"}
-            maxH={"100dvh"}
             onClick={back}
             bg={"transparent"}
             justifyContent={"end"}
@@ -45,6 +44,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
             <CContainer
               bg={"body"}
               justify={"end"}
+              maxH={"calc(100dvh) !important"}
               onClick={(e) => {
                 e.stopPropagation();
               }}
