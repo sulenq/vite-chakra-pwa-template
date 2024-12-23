@@ -23,6 +23,7 @@ import NoData from "@/components/ui-custom/NoData";
 import NotFound from "@/components/ui-custom/NotFound";
 import NumberInput from "@/components/ui-custom/NumberInput";
 import Retry from "@/components/ui-custom/Retry";
+import SearchInput from "@/components/ui-custom/SearchInput";
 import SelectInput from "@/components/ui-custom/SelectInput";
 import StringInput from "@/components/ui-custom/StringInput";
 import TimePickerInput from "@/components/ui-custom/TimePickerInput";
@@ -1025,13 +1026,12 @@ export default function Root() {
             </CenterContainer>
           </CContainer>
 
-          {/* Search Component */}
+          {/* Search Input */}
           <CContainer flex={0} gap={4}>
-            <Heading6>Search Component</Heading6>
+            <Heading6>Search Input</Heading6>
             <CenterContainer>
               <CContainer gap={4}>
-                <StringInput placeholder="example@email.com" />
-                <StringInput invalid placeholder="Invalid state" />
+                <SearchInput placeholder="Pencarian" />
               </CContainer>
             </CenterContainer>
           </CContainer>

@@ -6,8 +6,8 @@ import { Tooltip } from "../ui/tooltip";
 import StringInput from "./StringInput";
 
 interface Props {
-  inputValue: string;
-  onChangeSetter: Dispatch<string>;
+  inputValue?: string;
+  onChangeSetter?: Dispatch<string>;
   name?: string;
   placeholder?: string;
   tooltipLabel?: string;
@@ -33,7 +33,7 @@ export default function SearchInput({
   const handleOnChange = useCallback(
     (value: string) => {
       if (value !== inputValue) {
-        onChangeSetter(value);
+        if (onChangeSetter) onChangeSetter(value);
       }
     },
     [onChangeSetter, inputValue]
@@ -42,7 +42,7 @@ export default function SearchInput({
   // Handle debounce
   useEffect(() => {
     const handler = setTimeout(() => {
-      handleOnChange(searchLocal);
+      if (searchLocal) handleOnChange(searchLocal);
     }, 300);
 
     return () => {
@@ -90,7 +90,7 @@ export default function SearchInput({
               <IconButton
                 aria-label="Clear Search"
                 onClick={() => {
-                  onChangeSetter("");
+                  if (onChangeSetter) onChangeSetter("");
                 }}
                 colorScheme="error"
                 variant={"ghost"}
