@@ -13,7 +13,6 @@ interface Props extends InputProps {
   name?: string;
   onChangeSetter?: (inputValue: string | undefined) => void;
   inputValue?: string | undefined;
-  isError?: boolean;
   placeholder?: string;
   boxProps?: BoxProps;
 }
@@ -23,7 +22,6 @@ export default function StringInput({
   name,
   onChangeSetter,
   inputValue,
-  isError,
   placeholder = "",
   boxProps,
   ...props
@@ -65,6 +63,7 @@ export default function StringInput({
           onChange={handleChange}
           value={inputValue}
           placeholder={placeholder}
+          borderColor={"gray.muted"}
           autoComplete="off"
           {...props}
         />

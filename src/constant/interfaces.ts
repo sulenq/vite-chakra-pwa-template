@@ -10,42 +10,23 @@ export interface Interface__Nav {
   link: string;
 }
 
+// Select
 export interface Interface__SelectOption {
   value: any;
   label: any;
   label2?: any;
   original_data?: any;
 }
-
-// Select
-interface KeyProps {
-  value: string;
-  label: string;
-  label2?: string;
-  original_data: any;
-}
-type PropsWithUrlAndKeys = {
-  url: string;
-  keys: KeyProps;
-};
-type PropsWithoutUrlAndKeys = {
-  url?: never;
-  keys?: never;
-};
 export type Type__DisclosureSizes = "xs" | "sm" | "md" | "lg" | "xl";
-export type Interface__Select = ButtonProps & {
+export interface Interface__Select extends ButtonProps {
   id: string;
   onConfirm?: (inputValue: Interface__SelectOption[] | undefined) => void;
   inputValue?: Interface__SelectOption[] | undefined;
   initialOptions?: Interface__SelectOption[] | undefined | null;
-  // url?: string;
-  // keys?: KeyProps;
   name?: string;
   title?: string;
   placeholder?: string;
-  isError?: boolean;
-  // withSearch?: boolean;
-  // optionsDisplay?: "list" | "chip";
+  invalid?: boolean;
   nonNullable?: boolean;
   multiple?: boolean;
   disclosureSize?: Type__DisclosureSizes;
@@ -54,8 +35,11 @@ export type Interface__Select = ButtonProps & {
       SetStateAction<Interface__SelectOption[] | null | undefined>
     >
   ) => void;
-} & (PropsWithUrlAndKeys | PropsWithoutUrlAndKeys);
+  // withSearch?: boolean;
+  // optionsDisplay?: "list" | "chip";
+}
 
+// Date Picker
 export type Type__PrefixDateFormat =
   | "basic"
   | "basicShort"
@@ -65,12 +49,12 @@ export type Type__PrefixDateFormat =
   | "ymd"
   | "periode"
   | "iso";
-
 export type Type__DateRange = {
   from: Date | undefined;
   to: Date | undefined;
 };
 
+// Time Picker
 export type Type__TimeRange = {
   from: string | undefined;
   to: string | undefined;

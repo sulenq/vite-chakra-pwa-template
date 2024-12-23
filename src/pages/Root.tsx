@@ -80,6 +80,7 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
+import { Field } from "@/components/ui/field";
 import {
   Alarm,
   Bell,
@@ -294,6 +295,22 @@ const SelectInputDemo = () => {
         }}
         inputValue={formik.values.select4}
       />
+
+      <Field invalid>
+        <SelectInput
+          asChild
+          id="multi_select"
+          name="select3"
+          title="Multi Select"
+          placeholder="Multi select"
+          initialOptions={optionsAgama}
+          multiple
+          onConfirm={(inputValue) => {
+            formik.setFieldValue("select4", inputValue);
+          }}
+          inputValue={formik.values.select4}
+        />
+      </Field>
     </>
   );
 };

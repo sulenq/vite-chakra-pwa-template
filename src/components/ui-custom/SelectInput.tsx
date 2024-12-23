@@ -4,7 +4,14 @@ import {
 } from "@/constant/interfaces";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
-import { Box, HStack, Icon, Text, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  HStack,
+  Icon,
+  Text,
+  useDisclosure,
+  useFieldContext,
+} from "@chakra-ui/react";
 import { ArrowClockwise, CaretDown } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 import { ButtonProps } from "../ui/button";
@@ -34,16 +41,16 @@ const SelectInput = ({
   name,
   title,
   placeholder = "Pilih",
-  isError,
-  // withSearch = true,
-  // optionsDisplay = "list",
+  invalid,
   nonNullable = false,
   multiple = false,
   disclosureSize = "xs",
   fetch,
+  ...props
 }: Interface__Select) => {
   const { open, onOpen, onClose } = useDisclosure();
   useBackOnClose(`${id}${name ? `-${name}` : ""}`, open, onOpen, onClose);
+  const fc = useFieldContext();
 
   const [options, setOptions] = useState<
     Interface__SelectOption[] | undefined | null
@@ -179,16 +186,18 @@ const SelectInput = ({
         }
       >
         <BButton
+          w={"100%"}
           unclicky
           variant={"ghost"}
           border={"1px solid"}
-          borderColor={isError ? "border.error" : "d3"}
+          borderColor={fc?.invalid || invalid ? "border.error" : "d3"}
           onClick={() => {
             if (inputValue) {
               setSelected(inputValue);
             }
             onOpen();
           }}
+          {...props}
         >
           <HStack w={"100%"}>
             {inputValue ? (
@@ -201,7 +210,7 @@ const SelectInput = ({
               </Text>
             )}
 
-            <Icon ml={"auto"} fontSize={".9rem"} opacity={0.3}>
+            <Icon ml={"auto"} opacity={0.3}>
               <CaretDown weight="bold" />
             </Icon>
           </HStack>
@@ -283,7 +292,7 @@ const SelectInput = ({
                       name="select_all"
                       onChange={(e: any) => setSelectAll(e.target.checked)}
                       checked={selectAll}
-                      colorScheme="ap"
+                      invalid={false}
                     >
                       <Text>Pilih Semua</Text>
                     </Checkbox>
