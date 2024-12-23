@@ -42,6 +42,7 @@ import {
   ClipboardRoot,
 } from "@/components/ui/clipboard";
 import { ColorModeButton } from "@/components/ui/color-mode";
+import { Field } from "@/components/ui/field";
 import { InputGroup } from "@/components/ui/input-group";
 import {
   MenuContent,
@@ -80,7 +81,6 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { Field } from "@/components/ui/field";
 import {
   Alarm,
   Bell,
@@ -91,6 +91,7 @@ import {
   Trash,
 } from "@phosphor-icons/react";
 import { useFormik } from "formik";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 
 const CenterContainer = ({ children, ...props }: any) => {
@@ -1133,11 +1134,12 @@ export default function Root() {
           </HStack>
         </HStack>
 
-        <HStack>
+        <HStack gap={1}>
           {/* <Image src="/assets/svgs/vercel.svg" h={"15px"} /> */}
-          <Text>
-            Deployed on <b>Vercel</b>
-          </Text>
+          <Text>Deployed on</Text>
+          <Link to={"https://vercel.com"} target="_blank">
+            <Text fontWeight={"bold"}>Vercel</Text>
+          </Link>
         </HStack>
       </HStack>
     </CContainer>
