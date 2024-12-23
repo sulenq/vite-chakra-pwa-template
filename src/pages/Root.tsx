@@ -991,8 +991,9 @@ export default function Root() {
           <CContainer flex={0} gap={4}>
             <Heading6>String Input</Heading6>
             <CenterContainer>
-              <CContainer>
+              <CContainer gap={4}>
                 <StringInput placeholder="example@email.com" />
+                <StringInput invalid placeholder="Invalid state" />
               </CContainer>
             </CenterContainer>
           </CContainer>
@@ -1014,6 +1015,14 @@ export default function Root() {
               <CContainer gap={4}>
                 <Checkbox gap="4" alignItems="start">
                   <Box lineHeight="1">Setuju dengan syarat dan ketentuan</Box>
+                  <Box fontWeight="normal" color="fg.muted" mt="1">
+                    Dengan klik ini, anda setuju dengan syarat dan ketentuan
+                    kami.
+                  </Box>
+                </Checkbox>
+
+                <Checkbox gap="4" alignItems="start" invalid>
+                  <Box lineHeight="1">Invalid state</Box>
                   <Box fontWeight="normal" color="fg.muted" mt="1">
                     Dengan klik ini, anda setuju dengan syarat dan ketentuan
                     kami.
