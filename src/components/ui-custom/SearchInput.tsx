@@ -98,7 +98,7 @@ export default function SearchInput({
                 size={"xs"}
                 color={"fg.error"}
               >
-                <Icon fontSize={"sm"}>
+                <Icon fontSize={"0.9rem"}>
                   <X weight="bold" />
                 </Icon>
               </IconButton>
