@@ -182,6 +182,31 @@ const DisclosureDemo2 = () => {
   );
 };
 
+const SearchInputDemo = () => {
+  const formik = useFormik({
+    validateOnChange: false,
+    initialValues: {
+      search: undefined as any,
+    },
+    validationSchema: yup.object().shape({}),
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
+  return (
+    <>
+      <SearchInput
+        placeholder="Pencarian"
+        onChangeSetter={(input) => {
+          formik.setFieldValue("search", input);
+        }}
+        inputValue={formik.values.search}
+      />
+    </>
+  );
+};
+
 const NumberInputDemo = () => {
   const formik = useFormik({
     validateOnChange: false,
@@ -1031,7 +1056,7 @@ export default function Root() {
             <Heading6>Search Input</Heading6>
             <CenterContainer>
               <CContainer gap={4}>
-                <SearchInput placeholder="Pencarian" />
+                <SearchInputDemo />
               </CContainer>
             </CenterContainer>
           </CContainer>
