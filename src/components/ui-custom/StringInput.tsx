@@ -3,6 +3,7 @@ import {
   BoxProps,
   Input as ChakraInput,
   InputProps,
+  useFieldContext,
 } from "@chakra-ui/react";
 import { css, Global } from "@emotion/react";
 import { useRef } from "react";
@@ -15,6 +16,7 @@ interface Props extends InputProps {
   inputValue?: string | undefined;
   placeholder?: string;
   boxProps?: BoxProps;
+  invalid?: boolean;
 }
 
 export default function StringInput({
@@ -24,12 +26,14 @@ export default function StringInput({
   inputValue,
   placeholder = "",
   boxProps,
+  invalid,
   ...props
 }: Props) {
   // SX
   const { colorMode } = useColorMode();
   const darkLightColorManual =
     colorMode === "light" ? "#FAFAFC" : "var(--dark)";
+  const fc = useFieldContext();
 
   // Track first render
   const isFirstRender = useRef(true);
@@ -63,7 +67,7 @@ export default function StringInput({
           onChange={handleChange}
           value={inputValue}
           placeholder={placeholder}
-          borderColor={"gray.muted"}
+          borderColor={fc?.invalid || invalid ? "border.error" : "gray.muted"}
           autoComplete="off"
           {...props}
         />

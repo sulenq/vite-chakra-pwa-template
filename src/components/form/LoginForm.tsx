@@ -86,7 +86,6 @@ const LoginForm = () => {
               }}
               inputValue={formik.values.identifier}
               placeholder="example@email.com"
-              isError={!!formik.errors.identifier}
             />
           </Field>
 
@@ -102,7 +101,6 @@ const LoginForm = () => {
               }}
               inputValue={formik.values.password}
               placeholder="example@email.comm"
-              isError={!!formik.errors.password}
             />
           </Field>
 

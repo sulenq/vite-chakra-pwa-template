@@ -190,7 +190,7 @@ const SelectInput = ({
           unclicky
           variant={"ghost"}
           border={"1px solid"}
-          borderColor={fc?.invalid || invalid ? "border.error" : "d3"}
+          borderColor={fc?.invalid || invalid ? "border.error" : "gray.muted"}
           onClick={() => {
             if (inputValue) {
               setSelected(inputValue);
@@ -210,7 +210,7 @@ const SelectInput = ({
               </Text>
             )}
 
-            <Icon opacity={0.3} fontSize={"sm"}>
+            <Icon opacity={0.3} fontSize={"14px !important"}>
               <CaretDown weight="bold" />
             </Icon>
           </HStack>

@@ -149,10 +149,11 @@ const DatePickerInput = ({
     <>
       <Tooltip content={inputValue ? formatDate(inputValue) : placeholder}>
         <BButton
+          w={"100%"}
           unclicky
           variant={"ghost"}
           border={"1px solid"}
-          borderColor={fc?.invalid || invalid ? "border.error" : "d3"}
+          borderColor={fc?.invalid || invalid ? "border.error" : "gray.muted"}
           onClick={() => {
             if (inputValue) {
               setSelected(inputValue);
