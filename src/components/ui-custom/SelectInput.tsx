@@ -5,7 +5,7 @@ import {
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
 import { Box, HStack, Icon, Text, useDisclosure } from "@chakra-ui/react";
-import { ArrowClockwise } from "@phosphor-icons/react";
+import { ArrowClockwise, CaretDown } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 import { ButtonProps } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
@@ -137,7 +137,7 @@ const SelectInput = ({
                 }}
                 {...props}
               >
-                {item?.label}
+                <Text truncate>{item?.label}</Text>
               </BButton>
             ))}
           </>
@@ -200,6 +200,10 @@ const SelectInput = ({
                 {placeholder}
               </Text>
             )}
+
+            <Icon ml={"auto"} fontSize={".9rem"} opacity={0.3}>
+              <CaretDown weight="bold" />
+            </Icon>
           </HStack>
         </BButton>
       </Tooltip>
