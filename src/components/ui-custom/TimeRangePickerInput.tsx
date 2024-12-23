@@ -3,7 +3,9 @@ import { drawerbodyMaxH } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useScreen from "@/hooks/useScreen";
 import back from "@/utils/back";
+import formatDuration from "@/utils/formatDuration";
 import formatTime from "@/utils/formatTime";
+import getSecondsDurationFromTimeRange from "@/utils/getSecondsDurationFromTimeRange";
 import { getHours, getMinutes, getSeconds } from "@/utils/getTime";
 import {
   Center,
@@ -14,7 +16,7 @@ import {
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
-import { CaretDown, CaretUp, Clock } from "@phosphor-icons/react";
+import { CaretDown, CaretUp, HourglassMedium } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
 import { ButtonProps } from "../ui/button";
 import { Tooltip } from "../ui/tooltip";
@@ -29,8 +31,6 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import StringInput from "./StringInput";
-import formatDuration from "@/utils/formatDuration";
-import getSecondsDurationFromTimeRange from "@/utils/getSecondsDurationFromTimeRange";
 
 interface Props extends ButtonProps {
   id?: string;
@@ -272,7 +272,7 @@ const TimeRangePickerInput = ({
             )}
 
             <Icon ml={"auto"} fontSize={"md"} opacity={0.3}>
-              <Clock />
+              <HourglassMedium />
             </Icon>
           </HStack>
         </BButton>
