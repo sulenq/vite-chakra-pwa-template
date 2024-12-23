@@ -1,10 +1,11 @@
 import days from "@/constant/days";
 import {
+  Interface__DateRangePicker,
   Type__DateRange,
-  Type__DisclosureSizes,
-  Type__PrefixDateFormat,
 } from "@/constant/interfaces";
+import { drawerbodyMaxH } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
+import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import back from "@/utils/back";
 import countDay from "@/utils/countDay";
 import dateInRange from "@/utils/dateInRange";
@@ -16,12 +17,12 @@ import {
   SimpleGrid,
   Text,
   useDisclosure,
+  useFieldContext,
 } from "@chakra-ui/react";
 import { CalendarDots, CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { addDays, startOfWeek } from "date-fns";
 import { useState } from "react";
 import { Alert } from "../ui/alert";
-import { ButtonProps } from "../ui/button";
 import { toaster } from "../ui/toaster";
 import { Tooltip } from "../ui/tooltip";
 import BButton from "./BButton";
@@ -35,28 +36,6 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
-import { drawerbodyMaxH } from "@/constant/sizes";
-import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
-
-type Type__DateRangePresets =
-  | "thisWeek"
-  | "nextWeek"
-  | "thisMonth"
-  | "nextMonth";
-interface Props extends ButtonProps {
-  id?: string;
-  name: string;
-  title?: string;
-  onConfirm?: (inputValue: Type__DateRange) => void;
-  inputValue?: Type__DateRange;
-  dateFormatOptions?: Type__PrefixDateFormat | object;
-  placeholder?: string;
-  nonNullable?: boolean;
-  isError?: boolean;
-  disclosureSize?: Type__DisclosureSizes;
-  preset?: Type__DateRangePresets[];
-  maxRange?: number;
-}
 
 const DateRangePickerInput = ({
   id,
@@ -67,12 +46,12 @@ const DateRangePickerInput = ({
   dateFormatOptions = "basicShort",
   placeholder = "Pilih rentang tanggal",
   nonNullable,
-  isError,
+  invalid,
   size = "xs",
   preset = ["thisWeek", "thisMonth"],
   maxRange,
   ...props
-}: Props) => {
+}: Interface__DateRangePicker) => {
   const { open, onOpen, onClose } = useDisclosure();
   useBackOnClose(
     id || `date-range-picker${name ? `-${name}` : ""}`,
@@ -81,6 +60,7 @@ const DateRangePickerInput = ({
     onClose
   );
   const iss = useIsSmScreenWidth();
+  const fc = useFieldContext();
 
   const [date, setDate] = useState<Date>(
     inputValue?.from || inputValue?.to || new Date()
@@ -293,7 +273,7 @@ const DateRangePickerInput = ({
           unclicky
           variant={"ghost"}
           border={"1px solid"}
-          borderColor={isError ? "border.error" : "d3"}
+          borderColor={fc?.invalid || invalid ? "border.error" : "d3"}
           onClick={() => {
             if (inputValue) {
               setSelected(inputValue);
@@ -302,10 +282,10 @@ const DateRangePickerInput = ({
           }}
           {...props}
         >
-          <HStack w={"100%"}>
+          <HStack w={"100%"} justify={"space-between"}>
             {inputValue ? (
               <Text fontWeight={"normal"} truncate>
-                {inputValue ? renderValue : placeholder}
+                {renderValue}
               </Text>
             ) : (
               <Text opacity={0.3} fontWeight={"normal"} truncate>
@@ -313,7 +293,7 @@ const DateRangePickerInput = ({
               </Text>
             )}
 
-            <Icon ml={"auto"} fontSize={"md"} opacity={0.3}>
+            <Icon fontSize={"lg"} opacity={0.3}>
               <CalendarDots />
             </Icon>
           </HStack>

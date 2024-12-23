@@ -162,7 +162,7 @@ const DatePickerInput = ({
           }}
           {...props}
         >
-          <HStack w={"100%"}>
+          <HStack w={"100%"} justify={"space-between"}>
             {inputValue ? (
               <Text fontWeight={"normal"} truncate>
                 {renderValue}
@@ -173,7 +173,7 @@ const DatePickerInput = ({
               </Text>
             )}
 
-            <Icon ml={"auto"} fontSize={"md"} opacity={0.3}>
+            <Icon fontSize={"lg"} opacity={0.3}>
               <CalendarDot />
             </Icon>
           </HStack>

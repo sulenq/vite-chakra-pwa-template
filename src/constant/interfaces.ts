@@ -66,6 +66,27 @@ export interface Interface__DatePicker extends ButtonProps {
   disclosureSize?: Type__DisclosureSizes;
 }
 
+// Date Range Picker
+type Type__DateRangePresets =
+  | "thisWeek"
+  | "nextWeek"
+  | "thisMonth"
+  | "nextMonth";
+export interface Interface__DateRangePicker extends ButtonProps {
+  id?: string;
+  name: string;
+  title?: string;
+  onConfirm?: (inputValue: Type__DateRange) => void;
+  inputValue?: Type__DateRange;
+  dateFormatOptions?: Type__PrefixDateFormat | object;
+  placeholder?: string;
+  nonNullable?: boolean;
+  invalid?: boolean;
+  disclosureSize?: Type__DisclosureSizes;
+  preset?: Type__DateRangePresets[];
+  maxRange?: number;
+}
+
 // Time Picker
 export type Type__TimeRange = {
   from: string | undefined;
