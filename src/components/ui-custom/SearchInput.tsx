@@ -93,7 +93,7 @@ export default function SearchInput({
                   if (onChangeSetter) onChangeSetter("");
                 }}
                 colorScheme="error"
-                variant={"ghost"}
+                variant={"plain"}
                 borderRadius={"full"}
                 size={"xs"}
                 color={"fg.error"}
