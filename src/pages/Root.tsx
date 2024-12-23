@@ -295,7 +295,6 @@ const SelectInputDemo = () => {
 
       <Field invalid>
         <SelectInput
-          asChild
           name="select4"
           title="Multi Select"
           placeholder="Multi select invalid state"
