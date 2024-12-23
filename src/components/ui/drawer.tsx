@@ -33,6 +33,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
           <ChakraDrawer.Content
             ref={ref}
             h={"100%"}
+            maxH={"100dvh"}
             onClick={back}
             bg={"transparent"}
             justifyContent={"end"}
