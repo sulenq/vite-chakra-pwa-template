@@ -49,7 +49,7 @@ const SelectInput = ({
   ...props
 }: Interface__Select) => {
   const { open, onOpen, onClose } = useDisclosure();
-  useBackOnClose(`${id}${name ? `-${name}` : ""}`, open, onOpen, onClose);
+  useBackOnClose(id || `${name ? `-${name}` : ""}`, open, onOpen, onClose);
   const fc = useFieldContext();
 
   const [options, setOptions] = useState<
@@ -199,7 +199,7 @@ const SelectInput = ({
           }}
           {...props}
         >
-          <HStack w={"100%"}>
+          <HStack w={"100%"} justify={"space-between"}>
             {inputValue ? (
               <Text fontWeight={"normal"} truncate>
                 {inputValue?.map((item) => item.label).join(", ")}
@@ -210,7 +210,7 @@ const SelectInput = ({
               </Text>
             )}
 
-            <Icon ml={"auto"} opacity={0.3}>
+            <Icon opacity={0.3} fontSize={"sm"}>
               <CaretDown weight="bold" />
             </Icon>
           </HStack>

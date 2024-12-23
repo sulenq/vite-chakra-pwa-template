@@ -1,8 +1,5 @@
 import days from "@/constant/days";
-import {
-  Type__DisclosureSizes,
-  Type__PrefixDateFormat,
-} from "@/constant/interfaces";
+import { Interface__DatePicker } from "@/constant/interfaces";
 import { drawerbodyMaxH } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
@@ -13,11 +10,11 @@ import {
   SimpleGrid,
   Text,
   useDisclosure,
+  useFieldContext,
 } from "@chakra-ui/react";
 import { CalendarDot, CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { addDays, startOfWeek } from "date-fns";
 import { useState } from "react";
-import { ButtonProps } from "../ui/button";
 import { Tooltip } from "../ui/tooltip";
 import BButton from "./BButton";
 import CContainer from "./CContainer";
@@ -31,19 +28,6 @@ import {
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
 
-interface Props extends ButtonProps {
-  id?: string;
-  name: string;
-  title?: string;
-  onConfirm?: (inputValue: Date | undefined) => void;
-  inputValue?: Date | undefined;
-  dateFormatOptions?: Type__PrefixDateFormat | object;
-  placeholder?: string;
-  nonNullable?: boolean;
-  isError?: boolean;
-  disclosureSize?: Type__DisclosureSizes;
-}
-
 const DatePickerInput = ({
   id,
   name,
@@ -53,10 +37,10 @@ const DatePickerInput = ({
   dateFormatOptions = "basicShort",
   placeholder = "Pilih tanggal",
   nonNullable,
-  isError,
+  invalid,
   size = "xs",
   ...props
-}: Props) => {
+}: Interface__DatePicker) => {
   const { open, onOpen, onClose } = useDisclosure();
   useBackOnClose(
     id || `date-picker${name ? `-${name}` : ""}`,
@@ -64,6 +48,7 @@ const DatePickerInput = ({
     onOpen,
     onClose
   );
+  const fc = useFieldContext();
 
   const [date, setDate] = useState<Date>(inputValue || new Date());
   const [month, setMonth] = useState<number>(date.getMonth());
@@ -167,7 +152,7 @@ const DatePickerInput = ({
           unclicky
           variant={"ghost"}
           border={"1px solid"}
-          borderColor={isError ? "border.error" : "d3"}
+          borderColor={fc?.invalid || invalid ? "border.error" : "d3"}
           onClick={() => {
             if (inputValue) {
               setSelected(inputValue);

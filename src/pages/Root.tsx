@@ -238,7 +238,7 @@ const SelectInputDemo = () => {
   const formik = useFormik({
     validateOnChange: false,
     initialValues: {
-      select: undefined as any,
+      select1: undefined as any,
       select2: undefined as any,
       select3: undefined as any,
       select4: undefined as any,
@@ -260,49 +260,45 @@ const SelectInputDemo = () => {
         onConfirm={(inputValue) => {
           formik.setFieldValue("select", inputValue);
         }}
-        inputValue={formik.values.select}
       />
 
       <SelectInput
-        id="single_select"
-        name="select"
+        name="select1"
         title="Single Select"
         placeholder="Single select"
         initialOptions={optionsAgama}
         onConfirm={(inputValue) => {
-          formik.setFieldValue("select2", inputValue);
+          formik.setFieldValue("select1", inputValue);
         }}
-        inputValue={formik.values.select2}
+        inputValue={formik.values.select1}
       />
 
       <SelectInput
-        id="multi_select"
         name="select2"
         title="Multi Select"
         placeholder="Multi select"
         initialOptions={optionsAgama}
         multiple
         onConfirm={(inputValue) => {
+          formik.setFieldValue("select2", inputValue);
+        }}
+        inputValue={formik.values.select2}
+      />
+
+      <PromiseSelectDemo
+        name="select3"
+        onConfirm={(inputValue) => {
           formik.setFieldValue("select3", inputValue);
         }}
         inputValue={formik.values.select3}
       />
 
-      <PromiseSelectDemo
-        id="multi_select2"
-        onConfirm={(inputValue) => {
-          formik.setFieldValue("select4", inputValue);
-        }}
-        inputValue={formik.values.select4}
-      />
-
       <Field invalid>
         <SelectInput
           asChild
-          id="multi_select"
-          name="select3"
+          name="select4"
           title="Multi Select"
-          placeholder="Multi select"
+          placeholder="Multi select invalid state"
           initialOptions={optionsAgama}
           multiple
           onConfirm={(inputValue) => {

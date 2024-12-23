@@ -19,12 +19,12 @@ export interface Interface__SelectOption {
 }
 export type Type__DisclosureSizes = "xs" | "sm" | "md" | "lg" | "xl";
 export interface Interface__Select extends ButtonProps {
-  id: string;
+  id?: string;
+  name: string;
+  title?: string;
   onConfirm?: (inputValue: Interface__SelectOption[] | undefined) => void;
   inputValue?: Interface__SelectOption[] | undefined;
   initialOptions?: Interface__SelectOption[] | undefined | null;
-  name?: string;
-  title?: string;
   placeholder?: string;
   invalid?: boolean;
   nonNullable?: boolean;
@@ -53,6 +53,18 @@ export type Type__DateRange = {
   from: Date | undefined;
   to: Date | undefined;
 };
+export interface Interface__DatePicker extends ButtonProps {
+  id?: string;
+  name: string;
+  title?: string;
+  onConfirm?: (inputValue: Date | undefined) => void;
+  inputValue?: Date | undefined;
+  dateFormatOptions?: Type__PrefixDateFormat | object;
+  placeholder?: string;
+  nonNullable?: boolean;
+  invalid?: boolean;
+  disclosureSize?: Type__DisclosureSizes;
+}
 
 // Time Picker
 export type Type__TimeRange = {
