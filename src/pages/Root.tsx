@@ -572,7 +572,7 @@ export default function Root() {
         </HStack>
       </HStack>
 
-      <SimpleGrid columns={[1, 2, 3]} gap={4}>
+      <SimpleGrid columns={[1, 2, 3]} gap={4} maxW={"1400px"} mx={"auto"}>
         <CContainer gap={6}>
           {/* Preset Login Form */}
           <CContainer flex={0} gap={4}>
