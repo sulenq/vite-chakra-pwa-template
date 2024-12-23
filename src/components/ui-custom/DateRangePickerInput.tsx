@@ -259,20 +259,19 @@ const DateRangePickerInput = ({
   };
 
   const renderValue =
-    inputValue?.from && inputValue?.to
-      ? `${formatDate(inputValue?.from, dateFormatOptions)} - ${formatDate(
-          inputValue?.to,
-          dateFormatOptions
-        )} (${countDay(inputValue?.from, inputValue?.to)} hari)`
-      : placeholder;
+    inputValue?.from &&
+    inputValue?.to &&
+    `${formatDate(inputValue?.from, dateFormatOptions)} - ${formatDate(
+      inputValue?.to,
+      dateFormatOptions
+    )} (${countDay(inputValue?.from, inputValue?.to)} hari)`;
   const selectedRenderValue =
-    selected?.from && selected?.to
-      ? `${formatDate(selected?.from, dateFormatOptions)} - ${formatDate(
-          selected?.to,
-          dateFormatOptions
-        )} (${countDay(selected?.from, selected?.to)} hari)`
-      : placeholder;
-
+    selected?.from &&
+    selected?.to &&
+    `${formatDate(selected?.from, dateFormatOptions)} - ${formatDate(
+      selected?.to,
+      dateFormatOptions
+    )} (${countDay(selected?.from, selected?.to)} hari)`;
   return (
     <>
       <Tooltip content={inputValue ? renderValue : placeholder}>
