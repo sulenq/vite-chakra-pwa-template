@@ -136,7 +136,7 @@ const DisclosureFooter = ({ children, ...props }: DisclosureFooterProps) => {
   const iss = useIsSmScreenWidth();
 
   return iss ? (
-    <DrawerFooter pb={"calc(32px + 15px)"} {...(props as DrawerHeaderProps)}>
+    <DrawerFooter pb={8} {...(props as DrawerHeaderProps)}>
       <CContainer align={"stretch"} gap={2}>
         {children}
       </CContainer>

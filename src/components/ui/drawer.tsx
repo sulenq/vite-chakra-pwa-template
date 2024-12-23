@@ -30,7 +30,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
             zIndex={5}
           />
         )}
-        <ChakraDrawer.Positioner padding={offset} mt={"15px"}>
+        <ChakraDrawer.Positioner padding={offset}>
           <ChakraDrawer.Content
             ref={ref}
             zIndex={6}
