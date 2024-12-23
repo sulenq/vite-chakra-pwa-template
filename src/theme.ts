@@ -73,7 +73,7 @@ const customConfig = defineConfig({
         orange: {
           contrast: { value: "{colors.orange.100} !important" },
         },
-        body: { value: { base: "#FAFAFC", _dark: "#151515" } },
+        body: { value: { base: "#FFF", _dark: "#151515" } },
         ibody: { value: { base: "#151515", _dark: "#FAFAFC" } },
       },
     },
