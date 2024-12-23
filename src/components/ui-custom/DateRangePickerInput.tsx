@@ -166,7 +166,7 @@ const DateRangePickerInput = ({
   const renderPresets = {
     thisMonth: (
       <BButton
-        w={"100%"}
+        w={"full"}
         variant={"outline"}
         onClick={setSelectedToThisMonth}
         disabled={!!(maxRange && maxRange < 31)}
@@ -176,7 +176,7 @@ const DateRangePickerInput = ({
     ),
     nextMonth: (
       <BButton
-        w={"100%"}
+        w={"full"}
         variant={"outline"}
         onClick={setSelectedToNextMonth}
         disabled={!!(maxRange && maxRange < 31)}
@@ -186,7 +186,7 @@ const DateRangePickerInput = ({
     ),
     thisWeek: (
       <BButton
-        w={"100%"}
+        w={"full"}
         variant={"outline"}
         onClick={setSelectedToThisWeek}
         disabled={!!(maxRange && maxRange < 7)}
@@ -196,7 +196,7 @@ const DateRangePickerInput = ({
     ),
     nextWeek: (
       <BButton
-        w={"100%"}
+        w={"full"}
         variant={"outline"}
         onClick={setSelectedToNextWeek}
         disabled={!!(maxRange && maxRange < 7)}
@@ -270,7 +270,7 @@ const DateRangePickerInput = ({
     <>
       <Tooltip content={inputValue ? renderValue : placeholder}>
         <BButton
-          w={"100%"}
+          w={"full"}
           unclicky
           variant={"ghost"}
           border={"1px solid"}
@@ -283,7 +283,7 @@ const DateRangePickerInput = ({
           }}
           {...props}
         >
-          <HStack w={"100%"} justify={"space-between"}>
+          <HStack w={"full"} justify={"space-between"}>
             {inputValue ? (
               <Text fontWeight={"normal"} truncate>
                 {renderValue}

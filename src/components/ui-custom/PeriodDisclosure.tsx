@@ -138,7 +138,7 @@ const PeriodDisclosure = ({
 
   return (
     <>
-      <Box w={"100%"} onClick={onOpen} {...props}>
+      <Box w={"full"} onClick={onOpen} {...props}>
         {children}
       </Box>
 

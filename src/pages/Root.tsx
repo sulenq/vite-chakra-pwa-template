@@ -186,6 +186,8 @@ const NumberInputDemo = () => {
     initialValues: {
       number: undefined as any,
       number2: 500000,
+      number3: 2024,
+      number4: undefined as any,
     },
     validationSchema: yup.object().shape({}),
     onSubmit: (values) => {
@@ -214,6 +216,27 @@ const NumberInputDemo = () => {
           inputValue={formik.values.number2}
         />
       </InputGroup>
+
+      <NumberInput
+        onChangeSetter={(inputValue) => {
+          formik.setFieldValue("number3", inputValue);
+        }}
+        inputValue={formik.values.number3}
+        placeholder={"Tanpa format, bisa dipakai untuk input tahun"}
+        noFormat
+      />
+
+      <Field invalid>
+        <InputGroup w={"full"} startElement={<Text>Rp</Text>}>
+          <NumberInput
+            placeholder="1.500"
+            onChangeSetter={(inputValue) => {
+              formik.setFieldValue("number4", inputValue);
+            }}
+            inputValue={formik.values.number4}
+          />
+        </InputGroup>
+      </Field>
     </>
   );
 };

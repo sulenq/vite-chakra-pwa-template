@@ -22,7 +22,7 @@ const PeriodPickerForDatePicker = ({
   return (
     <>
       <PeriodDisclosure month={month} year={year} {...props}>
-        <BButton w={"100%"} variant={"outline"}>
+        <BButton w={"full"} variant={"outline"}>
           {`${formatDate(new Date(year, month))}`}
         </BButton>
       </PeriodDisclosure>

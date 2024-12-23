@@ -149,7 +149,7 @@ const DatePickerInput = ({
     <>
       <Tooltip content={inputValue ? formatDate(inputValue) : placeholder}>
         <BButton
-          w={"100%"}
+          w={"full"}
           unclicky
           variant={"ghost"}
           border={"1px solid"}
@@ -162,7 +162,7 @@ const DatePickerInput = ({
           }}
           {...props}
         >
-          <HStack w={"100%"} justify={"space-between"}>
+          <HStack w={"full"} justify={"space-between"}>
             {inputValue ? (
               <Text fontWeight={"normal"} truncate>
                 {renderValue}

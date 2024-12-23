@@ -148,7 +148,7 @@ const DisclosureFooter = ({ children, ...props }: DisclosureFooterProps) => {
       // bg={"var(--divider)"}
       {...(props as DialogFooterProps)}
     >
-      <HStack w={"100%"} justify={"end"}>
+      <HStack w={"full"} justify={"end"}>
         {children}
       </HStack>
     </DialogFooter>

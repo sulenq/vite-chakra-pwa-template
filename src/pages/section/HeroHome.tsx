@@ -75,7 +75,7 @@ const Hero = () => {
                 key={i}
                 alt="Exium Hero Image"
                 src="/assets/images/hero.png"
-                w={"100%"}
+                w={"full"}
                 m={"auto"}
                 position={"absolute"}
                 opacity={0.1}
@@ -91,7 +91,7 @@ const Hero = () => {
                 key={i}
                 alt="Exium Hero Image"
                 src="/assets/images/hero.png"
-                w={"100%"}
+                w={"full"}
                 m={"auto"}
                 position={"absolute"}
                 opacity={0.1}
@@ -106,7 +106,7 @@ const Hero = () => {
             <Image
               alt="Exium Hero Image"
               src="/assets/images/hero.png"
-              w={"100%"}
+              w={"full"}
               m={"auto"}
               zIndex={15}
             />

@@ -186,7 +186,7 @@ const SelectInput = ({
         }
       >
         <BButton
-          w={"100%"}
+          w={"full"}
           unclicky
           variant={"ghost"}
           border={"1px solid"}
@@ -199,7 +199,7 @@ const SelectInput = ({
           }}
           {...props}
         >
-          <HStack w={"100%"} justify={"space-between"}>
+          <HStack w={"full"} justify={"space-between"}>
             {inputValue ? (
               <Text fontWeight={"normal"} truncate>
                 {inputValue?.map((item) => item.label).join(", ")}
@@ -222,7 +222,7 @@ const SelectInput = ({
           <DisclosureHeader>
             <HStack justify={"space-between"}>
               <Heading6
-                w={"100%"}
+                w={"full"}
                 fontWeight={"semibold"}
                 pr={"80px"}
                 truncate

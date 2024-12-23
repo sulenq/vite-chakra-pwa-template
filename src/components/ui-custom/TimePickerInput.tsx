@@ -181,7 +181,7 @@ const TimePickerInput = ({
           }}
           {...props}
         >
-          <HStack w={"100%"}>
+          <HStack w={"full"}>
             {inputValue ? (
               <Text truncate>
                 {withSeconds ? inputValue : formatTime(inputValue)}

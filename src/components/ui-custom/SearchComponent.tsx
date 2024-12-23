@@ -56,7 +56,7 @@ export default function SearchComponent({
   return (
     <Tooltip content={tooltipLabel || placeholder}>
       <InputGroup
-        w={"100%"}
+        w={"full"}
         startElement={
           <Icon fontSize={"lg"}>{icon || <MagnifyingGlass />}</Icon>
         }

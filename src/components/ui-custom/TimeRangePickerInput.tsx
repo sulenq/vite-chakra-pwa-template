@@ -262,7 +262,7 @@ const TimeRangePickerInput = ({
           }}
           {...props}
         >
-          <HStack w={"100%"}>
+          <HStack w={"full"}>
             {inputValue?.from && inputValue?.to ? (
               <Text truncate>{renderValue}</Text>
             ) : (

@@ -14,7 +14,7 @@ export default function Container({ children, fRef, ...props }: Props) {
       flex={0}
       gap={0}
       px={responsiveSpacing}
-      w={"100%"}
+      w={"full"}
       maxW={"1280px"}
       mx={"auto"}
       align={"stretch"}

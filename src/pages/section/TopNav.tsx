@@ -56,7 +56,7 @@ const TopNav = ({ activeNavIndex, ...props }: Props) => {
   return (
     <Box
       id="topNav"
-      w={"100%"}
+      w={"full"}
       zIndex={99}
       position={"fixed"}
       top={`${navTop}px`}
@@ -69,7 +69,7 @@ const TopNav = ({ activeNavIndex, ...props }: Props) => {
       {...props}
     >
       <Container>
-        <HStack justify={"space-between"} py={2} w={"100%"}>
+        <HStack justify={"space-between"} py={2} w={"full"}>
           <HStack flexShrink={0} w={"100px"}>
             <Link to={"/"}>
               <Image
