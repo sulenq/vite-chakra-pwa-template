@@ -9,7 +9,7 @@ const responsiveSpacing2 = [10, null, 16];
 const responsiveSpacing2Reverse = [-10, null, -16];
 const fcMaxHeight = `calc(100dvh - (74px * 2))`;
 const drawerbodyMaxH = `calc(100dvh - 176px)`;
-const buttonSize = ["lg", null, "md"];
+const buttonSize = ["xl", null, "md"];
 
 export {
   buttonSize,
