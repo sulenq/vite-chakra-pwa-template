@@ -55,7 +55,7 @@ export type Type__DateRange = {
 };
 export interface Interface__DatePicker extends ButtonProps {
   id?: string;
-  name: string;
+  name?: string;
   title?: string;
   onConfirm?: (inputValue: Date | undefined) => void;
   inputValue?: Date | undefined;
@@ -74,7 +74,7 @@ type Type__DateRangePresets =
   | "nextMonth";
 export interface Interface__DateRangePicker extends ButtonProps {
   id?: string;
-  name: string;
+  name?: string;
   title?: string;
   onConfirm?: (inputValue: Type__DateRange) => void;
   inputValue?: Type__DateRange;
@@ -92,3 +92,29 @@ export type Type__TimeRange = {
   from: string | undefined;
   to: string | undefined;
 };
+export interface Interface__TimePicker extends ButtonProps {
+  id?: string;
+  name?: string;
+  title?: string;
+  onConfirm?: (inputValue: string | undefined) => void;
+  inputValue?: string | undefined;
+  withSeconds?: boolean;
+  placeholder?: string;
+  nonNullable?: boolean;
+  invalid?: boolean;
+  size?: Type__DisclosureSizes;
+}
+
+// Time Range Picker
+export interface Interface__TimeRangePicker extends ButtonProps {
+  id?: string;
+  name?: string;
+  title?: string;
+  onConfirm?: (inputValue: Type__TimeRange | undefined) => void;
+  inputValue?: Type__TimeRange | undefined;
+  withSeconds?: boolean;
+  placeholder?: string;
+  nonNullable?: boolean;
+  invalid?: boolean;
+  size?: Type__DisclosureSizes;
+}

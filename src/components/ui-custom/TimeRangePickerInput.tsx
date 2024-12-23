@@ -1,4 +1,4 @@
-import { Type__DisclosureSizes, Type__TimeRange } from "@/constant/interfaces";
+import { Interface__TimeRangePicker } from "@/constant/interfaces";
 import { drawerbodyMaxH } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useScreen from "@/hooks/useScreen";
@@ -14,11 +14,11 @@ import {
   Stack,
   Text,
   useDisclosure,
+  useFieldContext,
   VStack,
 } from "@chakra-ui/react";
 import { CaretDown, CaretUp, HourglassMedium } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
-import { ButtonProps } from "../ui/button";
 import { Tooltip } from "../ui/tooltip";
 import BButton from "./BButton";
 import CContainer from "./CContainer";
@@ -32,19 +32,6 @@ import {
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import StringInput from "./StringInput";
 
-interface Props extends ButtonProps {
-  id?: string;
-  name: string;
-  title?: string;
-  onConfirm?: (inputValue: Type__TimeRange | undefined) => void;
-  inputValue?: Type__TimeRange | undefined;
-  withSeconds?: boolean;
-  placeholder?: string;
-  nonNullable?: boolean;
-  isError?: boolean;
-  size?: Type__DisclosureSizes;
-}
-
 const TimeRangePickerInput = ({
   id,
   name,
@@ -54,18 +41,19 @@ const TimeRangePickerInput = ({
   withSeconds = false,
   placeholder = "Pilih rentang waktu",
   nonNullable,
-  isError,
+  invalid,
   size = withSeconds ? "xl" : "lg",
   ...props
-}: Props) => {
+}: Interface__TimeRangePicker) => {
   const { open, onOpen, onClose } = useDisclosure();
   useBackOnClose(
-    id || `time-picker${name ? `-${name}` : ""}`,
+    id || `time-range-picker${name ? `-${name}` : ""}`,
     open,
     onOpen,
     onClose
   );
   const { sw } = useScreen();
+  const fc = useFieldContext();
   const overflow = sw < 450 && withSeconds;
 
   const defaultTime = {
@@ -253,7 +241,7 @@ const TimeRangePickerInput = ({
           unclicky
           variant={"ghost"}
           border={"1px solid"}
-          borderColor={isError ? "border.error" : "d3"}
+          borderColor={fc?.invalid || invalid ? "border.error" : "d3"}
           onClick={() => {
             if (inputValue) {
               setSelected(inputValue);

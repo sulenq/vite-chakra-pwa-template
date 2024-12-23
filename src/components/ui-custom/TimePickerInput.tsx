@@ -1,13 +1,20 @@
-import { Type__DisclosureSizes } from "@/constant/interfaces";
+import { Interface__TimePicker } from "@/constant/interfaces";
 import { drawerbodyMaxH } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
+import useScreen from "@/hooks/useScreen";
 import back from "@/utils/back";
 import formatTime from "@/utils/formatTime";
 import { getHours, getMinutes, getSeconds } from "@/utils/getTime";
-import { HStack, Icon, Text, useDisclosure, VStack } from "@chakra-ui/react";
+import {
+  HStack,
+  Icon,
+  Text,
+  useDisclosure,
+  useFieldContext,
+  VStack,
+} from "@chakra-ui/react";
 import { CaretDown, CaretUp, Clock } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
-import { ButtonProps } from "../ui/button";
 import { Tooltip } from "../ui/tooltip";
 import BButton from "./BButton";
 import {
@@ -19,20 +26,6 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import StringInput from "./StringInput";
-import useScreen from "@/hooks/useScreen";
-
-interface Props extends ButtonProps {
-  id?: string;
-  name: string;
-  title?: string;
-  onConfirm?: (inputValue: string | undefined) => void;
-  inputValue?: string | undefined;
-  withSeconds?: boolean;
-  placeholder?: string;
-  nonNullable?: boolean;
-  isError?: boolean;
-  size?: Type__DisclosureSizes;
-}
 
 const TimePickerInput = ({
   id,
@@ -43,10 +36,10 @@ const TimePickerInput = ({
   withSeconds = false,
   placeholder = "Pilih waktu",
   nonNullable,
-  isError,
+  invalid,
   size = withSeconds ? "sm" : "xs",
   ...props
-}: Props) => {
+}: Interface__TimePicker) => {
   const { open, onOpen, onClose } = useDisclosure();
   useBackOnClose(
     id || `time-picker${name ? `-${name}` : ""}`,
@@ -55,6 +48,7 @@ const TimePickerInput = ({
     onClose
   );
   const { sw } = useScreen();
+  const fc = useFieldContext();
   const overflow = sw < 450 && withSeconds;
 
   const defaultTime = "00:00:00";
@@ -172,7 +166,7 @@ const TimePickerInput = ({
           unclicky
           variant={"ghost"}
           border={"1px solid"}
-          borderColor={isError ? "border.error" : "d3"}
+          borderColor={fc?.invalid || invalid ? "border.error" : "d3"}
           onClick={() => {
             if (inputValue) {
               setSelected(inputValue);
