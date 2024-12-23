@@ -476,7 +476,7 @@ const DateRangePickerInput = ({
               borderRadius={6}
               mt={2}
             >
-              <Text textAlign={"center"} fontWeight={"bold"}>
+              <Text textAlign={"center"} fontWeight={"semibold"}>
                 {selectedRenderValue || placeholder}
               </Text>
             </CContainer>
