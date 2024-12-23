@@ -336,12 +336,12 @@ const DatePickerDemo = () => {
 
       <Field invalid>
         <DatePickerInput
-          name="date"
+          name="date2"
           onConfirm={(inputValue) => {
-            formik.setFieldValue("date", inputValue);
+            formik.setFieldValue("date2", inputValue);
           }}
-          inputValue={formik.values.date}
-          placeholder="Invalid"
+          inputValue={formik.values.date2}
+          placeholder="Invalid state"
           // nonNullable
         />
       </Field>
