@@ -405,8 +405,9 @@ const TimePickerDemo = () => {
   const formik = useFormik({
     validateOnChange: false,
     initialValues: {
-      time: undefined as any,
+      time1: undefined as any,
       time2: undefined as any,
+      time3: undefined as any,
     },
     validationSchema: yup.object().shape({}),
     onSubmit: (values) => {
@@ -417,11 +418,11 @@ const TimePickerDemo = () => {
   return (
     <>
       <TimePickerInput
-        name="time"
+        name="time1"
         onConfirm={(inputValue) => {
-          formik.setFieldValue("time", inputValue);
+          formik.setFieldValue("time1", inputValue);
         }}
-        inputValue={formik.values.time}
+        inputValue={formik.values.time1}
         // nonNullable
       />
 

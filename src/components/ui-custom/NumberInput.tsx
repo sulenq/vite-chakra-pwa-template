@@ -8,7 +8,7 @@ interface Props extends InputProps {
   name?: string;
   onChangeSetter?: (inputValue: number | undefined | null) => void;
   inputValue?: number | undefined | null;
-  isError?: boolean;
+  invalid?: boolean;
   placeholder?: string;
   boxProps?: BoxProps;
   formatValue?: (value: number | undefined | null) => string;
@@ -20,7 +20,7 @@ const NumberInput = ({
   name,
   onChangeSetter,
   inputValue,
-  isError,
+  invalid,
   placeholder = "",
   boxProps,
   formatValue,
@@ -46,7 +46,7 @@ const NumberInput = ({
       name={name}
       onChangeSetter={handleChange}
       inputValue={formattedInputValue}
-      isError={isError}
+      invalid={invalid}
       placeholder={placeholder}
       boxProps={boxProps}
       {...props}

@@ -16,7 +16,7 @@ const formatNumber = (numParam: number | string | undefined | null) => {
     formattedNum = "";
   }
 
-  return formattedNum;
+  return formattedNum || "";
 };
 
 export default formatNumber;
