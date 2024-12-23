@@ -477,7 +477,7 @@ const DateRangePickerInput = ({
               mt={2}
             >
               <Text textAlign={"center"} fontWeight={"semibold"}>
-                {selectedRenderValue || placeholder}
+                {selectedRenderValue || "Pilih rentang tanggal"}
               </Text>
             </CContainer>
           </DisclosureBody>

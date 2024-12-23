@@ -292,7 +292,7 @@ const DatePickerInput = ({
               mt={2}
             >
               <Text textAlign={"center"} fontWeight={"semibold"}>
-                {selectedRenderValue || placeholder}
+                {selectedRenderValue || "Pilih tanggal"}
               </Text>
             </CContainer>
           </DisclosureBody>
