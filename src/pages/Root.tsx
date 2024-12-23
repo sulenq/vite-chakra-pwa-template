@@ -314,7 +314,7 @@ const DatePickerDemo = () => {
   const formik = useFormik({
     validateOnChange: false,
     initialValues: {
-      date: undefined as any,
+      date1: undefined as any,
       date2: undefined as any,
     },
     validationSchema: yup.object().shape({}),
@@ -326,11 +326,11 @@ const DatePickerDemo = () => {
   return (
     <>
       <DatePickerInput
-        name="date"
+        name="date1"
         onConfirm={(inputValue) => {
-          formik.setFieldValue("date", inputValue);
+          formik.setFieldValue("date1", inputValue);
         }}
-        inputValue={formik.values.date}
+        inputValue={formik.values.date1}
         // nonNullable
       />
 
@@ -353,8 +353,9 @@ const DateRangePickerDemo = () => {
   const formik = useFormik({
     validateOnChange: false,
     initialValues: {
-      date: undefined as any,
+      date1: undefined as any,
       date2: undefined as any,
+      date3: undefined as any,
     },
     validationSchema: yup.object().shape({}),
     onSubmit: (values) => {
@@ -365,11 +366,11 @@ const DateRangePickerDemo = () => {
   return (
     <>
       <DateRangePickerInput
-        name="date"
+        name="date1"
         onConfirm={(inputValue) => {
-          formik.setFieldValue("date", inputValue);
+          formik.setFieldValue("date1", inputValue);
         }}
-        inputValue={formik.values.date}
+        inputValue={formik.values.date1}
         // nonNullable
       />
 
@@ -383,6 +384,19 @@ const DateRangePickerDemo = () => {
         placeholder="Dengan max rentang"
         // nonNullable
       />
+
+      <Field invalid>
+        <DateRangePickerInput
+          name="date2"
+          onConfirm={(inputValue) => {
+            formik.setFieldValue("date2", inputValue);
+          }}
+          inputValue={formik.values.date2}
+          maxRange={7}
+          placeholder="Invalid state"
+          // nonNullable
+        />
+      </Field>
     </>
   );
 };

@@ -270,6 +270,7 @@ const DateRangePickerInput = ({
     <>
       <Tooltip content={inputValue ? renderValue : placeholder}>
         <BButton
+          w={"100%"}
           unclicky
           variant={"ghost"}
           border={"1px solid"}
