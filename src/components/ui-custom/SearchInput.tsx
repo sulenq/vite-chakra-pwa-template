@@ -17,7 +17,7 @@ interface Props {
   invalid?: boolean;
 }
 
-export default function SearchComponent({
+export default function SearchInput({
   inputRef,
   name,
   inputValue,

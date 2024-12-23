@@ -31,7 +31,7 @@ import {
 import Heading6 from "./Heading6";
 import NoData from "./NoData";
 import NotFound from "./NotFound";
-import SearchComponent from "./SearchComponent";
+import SearchInput from "./SearchInput";
 import { mainButtonSize } from "@/constant/sizes";
 
 const SelectInput = ({
@@ -259,7 +259,7 @@ const SelectInput = ({
           <DisclosureBody py={"0px !important"}>
             {fl && (
               <HStack>
-                <SearchComponent
+                <SearchInput
                   onChangeSetter={(inputValue) => {
                     setSearch(inputValue);
                   }}

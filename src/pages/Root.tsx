@@ -1025,6 +1025,17 @@ export default function Root() {
             </CenterContainer>
           </CContainer>
 
+          {/* Search Component */}
+          <CContainer flex={0} gap={4}>
+            <Heading6>Search Component</Heading6>
+            <CenterContainer>
+              <CContainer gap={4}>
+                <StringInput placeholder="example@email.com" />
+                <StringInput invalid placeholder="Invalid state" />
+              </CContainer>
+            </CenterContainer>
+          </CContainer>
+
           {/* Number Input */}
           <CContainer flex={0} gap={4}>
             <Heading6>Number Input</Heading6>
@@ -1110,6 +1121,14 @@ export default function Root() {
           </CContainer>
         </CContainer>
       </SimpleGrid>
+
+      <CContainer>
+        {/* Table Component */}
+        <CContainer flex={0} mt={12} gap={4}>
+          <Heading6>Table Component</Heading6>
+          <CenterContainer></CenterContainer>
+        </CContainer>
+      </CContainer>
 
       {/* Footer */}
       <HStack wrap={"wrap"} mt={8} gap={4} justify={"space-between"}>
