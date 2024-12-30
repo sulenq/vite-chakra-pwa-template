@@ -26,6 +26,7 @@ import Retry from "@/components/ui-custom/Retry";
 import SearchInput from "@/components/ui-custom/SearchInput";
 import SelectInput from "@/components/ui-custom/SelectInput";
 import StringInput from "@/components/ui-custom/StringInput";
+import TableComponent from "@/components/ui-custom/TableComponent";
 import TimePickerInput from "@/components/ui-custom/TimePickerInput";
 import TimeRangePickerInput from "@/components/ui-custom/TimeRangePickerInput";
 import {
@@ -69,6 +70,7 @@ import { optionsAgama } from "@/constant/selectOptions";
 import { responsiveSpacing, responsiveSpacingReverse } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
+import formatNumber from "@/utils/formatNumber";
 import {
   Box,
   Center,
@@ -213,7 +215,7 @@ const NumberInputDemo = () => {
     initialValues: {
       number: undefined as any,
       number2: 500000,
-      number3: 2024,
+      number3: undefined as any,
       number4: undefined as any,
     },
     validationSchema: yup.object().shape({}),
@@ -554,6 +556,13 @@ const TimeRangePickerDemo = () => {
   );
 };
 
+const TableComponentDemo = () => {
+  const ths = [];
+  const tds = [];
+
+  return <TableComponent />;
+};
+
 export default function Root() {
   return (
     <CContainer
@@ -699,7 +708,7 @@ export default function Root() {
             <CenterContainer gap={4}>
               <IconButton variant={"surface"}>
                 <Float>
-                  <Circle size="5" bg="red" color="white">
+                  <Circle px={"5px"} bg="red" color="white">
                     3
                   </Circle>
                 </Float>
@@ -710,8 +719,8 @@ export default function Root() {
 
               <BButton variant={"surface"}>
                 <Float>
-                  <Circle size="5" bg="red" color="white">
-                    5
+                  <Circle px={"5px"} bg="red" color="white">
+                    {formatNumber(4230)}
                   </Circle>
                 </Float>
                 <Icon>
@@ -1151,7 +1160,9 @@ export default function Root() {
         {/* Table Component */}
         <CContainer flex={0} mt={12} gap={4}>
           <Heading6>Table Component</Heading6>
-          <CenterContainer></CenterContainer>
+          <CenterContainer>
+            <TableComponentDemo />
+          </CenterContainer>
         </CContainer>
       </CContainer>
 

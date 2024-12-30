@@ -1,4 +1,5 @@
 import { ButtonProps } from "@/components/ui/button";
+import { StackProps, TableRowProps } from "@chakra-ui/react";
 import { Dispatch, SetStateAction } from "react";
 
 export type LanguageOptions = "id" | "en";
@@ -35,8 +36,6 @@ export interface Interface__Select extends ButtonProps {
       SetStateAction<Interface__SelectOption[] | null | undefined>
     >
   ) => void;
-  // withSearch?: boolean;
-  // optionsDisplay?: "list" | "chip";
 }
 
 // Date Picker
@@ -117,4 +116,40 @@ export interface Interface__TimeRangePicker extends ButtonProps {
   nonNullable?: boolean;
   invalid?: boolean;
   size?: Type__DisclosureSizes;
+}
+
+// Table Component
+export interface Interface__FormattedTableHeader {
+  column?: string;
+  th: string;
+  isSortable?: boolean;
+  props?: any;
+  cProps?: StackProps;
+}
+
+export interface Interface__FormattedTableBody {
+  id: number;
+  columnsFormat: {
+    column?: string;
+    original_data?: any;
+    value: any;
+    td: any;
+    isNumeric?: boolean; // default false
+    isDate?: boolean; // default false
+    isTime?: boolean; // default false
+    props?: any;
+    cProps?: StackProps;
+  }[];
+}
+export interface Interface__TableComponent extends StackProps {
+  ths?: Interface__FormattedTableHeader[];
+  tds?: Interface__FormattedTableBody[];
+  rowClick?: (rowData: any) => void;
+  originalData?: any;
+  columnsConfig?: number[];
+  batchOptions?: any[];
+  rowOptions?: any[];
+  initialSortOrder?: "asc" | "desc";
+  initialSortColumnIndex?: number;
+  trBodyProps?: TableRowProps;
 }
