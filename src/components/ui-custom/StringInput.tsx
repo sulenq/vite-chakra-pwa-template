@@ -31,8 +31,7 @@ export default function StringInput({
 }: Props) {
   // SX
   const { colorMode } = useColorMode();
-  const darkLightColorManual =
-    colorMode === "light" ? "#FAFAFC" : "var(--dark)";
+  const darkLightColorManual = colorMode === "light" ? "#fff" : "var(--dark)";
   const fc = useFieldContext();
 
   // Track first render
