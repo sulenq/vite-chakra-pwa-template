@@ -1146,6 +1146,27 @@ const TableComponentDemo = () => {
           },
         },
       ]}
+      batchOptions={[
+        {
+          label: "Edit",
+        },
+        {
+          label: "Restore...",
+        },
+        {
+          label: "Disabled",
+          props: {
+            disabled: true,
+          },
+        },
+        "divider",
+        {
+          label: "Delete...",
+          props: {
+            color: "red.400",
+          },
+        },
+      ]}
     />
   );
 };

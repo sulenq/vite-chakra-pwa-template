@@ -17,8 +17,6 @@ export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(
         <ChakraMenu.Positioner>
           <ChakraMenu.Content
             className="dsb"
-            bg={"darktrans"}
-            backdropFilter={"blur(5px)"}
             boxShadow={"none"}
             borderRadius={6}
             border={"1px solid var(--divider2)"}

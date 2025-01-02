@@ -60,7 +60,7 @@ body {
 /* Dark Transparent Blured */
 .dsb {
   background: var(--darktrans) !important;
-  backdrop-filter: blur(5px) !important;
+  backdrop-filter: blur(15px) !important;
   color: white !important;
 }
 

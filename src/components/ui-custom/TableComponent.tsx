@@ -22,13 +22,7 @@ import {
 } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
 import { Checkbox } from "../ui/checkbox";
-import {
-  MenuContent,
-  MenuItem,
-  MenuItemGroup,
-  MenuRoot,
-  MenuTrigger,
-} from "../ui/menu";
+import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "../ui/menu";
 import BButton from "./BButton";
 import CContainer from "./CContainer";
 
@@ -104,45 +98,44 @@ const BatchOptions = ({
 
       <Portal container={tableRef}>
         <MenuContent zIndex={10} minW={"140px"}>
-          <MenuItemGroup
-            title={`${selectedRows.length} Terpilih`}
-            fontWeight={400}
+          <CContainer px={2} py={1}>
+            <Text fontSize={"xs"} opacity={0.5} fontWeight={500}>
+              {selectedRows.length} Terpilih
+            </Text>
+          </CContainer>
+
+          <MenuSeparator />
+
+          <MenuItem
+            value={"select all"}
+            justifyContent={"space-between"}
+            onClick={() => {
+              handleSelectAllRows(selectAllRows);
+            }}
+            closeOnSelect={false}
           >
-            <MenuSeparator />
+            <Text fontWeight={550}>Pilih Semua</Text>
+            <Checkbox borderColor={"d3"} checked={selectAllRows} size={"sm"} />
+          </MenuItem>
 
-            <MenuItem
-              value={"select all"}
-              justifyContent={"space-between"}
-              onClick={() => {
-                handleSelectAllRows(selectAllRows);
-              }}
-              closeOnSelect={false}
-            >
-              <Text color={"p.500"} fontWeight={550}>
-                Pilih Semua
-              </Text>
-              <Checkbox colorScheme="ap" checked={selectAllRows} />
-            </MenuItem>
+          <MenuSeparator />
 
-            <MenuSeparator />
-
-            {batchOptions?.map((option, i) => {
-              return option === "divider" ? (
-                <MenuSeparator key={i} />
-              ) : (
-                <MenuItem
-                  key={i}
-                  value={option.label}
-                  onClick={() => {
-                    option.callback && option.callback(selectedRows);
-                  }}
-                  {...option.props}
-                >
-                  {option.label}
-                </MenuItem>
-              );
-            })}
-          </MenuItemGroup>
+          {batchOptions?.map((option, i) => {
+            return option === "divider" ? (
+              <MenuSeparator key={i} />
+            ) : (
+              <MenuItem
+                key={i}
+                value={option.label}
+                onClick={() => {
+                  option.callback && option.callback(selectedRows);
+                }}
+                {...option.props}
+              >
+                {option.label}
+              </MenuItem>
+            );
+          })}
         </MenuContent>
       </Portal>
     </MenuRoot>
@@ -351,25 +344,6 @@ const TableComponent = ({
       >
         <Table.Header>
           <Table.Row position={"sticky"} top={0} zIndex={3}>
-            {rowClick && (
-              <Table.ColumnHeader
-                bg={"body"}
-                whiteSpace={"nowrap"}
-                borderBottom={"none !important"}
-                p={0}
-                zIndex={15}
-                position={"sticky"}
-                left={0}
-              >
-                <Box
-                  w={"2px"}
-                  h={"48px"}
-                  bg={"body"}
-                  borderBottom={"1px solid var(--divider3)"}
-                />
-              </Table.ColumnHeader>
-            )}
-
             {batchOptions && (
               <Table.Cell
                 h={"48px"}
@@ -396,6 +370,25 @@ const TableComponent = ({
                   />
                 </Center>
               </Table.Cell>
+            )}
+
+            {rowClick && (
+              <Table.ColumnHeader
+                bg={"body"}
+                whiteSpace={"nowrap"}
+                borderBottom={"none !important"}
+                p={0}
+                zIndex={15}
+                position={"sticky"}
+                left={0}
+              >
+                <Box
+                  w={"2px"}
+                  h={"48px"}
+                  bg={"body"}
+                  borderBottom={"1px solid var(--divider3)"}
+                />
+              </Table.ColumnHeader>
             )}
 
             {tableHeader.map((tableColumnHeader, i) => (
@@ -476,24 +469,6 @@ const TableComponent = ({
                 }}
                 {...trBodyProps}
               >
-                {rowClick && (
-                  <Table.Cell
-                    minW={"2px"}
-                    maxW={"2px"}
-                    w={"2px"}
-                    p={0}
-                    position={"sticky"}
-                    left={0}
-                    zIndex={1}
-                  >
-                    <Box
-                      w={"2px"}
-                      h={"48px"}
-                      bg={rowHoverIndex === rowIndex ? "ibody" : "body"}
-                    />
-                  </Table.Cell>
-                )}
-
                 {batchOptions && (
                   <Table.Cell
                     h={"48px"}
@@ -523,8 +498,27 @@ const TableComponent = ({
                           toggleRowSelection(row.id);
                         }}
                         checked={selectedRows.includes(row.id)}
+                        size={"sm"}
                       />
                     </Center>
+                  </Table.Cell>
+                )}
+
+                {rowClick && (
+                  <Table.Cell
+                    minW={"2px"}
+                    maxW={"2px"}
+                    w={"2px"}
+                    p={0}
+                    position={"sticky"}
+                    left={0}
+                    zIndex={1}
+                  >
+                    <Box
+                      w={"2px"}
+                      h={"48px"}
+                      bg={rowHoverIndex === rowIndex ? "ibody" : "body"}
+                    />
                   </Table.Cell>
                 )}
 

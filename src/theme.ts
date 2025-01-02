@@ -67,6 +67,15 @@ const customConfig = defineConfig({
           emphasized: { value: "{colors.p.500}" },
           focusRing: { value: "{colors.p.500}" },
         },
+        aw: {
+          solid: { value: "{white}" },
+          contrast: { value: "{white}" },
+          fg: { value: "{white}" },
+          muted: { value: "{white}" },
+          subtle: { value: "{white}" },
+          emphasized: { value: "{white}" },
+          focusRing: { value: "{white}" },
+        },
         red: {
           contrast: { value: "{colors.red.100} !important" },
         },
