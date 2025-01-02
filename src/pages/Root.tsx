@@ -66,6 +66,7 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Status } from "@/components/ui/status";
 import { Tooltip } from "@/components/ui/tooltip";
 import { Interface__Select } from "@/constant/interfaces";
 import { optionsAgama } from "@/constant/selectOptions";
@@ -76,6 +77,7 @@ import formatDate from "@/utils/formatDate";
 import formatNumber from "@/utils/formatNumber";
 import formatTimeFromDateFormat from "@/utils/formatTimeFromDateFormat";
 import {
+  Badge,
   Box,
   Center,
   Circle,
@@ -1045,16 +1047,10 @@ const TableComponentDemo = () => {
     {
       th: "Presensi Masuk",
       isSortable: true,
-      stackProps: {
-        justify: "center",
-      },
     },
     {
       th: "Presensi keluar",
       isSortable: true,
-      stackProps: {
-        justify: "center",
-      },
     },
   ];
   const tds = data?.map((item: any) => ({
@@ -1077,7 +1073,13 @@ const TableComponentDemo = () => {
       },
       {
         value: item.unit_kerja.jenis_karyawan,
-        td: item.unit_kerja.jenis_karyawan,
+        td: (
+          <Badge
+            colorPalette={item.unit_kerja.jenis_karyawan ? "cyan" : "orange"}
+          >
+            {item.unit_kerja.jenis_karyawan ? "Shift" : "Non-Shift"}
+          </Badge>
+        ),
         stackProps: {
           justify: "center",
         },
@@ -1088,7 +1090,11 @@ const TableComponentDemo = () => {
       },
       {
         value: item.kategori_presensi?.label,
-        td: item.kategori_presensi?.label,
+        td: (
+          <Status value={item.kategori_presensi.id === 1 ? "success" : "error"}>
+            {item.kategori_presensi?.label}
+          </Status>
+        ),
       },
       {
         value: item.jam_masuk,
@@ -1110,9 +1116,6 @@ const TableComponentDemo = () => {
             "basicShort"
           )} -  ${formatTimeFromDateFormat(item.jam_keluar)}`,
         isTime: true,
-        stackProps: {
-          justify: "center",
-        },
       },
     ],
   }));

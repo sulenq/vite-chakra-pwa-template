@@ -529,6 +529,7 @@ const TableComponent = ({
                     key={colIndex}
                     whiteSpace={"nowrap"}
                     p={0}
+                    bg={"body"}
                     {...col?.props}
                   >
                     <HStack
