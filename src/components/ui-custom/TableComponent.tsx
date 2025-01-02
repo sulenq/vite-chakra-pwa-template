@@ -239,7 +239,6 @@ const TableComponent = ({
   const requestSort = (columnIndex: number) => {
     setSortConfig((prevConfig) => {
       if (prevConfig.sortColumnIndex === columnIndex) {
-        // Jika sudah diurutkan berdasarkan kolom ini, ubah arah sorting
         if (prevConfig.direction === "asc") {
           return { sortColumnIndex: columnIndex, direction: "desc" };
         } else if (prevConfig.direction === "desc") {
@@ -250,7 +249,7 @@ const TableComponent = ({
         // Jika kolom belum diurutkan, mulai dari ascending
         return { sortColumnIndex: columnIndex, direction: "asc" };
       }
-      // Pastikan selalu return objek yang valid
+
       return prevConfig;
     });
   };

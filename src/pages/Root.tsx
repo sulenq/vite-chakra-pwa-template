@@ -1103,9 +1103,6 @@ const TableComponentDemo = () => {
           "basicShort"
         )} -  ${formatTimeFromDateFormat(item.jam_masuk)}`,
         isTime: true,
-        stackProps: {
-          justify: "center",
-        },
       },
       {
         value: item.jam_keluar,
