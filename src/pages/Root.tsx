@@ -1327,7 +1327,7 @@ export default function Root() {
         <CContainer gap={6}>
           {/* Primary Button */}
           <CContainer flex={0} gap={4}>
-            <Heading6>Primary Button</Heading6>
+            <Heading6>Picked Primary Color Button</Heading6>
             <CenterContainer>
               <HStack wrap={"wrap"} gap={2}>
                 <BButton colorPalette={"p"}>Solid</BButton>
