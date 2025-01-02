@@ -5,7 +5,6 @@ import {
 } from "@/constant/interfaces";
 import formatDate from "@/utils/formatDate";
 import {
-  Box,
   Center,
   HStack,
   Icon,
@@ -60,7 +59,8 @@ const RowOptions = ({
                 onClick={() => {
                   option.callback && option.callback(rowData);
                 }}
-                {...option.props}
+                {...option.menuItemProps}
+                // bg={"red"}
               >
                 {option.label}
               </MenuItem>
@@ -130,7 +130,7 @@ const BatchOptions = ({
                 onClick={() => {
                   option.callback && option.callback(selectedRows);
                 }}
-                {...option.props}
+                {...option.menuItemProps}
               >
                 {option.label}
               </MenuItem>
@@ -198,9 +198,9 @@ const TableComponent = ({
       rowClick(rowData);
     }
   };
-  const [rowHoverIndex, setRowHoverIndex] = useState<number | undefined>(
-    undefined
-  );
+  // const [rowHoverIndex, setRowHoverIndex] = useState<number | undefined>(
+  //   undefined
+  // );
 
   // Batch options
   const handleSelectAllRows = (isChecked: boolean) => {
@@ -372,7 +372,7 @@ const TableComponent = ({
               </Table.Cell>
             )}
 
-            {rowClick && (
+            {/* {rowClick && (
               <Table.ColumnHeader
                 bg={"body"}
                 whiteSpace={"nowrap"}
@@ -389,7 +389,7 @@ const TableComponent = ({
                   borderBottom={"1px solid var(--divider3)"}
                 />
               </Table.ColumnHeader>
-            )}
+            )} */}
 
             {tableHeader.map((tableColumnHeader, i) => (
               <Table.ColumnHeader
@@ -402,7 +402,7 @@ const TableComponent = ({
                 cursor={tableColumnHeader?.isSortable ? "pointer" : "auto"}
                 borderBottom={"none !important"}
                 p={0}
-                {...tableColumnHeader?.props}
+                {...tableColumnHeader?.tableColumnHeaderProps}
               >
                 <HStack
                   borderBottom={"1px solid var(--divider3)"}
@@ -460,13 +460,13 @@ const TableComponent = ({
                 borderColor={"d1"}
                 position={"relative"}
                 bg={"body"}
-                _hover={{ bg: "d1" }}
-                onMouseEnter={() => {
-                  setRowHoverIndex(rowIndex);
-                }}
-                onMouseLeave={() => {
-                  setRowHoverIndex(undefined);
-                }}
+                _hover={{ bg: rowClick ? "d1" : "" }}
+                // onMouseEnter={() => {
+                //   setRowHoverIndex(rowIndex);
+                // }}
+                // onMouseLeave={() => {
+                //   setRowHoverIndex(undefined);
+                // }}
                 {...trBodyProps}
               >
                 {batchOptions && (
@@ -504,7 +504,7 @@ const TableComponent = ({
                   </Table.Cell>
                 )}
 
-                {rowClick && (
+                {/* {rowClick && (
                   <Table.Cell
                     minW={"2px"}
                     maxW={"2px"}
@@ -520,14 +520,14 @@ const TableComponent = ({
                       bg={rowHoverIndex === rowIndex ? "ibody" : "body"}
                     />
                   </Table.Cell>
-                )}
+                )} */}
 
                 {row.columnsFormat.map((col, colIndex) => (
                   <Table.Cell
                     key={colIndex}
                     whiteSpace={"nowrap"}
                     p={0}
-                    {...col?.props}
+                    {...col?.tableCellProps}
                   >
                     <HStack
                       py={3}
@@ -555,7 +555,8 @@ const TableComponent = ({
                     p={0}
                     position={"sticky"}
                     right={"0px"}
-                    zIndex={2}
+                    bg={"body"}
+                    zIndex={999}
                   >
                     <Center
                       h={"48px"}

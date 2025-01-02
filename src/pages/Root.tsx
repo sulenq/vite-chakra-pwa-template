@@ -67,11 +67,13 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Status } from "@/components/ui/status";
+import { toaster } from "@/components/ui/toaster";
 import { Tooltip } from "@/components/ui/tooltip";
 import { Interface__Select } from "@/constant/interfaces";
 import { optionsAgama } from "@/constant/selectOptions";
 import { responsiveSpacing, responsiveSpacingReverse } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
+import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import back from "@/utils/back";
 import formatDate from "@/utils/formatDate";
 import formatNumber from "@/utils/formatNumber";
@@ -1116,6 +1118,7 @@ const TableComponentDemo = () => {
       },
     ],
   }));
+  const iss = useIsSmScreenWidth();
 
   return (
     <TableComponent
@@ -1123,25 +1126,41 @@ const TableComponentDemo = () => {
       tds={tds}
       originalData={data}
       rowClick={(rowData) => {
-        console.log(rowData);
+        toaster.create({
+          type: "info",
+          title: `Row Clicked`,
+          description: `Data id = ${rowData.id}`,
+          placement: iss ? "top" : "bottom-end",
+          action: {
+            label: "Close",
+            onClick: () => {},
+          },
+        });
       }}
       rowOptions={[
         {
-          label: "Edit",
+          label: (
+            <CContainer p={2}>
+              <Text>Edit</Text>
+            </CContainer>
+          ),
+          menuItemProps: {
+            p: "0 !important",
+          },
         },
         {
           label: "Restore...",
         },
         {
           label: "Disabled",
-          props: {
+          menuItemProps: {
             disabled: true,
           },
         },
         "divider",
         {
           label: "Delete...",
-          props: {
+          menuItemProps: {
             color: "red.400",
           },
         },
@@ -1155,14 +1174,14 @@ const TableComponentDemo = () => {
         },
         {
           label: "Disabled",
-          props: {
+          menuItemProps: {
             disabled: true,
           },
         },
         "divider",
         {
           label: "Delete...",
-          props: {
+          menuItemProps: {
             color: "red.400",
           },
         },

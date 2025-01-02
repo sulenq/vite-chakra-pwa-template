@@ -187,7 +187,12 @@ const DatePickerInput = ({
             <DisclosureHeaderContent title={title} />
           </DisclosureHeader>
 
-          <DisclosureBody pt={0} overflowY={"auto"} maxH={drawerbodyMaxH}>
+          <DisclosureBody
+            className="scrollY"
+            pt={0}
+            overflowY={"auto"}
+            maxH={drawerbodyMaxH}
+          >
             {/* Period picker */}
             <HStack mb={5}>
               <BButton iconButton variant={"outline"} onClick={prevMonth}>

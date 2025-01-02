@@ -137,6 +137,7 @@ const SelectInput = ({
                 variant={
                   isSelected(item) ? "surface" : !multiple ? "ghost" : "outline"
                 }
+                bg={isSelected(item) ? "d1" : ""}
                 borderRadius={multiple ? "full" : ""}
                 borderColor={isSelected(item) ? "ibody !important" : ""}
                 justifyContent={"start"}
@@ -256,7 +257,7 @@ const SelectInput = ({
             </HStack>
           </DisclosureHeader>
 
-          <DisclosureBody py={"0px !important"}>
+          <DisclosureBody className="scrollY" py={"0px !important"}>
             {fl && (
               <HStack>
                 <SearchInput

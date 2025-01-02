@@ -273,7 +273,12 @@ const TimeRangePickerInput = ({
             <DisclosureHeaderContent title={title} />
           </DisclosureHeader>
 
-          <DisclosureBody pt={0} overflowY={"auto"} maxH={drawerbodyMaxH}>
+          <DisclosureBody
+            className="scrollY"
+            pt={0}
+            overflowY={"auto"}
+            maxH={drawerbodyMaxH}
+          >
             <Stack
               gap={5}
               align={"stretch"}

@@ -3,6 +3,8 @@ import {
   BoxProps,
   MenuItemProps,
   StackProps,
+  TableCellProps,
+  TableColumnHeaderProps,
   TableRowProps,
 } from "@chakra-ui/react";
 import { Dispatch, SetStateAction } from "react";
@@ -129,7 +131,7 @@ export interface Interface__FormattedTableHeader {
   th: string;
   columnKey?: string; // unused yet
   isSortable?: boolean;
-  props?: any;
+  tableColumnHeaderProps?: TableColumnHeaderProps;
   stackProps?: StackProps;
 }
 export interface Interface__FormattedTableBody {
@@ -140,7 +142,7 @@ export interface Interface__FormattedTableBody {
     columnKey?: string; // unused yet
     dataType?: "string" | "number" | "date" | "time";
     original_data?: any;
-    props?: any;
+    tableCellProps?: TableCellProps;
     stackProps?: StackProps;
   }[];
 }
@@ -166,7 +168,7 @@ export type Type__TableRowOptions = (
         desc: string;
       };
       subMenu?: any; // unused yet
-      props?: MenuItemProps;
+      menuItemProps?: MenuItemProps;
     }
   | "divider"
 )[];

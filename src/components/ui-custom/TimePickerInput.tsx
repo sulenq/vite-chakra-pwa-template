@@ -202,7 +202,12 @@ const TimePickerInput = ({
             <DisclosureHeaderContent title={title} />
           </DisclosureHeader>
 
-          <DisclosureBody pt={0} overflowY={"auto"} maxH={drawerbodyMaxH}>
+          <DisclosureBody
+            className="scrollY"
+            pt={0}
+            overflowY={"auto"}
+            maxH={drawerbodyMaxH}
+          >
             <HStack
               justify={"space-between"}
               gap={1}
