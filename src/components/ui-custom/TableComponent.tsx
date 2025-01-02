@@ -340,6 +340,7 @@ const TableComponent = ({
       borderColor={"d3"}
       overflow={"auto"}
       borderRadius={6}
+      className="scrollX scrollY"
       {...props}
     >
       <Table.Root
@@ -433,7 +434,7 @@ const TableComponent = ({
                 maxW={"48px !important"}
                 p={0}
                 position={"sticky"}
-                right={0}
+                right={"0px"}
                 borderBottom={"none !important"}
               >
                 <Center
@@ -561,7 +562,7 @@ const TableComponent = ({
                     maxW={"48px !important"}
                     p={0}
                     position={"sticky"}
-                    right={0}
+                    right={"0px"}
                     bg={"body"}
                     zIndex={2}
                   >

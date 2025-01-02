@@ -161,7 +161,11 @@ export type Type__TableRowOptions = (
       label: string;
       icon?: any;
       callback?: (rowData: any) => void;
-      subMenu?: any;
+      confirmation: {
+        title: string;
+        desc: string;
+      };
+      subMenu?: any; // unused yet
       props?: MenuItemProps;
     }
   | "divider"

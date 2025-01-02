@@ -29,6 +29,7 @@ import StringInput from "@/components/ui-custom/StringInput";
 import TableComponent from "@/components/ui-custom/TableComponent";
 import TimePickerInput from "@/components/ui-custom/TimePickerInput";
 import TimeRangePickerInput from "@/components/ui-custom/TimeRangePickerInput";
+import TruncatedText from "@/components/ui-custom/TruncatedText";
 import {
   AccordionItem,
   AccordionItemContent,
@@ -1068,9 +1069,9 @@ const TableComponentDemo = () => {
               name={item.user.nama}
               src="https://bit.ly/sage-adebayo"
             />
-            <Text maxW={"200px"} truncate>
+            <TruncatedText maxW={"200px"} truncate>
               {item.user.nama}
-            </Text>
+            </TruncatedText>
           </HStack>
         ),
       },
@@ -1121,9 +1122,9 @@ const TableComponentDemo = () => {
       ths={ths}
       tds={tds}
       originalData={data}
-      rowClick={(rowData) => {
-        console.log(rowData);
-      }}
+      // rowClick={(rowData) => {
+      //   console.log(rowData);
+      // }}
       rowOptions={[
         {
           label: "Edit",
