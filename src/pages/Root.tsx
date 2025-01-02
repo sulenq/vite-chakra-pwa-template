@@ -142,7 +142,7 @@ const DisclosureDemo = () => {
         </DisclosureBody>
 
         <DisclosureFooter>
-          <BButton variant={"surface"} onClick={back}>
+          <BButton variant={"subtle"} onClick={back}>
             Mehh B aja
           </BButton>
 
@@ -172,7 +172,7 @@ const DisclosureDemo2 = () => {
         </DisclosureBody>
 
         <DisclosureFooter>
-          <BButton variant={"surface"} onClick={back}>
+          <BButton variant={"subtle"} onClick={back}>
             Mehh B aja
           </BButton>
 
@@ -1125,9 +1125,9 @@ const TableComponentDemo = () => {
       ths={ths}
       tds={tds}
       originalData={data}
-      // rowClick={(rowData) => {
-      //   console.log(rowData);
-      // }}
+      rowClick={(rowData) => {
+        console.log(rowData);
+      }}
       rowOptions={[
         {
           label: "Edit",

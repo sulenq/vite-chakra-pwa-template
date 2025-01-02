@@ -205,6 +205,9 @@ const TableComponent = ({
       rowClick(rowData);
     }
   };
+  const [rowHoverIndex, setRowHoverIndex] = useState<number | undefined>(
+    undefined
+  );
 
   // Batch options
   const handleSelectAllRows = (isChecked: boolean) => {
@@ -311,11 +314,11 @@ const TableComponent = ({
       return (
         <>
           {sortConfig.direction === "asc" ? (
-            <Icon color={"p.500"} fontSize={"sm"}>
+            <Icon fontSize={"sm"}>
               <ArrowUp />
             </Icon>
           ) : (
-            <Icon color={"p.500"} fontSize={"sm"}>
+            <Icon fontSize={"sm"}>
               <ArrowDown />
             </Icon>
           )}
@@ -464,7 +467,14 @@ const TableComponent = ({
                 borderBottom={"1px solid"}
                 borderColor={"d1"}
                 position={"relative"}
+                bg={"body"}
                 _hover={{ bg: "d1" }}
+                onMouseEnter={() => {
+                  setRowHoverIndex(rowIndex);
+                }}
+                onMouseLeave={() => {
+                  setRowHoverIndex(undefined);
+                }}
                 {...trBodyProps}
               >
                 {rowClick && (
@@ -480,8 +490,7 @@ const TableComponent = ({
                     <Box
                       w={"2px"}
                       h={"48px"}
-                      bg={"body"}
-                      _groupHover={{ bg: "p.500" }}
+                      bg={rowHoverIndex === rowIndex ? "ibody" : "body"}
                     />
                   </Table.Cell>
                 )}
