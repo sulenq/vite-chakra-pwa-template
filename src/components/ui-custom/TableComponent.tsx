@@ -47,7 +47,7 @@ const RowOptions = ({
         aria-label="row options"
         _expanded={{ bg: "d2 !important" }}
       >
-        <BButton iconButton unclicky variant={"ghost"}>
+        <BButton iconButton unclicky variant={"plain"}>
           <Icon>
             <DotsThreeVertical weight="bold" />
           </Icon>
@@ -461,8 +461,10 @@ const TableComponent = ({
                 }}
                 cursor={rowClick ? "pointer" : "auto"}
                 px={2}
-                borderBottom={"1px solid d1"}
+                borderBottom={"1px solid"}
+                borderColor={"d1"}
                 position={"relative"}
+                _hover={{ bg: "d1" }}
                 {...trBodyProps}
               >
                 {rowClick && (
@@ -500,12 +502,6 @@ const TableComponent = ({
                       w={"48px"}
                       h={"48px"}
                       borderRight={"1px solid var(--divider3)"}
-                      _groupHover={{
-                        bg: "d1",
-                      }}
-                      _groupActive={
-                        rowClick ? { bg: "var(--divider2)" } : undefined
-                      }
                       transition={"200ms"}
                       cursor={"pointer"}
                       onClick={(e) => {
@@ -529,16 +525,9 @@ const TableComponent = ({
                     key={colIndex}
                     whiteSpace={"nowrap"}
                     p={0}
-                    bg={"body"}
                     {...col?.props}
                   >
                     <HStack
-                      _groupHover={{
-                        bg: "d1 !important",
-                      }}
-                      _groupActive={
-                        rowClick ? { bg: "var(--divider2)" } : undefined
-                      }
                       py={3}
                       px={4}
                       h={"48px"}
@@ -564,19 +553,14 @@ const TableComponent = ({
                     p={0}
                     position={"sticky"}
                     right={"0px"}
-                    bg={"body"}
                     zIndex={2}
                   >
                     <Center
                       h={"48px"}
                       w={"48px"}
-                      borderLeft={"1px solid var(--divider3)"}
-                      _groupHover={{
-                        bg: "d1",
-                      }}
-                      _groupActive={
-                        rowClick ? { bg: "var(--divider2)" } : undefined
-                      }
+                      borderLeft={"1px solid"}
+                      borderColor={"d3"}
+                      _hover={{ bg: "d1" }}
                       transition={"200ms"}
                       onClick={(e) => {
                         e.stopPropagation();
