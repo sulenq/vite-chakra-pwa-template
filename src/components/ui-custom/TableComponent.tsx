@@ -47,7 +47,7 @@ const RowOptions = ({
         aria-label="row options"
         _expanded={{ bg: "d2 !important" }}
       >
-        <BButton iconButton variant={"ghost"}>
+        <BButton iconButton unclicky variant={"ghost"}>
           <Icon>
             <DotsThreeVertical />
           </Icon>
