@@ -3,6 +3,7 @@ import {
   Interface__RowOptions,
   Interface__TableComponent,
 } from "@/constant/interfaces";
+import formatDate from "@/utils/formatDate";
 import {
   Box,
   Center,
@@ -12,15 +13,13 @@ import {
   Table,
   Text,
 } from "@chakra-ui/react";
-import CContainer from "./CContainer";
-import { useEffect, useRef, useState } from "react";
-import formatDate from "@/utils/formatDate";
 import {
   ArrowDown,
   ArrowUp,
   DotsThreeVertical,
   ListChecks,
 } from "@phosphor-icons/react";
+import { useEffect, useRef, useState } from "react";
 import { Checkbox } from "../ui/checkbox";
 import {
   MenuContent,
@@ -29,8 +28,9 @@ import {
   MenuRoot,
   MenuTrigger,
 } from "../ui/menu";
-import Divider from "./Divider";
 import BButton from "./BButton";
+import CContainer from "./CContainer";
+import Divider from "./Divider";
 
 const RowOptions = ({
   rowData,
@@ -444,7 +444,7 @@ const TableComponent = ({
                 key={rowIndex}
                 role="group"
                 transition={"200ms"}
-                onClick={(e) => {
+                onClick={() => {
                   handleRowClick(row);
                 }}
                 cursor={rowClick ? "pointer" : "auto"}
