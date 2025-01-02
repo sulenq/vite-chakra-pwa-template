@@ -49,7 +49,7 @@ const RowOptions = ({
       >
         <BButton iconButton unclicky variant={"ghost"}>
           <Icon>
-            <DotsThreeVertical />
+            <DotsThreeVertical weight="bold" />
           </Icon>
         </BButton>
       </MenuTrigger>
@@ -461,7 +461,7 @@ const TableComponent = ({
                 }}
                 cursor={rowClick ? "pointer" : "auto"}
                 px={2}
-                borderBottom={"1px solid var(--divider)"}
+                borderBottom={"1px solid d1"}
                 position={"relative"}
                 {...trBodyProps}
               >
@@ -501,7 +501,7 @@ const TableComponent = ({
                       h={"48px"}
                       borderRight={"1px solid var(--divider3)"}
                       _groupHover={{
-                        bg: "var(--divider)",
+                        bg: "d1",
                       }}
                       _groupActive={
                         rowClick ? { bg: "var(--divider2)" } : undefined
@@ -534,7 +534,7 @@ const TableComponent = ({
                   >
                     <HStack
                       _groupHover={{
-                        bg: "var(--divider) !important",
+                        bg: "d1 !important",
                       }}
                       _groupActive={
                         rowClick ? { bg: "var(--divider2)" } : undefined
@@ -572,7 +572,7 @@ const TableComponent = ({
                       w={"48px"}
                       borderLeft={"1px solid var(--divider3)"}
                       _groupHover={{
-                        bg: "var(--divider)",
+                        bg: "d1",
                       }}
                       _groupActive={
                         rowClick ? { bg: "var(--divider2)" } : undefined
