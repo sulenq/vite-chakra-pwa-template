@@ -17,7 +17,7 @@ const LoginForm = () => {
   const { setPermissions } = useAuthMiddleware();
 
   // Utils
-  // TODO make showErrorToast true
+  // TODO make showErrorToast true/remove it if used in dev, this is for demo purpose only
   const { req, loading } = useRequest({ showErrorToast: false });
   const navigate = useNavigate();
 

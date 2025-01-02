@@ -560,7 +560,8 @@ const TableComponentDemo = () => {
   const ths = [];
   const tds = [];
 
-  return <TableComponent />;
+  return <></>;
+  // return <TableComponent />;
 };
 
 export default function Root() {
@@ -1172,7 +1173,7 @@ export default function Root() {
           {/* <Image src="/assets/images/logo_color.png" w={"16px"} mr={3} /> */}
           <HStack wrap={"wrap"} gapY={0} gap={1}>
             <Text fontSize={"sm"} whiteSpace={"nowrap"}>
-              Beautifully Crafted by{" "}
+              Customized Chakra UI Components by{" "}
             </Text>
             <a href="" target="_blank" rel="noreferrer">
               <Text

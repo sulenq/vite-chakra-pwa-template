@@ -1,5 +1,10 @@
 import { ButtonProps } from "@/components/ui/button";
-import { StackProps, TableRowProps } from "@chakra-ui/react";
+import {
+  BoxProps,
+  MenuItemProps,
+  StackProps,
+  TableRowProps,
+} from "@chakra-ui/react";
 import { Dispatch, SetStateAction } from "react";
 
 export type LanguageOptions = "id" | "en";
@@ -9,6 +14,7 @@ export interface Interface__Nav {
     [lang in LanguageOptions]: string;
   };
   link: string;
+  icon?: any;
 }
 
 // Select
@@ -126,7 +132,6 @@ export interface Interface__FormattedTableHeader {
   props?: any;
   cProps?: StackProps;
 }
-
 export interface Interface__FormattedTableBody {
   id: number;
   columnsFormat: {
@@ -134,22 +139,47 @@ export interface Interface__FormattedTableBody {
     original_data?: any;
     value: any;
     td: any;
-    isNumeric?: boolean; // default false
-    isDate?: boolean; // default false
-    isTime?: boolean; // default false
+    dataType?: "string" | "number" | "date" | "time";
     props?: any;
     cProps?: StackProps;
   }[];
 }
 export interface Interface__TableComponent extends StackProps {
-  ths?: Interface__FormattedTableHeader[];
-  tds?: Interface__FormattedTableBody[];
+  ths: Interface__FormattedTableHeader[];
+  tds: Interface__FormattedTableBody[];
+  originalData: any;
   rowClick?: (rowData: any) => void;
-  originalData?: any;
   columnsConfig?: number[];
   batchOptions?: any[];
   rowOptions?: any[];
   initialSortOrder?: "asc" | "desc";
   initialSortColumnIndex?: number;
   trBodyProps?: TableRowProps;
+}
+export type Type__TableRowOptions = (
+  | {
+      label: string;
+      icon?: any;
+      callback?: (rowData: any) => void;
+      subMenu?: any;
+      props?: MenuItemProps;
+    }
+  | "divider"
+)[];
+export interface Interface__RowOptions {
+  rowData: any;
+  rowOptions: Type__TableRowOptions;
+  tableRef: any;
+}
+export interface Interface__BatchOptions {
+  selectedRows: number[];
+  batchOptions: Type__TableRowOptions;
+  selectAllRows: boolean;
+  handleSelectAllRows: (isChecked: boolean) => void;
+  tableRef: any;
+}
+
+// Divider
+export interface Interface__Divider extends BoxProps {
+  dir?: "vertical" | "horizontal";
 }
