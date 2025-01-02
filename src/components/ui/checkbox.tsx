@@ -13,8 +13,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <ChakraCheckbox.Root ref={rootRef} cursor={"pointer"} {...rest}>
         <ChakraCheckbox.HiddenInput ref={ref} {...inputProps} />
-        {/* @ts-ignore */}
-        <ChakraCheckbox.Control {...rest}>
+        <ChakraCheckbox.Control borderColor={rest.borderColor}>
           {icon || <ChakraCheckbox.Indicator />}
         </ChakraCheckbox.Control>
         {children != null && (
