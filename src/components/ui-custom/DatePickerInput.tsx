@@ -1,6 +1,6 @@
 import days from "@/constant/days";
 import { Interface__DatePicker } from "@/constant/interfaces";
-import { drawerbodyMaxH, mainButtonSize } from "@/constant/sizes";
+import { mainButtonSize } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
 import formatDate from "@/utils/formatDate";
@@ -190,8 +190,8 @@ const DatePickerInput = ({
           <DisclosureBody
             className="scrollY"
             pt={0}
-            overflowY={"auto"}
-            maxH={drawerbodyMaxH}
+            // overflowY={"auto"}
+            // maxH={drawerbodyMaxH}
           >
             {/* Period picker */}
             <HStack mb={5}>

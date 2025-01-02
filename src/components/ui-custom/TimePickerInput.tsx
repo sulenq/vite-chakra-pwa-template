@@ -1,5 +1,5 @@
 import { Interface__TimePicker } from "@/constant/interfaces";
-import { drawerbodyMaxH, mainButtonSize } from "@/constant/sizes";
+import { mainButtonSize } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useScreen from "@/hooks/useScreen";
 import back from "@/utils/back";
@@ -205,8 +205,8 @@ const TimePickerInput = ({
           <DisclosureBody
             className="scrollY"
             pt={0}
-            overflowY={"auto"}
-            maxH={drawerbodyMaxH}
+            // overflowY={"auto"}
+            // maxH={drawerbodyMaxH}
           >
             <HStack
               justify={"space-between"}

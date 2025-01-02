@@ -45,7 +45,7 @@ const SelectInput = ({
   invalid,
   nonNullable = false,
   multiple = false,
-  disclosureSize = "xs",
+  size = "xs",
   fetch,
   ...props
 }: Interface__Select) => {
@@ -212,14 +212,14 @@ const SelectInput = ({
               </Text>
             )}
 
-            <Icon opacity={0.3} fontSize={"sm"} maxW={"20px"}>
+            <Icon opacity={0.3} fontSize={"sm"} maxH={"14px"}>
               <CaretDown weight="bold" />
             </Icon>
           </HStack>
         </BButton>
       </Tooltip>
 
-      <DisclosureRoot open={open} size={disclosureSize}>
+      <DisclosureRoot open={open} size={size}>
         <DisclosureContent>
           <DisclosureHeader>
             <HStack justify={"space-between"}>
