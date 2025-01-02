@@ -556,7 +556,7 @@ const TableComponent = ({
                     position={"sticky"}
                     right={"0px"}
                     bg={"body"}
-                    zIndex={999}
+                    zIndex={2}
                   >
                     <Center
                       h={"48px"}
