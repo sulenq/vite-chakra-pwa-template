@@ -36,6 +36,7 @@ import {
   AccordionRoot,
 } from "@/components/ui/accordion";
 import { Alert } from "@/components/ui/alert";
+import { Avatar } from "@/components/ui/avatar";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   ClipboardIconButton,
@@ -70,7 +71,9 @@ import { optionsAgama } from "@/constant/selectOptions";
 import { responsiveSpacing, responsiveSpacingReverse } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
+import formatDate from "@/utils/formatDate";
 import formatNumber from "@/utils/formatNumber";
+import formatTimeFromDateFormat from "@/utils/formatTimeFromDateFormat";
 import {
   Box,
   Center,
@@ -557,11 +560,593 @@ const TimeRangePickerDemo = () => {
 };
 
 const TableComponentDemo = () => {
-  const ths = [];
-  const tds = [];
+  const res = {
+    status: 200,
+    message: "Data presensi berhasil ditampilkan.",
+    data: [
+      {
+        id: 1249,
+        user: {
+          id: 2911,
+          nama: "BETTY NURUL HIDAYATI",
+          username: "betty.hidayati",
+          email_verified_at: null,
+          role_id: 5,
+          data_karyawan_id: 2877,
+          foto_profil: null,
+          data_completion_step: 0,
+          status_aktif: 2,
+          remember_token_expired_at: null,
+          created_at: "2024-09-12T06:46:49.000000Z",
+          updated_at: "2024-09-12T06:46:49.000000Z",
+        },
+        unit_kerja: {
+          id: 48,
+          nama_unit: "Personalia",
+          jenis_karyawan: 1,
+          deleted_at: null,
+          created_at: null,
+          updated_at: "2024-10-11T04:45:09.000000Z",
+        },
+        jadwal: {
+          id: 999,
+          tgl_mulai: "2025-01-02",
+          tgl_selesai: "2025-01-02",
+          shift: {
+            id: 1521,
+            nama: "P08",
+            unit_kerja_id: 48,
+            jam_from: "07:30:00",
+            jam_to: "14:00:00",
+            deleted_at: null,
+            created_at: "2024-11-25T04:20:33.000000Z",
+            updated_at: "2024-11-25T04:20:33.000000Z",
+          },
+        },
+        jam_masuk: "2025-01-02 10:52:28",
+        jam_keluar: null,
+        durasi: null,
+        kategori_presensi: {
+          id: 2,
+          label: "Terlambat",
+          created_at: "2024-08-29T15:10:20.000000Z",
+          updated_at: "2024-08-29T15:10:20.000000Z",
+        },
+        created_at: "2025-01-02T10:52:28.000000Z",
+        updated_at: "2025-01-02T10:52:28.000000Z",
+      },
+      {
+        id: 1248,
+        user: {
+          id: 2989,
+          nama: "DIVAN FERNANDES LIENARDI",
+          username: "divan.lienardi",
+          email_verified_at: null,
+          role_id: 22,
+          data_karyawan_id: 2955,
+          foto_profil: null,
+          data_completion_step: 0,
+          status_aktif: 2,
+          remember_token_expired_at: null,
+          created_at: "2024-09-12T06:47:12.000000Z",
+          updated_at: "2024-11-18T14:35:25.000000Z",
+        },
+        unit_kerja: {
+          id: 12,
+          nama_unit: "Direksi & Manajer",
+          jenis_karyawan: 0,
+          deleted_at: null,
+          created_at: null,
+          updated_at: null,
+        },
+        jadwal: {
+          id: null,
+          tgl_mulai: null,
+          tgl_selesai: null,
+          shift: null,
+        },
+        jam_masuk: "2025-01-02 07:49:28",
+        jam_keluar: null,
+        durasi: null,
+        kategori_presensi: {
+          id: 2,
+          label: "Terlambat",
+          created_at: "2024-08-29T15:10:20.000000Z",
+          updated_at: "2024-08-29T15:10:20.000000Z",
+        },
+        created_at: "2025-01-02T07:49:28.000000Z",
+        updated_at: "2025-01-02T07:49:28.000000Z",
+      },
+      {
+        id: 1247,
+        user: {
+          id: 2739,
+          nama: "MARIA RATNA DIYAH PRASANTI",
+          username: "maria.prasanti",
+          email_verified_at: null,
+          role_id: 5,
+          data_karyawan_id: 2705,
+          foto_profil: null,
+          data_completion_step: 0,
+          status_aktif: 2,
+          remember_token_expired_at: null,
+          created_at: "2024-09-12T06:41:21.000000Z",
+          updated_at: "2024-09-12T06:41:21.000000Z",
+        },
+        unit_kerja: {
+          id: 48,
+          nama_unit: "Personalia",
+          jenis_karyawan: 1,
+          deleted_at: null,
+          created_at: null,
+          updated_at: "2024-10-11T04:45:09.000000Z",
+        },
+        jadwal: {
+          id: 997,
+          tgl_mulai: "2025-01-02",
+          tgl_selesai: "2025-01-02",
+          shift: {
+            id: 1521,
+            nama: "P08",
+            unit_kerja_id: 48,
+            jam_from: "07:30:00",
+            jam_to: "14:00:00",
+            deleted_at: null,
+            created_at: "2024-11-25T04:20:33.000000Z",
+            updated_at: "2024-11-25T04:20:33.000000Z",
+          },
+        },
+        jam_masuk: "2025-01-02 07:30:14",
+        jam_keluar: null,
+        durasi: null,
+        kategori_presensi: {
+          id: 2,
+          label: "Terlambat",
+          created_at: "2024-08-29T15:10:20.000000Z",
+          updated_at: "2024-08-29T15:10:20.000000Z",
+        },
+        created_at: "2025-01-02T07:30:14.000000Z",
+        updated_at: "2025-01-02T07:30:14.000000Z",
+      },
+      {
+        id: 1246,
+        user: {
+          id: 2712,
+          nama: "RIVERA RATNA PENI",
+          username: "rivera.peni",
+          email_verified_at: null,
+          role_id: 5,
+          data_karyawan_id: 2678,
+          foto_profil: null,
+          data_completion_step: 0,
+          status_aktif: 2,
+          remember_token_expired_at: null,
+          created_at: "2024-09-12T06:41:13.000000Z",
+          updated_at: "2024-09-12T06:41:13.000000Z",
+        },
+        unit_kerja: {
+          id: 8,
+          nama_unit: "Billing Penagihan",
+          jenis_karyawan: 0,
+          deleted_at: null,
+          created_at: null,
+          updated_at: null,
+        },
+        jadwal: {
+          id: null,
+          tgl_mulai: null,
+          tgl_selesai: null,
+          shift: null,
+        },
+        jam_masuk: "2025-01-02 07:29:42",
+        jam_keluar: null,
+        durasi: null,
+        kategori_presensi: {
+          id: 1,
+          label: "Tepat Waktu",
+          created_at: "2024-08-29T15:10:20.000000Z",
+          updated_at: "2024-08-29T15:10:20.000000Z",
+        },
+        created_at: "2025-01-02T07:29:42.000000Z",
+        updated_at: "2025-01-02T07:29:42.000000Z",
+      },
+      {
+        id: 1245,
+        user: {
+          id: 2549,
+          nama: "YOHANES HANGGIR PRABOWO",
+          username: "yohanes.prabowo",
+          email_verified_at: null,
+          role_id: 5,
+          data_karyawan_id: 2515,
+          foto_profil: null,
+          data_completion_step: 0,
+          status_aktif: 2,
+          remember_token_expired_at: null,
+          created_at: "2024-09-12T06:40:03.000000Z",
+          updated_at: "2024-09-12T06:40:03.000000Z",
+        },
+        unit_kerja: {
+          id: 8,
+          nama_unit: "Billing Penagihan",
+          jenis_karyawan: 0,
+          deleted_at: null,
+          created_at: null,
+          updated_at: null,
+        },
+        jadwal: {
+          id: null,
+          tgl_mulai: null,
+          tgl_selesai: null,
+          shift: null,
+        },
+        jam_masuk: "2025-01-02 07:29:04",
+        jam_keluar: null,
+        durasi: null,
+        kategori_presensi: {
+          id: 1,
+          label: "Tepat Waktu",
+          created_at: "2024-08-29T15:10:20.000000Z",
+          updated_at: "2024-08-29T15:10:20.000000Z",
+        },
+        created_at: "2025-01-02T07:29:04.000000Z",
+        updated_at: "2025-01-02T07:29:04.000000Z",
+      },
+      {
+        id: 1244,
+        user: {
+          id: 2532,
+          nama: "TRI WAHYUNI",
+          username: "tri.wahyuni",
+          email_verified_at: null,
+          role_id: 5,
+          data_karyawan_id: 2498,
+          foto_profil: null,
+          data_completion_step: 0,
+          status_aktif: 2,
+          remember_token_expired_at: null,
+          created_at: "2024-09-12T06:39:58.000000Z",
+          updated_at: "2024-09-12T06:39:58.000000Z",
+        },
+        unit_kerja: {
+          id: 8,
+          nama_unit: "Billing Penagihan",
+          jenis_karyawan: 0,
+          deleted_at: null,
+          created_at: null,
+          updated_at: null,
+        },
+        jadwal: {
+          id: null,
+          tgl_mulai: null,
+          tgl_selesai: null,
+          shift: null,
+        },
+        jam_masuk: "2025-01-02 07:27:42",
+        jam_keluar: null,
+        durasi: null,
+        kategori_presensi: {
+          id: 1,
+          label: "Tepat Waktu",
+          created_at: "2024-08-29T15:10:20.000000Z",
+          updated_at: "2024-08-29T15:10:20.000000Z",
+        },
+        created_at: "2025-01-02T07:27:42.000000Z",
+        updated_at: "2025-01-02T07:27:42.000000Z",
+      },
+      {
+        id: 1243,
+        user: {
+          id: 2661,
+          nama: "SARI NUR KARTIKA",
+          username: "sari.kartika",
+          email_verified_at: null,
+          role_id: 5,
+          data_karyawan_id: 2627,
+          foto_profil: null,
+          data_completion_step: 0,
+          status_aktif: 2,
+          remember_token_expired_at: null,
+          created_at: "2024-09-12T06:40:48.000000Z",
+          updated_at: "2024-09-12T06:40:48.000000Z",
+        },
+        unit_kerja: {
+          id: 8,
+          nama_unit: "Billing Penagihan",
+          jenis_karyawan: 0,
+          deleted_at: null,
+          created_at: null,
+          updated_at: null,
+        },
+        jadwal: {
+          id: null,
+          tgl_mulai: null,
+          tgl_selesai: null,
+          shift: null,
+        },
+        jam_masuk: "2025-01-02 07:26:33",
+        jam_keluar: null,
+        durasi: null,
+        kategori_presensi: {
+          id: 1,
+          label: "Tepat Waktu",
+          created_at: "2024-08-29T15:10:20.000000Z",
+          updated_at: "2024-08-29T15:10:20.000000Z",
+        },
+        created_at: "2025-01-02T07:26:33.000000Z",
+        updated_at: "2025-01-02T07:26:33.000000Z",
+      },
+      {
+        id: 1242,
+        user: {
+          id: 2715,
+          nama: "EKO SETYO PUTRO",
+          username: "eko.putro",
+          email_verified_at: null,
+          role_id: 5,
+          data_karyawan_id: 2681,
+          foto_profil: null,
+          data_completion_step: 0,
+          status_aktif: 2,
+          remember_token_expired_at: null,
+          created_at: "2024-09-12T06:41:14.000000Z",
+          updated_at: "2024-09-12T06:41:14.000000Z",
+        },
+        unit_kerja: {
+          id: 8,
+          nama_unit: "Billing Penagihan",
+          jenis_karyawan: 0,
+          deleted_at: null,
+          created_at: null,
+          updated_at: null,
+        },
+        jadwal: {
+          id: null,
+          tgl_mulai: null,
+          tgl_selesai: null,
+          shift: null,
+        },
+        jam_masuk: "2025-01-02 07:25:49",
+        jam_keluar: null,
+        durasi: null,
+        kategori_presensi: {
+          id: 1,
+          label: "Tepat Waktu",
+          created_at: "2024-08-29T15:10:20.000000Z",
+          updated_at: "2024-08-29T15:10:20.000000Z",
+        },
+        created_at: "2025-01-02T07:25:49.000000Z",
+        updated_at: "2025-01-02T07:25:49.000000Z",
+      },
+      {
+        id: 1241,
+        user: {
+          id: 2566,
+          nama: "SRI UTAMI",
+          username: "sri.utami",
+          email_verified_at: null,
+          role_id: 14,
+          data_karyawan_id: 2532,
+          foto_profil: null,
+          data_completion_step: 0,
+          status_aktif: 2,
+          remember_token_expired_at: null,
+          created_at: "2024-09-12T06:40:08.000000Z",
+          updated_at: "2024-09-12T06:40:08.000000Z",
+        },
+        unit_kerja: {
+          id: 8,
+          nama_unit: "Billing Penagihan",
+          jenis_karyawan: 0,
+          deleted_at: null,
+          created_at: null,
+          updated_at: null,
+        },
+        jadwal: {
+          id: null,
+          tgl_mulai: null,
+          tgl_selesai: null,
+          shift: null,
+        },
+        jam_masuk: "2025-01-02 07:23:16",
+        jam_keluar: null,
+        durasi: null,
+        kategori_presensi: {
+          id: 1,
+          label: "Tepat Waktu",
+          created_at: "2024-08-29T15:10:20.000000Z",
+          updated_at: "2024-08-29T15:10:20.000000Z",
+        },
+        created_at: "2025-01-02T07:23:16.000000Z",
+        updated_at: "2025-01-02T07:23:16.000000Z",
+      },
+      {
+        id: 1240,
+        user: {
+          id: 2504,
+          nama: "WAHYU TRI ATMOJO",
+          username: "wahyu.atmojo",
+          email_verified_at: null,
+          role_id: 22,
+          data_karyawan_id: 2470,
+          foto_profil: null,
+          data_completion_step: 0,
+          status_aktif: 2,
+          remember_token_expired_at: null,
+          created_at: "2024-09-12T06:39:50.000000Z",
+          updated_at: "2024-09-12T06:39:50.000000Z",
+        },
+        unit_kerja: {
+          id: 8,
+          nama_unit: "Billing Penagihan",
+          jenis_karyawan: 0,
+          deleted_at: null,
+          created_at: null,
+          updated_at: null,
+        },
+        jadwal: {
+          id: null,
+          tgl_mulai: null,
+          tgl_selesai: null,
+          shift: null,
+        },
+        jam_masuk: "2025-01-02 07:17:53",
+        jam_keluar: null,
+        durasi: null,
+        kategori_presensi: {
+          id: 1,
+          label: "Tepat Waktu",
+          created_at: "2024-08-29T15:10:20.000000Z",
+          updated_at: "2024-08-29T15:10:20.000000Z",
+        },
+        created_at: "2025-01-02T07:17:53.000000Z",
+        updated_at: "2025-01-02T07:17:53.000000Z",
+      },
+    ],
+    pagination: {
+      links: {
+        first:
+          "https://apiweb.distrostudio.org/api/rski/dashboard/presensi/get-data-presensi?page=1",
+        last: "https://apiweb.distrostudio.org/api/rski/dashboard/presensi/get-data-presensi?page=4",
+        prev: null,
+        next: "https://apiweb.distrostudio.org/api/rski/dashboard/presensi/get-data-presensi?page=2",
+      },
+      meta: {
+        current_page: 1,
+        last_page: 4,
+        per_page: 10,
+        total: 32,
+      },
+    },
+  };
+  const data = res.data;
+  // const pagination = res.pagination;
+  const ths = [
+    {
+      th: "Nama",
+      isSortable: true,
+    },
+    {
+      th: "Jenis Karyawan",
+      isSortable: true,
+      stackProps: {
+        justify: "center",
+      },
+    },
+    {
+      th: "Unit Kerja",
+      isSortable: true,
+    },
+    {
+      th: "Kategori",
+      isSortable: true,
+    },
+    {
+      th: "Presensi Masuk",
+      isSortable: true,
+      stackProps: {
+        justify: "center",
+      },
+    },
+    {
+      th: "Presensi keluar",
+      isSortable: true,
+      stackProps: {
+        justify: "center",
+      },
+    },
+  ];
+  const tds = data?.map((item: any) => ({
+    id: item.id,
+    columnsFormat: [
+      {
+        value: item.user.nama,
+        td: (
+          <HStack>
+            <Avatar
+              size={"xs"}
+              name={item.user.nama}
+              src="https://bit.ly/sage-adebayo"
+            />
+            <Text maxW={"200px"} truncate>
+              {item.user.nama}
+            </Text>
+          </HStack>
+        ),
+      },
+      {
+        value: item.unit_kerja.jenis_karyawan,
+        td: item.unit_kerja.jenis_karyawan,
+        stackProps: {
+          justify: "center",
+        },
+      },
+      {
+        value: item.unit_kerja.nama_unit,
+        td: item.unit_kerja.nama_unit,
+      },
+      {
+        value: item.kategori_presensi?.label,
+        td: item.kategori_presensi?.label,
+      },
+      {
+        value: item.jam_masuk,
+        td: `${formatDate(
+          item.jam_masuk,
+          "basicShort"
+        )} -  ${formatTimeFromDateFormat(item.jam_masuk)}`,
+        isTime: true,
+        stackProps: {
+          justify: "center",
+        },
+      },
+      {
+        value: item.jam_keluar,
+        td:
+          item?.jam_keluar &&
+          `${formatDate(
+            item.jam_keluar,
+            "basicShort"
+          )} -  ${formatTimeFromDateFormat(item.jam_keluar)}`,
+        isTime: true,
+        stackProps: {
+          justify: "center",
+        },
+      },
+    ],
+  }));
 
-  return <></>;
-  // return <TableComponent />;
+  return (
+    <TableComponent
+      ths={ths}
+      tds={tds}
+      originalData={data}
+      rowClick={(rowData) => {
+        console.log(rowData);
+      }}
+      rowOptions={[
+        {
+          label: "Edit",
+        },
+        {
+          label: "Restore...",
+        },
+        {
+          label: "Disabled",
+          props: {
+            disabled: true,
+          },
+        },
+        "divider",
+        {
+          label: "Delete...",
+          props: {
+            color: "red.400",
+          },
+        },
+      ]}
+    />
+  );
 };
 
 export default function Root() {
@@ -610,6 +1195,7 @@ export default function Root() {
       </HStack>
 
       <SimpleGrid columns={[1, 2, 3]} gap={4} maxW={"1400px"} mx={"auto"}>
+        {/* Start Grid */}
         <CContainer gap={6}>
           {/* Preset Login Form */}
           <CContainer flex={0} gap={4}>
@@ -733,6 +1319,7 @@ export default function Root() {
           </CContainer>
         </CContainer>
 
+        {/* Center Grid */}
         <CContainer gap={6}>
           {/* Primary Button */}
           <CContainer flex={0} gap={4}>
@@ -1049,6 +1636,7 @@ export default function Root() {
           </CContainer>
         </CContainer>
 
+        {/* End Grid */}
         <CContainer gap={6}>
           {/* String Input */}
           <CContainer flex={0} gap={4}>

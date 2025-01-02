@@ -9,6 +9,7 @@ import {
   Center,
   HStack,
   Icon,
+  MenuSeparator,
   Portal,
   Table,
   Text,
@@ -30,7 +31,6 @@ import {
 } from "../ui/menu";
 import BButton from "./BButton";
 import CContainer from "./CContainer";
-import Divider from "./Divider";
 
 const RowOptions = ({
   rowData,
@@ -44,9 +44,8 @@ const RowOptions = ({
         h={"48px"}
         w={"48px"}
         borderRadius={0}
-        className="btn"
         aria-label="row options"
-        _expanded={{ bg: "d3 !important" }}
+        _expanded={{ bg: "d2 !important" }}
       >
         <BButton iconButton variant={"ghost"}>
           <Icon>
@@ -56,10 +55,10 @@ const RowOptions = ({
       </MenuTrigger>
 
       <Portal container={tableRef}>
-        <MenuContent zIndex={10} className="rowOptionsList" minW={"200px"}>
+        <MenuContent zIndex={10} className="rowOptionsList" minW={"140px"}>
           {rowOptions?.map((option, i) => {
             return option === "divider" ? (
-              <Divider key={i} />
+              <MenuSeparator key={i} />
             ) : (
               <MenuItem
                 key={i}
@@ -93,9 +92,8 @@ const BatchOptions = ({
         h={"48px"}
         w={"48px"}
         borderRadius={0}
-        className="btn"
         aria-label="row options"
-        _expanded={{ bg: "d3 !important" }}
+        _expanded={{ bg: "d2 !important" }}
       >
         <BButton iconButton variant={"ghost"}>
           <Icon>
@@ -105,12 +103,12 @@ const BatchOptions = ({
       </MenuTrigger>
 
       <Portal container={tableRef}>
-        <MenuContent zIndex={10} minW={"200px"}>
+        <MenuContent zIndex={10} minW={"140px"}>
           <MenuItemGroup
             title={`${selectedRows.length} Terpilih`}
             fontWeight={400}
           >
-            <Divider />
+            <MenuSeparator />
 
             <MenuItem
               value={"select all"}
@@ -126,11 +124,11 @@ const BatchOptions = ({
               <Checkbox colorScheme="ap" checked={selectAllRows} />
             </MenuItem>
 
-            <Divider />
+            <MenuSeparator />
 
             {batchOptions?.map((option, i) => {
               return option === "divider" ? (
-                <Divider key={i} />
+                <MenuSeparator key={i} />
               ) : (
                 <MenuItem
                   key={i}
@@ -313,11 +311,11 @@ const TableComponent = ({
       return (
         <>
           {sortConfig.direction === "asc" ? (
-            <Icon color={"p.500"} fontSize={16}>
+            <Icon color={"p.500"} fontSize={"sm"}>
               <ArrowUp />
             </Icon>
           ) : (
-            <Icon color={"p.500"} fontSize={16}>
+            <Icon color={"p.500"} fontSize={"sm"}>
               <ArrowDown />
             </Icon>
           )}
@@ -336,7 +334,14 @@ const TableComponent = ({
       : originalDataState;
 
   return (
-    <CContainer w={"fuil"} {...props}>
+    <CContainer
+      minW={"full"}
+      border={"1px solid"}
+      borderColor={"d3"}
+      overflow={"auto"}
+      borderRadius={6}
+      {...props}
+    >
       <Table.Root
         ref={tableRef}
         w={tableHeader.length > 1 ? "full" : "fit-content"}
@@ -353,7 +358,12 @@ const TableComponent = ({
                 position={"sticky"}
                 left={0}
               >
-                <Box w={"2px"} h={"48px"} bg={"body"} />
+                <Box
+                  w={"2px"}
+                  h={"48px"}
+                  bg={"body"}
+                  borderBottom={"1px solid var(--divider3)"}
+                />
               </Table.ColumnHeader>
             )}
 
@@ -406,7 +416,7 @@ const TableComponent = ({
                   h={"48px"}
                   pl={i === 0 ? 4 : ""}
                   pr={i === ths.length - 1 ? 4 : ""}
-                  {...tableColumnHeader?.cProps}
+                  {...tableColumnHeader?.stackProps}
                 >
                   <Text>{tableColumnHeader?.th}</Text>
 
@@ -424,6 +434,7 @@ const TableComponent = ({
                 p={0}
                 position={"sticky"}
                 right={0}
+                borderBottom={"none !important"}
               >
                 <Center
                   h={"48px"}
@@ -483,7 +494,6 @@ const TableComponent = ({
                     left={0}
                     bg={"body"}
                     zIndex={2}
-                    className="btn"
                   >
                     <Center
                       w={"48px"}
@@ -517,13 +527,12 @@ const TableComponent = ({
                   <Table.Cell
                     key={colIndex}
                     whiteSpace={"nowrap"}
-                    bg={"body"}
                     p={0}
                     {...col?.props}
                   >
                     <HStack
                       _groupHover={{
-                        bg: "var(--divider)",
+                        bg: "var(--divider) !important",
                       }}
                       _groupActive={
                         rowClick ? { bg: "var(--divider2)" } : undefined
@@ -532,7 +541,7 @@ const TableComponent = ({
                       px={4}
                       h={"48px"}
                       transition={"200ms"}
-                      {...col?.cProps}
+                      {...col?.stackProps}
                     >
                       {typeof col?.td === "string" ||
                       typeof col?.td === "number" ? (

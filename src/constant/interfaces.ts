@@ -126,22 +126,22 @@ export interface Interface__TimeRangePicker extends ButtonProps {
 
 // Table Component
 export interface Interface__FormattedTableHeader {
-  column?: string;
   th: string;
+  columnKey?: string; // unused yet
   isSortable?: boolean;
   props?: any;
-  cProps?: StackProps;
+  stackProps?: StackProps;
 }
 export interface Interface__FormattedTableBody {
   id: number;
   columnsFormat: {
-    column?: string;
-    original_data?: any;
-    value: any;
     td: any;
+    value: any;
+    columnKey?: string; // unused yet
     dataType?: "string" | "number" | "date" | "time";
+    original_data?: any;
     props?: any;
-    cProps?: StackProps;
+    stackProps?: StackProps;
   }[];
 }
 export interface Interface__TableComponent extends StackProps {

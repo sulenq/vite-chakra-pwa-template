@@ -59,8 +59,8 @@ body {
 
 /* Dark Transparent Blured */
 .dsb {
-  background: var(--darktrans);
-  backdrop-filter: blur(5px);
+  background: var(--darktrans) !important;
+  backdrop-filter: blur(5px) !important;
   color: white !important;
 }
 
@@ -307,7 +307,7 @@ button {
 .chakra-menu__separator {
   background: var(--divider3) !important;
   border-color: var(--divider) !important;
-  margin: 6px 0;
+  margin: 4px 0;
 }
 
 /* Dialog */
