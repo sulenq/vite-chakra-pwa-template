@@ -1,4 +1,7 @@
+import useBackOnClose from "@/hooks/useBackOnClose";
 import { Box, BoxProps, Text, useDisclosure } from "@chakra-ui/react";
+import BackButton from "./BackButton";
+import BButton from "./BButton";
 import {
   DisclosureBody,
   DisclosureContent,
@@ -7,9 +10,6 @@ import {
   DisclosureRoot,
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
-import BButton from "./BButton";
-import useBackOnClose from "@/hooks/useBackOnClose";
-import back from "@/utils/back";
 
 interface Props {
   id: string;
@@ -52,9 +52,7 @@ const ConfirmationDisclosure = ({
           </DisclosureBody>
 
           <DisclosureFooter>
-            <BButton variant={"outline"} onClick={back}>
-              Cancel
-            </BButton>
+            <BackButton />
             <BButton onClick={confirmCallback}>{confirmLabel}</BButton>
           </DisclosureFooter>
         </DisclosureContent>
