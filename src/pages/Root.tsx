@@ -24,6 +24,7 @@ import Heading6 from "@/components/ui-custom/Heading6";
 import NoData from "@/components/ui-custom/NoData";
 import NotFound from "@/components/ui-custom/NotFound";
 import NumberInput from "@/components/ui-custom/NumberInput";
+import PasswordInput from "@/components/ui-custom/PasswordInput";
 import Retry from "@/components/ui-custom/Retry";
 import SearchInput from "@/components/ui-custom/SearchInput";
 import SelectInput from "@/components/ui-custom/SelectInput";
@@ -1719,6 +1720,17 @@ export default function Root() {
               <CContainer gap={4}>
                 <StringInput placeholder="example@email.com" />
                 <StringInput invalid placeholder="Invalid state" />
+              </CContainer>
+            </CenterContainer>
+          </CContainer>
+
+          {/* Password Input */}
+          <CContainer flex={0} gap={4}>
+            <Heading6>Password Input</Heading6>
+            <CenterContainer>
+              <CContainer gap={4}>
+                <PasswordInput placeholder="********" />
+                <PasswordInput invalid placeholder="Invalid state" />
               </CContainer>
             </CenterContainer>
           </CContainer>

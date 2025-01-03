@@ -5,12 +5,13 @@ import { useColorModeValue } from "../ui/color-mode";
 import StringInput from "./StringInput";
 
 interface Props extends InputProps {
-  name: string;
-  onChangeSetter: (inputValue: string | undefined) => void;
-  inputValue: string | undefined;
+  name?: string;
+  onChangeSetter?: (inputValue: string | undefined) => void;
+  inputValue?: string | undefined;
   isError?: boolean;
   placeholder?: string;
   boxProps?: BoxProps;
+  invalid?: boolean;
 }
 
 export default function PasswordInput({
@@ -20,6 +21,7 @@ export default function PasswordInput({
   isError,
   placeholder,
   boxProps,
+  invalid = false,
   ...props
 }: Props) {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -30,11 +32,12 @@ export default function PasswordInput({
         name={name}
         placeholder={placeholder || "*******"}
         onChangeSetter={(inputValue) => {
-          onChangeSetter(inputValue);
+          if (onChangeSetter) onChangeSetter(inputValue);
         }}
         inputValue={inputValue}
         type={showPassword ? "text" : "password"}
         pr={"40px !important"}
+        invalid={invalid}
         {...props}
       />
 
