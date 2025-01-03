@@ -296,6 +296,7 @@ const SelectInput = ({
                       onChange={(e: any) => setSelectAll(e.target.checked)}
                       checked={selectAll}
                       invalid={false}
+                      size={"sm"}
                     >
                       <Text>Pilih Semua</Text>
                     </Checkbox>
