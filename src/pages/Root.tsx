@@ -1184,6 +1184,9 @@ const TableComponentDemo = () => {
           menuItemProps: {
             color: "red.400",
           },
+          callback: (selectedRows: any) => {
+            console.log(selectedRows);
+          },
         },
       ]}
     />
