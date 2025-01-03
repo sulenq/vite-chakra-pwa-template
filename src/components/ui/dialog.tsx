@@ -1,3 +1,4 @@
+import useBackOnDefaultPage from "@/hooks/useBackOnDefaultPage";
 import back from "@/utils/back";
 import { Dialog as ChakraDialog, Portal } from "@chakra-ui/react";
 import { forwardRef } from "react";
@@ -19,21 +20,26 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
       ...rest
     } = props;
 
+    const handleBackOnDefaultPage = useBackOnDefaultPage();
+
     return (
       <Portal disabled={!portalled} container={portalRef}>
         {backdrop && (
-          <ChakraDialog.Backdrop
-            bg={"var(--divider)"}
-            backdropFilter={"blur(5px)"}
-          />
+          <ChakraDialog.Backdrop bg={"d1"} backdropFilter={"blur(5px)"} />
         )}
-        <ChakraDialog.Positioner onClick={back}>
+        <ChakraDialog.Positioner
+          onClick={() => {
+            back();
+            handleBackOnDefaultPage();
+          }}
+        >
           <ChakraDialog.Content
             ref={ref}
             borderRadius={8}
             bg={"body"}
             shadow={"none"}
-            border={"1px solid var(--divider2)"}
+            border={"1px solid"}
+            borderColor={"d2"}
             onClick={(e) => {
               e.stopPropagation();
             }}

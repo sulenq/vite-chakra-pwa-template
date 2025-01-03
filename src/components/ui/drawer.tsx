@@ -3,6 +3,7 @@ import { forwardRef } from "react";
 import { CloseButton } from "./close-button";
 import CContainer from "../ui-custom/CContainer";
 import back from "@/utils/back";
+import useBackOnDefaultPage from "@/hooks/useBackOnDefaultPage";
 
 interface DrawerContentProps extends ChakraDrawer.ContentProps {
   portalled?: boolean;
@@ -21,6 +22,9 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
       backdrop = true,
       ...rest
     } = props;
+
+    const handleBackOnDefaultPage = useBackOnDefaultPage();
+
     return (
       <Portal disabled={!portalled} container={portalRef}>
         {backdrop && (
@@ -35,7 +39,10 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
             ref={ref}
             zIndex={6}
             h={"100%"}
-            onClick={back}
+            onClick={() => {
+              back();
+              handleBackOnDefaultPage();
+            }}
             bg={"transparent"}
             justifyContent={"end"}
             shadow={"none"}
