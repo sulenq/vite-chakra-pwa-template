@@ -496,9 +496,6 @@ const TableComponent = ({
                     >
                       <Checkbox
                         colorScheme="ap"
-                        onChange={() => {
-                          toggleRowSelection(row.id);
-                        }}
                         checked={selectedRows.includes(row.id)}
                         size={"sm"}
                       />

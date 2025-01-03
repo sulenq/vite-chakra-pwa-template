@@ -1168,6 +1168,9 @@ const TableComponentDemo = () => {
       batchOptions={[
         {
           label: "Restore...",
+          callback: (selectedRows: any) => {
+            console.log(selectedRows);
+          },
         },
         {
           label: "Disabled Menu",
