@@ -1,4 +1,5 @@
 import LoginForm from "@/components/form/LoginForm";
+import BackButton from "@/components/ui-custom/BackButton";
 import BButton from "@/components/ui-custom/BButton";
 import CContainer from "@/components/ui-custom/CContainer";
 import DatePickerInput from "@/components/ui-custom/DatePickerInput";
@@ -144,9 +145,7 @@ const DisclosureDemo = () => {
         </DisclosureBody>
 
         <DisclosureFooter>
-          <BButton variant={"outline"} onClick={back}>
-            Mehh B aja
-          </BButton>
+          <BackButton>Close</BackButton>
 
           <DisclosureDemo2 />
         </DisclosureFooter>
@@ -174,9 +173,7 @@ const DisclosureDemo2 = () => {
         </DisclosureBody>
 
         <DisclosureFooter>
-          <BButton variant={"outline"} onClick={back}>
-            Mehh B aja
-          </BButton>
+          <BackButton>Close</BackButton>
 
           <BButton
             onClick={() => {
