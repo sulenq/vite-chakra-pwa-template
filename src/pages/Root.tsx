@@ -13,6 +13,7 @@ import {
   DisclosureTrigger,
 } from "@/components/ui-custom/Disclosure";
 import DisclosureHeaderContent from "@/components/ui-custom/DisclosureHeaderContent";
+import FloatCounter from "@/components/ui-custom/FloatCounter";
 import Forbidden from "@/components/ui-custom/Forbidden";
 import Heading1 from "@/components/ui-custom/Heading1";
 import Heading2 from "@/components/ui-custom/Heading2";
@@ -83,8 +84,6 @@ import {
   Badge,
   Box,
   Center,
-  Circle,
-  Float,
   HStack,
   Icon,
   IconButton,
@@ -1374,25 +1373,17 @@ export default function Root() {
 
           {/* Float */}
           <CContainer flex={0} gap={4}>
-            <Heading6>Float</Heading6>
+            <Heading6>Float Counter</Heading6>
             <CenterContainer gap={4}>
               <IconButton variant={"surface"}>
-                <Float>
-                  <Circle px={"5px"} bg="red" color="white">
-                    3
-                  </Circle>
-                </Float>
+                <FloatCounter>3</FloatCounter>
                 <Icon>
                   <Bell />
                 </Icon>
               </IconButton>
 
               <BButton variant={"surface"}>
-                <Float>
-                  <Circle px={"5px"} bg="red" color="white">
-                    {formatNumber(4230)}
-                  </Circle>
-                </Float>
+                <FloatCounter>{formatNumber(4230)}</FloatCounter>
                 <Icon>
                   <SlidersHorizontal />
                 </Icon>
