@@ -304,7 +304,7 @@ const DatePickerInput = ({
 
           <DisclosureFooter>
             <BButton
-              variant={"subtle"}
+              variant={"outline"}
               onClick={() => {
                 setSelected(undefined);
               }}

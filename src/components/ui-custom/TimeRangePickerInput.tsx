@@ -794,7 +794,7 @@ const TimeRangePickerInput = ({
 
           <DisclosureFooter>
             <BButton
-              variant={"subtle"}
+              variant={"outline"}
               onClick={() => {
                 if (
                   selected &&

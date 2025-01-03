@@ -453,7 +453,7 @@ const TimePickerInput = ({
 
           <DisclosureFooter>
             <BButton
-              variant={"subtle"}
+              variant={"outline"}
               onClick={() => {
                 if (selected && hours === 0 && minutes === 0 && seconds === 0) {
                   setSelected(undefined);

@@ -318,7 +318,7 @@ const SelectInput = ({
               Reload
             </BButton> */}
               <BButton
-                variant={"subtle"}
+                variant={"outline"}
                 onClick={() => {
                   setSelected(undefined);
                 }}
