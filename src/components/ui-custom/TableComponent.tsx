@@ -88,8 +88,9 @@ const BatchOptions = ({
         borderRadius={0}
         aria-label="row options"
         _expanded={{ bg: "d2 !important" }}
+        _hover={{ bg: "d1" }}
       >
-        <BButton iconButton variant={"ghost"}>
+        <BButton iconButton unclicky variant={"plain"}>
           <Icon>
             <ListChecks />
           </Icon>
@@ -114,7 +115,7 @@ const BatchOptions = ({
             }}
             closeOnSelect={false}
           >
-            <Text fontWeight={550}>Pilih Semua</Text>
+            <Text>Pilih Semua</Text>
             <Checkbox borderColor={"d3"} checked={selectAllRows} size={"sm"} />
           </MenuItem>
 
@@ -484,6 +485,7 @@ const TableComponent = ({
                     <Center
                       w={"48px"}
                       h={"48px"}
+                      _hover={{ bg: "d1" }}
                       borderRight={"1px solid var(--divider3)"}
                       transition={"200ms"}
                       cursor={"pointer"}

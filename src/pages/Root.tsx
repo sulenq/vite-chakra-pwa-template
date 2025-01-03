@@ -1127,7 +1127,7 @@ const TableComponentDemo = () => {
       originalData={data}
       rowClick={(rowData) => {
         toaster.create({
-          type: "info",
+          type: "success",
           title: `Row Clicked`,
           description: `Data id = ${rowData.id}`,
           placement: iss ? "top" : "bottom-end",
