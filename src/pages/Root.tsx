@@ -1126,18 +1126,18 @@ const TableComponentDemo = () => {
       ths={ths}
       tds={tds}
       originalData={data}
-      // rowClick={(rowData) => {
-      //   toaster.create({
-      //     type: "success",
-      //     title: `Row Clicked`,
-      //     description: `Data id = ${rowData.id}`,
-      //     placement: iss ? "top" : "bottom-end",
-      //     action: {
-      //       label: "Close",
-      //       onClick: () => {},
-      //     },
-      //   });
-      // }}
+      rowClick={(rowData) => {
+        toaster.create({
+          type: "success",
+          title: `Row Clicked`,
+          description: `Data id = ${rowData.id}`,
+          placement: iss ? "top" : "bottom-end",
+          action: {
+            label: "Close",
+            onClick: () => {},
+          },
+        });
+      }}
       rowOptions={[
         {
           label: (
