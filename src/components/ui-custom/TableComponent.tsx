@@ -24,6 +24,7 @@ import { Checkbox } from "../ui/checkbox";
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "../ui/menu";
 import BButton from "./BButton";
 import CContainer from "./CContainer";
+import ConfirmationDisclosure from "./ConfirmationDisclosure";
 
 const RowOptions = ({
   rowData,
@@ -50,9 +51,30 @@ const RowOptions = ({
       <Portal container={tableRef}>
         <MenuContent zIndex={10} className="rowOptionsList" minW={"140px"}>
           {rowOptions?.map((option, i) => {
-            return option === "divider" ? (
-              <MenuSeparator key={i} />
-            ) : (
+            if (option === "divider") return <MenuSeparator key={i} />;
+
+            if (option.confirmation) {
+              return (
+                <ConfirmationDisclosure
+                  id={option.confirmation(rowData).id}
+                  title={option.confirmation(rowData).title}
+                  description={option.confirmation(rowData).description}
+                  confirmLabel={option.confirmation(rowData).confirmLabel}
+                  confirmCallback={option.confirmation(rowData).confirmCallback}
+                  key={i}
+                >
+                  <MenuItem
+                    key={i}
+                    value={option.label}
+                    {...option.menuItemProps}
+                  >
+                    {option.label}
+                  </MenuItem>
+                </ConfirmationDisclosure>
+              );
+            }
+
+            return (
               <MenuItem
                 key={i}
                 value={option.label}
@@ -60,7 +82,6 @@ const RowOptions = ({
                   option.callback && option.callback(rowData);
                 }}
                 {...option.menuItemProps}
-                // bg={"red"}
               >
                 {option.label}
               </MenuItem>

@@ -144,7 +144,7 @@ const DisclosureDemo = () => {
         </DisclosureBody>
 
         <DisclosureFooter>
-          <BButton variant={"subtle"} onClick={back}>
+          <BButton variant={"outline"} onClick={back}>
             Mehh B aja
           </BButton>
 
@@ -174,7 +174,7 @@ const DisclosureDemo2 = () => {
         </DisclosureBody>
 
         <DisclosureFooter>
-          <BButton variant={"subtle"} onClick={back}>
+          <BButton variant={"outline"} onClick={back}>
             Mehh B aja
           </BButton>
 
@@ -1199,6 +1199,12 @@ const TableComponentDemo = () => {
               },
             });
           },
+          confirmation: (rowData: any) => ({
+            id: `${rowData.id}`,
+            title: "Delete",
+            description: `Aksi ini tidak bisa dibatalkan, data id ${rowData.id}`,
+            confirmLabel: "Delete",
+          }),
         },
       ]}
       batchOptions={[

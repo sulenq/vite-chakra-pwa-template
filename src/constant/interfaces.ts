@@ -163,9 +163,12 @@ export type Type__TableRowOptions = (
       label: string;
       icon?: any;
       callback?: (rowData: any) => void;
-      confirmation: {
+      confirmation?: (rowData: any) => {
+        id: string;
         title: string;
-        desc: string;
+        description: string;
+        confirmLabel: string;
+        confirmCallback: () => void;
       };
       subMenu?: any; // unused yet
       menuItemProps?: MenuItemProps;
