@@ -1161,21 +1161,6 @@ const TableComponentDemo = () => {
           },
         },
         {
-          label: "Restore...",
-          callback: (rowData: any) => {
-            toaster.create({
-              type: "success",
-              title: `Restore`,
-              description: `Data id = ${rowData.id}`,
-              placement: iss ? "top" : "bottom-end",
-              action: {
-                label: "Close",
-                onClick: () => {},
-              },
-            });
-          },
-        },
-        {
           label: "Disabled Menu",
           menuItemProps: {
             disabled: true,
@@ -1186,43 +1171,28 @@ const TableComponentDemo = () => {
           label: "Delete...",
           menuItemProps: {
             color: "red.400",
-          },
-          callback: (rowData: any) => {
-            toaster.create({
-              type: "success",
-              title: `Delete`,
-              description: `Data id = ${rowData.id}`,
-              placement: iss ? "top" : "bottom-end",
-              action: {
-                label: "Close",
-                onClick: () => {},
-              },
-            });
           },
           confirmation: (rowData: any) => ({
             id: `${rowData.id}`,
             title: "Delete",
             description: `Aksi ini tidak bisa dibatalkan, data id ${rowData.id}`,
             confirmLabel: "Delete",
+            confirmCallback: () => {
+              toaster.create({
+                type: "success",
+                title: `Delete`,
+                description: `Data id = ${rowData.id}`,
+                placement: iss ? "top" : "bottom-end",
+                action: {
+                  label: "Close",
+                  onClick: () => {},
+                },
+              });
+            },
           }),
         },
       ]}
       batchOptions={[
-        {
-          label: "Restore...",
-          callback: (selectedRows: any) => {
-            toaster.create({
-              type: "success",
-              title: `Restore`,
-              description: `Data ids = ${selectedRows.join(", ")}`,
-              placement: iss ? "top" : "bottom-end",
-              action: {
-                label: "Close",
-                onClick: () => {},
-              },
-            });
-          },
-        },
         {
           label: "Disabled Menu",
           menuItemProps: {
@@ -1235,18 +1205,26 @@ const TableComponentDemo = () => {
           menuItemProps: {
             color: "red.400",
           },
-          callback: (selectedRows: any) => {
-            toaster.create({
-              type: "success",
-              title: `Delete`,
-              description: `Data ids = ${selectedRows.join(", ")}`,
-              placement: iss ? "top" : "bottom-end",
-              action: {
-                label: "Close",
-                onClick: () => {},
-              },
-            });
-          },
+          confirmation: (selectedRows: number[]) => ({
+            id: `${selectedRows.join("-")}`,
+            title: "Delete",
+            description: `Aksi ini tidak bisa dibatalkan, data ids ${selectedRows.join(
+              ", "
+            )}`,
+            confirmLabel: "Delete",
+            confirmCallback: () => {
+              toaster.create({
+                type: "success",
+                title: `Delete`,
+                description: `Data ids = ${selectedRows.join(", ")}`,
+                placement: iss ? "top" : "bottom-end",
+                action: {
+                  label: "Close",
+                  onClick: () => {},
+                },
+              });
+            },
+          }),
         },
       ]}
     />

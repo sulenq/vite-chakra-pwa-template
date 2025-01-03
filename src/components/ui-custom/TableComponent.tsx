@@ -143,9 +143,32 @@ const BatchOptions = ({
           <MenuSeparator />
 
           {batchOptions?.map((option, i) => {
-            return option === "divider" ? (
-              <MenuSeparator key={i} />
-            ) : (
+            if (option === "divider") return <MenuSeparator key={i} />;
+
+            if (option.confirmation) {
+              return (
+                <ConfirmationDisclosure
+                  id={option.confirmation(selectedRows).id}
+                  title={option.confirmation(selectedRows).title}
+                  description={option.confirmation(selectedRows).description}
+                  confirmLabel={option.confirmation(selectedRows).confirmLabel}
+                  confirmCallback={
+                    option.confirmation(selectedRows).confirmCallback
+                  }
+                  key={i}
+                >
+                  <MenuItem
+                    key={i}
+                    value={option.label}
+                    {...option.menuItemProps}
+                  >
+                    {option.label}
+                  </MenuItem>
+                </ConfirmationDisclosure>
+              );
+            }
+
+            return (
               <MenuItem
                 key={i}
                 value={option.label}

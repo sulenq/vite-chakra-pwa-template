@@ -162,8 +162,8 @@ export type Type__TableRowOptions = (
   | {
       label: string;
       icon?: any;
-      callback?: (rowData: any) => void;
-      confirmation?: (rowData: any) => {
+      callback?: (dataParams: any) => void;
+      confirmation?: (dataParams: any) => {
         id: string;
         title: string;
         description: string;
