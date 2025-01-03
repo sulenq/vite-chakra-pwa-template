@@ -1152,7 +1152,7 @@ const TableComponentDemo = () => {
           label: "Restore...",
         },
         {
-          label: "Disabled",
+          label: "Disabled Menu",
           menuItemProps: {
             disabled: true,
           },
@@ -1167,13 +1167,10 @@ const TableComponentDemo = () => {
       ]}
       batchOptions={[
         {
-          label: "Edit",
-        },
-        {
           label: "Restore...",
         },
         {
-          label: "Disabled",
+          label: "Disabled Menu",
           menuItemProps: {
             disabled: true,
           },
