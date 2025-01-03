@@ -19,6 +19,7 @@ interface Props {
   confirmCallback: () => void;
   children?: any;
   boxProps?: BoxProps;
+  disabled?: boolean;
 }
 
 const ConfirmationDisclosure = ({
@@ -29,13 +30,14 @@ const ConfirmationDisclosure = ({
   confirmCallback = () => {},
   boxProps,
   children,
+  disabled = false,
 }: Props) => {
   const { open, onOpen, onClose } = useDisclosure();
   useBackOnClose(`confirm-${title}-${id}`, open, onOpen, onClose);
 
   return (
     <>
-      <Box w={"full"} onClick={onOpen} {...boxProps}>
+      <Box w={"full"} onClick={disabled ? undefined : onOpen} {...boxProps}>
         {children}
       </Box>
 

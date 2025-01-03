@@ -143,6 +143,8 @@ const BatchOptions = ({
           <MenuSeparator />
 
           {batchOptions?.map((option, i) => {
+            const disabled = selectedRows?.length === 0;
+
             if (option === "divider") return <MenuSeparator key={i} />;
 
             if (option.confirmation) {
@@ -155,11 +157,13 @@ const BatchOptions = ({
                   confirmCallback={
                     option.confirmation(selectedRows).confirmCallback
                   }
+                  disabled={disabled}
                   key={i}
                 >
                   <MenuItem
                     key={i}
                     value={option.label}
+                    disabled={disabled}
                     {...option.menuItemProps}
                   >
                     {option.label}
@@ -175,6 +179,7 @@ const BatchOptions = ({
                 onClick={() => {
                   option.callback && option.callback(selectedRows);
                 }}
+                disabled={disabled}
                 {...option.menuItemProps}
               >
                 {option.label}
