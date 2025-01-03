@@ -314,7 +314,7 @@ const TableComponent = ({
         ) => number;
 
         const sortHandlers: Record<string, SortHandler> = {
-          numeric: (aValue, bValue, direction) =>
+          number: (aValue, bValue, direction) =>
             direction === "asc"
               ? Number(aValue) - Number(bValue)
               : Number(bValue) - Number(aValue),

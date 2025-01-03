@@ -1052,6 +1052,7 @@ const TableComponentDemo = () => {
       isSortable: true,
     },
   ];
+  // item = rowData
   const tds = data?.map((item: any) => ({
     id: item.id,
     columnsFormat: [
@@ -1101,7 +1102,7 @@ const TableComponentDemo = () => {
           item.jam_masuk,
           "basicShort"
         )} -  ${formatTimeFromDateFormat(item.jam_masuk)}`,
-        isTime: true,
+        dataType: "time" as "time",
       },
       {
         value: item.jam_keluar,
@@ -1111,7 +1112,7 @@ const TableComponentDemo = () => {
             item.jam_keluar,
             "basicShort"
           )} -  ${formatTimeFromDateFormat(item.jam_keluar)}`,
-        isTime: true,
+        dataType: "time" as "time",
       },
     ],
   }));
