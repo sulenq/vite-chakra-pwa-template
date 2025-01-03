@@ -1147,9 +1147,33 @@ const TableComponentDemo = () => {
           menuItemProps: {
             p: "0 !important",
           },
+          callback: (rowData: any) => {
+            toaster.create({
+              type: "success",
+              title: `Edit`,
+              description: `Data id = ${rowData.id}`,
+              placement: iss ? "top" : "bottom-end",
+              action: {
+                label: "Close",
+                onClick: () => {},
+              },
+            });
+          },
         },
         {
           label: "Restore...",
+          callback: (rowData: any) => {
+            toaster.create({
+              type: "success",
+              title: `Restore`,
+              description: `Data id = ${rowData.id}`,
+              placement: iss ? "top" : "bottom-end",
+              action: {
+                label: "Close",
+                onClick: () => {},
+              },
+            });
+          },
         },
         {
           label: "Disabled Menu",
@@ -1162,6 +1186,18 @@ const TableComponentDemo = () => {
           label: "Delete...",
           menuItemProps: {
             color: "red.400",
+          },
+          callback: (rowData: any) => {
+            toaster.create({
+              type: "success",
+              title: `Delete`,
+              description: `Data id = ${rowData.id}`,
+              placement: iss ? "top" : "bottom-end",
+              action: {
+                label: "Close",
+                onClick: () => {},
+              },
+            });
           },
         },
       ]}
@@ -1169,7 +1205,16 @@ const TableComponentDemo = () => {
         {
           label: "Restore...",
           callback: (selectedRows: any) => {
-            console.log(selectedRows);
+            toaster.create({
+              type: "success",
+              title: `Restore`,
+              description: `Data ids = ${selectedRows.join(", ")}`,
+              placement: iss ? "top" : "bottom-end",
+              action: {
+                label: "Close",
+                onClick: () => {},
+              },
+            });
           },
         },
         {
@@ -1185,7 +1230,16 @@ const TableComponentDemo = () => {
             color: "red.400",
           },
           callback: (selectedRows: any) => {
-            console.log(selectedRows);
+            toaster.create({
+              type: "success",
+              title: `Delete`,
+              description: `Data ids = ${selectedRows.join(", ")}`,
+              placement: iss ? "top" : "bottom-end",
+              action: {
+                label: "Close",
+                onClick: () => {},
+              },
+            });
           },
         },
       ]}
