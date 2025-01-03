@@ -562,6 +562,8 @@ const TimeRangePickerDemo = () => {
 };
 
 const TableComponentDemo = () => {
+  const iss = useIsSmScreenWidth();
+
   const res = {
     status: 200,
     message: "Data presensi berhasil ditampilkan.",
@@ -1052,7 +1054,6 @@ const TableComponentDemo = () => {
       isSortable: true,
     },
   ];
-  // item = rowData
   const tds = data?.map((item: any) => ({
     id: item.id,
     columnsFormat: [
@@ -1065,7 +1066,10 @@ const TableComponentDemo = () => {
               name={item.user.nama}
               src="https://bit.ly/sage-adebayo"
             />
-            <TruncatedText maxW={"200px"} truncate>
+            <TruncatedText
+              tooltipContent={item.user.nama}
+              textProps={{ maxW: "200px" }}
+            >
               {item.user.nama}
             </TruncatedText>
           </HStack>
@@ -1116,25 +1120,24 @@ const TableComponentDemo = () => {
       },
     ],
   }));
-  const iss = useIsSmScreenWidth();
 
   return (
     <TableComponent
       ths={ths}
       tds={tds}
       originalData={data}
-      rowClick={(rowData) => {
-        toaster.create({
-          type: "success",
-          title: `Row Clicked`,
-          description: `Data id = ${rowData.id}`,
-          placement: iss ? "top" : "bottom-end",
-          action: {
-            label: "Close",
-            onClick: () => {},
-          },
-        });
-      }}
+      // rowClick={(rowData) => {
+      //   toaster.create({
+      //     type: "success",
+      //     title: `Row Clicked`,
+      //     description: `Data id = ${rowData.id}`,
+      //     placement: iss ? "top" : "bottom-end",
+      //     action: {
+      //       label: "Close",
+      //       onClick: () => {},
+      //     },
+      //   });
+      // }}
       rowOptions={[
         {
           label: (

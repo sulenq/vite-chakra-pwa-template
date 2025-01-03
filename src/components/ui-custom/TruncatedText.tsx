@@ -1,56 +1,28 @@
-import { useEffect, useRef, useState } from "react";
 import { Text, TextProps } from "@chakra-ui/react";
-import {
-  PopoverContent,
-  PopoverRoot,
-  PopoverTitle,
-  PopoverTrigger,
-} from "../ui/popover";
+import { Tooltip, TooltipProps } from "../ui/tooltip";
 
-interface Props extends TextProps {
+interface Props extends Omit<TooltipProps, "content"> {
   children: string;
+  tooltipContent: any;
+  textProps?: TextProps;
 }
 
-const TruncatedText = ({ children, ...props }: Props) => {
-  const textRef = useRef<HTMLDivElement | null>(null);
-  const [overflow, setOverflow] = useState(false);
-
-  useEffect(() => {
-    if (textRef.current) {
-      const { scrollWidth, clientWidth } = textRef.current;
-      setOverflow(scrollWidth > clientWidth);
-    }
-  }, [children]);
-
-  if (!overflow) {
-    return (
-      <Text minW={"200px"} textAlign={"left"} truncate {...props}>
+const TruncatedText = ({
+  children,
+  tooltipContent,
+  textProps,
+  ...props
+}: Props) => {
+  return (
+    <Tooltip
+      content={tooltipContent}
+      positioning={{ placement: "bottom-start" }}
+      {...props}
+    >
+      <Text minW={"200px"} textAlign={"left"} truncate {...textProps}>
         {children}
       </Text>
-    );
-  }
-
-  console.log(overflow);
-
-  return (
-    <PopoverRoot positioning={{ placement: "bottom-start" }}>
-      <PopoverTrigger cursor={"pointer"}>
-        <Text
-          ref={textRef}
-          minW={"200px"}
-          textAlign={"left"}
-          truncate
-          {...props}
-        >
-          {children}
-        </Text>
-      </PopoverTrigger>
-      <PopoverContent w={"fit"}>
-        <PopoverTitle px={3} py={2}>
-          <Text>{children}</Text>
-        </PopoverTitle>
-      </PopoverContent>
-    </PopoverRoot>
+    </Tooltip>
   );
 };
 
