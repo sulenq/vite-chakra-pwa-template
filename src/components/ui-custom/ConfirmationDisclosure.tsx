@@ -10,6 +10,7 @@ import {
   DisclosureRoot,
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
+import { mainButtonSize } from "@/constant/sizes";
 
 interface Props {
   id: string;
@@ -53,7 +54,9 @@ const ConfirmationDisclosure = ({
 
           <DisclosureFooter>
             <BackButton />
-            <BButton onClick={confirmCallback}>{confirmLabel}</BButton>
+            <BButton size={mainButtonSize} onClick={confirmCallback}>
+              {confirmLabel}
+            </BButton>
           </DisclosureFooter>
         </DisclosureContent>
       </DisclosureRoot>
