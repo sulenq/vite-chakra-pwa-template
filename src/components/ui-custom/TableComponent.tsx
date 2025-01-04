@@ -18,6 +18,7 @@ import {
 import {
   ArrowDown,
   ArrowUp,
+  ArrowUpRight,
   CaretDown,
   CaretLeft,
   CaretRight,
@@ -749,33 +750,39 @@ const TableComponent = ({
                     </Text>
                   </CContainer>
 
-                  <form id="pageJumpForm" onSubmit={formik.handleSubmit}>
-                    <NumberInput
-                      inputValue={formik.values.page}
-                      onChangeSetter={(input) => {
-                        formik.setFieldValue("page", input);
-                      }}
-                      textAlign={"center"}
-                      borderColor={"d3"}
-                      onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
-                        if (e.key === "Enter") {
-                          formik.submitForm();
-                        }
-                      }}
-                      _focus={{ borderColor: "white" }}
-                    />
-                  </form>
+                  <HStack gap={1}>
+                    <form id="pageJumpForm" onSubmit={formik.handleSubmit}>
+                      <NumberInput
+                        inputValue={formik.values.page}
+                        onChangeSetter={(input) => {
+                          formik.setFieldValue("page", input);
+                        }}
+                        textAlign={"center"}
+                        borderColor={"d3"}
+                        onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                          if (e.key === "Enter") {
+                            formik.submitForm();
+                          }
+                        }}
+                        _focus={{ borderColor: "white" }}
+                      />
+                    </form>
 
-                  <BButton
-                    type="submit"
-                    form="pageJumpForm"
-                    w={"full"}
-                    mt={1}
-                    className="btn-solid"
-                    color={"white"}
-                  >
-                    Lompat
-                  </BButton>
+                    <BButton
+                      iconButton
+                      type="submit"
+                      form="pageJumpForm"
+                      mr={"1px"}
+                      className="btn-solid"
+                      borderColor={"d3"}
+                      // variant={"outline"}
+                      // color={"white"}
+                    >
+                      <Icon fontSize={"1rem"}>
+                        <ArrowUpRight />
+                      </Icon>
+                    </BButton>
+                  </HStack>
                 </MenuContent>
               </MenuRoot>
 

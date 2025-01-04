@@ -1238,7 +1238,7 @@ const TableComponentDemo = () => {
       pageControl={pageControl}
       setPageControl={setPageControl}
       footerContent={
-        <Text opacity={0.3} my={"auto"} textAlign={"center"}>
+        <Text opacity={0.5} my={"auto"} textAlign={"center"}>
           Tabel footer note example
         </Text>
       }
