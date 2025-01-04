@@ -103,6 +103,7 @@ import {
   Trash,
 } from "@phosphor-icons/react";
 import { useFormik } from "formik";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 
@@ -1121,6 +1122,9 @@ const TableComponentDemo = () => {
     ],
   }));
 
+  const [limitControl, setLimitControl] = useState(10);
+  const [pageControl, setPageControl] = useState(1);
+
   return (
     <TableComponent
       ths={ths}
@@ -1228,6 +1232,11 @@ const TableComponentDemo = () => {
           }),
         },
       ]}
+      limitControl={limitControl}
+      setLimitControl={setLimitControl}
+      pagination={res.pagination}
+      pageControl={pageControl}
+      setPageControl={setPageControl}
     />
   );
 };

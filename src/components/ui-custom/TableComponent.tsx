@@ -6,25 +6,33 @@ import {
 import formatDate from "@/utils/formatDate";
 import {
   Center,
+  Group,
   HStack,
   Icon,
   MenuSeparator,
   Portal,
+  SimpleGrid,
   Table,
   Text,
 } from "@chakra-ui/react";
 import {
   ArrowDown,
   ArrowUp,
+  CaretDown,
+  CaretLeft,
+  CaretRight,
   DotsThreeVertical,
   ListChecks,
 } from "@phosphor-icons/react";
+import { useFormik } from "formik";
 import { useEffect, useRef, useState } from "react";
+import * as yup from "yup";
 import { Checkbox } from "../ui/checkbox";
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "../ui/menu";
 import BButton from "./BButton";
 import CContainer from "./CContainer";
 import ConfirmationDisclosure from "./ConfirmationDisclosure";
+import NumberInput from "./NumberInput";
 
 const RowOptions = ({
   rowData,
@@ -203,6 +211,15 @@ const TableComponent = ({
   initialSortOrder,
   initialSortColumnIndex,
   trBodyProps,
+  initialLimit = 10,
+  initialPage = 1,
+  footerContent,
+  pagination,
+  pageControl,
+  setPageControl,
+  limitControl,
+  setLimitControl,
+
   ...props
 }: Interface__TableComponent) => {
   const tableHeader = columnsConfig
@@ -248,9 +265,6 @@ const TableComponent = ({
       rowClick(rowData);
     }
   };
-  // const [rowHoverIndex, setRowHoverIndex] = useState<number | undefined>(
-  //   undefined
-  // );
 
   // Batch options
   const handleSelectAllRows = (isChecked: boolean) => {
@@ -370,6 +384,28 @@ const TableComponent = ({
     return null;
   };
 
+  // Table footer config
+  const [limit, setLimit] = useState(initialLimit);
+  const limits = [initialLimit, initialLimit * 5, initialLimit * 10];
+
+  const formik = useFormik({
+    validateOnChange: false,
+    initialValues: {
+      page: initialPage,
+    },
+    validationSchema: yup.object().shape({}),
+    onSubmit: (values) => {
+      console.log("jancok");
+      if (setPageControl) setPageControl(values.page);
+    },
+  });
+
+  useEffect(() => {
+    if (pageControl) {
+      formik.setFieldValue("page", pageControl);
+    }
+  }, [pageControl]);
+
   const tableRef = useRef(null);
 
   const dataToMap =
@@ -379,50 +415,51 @@ const TableComponent = ({
       : originalDataState;
 
   return (
-    <CContainer
-      minW={"full"}
-      border={"1px solid"}
-      borderColor={"d3"}
-      overflow={"auto"}
-      borderRadius={6}
-      className="scrollX scrollY"
-      {...props}
-    >
-      <Table.Root
-        ref={tableRef}
-        w={tableHeader.length > 1 ? "full" : "fit-content"}
+    <CContainer>
+      <CContainer
+        minW={"full"}
+        border={"1px solid"}
+        borderColor={"d3"}
+        overflow={"auto"}
+        borderRadius={6}
+        className="scrollX scrollY"
+        {...props}
       >
-        <Table.Header>
-          <Table.Row position={"sticky"} top={0} zIndex={3}>
-            {batchOptions && (
-              <Table.Cell
-                h={"48px"}
-                w={"48px !important"}
-                minW={"0% !important"}
-                maxW={"48px !important"}
-                p={0}
-                position={"sticky"}
-                left={0}
-              >
-                <Center
+        <Table.Root
+          ref={tableRef}
+          w={tableHeader.length > 1 ? "full" : "fit-content"}
+        >
+          <Table.Header>
+            <Table.Row position={"sticky"} top={0} zIndex={3}>
+              {batchOptions && (
+                <Table.Cell
                   h={"48px"}
-                  w={"48px"}
-                  borderRight={"1px solid var(--divider3)"}
-                  borderBottom={"1px solid var(--divider3)"}
-                  bg={"body"}
+                  w={"48px !important"}
+                  minW={"0% !important"}
+                  maxW={"48px !important"}
+                  p={0}
+                  position={"sticky"}
+                  left={0}
                 >
-                  <BatchOptions
-                    selectedRows={selectedRows}
-                    batchOptions={batchOptions}
-                    selectAllRows={selectAllRows}
-                    handleSelectAllRows={handleSelectAllRows}
-                    tableRef={tableRef}
-                  />
-                </Center>
-              </Table.Cell>
-            )}
+                  <Center
+                    h={"48px"}
+                    w={"48px"}
+                    borderRight={"1px solid var(--divider3)"}
+                    borderBottom={"1px solid var(--divider3)"}
+                    bg={"body"}
+                  >
+                    <BatchOptions
+                      selectedRows={selectedRows}
+                      batchOptions={batchOptions}
+                      selectAllRows={selectAllRows}
+                      handleSelectAllRows={handleSelectAllRows}
+                      tableRef={tableRef}
+                    />
+                  </Center>
+                </Table.Cell>
+              )}
 
-            {/* {rowClick && (
+              {/* {rowClick && (
               <Table.ColumnHeader
                 bg={"body"}
                 whiteSpace={"nowrap"}
@@ -441,118 +478,118 @@ const TableComponent = ({
               </Table.ColumnHeader>
             )} */}
 
-            {tableHeader.map((tableColumnHeader, i) => (
-              <Table.ColumnHeader
-                key={i}
-                bg={"body"}
-                whiteSpace={"nowrap"}
-                onClick={() => {
-                  tableColumnHeader.isSortable && requestSort(i);
-                }}
-                cursor={tableColumnHeader?.isSortable ? "pointer" : "auto"}
-                borderBottom={"none !important"}
-                p={0}
-                {...tableColumnHeader?.tableColumnHeaderProps}
-              >
-                <HStack
-                  borderBottom={"1px solid var(--divider3)"}
-                  px={4}
-                  py={3}
-                  gap={4}
-                  h={"48px"}
-                  pl={i === 0 ? 4 : ""}
-                  pr={i === ths.length - 1 ? 4 : ""}
-                  {...tableColumnHeader?.stackProps}
-                >
-                  <Text>{tableColumnHeader?.th}</Text>
-
-                  {renderSortIcon(i)}
-                </HStack>
-              </Table.ColumnHeader>
-            ))}
-
-            {rowOptions && (
-              <Table.ColumnHeader
-                h={"48px"}
-                w={"48px !important"}
-                minW={"0% !important"}
-                maxW={"48px !important"}
-                p={0}
-                position={"sticky"}
-                right={"0px"}
-                borderBottom={"none !important"}
-              >
-                <Center
-                  h={"48px"}
-                  w={"48px"}
-                  borderLeft={"1px solid var(--divider3)"}
-                  borderBottom={"1px solid var(--divider3)"}
+              {tableHeader.map((tableColumnHeader, i) => (
+                <Table.ColumnHeader
+                  key={i}
                   bg={"body"}
-                ></Center>
-              </Table.ColumnHeader>
-            )}
-          </Table.Row>
-        </Table.Header>
-
-        <Table.Body>
-          {dataToMap?.map((row, rowIndex) => {
-            return (
-              <Table.Row
-                key={rowIndex}
-                role="group"
-                transition={"200ms"}
-                onClick={() => {
-                  handleRowClick(row);
-                }}
-                cursor={rowClick ? "pointer" : "auto"}
-                px={2}
-                borderBottom={"1px solid"}
-                borderColor={"d1"}
-                position={"relative"}
-                bg={"body"}
-                _hover={{ bg: rowClick ? "d1" : "" }}
-                // onMouseEnter={() => {
-                //   setRowHoverIndex(rowIndex);
-                // }}
-                // onMouseLeave={() => {
-                //   setRowHoverIndex(undefined);
-                // }}
-                {...trBodyProps}
-              >
-                {batchOptions && (
-                  <Table.Cell
+                  whiteSpace={"nowrap"}
+                  onClick={() => {
+                    tableColumnHeader.isSortable && requestSort(i);
+                  }}
+                  cursor={tableColumnHeader?.isSortable ? "pointer" : "auto"}
+                  borderBottom={"none !important"}
+                  p={0}
+                  {...tableColumnHeader?.tableColumnHeaderProps}
+                >
+                  <HStack
+                    borderBottom={"1px solid var(--divider3)"}
+                    px={4}
+                    py={3}
+                    gap={4}
                     h={"48px"}
-                    w={"48px !important"}
-                    minW={"0% !important"}
-                    maxW={"48px !important"}
-                    p={0}
-                    position={"sticky"}
-                    left={0}
-                    bg={"body"}
-                    zIndex={2}
+                    pl={i === 0 ? 4 : ""}
+                    pr={i === ths.length - 1 ? 4 : ""}
+                    {...tableColumnHeader?.stackProps}
                   >
-                    <Center
-                      w={"48px"}
-                      h={"48px"}
-                      _hover={{ bg: "d1" }}
-                      borderRight={"1px solid var(--divider3)"}
-                      transition={"200ms"}
-                      cursor={"pointer"}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleRowSelection(row.id);
-                      }}
-                    >
-                      <Checkbox
-                        colorScheme="ap"
-                        checked={selectedRows.includes(row.id)}
-                        size={"sm"}
-                      />
-                    </Center>
-                  </Table.Cell>
-                )}
+                    <Text>{tableColumnHeader?.th}</Text>
 
-                {/* {rowClick && (
+                    {renderSortIcon(i)}
+                  </HStack>
+                </Table.ColumnHeader>
+              ))}
+
+              {rowOptions && (
+                <Table.ColumnHeader
+                  h={"48px"}
+                  w={"48px !important"}
+                  minW={"0% !important"}
+                  maxW={"48px !important"}
+                  p={0}
+                  position={"sticky"}
+                  right={"0px"}
+                  borderBottom={"none !important"}
+                >
+                  <Center
+                    h={"48px"}
+                    w={"48px"}
+                    borderLeft={"1px solid var(--divider3)"}
+                    borderBottom={"1px solid var(--divider3)"}
+                    bg={"body"}
+                  ></Center>
+                </Table.ColumnHeader>
+              )}
+            </Table.Row>
+          </Table.Header>
+
+          <Table.Body>
+            {dataToMap?.map((row, rowIndex) => {
+              return (
+                <Table.Row
+                  key={rowIndex}
+                  role="group"
+                  transition={"200ms"}
+                  onClick={() => {
+                    handleRowClick(row);
+                  }}
+                  cursor={rowClick ? "pointer" : "auto"}
+                  px={2}
+                  borderBottom={"1px solid"}
+                  borderColor={"d1"}
+                  position={"relative"}
+                  bg={"body"}
+                  _hover={{ bg: rowClick ? "d1" : "" }}
+                  // onMouseEnter={() => {
+                  //   setRowHoverIndex(rowIndex);
+                  // }}
+                  // onMouseLeave={() => {
+                  //   setRowHoverIndex(undefined);
+                  // }}
+                  {...trBodyProps}
+                >
+                  {batchOptions && (
+                    <Table.Cell
+                      h={"48px"}
+                      w={"48px !important"}
+                      minW={"0% !important"}
+                      maxW={"48px !important"}
+                      p={0}
+                      position={"sticky"}
+                      left={0}
+                      bg={"body"}
+                      zIndex={2}
+                    >
+                      <Center
+                        w={"48px"}
+                        h={"48px"}
+                        _hover={{ bg: "d1" }}
+                        borderRight={"1px solid var(--divider3)"}
+                        transition={"200ms"}
+                        cursor={"pointer"}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleRowSelection(row.id);
+                        }}
+                      >
+                        <Checkbox
+                          colorScheme="ap"
+                          checked={selectedRows.includes(row.id)}
+                          size={"sm"}
+                        />
+                      </Center>
+                    </Table.Cell>
+                  )}
+
+                  {/* {rowClick && (
                   <Table.Cell
                     minW={"2px"}
                     maxW={"2px"}
@@ -570,66 +607,191 @@ const TableComponent = ({
                   </Table.Cell>
                 )} */}
 
-                {row.columnsFormat.map((col, colIndex) => (
-                  <Table.Cell
-                    key={colIndex}
-                    whiteSpace={"nowrap"}
-                    p={0}
-                    {...col?.tableCellProps}
-                  >
-                    <HStack
-                      py={3}
-                      px={4}
-                      h={"48px"}
-                      transition={"200ms"}
-                      {...col?.stackProps}
+                  {row.columnsFormat.map((col, colIndex) => (
+                    <Table.Cell
+                      key={colIndex}
+                      whiteSpace={"nowrap"}
+                      p={0}
+                      {...col?.tableCellProps}
                     >
-                      {typeof col?.td === "string" ||
-                      typeof col?.td === "number" ? (
-                        <Text>{col?.td}</Text>
-                      ) : (
-                        col?.td
-                      )}
-                    </HStack>
-                  </Table.Cell>
-                ))}
+                      <HStack
+                        py={3}
+                        px={4}
+                        h={"48px"}
+                        transition={"200ms"}
+                        {...col?.stackProps}
+                      >
+                        {typeof col?.td === "string" ||
+                        typeof col?.td === "number" ? (
+                          <Text>{col?.td}</Text>
+                        ) : (
+                          col?.td
+                        )}
+                      </HStack>
+                    </Table.Cell>
+                  ))}
 
-                {rowOptions && (
-                  <Table.Cell
-                    h={"48px"}
-                    w={"48px !important"}
-                    minW={"0% !important"}
-                    maxW={"48px !important"}
-                    p={0}
-                    position={"sticky"}
-                    right={"0px"}
-                    bg={"body"}
-                    zIndex={2}
-                  >
-                    <Center
+                  {rowOptions && (
+                    <Table.Cell
                       h={"48px"}
-                      w={"48px"}
-                      borderLeft={"1px solid"}
-                      borderColor={"d3"}
-                      _hover={{ bg: "d1" }}
-                      transition={"200ms"}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                      }}
+                      w={"48px !important"}
+                      minW={"0% !important"}
+                      maxW={"48px !important"}
+                      p={0}
+                      position={"sticky"}
+                      right={"0px"}
+                      bg={"body"}
+                      zIndex={2}
                     >
-                      <RowOptions
-                        rowData={row}
-                        rowOptions={rowOptions}
-                        tableRef={tableRef}
-                      />
-                    </Center>
-                  </Table.Cell>
-                )}
-              </Table.Row>
-            );
-          })}
-        </Table.Body>
-      </Table.Root>
+                      <Center
+                        h={"48px"}
+                        w={"48px"}
+                        borderLeft={"1px solid"}
+                        borderColor={"d3"}
+                        _hover={{ bg: "d1" }}
+                        transition={"200ms"}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                        }}
+                      >
+                        <RowOptions
+                          rowData={row}
+                          rowOptions={rowOptions}
+                          tableRef={tableRef}
+                        />
+                      </Center>
+                    </Table.Cell>
+                  )}
+                </Table.Row>
+              );
+            })}
+          </Table.Body>
+        </Table.Root>
+      </CContainer>
+
+      {/* Table footer */}
+      <SimpleGrid columns={[1, null, 3]} gap={5} mt={4}>
+        <CContainer align={"start"}>
+          {limitControl && setLimitControl && (
+            <MenuRoot>
+              <MenuTrigger>
+                <BButton unclicky variant={"outline"}>
+                  Tampilkan <b>{limit === 0 ? "Semua" : limit}</b>
+                  <Icon fontSize={"sm"}>
+                    <CaretDown />
+                  </Icon>
+                </BButton>
+              </MenuTrigger>
+
+              <MenuContent>
+                {limits.map((item, i) => (
+                  <MenuItem
+                    key={i}
+                    value={`${item}`}
+                    fontWeight={item === limit ? "bold" : ""}
+                    onClick={() => {
+                      setLimit(item);
+                    }}
+                  >
+                    {item}
+                  </MenuItem>
+                ))}
+                <MenuItem
+                  value={`0`}
+                  fontWeight={0 === limit ? "bold" : ""}
+                  onClick={() => {
+                    setLimit(0);
+                  }}
+                >
+                  Semua
+                </MenuItem>
+              </MenuContent>
+            </MenuRoot>
+          )}
+        </CContainer>
+
+        <CContainer>{footerContent}</CContainer>
+
+        <CContainer align={"end"}>
+          {pageControl && setPageControl && pagination && (
+            <Group attached>
+              <BButton
+                unclicky
+                iconButton
+                variant={"outline"}
+                onClick={() => {
+                  if (pageControl > 1) {
+                    setPageControl(pageControl - 1);
+                  }
+                }}
+                disabled={pageControl <= 1}
+              >
+                <Icon maxH={"14px"}>
+                  <CaretLeft />
+                </Icon>
+              </BButton>
+
+              <MenuRoot>
+                <MenuTrigger>
+                  <BButton unclicky variant={"outline"} borderRadius={0}>
+                    <b>{pageControl}</b>
+                  </BButton>
+                </MenuTrigger>
+
+                <MenuContent w={"140px"}>
+                  <CContainer px={2} py={1} mb={1}>
+                    <Text fontSize={"xs"} opacity={0.5} fontWeight={500}>
+                      Terakhir : {pagination?.last}
+                    </Text>
+                  </CContainer>
+
+                  <form id="pageJumpForm" onSubmit={formik.handleSubmit}>
+                    <NumberInput
+                      inputValue={formik.values.page}
+                      onChangeSetter={(input) => {
+                        formik.setFieldValue("page", input);
+                      }}
+                      textAlign={"center"}
+                      borderColor={"d3"}
+                      onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                        if (e.key === "Enter") {
+                          formik.submitForm();
+                        }
+                      }}
+                      _focus={{ borderColor: "white" }}
+                    />
+                  </form>
+
+                  <BButton
+                    type="submit"
+                    form="pageJumpForm"
+                    w={"full"}
+                    mt={1}
+                    className="btn-solid"
+                    color={"white"}
+                  >
+                    Lompat
+                  </BButton>
+                </MenuContent>
+              </MenuRoot>
+
+              <BButton
+                iconButton
+                variant={"outline"}
+                ml={"-1px"}
+                onClick={() => {
+                  setPageControl(pageControl + 1);
+                }}
+                disabled={pageControl === pagination.meta.last_page}
+              >
+                <Icon maxH={"14px"}>
+                  <CaretRight />
+                </Icon>
+              </BButton>
+            </Group>
+          )}
+        </CContainer>
+      </SimpleGrid>
     </CContainer>
   );
 };

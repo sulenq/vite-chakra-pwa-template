@@ -157,8 +157,16 @@ export interface Interface__TableComponent extends StackProps {
   initialSortOrder?: "asc" | "desc";
   initialSortColumnIndex?: number;
   trBodyProps?: TableRowProps;
+  initialLimit?: number;
+  initialPage?: number;
+  footerContent?: string;
+  pagination?: any;
+  pageControl?: number;
+  setPageControl?: Dispatch<number>;
+  limitControl?: number;
+  setLimitControl?: Dispatch<number>;
 }
-export type Type__TableRowOptions = (
+export type Type__TableOptions = (
   | {
       label: string;
       icon?: any;
@@ -177,12 +185,12 @@ export type Type__TableRowOptions = (
 )[];
 export interface Interface__RowOptions {
   rowData: any;
-  rowOptions: Type__TableRowOptions;
+  rowOptions: Type__TableOptions;
   tableRef: any;
 }
 export interface Interface__BatchOptions {
   selectedRows: number[];
-  batchOptions: Type__TableRowOptions;
+  batchOptions: Type__TableOptions;
   selectAllRows: boolean;
   handleSelectAllRows: (isChecked: boolean) => void;
   tableRef: any;
