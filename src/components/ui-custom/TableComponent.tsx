@@ -395,7 +395,6 @@ const TableComponent = ({
     },
     validationSchema: yup.object().shape({}),
     onSubmit: (values) => {
-      console.log("jancok");
       if (setPageControl) setPageControl(values.page);
     },
   });
@@ -733,7 +732,12 @@ const TableComponent = ({
 
               <MenuRoot>
                 <MenuTrigger>
-                  <BButton unclicky variant={"outline"} borderRadius={0}>
+                  <BButton
+                    unclicky
+                    variant={"outline"}
+                    borderRadius={0}
+                    minW={"45px"}
+                  >
                     <b>{pageControl}</b>
                   </BButton>
                 </MenuTrigger>
