@@ -1237,6 +1237,11 @@ const TableComponentDemo = () => {
       pagination={res.pagination}
       pageControl={pageControl}
       setPageControl={setPageControl}
+      footerContent={
+        <Text opacity={0.3} my={"auto"} textAlign={"center"}>
+          Tabel footer note example
+        </Text>
+      }
     />
   );
 };

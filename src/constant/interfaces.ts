@@ -159,7 +159,7 @@ export interface Interface__TableComponent extends StackProps {
   trBodyProps?: TableRowProps;
   initialLimit?: number;
   initialPage?: number;
-  footerContent?: string;
+  footerContent?: any;
   pagination?: any;
   pageControl?: number;
   setPageControl?: Dispatch<number>;
