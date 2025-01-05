@@ -33,6 +33,8 @@ import BButton from "./BButton";
 import CContainer from "./CContainer";
 import ConfirmationDisclosure from "./ConfirmationDisclosure";
 import NumberInput from "./NumberInput";
+import { toaster } from "../ui/toaster";
+import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 
 const RowOptions = ({
   rowData,
@@ -222,6 +224,8 @@ const TableComponent = ({
 
   ...props
 }: Interface__TableComponent) => {
+  const iss = useIsSmScreenWidth();
+
   const tableHeader = columnsConfig
     ? columnsConfig.map((columnIndex) => ths[columnIndex])
     : ths;
@@ -384,10 +388,11 @@ const TableComponent = ({
     return null;
   };
 
-  // Table footer config
+  // Limitation
   const [limit, setLimit] = useState(initialLimit);
   const limits = [initialLimit, initialLimit * 5, initialLimit * 10];
 
+  // Pagination
   const formik = useFormik({
     validateOnChange: false,
     initialValues: {
@@ -395,10 +400,27 @@ const TableComponent = ({
     },
     validationSchema: yup.object().shape({}),
     onSubmit: (values) => {
-      if (setPageControl) setPageControl(values.page);
+      if (
+        values.page &&
+        values.page > 0 &&
+        values.page <= pagination?.meta?.last_page &&
+        setPageControl
+      ) {
+        setPageControl(values.page);
+      } else {
+        toaster.create({
+          type: "error",
+          title: `Lompat Page Gagal`,
+          description: `Input harus lebih dari 0 dan kurang dari/sama dengan halaman terakhir`,
+          placement: iss ? "top" : "bottom-end",
+          action: {
+            label: "Close",
+            onClick: () => {},
+          },
+        });
+      }
     },
   });
-
   useEffect(() => {
     if (pageControl) {
       formik.setFieldValue("page", pageControl);
@@ -745,7 +767,7 @@ const TableComponent = ({
                 <MenuContent w={"140px"}>
                   <CContainer px={2} py={1} mb={1}>
                     <Text fontSize={"xs"} opacity={0.5} fontWeight={500}>
-                      Terakhir : {pagination?.last}
+                      Terakhir : {pagination?.meta?.last_page || "?"}
                     </Text>
                   </CContainer>
 
