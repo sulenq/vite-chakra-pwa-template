@@ -1389,14 +1389,14 @@ export default function Root() {
           <CContainer flex={0} gap={4}>
             <Heading6>Float Counter</Heading6>
             <CenterContainer gap={4}>
-              <IconButton variant={"surface"}>
+              <IconButton variant={"outline"}>
                 <FloatCounter>3</FloatCounter>
                 <Icon>
                   <Bell />
                 </Icon>
               </IconButton>
 
-              <BButton variant={"surface"}>
+              <BButton variant={"outline"}>
                 <FloatCounter>{formatNumber(4230)}</FloatCounter>
                 <Icon>
                   <SlidersHorizontal />
