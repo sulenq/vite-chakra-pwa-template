@@ -1,22 +1,26 @@
-const formatNumber = (numParam: number | string | undefined | null) => {
-  let formattedNum;
-  //@ts-ignore
-  let num;
+const formatNumber = (numParam: number | string | undefined | null): string => {
+  if (numParam === null || numParam === undefined) return "";
+
+  let num: number;
+
   if (typeof numParam === "string") {
-    num = parseInt(numParam);
+    num = parseFloat(numParam.replace(",", "."));
   } else {
     num = numParam;
   }
 
-  if (num !== 0) {
-    formattedNum = num?.toLocaleString("id-ID");
-  } else if (num === 0) {
-    formattedNum = "0";
-  } else {
-    formattedNum = "";
-  }
+  // Cek apakah angka memiliki desimal
+  const hasDecimal = num.toString().includes(".");
 
-  return formattedNum || "";
+  // Format angka
+  const formattedNum = hasDecimal
+    ? num.toLocaleString("id-ID", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 20,
+      })
+    : num.toLocaleString("id-ID");
+
+  return formattedNum;
 };
 
 export default formatNumber;
