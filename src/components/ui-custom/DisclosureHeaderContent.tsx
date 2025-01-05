@@ -6,13 +6,18 @@ import Heading6 from "./Heading6";
 type Props = {
   title?: string;
   withCloseButton?: boolean;
+  content?: any;
 };
-const DisclosureHeaderContent = ({ title, withCloseButton = true }: Props) => {
+const DisclosureHeaderContent = ({
+  title,
+  withCloseButton = true,
+  content,
+}: Props) => {
   const handleBackOnDefaultPage = useBackOnDefaultPage();
 
   return (
     <HStack justify={"space-between"}>
-      <Heading6 fontWeight={"semibold"}>{title}</Heading6>
+      {content ? content : <Heading6 fontWeight={"semibold"}>{title}</Heading6>}
 
       {withCloseButton && (
         <DisclosureCloseTrigger
