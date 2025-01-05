@@ -409,8 +409,8 @@ const DateRangePickerInput = ({
                             const showError = () => {
                               toaster.create({
                                 type: "error",
-                                title: `Tidak boleh melebihi maksimal rentang ${maxRange} hari `,
-                                description: "",
+                                title: "Gagal Memilih Rentang Tanggal",
+                                description: `Tidak boleh melebihi maksimal rentang ${maxRange} hari `,
                                 placement: iss ? "top" : "bottom-end",
                                 action: {
                                   label: "Close",
