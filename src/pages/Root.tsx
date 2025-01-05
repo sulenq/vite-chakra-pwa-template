@@ -1033,7 +1033,7 @@ const TableComponentDemo = () => {
       isSortable: true,
     },
     {
-      th: "Jenis Karyawan",
+      th: "Jenis Jam Kerja",
       isSortable: true,
       stackProps: {
         justify: "center",
