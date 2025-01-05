@@ -18,7 +18,6 @@ import {
 import {
   ArrowDown,
   ArrowUp,
-  ArrowUpRight,
   CaretDown,
   CaretLeft,
   CaretRight,
@@ -670,8 +669,8 @@ const TableComponent = ({
       </CContainer>
 
       {/* Table footer */}
-      <SimpleGrid columns={[1, null, 3]} gap={5} mt={4}>
-        <CContainer align={"start"}>
+      <SimpleGrid columns={[1, null, 3]} gap={4} mt={4}>
+        <CContainer align={"start"} order={[2, null, 1]}>
           {limitControl && setLimitControl && (
             <MenuRoot>
               <MenuTrigger>
@@ -710,9 +709,9 @@ const TableComponent = ({
           )}
         </CContainer>
 
-        <CContainer>{footerContent}</CContainer>
+        <CContainer order={[1, null, 2]}>{footerContent}</CContainer>
 
-        <CContainer align={"end"}>
+        <CContainer order={[3]} align={["start", null, "end"]}>
           {pageControl && setPageControl && pagination && (
             <Group attached>
               <BButton
@@ -750,39 +749,35 @@ const TableComponent = ({
                     </Text>
                   </CContainer>
 
-                  <HStack gap={1}>
-                    <form id="pageJumpForm" onSubmit={formik.handleSubmit}>
-                      <NumberInput
-                        inputValue={formik.values.page}
-                        onChangeSetter={(input) => {
-                          formik.setFieldValue("page", input);
-                        }}
-                        textAlign={"center"}
-                        borderColor={"d3"}
-                        onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
-                          if (e.key === "Enter") {
-                            formik.submitForm();
-                          }
-                        }}
-                        _focus={{ borderColor: "white" }}
-                      />
-                    </form>
-
-                    <BButton
-                      iconButton
-                      type="submit"
-                      form="pageJumpForm"
-                      mr={"1px"}
-                      className="btn-solid"
+                  <form id="pageJumpForm" onSubmit={formik.handleSubmit}>
+                    <NumberInput
+                      inputValue={formik.values.page}
+                      onChangeSetter={(input) => {
+                        formik.setFieldValue("page", input);
+                      }}
+                      textAlign={"center"}
                       borderColor={"d3"}
-                      // variant={"outline"}
-                      // color={"white"}
-                    >
-                      <Icon fontSize={"1rem"}>
-                        <ArrowUpRight />
-                      </Icon>
-                    </BButton>
-                  </HStack>
+                      onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                        if (e.key === "Enter") {
+                          formik.submitForm();
+                        }
+                      }}
+                      _focus={{ borderColor: "white" }}
+                    />
+                  </form>
+
+                  <BButton
+                    type="submit"
+                    form="pageJumpForm"
+                    w={"full"}
+                    mt={1}
+                    className="btn-solid"
+                    borderColor={"d3"}
+                    // variant={"outline"}
+                    color={"white"}
+                  >
+                    Lompat
+                  </BButton>
                 </MenuContent>
               </MenuRoot>
 
