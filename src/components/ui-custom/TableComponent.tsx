@@ -35,6 +35,7 @@ import ConfirmationDisclosure from "./ConfirmationDisclosure";
 import NumberInput from "./NumberInput";
 import { toaster } from "../ui/toaster";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
+import useScreen from "@/hooks/useScreen";
 
 const RowOptions = ({
   rowData,
@@ -221,10 +222,10 @@ const TableComponent = ({
   setPageControl,
   limitControl,
   setLimitControl,
-
   ...props
 }: Interface__TableComponent) => {
   const iss = useIsSmScreenWidth();
+  const { sh } = useScreen();
 
   const tableHeader = columnsConfig
     ? columnsConfig.map((columnIndex) => ths[columnIndex])
@@ -436,7 +437,7 @@ const TableComponent = ({
       : originalDataState;
 
   return (
-    <CContainer>
+    <CContainer flex={1} minH={props?.minH || sh < 625 ? "400px" : ""}>
       <CContainer
         minW={"full"}
         border={"1px solid"}
@@ -444,6 +445,7 @@ const TableComponent = ({
         overflow={"auto"}
         borderRadius={6}
         className="scrollX scrollY"
+        flex={1}
         {...props}
       >
         <Table.Root

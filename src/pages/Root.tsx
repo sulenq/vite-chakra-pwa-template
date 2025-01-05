@@ -1848,7 +1848,7 @@ export default function Root() {
         {/* Table Component */}
         <CContainer flex={0} mt={12} gap={4}>
           <Heading6>Table Component</Heading6>
-          <CenterContainer>
+          <CenterContainer flexDir={"column"}>
             <TableComponentDemo />
           </CenterContainer>
         </CContainer>
