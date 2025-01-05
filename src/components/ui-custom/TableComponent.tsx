@@ -393,7 +393,9 @@ const TableComponent = ({
   // Limitation
   const [limit, setLimit] = useState(initialLimit);
   const limits = limitOptions || [
-    (initialLimit, initialLimit * 5, initialLimit * 10),
+    initialLimit,
+    initialLimit * 5,
+    initialLimit * 10,
   ];
 
   // Pagination
