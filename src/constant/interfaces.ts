@@ -163,6 +163,7 @@ export interface Interface__TableComponent extends StackProps {
   pagination?: any;
   pageControl?: number;
   setPageControl?: Dispatch<number>;
+  limitOptions?: number[];
   limitControl?: number;
   setLimitControl?: Dispatch<number>;
 }

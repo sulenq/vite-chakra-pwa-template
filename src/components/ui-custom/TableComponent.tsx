@@ -220,6 +220,7 @@ const TableComponent = ({
   pagination,
   pageControl,
   setPageControl,
+  limitOptions,
   limitControl,
   setLimitControl,
   ...props
@@ -391,7 +392,9 @@ const TableComponent = ({
 
   // Limitation
   const [limit, setLimit] = useState(initialLimit);
-  const limits = [initialLimit, initialLimit * 5, initialLimit * 10];
+  const limits = limitOptions || [
+    (initialLimit, initialLimit * 5, initialLimit * 10),
+  ];
 
   // Pagination
   const formik = useFormik({
