@@ -80,6 +80,12 @@ const customConfig = defineConfig({
           contrast: { value: "{colors.red.100} !important" },
         },
         orange: {
+          solid: {
+            value: {
+              base: "{colors.orange.500} !important",
+              _dark: "{colors.orange.500}",
+            },
+          },
           contrast: { value: "{colors.orange.100} !important" },
         },
         body: { value: { base: "#FFF", _dark: "#151515" } },
