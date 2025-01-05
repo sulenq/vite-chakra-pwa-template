@@ -1,4 +1,4 @@
-import { requiredForm } from "@/constant/labels";
+import { requiredForm } from "@/constant/validationMessages";
 import useAuthMiddleware from "@/context/useAuthMiddleware";
 import useRequest from "@/hooks/useRequest";
 import { FieldsetRoot, HStack, Text } from "@chakra-ui/react";
@@ -72,7 +72,7 @@ const LoginForm = () => {
           <Text fontSize={"sm"}>Selamat datang, masukkan credentials</Text>
         </CContainer>
 
-        <form id="form_login" onSubmit={formik.handleSubmit}>
+        <form id="login-form" onSubmit={formik.handleSubmit}>
           <Field
             label="Email/Username"
             invalid={!!formik.errors.identifier}
@@ -112,7 +112,7 @@ const LoginForm = () => {
 
           <BButton
             type="submit"
-            form="form_login"
+            form="login-form"
             w={"full"}
             mt={6}
             size={"lg"}

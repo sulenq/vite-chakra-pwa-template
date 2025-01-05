@@ -36,6 +36,7 @@ import NumberInput from "./NumberInput";
 import { toaster } from "../ui/toaster";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import useScreen from "@/hooks/useScreen";
+import { Field } from "../ui/field";
 
 const RowOptions = ({
   rowData,
@@ -404,7 +405,9 @@ const TableComponent = ({
     initialValues: {
       page: initialPage,
     },
-    validationSchema: yup.object().shape({}),
+    validationSchema: yup.object().shape({
+      page: yup.number(),
+    }),
     onSubmit: (values) => {
       if (
         values.page &&
@@ -778,26 +781,28 @@ const TableComponent = ({
                     </Text>
                   </CContainer>
 
-                  <form id="pageJumpForm" onSubmit={formik.handleSubmit}>
-                    <NumberInput
-                      inputValue={formik.values.page}
-                      onChangeSetter={(input) => {
-                        formik.setFieldValue("page", input);
-                      }}
-                      textAlign={"center"}
-                      borderColor={"d3"}
-                      onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
-                        if (e.key === "Enter") {
-                          formik.submitForm();
-                        }
-                      }}
-                      _focus={{ borderColor: "white" }}
-                    />
+                  <form id="page-jump-form" onSubmit={formik.handleSubmit}>
+                    <Field>
+                      <NumberInput
+                        inputValue={formik.values.page}
+                        onChangeSetter={(input) => {
+                          formik.setFieldValue("page", input);
+                        }}
+                        textAlign={"center"}
+                        borderColor={"d3"}
+                        onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                          if (e.key === "Enter") {
+                            formik.submitForm();
+                          }
+                        }}
+                        _focus={{ borderColor: "white" }}
+                      />
+                    </Field>
                   </form>
 
                   <BButton
                     type="submit"
-                    form="pageJumpForm"
+                    form="page-jump-form"
                     w={"full"}
                     mt={1}
                     className="btn-solid"
