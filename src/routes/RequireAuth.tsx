@@ -6,17 +6,22 @@ import { Navigate } from "react-router-dom";
 interface Props {
   children: any;
   redirectTo?: string;
+  requireAuth?: boolean;
 }
 
-const RequireAuth = ({ children, redirectTo = "/" }: Props) => {
+const RequireAuth = ({
+  children,
+  redirectTo = "/",
+  requireAuth = false,
+}: Props) => {
   const isAuthenticated = !!getAuthToken();
 
   useEffect(() => {
     if (!isAuthenticated) {
       toaster.create({
         type: "error",
-        title: "Otorisasi dibutuhkan",
-        description: "Silakan masuk dengan akun Anda.",
+        title: "Authorization required",
+        description: "Please login with your account.",
         action: {
           label: "Close",
           onClick: () => {},
@@ -25,7 +30,10 @@ const RequireAuth = ({ children, redirectTo = "/" }: Props) => {
     }
   }, [isAuthenticated]);
 
-  return isAuthenticated ? children : <Navigate to={redirectTo} />;
+  if (requireAuth)
+    return isAuthenticated ? children : <Navigate to={redirectTo} />;
+
+  return children;
 };
 
 export default RequireAuth;

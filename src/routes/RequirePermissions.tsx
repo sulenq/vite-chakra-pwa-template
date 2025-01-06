@@ -7,9 +7,14 @@ import { Navigate } from "react-router-dom";
 interface Props {
   children: any;
   redirectTo?: string;
+  requirePermissions?: boolean;
 }
 
-const RequirePermissions = ({ children, redirectTo = "/" }: Props) => {
+const RequirePermissions = ({
+  children,
+  redirectTo = "/",
+  requirePermissions = false,
+}: Props) => {
   // Contexts
   const { permissions, setPermissions } = useAuthMiddleware();
 
@@ -53,13 +58,16 @@ const RequirePermissions = ({ children, redirectTo = "/" }: Props) => {
     }
   }, [permissions, isAllowed]);
 
-  return (
-    <>
-      {loading && <p>Loading...</p>}
+  if (requirePermissions)
+    return (
+      <>
+        {loading && <p>Loading...</p>}
 
-      {!loading && <>{isAllowed ? children : <Navigate to={redirectTo} />}</>}
-    </>
-  );
+        {!loading && <>{isAllowed ? children : <Navigate to={redirectTo} />}</>}
+      </>
+    );
+
+  return children;
 };
 
 export default RequirePermissions;
