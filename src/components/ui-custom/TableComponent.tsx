@@ -446,6 +446,7 @@ const TableComponent = ({
 
   return (
     <CContainer flex={1} minH={props?.minH || sh < 625 ? "400px" : ""}>
+      {/* Table content */}
       <CContainer
         minW={"full"}
         border={"1px solid"}
