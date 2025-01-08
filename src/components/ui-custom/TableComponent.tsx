@@ -706,7 +706,7 @@ const TableComponent = ({
         <CContainer align={"start"} order={[2, null, 1]}>
           {limitControl && setLimitControl && (
             <MenuRoot>
-              <MenuTrigger>
+              <MenuTrigger asChild>
                 <BButton unclicky variant={"outline"}>
                   Tampilkan <b>{limit === 0 ? "Semua" : limit}</b>
                   <Icon fontSize={"sm"}>
@@ -764,7 +764,7 @@ const TableComponent = ({
               </BButton>
 
               <MenuRoot>
-                <MenuTrigger>
+                <MenuTrigger asChild>
                   <BButton
                     unclicky
                     variant={"outline"}
