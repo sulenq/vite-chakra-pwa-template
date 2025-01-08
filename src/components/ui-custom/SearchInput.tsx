@@ -65,6 +65,7 @@ export default function SearchInput({
       >
         <>
           <StringInput
+            minW={"200px"}
             pl={10}
             name={name}
             fRef={inputRef ? inputRef : null}
