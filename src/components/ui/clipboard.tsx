@@ -2,19 +2,31 @@ import type { ButtonProps, InputProps } from "@chakra-ui/react";
 import {
   Button,
   Clipboard as ChakraClipboard,
+  Icon,
   IconButton,
   Input,
 } from "@chakra-ui/react";
+import { IconCheck, IconClipboard } from "@tabler/icons-react";
 import { forwardRef } from "react";
-import { LuCheck, LuClipboard, LuLink } from "react-icons/lu";
+import { LuLink } from "react-icons/lu";
 
 const ClipboardIcon = forwardRef<
   HTMLDivElement,
   ChakraClipboard.IndicatorProps
 >(function ClipboardIcon(props, ref) {
   return (
-    <ChakraClipboard.Indicator copied={<LuCheck />} {...props} ref={ref}>
-      <LuClipboard />
+    <ChakraClipboard.Indicator
+      copied={
+        <Icon>
+          <IconCheck />
+        </Icon>
+      }
+      {...props}
+      ref={ref}
+    >
+      <Icon h={"20px"}>
+        <IconClipboard />
+      </Icon>
     </ChakraClipboard.Indicator>
   );
 });

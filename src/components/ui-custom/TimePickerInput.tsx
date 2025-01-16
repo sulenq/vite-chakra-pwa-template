@@ -193,7 +193,7 @@ const TimePickerInput = ({
               </Text>
             )}
 
-            <Icon fontSize={"1.2rem"}>
+            <Icon fontSize={"1.1rem"}>
               <IconClock />
             </Icon>
           </HStack>

@@ -264,7 +264,7 @@ const TimeRangePickerInput = ({
               </Text>
             )}
 
-            <Icon fontSize={"1.2rem"}>
+            <Icon fontSize={"1.1rem"}>
               <IconHourglassHigh />
             </Icon>
           </HStack>

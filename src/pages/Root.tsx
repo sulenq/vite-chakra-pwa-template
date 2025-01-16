@@ -13,19 +13,19 @@ import {
   DisclosureTrigger,
 } from "@/components/ui-custom/Disclosure";
 import DisclosureHeaderContent from "@/components/ui-custom/DisclosureHeaderContent";
-import FloatCounter from "@/components/ui-custom/FloatCounter";
 import Forbidden from "@/components/ui-custom/FeedbackForbidden";
+import NoData from "@/components/ui-custom/FeedbackNoData";
+import NotFound from "@/components/ui-custom/FeedbackNotFound";
+import Retry from "@/components/ui-custom/FeedbackRetry";
+import FloatCounter from "@/components/ui-custom/FloatCounter";
 import Heading1 from "@/components/ui-custom/Heading1";
 import Heading2 from "@/components/ui-custom/Heading2";
 import Heading3 from "@/components/ui-custom/Heading3";
 import Heading4 from "@/components/ui-custom/Heading4";
 import Heading5 from "@/components/ui-custom/Heading5";
 import Heading6 from "@/components/ui-custom/Heading6";
-import NoData from "@/components/ui-custom/FeedbackNoData";
-import NotFound from "@/components/ui-custom/FeedbackNotFound";
 import NumberInput from "@/components/ui-custom/NumberInput";
 import PasswordInput from "@/components/ui-custom/PasswordInput";
-import Retry from "@/components/ui-custom/FeedbackRetry";
 import SearchInput from "@/components/ui-custom/SearchInput";
 import SelectInput from "@/components/ui-custom/SelectInput";
 import StringInput from "@/components/ui-custom/StringInput";
@@ -94,14 +94,14 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import {
-  Alarm,
-  Bell,
-  CheckCircle,
-  ClockClockwise,
-  PencilSimpleLine,
-  SlidersHorizontal,
-  Trash,
-} from "@phosphor-icons/react";
+  IconAdjustmentsHorizontal,
+  IconAlarm,
+  IconBell,
+  IconCircleCheck,
+  IconEdit,
+  IconRestore,
+  IconTrash,
+} from "@tabler/icons-react";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -1331,7 +1331,7 @@ export default function Root() {
                 <PopoverTrigger asChild>
                   <BButton size="sm" variant="outline">
                     <Icon size={"md"} color={"green.solid"}>
-                      <CheckCircle />
+                      <IconCircleCheck />
                     </Icon>
                     Reward Presensi
                   </BButton>
@@ -1342,7 +1342,7 @@ export default function Root() {
                     <PopoverTitle fontWeight="medium" mb={4}>
                       <HStack>
                         <Icon size={"md"} color={"green.solid"}>
-                          <CheckCircle />
+                          <IconCircleCheck />
                         </Icon>
                         <Text>Menapat reward presensi</Text>
                       </HStack>
@@ -1384,14 +1384,14 @@ export default function Root() {
               <IconButton variant={"outline"}>
                 <FloatCounter>3</FloatCounter>
                 <Icon>
-                  <Bell />
+                  <IconBell />
                 </Icon>
               </IconButton>
 
               <BButton variant={"outline"}>
                 <FloatCounter>{formatNumber(4230)}</FloatCounter>
                 <Icon>
-                  <SlidersHorizontal />
+                  <IconAdjustmentsHorizontal />
                 </Icon>
                 Filter
               </BButton>
@@ -1536,7 +1536,7 @@ export default function Root() {
                   colorPalette={"p"}
                   icon={
                     <Icon>
-                      <Alarm />
+                      <IconAlarm />
                     </Icon>
                   }
                   title="Custom alert dengan custom icon"
@@ -1561,7 +1561,7 @@ export default function Root() {
                   <AccordionItem value="a">
                     <AccordionItemTrigger>
                       <Icon fontSize="lg" color="fg.subtle">
-                        <Alarm />
+                        <IconAlarm />
                       </Icon>
                       Alarm
                     </AccordionItemTrigger>
@@ -1573,7 +1573,7 @@ export default function Root() {
                   <AccordionItem value="b">
                     <AccordionItemTrigger>
                       <Icon fontSize="lg" color="fg.subtle">
-                        <Alarm />
+                        <IconAlarm />
                       </Icon>
                       Alarm
                     </AccordionItemTrigger>
@@ -1585,7 +1585,7 @@ export default function Root() {
                   <AccordionItem value="c">
                     <AccordionItemTrigger>
                       <Icon fontSize="lg" color="fg.subtle">
-                        <Alarm />
+                        <IconAlarm />
                       </Icon>
                       Alarm
                     </AccordionItemTrigger>
@@ -1597,7 +1597,7 @@ export default function Root() {
                   <AccordionItem value="d">
                     <AccordionItemTrigger>
                       <Icon fontSize="lg" color="fg.subtle">
-                        <Alarm />
+                        <IconAlarm />
                       </Icon>
                       Alarm
                     </AccordionItemTrigger>
@@ -1653,13 +1653,13 @@ export default function Root() {
                   <MenuItem value="edit" justifyContent={"space-between"}>
                     Edit
                     <Icon fontSize={"md"}>
-                      <PencilSimpleLine />
+                      <IconEdit />
                     </Icon>
                   </MenuItem>
                   <MenuItem value="restore" justifyContent={"space-between"}>
                     Restore
                     <Icon fontSize={"md"}>
-                      <ClockClockwise />
+                      <IconRestore />
                     </Icon>
                   </MenuItem>
                   <MenuItem
@@ -1669,7 +1669,7 @@ export default function Root() {
                   >
                     Delete
                     <Icon fontSize={"md"}>
-                      <Trash />
+                      <IconTrash />
                     </Icon>
                   </MenuItem>
                 </MenuContent>
