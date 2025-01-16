@@ -2,11 +2,11 @@ import { Alert as ChakraAlert, Icon } from "@chakra-ui/react";
 import { CloseButton } from "./close-button";
 import { forwardRef } from "react";
 import {
-  CheckCircle,
-  Info,
-  Warning,
-  WarningCircle,
-} from "@phosphor-icons/react";
+  IconAlertCircle,
+  IconAlertTriangle,
+  IconCircleCheck,
+  IconInfoCircle,
+} from "@tabler/icons-react";
 
 export interface AlertProps extends Omit<ChakraAlert.RootProps, "title"> {
   startElement?: React.ReactNode;
@@ -35,16 +35,16 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
   let PresetIcon;
   switch (rest?.status) {
     case "success":
-      PresetIcon = CheckCircle;
+      PresetIcon = IconCircleCheck;
       break;
     case "error":
-      PresetIcon = Warning;
+      PresetIcon = IconAlertTriangle;
       break;
     case "warning":
-      PresetIcon = WarningCircle;
+      PresetIcon = IconAlertCircle;
       break;
     default:
-      PresetIcon = Info;
+      PresetIcon = IconInfoCircle;
   }
 
   return (
