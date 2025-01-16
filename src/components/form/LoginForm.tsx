@@ -1,4 +1,4 @@
-import { requiredForm } from "@/constant/validationMessages";
+import { REQUIRED_FORM } from "@/constant/validationMessages";
 import useAuthMiddleware from "@/context/useAuthMiddleware";
 import useRequest from "@/hooks/useRequest";
 import { FieldsetRoot, HStack, Text } from "@chakra-ui/react";
@@ -29,8 +29,8 @@ const LoginForm = () => {
       password: "",
     },
     validationSchema: yup.object().shape({
-      identifier: yup.string().required(requiredForm),
-      password: yup.string().required(requiredForm),
+      identifier: yup.string().required(REQUIRED_FORM),
+      password: yup.string().required(REQUIRED_FORM),
     }),
     onSubmit: (values) => {
       const payload = {

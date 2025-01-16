@@ -23,7 +23,7 @@ export default function SearchInput({
   inputValue,
   onChangeSetter,
   tooltipLabel,
-  placeholder = "Pencarian",
+  placeholder = "Search...",
   inputProps,
   icon,
   invalid = false,
@@ -65,8 +65,8 @@ export default function SearchInput({
       >
         <>
           <StringInput
-            minW={"200px"}
             pl={10}
+            minW={"200px"}
             name={name}
             fRef={inputRef ? inputRef : null}
             placeholder={placeholder}

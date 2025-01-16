@@ -1,3 +1,3 @@
-const requiredForm = "Kolom ini tidak boleh kosong";
+const REQUIRED_FORM = "Kolom ini tidak boleh kosong";
 
-export { requiredForm };
+export { REQUIRED_FORM };

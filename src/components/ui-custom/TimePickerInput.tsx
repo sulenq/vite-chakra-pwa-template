@@ -1,5 +1,5 @@
 import { Interface__TimePicker } from "@/constant/interfaces";
-import { mainButtonSize } from "@/constant/sizes";
+import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useScreen from "@/hooks/useScreen";
 import back from "@/utils/back";
@@ -206,7 +206,7 @@ const TimePickerInput = ({
             className="scrollY"
             pt={0}
             // overflowY={"auto"}
-            // maxH={drawerbodyMaxH}
+            // maxH={DRAWER_BODY_MAXH}
           >
             <HStack
               justify={"space-between"}
@@ -467,7 +467,7 @@ const TimePickerInput = ({
                   setSeconds(0);
                 }
               }}
-              size={mainButtonSize}
+              size={MAIN_BUTTON_SIZE}
             >
               {selected && hours === 0 && minutes === 0 && seconds === 0
                 ? "Clear"
@@ -476,7 +476,7 @@ const TimePickerInput = ({
             <BButton
               onClick={confirmSelected}
               disabled={nonNullable ? (selected ? false : true) : false}
-              size={mainButtonSize}
+              size={MAIN_BUTTON_SIZE}
             >
               Konfirmasi
             </BButton>

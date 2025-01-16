@@ -32,7 +32,7 @@ import Heading6 from "./Heading6";
 import NoData from "./NoData";
 import NotFound from "./NotFound";
 import SearchInput from "./SearchInput";
-import { mainButtonSize } from "@/constant/sizes";
+import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
 
 const SelectInput = ({
   id,
@@ -322,11 +322,11 @@ const SelectInput = ({
                 onClick={() => {
                   setSelected(undefined);
                 }}
-                size={mainButtonSize}
+                size={MAIN_BUTTON_SIZE}
               >
                 Clear
               </BButton>
-              <BButton onClick={confirmSelected} size={mainButtonSize}>
+              <BButton onClick={confirmSelected} size={MAIN_BUTTON_SIZE}>
                 Konfirmasi
               </BButton>
             </DisclosureFooter>

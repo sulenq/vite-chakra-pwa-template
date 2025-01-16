@@ -1,6 +1,6 @@
 import days from "@/constant/days";
 import { Interface__DatePicker } from "@/constant/interfaces";
-import { mainButtonSize } from "@/constant/sizes";
+import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
 import formatDate from "@/utils/formatDate";
@@ -191,7 +191,7 @@ const DatePickerInput = ({
             className="scrollY"
             pt={0}
             // overflowY={"auto"}
-            // maxH={drawerbodyMaxH}
+            // maxH={DRAWER_BODY_MAXH}
           >
             {/* Period picker */}
             <HStack mb={5}>
@@ -308,14 +308,14 @@ const DatePickerInput = ({
               onClick={() => {
                 setSelected(undefined);
               }}
-              size={mainButtonSize}
+              size={MAIN_BUTTON_SIZE}
             >
               Clear
             </BButton>
             <BButton
               onClick={confirmSelected}
               disabled={nonNullable && !selected}
-              size={mainButtonSize}
+              size={MAIN_BUTTON_SIZE}
             >
               Konfirmasi
             </BButton>

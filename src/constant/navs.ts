@@ -1,41 +1,27 @@
-import { Interface__Nav } from "./interfaces";
+import {
+  ChartBar,
+  Cube,
+  CurrencyCircleDollar,
+  Users,
+} from "@phosphor-icons/react";
 
-const navs: Interface__Nav[] = [
+const NAVS = [
   {
-    label: {
-      id: "Beranda",
-      en: "Home",
-    },
-    link: "/",
+    label: "Dashboard",
+    link: "/dashboard",
+    icon: ChartBar,
   },
   {
-    label: {
-      id: "Layanan",
-      en: "Services",
-    },
-    link: "/services",
+    label: "Project",
+    link: "/projects",
+    icon: Cube,
   },
+  { label: "Transaction", link: "/transactions", icon: CurrencyCircleDollar },
   {
-    label: {
-      id: "Karya",
-      en: "Works",
-    },
-    link: "/works",
+    label: "Clients",
+    link: "/clients",
+    icon: Users,
   },
-  {
-    label: {
-      id: "Tentang Kami",
-      en: "About Us",
-    },
-    link: "/about-us",
-  },
-  // {
-  //   label: {
-  //     id: "FAQs",
-  //     en: "FAQs",
-  //   },
-  //   link: "/faqs",
-  // },
 ];
 
-export default navs;
+export default NAVS;

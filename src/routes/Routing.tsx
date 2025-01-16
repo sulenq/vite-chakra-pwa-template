@@ -1,4 +1,4 @@
-import { routes } from "@/constant/routes";
+import { ROUTES } from "@/constant/routes";
 import MaintenancePage from "@/pages/error/MaintenancePage";
 import MissingPage from "@/pages/error/MissingPage";
 import ServerErrorPage from "@/pages/error/ServerErrorPage";
@@ -7,7 +7,7 @@ import { Route, Routes } from "react-router-dom";
 const Routing = () => {
   return (
     <Routes>
-      {routes.map(({ path, element }) => (
+      {ROUTES.map(({ path, element }) => (
         <Route key={path} path={path} element={element} />
       ))}
 

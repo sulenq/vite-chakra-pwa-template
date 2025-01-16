@@ -1,12 +1,18 @@
 import RootPage from "@/pages/RootPage";
-import { createElement } from "react";
+import { createElement, FunctionComponentElement } from "react";
 
-const routes = [
+interface Route {
+  path: string;
+  element: FunctionComponentElement<{}>;
+  requireAuth?: boolean;
+  requirePermissions?: boolean;
+}
+
+const ROUTES: Route[] = [
   {
     path: "/",
-    label: "Home",
     element: createElement(RootPage),
   },
 ];
 
-export { routes };
+export { ROUTES };

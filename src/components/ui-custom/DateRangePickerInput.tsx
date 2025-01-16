@@ -3,7 +3,7 @@ import {
   Interface__DateRangePicker,
   Type__DateRange,
 } from "@/constant/interfaces";
-import { mainButtonSize } from "@/constant/sizes";
+import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import back from "@/utils/back";
@@ -317,7 +317,7 @@ const DateRangePickerInput = ({
             className="scrollY"
             pt={0}
             // overflowY={"auto"}
-            // maxH={drawerbodyMaxH}
+            // maxH={DRAWER_BODY_MAXH}
           >
             {maxRange && (
               <Alert
@@ -492,7 +492,7 @@ const DateRangePickerInput = ({
               onClick={() => {
                 setSelected(undefined);
               }}
-              size={mainButtonSize}
+              size={MAIN_BUTTON_SIZE}
             >
               Clear
             </BButton>
@@ -502,7 +502,7 @@ const DateRangePickerInput = ({
                 (nonNullable && !(selected?.from && selected?.to)) ||
                 (!nonNullable && selected?.from && !selected?.to)
               }
-              size={mainButtonSize}
+              size={MAIN_BUTTON_SIZE}
             >
               Konfirmasi
             </BButton>

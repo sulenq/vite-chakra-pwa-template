@@ -14,6 +14,7 @@ interface Props extends InputProps {
   boxProps?: BoxProps;
   formatValue?: (value: number | undefined | null) => string;
   noFormat?: boolean;
+  integer?: boolean;
 }
 
 const NumberInput = ({
@@ -25,11 +26,11 @@ const NumberInput = ({
   placeholder = "",
   boxProps,
   formatValue,
-  noFormat,
+  noFormat = false,
+  integer = false,
   ...props
 }: Props) => {
   const [localInputValue, setLocalInputValue] = useState<string>("");
-
   useEffect(() => {
     if (inputValue !== undefined && inputValue !== null) {
       const formattedValue = noFormat
@@ -50,23 +51,44 @@ const NumberInput = ({
     }
 
     // Validasi input: hanya angka dan koma
-    let sanitizedInput = rawInput.replace(/[^0-9,]/g, "");
+    let sanitizedInput = rawInput.replace(/[^0-9,]/g, ""); // Hapus karakter non-angka/koma
 
-    // Batasi hanya satu koma
-    const isValid = sanitizedInput.split(",").length <= 2;
-    if (!isValid) return; // Abaikan input jika lebih dari satu koma
+    // Jika properti integer true, hapus semua koma dari input
+    if (integer) {
+      sanitizedInput = sanitizedInput.replace(/,/g, ""); // Hapus semua koma
+    }
+
+    // Batasi hanya satu koma jika integer = false
+    const commaIndex = sanitizedInput.indexOf(",");
+    if (
+      !integer &&
+      commaIndex !== -1 &&
+      sanitizedInput.lastIndexOf(",") !== commaIndex
+    ) {
+      return; // Abaikan input jika lebih dari satu koma
+    }
 
     // Batasi panjang maksimum 19 karakter
     if (sanitizedInput.length > 19) {
       sanitizedInput = sanitizedInput.substring(0, 19);
     }
 
-    // Format input dengan pemisah ribuan dan koma sebagai pemisah desimal
-    let formattedValue = sanitizedInput.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Tambah titik untuk ribuan
-    const hasComma = formattedValue.includes(",");
-    if (hasComma) {
-      // Jika ada koma, pastikan hanya satu
-      formattedValue = formattedValue.replace(/(\d+),(\d+)/, "$1,$2");
+    // Jika noFormat true, langsung set nilai input tanpa formatting tambahan
+    if (noFormat) {
+      setLocalInputValue(sanitizedInput);
+      if (onChangeSetter) onChangeSetter(parseNumber(sanitizedInput));
+      return;
+    }
+
+    // Format input dengan pemisah ribuan
+    let formattedValue = sanitizedInput.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    if (!integer && sanitizedInput.includes(",")) {
+      const parts = sanitizedInput.split(",");
+      if (parts.length === 2) {
+        formattedValue = `${parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".")},${
+          parts[1]
+        }`;
+      }
     }
 
     setLocalInputValue(formattedValue);

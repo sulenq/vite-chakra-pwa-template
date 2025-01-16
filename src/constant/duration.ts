@@ -1,3 +1,3 @@
-const toastDurationShort = 3000;
+const TOAST_DURATION_SHORT = 3000;
 
-export { toastDurationShort };
+export { TOAST_DURATION_SHORT };

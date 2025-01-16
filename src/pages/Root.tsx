@@ -74,8 +74,7 @@ import { Status } from "@/components/ui/status";
 import { toaster } from "@/components/ui/toaster";
 import { Tooltip } from "@/components/ui/tooltip";
 import { Interface__Select } from "@/constant/interfaces";
-import { optionsAgama } from "@/constant/selectOptions";
-import { responsiveSpacing, responsiveSpacingReverse } from "@/constant/sizes";
+import { OPTIONS_RELIGION } from "@/constant/selectOptions";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import back from "@/utils/back";
@@ -280,7 +279,7 @@ const NumberInputDemo = () => {
 const PromiseSelectDemo = ({ ...props }: Interface__Select) => {
   const fetch = (setOptions: any) => {
     setTimeout(() => {
-      setOptions(optionsAgama);
+      setOptions(OPTIONS_RELIGION);
     }, 2000);
   };
 
@@ -325,7 +324,7 @@ const SelectInputDemo = () => {
         name="select1"
         title="Single Select"
         placeholder="Single select"
-        initialOptions={optionsAgama}
+        initialOptions={OPTIONS_RELIGION}
         onConfirm={(inputValue) => {
           formik.setFieldValue("select1", inputValue);
         }}
@@ -336,7 +335,7 @@ const SelectInputDemo = () => {
         name="select2"
         title="Multi Select"
         placeholder="Multi select"
-        initialOptions={optionsAgama}
+        initialOptions={OPTIONS_RELIGION}
         multiple
         onConfirm={(inputValue) => {
           formik.setFieldValue("select2", inputValue);
@@ -357,7 +356,7 @@ const SelectInputDemo = () => {
           name="select4"
           title="Multi Select"
           placeholder="Multi select invalid state"
-          initialOptions={optionsAgama}
+          initialOptions={OPTIONS_RELIGION}
           multiple
           onConfirm={(inputValue) => {
             formik.setFieldValue("select4", inputValue);
@@ -1247,20 +1246,14 @@ const TableComponentDemo = () => {
 
 export default function Root() {
   return (
-    <CContainer
-      minH={"100dvh"}
-      p={responsiveSpacing}
-      pt={"0 !important"}
-      gap={4}
-      bgImage={"/"}
-    >
+    <CContainer minH={"100dvh"} p={5} pt={"0 !important"} gap={4} bgImage={"/"}>
       {/* Nav */}
       <HStack
         wrap={"wrap"}
         justify={"space-between"}
         px={4}
         py={2}
-        mx={responsiveSpacingReverse}
+        mx={5}
         position={"sticky"}
         top={0}
         zIndex={99}
