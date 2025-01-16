@@ -54,11 +54,7 @@ export default function PasswordInput({
           setShowPassword((ps) => !ps);
         }}
       >
-        <Icon
-          fontSize={"lg"}
-          color={useColorModeValue("black", "white")}
-          opacity={0.4}
-        >
+        <Icon fontSize={"lg"} color={useColorModeValue("black", "white")}>
           {showPassword ? <IconEye /> : <IconEyeOff />}
         </Icon>
       </IconButton>

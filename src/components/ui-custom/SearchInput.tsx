@@ -1,6 +1,5 @@
 import { Center, Icon, IconButton, InputProps } from "@chakra-ui/react";
-import { X } from "@phosphor-icons/react";
-import { IconSearch } from "@tabler/icons-react";
+import { IconSearch, IconX } from "@tabler/icons-react";
 import { Dispatch, useCallback, useEffect, useState } from "react";
 import { InputGroup } from "../ui/input-group";
 import { Tooltip } from "../ui/tooltip";
@@ -98,8 +97,8 @@ export default function SearchInput({
                 size={"xs"}
                 color={"fg.error"}
               >
-                <Icon fontSize={"0.9rem"}>
-                  <X weight="bold" />
+                <Icon>
+                  <IconX />
                 </Icon>
               </IconButton>
             </Center>

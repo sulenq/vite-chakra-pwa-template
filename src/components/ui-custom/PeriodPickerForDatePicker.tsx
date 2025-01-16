@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
 import BButton from "./BButton";
-import PeriodDisclosure from "./PeriodDisclosure";
+import PeriodPickerDisclosure from "./PeriodPickerDisclosure";
 import formatDate from "@/utils/formatDate";
 
 interface Props {
@@ -21,11 +21,11 @@ const PeriodPickerForDatePicker = ({
 }: Props) => {
   return (
     <>
-      <PeriodDisclosure month={month} year={year} {...props}>
+      <PeriodPickerDisclosure month={month} year={year} {...props}>
         <BButton w={"full"} variant={"outline"}>
           {`${formatDate(new Date(year, month), "periode")}`}
         </BButton>
-      </PeriodDisclosure>
+      </PeriodPickerDisclosure>
     </>
   );
 };

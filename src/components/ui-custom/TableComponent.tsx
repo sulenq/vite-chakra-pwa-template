@@ -3,6 +3,8 @@ import {
   Interface__RowOptions,
   Interface__TableComponent,
 } from "@/constant/interfaces";
+import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
+import useScreen from "@/hooks/useScreen";
 import formatDate from "@/utils/formatDate";
 import {
   Center,
@@ -16,94 +18,25 @@ import {
   Text,
 } from "@chakra-ui/react";
 import {
-  ArrowDown,
-  ArrowUp,
-  CaretDown,
-  CaretLeft,
-  CaretRight,
-  DotsThreeVertical,
-  ListChecks,
-} from "@phosphor-icons/react";
+  IconArrowDown,
+  IconArrowUp,
+  IconCaretDownFilled,
+  IconCaretLeftFilled,
+  IconCaretRightFilled,
+  IconDotsVertical,
+  IconListCheck,
+} from "@tabler/icons-react";
 import { useFormik } from "formik";
 import { useEffect, useRef, useState } from "react";
 import * as yup from "yup";
 import { Checkbox } from "../ui/checkbox";
+import { Field } from "../ui/field";
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "../ui/menu";
+import { toaster } from "../ui/toaster";
 import BButton from "./BButton";
 import CContainer from "./CContainer";
 import ConfirmationDisclosure from "./ConfirmationDisclosure";
 import NumberInput from "./NumberInput";
-import { toaster } from "../ui/toaster";
-import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
-import useScreen from "@/hooks/useScreen";
-import { Field } from "../ui/field";
-
-const RowOptions = ({
-  rowData,
-  rowOptions,
-  tableRef,
-}: Interface__RowOptions) => {
-  return (
-    <MenuRoot>
-      <MenuTrigger
-        asChild
-        h={"48px"}
-        w={"48px"}
-        borderRadius={0}
-        aria-label="row options"
-        _expanded={{ bg: "d2 !important" }}
-      >
-        <BButton iconButton unclicky variant={"plain"}>
-          <Icon>
-            <DotsThreeVertical weight="bold" />
-          </Icon>
-        </BButton>
-      </MenuTrigger>
-
-      <Portal container={tableRef}>
-        <MenuContent zIndex={10} className="rowOptionsList" minW={"140px"}>
-          {rowOptions?.map((option, i) => {
-            if (option === "divider") return <MenuSeparator key={i} />;
-
-            if (option.confirmation) {
-              return (
-                <ConfirmationDisclosure
-                  id={option.confirmation(rowData).id}
-                  title={option.confirmation(rowData).title}
-                  description={option.confirmation(rowData).description}
-                  confirmLabel={option.confirmation(rowData).confirmLabel}
-                  confirmCallback={option.confirmation(rowData).confirmCallback}
-                  key={i}
-                >
-                  <MenuItem
-                    key={i}
-                    value={option.label}
-                    {...option.menuItemProps}
-                  >
-                    {option.label}
-                  </MenuItem>
-                </ConfirmationDisclosure>
-              );
-            }
-
-            return (
-              <MenuItem
-                key={i}
-                value={option.label}
-                onClick={() => {
-                  option.callback && option.callback(rowData);
-                }}
-                {...option.menuItemProps}
-              >
-                {option.label}
-              </MenuItem>
-            );
-          })}
-        </MenuContent>
-      </Portal>
-    </MenuRoot>
-  );
-};
 
 const BatchOptions = ({
   selectedRows,
@@ -125,7 +58,7 @@ const BatchOptions = ({
       >
         <BButton iconButton unclicky variant={"plain"}>
           <Icon>
-            <ListChecks />
+            <IconListCheck />
           </Icon>
         </BButton>
       </MenuTrigger>
@@ -192,6 +125,73 @@ const BatchOptions = ({
                   option.callback && option.callback(selectedRows);
                 }}
                 disabled={disabled}
+                {...option.menuItemProps}
+              >
+                {option.label}
+              </MenuItem>
+            );
+          })}
+        </MenuContent>
+      </Portal>
+    </MenuRoot>
+  );
+};
+
+const RowOptions = ({
+  rowData,
+  rowOptions,
+  tableRef,
+}: Interface__RowOptions) => {
+  return (
+    <MenuRoot>
+      <MenuTrigger
+        asChild
+        h={"48px"}
+        w={"48px"}
+        borderRadius={0}
+        aria-label="row options"
+        _expanded={{ bg: "d2 !important" }}
+      >
+        <BButton iconButton unclicky variant={"plain"}>
+          <Icon>
+            <IconDotsVertical />
+          </Icon>
+        </BButton>
+      </MenuTrigger>
+
+      <Portal container={tableRef}>
+        <MenuContent zIndex={10} className="rowOptionsList" minW={"140px"}>
+          {rowOptions?.map((option, i) => {
+            if (option === "divider") return <MenuSeparator key={i} />;
+
+            if (option.confirmation) {
+              return (
+                <ConfirmationDisclosure
+                  id={option.confirmation(rowData).id}
+                  title={option.confirmation(rowData).title}
+                  description={option.confirmation(rowData).description}
+                  confirmLabel={option.confirmation(rowData).confirmLabel}
+                  confirmCallback={option.confirmation(rowData).confirmCallback}
+                  key={i}
+                >
+                  <MenuItem
+                    key={i}
+                    value={option.label}
+                    {...option.menuItemProps}
+                  >
+                    {option.label}
+                  </MenuItem>
+                </ConfirmationDisclosure>
+              );
+            }
+
+            return (
+              <MenuItem
+                key={i}
+                value={option.label}
+                onClick={() => {
+                  option.callback && option.callback(rowData);
+                }}
                 {...option.menuItemProps}
               >
                 {option.label}
@@ -378,11 +378,11 @@ const TableComponent = ({
         <>
           {sortConfig.direction === "asc" ? (
             <Icon fontSize={"sm"}>
-              <ArrowUp />
+              <IconArrowUp />
             </Icon>
           ) : (
             <Icon fontSize={"sm"}>
-              <ArrowDown />
+              <IconArrowDown />
             </Icon>
           )}
         </>
@@ -710,7 +710,7 @@ const TableComponent = ({
                 <BButton unclicky variant={"outline"}>
                   Tampilkan <b>{limit === 0 ? "Semua" : limit}</b>
                   <Icon fontSize={"sm"}>
-                    <CaretDown />
+                    <IconCaretDownFilled />
                   </Icon>
                 </BButton>
               </MenuTrigger>
@@ -759,7 +759,7 @@ const TableComponent = ({
                 disabled={pageControl <= 1}
               >
                 <Icon maxH={"14px"}>
-                  <CaretLeft />
+                  <IconCaretLeftFilled />
                 </Icon>
               </BButton>
 
@@ -826,7 +826,7 @@ const TableComponent = ({
                 disabled={pageControl === pagination.meta.last_page}
               >
                 <Icon maxH={"14px"}>
-                  <CaretRight />
+                  <IconCaretRightFilled />
                 </Icon>
               </BButton>
             </Group>

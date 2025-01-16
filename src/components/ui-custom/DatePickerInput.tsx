@@ -12,8 +12,11 @@ import {
   useDisclosure,
   useFieldContext,
 } from "@chakra-ui/react";
-import { CaretLeft, CaretRight } from "@phosphor-icons/react";
-import { IconCalendarDue } from "@tabler/icons-react";
+import {
+  IconCalendarDue,
+  IconCaretLeftFilled,
+  IconCaretRightFilled,
+} from "@tabler/icons-react";
 import { addDays, startOfWeek } from "date-fns";
 import { useState } from "react";
 import { Tooltip } from "../ui/tooltip";
@@ -175,8 +178,8 @@ const DatePickerInput = ({
               </Text>
             )}
 
-            <Icon fontSize={"lg"} opacity={0.3}>
-              <IconCalendarDue stroke={1.5} />
+            <Icon fontSize={"1.2rem"}>
+              <IconCalendarDue />
             </Icon>
           </HStack>
         </BButton>
@@ -197,8 +200,8 @@ const DatePickerInput = ({
             {/* Period picker */}
             <HStack mb={5}>
               <BButton iconButton variant={"outline"} onClick={prevMonth}>
-                <Icon fontSize={"1rem"}>
-                  <CaretLeft />
+                <Icon fontSize={"md"}>
+                  <IconCaretLeftFilled />
                 </Icon>
               </BButton>
 
@@ -210,8 +213,8 @@ const DatePickerInput = ({
               />
 
               <BButton iconButton variant={"outline"} onClick={nextMonth}>
-                <Icon fontSize={"1rem"}>
-                  <CaretRight />
+                <Icon fontSize={"md"}>
+                  <IconCaretRightFilled />
                 </Icon>
               </BButton>
             </HStack>

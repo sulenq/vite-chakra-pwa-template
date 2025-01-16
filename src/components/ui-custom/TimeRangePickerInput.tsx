@@ -17,8 +17,11 @@ import {
   useFieldContext,
   VStack,
 } from "@chakra-ui/react";
-import { CaretDown, CaretUp } from "@phosphor-icons/react";
-import { IconHourglassHigh } from "@tabler/icons-react";
+import {
+  IconCaretDownFilled,
+  IconCaretUpFilled,
+  IconHourglassHigh,
+} from "@tabler/icons-react";
 import { useEffect, useRef, useState } from "react";
 import { Tooltip } from "../ui/tooltip";
 import BButton from "./BButton";
@@ -261,8 +264,8 @@ const TimeRangePickerInput = ({
               </Text>
             )}
 
-            <Icon fontSize={"md"} opacity={0.3}>
-              <IconHourglassHigh stroke={1.5} />
+            <Icon fontSize={"1.2rem"}>
+              <IconHourglassHigh />
             </Icon>
           </HStack>
         </BButton>
@@ -321,7 +324,7 @@ const TimeRangePickerInput = ({
                       onTouchEnd={handleMouseUpIncrement}
                     >
                       <Icon fontSize={"md"}>
-                        <CaretUp />
+                        <IconCaretUpFilled />
                       </Icon>
                     </BButton>
 
@@ -367,7 +370,7 @@ const TimeRangePickerInput = ({
                       onTouchEnd={handleMouseUpDecrement}
                     >
                       <Icon fontSize={"md"}>
-                        <CaretDown />
+                        <IconCaretDownFilled />
                       </Icon>
                     </BButton>
                   </VStack>
@@ -400,7 +403,7 @@ const TimeRangePickerInput = ({
                       onTouchEnd={handleMouseUpIncrement}
                     >
                       <Icon fontSize={"md"}>
-                        <CaretUp />
+                        <IconCaretUpFilled />
                       </Icon>
                     </BButton>
 
@@ -446,7 +449,7 @@ const TimeRangePickerInput = ({
                       onTouchEnd={handleMouseUpDecrement}
                     >
                       <Icon fontSize={"md"}>
-                        <CaretDown />
+                        <IconCaretDownFilled />
                       </Icon>
                     </BButton>
                   </VStack>
@@ -481,7 +484,7 @@ const TimeRangePickerInput = ({
                           onTouchEnd={handleMouseUpIncrement}
                         >
                           <Icon fontSize={"md"}>
-                            <CaretUp />
+                            <IconCaretUpFilled />
                           </Icon>
                         </BButton>
 
@@ -529,7 +532,7 @@ const TimeRangePickerInput = ({
                           onTouchEnd={handleMouseUpDecrement}
                         >
                           <Icon fontSize={"md"}>
-                            <CaretDown />
+                            <IconCaretDownFilled />
                           </Icon>
                         </BButton>
                       </VStack>
@@ -574,7 +577,7 @@ const TimeRangePickerInput = ({
                       onTouchEnd={handleMouseUpIncrement}
                     >
                       <Icon fontSize={"md"}>
-                        <CaretUp />
+                        <IconCaretUpFilled />
                       </Icon>
                     </BButton>
 
@@ -620,7 +623,7 @@ const TimeRangePickerInput = ({
                       onTouchEnd={handleMouseUpDecrement}
                     >
                       <Icon fontSize={"md"}>
-                        <CaretDown />
+                        <IconCaretDownFilled />
                       </Icon>
                     </BButton>
                   </VStack>
@@ -653,7 +656,7 @@ const TimeRangePickerInput = ({
                       onTouchEnd={handleMouseUpIncrement}
                     >
                       <Icon fontSize={"md"}>
-                        <CaretUp />
+                        <IconCaretUpFilled />
                       </Icon>
                     </BButton>
 
@@ -699,7 +702,7 @@ const TimeRangePickerInput = ({
                       onTouchEnd={handleMouseUpDecrement}
                     >
                       <Icon fontSize={"md"}>
-                        <CaretDown />
+                        <IconCaretDownFilled />
                       </Icon>
                     </BButton>
                   </VStack>
@@ -734,7 +737,7 @@ const TimeRangePickerInput = ({
                           onTouchEnd={handleMouseUpIncrement}
                         >
                           <Icon fontSize={"md"}>
-                            <CaretUp />
+                            <IconCaretUpFilled />
                           </Icon>
                         </BButton>
 
@@ -782,7 +785,7 @@ const TimeRangePickerInput = ({
                           onTouchEnd={handleMouseUpDecrement}
                         >
                           <Icon fontSize={"md"}>
-                            <CaretDown />
+                            <IconCaretDownFilled />
                           </Icon>
                         </BButton>
                       </VStack>

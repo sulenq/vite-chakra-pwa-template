@@ -10,7 +10,7 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { CaretLeft, CaretRight } from "@phosphor-icons/react";
+import { IconCaretLeftFilled, IconCaretRightFilled } from "@tabler/icons-react";
 import { Dispatch, useEffect, useRef, useState } from "react";
 import BButton from "./BButton";
 import {
@@ -35,7 +35,7 @@ interface Props extends BoxProps {
   setDate?: Dispatch<Date>;
 }
 
-const PeriodDisclosure = ({
+const PeriodPickerDisclosure = ({
   children,
   id,
   name,
@@ -192,8 +192,8 @@ const PeriodDisclosure = ({
                 }}
                 onTouchEnd={handleMouseUpDecrement}
               >
-                <Icon fontSize={"1rem"}>
-                  <CaretLeft />
+                <Icon fontSize={"md"}>
+                  <IconCaretLeftFilled />
                 </Icon>
               </BButton>
 
@@ -205,6 +205,7 @@ const PeriodDisclosure = ({
                   setYearLocal(parseInt(inputValue as string));
                 }}
                 inputValue={yearLocal ? yearLocal.toString() : ""}
+                borderColor={"gray.muted"}
               />
 
               <BButton
@@ -224,8 +225,8 @@ const PeriodDisclosure = ({
                 }}
                 onTouchEnd={handleMouseUpIncrement}
               >
-                <Icon fontSize={"1rem"}>
-                  <CaretRight />
+                <Icon fontSize={"md"}>
+                  <IconCaretRightFilled />
                 </Icon>
               </BButton>
             </HStack>
@@ -242,4 +243,4 @@ const PeriodDisclosure = ({
   );
 };
 
-export default PeriodDisclosure;
+export default PeriodPickerDisclosure;
