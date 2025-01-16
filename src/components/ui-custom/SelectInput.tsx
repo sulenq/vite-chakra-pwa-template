@@ -2,6 +2,7 @@ import {
   Interface__Select,
   Interface__SelectOption,
 } from "@/constant/interfaces";
+import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
 import {
@@ -12,7 +13,7 @@ import {
   useDisclosure,
   useFieldContext,
 } from "@chakra-ui/react";
-import { ArrowClockwise, CaretDown } from "@phosphor-icons/react";
+import { IconCaretDownFilled, IconRefresh } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { ButtonProps } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
@@ -28,11 +29,10 @@ import {
   DisclosureHeader,
   DisclosureRoot,
 } from "./Disclosure";
-import Heading6 from "./Heading6";
 import NoData from "./FeedbackNoData";
 import NotFound from "./FeedbackNotFound";
+import Heading6 from "./Heading6";
 import SearchInput from "./SearchInput";
-import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
 
 const SelectInput = ({
   id,
@@ -213,7 +213,7 @@ const SelectInput = ({
             )}
 
             <Icon opacity={0.3} fontSize={"sm"} maxH={"14px"}>
-              <CaretDown weight="bold" />
+              <IconCaretDownFilled />
             </Icon>
           </HStack>
         </BButton>
@@ -247,8 +247,8 @@ const SelectInput = ({
                   }}
                   disabled={options === undefined}
                 >
-                  <Icon fontSize={".9rem"}>
-                    <ArrowClockwise weight="bold" />
+                  <Icon>
+                    <IconRefresh />
                   </Icon>
                 </BButton>
               )}

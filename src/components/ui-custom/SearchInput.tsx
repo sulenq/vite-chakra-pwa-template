@@ -1,5 +1,6 @@
 import { Center, Icon, IconButton, InputProps } from "@chakra-ui/react";
-import { MagnifyingGlass, X } from "@phosphor-icons/react";
+import { X } from "@phosphor-icons/react";
+import { IconSearch } from "@tabler/icons-react";
 import { Dispatch, useCallback, useEffect, useState } from "react";
 import { InputGroup } from "../ui/input-group";
 import { Tooltip } from "../ui/tooltip";
@@ -59,9 +60,7 @@ export default function SearchInput({
     <Tooltip content={tooltipLabel || placeholder}>
       <InputGroup
         w={"full"}
-        startElement={
-          <Icon fontSize={"lg"}>{icon || <MagnifyingGlass />}</Icon>
-        }
+        startElement={<Icon fontSize={"lg"}>{icon || <IconSearch />}</Icon>}
       >
         <>
           <StringInput
