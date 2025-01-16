@@ -1,8 +1,8 @@
 import { Box, BoxProps, Icon, IconButton, InputProps } from "@chakra-ui/react";
-import { Eye, EyeSlash } from "@phosphor-icons/react";
+import { IconEye, IconEyeOff } from "@tabler/icons-react";
 import { useState } from "react";
-import { useColorModeValue } from "../ui/color-mode";
 import StringInput from "./StringInput";
+import { useColorModeValue } from "../ui/color-mode";
 
 interface Props extends InputProps {
   name?: string;
@@ -59,7 +59,7 @@ export default function PasswordInput({
           color={useColorModeValue("black", "white")}
           opacity={0.4}
         >
-          {showPassword ? <EyeSlash /> : <Eye />}
+          {showPassword ? <IconEye /> : <IconEyeOff />}
         </Icon>
       </IconButton>
     </Box>

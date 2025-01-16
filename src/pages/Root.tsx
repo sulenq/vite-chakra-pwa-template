@@ -1251,9 +1251,7 @@ export default function Root() {
       <HStack
         wrap={"wrap"}
         justify={"space-between"}
-        px={4}
         py={2}
-        mx={5}
         position={"sticky"}
         top={0}
         zIndex={99}
