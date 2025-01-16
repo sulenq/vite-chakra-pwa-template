@@ -1,5 +1,5 @@
 import { Icon, StackProps } from "@chakra-ui/react";
-import { MagnifyingGlass } from "@phosphor-icons/react";
+import { IconSearch } from "@tabler/icons-react";
 import { EmptyState } from "../ui/empty-state";
 import CContainer from "./CContainer";
 
@@ -20,7 +20,7 @@ export default function NotFound({
       <EmptyState
         icon={
           <Icon>
-            <MagnifyingGlass />
+            <IconSearch />
           </Icon>
         }
         title={title}

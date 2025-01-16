@@ -1295,12 +1295,13 @@ export default function Root() {
           {/* Feedback */}
           <CContainer flex={0} gap={4}>
             <Heading6>Feedback</Heading6>
-            <CenterContainer>
-              <NotFound />
-            </CenterContainer>
 
             <CenterContainer>
               <NoData />
+            </CenterContainer>
+
+            <CenterContainer>
+              <NotFound />
             </CenterContainer>
 
             <CenterContainer>

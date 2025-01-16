@@ -1,5 +1,5 @@
 import { Icon, StackProps } from "@chakra-ui/react";
-import { Prohibit } from "@phosphor-icons/react";
+import { IconBan } from "@tabler/icons-react";
 import { EmptyState } from "../ui/empty-state";
 import CContainer from "./CContainer";
 
@@ -18,7 +18,7 @@ export default function Forbidden({
       <EmptyState
         icon={
           <Icon>
-            <Prohibit />
+            <IconBan />
           </Icon>
         }
         title={title}

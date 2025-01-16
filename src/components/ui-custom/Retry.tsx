@@ -1,5 +1,5 @@
 import { Button, Group, Icon, StackProps } from "@chakra-ui/react";
-import { Warning } from "@phosphor-icons/react";
+import { IconAlertTriangle } from "@tabler/icons-react";
 import { EmptyState } from "../ui/empty-state";
 import CContainer from "./CContainer";
 
@@ -18,7 +18,7 @@ export default function Retry({
       <EmptyState
         icon={
           <Icon>
-            <Warning />
+            <IconAlertTriangle />
           </Icon>
         }
         title={title}

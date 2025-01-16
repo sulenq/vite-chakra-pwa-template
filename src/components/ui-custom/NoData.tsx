@@ -1,5 +1,5 @@
 import { Icon, StackProps } from "@chakra-ui/react";
-import { Empty } from "@phosphor-icons/react";
+import { IconDatabaseOff } from "@tabler/icons-react";
 import { EmptyState } from "../ui/empty-state";
 import CContainer from "./CContainer";
 
@@ -18,7 +18,7 @@ export default function NoData({
       <EmptyState
         icon={
           <Icon>
-            <Empty />
+            <IconDatabaseOff />
           </Icon>
         }
         title={title}
