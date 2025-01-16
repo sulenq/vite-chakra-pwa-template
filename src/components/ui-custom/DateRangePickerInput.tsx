@@ -19,7 +19,8 @@ import {
   useDisclosure,
   useFieldContext,
 } from "@chakra-ui/react";
-import { CalendarDots, CaretLeft, CaretRight } from "@phosphor-icons/react";
+import { CaretLeft, CaretRight } from "@phosphor-icons/react";
+import { IconCalendarWeek } from "@tabler/icons-react";
 import { addDays, startOfWeek } from "date-fns";
 import { useState } from "react";
 import { Alert } from "../ui/alert";
@@ -300,8 +301,8 @@ const DateRangePickerInput = ({
               </Text>
             )}
 
-            <Icon fontSize={"md"} opacity={0.3}>
-              <CalendarDots />
+            <Icon fontSize={"lg"} opacity={0.3}>
+              <IconCalendarWeek stroke={1.5} />
             </Icon>
           </HStack>
         </BButton>

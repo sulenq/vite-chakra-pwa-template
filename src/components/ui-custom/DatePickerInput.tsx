@@ -12,7 +12,8 @@ import {
   useDisclosure,
   useFieldContext,
 } from "@chakra-ui/react";
-import { CalendarDot, CaretLeft, CaretRight } from "@phosphor-icons/react";
+import { CaretLeft, CaretRight } from "@phosphor-icons/react";
+import { IconCalendarDue } from "@tabler/icons-react";
 import { addDays, startOfWeek } from "date-fns";
 import { useState } from "react";
 import { Tooltip } from "../ui/tooltip";
@@ -174,8 +175,8 @@ const DatePickerInput = ({
               </Text>
             )}
 
-            <Icon fontSize={"md"} opacity={0.3}>
-              <CalendarDot />
+            <Icon fontSize={"lg"} opacity={0.3}>
+              <IconCalendarDue stroke={1.5} />
             </Icon>
           </HStack>
         </BButton>

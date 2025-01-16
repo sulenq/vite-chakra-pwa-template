@@ -13,7 +13,8 @@ import {
   useFieldContext,
   VStack,
 } from "@chakra-ui/react";
-import { CaretDown, CaretUp, Clock } from "@phosphor-icons/react";
+import { CaretDown, CaretUp } from "@phosphor-icons/react";
+import { IconClock } from "@tabler/icons-react";
 import { useEffect, useRef, useState } from "react";
 import { Tooltip } from "../ui/tooltip";
 import BButton from "./BButton";
@@ -189,8 +190,8 @@ const TimePickerInput = ({
               </Text>
             )}
 
-            <Icon fontSize={"md"} opacity={0.3}>
-              <Clock />
+            <Icon fontSize={"lg"} opacity={0.3}>
+              <IconClock stroke={1.5} />
             </Icon>
           </HStack>
         </BButton>

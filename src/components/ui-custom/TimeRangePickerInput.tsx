@@ -17,7 +17,8 @@ import {
   useFieldContext,
   VStack,
 } from "@chakra-ui/react";
-import { CaretDown, CaretUp, HourglassMedium } from "@phosphor-icons/react";
+import { CaretDown, CaretUp } from "@phosphor-icons/react";
+import { IconHourglassHigh } from "@tabler/icons-react";
 import { useEffect, useRef, useState } from "react";
 import { Tooltip } from "../ui/tooltip";
 import BButton from "./BButton";
@@ -261,7 +262,7 @@ const TimeRangePickerInput = ({
             )}
 
             <Icon fontSize={"md"} opacity={0.3}>
-              <HourglassMedium />
+              <IconHourglassHigh stroke={1.5} />
             </Icon>
           </HStack>
         </BButton>
