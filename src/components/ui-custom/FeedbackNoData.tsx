@@ -1,18 +1,16 @@
 import { Icon, StackProps } from "@chakra-ui/react";
-import { IconSearch } from "@tabler/icons-react";
+import { IconDatabaseOff } from "@tabler/icons-react";
 import { EmptyState } from "../ui/empty-state";
 import CContainer from "./CContainer";
 
 interface Props extends StackProps {
   title?: string;
   description?: string;
-  children?: any;
 }
 
-export default function NotFound({
-  title = "Data tidak ditemukan",
-  description = "Cobalah untuk menyesuaikan pencarian.",
-  children,
+export default function FeedbackNoData({
+  title = "Tidak ada data",
+  description = "Cobalah untuk memperbarui data.",
   ...props
 }: Props) {
   return (
@@ -20,16 +18,14 @@ export default function NotFound({
       <EmptyState
         icon={
           <Icon>
-            <IconSearch />
+            <IconDatabaseOff />
           </Icon>
         }
         title={title}
         description={description}
         maxW={"500px"}
         m={"auto"}
-      >
-        {children}
-      </EmptyState>
+      />
     </CContainer>
   );
 }

@@ -29,8 +29,8 @@ import {
   DisclosureRoot,
 } from "./Disclosure";
 import Heading6 from "./Heading6";
-import NoData from "./NoData";
-import NotFound from "./NotFound";
+import NoData from "./FeedbackNoData";
+import NotFound from "./FeedbackNotFound";
 import SearchInput from "./SearchInput";
 import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
 

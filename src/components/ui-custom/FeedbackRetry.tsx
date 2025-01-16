@@ -8,7 +8,7 @@ interface Props extends StackProps {
   description?: string;
 }
 
-export default function Retry({
+export default function FeedbackRetry({
   title = "Data gagal dimuat",
   description = "Cobalah untuk memuat ulang menggunakan tombol di bawah.",
   ...props

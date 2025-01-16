@@ -8,7 +8,7 @@ interface Props extends StackProps {
   description?: string;
 }
 
-export default function Forbidden({
+export default function FeedbackForbidden({
   title = "Tidak memiliki akses",
   description = "Jika memerlukan akses, hubungi tim admin untuk menyesuaikan izin Anda.",
   ...props
