@@ -68,7 +68,7 @@ const LoginForm = () => {
     >
       <FieldsetRoot disabled={loading}>
         <CContainer mb={4} gap={1}>
-          <Heading6>Masuk ke akun anda</Heading6>
+          <Heading6 fontWeight={"bold"}>Masuk ke akun anda</Heading6>
           <Text fontSize={"sm"}>Selamat datang, masukkan credentials</Text>
         </CContainer>
 
