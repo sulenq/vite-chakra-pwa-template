@@ -1390,14 +1390,14 @@ export default function Root() {
               <IconButton variant={"outline"}>
                 <FloatCounter>3</FloatCounter>
                 <Icon>
-                  <IconBell stroke={1.5} />
+                  <IconBell />
                 </Icon>
               </IconButton>
 
               <BButton variant={"outline"}>
                 <FloatCounter>{formatNumber(4230)}</FloatCounter>
                 <Icon>
-                  <IconAdjustmentsHorizontal stroke={1.5} />
+                  <IconAdjustmentsHorizontal />
                 </Icon>
                 Filter
               </BButton>

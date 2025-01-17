@@ -305,7 +305,7 @@ const DateRangePickerInput = ({
             )}
 
             <Icon fontSize={"1.1rem"}>
-              <IconCalendarWeek stroke={1.5} />
+              <IconCalendarWeek />
             </Icon>
           </HStack>
         </BButton>
