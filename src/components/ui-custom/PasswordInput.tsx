@@ -55,7 +55,11 @@ export default function PasswordInput({
         }}
       >
         <Icon fontSize={"lg"} color={useColorModeValue("black", "white")}>
-          {showPassword ? <IconEye /> : <IconEyeOff />}
+          {showPassword ? (
+            <IconEye stroke={1.5} />
+          ) : (
+            <IconEyeOff stroke={1.5} />
+          )}
         </Icon>
       </IconButton>
     </Box>
