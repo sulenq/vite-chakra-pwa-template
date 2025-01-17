@@ -40,6 +40,7 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
+import { PALETTE } from "@/constant/colorPalette";
 
 const DateRangePickerInput = ({
   id,
@@ -409,7 +410,7 @@ const DateRangePickerInput = ({
                                 maxRange
                               : true;
 
-                            // Fungsi untuk menangani pemanggilan toaster error
+                            // error toast
                             const showError = () => {
                               toaster.create({
                                 type: "error",
@@ -441,11 +442,12 @@ const DateRangePickerInput = ({
                           }
                         }}
                         variant={
-                          dateInRange(date.fullDate, selected, true, true)
+                          dateInRange(date.fullDate, selected, true, true) ||
+                          dateSelected
                             ? "surface"
                             : "ghost"
                         }
-                        borderColor={dateSelected ? "ibody" : ""}
+                        // borderColor={dateSelected ? "ibody" : ""}
                         aspectRatio={1}
                       >
                         <Text
@@ -507,6 +509,7 @@ const DateRangePickerInput = ({
                 (!nonNullable && selected?.from && !selected?.to)
               }
               size={MAIN_BUTTON_SIZE}
+              colorPalette={PALETTE}
             >
               Konfirmasi
             </BButton>

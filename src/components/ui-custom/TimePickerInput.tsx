@@ -30,6 +30,7 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import StringInput from "./StringInput";
+import { PALETTE } from "@/constant/colorPalette";
 
 const TimePickerInput = ({
   id,
@@ -481,6 +482,7 @@ const TimePickerInput = ({
               onClick={confirmSelected}
               disabled={nonNullable ? (selected ? false : true) : false}
               size={MAIN_BUTTON_SIZE}
+              colorPalette={PALETTE}
             >
               Konfirmasi
             </BButton>

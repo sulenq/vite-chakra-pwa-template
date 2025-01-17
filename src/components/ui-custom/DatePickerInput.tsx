@@ -31,6 +31,7 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
+import { PALETTE } from "@/constant/colorPalette";
 
 const DatePickerInput = ({
   id,
@@ -255,7 +256,7 @@ const DatePickerInput = ({
                         onClick={() => {
                           setSelected(date.fullDate);
                         }}
-                        borderColor={dateSelected ? "ibody" : ""}
+                        // borderColor={dateSelected ? "ibody" : ""}
                         variant={dateSelected ? "surface" : "ghost"}
                         aspectRatio={1}
                       >
@@ -320,6 +321,7 @@ const DatePickerInput = ({
               onClick={confirmSelected}
               disabled={nonNullable && !selected}
               size={MAIN_BUTTON_SIZE}
+              colorPalette={PALETTE}
             >
               Konfirmasi
             </BButton>
