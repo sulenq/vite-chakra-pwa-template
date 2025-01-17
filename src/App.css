@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 * {
-  font-family: "Inter", serif !important;
+  font-family: "Nunito", serif !important;
 }
 
 :root {
@@ -55,6 +55,11 @@
   --reda: rgba(255, 109, 109, 0.12);
   --reda2: rgba(255, 109, 109, 0.2);
   --reda3: rgba(255, 109, 109, 0.2);
+}
+
+/* Tabler Icon */
+.tabler-icon {
+  stroke-width: 1.5px;
 }
 
 /* Dark Transparent Blured */

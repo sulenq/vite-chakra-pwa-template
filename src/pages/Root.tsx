@@ -1246,7 +1246,13 @@ const TableComponentDemo = () => {
 
 export default function Root() {
   return (
-    <CContainer minH={"100dvh"} p={5} pt={"0 !important"} gap={4} bgImage={"/"}>
+    <CContainer
+      minH={"100dvh"}
+      overflowX={"clip"}
+      p={5}
+      pt={"0 !important"}
+      gap={4}
+    >
       {/* Nav */}
       <HStack
         wrap={"wrap"}
@@ -1384,14 +1390,14 @@ export default function Root() {
               <IconButton variant={"outline"}>
                 <FloatCounter>3</FloatCounter>
                 <Icon>
-                  <IconBell />
+                  <IconBell stroke={1.5} />
                 </Icon>
               </IconButton>
 
               <BButton variant={"outline"}>
                 <FloatCounter>{formatNumber(4230)}</FloatCounter>
                 <Icon>
-                  <IconAdjustmentsHorizontal />
+                  <IconAdjustmentsHorizontal stroke={1.5} />
                 </Icon>
                 Filter
               </BButton>
@@ -1836,8 +1842,8 @@ export default function Root() {
         </CContainer>
       </SimpleGrid>
 
-      <CContainer>
-        {/* Table Component */}
+      {/* Table Component */}
+      <CContainer maxW={"1400px"} mx={"auto"}>
         <CContainer flex={0} mt={12} gap={4}>
           <Heading6>Table Component</Heading6>
           <CenterContainer flexDir={"column"}>
