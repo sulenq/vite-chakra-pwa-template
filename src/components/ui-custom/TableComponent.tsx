@@ -58,7 +58,7 @@ const BatchOptions = ({
       >
         <BButton iconButton unclicky variant={"plain"}>
           <Icon>
-            <IconListCheck />
+            <IconListCheck stroke={1.8} />
           </Icon>
         </BButton>
       </MenuTrigger>
