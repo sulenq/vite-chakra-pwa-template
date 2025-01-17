@@ -1,4 +1,4 @@
-import { PALETTE } from "@/constant/paletteConfig";
+import { PRIMARY_COLOR_PALETTE } from "@/constant/paletteConfig";
 import {
   Interface__Select,
   Interface__SelectOption,
@@ -135,7 +135,7 @@ const SelectInput = ({
               <BButton
                 unclicky
                 key={i}
-                // colorPalette={isSelected(item) ? PALETTE : ""}
+                // colorPalette={isSelected(item) ? PRIMARY_COLOR_PALETTE : ""}
                 variant={
                   isSelected(item) ? "surface" : !multiple ? "ghost" : "outline"
                 }
@@ -303,7 +303,7 @@ const SelectInput = ({
                       checked={selectAll}
                       invalid={false}
                       size={"sm"}
-                      colorPalette={PALETTE}
+                      colorPalette={PRIMARY_COLOR_PALETTE}
                     >
                       <Text>Pilih Semua</Text>
                     </Checkbox>
@@ -336,7 +336,7 @@ const SelectInput = ({
               <BButton
                 onClick={confirmSelected}
                 size={MAIN_BUTTON_SIZE}
-                colorPalette={PALETTE}
+                colorPalette={PRIMARY_COLOR_PALETTE}
               >
                 Konfirmasi
               </BButton>

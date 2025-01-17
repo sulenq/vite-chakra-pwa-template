@@ -31,7 +31,7 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
-import { PALETTE } from "@/constant/paletteConfig";
+import { PRIMARY_COLOR_PALETTE } from "@/constant/paletteConfig";
 
 const DatePickerInput = ({
   id,
@@ -321,7 +321,7 @@ const DatePickerInput = ({
               onClick={confirmSelected}
               disabled={nonNullable && !selected}
               size={MAIN_BUTTON_SIZE}
-              colorPalette={PALETTE}
+              colorPalette={PRIMARY_COLOR_PALETTE}
             >
               Konfirmasi
             </BButton>

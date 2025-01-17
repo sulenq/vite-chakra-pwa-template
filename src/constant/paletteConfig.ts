@@ -1,4 +1,4 @@
-const PALETTE = "";
-const FOCUS_BORDER = "ibody";
+const PRIMARY_COLOR_PALETTE = "";
+const INPUT_BORDER_COLOR_FOCUS = "ibody";
 
-export { PALETTE, FOCUS_BORDER };
+export { PRIMARY_COLOR_PALETTE, INPUT_BORDER_COLOR_FOCUS };
