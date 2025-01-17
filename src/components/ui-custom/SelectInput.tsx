@@ -253,7 +253,11 @@ const SelectInput = ({
                 </BButton>
               )}
 
-              <DisclosureCloseTrigger borderRadius={"full"} top={3} right={3} />
+              <DisclosureCloseTrigger
+                borderRadius={"full"}
+                top={"14px"}
+                right={"14px"}
+              />
             </HStack>
           </DisclosureHeader>
 
