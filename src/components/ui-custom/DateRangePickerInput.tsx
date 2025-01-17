@@ -40,7 +40,7 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
-import { PALETTE } from "@/constant/colorPalette";
+import { PALETTE } from "@/constant/paletteConfig";
 
 const DateRangePickerInput = ({
   id,

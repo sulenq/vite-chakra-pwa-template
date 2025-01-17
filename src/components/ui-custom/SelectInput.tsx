@@ -1,4 +1,4 @@
-import { PALETTE } from "@/constant/colorPalette";
+import { PALETTE } from "@/constant/paletteConfig";
 import {
   Interface__Select,
   Interface__SelectOption,

@@ -30,7 +30,7 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import StringInput from "./StringInput";
-import { PALETTE } from "@/constant/colorPalette";
+import { PALETTE } from "@/constant/paletteConfig";
 
 const TimePickerInput = ({
   id,

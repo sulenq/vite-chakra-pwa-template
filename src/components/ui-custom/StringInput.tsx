@@ -8,7 +8,7 @@ import {
 import { css, Global } from "@emotion/react";
 import { useRef } from "react";
 import { useColorMode } from "../ui/color-mode";
-import { FOCUS_BORDER } from "@/constant/colorPalette";
+import { FOCUS_BORDER } from "@/constant/paletteConfig";
 
 interface Props extends InputProps {
   fRef?: any;
