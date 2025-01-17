@@ -20,7 +20,7 @@ export default function FeedbackNotFound({
       <EmptyState
         icon={
           <Icon>
-            <IconSearch />
+            <IconSearch stroke={2} />
           </Icon>
         }
         title={title}

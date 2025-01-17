@@ -18,7 +18,7 @@ export default function FeedbackForbidden({
       <EmptyState
         icon={
           <Icon>
-            <IconBan />
+            <IconBan stroke={2} />
           </Icon>
         }
         title={title}

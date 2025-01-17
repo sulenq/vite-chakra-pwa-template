@@ -18,7 +18,7 @@ export default function FeedbackNoData({
       <EmptyState
         icon={
           <Icon>
-            <IconDatabaseOff />
+            <IconDatabaseOff stroke={2} />
           </Icon>
         }
         title={title}
