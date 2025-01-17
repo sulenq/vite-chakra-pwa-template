@@ -194,7 +194,7 @@ const TimePickerInput = ({
             )}
 
             <Icon fontSize={"1.1rem"}>
-              <IconClock />
+              <IconClock stroke={1.8} />
             </Icon>
           </HStack>
         </BButton>

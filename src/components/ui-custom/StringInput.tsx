@@ -67,6 +67,7 @@ export default function StringInput({
           value={inputValue}
           placeholder={placeholder}
           borderColor={fc?.invalid || invalid ? "border.error" : "gray.muted"}
+          fontWeight={"medium"}
           _focus={{ borderColor: "border.inverted" }}
           autoComplete="off"
           {...props}

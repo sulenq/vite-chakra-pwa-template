@@ -179,7 +179,7 @@ const DatePickerInput = ({
             )}
 
             <Icon fontSize={"1.1rem"}>
-              <IconCalendarDue />
+              <IconCalendarDue stroke={1.5} />
             </Icon>
           </HStack>
         </BButton>

@@ -23,7 +23,12 @@ export default function BButton({
       {children}
     </IconButton>
   ) : (
-    <Button className={finalClassName} size={size} {...props}>
+    <Button
+      className={finalClassName}
+      fontSize={"bold !important"}
+      size={size}
+      {...props}
+    >
       {children}
     </Button>
   );
