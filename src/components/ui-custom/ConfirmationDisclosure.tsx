@@ -1,5 +1,11 @@
 import useBackOnClose from "@/hooks/useBackOnClose";
-import { Box, BoxProps, Text, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  BoxProps,
+  ButtonProps,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import BackButton from "./BackButton";
 import BButton from "./BButton";
 import {
@@ -11,6 +17,7 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
+import { PRIMARY_COLOR_PALETTE } from "@/constant/paletteConfig";
 
 interface Props {
   id: string;
@@ -21,6 +28,7 @@ interface Props {
   children?: any;
   boxProps?: BoxProps;
   disabled?: boolean;
+  confirmButtonProps?: ButtonProps;
 }
 
 const ConfirmationDisclosure = ({
@@ -30,6 +38,7 @@ const ConfirmationDisclosure = ({
   confirmLabel = "Label Konfirmasi",
   confirmCallback = () => {},
   boxProps,
+  confirmButtonProps,
   children,
   disabled = false,
 }: Props) => {
@@ -54,7 +63,12 @@ const ConfirmationDisclosure = ({
 
           <DisclosureFooter>
             <BackButton />
-            <BButton size={MAIN_BUTTON_SIZE} onClick={confirmCallback}>
+            <BButton
+              size={MAIN_BUTTON_SIZE}
+              onClick={confirmCallback}
+              colorPalette={PRIMARY_COLOR_PALETTE}
+              {...confirmButtonProps}
+            >
               {confirmLabel}
             </BButton>
           </DisclosureFooter>
