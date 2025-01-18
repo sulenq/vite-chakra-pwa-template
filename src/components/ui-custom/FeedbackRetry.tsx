@@ -2,6 +2,7 @@ import { Button, Group, Icon, StackProps } from "@chakra-ui/react";
 import { IconAlertTriangle } from "@tabler/icons-react";
 import { EmptyState } from "../ui/empty-state";
 import CContainer from "./CContainer";
+import { PRIMARY_COLOR_PALETTE } from "@/constant/paletteConfig";
 
 interface Props extends StackProps {
   title?: string;
@@ -28,7 +29,9 @@ export default function FeedbackRetry({
         m={"auto"}
       >
         <Group>
-          <Button className="clicky">Muat Ulang</Button>
+          <Button className="clicky" colorPalette={PRIMARY_COLOR_PALETTE}>
+            Muat Ulang
+          </Button>
         </Group>
       </EmptyState>
     </CContainer>
