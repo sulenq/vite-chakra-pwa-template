@@ -7,9 +7,19 @@ import {
   TableColumnHeaderProps,
   TableRowProps,
 } from "@chakra-ui/react";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, FunctionComponentElement, SetStateAction } from "react";
 
 export type LanguageOptions = "id" | "en";
+
+export interface Interface__Route {
+  path: string;
+  element: FunctionComponentElement<{}>;
+}
+
+export interface Interface__PrivateRoute extends Interface__Route {
+  requireAuth?: boolean;
+  requirePermissions?: boolean;
+}
 
 export interface Interface__Nav {
   label: {
@@ -130,7 +140,7 @@ export interface Interface__TimeRangePicker extends ButtonProps {
 export interface Interface__FormattedTableHeader {
   th: string;
   columnKey?: string; // unused yet
-  isSortable?: boolean;
+  sortable?: boolean;
   tableColumnHeaderProps?: TableColumnHeaderProps;
   stackProps?: StackProps;
 }
@@ -178,6 +188,7 @@ export type Type__TableOptions = (
         description: string;
         confirmLabel: string;
         confirmCallback: () => void;
+        confirmButtonProps?: ButtonProps;
       };
       subMenu?: any; // unused yet
       menuItemProps?: MenuItemProps;

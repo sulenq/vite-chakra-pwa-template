@@ -28,7 +28,7 @@ const PRESET_LINE_CHART = {
 
 const PRESET_DOUGHNUT_CHART = {
   innerRadius: 70,
-  outerRadius: 120,
+  outerRadius: 100,
   stroke: "",
   // paddingAngle: 4,
   // cornerRadius: 6,

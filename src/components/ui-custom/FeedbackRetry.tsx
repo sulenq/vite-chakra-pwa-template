@@ -15,7 +15,7 @@ export default function FeedbackRetry({
   ...props
 }: Props) {
   return (
-    <CContainer {...props}>
+    <CContainer w={"fit"} m={"auto"} {...props}>
       <EmptyState
         icon={
           <Icon>
@@ -26,7 +26,6 @@ export default function FeedbackRetry({
         description={description}
         maxW={"500px"}
         minH={"300px"}
-        m={"auto"}
       >
         <Group>
           <Button className="clicky" colorPalette={PRIMARY_COLOR_PALETTE}>

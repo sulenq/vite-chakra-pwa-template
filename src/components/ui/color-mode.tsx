@@ -2,9 +2,9 @@
 
 import type { IconButtonProps } from "@chakra-ui/react";
 import { ClientOnly, Icon, IconButton, Skeleton } from "@chakra-ui/react";
-import { IconMoon, IconSun } from "@tabler/icons-react";
-import { ThemeProvider, useTheme } from "next-themes";
+import { IconMoon, IconSunHigh } from "@tabler/icons-react";
 import type { ThemeProviderProps } from "next-themes";
+import { ThemeProvider, useTheme } from "next-themes";
 import { forwardRef } from "react";
 
 export interface ColorModeProviderProps extends ThemeProviderProps {}
@@ -32,14 +32,14 @@ export function useColorModeValue<T>(light: T, dark: T) {
   return colorMode === "light" ? light : dark;
 }
 
-export function ColorModeIcon() {
+export function ColorModeIcon({ ...props }: any) {
   const { colorMode } = useColorMode();
   return colorMode === "light" ? (
-    <Icon fontSize={"1.1rem"}>
-      <IconSun />
+    <Icon fontSize={"1.1rem"} {...props}>
+      <IconSunHigh />
     </Icon>
   ) : (
-    <Icon fontSize={"1.1rem"}>
+    <Icon fontSize={"1.1rem"} {...props}>
       <IconMoon />
     </Icon>
   );
@@ -68,7 +68,7 @@ export const ColorModeButton = forwardRef<
         //   },
         // }}
       >
-        {ColorModeIcon()}
+        <ColorModeIcon fontSize={props?.fontSize} />
       </IconButton>
     </ClientOnly>
   );

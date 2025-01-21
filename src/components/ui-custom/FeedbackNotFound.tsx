@@ -16,7 +16,7 @@ export default function FeedbackNotFound({
   ...props
 }: Props) {
   return (
-    <CContainer {...props}>
+    <CContainer w={"fit"} m={"auto"} {...props}>
       <EmptyState
         icon={
           <Icon>
@@ -26,7 +26,6 @@ export default function FeedbackNotFound({
         title={title}
         description={description}
         maxW={"500px"}
-        m={"auto"}
       >
         {children}
       </EmptyState>

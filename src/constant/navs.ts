@@ -1,26 +1,20 @@
-import {
-  ChartBar,
-  Cube,
-  CurrencyCircleDollar,
-  Users,
-} from "@phosphor-icons/react";
+import { IconChartDots, IconDatabase, IconUsers } from "@tabler/icons-react";
 
 const NAVS = [
   {
+    label: "Data",
+    path: "/data",
+    icon: IconDatabase,
+  },
+  {
     label: "Dashboard",
-    link: "/dashboard",
-    icon: ChartBar,
+    path: "/dashboard",
+    icon: IconChartDots,
   },
   {
-    label: "Project",
-    link: "/projects",
-    icon: Cube,
-  },
-  { label: "Transaction", link: "/transactions", icon: CurrencyCircleDollar },
-  {
-    label: "Clients",
-    link: "/clients",
-    icon: Users,
+    label: "Users",
+    path: "/users",
+    icon: IconUsers,
   },
 ];
 

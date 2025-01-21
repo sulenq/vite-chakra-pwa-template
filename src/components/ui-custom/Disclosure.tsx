@@ -121,9 +121,16 @@ const DisclosureBody = ({ children, ...props }: DisclosureBodyProps) => {
   const iss = useIsSmScreenWidth();
 
   return iss ? (
-    <DrawerBody {...(props as DrawerHeaderProps)}>{children}</DrawerBody>
+    <DrawerBody py={0} {...(props as DrawerHeaderProps)}>
+      {children}
+    </DrawerBody>
   ) : (
-    <DialogBody px={5} pb={"20px !important"} {...(props as DialogBodyProps)}>
+    <DialogBody
+      px={5}
+      pt={0}
+      pb={"20px !important"}
+      {...(props as DialogBodyProps)}
+    >
       {children}
     </DialogBody>
   );
@@ -136,7 +143,7 @@ const DisclosureFooter = ({ children, ...props }: DisclosureFooterProps) => {
   const iss = useIsSmScreenWidth();
 
   return iss ? (
-    <DrawerFooter pb={8} {...(props as DrawerHeaderProps)}>
+    <DrawerFooter pt={4} pb={8} {...(props as DrawerHeaderProps)}>
       <CContainer align={"stretch"} gap={2}>
         {children}
       </CContainer>

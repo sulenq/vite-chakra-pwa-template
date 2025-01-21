@@ -11,7 +11,7 @@ import {
   useFileUploadContext,
   useRecipe,
 } from "@chakra-ui/react";
-import { UploadSimple, X } from "@phosphor-icons/react";
+import { IconUpload, IconX } from "@tabler/icons-react";
 import { forwardRef } from "react";
 import FileIcon from "../ui-custom/FileIcon";
 
@@ -49,9 +49,9 @@ export const FileUploadDropzone = forwardRef<
       cursor={"pointer"}
       _hover={{ bg: "gray.subtle" }}
     >
-      <Icon fontSize="xl" color="fg.muted">
+      <Icon fontSize="2xl" color="fg.muted">
         <Icon>
-          <UploadSimple weight="bold" />
+          <IconUpload />
         </Icon>
       </Icon>
       <ChakraFileUpload.DropzoneContent>
@@ -78,7 +78,7 @@ const FileUploadItem = (props: FileUploadItemProps) => {
   const { file, showSize, clearable } = props;
 
   return (
-    <ChakraFileUpload.Item file={file}>
+    <ChakraFileUpload.Item file={file} pr={3} h={"54px"}>
       <ChakraFileUpload.ItemPreview asChild>
         <Icon fontSize={20} color="fg.muted">
           <FileIcon type={file.type} />
@@ -97,8 +97,8 @@ const FileUploadItem = (props: FileUploadItemProps) => {
 
       {clearable && (
         <ChakraFileUpload.ItemDeleteTrigger asChild>
-          <IconButton variant="ghost" color="fg.muted" size="xs">
-            <X />
+          <IconButton variant="ghost" color="fg.muted" size="xs" mt={"-6px"}>
+            <IconX />
           </IconButton>
         </ChakraFileUpload.ItemDeleteTrigger>
       )}

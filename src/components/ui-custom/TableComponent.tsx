@@ -37,6 +37,7 @@ import BButton from "./BButton";
 import CContainer from "./CContainer";
 import ConfirmationDisclosure from "./ConfirmationDisclosure";
 import NumberInput from "./NumberInput";
+import { PRIMARY_COLOR_PALETTE } from "@/constant/paletteConfig";
 
 const BatchOptions = ({
   selectedRows,
@@ -82,7 +83,12 @@ const BatchOptions = ({
             closeOnSelect={false}
           >
             <Text>Pilih Semua</Text>
-            <Checkbox borderColor={"d3"} checked={selectAllRows} size={"sm"} />
+            <Checkbox
+              borderColor={"d3"}
+              checked={selectAllRows}
+              size={"sm"}
+              colorPalette={PRIMARY_COLOR_PALETTE}
+            />
           </MenuItem>
 
           <MenuSeparator />
@@ -102,6 +108,9 @@ const BatchOptions = ({
                   confirmCallback={
                     option.confirmation(selectedRows).confirmCallback
                   }
+                  confirmButtonProps={
+                    option.confirmation(selectedRows).confirmButtonProps
+                  }
                   disabled={disabled}
                   key={i}
                 >
@@ -109,9 +118,11 @@ const BatchOptions = ({
                     key={i}
                     value={option.label}
                     disabled={disabled}
+                    justifyContent={"space-between"}
                     {...option.menuItemProps}
                   >
                     {option.label}
+                    {option.icon}
                   </MenuItem>
                 </ConfirmationDisclosure>
               );
@@ -122,12 +133,17 @@ const BatchOptions = ({
                 key={i}
                 value={option.label}
                 onClick={() => {
-                  option.callback && option.callback(selectedRows);
+                  option.callback &&
+                    ((option.menuItemProps && !option.menuItemProps.disabled) ||
+                      !disabled) &&
+                    option.callback(selectedRows);
                 }}
                 disabled={disabled}
+                justifyContent={"space-between"}
                 {...option.menuItemProps}
               >
                 {option.label}
+                {option.icon}
               </MenuItem>
             );
           })}
@@ -167,19 +183,24 @@ const RowOptions = ({
             if (option.confirmation) {
               return (
                 <ConfirmationDisclosure
+                  key={i}
                   id={option.confirmation(rowData).id}
                   title={option.confirmation(rowData).title}
                   description={option.confirmation(rowData).description}
                   confirmLabel={option.confirmation(rowData).confirmLabel}
                   confirmCallback={option.confirmation(rowData).confirmCallback}
-                  key={i}
+                  confirmButtonProps={
+                    option.confirmation(rowData)?.confirmButtonProps
+                  }
                 >
                   <MenuItem
                     key={i}
                     value={option.label}
+                    justifyContent={"space-between"}
                     {...option.menuItemProps}
                   >
                     {option.label}
+                    {option.icon}
                   </MenuItem>
                 </ConfirmationDisclosure>
               );
@@ -190,11 +211,18 @@ const RowOptions = ({
                 key={i}
                 value={option.label}
                 onClick={() => {
-                  option.callback && option.callback(rowData);
+                  if (
+                    option.callback &&
+                    (!option.menuItemProps || !option.menuItemProps.disabled)
+                  ) {
+                    option.callback(rowData);
+                  }
                 }}
+                justifyContent={"space-between"}
                 {...option.menuItemProps}
               >
                 {option.label}
+                {option.icon}
               </MenuItem>
             );
           })}
@@ -445,7 +473,11 @@ const TableComponent = ({
       : originalDataState;
 
   return (
-    <CContainer flex={1} minH={props?.minH || sh < 625 ? "400px" : ""}>
+    <CContainer
+      // flex={1}
+      // bg={"bg.subtle"}
+      minH={props?.minH || sh < 625 ? "400px" : ""}
+    >
       {/* Table content */}
       <CContainer
         minW={"full"}
@@ -516,9 +548,9 @@ const TableComponent = ({
                   bg={"body"}
                   whiteSpace={"nowrap"}
                   onClick={() => {
-                    tableColumnHeader.isSortable && requestSort(i);
+                    tableColumnHeader.sortable && requestSort(i);
                   }}
-                  cursor={tableColumnHeader?.isSortable ? "pointer" : "auto"}
+                  cursor={tableColumnHeader?.sortable ? "pointer" : "auto"}
                   borderBottom={"none !important"}
                   p={0}
                   {...tableColumnHeader?.tableColumnHeaderProps}
@@ -613,7 +645,7 @@ const TableComponent = ({
                         }}
                       >
                         <Checkbox
-                          colorScheme="ap"
+                          colorPalette={PRIMARY_COLOR_PALETTE}
                           checked={selectedRows.includes(row.id)}
                           size={"sm"}
                         />

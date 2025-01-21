@@ -87,6 +87,7 @@ textarea,
 /* Table */
 th {
   /* font-size: 12px !important; */
+  font-weight: bold;
   text-transform: none !important;
   border-bottom: 1px solid var(--divider3) !important;
   color: var(--divider-text) !important;
@@ -205,14 +206,14 @@ button {
   display: none;
 }
 .scrollX::-webkit-scrollbar {
-  height: 4px;
+  height: 6px;
 }
 .scrollX::-webkit-scrollbar-corner,
 .scrollY::-webkit-scrollbar-corner {
   background: transparent !important;
 }
 .scrollY::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 .scrollX::-webkit-scrollbar-thumb,
 .scrollY::-webkit-scrollbar-thumb {

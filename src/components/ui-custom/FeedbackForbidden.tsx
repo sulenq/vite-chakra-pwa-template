@@ -14,7 +14,7 @@ export default function FeedbackForbidden({
   ...props
 }: Props) {
   return (
-    <CContainer {...props}>
+    <CContainer w={"fit"} m={"auto"} {...props}>
       <EmptyState
         icon={
           <Icon>
@@ -24,7 +24,6 @@ export default function FeedbackForbidden({
         title={title}
         description={description}
         maxW={"500px"}
-        m={"auto"}
       />
     </CContainer>
   );

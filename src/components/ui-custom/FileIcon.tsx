@@ -1,14 +1,14 @@
-import { forwardRef } from "react";
 import { Icon as ChakraIcon, IconProps } from "@chakra-ui/react";
 import {
-  File,
-  FileCsv,
-  FileDoc,
-  FilePdf,
-  FilePpt,
-  FileXls,
-  Image,
-} from "@phosphor-icons/react";
+  IconFile,
+  IconFileTypeCsv,
+  IconFileTypeDoc,
+  IconFileTypePdf,
+  IconFileTypeXls,
+  IconPhoto,
+  IconPresentation,
+} from "@tabler/icons-react";
+import { forwardRef } from "react";
 
 interface Props extends IconProps {
   type: string;
@@ -20,12 +20,12 @@ const FileIcon = forwardRef<SVGSVGElement, Props>(({ type, ...props }, ref) => {
 
   switch (type.toLowerCase()) {
     default:
-      IconComponent = File;
+      IconComponent = IconFile;
       break;
     case "pdf":
     case "application/pdf":
       iconColor = "red.400";
-      IconComponent = FilePdf;
+      IconComponent = IconFileTypePdf;
       break;
     case "docx":
     case "doc":
@@ -33,25 +33,25 @@ const FileIcon = forwardRef<SVGSVGElement, Props>(({ type, ...props }, ref) => {
     case "vnd.openxmlformats-officedocument.wordprocessingml.document":
     case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
       iconColor = "blue.400";
-      IconComponent = FileDoc;
+      IconComponent = IconFileTypeDoc;
       break;
     case "xls":
     case "xlsx":
     case "vnd.ms-excel":
     case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
       iconColor = "green.400";
-      IconComponent = FileXls;
+      IconComponent = IconFileTypeXls;
       break;
     case "ppt":
     case "pptx":
     case "vnd.ms-presentation":
     case "vnd.openxmlformats-officedocument.presentationml.presentation":
       iconColor = "green.400";
-      IconComponent = FilePpt;
+      IconComponent = IconPresentation;
       break;
     case "csv":
       iconColor = "green.400";
-      IconComponent = FileCsv;
+      IconComponent = IconFileTypeCsv;
       break;
     case "jpg":
     case "jpeg":
@@ -72,7 +72,7 @@ const FileIcon = forwardRef<SVGSVGElement, Props>(({ type, ...props }, ref) => {
     case "image/tiff":
     case "image/tif":
       iconColor = "purple.400";
-      IconComponent = Image;
+      IconComponent = IconPhoto;
       break;
   }
 

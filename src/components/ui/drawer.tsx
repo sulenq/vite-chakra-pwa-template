@@ -31,7 +31,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
           <ChakraDrawer.Backdrop
             bg={"var(--divider)"}
             backdropFilter={"blur(5px)"}
-            zIndex={5}
+            zIndex={20}
           />
         )}
         <ChakraDrawer.Positioner padding={offset}>

@@ -25,10 +25,10 @@ interface Props {
   description: string;
   confirmLabel: string;
   confirmCallback: () => void;
+  confirmButtonProps?: ButtonProps;
   children?: any;
   boxProps?: BoxProps;
   disabled?: boolean;
-  confirmButtonProps?: ButtonProps;
 }
 
 const ConfirmationDisclosure = ({
@@ -37,9 +37,9 @@ const ConfirmationDisclosure = ({
   description = "Deskripsi",
   confirmLabel = "Label Konfirmasi",
   confirmCallback = () => {},
-  boxProps,
   confirmButtonProps,
   children,
+  boxProps,
   disabled = false,
 }: Props) => {
   const { open, onOpen, onClose } = useDisclosure();

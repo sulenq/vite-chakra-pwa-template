@@ -9,7 +9,7 @@ const useBackOnDefaultPage = () => {
       const pathWithoutParams = location.pathname;
       navigate(pathWithoutParams, { replace: true });
     } else {
-      navigate(-1);
+      // navigate(-1);
     }
   };
 
