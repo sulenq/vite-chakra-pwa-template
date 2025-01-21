@@ -104,11 +104,11 @@ const DisclosureHeader = ({ children, ...props }: DisclosureHeaderProps) => {
   const iss = useIsSmScreenWidth();
 
   return iss ? (
-    <DrawerHeader pt={4} {...(props as DrawerHeaderProps)}>
+    <DrawerHeader px={5} pt={3} {...(props as DrawerHeaderProps)}>
       {children}
     </DrawerHeader>
   ) : (
-    <DialogHeader p={5} {...(props as DialogHeaderProps)}>
+    <DialogHeader p={4} ml={1} {...(props as DialogHeaderProps)}>
       {children}
     </DialogHeader>
   );
@@ -121,12 +121,12 @@ const DisclosureBody = ({ children, ...props }: DisclosureBodyProps) => {
   const iss = useIsSmScreenWidth();
 
   return iss ? (
-    <DrawerBody py={0} {...(props as DrawerHeaderProps)}>
+    <DrawerBody px={4} py={0} {...(props as DrawerHeaderProps)}>
       {children}
     </DrawerBody>
   ) : (
     <DialogBody
-      px={5}
+      px={4}
       pt={0}
       pb={"20px !important"}
       {...(props as DialogBodyProps)}
@@ -143,14 +143,14 @@ const DisclosureFooter = ({ children, ...props }: DisclosureFooterProps) => {
   const iss = useIsSmScreenWidth();
 
   return iss ? (
-    <DrawerFooter pt={4} pb={8} {...(props as DrawerHeaderProps)}>
+    <DrawerFooter px={4} pt={4} pb={6} {...(props as DrawerHeaderProps)}>
       <CContainer align={"stretch"} gap={2}>
         {children}
       </CContainer>
     </DrawerFooter>
   ) : (
     <DialogFooter
-      p={5}
+      p={4}
       borderTop={"1px solid var(--divider2)"}
       // bg={"var(--divider)"}
       {...(props as DialogFooterProps)}
@@ -201,14 +201,20 @@ const DisclosureCloseTrigger = ({
 
   return iss ? (
     <DrawerCloseTrigger
-      mt={"6px"}
+      mt={"2px"}
+      mr={"-6px"}
       onClick={back}
       {...(props as DrawerCloseTriggerProps)}
     >
       {children}
     </DrawerCloseTrigger>
   ) : (
-    <DialogCloseTrigger onClick={back} {...(props as DialogCloseTriggerProps)}>
+    <DialogCloseTrigger
+      mr={-1}
+      mt={-1}
+      onClick={back}
+      {...(props as DialogCloseTriggerProps)}
+    >
       {children}
     </DialogCloseTrigger>
   );
