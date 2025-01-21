@@ -800,6 +800,7 @@ const TableComponent = ({
                   <BButton
                     unclicky
                     variant={"outline"}
+                    borderRight={"none"}
                     borderRadius={0}
                     minW={"45px"}
                   >
@@ -850,8 +851,8 @@ const TableComponent = ({
 
               <BButton
                 iconButton
+                unclicky
                 variant={"outline"}
-                ml={"-1px"}
                 onClick={() => {
                   setPageControl(pageControl + 1);
                 }}
