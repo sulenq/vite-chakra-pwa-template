@@ -2,6 +2,7 @@ import { ButtonProps } from "@/components/ui/button";
 import {
   BoxProps,
   MenuItemProps,
+  SimpleGridProps,
   StackProps,
   TableCellProps,
   TableColumnHeaderProps,
@@ -176,6 +177,7 @@ export interface Interface__TableComponent extends StackProps {
   limitOptions?: number[];
   limitControl?: number;
   setLimitControl?: Dispatch<number>;
+  footerContainerProps?: SimpleGridProps;
 }
 export type Type__TableOptions = (
   | {

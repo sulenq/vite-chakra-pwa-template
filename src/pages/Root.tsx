@@ -24,6 +24,7 @@ import Heading3 from "@/components/ui-custom/Heading3";
 import Heading4 from "@/components/ui-custom/Heading4";
 import Heading5 from "@/components/ui-custom/Heading5";
 import Heading6 from "@/components/ui-custom/Heading6";
+import HScroll from "@/components/ui-custom/HScroll";
 import NumberInput from "@/components/ui-custom/NumberInput";
 import PasswordInput from "@/components/ui-custom/PasswordInput";
 import SearchInput from "@/components/ui-custom/SearchInput";
@@ -1124,68 +1125,48 @@ const TableComponentDemo = () => {
 
   const [limitControl, setLimitControl] = useState(10);
   const [pageControl, setPageControl] = useState(1);
+  const [search, setSearch] = useState("");
 
   return (
-    <TableComponent
-      ths={ths}
-      tds={tds}
-      originalData={data}
-      rowClick={(rowData) => {
-        toaster.create({
-          type: "success",
-          title: `Row Clicked`,
-          description: `Data id = ${rowData.id}`,
-          placement: iss ? "top" : "bottom-end",
-          action: {
-            label: "Close",
-            onClick: () => {},
-          },
-        });
-      }}
-      rowOptions={[
-        {
-          label: (
-            <CContainer p={2}>
-              <Text>Edit</Text>
-            </CContainer>
-          ),
-          menuItemProps: {
-            p: "0 !important",
-          },
-          callback: (rowData: any) => {
-            toaster.create({
-              type: "success",
-              title: `Edit`,
-              description: `Data id = ${rowData.id}`,
-              placement: iss ? "top" : "bottom-end",
-              action: {
-                label: "Close",
-                onClick: () => {},
-              },
-            });
-          },
-        },
-        {
-          label: "Disabled Menu",
-          menuItemProps: {
-            disabled: true,
-          },
-        },
-        "divider",
-        {
-          label: "Delete...",
-          menuItemProps: {
-            color: "red.400",
-          },
-          confirmation: (rowData: any) => ({
-            id: `${rowData.id}`,
-            title: "Delete",
-            description: `Aksi ini tidak bisa dibatalkan, data id ${rowData.id}`,
-            confirmLabel: "Delete",
-            confirmCallback: () => {
+    <>
+      <HScroll px={4} pb={4}>
+        <SearchInput
+          onChangeSetter={(input) => {
+            setSearch(input);
+          }}
+          inputValue={search}
+        />
+      </HScroll>
+      <TableComponent
+        ths={ths}
+        tds={tds}
+        originalData={data}
+        rowClick={(rowData) => {
+          toaster.create({
+            type: "success",
+            title: `Row Clicked`,
+            description: `Data id = ${rowData.id}`,
+            placement: iss ? "top" : "bottom-end",
+            action: {
+              label: "Close",
+              onClick: () => {},
+            },
+          });
+        }}
+        rowOptions={[
+          {
+            label: (
+              <CContainer p={2}>
+                <Text>Edit</Text>
+              </CContainer>
+            ),
+            menuItemProps: {
+              p: "0 !important",
+            },
+            callback: (rowData: any) => {
               toaster.create({
                 type: "success",
-                title: `Delete`,
+                title: `Edit`,
                 description: `Data id = ${rowData.id}`,
                 placement: iss ? "top" : "bottom-end",
                 action: {
@@ -1194,53 +1175,84 @@ const TableComponentDemo = () => {
                 },
               });
             },
-          }),
-        },
-      ]}
-      batchOptions={[
-        {
-          label: "Disabled Menu",
-          menuItemProps: {
-            disabled: true,
           },
-        },
-        "divider",
-        {
-          label: "Delete...",
-          menuItemProps: {
-            color: "red.400",
-          },
-          confirmation: (selectedRows: number[]) => ({
-            id: `${selectedRows.join("-")}`,
-            title: "Delete",
-            description: `Aksi ini tidak bisa dibatalkan, data ids ${selectedRows.join(
-              ", "
-            )}`,
-            confirmLabel: "Delete",
-            confirmCallback: () => {
-              toaster.create({
-                type: "success",
-                title: `Delete`,
-                description: `Data ids = ${selectedRows.join(", ")}`,
-                placement: iss ? "top" : "bottom-end",
-                action: {
-                  label: "Close",
-                  onClick: () => {},
-                },
-              });
+          {
+            label: "Disabled Menu",
+            menuItemProps: {
+              disabled: true,
             },
-          }),
-        },
-      ]}
-      limitControl={limitControl}
-      setLimitControl={setLimitControl}
-      pagination={res.pagination}
-      pageControl={pageControl}
-      setPageControl={setPageControl}
-      footerContent={
-        <TableFooterNote>Tabel footer note example</TableFooterNote>
-      }
-    />
+          },
+          "divider",
+          {
+            label: "Delete...",
+            menuItemProps: {
+              color: "red.400",
+            },
+            confirmation: (rowData: any) => ({
+              id: `${rowData.id}`,
+              title: "Delete",
+              description: `Aksi ini tidak bisa dibatalkan, data id ${rowData.id}`,
+              confirmLabel: "Delete",
+              confirmCallback: () => {
+                toaster.create({
+                  type: "success",
+                  title: `Delete`,
+                  description: `Data id = ${rowData.id}`,
+                  placement: iss ? "top" : "bottom-end",
+                  action: {
+                    label: "Close",
+                    onClick: () => {},
+                  },
+                });
+              },
+            }),
+          },
+        ]}
+        batchOptions={[
+          {
+            label: "Disabled Menu",
+            menuItemProps: {
+              disabled: true,
+            },
+          },
+          "divider",
+          {
+            label: "Delete...",
+            menuItemProps: {
+              color: "red.400",
+            },
+            confirmation: (selectedRows: number[]) => ({
+              id: `${selectedRows.join("-")}`,
+              title: "Delete",
+              description: `Aksi ini tidak bisa dibatalkan, data ids ${selectedRows.join(
+                ", "
+              )}`,
+              confirmLabel: "Delete",
+              confirmCallback: () => {
+                toaster.create({
+                  type: "success",
+                  title: `Delete`,
+                  description: `Data ids = ${selectedRows.join(", ")}`,
+                  placement: iss ? "top" : "bottom-end",
+                  action: {
+                    label: "Close",
+                    onClick: () => {},
+                  },
+                });
+              },
+            }),
+          },
+        ]}
+        limitControl={limitControl}
+        setLimitControl={setLimitControl}
+        pagination={res.pagination}
+        pageControl={pageControl}
+        setPageControl={setPageControl}
+        footerContent={
+          <TableFooterNote>Tabel footer note example</TableFooterNote>
+        }
+      />
+    </>
   );
 };
 
@@ -1846,7 +1858,7 @@ export default function Root() {
       <CContainer maxW={"1400px"} mx={"auto"}>
         <CContainer flex={0} mt={12} gap={4}>
           <Heading6>Table Component</Heading6>
-          <CenterContainer flexDir={"column"}>
+          <CenterContainer flexDir={"column"} px={0}>
             <TableComponentDemo />
           </CenterContainer>
         </CContainer>

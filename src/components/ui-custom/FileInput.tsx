@@ -1,5 +1,4 @@
 import { Icon } from "@chakra-ui/react";
-import { UploadSimple } from "@phosphor-icons/react";
 import { Button } from "../ui/button";
 import {
   FileUploadDropzone,
@@ -8,13 +7,14 @@ import {
   FileUploadRootProps,
   FileUploadTrigger,
 } from "../ui/file-button";
+import { IconUpload } from "@tabler/icons-react";
 
 interface Props extends FileUploadRootProps {
   name?: string;
   onChangeSetter?: (inputValue: File[] | undefined) => void;
   inputValue?: File[] | string | undefined;
   accept?: string;
-  isError?: boolean;
+  invalid?: boolean;
   placeholder?: string;
   initialFilepath?: string;
   label?: string;
@@ -26,7 +26,7 @@ const FileInput = ({
   onChangeSetter,
   inputValue,
   accept,
-  isError,
+  invalid,
   placeholder,
   initialFilepath,
   label,
@@ -53,14 +53,14 @@ const FileInput = ({
       <>
         {dropZone ? (
           <FileUploadDropzone
-            borderColor={isError ? "fg.error" : ""}
+            borderColor={invalid ? "fg.error" : ""}
             description={".png, .jpg up to 5MB"}
           />
         ) : (
-          <FileUploadTrigger asChild borderColor={isError ? "fg.error" : ""}>
+          <FileUploadTrigger asChild borderColor={invalid ? "fg.error" : ""}>
             <Button variant="outline" size="sm">
               <Icon>
-                <UploadSimple weight="bold" />
+                <IconUpload />
               </Icon>{" "}
               {label || "Unggah berkas"}
             </Button>
