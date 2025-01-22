@@ -29,7 +29,7 @@ const useBackOnClose = (
     } else {
       onClose();
     }
-  }, [id, onOpen, onClose]);
+  }, [id, onOpen]);
 
   // Handle trigger popstate (back)
   useEffect(() => {
@@ -54,7 +54,7 @@ const useBackOnClose = (
     } else {
       onClose();
     }
-  }, [location, id, onOpen, onClose]);
+  }, [location, id, onOpen]);
 };
 
 export default useBackOnClose;
