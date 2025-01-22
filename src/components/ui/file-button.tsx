@@ -78,7 +78,7 @@ const FileUploadItem = (props: FileUploadItemProps) => {
   const { file, showSize, clearable } = props;
 
   return (
-    <ChakraFileUpload.Item file={file} pr={3} h={"54px"}>
+    <ChakraFileUpload.Item file={file} pr={3} h={"54px"} bg={"body"}>
       <ChakraFileUpload.ItemPreview asChild>
         <Icon fontSize={20} color="fg.muted">
           <FileIcon type={file.type} />
