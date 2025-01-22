@@ -1118,7 +1118,7 @@ const TableComponentDemo = () => {
           `${formatDate(
             item.jam_keluar,
             "basicShort"
-          )} -  ${formatTimeFromDateFormat(item.jam_keluar)}`,
+          )} -  ${formatTimeFromDateFormat(item.jam_masuk)}`,
         dataType: "time" as "time",
       },
     ],
