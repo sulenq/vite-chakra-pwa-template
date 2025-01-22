@@ -1317,19 +1317,19 @@ export default function Root() {
           <CContainer flex={0} gap={4}>
             <Heading6>Feedback</Heading6>
 
-            <CenterContainer>
+            <CenterContainer p={8}>
               <NoData />
             </CenterContainer>
 
-            <CenterContainer>
+            <CenterContainer p={8}>
               <NotFound />
             </CenterContainer>
 
-            <CenterContainer>
+            <CenterContainer p={8}>
               <Forbidden />
             </CenterContainer>
 
-            <CenterContainer>
+            <CenterContainer p={8}>
               <Retry />
             </CenterContainer>
           </CContainer>
