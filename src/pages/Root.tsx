@@ -75,6 +75,7 @@ import { Status } from "@/components/ui/status";
 import { toaster } from "@/components/ui/toaster";
 import { Tooltip } from "@/components/ui/tooltip";
 import { Interface__Select } from "@/constant/interfaces";
+import { PRIMARY_COLOR_PALETTE } from "@/constant/paletteConfig";
 import { OPTIONS_RELIGION } from "@/constant/selectOptions";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
@@ -1136,6 +1137,8 @@ const TableComponentDemo = () => {
           }}
           inputValue={search}
         />
+
+        <BButton colorPalette={PRIMARY_COLOR_PALETTE}>Call To Action</BButton>
       </HScroll>
       <TableComponent
         ths={ths}
