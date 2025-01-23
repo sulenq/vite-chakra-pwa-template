@@ -13,7 +13,7 @@
 }
 
 [role="group"]:hover .td-content-group-hover {
-  background-color: var(--d1) !important;
+  background-color: var(--d0) !important;
 }
 
 /* Color */
