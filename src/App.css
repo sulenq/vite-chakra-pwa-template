@@ -12,18 +12,23 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+[role="group"]:hover .td-content-group-hover {
+  background-color: var(--d1) !important;
+}
+
 /* Color */
 :root {
-  --p50: #d7f3ff;
-  --p100: #b9ecff;
-  --p200: #88e2ff;
-  --p300: #50cfff;
-  --p400: #28b3ff;
-  --p500: #0693ff;
-  --p600: #0a7eeb;
-  --p700: #0f64be;
-  --p800: #135695;
-  --p900: #11345a;
+  --p50: #eaf4ff;
+  --p100: #c8e0ff;
+  --p200: #a5ccff;
+  --p300: #82b7ff;
+  --p400: #5fa3ff;
+  --p500: #3e97ff;
+  --p500a: #3e97ff16;
+  --p600: #347dce;
+  --p700: #2a62a0;
+  --p800: #21497a;
+  --p900: #182e50;
   --p1000: #061d36;
   --p1100: #02101d;
 
@@ -35,10 +40,11 @@
   --p600a: #2ea4ff94;
   --p900a: #016cd7d0;
 
-  --divider: #7e7e7e10;
-  --divider2: #7e7e7e20;
-  --divider3: #7e7e7e36;
-  --divider-text: #858585c1;
+  --d0: #7e7e7e08;
+  --d1: #7e7e7e10;
+  --d2: #7e7e7e20;
+  --d3: #7e7e7e36;
+  --dt: #858585c1;
 
   --placeholder: #96969691;
 
@@ -60,7 +66,7 @@
 
 /* Tabler Icon */
 .tabler-icon {
-  stroke-width: 1.5px;
+  stroke-width: 1.8px;
 }
 
 /* Dark Transparent Blured */
@@ -90,8 +96,8 @@ th {
   /* font-size: 12px !important; */
   font-weight: bold;
   text-transform: none !important;
-  border-bottom: 1px solid var(--divider3) !important;
-  color: var(--divider-text) !important;
+  border-bottom: 1px solid var(--d3) !important;
+  color: var(--dt) !important;
 }
 td {
   /* font-size: 14px; */
@@ -134,24 +140,24 @@ button {
 }
 .btn-outline {
   background-color: transparent !important;
-  border: 1px solid var(--divider3);
+  border: 1px solid var(--d3);
 }
 .btn-solid {
-  background: var(--divider) !important;
+  background: var(--d1) !important;
 }
 .btn:hover:not(:disabled),
 .btn-outline:hover:not(:disabled) {
-  background: var(--divider) !important;
+  background: var(--d1) !important;
 }
 .btn-solid:hover:not(:disabled) {
-  background: var(--divider2) !important;
+  background: var(--d2) !important;
 }
 .btn:active:not(:disabled),
 .btn-outline:active:not(:disabled) {
-  background: var(--divider2) !important;
+  background: var(--d2) !important;
 }
 .btn-solid:active:not(:disabled) {
-  background: var(--divider3) !important;
+  background: var(--d3) !important;
 }
 .btn-ap:not(:disabled) {
   background: var(--p500) !important;
@@ -218,17 +224,17 @@ button {
 }
 .scrollX::-webkit-scrollbar-thumb,
 .scrollY::-webkit-scrollbar-thumb {
-  background-color: var(--divider2);
+  background-color: var(--d2);
   border-radius: 100px;
 }
 .scrollXkotak::-webkit-scrollbar-thumb,
 .scrollYkotak::-webkit-scrollbar-thumb {
-  background-color: var(--divider2);
+  background-color: var(--d2);
   border-radius: 0px !important;
 }
 .scrollX::-webkit-scrollbar-thumb:hover,
 .scrollY::-webkit-scrollbar-thumb:hover {
-  background-color: var(--divider3);
+  background-color: var(--d3);
 }
 .scrollX::-webkit-scrollbar-track,
 .scrollY::-webkit-scrollbar-track {
@@ -247,21 +253,21 @@ button {
 }
 .scrollXbig::-webkit-scrollbar-thumb,
 .scrollYbig::-webkit-scrollbar-thumb {
-  background-color: var(--divider3);
+  background-color: var(--d3);
   border-radius: 100px;
 }
 .scrollXbigkotak::-webkit-scrollbar-thumb,
 .scrollYbigkotak::-webkit-scrollbar-thumb {
-  background-color: var(--divider2);
+  background-color: var(--d2);
   border-radius: 0px !important;
 }
 .scrollXbig::-webkit-scrollbar-thumb:hover,
 .scrollYbig::-webkit-scrollbar-thumb:hover {
-  background-color: var(--divider3);
+  background-color: var(--d3);
 }
 .scrollXbig::-webkit-scrollbar-track,
 .scrollYbig::-webkit-scrollbar-track {
-  background-color: var(--divider) !important;
+  background-color: var(--d1) !important;
   border-radius: 0 0 8px 8px;
 }
 
@@ -309,11 +315,11 @@ button {
 .chakra-menu__item:focus,
 .chakra-menu__item:focus-visible,
 .chakra-menu__content div[data-highlighted] {
-  background: var(--divider2) !important;
+  background: var(--d2) !important;
 }
 .chakra-menu__separator {
-  background: var(--divider3) !important;
-  border-color: var(--divider) !important;
+  background: var(--d3) !important;
+  border-color: var(--d1) !important;
   margin: 4px 0;
 }
 
@@ -325,7 +331,7 @@ button {
 .breadcrumb {
   width: fit-content;
   gap: 8px;
-  background: var(--divider);
+  background: var(--d1);
   border-radius: 8px;
   padding: 4px 16px;
   height: 30px;
@@ -349,8 +355,8 @@ button {
 
 .accordionItem {
   border-radius: 16px;
-  border: 1px solid var(--divider);
-  /* box-shadow: 1px 1px 2px 1px var(--divider); */
+  border: 1px solid var(--d1);
+  /* box-shadow: 1px 1px 2px 1px var(--d1); */
 }
 
 .chakra-form__helper-text {
@@ -386,7 +392,7 @@ button {
   transform: translate(-50%, -50%);
   width: 50px;
   height: 50px;
-  background-color: var(--divider);
+  background-color: var(--d1);
   border-radius: 50%;
   animation: ripple-sm 0.5s ease-out forwards;
   pointer-events: none; /* agar tidak mengganggu klik tombol */
@@ -605,7 +611,7 @@ button {
   max-width: none !important;
 }
 .rdp-months {
-  /* border: 1px solid var(--divider3) !important; */
+  /* border: 1px solid var(--d3) !important; */
   border-radius: 8px;
 }
 .rdp-caption_label {

@@ -37,10 +37,11 @@ const customConfig = defineConfig({
           800: { value: "#272727" },
           900: { value: "#202020" },
         },
+        d0: { value: "#7e7e7e08" },
         d1: { value: "#7e7e7e10" },
         d2: { value: "#7e7e7e20" },
         d3: { value: "#7e7e7e36" },
-        dt: { value: "#858585c1" },
+        dt: { value: "#858585ff" },
       },
     },
     semanticTokens: {
