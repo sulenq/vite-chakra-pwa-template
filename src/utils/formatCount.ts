@@ -1,5 +1,5 @@
 const formatCount = (number: number): string => {
-  const units = ["", "K", "J", "M", "T", "P", "E"];
+  const units = ["", "K", "Jt", "Ml", "Tr", "P", "E"];
   let index = 0;
 
   while (number >= 1000 && index < units.length - 1) {

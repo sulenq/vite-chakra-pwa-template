@@ -46,6 +46,15 @@ const formatDate = (dateString?: Date | string, options?: any) => {
     month: "long",
   };
 
+  const dmyHmFormat: Intl.DateTimeFormatOptions = {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false, // 24-hour format
+  };
+
   const prefixOptions: Record<string, Intl.DateTimeFormatOptions> = {
     basic: defaultFormat, // 16 November 2000
     basicShort: basicShortFormat, // 16 Nov 2000
@@ -54,6 +63,7 @@ const formatDate = (dateString?: Date | string, options?: any) => {
     dmy: dmyFormat, // 16-11-2000
     ymd: ymdFormat, // 2000-11-16
     periode: periodeFormat, // November 2000
+    "dmy-hm": dmyHmFormat, // 16-11-2000 14:30
   };
 
   // Convert dd-mm-yyyy to yyyy-mm-dd for Date constructor
@@ -92,6 +102,8 @@ const formatDate = (dateString?: Date | string, options?: any) => {
     formattedDate = date
       .toLocaleDateString("id-ID", formatOptions)
       .replace(/\//g, "-"); // Replace slashes with hyphens
+  } else if (options === "dmy-hm") {
+    formattedDate = date.toLocaleDateString("id-ID", formatOptions);
   } else {
     formattedDate = date.toLocaleDateString("id-ID", formatOptions);
   }
