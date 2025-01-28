@@ -60,7 +60,7 @@ export default function SearchInput({
       <InputGroup
         w={"full"}
         flex={"1 0 200px"}
-        startElement={<Icon fontSize={"lg"}>{icon || <IconSearch />}</Icon>}
+        startElement={<Icon w={"20px"}>{icon || <IconSearch />}</Icon>}
       >
         <>
           <StringInput
