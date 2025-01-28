@@ -21,7 +21,7 @@ export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(
             backdropFilter={"blur(15px)"}
             boxShadow={"none"}
             borderRadius={6}
-            border={"1px solid var(--divider2)"}
+            border={"1px solid var(--d2)"}
             p={1}
             ref={ref}
             {...rest}

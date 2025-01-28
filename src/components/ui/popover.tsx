@@ -19,7 +19,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
             // backdropFilter={"blur(5px)"}
             // color={"light"}
             // boxShadow={"none"}
-            border={"1px solid var(--divider2)"}
+            border={"1px solid var(--d2)"}
             {...rest}
           />
         </ChakraPopover.Positioner>
