@@ -59,12 +59,12 @@ export default function SearchInput({
     <Tooltip content={tooltipLabel || placeholder}>
       <InputGroup
         w={"full"}
+        flex={"1 0 200px"}
         startElement={<Icon fontSize={"lg"}>{icon || <IconSearch />}</Icon>}
       >
         <>
           <StringInput
             pl={10}
-            minW={"200px"}
             name={name}
             fRef={inputRef ? inputRef : null}
             placeholder={placeholder}

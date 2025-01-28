@@ -6,11 +6,7 @@ import {
 interface Props extends CartesianGridProps {}
 const CartesianGrid = ({ ...props }: Props) => {
   return (
-    <CartesianGridRecharts
-      stroke="var(--divider3)"
-      strokeDasharray="3"
-      {...props}
-    />
+    <CartesianGridRecharts stroke="var(--d3)" strokeDasharray="3" {...props} />
   );
 };
 

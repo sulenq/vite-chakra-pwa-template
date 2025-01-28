@@ -259,7 +259,8 @@ const TableComponent = ({
   // SX
   const thHeight = "48px";
   const thWidth = "52.4px";
-  const thBg = "bg.muted";
+  const thBg = "body";
+  const borderColor = "border.muted";
 
   // Utils
   const iss = useIsSmScreenWidth();
@@ -526,8 +527,9 @@ const TableComponent = ({
       {/* Table content */}
       <CContainer
         minW={"full"}
-        // border={"1px solid"}
-        // borderColor={"border.muted"}
+        // borderTop={"1px solid"}
+        // borderBottom={"1px solid"}
+        borderColor={"border.muted"}
         // borderRadius={6}
         overflow={"auto"}
         className="scrollX scrollY"
@@ -539,7 +541,13 @@ const TableComponent = ({
           w={tableHeader.length > 1 ? "full" : "fit-content"}
         >
           <Table.Header>
-            <Table.Row position={"sticky"} top={0} zIndex={3}>
+            <Table.Row
+              position={"sticky"}
+              top={0}
+              zIndex={3}
+              // borderTop={"1px solid"}
+              borderColor={"gray.subtle"}
+            >
               {batchOptions && (
                 <Table.ColumnHeader
                   h={thHeight}
@@ -556,9 +564,9 @@ const TableComponent = ({
                     h={thHeight}
                     // w={"50px"}
                     // borderRight={"1px solid"}
-                    // borderBottom={"1px solid"}
                     px={"10px"}
-                    borderColor={"d1"}
+                    borderBottom={"1px solid"}
+                    borderColor={borderColor}
                     bg={thBg}
                     // borderRadius={"6px 0 0 6px"}
                   >
@@ -587,8 +595,8 @@ const TableComponent = ({
                 >
                   <HStack
                     bg={thBg}
-                    // borderBottom={"1px solid"}
-                    borderColor={"d1"}
+                    borderBottom={"1px solid"}
+                    borderColor={borderColor}
                     px={4}
                     py={3}
                     gap={4}
@@ -618,8 +626,8 @@ const TableComponent = ({
                     pr={"18px"}
                     py={3}
                     // borderLeft={"1px solid"}
-                    // borderBottom={"1px solid"}
-                    borderColor={"d1"}
+                    borderBottom={"1px solid"}
+                    borderColor={borderColor}
                     bg={thBg}
                     // borderRadius={"0 6px 6px 0"}
                   >
@@ -642,19 +650,20 @@ const TableComponent = ({
                   }}
                   cursor={rowClick ? "pointer" : "auto"}
                   px={2}
-                  borderBottom={"1px solid"}
-                  borderColor={"border.muted"}
+                  borderBottom={
+                    rowIndex !== dataToMap.length - 1 ? "1px solid" : ""
+                  }
+                  // borderBottom={"1px solid"}
+                  borderColor={borderColor}
                   position={"relative"}
                   bg={"body"}
-                  // _hover={{ bg: rowClick ? "p.500a" : "" }}
+                  _hover={rowClick && { bg: "d0" }}
                   {...trBodyProps}
                 >
                   {batchOptions && (
                     <Table.Cell
-                      h={"48px"}
-                      // w={"48px !important"}
                       minW={"0% !important"}
-                      // maxW={"48px !important"}
+                      h={"48px"}
                       p={0}
                       position={"sticky"}
                       left={0}
@@ -662,10 +671,8 @@ const TableComponent = ({
                       zIndex={2}
                     >
                       <Center
-                        // w={"48px"}
+                        className={rowClick && "td-content-group-hover"}
                         h={"48px"}
-                        // _hover={{ bg: "d1" }}
-                        // borderRight={"1px solid"}
                         px={"10px"}
                         transition={"200ms"}
                         cursor={"pointer"}
@@ -716,9 +723,8 @@ const TableComponent = ({
 
                   {rowOptions && (
                     <Table.Cell
-                      h={"48px"}
-                      // w={"48px"}
                       minW={"0% !important"}
+                      h={"48px"}
                       p={0}
                       // position={"sticky"}
                       // right={"0px"}
@@ -727,11 +733,7 @@ const TableComponent = ({
                     >
                       <Center
                         h={"48px"}
-                        // w={"48px"}
-                        // justifyContent={"end"}
-                        // borderLeft={"1px solid"}
-                        // borderColor={"d1"}
-                        // _hover={{ bg: "d1" }}
+                        className={rowClick && "td-content-group-hover"}
                         px={"10px"}
                         transition={"200ms"}
                         onClick={(e) => {

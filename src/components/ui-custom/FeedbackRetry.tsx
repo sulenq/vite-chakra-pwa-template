@@ -25,6 +25,7 @@ export default function FeedbackRetry({
         title={title}
         description={description}
         maxW={"500px"}
+        minH={"300px"}
       >
         <Group>
           <Button className="clicky" colorPalette={PRIMARY_COLOR_PALETTE}>

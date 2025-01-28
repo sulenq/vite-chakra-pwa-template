@@ -51,7 +51,7 @@ const ConfirmationDisclosure = ({
         {children}
       </Box>
 
-      <DisclosureRoot open={open} size={"sm"}>
+      <DisclosureRoot open={open} size={"xs"}>
         <DisclosureContent>
           <DisclosureHeader>
             <DisclosureHeaderContent title={`${title}`} />

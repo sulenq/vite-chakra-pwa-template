@@ -225,7 +225,7 @@ const DatePickerInput = ({
               columns={[7]}
               gap={2}
               borderBottom={"1px solid"}
-              borderColor={"var(--divider3)"}
+              borderColor={"var(--d3)"}
               pb={2}
               mb={2}
             >

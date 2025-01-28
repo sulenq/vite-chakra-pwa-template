@@ -151,8 +151,8 @@ const DisclosureFooter = ({ children, ...props }: DisclosureFooterProps) => {
   ) : (
     <DialogFooter
       p={4}
-      borderTop={"1px solid var(--divider2)"}
-      // bg={"var(--divider)"}
+      borderTop={"1px solid var(--d2)"}
+      // bg={"var(--d1)"}
       {...(props as DialogFooterProps)}
     >
       <HStack w={"full"} justify={"end"}>
@@ -210,8 +210,8 @@ const DisclosureCloseTrigger = ({
     </DrawerCloseTrigger>
   ) : (
     <DialogCloseTrigger
-      mr={-1}
-      mt={-1}
+      mr={"-2px"}
+      mt={"-2px"}
       onClick={back}
       {...(props as DialogCloseTriggerProps)}
     >

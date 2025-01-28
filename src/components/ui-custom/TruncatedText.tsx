@@ -19,7 +19,7 @@ const TruncatedText = ({
       positioning={{ placement: "bottom-start" }}
       {...props}
     >
-      <Text minW={"200px"} textAlign={"left"} truncate {...textProps}>
+      <Text minW={"fit"} textAlign={"left"} truncate {...textProps}>
         {children}
       </Text>
     </Tooltip>
