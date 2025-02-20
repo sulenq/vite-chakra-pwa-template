@@ -105,7 +105,7 @@ const LoginForm = () => {
           </Field>
 
           <HStack mt={4}>
-            <Text as={Link} color={"p.500"}>
+            <Text as={Link} color={"p.400"}>
               Lupa password?
             </Text>
           </HStack>
