@@ -581,8 +581,8 @@ const TableComponent = ({
 
               {rowOptions && (
                 <Table.ColumnHeader
-                  // position={"sticky"}
-                  // right={"0px"}
+                  position={"sticky"}
+                  right={"0px"}
                   w={thWidth}
                   borderBottom={"none !important"}
                   p={0}
@@ -693,8 +693,8 @@ const TableComponent = ({
                       minW={"0% !important"}
                       h={"48px"}
                       p={0}
-                      // position={"sticky"}
-                      // right={"0px"}
+                      position={"sticky"}
+                      right={"0px"}
                       bg={"body"}
                       zIndex={2}
                     >
