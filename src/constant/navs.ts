@@ -1,8 +1,8 @@
-import { IconChartDots, IconDatabase, IconUsers } from "@tabler/icons-react";
+import { IconChartDots, IconCrown, IconDatabase } from "@tabler/icons-react";
 
 const NAVS = [
   {
-    label: "Data",
+    label: "Data Bidang",
     path: "/data",
     icon: IconDatabase,
   },
@@ -12,9 +12,9 @@ const NAVS = [
     icon: IconChartDots,
   },
   {
-    label: "Users",
-    path: "/users",
-    icon: IconUsers,
+    label: "Upgrade",
+    path: "/upgrade",
+    icon: IconCrown,
   },
 ];
 

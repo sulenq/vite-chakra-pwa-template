@@ -6,7 +6,13 @@ interface Props extends StackProps {
 
 const HScroll = ({ children, ...props }: Props) => {
   return (
-    <HStack className="scrollX" overflowX={"auto"} w={"full"} {...props}>
+    <HStack
+      className="scrollX"
+      overflowX={"auto"}
+      overflowY={"clip"}
+      w={"full"}
+      {...props}
+    >
       {children}
     </HStack>
   );

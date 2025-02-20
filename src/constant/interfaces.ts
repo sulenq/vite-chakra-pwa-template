@@ -8,18 +8,19 @@ import {
   TableColumnHeaderProps,
   TableRowProps,
 } from "@chakra-ui/react";
-import { Dispatch, FunctionComponentElement, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 export type LanguageOptions = "id" | "en";
 
 export interface Interface__Route {
   path: string;
-  element: FunctionComponentElement<{}>;
+  element: any;
 }
 
 export interface Interface__PrivateRoute extends Interface__Route {
   requireAuth?: boolean;
   requirePermissions?: boolean;
+  children?: any;
 }
 
 export interface Interface__Nav {

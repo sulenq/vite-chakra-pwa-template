@@ -1,4 +1,5 @@
-import { Icon } from "@chakra-ui/react";
+import { IconInfoCircle } from "@tabler/icons-react";
+import { ButtonProps } from "../ui/button";
 import {
   PopoverContent,
   PopoverDescription,
@@ -6,8 +7,6 @@ import {
   PopoverTrigger,
 } from "../ui/popover";
 import BButton from "./BButton";
-import { ButtonProps } from "../ui/button";
-import { IconInfoCircle } from "@tabler/icons-react";
 
 interface Props extends ButtonProps {
   children?: any;
@@ -25,13 +24,15 @@ const InfoPopover = ({ children, ...props }: Props) => {
           color={"fg.subtle"}
           {...props}
         >
-          <Icon fontSize={"md"} flexShrink={0}>
-            <IconInfoCircle />
-          </Icon>
+          <IconInfoCircle size={"1rem"} />
         </BButton>
       </PopoverTrigger>
 
-      <PopoverContent w={"fit"}>
+      <PopoverContent
+        w={"fit"}
+        maxW={"calc(100vw - 48px)"}
+        borderColor={"gray.muted"}
+      >
         <PopoverDescription px={3} py={2}>
           {children}
         </PopoverDescription>

@@ -8,13 +8,13 @@ import {
 import { css, Global } from "@emotion/react";
 import { useRef } from "react";
 import { useColorMode } from "../ui/color-mode";
-import { INPUT_BORDER_COLOR_FOCUS } from "@/constant/paletteConfig";
+import { INPUT_BORDER_COLOR_FOCUS } from "@/constant/themeConfig";
 
 interface Props extends InputProps {
   fRef?: any;
   name?: string;
-  onChangeSetter?: (inputValue: string | undefined) => void;
-  inputValue?: string | undefined;
+  onChangeSetter?: (inputValue: string) => void;
+  inputValue?: string;
   placeholder?: string;
   boxProps?: BoxProps;
   invalid?: boolean;

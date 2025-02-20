@@ -10,7 +10,8 @@ import {
   ColorPickerSliders,
   ColorPickerTrigger,
 } from "../ui/color-picker";
-import { INPUT_BORDER_COLOR_FOCUS } from "@/constant/paletteConfig";
+import { INPUT_BORDER_COLOR_FOCUS } from "@/constant/themeConfig";
+import rgbaToHex from "@/utils/rgbaToHex";
 
 const ColorInput = ({
   name,
@@ -25,7 +26,9 @@ const ColorInput = ({
     <ColorPickerRoot
       defaultValue={parseColor(inputValue)}
       maxW="140px"
-      onValueChangeEnd={(e) => onChangeSetter(e.value)}
+      onValueChange={(e) => {
+        onChangeSetter(rgbaToHex(e.value));
+      }}
       {...props}
     >
       {label && <ColorPickerLabel>{label}</ColorPickerLabel>}

@@ -15,6 +15,7 @@ interface Props extends InputProps {
   formatValue?: (value: number | undefined | null) => string;
   noFormat?: boolean;
   integer?: boolean;
+  max?: number;
 }
 
 const NumberInput = ({
@@ -28,20 +29,28 @@ const NumberInput = ({
   formatValue,
   noFormat = false,
   integer = false,
+  max,
   ...props
 }: Props) => {
   const [localInputValue, setLocalInputValue] = useState<string>("");
+
   useEffect(() => {
     if (inputValue !== undefined && inputValue !== null) {
+      // Jika integer true, bulatkan nilai inputValue
+      const valueToDisplay =
+        integer && typeof inputValue === "number"
+          ? Math.round(inputValue) // Membulatkan jika integer true
+          : inputValue;
+
       const formattedValue = noFormat
-        ? inputValue.toString()
+        ? valueToDisplay.toString()
         : formatValue
-        ? formatValue(inputValue)
-        : formatNumber(inputValue);
+        ? formatValue(valueToDisplay)
+        : formatNumber(valueToDisplay);
 
       setLocalInputValue(formattedValue || "");
     }
-  }, [inputValue, formatValue, noFormat]);
+  }, [inputValue, formatValue, noFormat, integer]);
 
   function handleChange(rawInput: string | undefined | null) {
     if (!rawInput) {
@@ -73,14 +82,7 @@ const NumberInput = ({
       sanitizedInput = sanitizedInput.substring(0, 19);
     }
 
-    // Jika noFormat true, langsung set nilai input tanpa formatting tambahan
-    if (noFormat) {
-      setLocalInputValue(sanitizedInput);
-      if (onChangeSetter) onChangeSetter(parseNumber(sanitizedInput));
-      return;
-    }
-
-    // Format input dengan pemisah ribuan
+    // Format input jika tidak noFormat
     let formattedValue = sanitizedInput.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     if (!integer && sanitizedInput.includes(",")) {
       const parts = sanitizedInput.split(",");
@@ -91,11 +93,28 @@ const NumberInput = ({
       }
     }
 
+    // Parsing angka
+    let parsedValue = parseNumber(formattedValue);
+
+    // Jika integer = true, pastikan nilai adalah integer
+    if (integer && parsedValue !== undefined) {
+      parsedValue = Math.round(parsedValue!); // Membulatkan nilai ke integer
+    }
+
+    // Jika nilai parsedValue lebih besar dari max, set ke max
+    if (parsedValue !== undefined && max && parsedValue! > max) {
+      setLocalInputValue(formatNumber(max)); // Menampilkan nilai max dalam format
+      if (onChangeSetter) onChangeSetter(max); // Mengirim nilai max
+      return;
+    }
+
+    // Update input dengan nilai terformat jika valid
     setLocalInputValue(formattedValue);
 
-    // Parsing angka hanya jika valid
-    const parsedValue = parseNumber(formattedValue);
-    if (onChangeSetter) onChangeSetter(parsedValue);
+    // Mengirimkan nilai parsedValue hanya jika valid
+    if (parsedValue !== undefined && onChangeSetter) {
+      onChangeSetter(parsedValue);
+    }
   }
 
   return (

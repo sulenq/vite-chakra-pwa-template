@@ -6,7 +6,7 @@ import { CurveType } from "recharts/types/shape/Curve";
 const PRESET_LINE_CHART_TOOLTIP = {
   content: createElement(LineChartTooltipContent),
   cursor: {
-    stroke: "var(--divider3)",
+    stroke: "var(--d3)",
     strokeWidth: 2,
     strokeDasharray: "5",
   },
@@ -15,7 +15,7 @@ const PRESET_LINE_CHART_TOOLTIP = {
 const PRESET_DONUT_CHART_TOOLTIP = {
   content: createElement(DonutChartTooltipContent),
   cursor: {
-    stroke: "var(--divider3)",
+    stroke: "var(--d3)",
     strokeWidth: 2,
     strokeDasharray: "5",
   },

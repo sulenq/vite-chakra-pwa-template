@@ -15,6 +15,7 @@ interface Props {
   inputProps?: InputProps;
   icon?: any;
   invalid?: boolean;
+  noIcon?: boolean;
 }
 
 export default function SearchInput({
@@ -27,8 +28,9 @@ export default function SearchInput({
   inputProps,
   icon,
   invalid = false,
+  noIcon = false,
 }: Props) {
-  const [searchLocal, setSearchLocal] = useState(inputValue);
+  const [searchLocal, setSearchLocal] = useState<string>(inputValue || "");
 
   const handleOnChange = useCallback(
     (value: string) => {
@@ -42,7 +44,7 @@ export default function SearchInput({
   // Handle debounce
   useEffect(() => {
     const handler = setTimeout(() => {
-      if (searchLocal) handleOnChange(searchLocal);
+      handleOnChange(searchLocal);
     }, 300);
 
     return () => {
@@ -52,7 +54,7 @@ export default function SearchInput({
 
   // Sync searchLocal with inputValue prop when it changes
   useEffect(() => {
-    setSearchLocal(inputValue);
+    setSearchLocal(inputValue || "");
   }, [inputValue]);
 
   return (
@@ -60,7 +62,9 @@ export default function SearchInput({
       <InputGroup
         w={"full"}
         flex={"1 0 200px"}
-        startElement={<Icon w={"20px"}>{icon || <IconSearch />}</Icon>}
+        startElement={
+          !noIcon && <Icon w={"20px"}>{icon || <IconSearch />}</Icon>
+        }
       >
         <>
           <StringInput
@@ -68,7 +72,7 @@ export default function SearchInput({
             name={name}
             fRef={inputRef ? inputRef : null}
             placeholder={placeholder}
-            pr={"36px"}
+            pr={"40px"}
             onChangeSetter={(input) => {
               setSearchLocal(input as string);
             }}
@@ -84,7 +88,7 @@ export default function SearchInput({
               zIndex={3}
               position={"absolute"}
               h={"100%"}
-              right={1}
+              right={0}
             >
               <IconButton
                 aria-label="Clear Search"
@@ -94,7 +98,7 @@ export default function SearchInput({
                 colorScheme="error"
                 variant={"plain"}
                 borderRadius={"full"}
-                size={"xs"}
+                size={inputProps?.size === "sm" ? "xs" : "md"}
                 color={"fg.error"}
               >
                 <Icon>

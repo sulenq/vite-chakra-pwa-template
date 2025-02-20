@@ -1,4 +1,4 @@
-import { PRIMARY_COLOR_PALETTE } from "@/constant/paletteConfig";
+import { PRIMARY_COLOR_PALETTE } from "@/constant/themeConfig";
 import {
   Interface__Select,
   Interface__SelectOption,

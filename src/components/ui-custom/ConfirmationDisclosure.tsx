@@ -17,7 +17,7 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
-import { PRIMARY_COLOR_PALETTE } from "@/constant/paletteConfig";
+import { PRIMARY_COLOR_PALETTE } from "@/constant/themeConfig";
 
 interface Props {
   id: string;

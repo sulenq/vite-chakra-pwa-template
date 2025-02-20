@@ -3,7 +3,7 @@ import {
   Interface__RowOptions,
   Interface__TableComponent,
 } from "@/constant/interfaces";
-import { PRIMARY_COLOR_PALETTE } from "@/constant/paletteConfig";
+import { PRIMARY_COLOR_PALETTE } from "@/constant/themeConfig";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import useScreen from "@/hooks/useScreen";
 import formatDate from "@/utils/formatDate";

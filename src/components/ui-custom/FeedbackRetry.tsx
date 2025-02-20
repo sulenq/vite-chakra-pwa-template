@@ -2,7 +2,7 @@ import { Button, Group, Icon, StackProps } from "@chakra-ui/react";
 import { IconAlertTriangle } from "@tabler/icons-react";
 import { EmptyState } from "../ui/empty-state";
 import CContainer from "./CContainer";
-import { PRIMARY_COLOR_PALETTE } from "@/constant/paletteConfig";
+import { PRIMARY_COLOR_PALETTE } from "@/constant/themeConfig";
 
 interface Props extends StackProps {
   title?: string;
