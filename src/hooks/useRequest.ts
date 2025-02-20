@@ -1,7 +1,7 @@
 import { AxiosRequestConfig, AxiosResponse } from "axios";
-import { useEffect, useRef, useState } from "react";
-import request from "../utils/request";
+import { useRef, useState } from "react";
 import { toaster } from "../components/ui/toaster";
+import request from "../utils/request";
 import useIsSmScreenWidth from "./useIsSmScreenWidth";
 
 interface Props {
@@ -54,6 +54,25 @@ const useRequest = ({
           if (onResolve?.onSuccess) {
             onResolve.onSuccess(r);
           }
+          showSuccessToast &&
+            toaster.create({
+              type: "success",
+              title:
+                typeof response?.data?.message?.title === "string"
+                  ? response?.data?.message?.title
+                  : "Title's format isn't string",
+              description: response?.data?.message?.description
+                ? typeof response?.data?.message?.description === "string"
+                : "Description's format isn't string",
+              // ? response?.data?.message
+              // : "Format pesan response bukan string"
+              // duration: 3000,
+              placement: iss ? "top" : "bottom-end",
+              action: {
+                label: "Close",
+                onClick: () => {},
+              },
+            });
         }
       })
       .catch((e) => {
@@ -86,71 +105,30 @@ const useRequest = ({
         if (onResolve?.onError) {
           onResolve.onError(e);
         }
+
+        showErrorToast &&
+          toaster.create({
+            type: "error",
+            title:
+              typeof response?.data?.message?.title === "string"
+                ? response?.data?.message?.title
+                : "Format judul salah",
+            description: response?.data?.message?.description
+              ? typeof response?.data?.message?.description === "string"
+              : "Format deskripsi salah",
+            // ? response?.data?.message
+            // : "Format pesan response bukan string"
+            // duration: 3000,
+
+            placement: iss ? "top" : "bottom-end",
+            action: {
+              label: "Close",
+              onClick: () => {},
+            },
+          });
       })
       .finally(() => {});
   }
-
-  // Handle toast by response status
-  useEffect(() => {
-    if (!loading && status) {
-      switch (status) {
-        case 200:
-        case 201:
-          showSuccessToast &&
-            toaster.create({
-              type: "success",
-              title:
-                typeof response?.data?.message?.title === "string"
-                  ? response?.data?.message?.title
-                  : "Title's format isn't string",
-              description: response?.data?.message?.description
-                ? typeof response?.data?.message?.description === "string"
-                : "Description's format isn't string",
-              // ? response?.data?.message
-              // : "Format pesan response bukan string"
-              // duration: 3000,
-              placement: iss ? "top" : "bottom-end",
-              action: {
-                label: "Close",
-                onClick: () => {},
-              },
-            });
-          break;
-        case 400:
-        case 401:
-        case 403:
-        case 404:
-        case 500:
-          showErrorToast &&
-            toaster.create({
-              type: "error",
-              title:
-                typeof response?.data?.message?.title === "string"
-                  ? response?.data?.message?.title
-                  : "Format judul salah",
-              description: response?.data?.message?.description
-                ? typeof response?.data?.message?.description === "string"
-                : "Format deskripsi salah",
-              // ? response?.data?.message
-              // : "Format pesan response bukan string"
-              // duration: 3000,
-
-              placement: iss ? "top" : "bottom-end",
-              action: {
-                label: "Close",
-                onClick: () => {},
-              },
-            });
-          break;
-      }
-    }
-  }, [
-    loading,
-    status,
-    response?.data?.message,
-    showSuccessToast,
-    showErrorToast,
-  ]);
 
   return {
     req,

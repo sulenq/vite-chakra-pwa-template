@@ -17,8 +17,7 @@ const LoginForm = () => {
   const { setPermissions } = useAuthMiddleware();
 
   // Utils
-  // TODO make showErrorToast true/remove it if used in dev, this is for demo purpose only
-  const { req, loading } = useRequest({ showErrorToast: false });
+  const { req, loading } = useRequest();
   const navigate = useNavigate();
 
   // Formik
@@ -39,7 +38,7 @@ const LoginForm = () => {
       };
       const config = {
         method: "post",
-        url: ``,
+        url: `https://apiweb.distrostudio.org/api/login`,
         data: payload,
       };
       req({
