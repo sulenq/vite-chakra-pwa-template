@@ -1031,30 +1031,30 @@ const TableComponentDemo = () => {
   const ths = [
     {
       th: "Nama",
-      isSortable: true,
+      sortable: true,
     },
     {
       th: "Jenis Jam Kerja",
-      isSortable: true,
+      sortable: true,
       stackProps: {
         justify: "center",
       },
     },
     {
       th: "Unit Kerja",
-      isSortable: true,
+      sortable: true,
     },
     {
       th: "Kategori",
-      isSortable: true,
+      sortable: true,
     },
     {
       th: "Presensi Masuk",
-      isSortable: true,
+      sortable: true,
     },
     {
       th: "Presensi keluar",
-      isSortable: true,
+      sortable: true,
     },
   ];
   const tds = data?.map((item: any) => ({

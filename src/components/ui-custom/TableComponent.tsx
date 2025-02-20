@@ -426,8 +426,8 @@ const TableComponent = ({
       );
     }
     return (
-      <Icon fontSize={"sm"} w={"16px"} opacity={0.3}>
-        <IconCaretUpDownFilled />
+      <Icon w={"14px"} opacity={0.3}>
+        <IconCaretUpDownFilled stroke={1.5} />
       </Icon>
     );
   };

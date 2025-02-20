@@ -218,8 +218,11 @@ const SelectInput = ({
               </Text>
             )}
 
-            <Icon fontSize={"sm"} maxH={"14px"} opacity={0.4}>
-              <IconCaretDownFilled />
+            <Icon
+              maxH={"14px"}
+              color={props?._placeholder?.color || "var(--placeholder)"}
+            >
+              <IconCaretDownFilled stroke={1.5} />
             </Icon>
           </HStack>
         </BButton>
