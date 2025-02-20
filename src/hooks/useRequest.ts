@@ -64,9 +64,6 @@ const useRequest = ({
               description: response?.data?.message?.description
                 ? typeof response?.data?.message?.description === "string"
                 : "Description's format isn't string",
-              // ? response?.data?.message
-              // : "Format pesan response bukan string"
-              // duration: 3000,
               placement: iss ? "top" : "bottom-end",
               action: {
                 label: "Close",
@@ -116,9 +113,6 @@ const useRequest = ({
             description: response?.data?.message?.description
               ? typeof response?.data?.message?.description === "string"
               : "Format deskripsi salah",
-            // ? response?.data?.message
-            // : "Format pesan response bukan string"
-            // duration: 3000,
 
             placement: iss ? "top" : "bottom-end",
             action: {
