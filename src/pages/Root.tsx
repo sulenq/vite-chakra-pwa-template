@@ -1321,6 +1321,8 @@ const TableComponentDemo = () => {
 };
 
 export default function Root() {
+  const { themeConfig } = useThemeConfig();
+
   return (
     <CContainer minH={"100dvh"} overflowX={"clip"} pt={"0 !important"}>
       {/* Nav */}
@@ -1486,20 +1488,37 @@ export default function Root() {
               <Heading6>Picked Primary Color Button</Heading6>
               <CenterContainer>
                 <HStack wrap={"wrap"} gap={2}>
-                  <BButton colorPalette={"p"}>Solid</BButton>
-                  <BButton colorPalette={"p"} variant={"subtle"}>
+                  <BButton colorPalette={themeConfig.colorPalette}>
+                    Solid
+                  </BButton>
+                  <BButton
+                    colorPalette={themeConfig.colorPalette}
+                    variant={"subtle"}
+                  >
                     Subtle
                   </BButton>
-                  <BButton colorPalette={"p"} variant={"surface"}>
+                  <BButton
+                    colorPalette={themeConfig.colorPalette}
+                    variant={"surface"}
+                  >
                     Surface
                   </BButton>
-                  <BButton colorPalette={"p"} variant={"outline"}>
+                  <BButton
+                    colorPalette={themeConfig.colorPalette}
+                    variant={"outline"}
+                  >
                     Outline
                   </BButton>
-                  <BButton colorPalette={"p"} variant={"ghost"}>
+                  <BButton
+                    colorPalette={themeConfig.colorPalette}
+                    variant={"ghost"}
+                  >
                     Ghost
                   </BButton>
-                  <BButton colorPalette={"p"} variant={"plain"}>
+                  <BButton
+                    colorPalette={themeConfig.colorPalette}
+                    variant={"plain"}
+                  >
                     Plain
                   </BButton>
                 </HStack>
