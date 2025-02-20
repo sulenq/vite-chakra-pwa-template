@@ -1196,6 +1196,9 @@ const TableComponentDemo = () => {
               title: "Delete",
               description: `Aksi ini tidak bisa dibatalkan, data id ${rowData.id}`,
               confirmLabel: "Delete",
+              confirmButtonProps: {
+                colorPalette: "red",
+              },
               confirmCallback: () => {
                 toaster.create({
                   type: "success",
