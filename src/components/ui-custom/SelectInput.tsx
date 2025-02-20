@@ -141,11 +141,12 @@ const SelectInput = ({
                 }
                 bg={isSelected(item) ? "d1" : ""}
                 borderRadius={multiple ? "full" : ""}
-                // borderColor={isSelected(item) ? "ibody !important" : ""}
+                // borderColor={isSelected(item) ? "d3" : ""}
                 justifyContent={"start"}
                 onClick={() => {
                   handleSelect(item);
                 }}
+                color={isSelected(item) ? "ibody" : !multiple ? "" : "dt"}
                 {...props}
               >
                 <Text truncate>{item?.label}</Text>
