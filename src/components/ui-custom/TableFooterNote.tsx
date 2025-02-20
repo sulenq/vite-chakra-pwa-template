@@ -6,7 +6,7 @@ interface Props extends TextProps {
 
 const TableFooterNote = ({ children }: Props) => {
   return (
-    <Text opacity={0.5} my={"auto"} textAlign={["left", null, "center"]}>
+    <Text color={"fg.subtle"} textAlign={["left", null, "center"]}>
       {children}
     </Text>
   );

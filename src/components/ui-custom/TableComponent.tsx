@@ -771,6 +771,7 @@ const TableComponent = ({
         <CContainer
           display={[!footerContent ? "none" : "", null, "block"]}
           order={[1, null, 2]}
+          my={"auto"}
         >
           {footerContent}
         </CContainer>
