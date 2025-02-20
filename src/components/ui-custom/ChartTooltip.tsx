@@ -7,7 +7,7 @@ const ChartTooltip = () => {
       content={(props) => <ChartTooltipContent {...props} />}
       cursor={{
         stroke: "var(--d3)",
-        stroke: 2,
+        strokeWidth: 2,
         strokeDasharray: "5",
       }}
     />
