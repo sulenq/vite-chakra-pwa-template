@@ -201,7 +201,7 @@ const SelectInput = ({
             }
             onOpen();
           }}
-          pr={3}
+          px={3}
           {...props}
         >
           <HStack w={"full"} justify={"space-between"}>

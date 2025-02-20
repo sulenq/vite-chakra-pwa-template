@@ -179,6 +179,7 @@ const TimePickerInput = ({
             }
             onOpen();
           }}
+          px={3}
           {...props}
         >
           <HStack w={"full"} justify={"space-between"}>
