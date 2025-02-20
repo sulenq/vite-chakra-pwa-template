@@ -38,7 +38,7 @@ const LoginForm = () => {
       };
       const config = {
         method: "post",
-        url: `https://apiweb.distrostudio.org/api/login`,
+        url: ``,
         data: payload,
       };
       req({
