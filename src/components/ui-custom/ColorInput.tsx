@@ -10,7 +10,7 @@ import {
   ColorPickerSliders,
   ColorPickerTrigger,
 } from "../ui/color-picker";
-import { INPUT_BORDER_COLOR_FOCUS } from "@/constant/themeConfig";
+import { INPUT_FOCUS_BORDER_COLOR } from "@/constant/themeConfig";
 import rgbaToHex from "@/utils/rgbaToHex";
 
 const ColorInput = ({
@@ -33,7 +33,7 @@ const ColorInput = ({
     >
       {label && <ColorPickerLabel>{label}</ColorPickerLabel>}
       <ColorPickerControl>
-        <ColorPickerInput _focus={{ borderColor: INPUT_BORDER_COLOR_FOCUS }} />
+        <ColorPickerInput _focus={{ borderColor: INPUT_FOCUS_BORDER_COLOR }} />
         <ColorPickerTrigger cursor={"pointer"} />
       </ColorPickerControl>
 

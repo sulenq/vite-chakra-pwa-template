@@ -8,7 +8,7 @@ import {
 import { css, Global } from "@emotion/react";
 import { useRef } from "react";
 import { useColorMode } from "../ui/color-mode";
-import { INPUT_BORDER_COLOR_FOCUS } from "@/constant/themeConfig";
+import { INPUT_FOCUS_BORDER_COLOR } from "@/constant/themeConfig";
 
 interface Props extends InputProps {
   fRef?: any;
@@ -69,7 +69,7 @@ export default function StringInput({
           placeholder={placeholder}
           borderColor={fc?.invalid || invalid ? "border.error" : "gray.muted"}
           fontWeight={"medium"}
-          _focus={{ borderColor: INPUT_BORDER_COLOR_FOCUS }}
+          _focus={{ borderColor: INPUT_FOCUS_BORDER_COLOR }}
           autoComplete="off"
           {...props}
         />
