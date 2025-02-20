@@ -1676,14 +1676,14 @@ export default function Root() {
                 <MenuContent>
                   <MenuItem value="edit" justifyContent={"space-between"}>
                     Edit
-                    <Icon fontSize={"md"}>
-                      <IconEdit />
+                    <Icon>
+                      <IconEdit size={20} />
                     </Icon>
                   </MenuItem>
                   <MenuItem value="restore" justifyContent={"space-between"}>
                     Restore
-                    <Icon fontSize={"md"}>
-                      <IconRestore />
+                    <Icon>
+                      <IconRestore size={20} />
                     </Icon>
                   </MenuItem>
                   <MenuItem
@@ -1692,8 +1692,8 @@ export default function Root() {
                     justifyContent={"space-between"}
                   >
                     Delete
-                    <Icon fontSize={"md"}>
-                      <IconTrash />
+                    <Icon>
+                      <IconTrash size={20} />
                     </Icon>
                   </MenuItem>
                 </MenuContent>
