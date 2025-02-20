@@ -11,10 +11,12 @@ import Heading6 from "../ui-custom/Heading6";
 import PasswordInput from "../ui-custom/PasswordInput";
 import StringInput from "../ui-custom/StringInput";
 import { Field } from "../ui/field";
+import { useThemeConfig } from "@/context/useThemeConfig";
 
 const LoginForm = () => {
   // Contexts
   const { setPermissions } = useAuthMiddleware();
+  const { themeConfig } = useThemeConfig();
 
   // Utils
   const { req, loading } = useRequest();
@@ -116,6 +118,7 @@ const LoginForm = () => {
             mt={6}
             size={"lg"}
             loading={loading}
+            colorPalette={themeConfig.colorPalette}
           >
             Sign in
           </BButton>

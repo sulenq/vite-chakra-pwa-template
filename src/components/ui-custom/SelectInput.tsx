@@ -1,9 +1,9 @@
-import { PRIMARY_COLOR_PALETTE } from "@/constant/themeConfig";
 import {
   Interface__Select,
   Interface__SelectOption,
 } from "@/constant/interfaces";
 import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
+import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
 import {
@@ -53,6 +53,7 @@ const SelectInput = ({
   const { open, onOpen, onClose } = useDisclosure();
   useBackOnClose(id || `${name ? `-${name}` : ""}`, open, onOpen, onClose);
   const fc = useFieldContext();
+  const { themeConfig } = useThemeConfig();
 
   const [options, setOptions] = useState<
     Interface__SelectOption[] | undefined | null
@@ -135,13 +136,11 @@ const SelectInput = ({
               <BButton
                 unclicky
                 key={i}
-                // colorPalette={isSelected(item) ? PRIMARY_COLOR_PALETTE : ""}
                 variant={
                   isSelected(item) ? "surface" : !multiple ? "ghost" : "outline"
                 }
                 bg={isSelected(item) ? "d1" : ""}
                 borderRadius={multiple ? "full" : ""}
-                // borderColor={isSelected(item) ? "d3" : ""}
                 justifyContent={"start"}
                 onClick={() => {
                   handleSelect(item);
@@ -311,7 +310,7 @@ const SelectInput = ({
                       checked={selectAll}
                       invalid={false}
                       size={"sm"}
-                      colorPalette={PRIMARY_COLOR_PALETTE}
+                      colorPalette={themeConfig.colorPalette}
                     >
                       <Text>Pilih Semua</Text>
                     </Checkbox>
@@ -344,7 +343,7 @@ const SelectInput = ({
               <BButton
                 onClick={confirmSelected}
                 size={MAIN_BUTTON_SIZE}
-                colorPalette={PRIMARY_COLOR_PALETTE}
+                colorPalette={themeConfig.colorPalette}
               >
                 Konfirmasi
               </BButton>

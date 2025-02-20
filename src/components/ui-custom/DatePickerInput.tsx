@@ -1,6 +1,7 @@
 import days from "@/constant/days";
 import { Interface__DatePicker } from "@/constant/interfaces";
 import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
+import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
 import formatDate from "@/utils/formatDate";
@@ -31,7 +32,6 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
-import { PRIMARY_COLOR_PALETTE } from "@/constant/themeConfig";
 
 const DatePickerInput = ({
   id,
@@ -54,6 +54,7 @@ const DatePickerInput = ({
     onClose
   );
   const fc = useFieldContext();
+  const { themeConfig } = useThemeConfig();
 
   const [date, setDate] = useState<Date>(inputValue || new Date());
   const [month, setMonth] = useState<number>(date.getMonth());
@@ -325,7 +326,7 @@ const DatePickerInput = ({
               onClick={confirmSelected}
               disabled={nonNullable && !selected}
               size={MAIN_BUTTON_SIZE}
-              colorPalette={PRIMARY_COLOR_PALETTE}
+              colorPalette={themeConfig.colorPalette}
             >
               Konfirmasi
             </BButton>

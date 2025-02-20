@@ -1,3 +1,5 @@
+import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
+import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import {
   Box,
@@ -16,8 +18,6 @@ import {
   DisclosureRoot,
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
-import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
-import { PRIMARY_COLOR_PALETTE } from "@/constant/themeConfig";
 
 interface Props {
   id: string;
@@ -44,6 +44,7 @@ const ConfirmationDisclosure = ({
 }: Props) => {
   const { open, onOpen, onClose } = useDisclosure();
   useBackOnClose(`confirm-${title}-${id}`, open, onOpen, onClose);
+  const { themeConfig } = useThemeConfig();
 
   return (
     <>
@@ -66,7 +67,7 @@ const ConfirmationDisclosure = ({
             <BButton
               size={MAIN_BUTTON_SIZE}
               onClick={confirmCallback}
-              colorPalette={PRIMARY_COLOR_PALETTE}
+              colorPalette={themeConfig.colorPalette}
               {...confirmButtonProps}
             >
               {confirmLabel}

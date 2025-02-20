@@ -3,7 +3,7 @@ import {
   Interface__RowOptions,
   Interface__TableComponent,
 } from "@/constant/interfaces";
-import { PRIMARY_COLOR_PALETTE } from "@/constant/themeConfig";
+import { useThemeConfig } from "@/context/useThemeConfig";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import useScreen from "@/hooks/useScreen";
 import formatDate from "@/utils/formatDate";
@@ -46,6 +46,9 @@ const BatchOptions = ({
   handleSelectAllRows,
   tableRef,
 }: Interface__BatchOptions) => {
+  // States, Refs
+  const { themeConfig } = useThemeConfig();
+
   return (
     <MenuRoot lazyMount positioning={{ hideWhenDetached: true }}>
       <MenuTrigger
@@ -90,7 +93,7 @@ const BatchOptions = ({
               borderColor={"d3"}
               checked={selectAllRows}
               size={"sm"}
-              colorPalette={PRIMARY_COLOR_PALETTE}
+              colorPalette={themeConfig.colorPalette}
             />
           </MenuItem>
 
@@ -262,10 +265,8 @@ const TableComponent = ({
   const thBg = "body";
   const borderColor = "border.muted";
 
-  // Utils
-  const iss = useIsSmScreenWidth();
-  const { sh } = useScreen();
-
+  // States, Refs
+  const { themeConfig } = useThemeConfig();
   const tableHeader = columnsConfig
     ? columnsConfig.map((columnIndex) => ths[columnIndex])
     : ths;
@@ -278,7 +279,6 @@ const TableComponent = ({
         return { ...data, columnsFormat: filteredColumns };
       })
     : [...tds];
-
   const [originalDataState, setOriginalDataState] = useState(tds);
   const [selectAllRows, setSelectAllRows] = useState<boolean>(false);
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
@@ -289,6 +289,10 @@ const TableComponent = ({
     sortColumnIndex: initialSortColumnIndex || undefined,
     direction: initialSortOrder || "asc",
   });
+
+  // Utils
+  const iss = useIsSmScreenWidth();
+  const { sh } = useScreen();
 
   // Column filter
   useEffect(() => {
@@ -648,7 +652,7 @@ const TableComponent = ({
                         }}
                       >
                         <Checkbox
-                          colorPalette={PRIMARY_COLOR_PALETTE}
+                          colorPalette={themeConfig.colorPalette}
                           checked={selectedRows.includes(row.id)}
                           size={"sm"}
                           bg={"d1"}

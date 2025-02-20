@@ -1,16 +1,13 @@
 import { create } from "zustand";
 
-interface State {
+interface Props {
   role: object | undefined;
   permissions: number[] | undefined;
+  setRole: (newState: Props["role"]) => void;
+  setPermissions: (newState: Props["permissions"]) => void;
 }
 
-interface Actions {
-  setRole: (newState: State["role"]) => void;
-  setPermissions: (newState: State["permissions"]) => void;
-}
-
-const useAuthMiddleware = create<State & Actions>((set) => ({
+const useAuthMiddleware = create<Props>((set) => ({
   role: undefined,
   setRole: (newState) =>
     set(() => ({

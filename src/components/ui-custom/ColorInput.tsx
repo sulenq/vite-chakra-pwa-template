@@ -1,3 +1,5 @@
+import { useThemeConfig } from "@/context/useThemeConfig";
+import rgbaToHex from "@/utils/rgbaToHex";
 import { HStack, parseColor } from "@chakra-ui/react";
 import {
   ColorPickerArea,
@@ -10,8 +12,6 @@ import {
   ColorPickerSliders,
   ColorPickerTrigger,
 } from "../ui/color-picker";
-import { INPUT_FOCUS_BORDER_COLOR } from "@/constant/themeConfig";
-import rgbaToHex from "@/utils/rgbaToHex";
 
 const ColorInput = ({
   name,
@@ -22,6 +22,8 @@ const ColorInput = ({
   label,
   ...props
 }: any) => {
+  const { themeConfig } = useThemeConfig();
+
   return (
     <ColorPickerRoot
       defaultValue={parseColor(inputValue)}
@@ -33,7 +35,7 @@ const ColorInput = ({
     >
       {label && <ColorPickerLabel>{label}</ColorPickerLabel>}
       <ColorPickerControl>
-        <ColorPickerInput _focus={{ borderColor: INPUT_FOCUS_BORDER_COLOR }} />
+        <ColorPickerInput _focus={{ borderColor: themeConfig.primaryColor }} />
         <ColorPickerTrigger cursor={"pointer"} />
       </ColorPickerControl>
 

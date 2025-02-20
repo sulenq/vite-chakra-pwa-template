@@ -1,5 +1,6 @@
 import { Interface__TimePicker } from "@/constant/interfaces";
 import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
+import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useScreen from "@/hooks/useScreen";
 import back from "@/utils/back";
@@ -30,7 +31,6 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import StringInput from "./StringInput";
-import { PRIMARY_COLOR_PALETTE } from "@/constant/themeConfig";
 
 const TimePickerInput = ({
   id,
@@ -56,6 +56,7 @@ const TimePickerInput = ({
   const fc = useFieldContext();
   const overflow = sw < 450 && withSeconds;
 
+  const { themeConfig } = useThemeConfig();
   const defaultTime = "00:00:00";
   const [selected, setSelected] = useState<string | undefined>(
     inputValue ? inputValue : defaultTime
@@ -484,7 +485,7 @@ const TimePickerInput = ({
               onClick={confirmSelected}
               disabled={nonNullable ? (selected ? false : true) : false}
               size={MAIN_BUTTON_SIZE}
-              colorPalette={PRIMARY_COLOR_PALETTE}
+              colorPalette={themeConfig.colorPalette}
             >
               Konfirmasi
             </BButton>

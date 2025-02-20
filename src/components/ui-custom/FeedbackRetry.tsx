@@ -1,8 +1,8 @@
+import { useThemeConfig } from "@/context/useThemeConfig";
 import { Button, Group, Icon, StackProps } from "@chakra-ui/react";
 import { IconAlertTriangle } from "@tabler/icons-react";
 import { EmptyState } from "../ui/empty-state";
 import CContainer from "./CContainer";
-import { PRIMARY_COLOR_PALETTE } from "@/constant/themeConfig";
 
 interface Props extends StackProps {
   title?: string;
@@ -14,6 +14,8 @@ export default function FeedbackRetry({
   description = "Cobalah untuk memuat ulang menggunakan tombol di bawah.",
   ...props
 }: Props) {
+  const { themeConfig } = useThemeConfig();
+
   return (
     <CContainer w={"fit"} m={"auto"} {...props}>
       <EmptyState
@@ -27,7 +29,7 @@ export default function FeedbackRetry({
         maxW={"500px"}
       >
         <Group>
-          <Button className="clicky" colorPalette={PRIMARY_COLOR_PALETTE}>
+          <Button className="clicky" colorPalette={themeConfig.colorPalette}>
             Muat Ulang
           </Button>
         </Group>

@@ -1,14 +1,11 @@
 import { create } from "zustand";
 
-interface State {
+interface Props {
   activeDrawerId: string[];
-}
-
-interface Actions {
   setActiveDrawerId: (newState: string[]) => void;
 }
 
-const useActiveDrawerId = create<State & Actions>((set) => ({
+const useActiveDrawerId = create<Props>((set) => ({
   activeDrawerId: [],
   setActiveDrawerId: (newState: string[]) => set({ activeDrawerId: newState }),
 }));

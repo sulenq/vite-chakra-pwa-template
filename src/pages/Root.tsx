@@ -75,8 +75,8 @@ import { Status } from "@/components/ui/status";
 import { toaster } from "@/components/ui/toaster";
 import { Tooltip } from "@/components/ui/tooltip";
 import { Interface__Select } from "@/constant/interfaces";
-import { PRIMARY_COLOR_PALETTE } from "@/constant/paletteConfig";
 import { OPTIONS_RELIGION } from "@/constant/selectOptions";
+import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import back from "@/utils/back";
@@ -87,6 +87,7 @@ import {
   Badge,
   Box,
   Center,
+  Circle,
   HStack,
   Icon,
   IconButton,
@@ -109,6 +110,59 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 
+const ThemeConfig = () => {
+  const { themeConfig, setThemeConfig } = useThemeConfig();
+  const colorPalettes = [
+    "p",
+    "gray",
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "teal",
+    "blue",
+    "cyan",
+    "purple",
+    "pink",
+    // "linkedin",
+    // "facebook",
+    // "messenger",
+    // "whatsapp",
+    // "twitter",
+    // "telegram",
+  ];
+
+  return (
+    <CContainer mb={5}>
+      <Heading5 mb={2}>Theme</Heading5>
+      <HStack wrap={"wrap"}>
+        {colorPalettes.map((item, i) => {
+          return (
+            <Circle
+              key={i}
+              p={1}
+              border={"2px solid"}
+              borderColor={
+                item === themeConfig.colorPalette
+                  ? themeConfig.primaryColor
+                  : "transparent"
+              }
+              cursor={"pointer"}
+              onClick={() => {
+                setThemeConfig({
+                  colorPalette: item,
+                  primaryColor: `${item}.500`,
+                });
+              }}
+            >
+              <Circle w={"20px"} h={"20px"} bg={`${item}.500`} />
+            </Circle>
+          );
+        })}
+      </HStack>
+    </CContainer>
+  );
+};
 const CenterContainer = ({ children, ...props }: any) => {
   return (
     <Center
@@ -1123,6 +1177,7 @@ const TableComponentDemo = () => {
       },
     ],
   }));
+  const { themeConfig } = useThemeConfig();
 
   const [limitControl, setLimitControl] = useState(10);
   const [pageControl, setPageControl] = useState(1);
@@ -1138,8 +1193,11 @@ const TableComponentDemo = () => {
           inputValue={search}
         />
 
-        <BButton colorPalette={PRIMARY_COLOR_PALETTE}>Call To Action</BButton>
+        <BButton colorPalette={themeConfig.colorPalette}>
+          Call To Action
+        </BButton>
       </HScroll>
+
       <TableComponent
         ths={ths}
         tds={tds}
@@ -1264,24 +1322,19 @@ const TableComponentDemo = () => {
 
 export default function Root() {
   return (
-    <CContainer
-      minH={"100dvh"}
-      overflowX={"clip"}
-      p={5}
-      pt={"0 !important"}
-      gap={4}
-    >
+    <CContainer minH={"100dvh"} overflowX={"clip"} pt={"0 !important"}>
       {/* Nav */}
       <HStack
         wrap={"wrap"}
         justify={"space-between"}
         py={2}
+        px={4}
         position={"sticky"}
         top={0}
         zIndex={99}
-        // color={"white"}
-        // bg={"darktrans"}
-        // backdropFilter={"blur(5px)"}
+        bg={"body"}
+        borderBottom={"1px solid"}
+        borderColor={"border.muted"}
       >
         <HStack gap={3}>
           {/* <Image
@@ -1305,602 +1358,606 @@ export default function Root() {
         </HStack>
       </HStack>
 
-      <SimpleGrid columns={[1, 2, 3]} gap={4} maxW={"1400px"} mx={"auto"}>
-        {/* Start Grid */}
-        <CContainer gap={6}>
-          {/* Preset Login Form */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Preset Login Form</Heading6>
-            <CenterContainer>
-              <LoginForm />
-            </CenterContainer>
+      <CContainer p={5}>
+        <ThemeConfig />
+
+        <SimpleGrid columns={[1, 2, 3]} gap={4} maxW={"1400px"} mx={"auto"}>
+          {/* Start Grid */}
+          <CContainer gap={6}>
+            {/* Preset Login Form */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Preset Login Form</Heading6>
+              <CenterContainer>
+                <LoginForm />
+              </CenterContainer>
+            </CContainer>
+
+            {/* Feedback */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Feedback</Heading6>
+
+              <CenterContainer p={8}>
+                <NoData />
+              </CenterContainer>
+
+              <CenterContainer p={8}>
+                <NotFound />
+              </CenterContainer>
+
+              <CenterContainer p={8}>
+                <Forbidden />
+              </CenterContainer>
+
+              <CenterContainer p={8}>
+                <Retry />
+              </CenterContainer>
+            </CContainer>
+
+            {/* Tooltip */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Tooltip</Heading6>
+              <CenterContainer>
+                <Tooltip content={"Ciluk baa"}>
+                  <Text>Hover me & wait</Text>
+                </Tooltip>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Popover */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Popover</Heading6>
+              <CenterContainer>
+                <PopoverRoot lazyMount unmountOnExit>
+                  <PopoverTrigger asChild>
+                    <BButton size="sm" variant="outline">
+                      <Icon size={"md"} color={"green.solid"}>
+                        <IconCircleCheck />
+                      </Icon>
+                      Reward Presensi
+                    </BButton>
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <PopoverArrow />
+                    <PopoverBody>
+                      <PopoverTitle fontWeight="medium" mb={4}>
+                        <HStack>
+                          <Icon size={"md"} color={"green.solid"}>
+                            <IconCircleCheck />
+                          </Icon>
+                          <Text>Menapat reward presensi</Text>
+                        </HStack>
+                      </PopoverTitle>
+                      <Text>
+                        Alpha, terlambat, pulang awal tidak akan mendapat reward
+                        presensi.
+                      </Text>
+                    </PopoverBody>
+                  </PopoverContent>
+                </PopoverRoot>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Clipboard */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Clipboard</Heading6>
+              <CenterContainer>
+                <CContainer gap={4}>
+                  <ClipboardRoot value="https://link/rahasia">
+                    <ClipboardLabel>Link</ClipboardLabel>
+                    <InputGroup
+                      width="full"
+                      endElement={<ClipboardIconButton me="-2" />}
+                    >
+                      <ClipboardInput />
+                    </InputGroup>
+                  </ClipboardRoot>
+
+                  <StringInput placeholder="Coba paste disini" />
+                </CContainer>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Float */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Float Counter</Heading6>
+              <CenterContainer gap={4}>
+                <IconButton variant={"outline"}>
+                  <FloatCounter>3</FloatCounter>
+                  <Icon>
+                    <IconBell />
+                  </Icon>
+                </IconButton>
+
+                <BButton variant={"outline"}>
+                  <FloatCounter>{formatNumber(4230)}</FloatCounter>
+                  <Icon>
+                    <IconAdjustmentsHorizontal />
+                  </Icon>
+                  Filter
+                </BButton>
+              </CenterContainer>
+            </CContainer>
           </CContainer>
 
-          {/* Feedback */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Feedback</Heading6>
-
-            <CenterContainer p={8}>
-              <NoData />
-            </CenterContainer>
-
-            <CenterContainer p={8}>
-              <NotFound />
-            </CenterContainer>
-
-            <CenterContainer p={8}>
-              <Forbidden />
-            </CenterContainer>
-
-            <CenterContainer p={8}>
-              <Retry />
-            </CenterContainer>
-          </CContainer>
-
-          {/* Tooltip */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Tooltip</Heading6>
-            <CenterContainer>
-              <Tooltip content={"Ciluk baa"}>
-                <Text>Hover me & wait</Text>
-              </Tooltip>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Popover */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Popover</Heading6>
-            <CenterContainer>
-              <PopoverRoot lazyMount unmountOnExit>
-                <PopoverTrigger asChild>
-                  <BButton size="sm" variant="outline">
-                    <Icon size={"md"} color={"green.solid"}>
-                      <IconCircleCheck />
-                    </Icon>
-                    Reward Presensi
+          {/* Center Grid */}
+          <CContainer gap={6}>
+            {/* Primary Button */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Picked Primary Color Button</Heading6>
+              <CenterContainer>
+                <HStack wrap={"wrap"} gap={2}>
+                  <BButton colorPalette={"p"}>Solid</BButton>
+                  <BButton colorPalette={"p"} variant={"subtle"}>
+                    Subtle
                   </BButton>
-                </PopoverTrigger>
-                <PopoverContent>
-                  <PopoverArrow />
-                  <PopoverBody>
-                    <PopoverTitle fontWeight="medium" mb={4}>
-                      <HStack>
-                        <Icon size={"md"} color={"green.solid"}>
-                          <IconCircleCheck />
+                  <BButton colorPalette={"p"} variant={"surface"}>
+                    Surface
+                  </BButton>
+                  <BButton colorPalette={"p"} variant={"outline"}>
+                    Outline
+                  </BButton>
+                  <BButton colorPalette={"p"} variant={"ghost"}>
+                    Ghost
+                  </BButton>
+                  <BButton colorPalette={"p"} variant={"plain"}>
+                    Plain
+                  </BButton>
+                </HStack>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Basic Button */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Basic Button</Heading6>
+              <CenterContainer>
+                <HStack wrap={"wrap"} gap={2}>
+                  <BButton>Solid</BButton>
+                  <BButton variant={"subtle"}>Subtle</BButton>
+                  <BButton variant={"surface"}>Surface</BButton>
+                  <BButton variant={"outline"}>Outline</BButton>
+                  <BButton variant={"ghost"}>Ghost</BButton>
+                  <BButton variant={"plain"}>Plain</BButton>
+                </HStack>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Error Button */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Error Button</Heading6>
+              <CenterContainer>
+                <HStack wrap={"wrap"} gap={2}>
+                  <BButton colorPalette={"red"}>Solid</BButton>
+                  <BButton colorPalette={"red"} variant={"subtle"}>
+                    Subtle
+                  </BButton>
+                  <BButton colorPalette={"red"} variant={"surface"}>
+                    Surface
+                  </BButton>
+                  <BButton colorPalette={"red"} variant={"outline"}>
+                    Outline
+                  </BButton>
+                  <BButton colorPalette={"red"} variant={"ghost"}>
+                    Ghost
+                  </BButton>
+                  <BButton colorPalette={"red"} variant={"plain"}>
+                    Plain
+                  </BButton>
+                </HStack>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Warning Button */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Warning Button</Heading6>
+              <CenterContainer>
+                <HStack wrap={"wrap"} gap={2}>
+                  <BButton colorPalette={"orange"}>Solid</BButton>
+                  <BButton colorPalette={"orange"} variant={"subtle"}>
+                    Subtle
+                  </BButton>
+                  <BButton colorPalette={"orange"} variant={"surface"}>
+                    Surface
+                  </BButton>
+                  <BButton colorPalette={"orange"} variant={"outline"}>
+                    Outline
+                  </BButton>
+                  <BButton colorPalette={"orange"} variant={"ghost"}>
+                    Ghost
+                  </BButton>
+                  <BButton colorPalette={"orange"} variant={"plain"}>
+                    Plain
+                  </BButton>
+                </HStack>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Heading */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Heading</Heading6>
+              <CenterContainer>
+                <CContainer>
+                  <Heading1>Heading 1</Heading1>
+                  <Heading2>Heading 2</Heading2>
+                  <Heading3>Heading 3</Heading3>
+                  <Heading4>Heading 4</Heading4>
+                  <Heading5>Heading 5</Heading5>
+                  <Heading6>Heading 6</Heading6>
+                </CContainer>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Alert */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Alert</Heading6>
+              <CenterContainer>
+                <CContainer gap="2" width="full">
+                  <Alert
+                    variant={"surface"}
+                    status="error"
+                    title="Error alert variant surface"
+                  />
+                  <Alert
+                    variant={"surface"}
+                    status="info"
+                    title="Info alert variant surface"
+                  />
+                  <Alert
+                    variant={"surface"}
+                    status="warning"
+                    title="Warning alert variant surface"
+                  />
+                  <Alert
+                    variant={"surface"}
+                    status="success"
+                    title="Success alert variant surface"
+                  />
+                  <Alert
+                    variant={"surface"}
+                    colorPalette={"p"}
+                    icon={
+                      <Icon>
+                        <IconAlarm />
+                      </Icon>
+                    }
+                    title="Custom alert dengan custom icon"
+                    closable
+                  >
+                    Deskripsi dari alert bisa panjang bisa pendek
+                  </Alert>
+                </CContainer>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Accordion */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Accordion</Heading6>
+              <CenterContainer>
+                <CContainer width="full" maxW="400px">
+                  <AccordionRoot
+                    collapsible
+                    defaultValue={["info"]}
+                    variant={"enclosed"}
+                  >
+                    <AccordionItem value="a">
+                      <AccordionItemTrigger>
+                        <Icon fontSize="lg" color="fg.subtle">
+                          <IconAlarm />
                         </Icon>
-                        <Text>Menapat reward presensi</Text>
-                      </HStack>
-                    </PopoverTitle>
-                    <Text>
-                      Alpha, terlambat, pulang awal tidak akan mendapat reward
-                      presensi.
-                    </Text>
-                  </PopoverBody>
-                </PopoverContent>
-              </PopoverRoot>
-            </CenterContainer>
+                        Alarm
+                      </AccordionItemTrigger>
+                      <AccordionItemContent>
+                        <Text>Wiuwiu kerja woi</Text>
+                      </AccordionItemContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="b">
+                      <AccordionItemTrigger>
+                        <Icon fontSize="lg" color="fg.subtle">
+                          <IconAlarm />
+                        </Icon>
+                        Alarm
+                      </AccordionItemTrigger>
+                      <AccordionItemContent>
+                        <Text>Wiuwiu kerja woi</Text>
+                      </AccordionItemContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="c">
+                      <AccordionItemTrigger>
+                        <Icon fontSize="lg" color="fg.subtle">
+                          <IconAlarm />
+                        </Icon>
+                        Alarm
+                      </AccordionItemTrigger>
+                      <AccordionItemContent>
+                        <Text>Wiuwiu kerja woi</Text>
+                      </AccordionItemContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="d">
+                      <AccordionItemTrigger>
+                        <Icon fontSize="lg" color="fg.subtle">
+                          <IconAlarm />
+                        </Icon>
+                        Alarm
+                      </AccordionItemTrigger>
+                      <AccordionItemContent>
+                        <Text>Wiuwiu kerja woi</Text>
+                      </AccordionItemContent>
+                    </AccordionItem>
+                  </AccordionRoot>
+                </CContainer>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Menu */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Menu</Heading6>
+              <CenterContainer gap={2}>
+                <Menu.Root>
+                  <MenuTrigger asChild>
+                    <BButton variant="outline">Edit</BButton>
+                  </MenuTrigger>
+                  <MenuContent>
+                    <MenuItemGroup title="Styles">
+                      <MenuItem value="bold">Bold</MenuItem>
+                      <MenuItem value="underline">Underline</MenuItem>
+                    </MenuItemGroup>
+                    <MenuSeparator />
+                    <MenuItemGroup title="Align">
+                      <MenuItem value="left">Left</MenuItem>
+                      <MenuItem value="middle">Middle</MenuItem>
+                      <MenuItem value="right">Right</MenuItem>
+                    </MenuItemGroup>
+
+                    <MenuRoot
+                      positioning={{ placement: "right-start", gutter: 8 }}
+                    >
+                      <MenuTriggerItem value="open-recent">
+                        Open Recent
+                      </MenuTriggerItem>
+                      <MenuContent>
+                        <MenuItem value="panda">Panda</MenuItem>
+                        <MenuItem value="ark">Ark UI</MenuItem>
+                        <MenuItem value="chakra">Chakra v3</MenuItem>
+                      </MenuContent>
+                    </MenuRoot>
+                  </MenuContent>
+                </Menu.Root>
+
+                <MenuRoot>
+                  <MenuTrigger asChild>
+                    <BButton variant="outline">Action</BButton>
+                  </MenuTrigger>
+                  <MenuContent>
+                    <MenuItem value="edit" justifyContent={"space-between"}>
+                      Edit
+                      <Icon>
+                        <IconEdit size={20} />
+                      </Icon>
+                    </MenuItem>
+                    <MenuItem value="restore" justifyContent={"space-between"}>
+                      Restore
+                      <Icon>
+                        <IconRestore size={20} />
+                      </Icon>
+                    </MenuItem>
+                    <MenuItem
+                      value="delete"
+                      color="red.400"
+                      justifyContent={"space-between"}
+                    >
+                      Delete
+                      <Icon>
+                        <IconTrash size={20} />
+                      </Icon>
+                    </MenuItem>
+                  </MenuContent>
+                </MenuRoot>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Context Menu */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Context Menu</Heading6>
+              <CenterContainer gap={2}>
+                <MenuRoot>
+                  <MenuContextTrigger w="full">
+                    <Center
+                      width="full"
+                      height="40"
+                      userSelect="none"
+                      borderWidth="2px"
+                      borderStyle="dashed"
+                      rounded="lg"
+                      padding="4"
+                    >
+                      Klik kanan atau hold (mobile) di area ini
+                    </Center>
+                  </MenuContextTrigger>
+                  <MenuContent>
+                    <MenuItem value="new-txt">New Text File</MenuItem>
+                    <MenuItem value="new-file">New File...</MenuItem>
+                    <MenuItem value="new-win">New Window</MenuItem>
+                    <MenuItem value="open-file">Open File...</MenuItem>
+                    <MenuItem value="export">Export</MenuItem>
+                  </MenuContent>
+                </MenuRoot>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Responsive Disclosure */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Responsive Disclosure</Heading6>
+
+              <CenterContainer gap={2}>
+                <DisclosureDemo />
+              </CenterContainer>
+            </CContainer>
           </CContainer>
 
-          {/* Clipboard */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Clipboard</Heading6>
-            <CenterContainer>
-              <CContainer gap={4}>
-                <ClipboardRoot value="https://link/rahasia">
-                  <ClipboardLabel>Link</ClipboardLabel>
-                  <InputGroup
-                    width="full"
-                    endElement={<ClipboardIconButton me="-2" />}
-                  >
-                    <ClipboardInput />
-                  </InputGroup>
-                </ClipboardRoot>
+          {/* End Grid */}
+          <CContainer gap={6}>
+            {/* String Input */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>String Input</Heading6>
+              <CenterContainer>
+                <CContainer gap={4}>
+                  <StringInput placeholder="example@email.com" />
+                  <StringInput invalid placeholder="Invalid state" />
+                </CContainer>
+              </CenterContainer>
+            </CContainer>
 
-                <StringInput placeholder="Coba paste disini" />
-              </CContainer>
-            </CenterContainer>
+            {/* Password Input */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Password Input</Heading6>
+              <CenterContainer>
+                <CContainer gap={4}>
+                  <PasswordInput placeholder="********" />
+                  <PasswordInput invalid placeholder="Invalid state" />
+                </CContainer>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Search Input */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Search Input</Heading6>
+              <CenterContainer>
+                <CContainer gap={4}>
+                  <SearchInputDemo />
+                </CContainer>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Number Input */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Number Input</Heading6>
+              <CenterContainer>
+                <CContainer gap={4}>
+                  <NumberInputDemo />
+                </CContainer>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Checkbox Input */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Checkbox Input</Heading6>
+              <CenterContainer>
+                <CContainer gap={4}>
+                  <Checkbox gap="4" alignItems="start">
+                    <Box lineHeight="1">Setuju dengan syarat dan ketentuan</Box>
+                    <Box fontWeight="normal" color="fg.muted" mt="1">
+                      Dengan klik ini, anda setuju dengan syarat dan ketentuan
+                      kami.
+                    </Box>
+                  </Checkbox>
+
+                  <Checkbox gap="4" alignItems="start" invalid>
+                    <Box lineHeight="1">Invalid state</Box>
+                    <Box fontWeight="normal" color="fg.muted" mt="1">
+                      Dengan klik ini, anda setuju dengan syarat dan ketentuan
+                      kami.
+                    </Box>
+                  </Checkbox>
+                </CContainer>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Select Input */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Select Input</Heading6>
+              <CenterContainer>
+                <CContainer gap={4}>
+                  <SelectInputDemo />
+                </CContainer>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Date Picker Input */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Date Picker Input</Heading6>
+              <CenterContainer>
+                <CContainer gap={4}>
+                  <DatePickerDemo />
+                </CContainer>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Date Range Picker Input */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Date Range Picker Input</Heading6>
+              <CenterContainer>
+                <CContainer gap={4}>
+                  <DateRangePickerDemo />
+                </CContainer>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Time Picker Input */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Time Picker Input</Heading6>
+              <CenterContainer>
+                <CContainer gap={4}>
+                  <TimePickerDemo />
+                </CContainer>
+              </CenterContainer>
+            </CContainer>
+
+            {/* Time Range Picker Input */}
+            <CContainer flex={0} gap={4}>
+              <Heading6>Time Range Picker Input</Heading6>
+              <CenterContainer>
+                <CContainer gap={4}>
+                  <TimeRangePickerDemo />
+                </CContainer>
+              </CenterContainer>
+            </CContainer>
           </CContainer>
+        </SimpleGrid>
 
-          {/* Float */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Float Counter</Heading6>
-            <CenterContainer gap={4}>
-              <IconButton variant={"outline"}>
-                <FloatCounter>3</FloatCounter>
-                <Icon>
-                  <IconBell />
-                </Icon>
-              </IconButton>
-
-              <BButton variant={"outline"}>
-                <FloatCounter>{formatNumber(4230)}</FloatCounter>
-                <Icon>
-                  <IconAdjustmentsHorizontal />
-                </Icon>
-                Filter
-              </BButton>
+        {/* Table Component */}
+        <CContainer maxW={"1400px"} mx={"auto"}>
+          <CContainer flex={0} mt={12} gap={4}>
+            <Heading6>Table Component</Heading6>
+            <CenterContainer flexDir={"column"} px={0}>
+              <TableComponentDemo />
             </CenterContainer>
           </CContainer>
         </CContainer>
 
-        {/* Center Grid */}
-        <CContainer gap={6}>
-          {/* Primary Button */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Picked Primary Color Button</Heading6>
-            <CenterContainer>
-              <HStack wrap={"wrap"} gap={2}>
-                <BButton colorPalette={"p"}>Solid</BButton>
-                <BButton colorPalette={"p"} variant={"subtle"}>
-                  Subtle
-                </BButton>
-                <BButton colorPalette={"p"} variant={"surface"}>
-                  Surface
-                </BButton>
-                <BButton colorPalette={"p"} variant={"outline"}>
-                  Outline
-                </BButton>
-                <BButton colorPalette={"p"} variant={"ghost"}>
-                  Ghost
-                </BButton>
-                <BButton colorPalette={"p"} variant={"plain"}>
-                  Plain
-                </BButton>
-              </HStack>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Basic Button */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Basic Button</Heading6>
-            <CenterContainer>
-              <HStack wrap={"wrap"} gap={2}>
-                <BButton>Solid</BButton>
-                <BButton variant={"subtle"}>Subtle</BButton>
-                <BButton variant={"surface"}>Surface</BButton>
-                <BButton variant={"outline"}>Outline</BButton>
-                <BButton variant={"ghost"}>Ghost</BButton>
-                <BButton variant={"plain"}>Plain</BButton>
-              </HStack>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Error Button */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Error Button</Heading6>
-            <CenterContainer>
-              <HStack wrap={"wrap"} gap={2}>
-                <BButton colorPalette={"red"}>Solid</BButton>
-                <BButton colorPalette={"red"} variant={"subtle"}>
-                  Subtle
-                </BButton>
-                <BButton colorPalette={"red"} variant={"surface"}>
-                  Surface
-                </BButton>
-                <BButton colorPalette={"red"} variant={"outline"}>
-                  Outline
-                </BButton>
-                <BButton colorPalette={"red"} variant={"ghost"}>
-                  Ghost
-                </BButton>
-                <BButton colorPalette={"red"} variant={"plain"}>
-                  Plain
-                </BButton>
-              </HStack>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Warning Button */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Warning Button</Heading6>
-            <CenterContainer>
-              <HStack wrap={"wrap"} gap={2}>
-                <BButton colorPalette={"orange"}>Solid</BButton>
-                <BButton colorPalette={"orange"} variant={"subtle"}>
-                  Subtle
-                </BButton>
-                <BButton colorPalette={"orange"} variant={"surface"}>
-                  Surface
-                </BButton>
-                <BButton colorPalette={"orange"} variant={"outline"}>
-                  Outline
-                </BButton>
-                <BButton colorPalette={"orange"} variant={"ghost"}>
-                  Ghost
-                </BButton>
-                <BButton colorPalette={"orange"} variant={"plain"}>
-                  Plain
-                </BButton>
-              </HStack>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Heading */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Heading</Heading6>
-            <CenterContainer>
-              <CContainer>
-                <Heading1>Heading 1</Heading1>
-                <Heading2>Heading 2</Heading2>
-                <Heading3>Heading 3</Heading3>
-                <Heading4>Heading 4</Heading4>
-                <Heading5>Heading 5</Heading5>
-                <Heading6>Heading 6</Heading6>
-              </CContainer>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Alert */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Alert</Heading6>
-            <CenterContainer>
-              <CContainer gap="2" width="full">
-                <Alert
-                  variant={"surface"}
-                  status="error"
-                  title="Error alert variant surface"
-                />
-                <Alert
-                  variant={"surface"}
-                  status="info"
-                  title="Info alert variant surface"
-                />
-                <Alert
-                  variant={"surface"}
-                  status="warning"
-                  title="Warning alert variant surface"
-                />
-                <Alert
-                  variant={"surface"}
-                  status="success"
-                  title="Success alert variant surface"
-                />
-                <Alert
-                  variant={"surface"}
-                  colorPalette={"p"}
-                  icon={
-                    <Icon>
-                      <IconAlarm />
-                    </Icon>
-                  }
-                  title="Custom alert dengan custom icon"
-                  closable
-                >
-                  Deskripsi dari alert bisa panjang bisa pendek
-                </Alert>
-              </CContainer>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Accordion */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Accordion</Heading6>
-            <CenterContainer>
-              <CContainer width="full" maxW="400px">
-                <AccordionRoot
-                  collapsible
-                  defaultValue={["info"]}
-                  variant={"enclosed"}
-                >
-                  <AccordionItem value="a">
-                    <AccordionItemTrigger>
-                      <Icon fontSize="lg" color="fg.subtle">
-                        <IconAlarm />
-                      </Icon>
-                      Alarm
-                    </AccordionItemTrigger>
-                    <AccordionItemContent>
-                      <Text>Wiuwiu kerja woi</Text>
-                    </AccordionItemContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="b">
-                    <AccordionItemTrigger>
-                      <Icon fontSize="lg" color="fg.subtle">
-                        <IconAlarm />
-                      </Icon>
-                      Alarm
-                    </AccordionItemTrigger>
-                    <AccordionItemContent>
-                      <Text>Wiuwiu kerja woi</Text>
-                    </AccordionItemContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="c">
-                    <AccordionItemTrigger>
-                      <Icon fontSize="lg" color="fg.subtle">
-                        <IconAlarm />
-                      </Icon>
-                      Alarm
-                    </AccordionItemTrigger>
-                    <AccordionItemContent>
-                      <Text>Wiuwiu kerja woi</Text>
-                    </AccordionItemContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="d">
-                    <AccordionItemTrigger>
-                      <Icon fontSize="lg" color="fg.subtle">
-                        <IconAlarm />
-                      </Icon>
-                      Alarm
-                    </AccordionItemTrigger>
-                    <AccordionItemContent>
-                      <Text>Wiuwiu kerja woi</Text>
-                    </AccordionItemContent>
-                  </AccordionItem>
-                </AccordionRoot>
-              </CContainer>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Menu */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Menu</Heading6>
-            <CenterContainer gap={2}>
-              <Menu.Root>
-                <MenuTrigger asChild>
-                  <BButton variant="outline">Edit</BButton>
-                </MenuTrigger>
-                <MenuContent>
-                  <MenuItemGroup title="Styles">
-                    <MenuItem value="bold">Bold</MenuItem>
-                    <MenuItem value="underline">Underline</MenuItem>
-                  </MenuItemGroup>
-                  <MenuSeparator />
-                  <MenuItemGroup title="Align">
-                    <MenuItem value="left">Left</MenuItem>
-                    <MenuItem value="middle">Middle</MenuItem>
-                    <MenuItem value="right">Right</MenuItem>
-                  </MenuItemGroup>
-
-                  <MenuRoot
-                    positioning={{ placement: "right-start", gutter: 8 }}
-                  >
-                    <MenuTriggerItem value="open-recent">
-                      Open Recent
-                    </MenuTriggerItem>
-                    <MenuContent>
-                      <MenuItem value="panda">Panda</MenuItem>
-                      <MenuItem value="ark">Ark UI</MenuItem>
-                      <MenuItem value="chakra">Chakra v3</MenuItem>
-                    </MenuContent>
-                  </MenuRoot>
-                </MenuContent>
-              </Menu.Root>
-
-              <MenuRoot>
-                <MenuTrigger asChild>
-                  <BButton variant="outline">Action</BButton>
-                </MenuTrigger>
-                <MenuContent>
-                  <MenuItem value="edit" justifyContent={"space-between"}>
-                    Edit
-                    <Icon>
-                      <IconEdit size={20} />
-                    </Icon>
-                  </MenuItem>
-                  <MenuItem value="restore" justifyContent={"space-between"}>
-                    Restore
-                    <Icon>
-                      <IconRestore size={20} />
-                    </Icon>
-                  </MenuItem>
-                  <MenuItem
-                    value="delete"
-                    color="red.400"
-                    justifyContent={"space-between"}
-                  >
-                    Delete
-                    <Icon>
-                      <IconTrash size={20} />
-                    </Icon>
-                  </MenuItem>
-                </MenuContent>
-              </MenuRoot>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Context Menu */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Context Menu</Heading6>
-            <CenterContainer gap={2}>
-              <MenuRoot>
-                <MenuContextTrigger w="full">
-                  <Center
-                    width="full"
-                    height="40"
-                    userSelect="none"
-                    borderWidth="2px"
-                    borderStyle="dashed"
-                    rounded="lg"
-                    padding="4"
-                  >
-                    Klik kanan atau hold (mobile) di area ini
-                  </Center>
-                </MenuContextTrigger>
-                <MenuContent>
-                  <MenuItem value="new-txt">New Text File</MenuItem>
-                  <MenuItem value="new-file">New File...</MenuItem>
-                  <MenuItem value="new-win">New Window</MenuItem>
-                  <MenuItem value="open-file">Open File...</MenuItem>
-                  <MenuItem value="export">Export</MenuItem>
-                </MenuContent>
-              </MenuRoot>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Responsive Disclosure */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Responsive Disclosure</Heading6>
-
-            <CenterContainer gap={2}>
-              <DisclosureDemo />
-            </CenterContainer>
-          </CContainer>
-        </CContainer>
-
-        {/* End Grid */}
-        <CContainer gap={6}>
-          {/* String Input */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>String Input</Heading6>
-            <CenterContainer>
-              <CContainer gap={4}>
-                <StringInput placeholder="example@email.com" />
-                <StringInput invalid placeholder="Invalid state" />
-              </CContainer>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Password Input */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Password Input</Heading6>
-            <CenterContainer>
-              <CContainer gap={4}>
-                <PasswordInput placeholder="********" />
-                <PasswordInput invalid placeholder="Invalid state" />
-              </CContainer>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Search Input */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Search Input</Heading6>
-            <CenterContainer>
-              <CContainer gap={4}>
-                <SearchInputDemo />
-              </CContainer>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Number Input */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Number Input</Heading6>
-            <CenterContainer>
-              <CContainer gap={4}>
-                <NumberInputDemo />
-              </CContainer>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Checkbox Input */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Checkbox Input</Heading6>
-            <CenterContainer>
-              <CContainer gap={4}>
-                <Checkbox gap="4" alignItems="start">
-                  <Box lineHeight="1">Setuju dengan syarat dan ketentuan</Box>
-                  <Box fontWeight="normal" color="fg.muted" mt="1">
-                    Dengan klik ini, anda setuju dengan syarat dan ketentuan
-                    kami.
-                  </Box>
-                </Checkbox>
-
-                <Checkbox gap="4" alignItems="start" invalid>
-                  <Box lineHeight="1">Invalid state</Box>
-                  <Box fontWeight="normal" color="fg.muted" mt="1">
-                    Dengan klik ini, anda setuju dengan syarat dan ketentuan
-                    kami.
-                  </Box>
-                </Checkbox>
-              </CContainer>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Select Input */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Select Input</Heading6>
-            <CenterContainer>
-              <CContainer gap={4}>
-                <SelectInputDemo />
-              </CContainer>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Date Picker Input */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Date Picker Input</Heading6>
-            <CenterContainer>
-              <CContainer gap={4}>
-                <DatePickerDemo />
-              </CContainer>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Date Range Picker Input */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Date Range Picker Input</Heading6>
-            <CenterContainer>
-              <CContainer gap={4}>
-                <DateRangePickerDemo />
-              </CContainer>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Time Picker Input */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Time Picker Input</Heading6>
-            <CenterContainer>
-              <CContainer gap={4}>
-                <TimePickerDemo />
-              </CContainer>
-            </CenterContainer>
-          </CContainer>
-
-          {/* Time Range Picker Input */}
-          <CContainer flex={0} gap={4}>
-            <Heading6>Time Range Picker Input</Heading6>
-            <CenterContainer>
-              <CContainer gap={4}>
-                <TimeRangePickerDemo />
-              </CContainer>
-            </CenterContainer>
-          </CContainer>
-        </CContainer>
-      </SimpleGrid>
-
-      {/* Table Component */}
-      <CContainer maxW={"1400px"} mx={"auto"}>
-        <CContainer flex={0} mt={12} gap={4}>
-          <Heading6>Table Component</Heading6>
-          <CenterContainer flexDir={"column"} px={0}>
-            <TableComponentDemo />
-          </CenterContainer>
-        </CContainer>
-      </CContainer>
-
-      {/* Footer */}
-      <HStack wrap={"wrap"} mt={8} gap={4} justify={"space-between"}>
-        <HStack pointerEvents={"none"} gap={0}>
-          {/* <Image src="/assets/images/logo_color.png" w={"16px"} mr={3} /> */}
-          <HStack wrap={"wrap"} gapY={0} gap={1}>
-            <Text fontSize={"sm"} whiteSpace={"nowrap"}>
-              Customized Chakra UI Components by{" "}
-            </Text>
-            <a href="" target="_blank" rel="noreferrer">
-              <Text
-                fontSize={"sm"}
-                pointerEvents={"auto"}
-                _hover={{ color: "p.500" }}
-                cursor={"pointer"}
-                transition={"200ms"}
-                fontWeight={700}
-              >
-                Mahaooo
+        {/* Footer */}
+        <HStack wrap={"wrap"} mt={8} gap={4} justify={"space-between"}>
+          <HStack pointerEvents={"none"} gap={0}>
+            {/* <Image src="/assets/images/logo_color.png" w={"16px"} mr={3} /> */}
+            <HStack wrap={"wrap"} gapY={0} gap={1}>
+              <Text fontSize={"sm"} whiteSpace={"nowrap"}>
+                Customized Chakra UI Components by{" "}
               </Text>
-            </a>
+              <a href="" target="_blank" rel="noreferrer">
+                <Text
+                  fontSize={"sm"}
+                  pointerEvents={"auto"}
+                  _hover={{ color: "p.500" }}
+                  cursor={"pointer"}
+                  transition={"200ms"}
+                  fontWeight={700}
+                >
+                  Mahaooo
+                </Text>
+              </a>
+            </HStack>
+          </HStack>
+
+          <HStack gap={1}>
+            {/* <Image src="/assets/svgs/vercel.svg" h={"15px"} /> */}
+            <Text>Deployed on</Text>
+            <Link to={"https://vercel.com"} target="_blank">
+              <Text fontWeight={"bold"}>Vercel</Text>
+            </Link>
           </HStack>
         </HStack>
-
-        <HStack gap={1}>
-          {/* <Image src="/assets/svgs/vercel.svg" h={"15px"} /> */}
-          <Text>Deployed on</Text>
-          <Link to={"https://vercel.com"} target="_blank">
-            <Text fontWeight={"bold"}>Vercel</Text>
-          </Link>
-        </HStack>
-      </HStack>
+      </CContainer>
     </CContainer>
   );
 }

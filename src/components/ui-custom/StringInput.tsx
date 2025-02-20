@@ -1,3 +1,4 @@
+import { useThemeConfig } from "@/context/useThemeConfig";
 import {
   Box,
   BoxProps,
@@ -8,7 +9,6 @@ import {
 import { css, Global } from "@emotion/react";
 import { useRef } from "react";
 import { useColorMode } from "../ui/color-mode";
-import { INPUT_FOCUS_BORDER_COLOR } from "@/constant/themeConfig";
 
 interface Props extends InputProps {
   fRef?: any;
@@ -34,6 +34,9 @@ export default function StringInput({
   const { colorMode } = useColorMode();
   const darkLightColorManual = colorMode === "light" ? "#fff" : "var(--dark)";
   const fc = useFieldContext();
+
+  // Context
+  const { themeConfig } = useThemeConfig();
 
   // Track first render
   const isFirstRender = useRef(true);
@@ -69,7 +72,7 @@ export default function StringInput({
           placeholder={placeholder}
           borderColor={fc?.invalid || invalid ? "border.error" : "gray.muted"}
           fontWeight={"medium"}
-          _focus={{ borderColor: INPUT_FOCUS_BORDER_COLOR }}
+          _focus={{ borderColor: themeConfig.primaryColor }}
           autoComplete="off"
           {...props}
         />

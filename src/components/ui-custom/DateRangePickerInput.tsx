@@ -4,6 +4,7 @@ import {
   Type__DateRange,
 } from "@/constant/interfaces";
 import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
+import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import back from "@/utils/back";
@@ -40,7 +41,6 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
-import { PRIMARY_COLOR_PALETTE } from "@/constant/themeConfig";
 
 const DateRangePickerInput = ({
   id,
@@ -66,6 +66,7 @@ const DateRangePickerInput = ({
   );
   const iss = useIsSmScreenWidth();
   const fc = useFieldContext();
+  const { themeConfig } = useThemeConfig();
 
   const [date, setDate] = useState<Date>(
     inputValue?.from || inputValue?.to || new Date()
@@ -513,7 +514,7 @@ const DateRangePickerInput = ({
                 (!nonNullable && selected?.from && !selected?.to)
               }
               size={MAIN_BUTTON_SIZE}
-              colorPalette={PRIMARY_COLOR_PALETTE}
+              colorPalette={themeConfig.colorPalette}
             >
               Konfirmasi
             </BButton>
