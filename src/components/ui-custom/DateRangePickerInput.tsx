@@ -300,13 +300,16 @@ const DateRangePickerInput = ({
                 {renderValue}
               </Text>
             ) : (
-              <Text opacity={0.3} fontWeight={"normal"} truncate>
+              <Text
+                color={props?._placeholder?.color || "var(--placeholder)"}
+                truncate
+              >
                 {placeholder}
               </Text>
             )}
 
-            <Icon fontSize={"1.1rem"}>
-              <IconCalendarWeek />
+            <Icon fontSize={"1.1rem"} opacity={0.4}>
+              <IconCalendarWeek stroke={1.5} />
             </Icon>
           </HStack>
         </BButton>

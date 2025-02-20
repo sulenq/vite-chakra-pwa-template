@@ -12,7 +12,7 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
     const { title, description, icon, children, ...rest } = props;
     return (
       <ChakraEmptyState.Root ref={ref} p={0} {...rest}>
-        <ChakraEmptyState.Content>
+        <ChakraEmptyState.Content gap={4}>
           {icon && (
             <ChakraEmptyState.Indicator>{icon}</ChakraEmptyState.Indicator>
           )}

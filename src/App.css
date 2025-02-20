@@ -18,17 +18,16 @@
 
 /* Color */
 :root {
-  --p50: #eaf4ff;
-  --p100: #c8e0ff;
-  --p200: #a5ccff;
-  --p300: #82b7ff;
-  --p400: #5fa3ff;
-  --p500: #3e97ff;
-  --p500a: #3e97ff16;
-  --p600: #347dce;
-  --p700: #2a62a0;
-  --p800: #21497a;
-  --p900: #182e50;
+  --p50: #d7f3ff;
+  --p100: #b9ecff;
+  --p200: #88e2ff;
+  --p300: #50cfff;
+  --p400: #28b3ff;
+  --p500: #0693ff;
+  --p600: #0a7eeb;
+  --p700: #0f64be;
+  --p800: #135695;
+  --p900: #11345a;
   --p1000: #061d36;
   --p1100: #02101d;
 
@@ -46,9 +45,14 @@
   --d3: #7e7e7e36;
   --dt: #858585c1;
 
+  --divider: #7e7e7e10;
+  --divider2: #7e7e7e20;
+  --divider3: #7e7e7e36;
+  --divider-text: #858585c1;
+
   --placeholder: #96969691;
 
-  --dark: #151515;
+  --dark: #080808;
   --darktrans: #303030df;
 
   --blue: #1672fc;
@@ -62,11 +66,6 @@
   --reda: rgba(255, 109, 109, 0.12);
   --reda2: rgba(255, 109, 109, 0.2);
   --reda3: rgba(255, 109, 109, 0.2);
-}
-
-/* Tabler Icon */
-.tabler-icon {
-  stroke-width: 1.8px;
 }
 
 /* Dark Transparent Blured */

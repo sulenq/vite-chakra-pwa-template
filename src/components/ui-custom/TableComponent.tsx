@@ -47,7 +47,7 @@ const BatchOptions = ({
   tableRef,
 }: Interface__BatchOptions) => {
   return (
-    <MenuRoot>
+    <MenuRoot lazyMount positioning={{ hideWhenDetached: true }}>
       <MenuTrigger
         asChild
         // borderRadius={"full"}
@@ -162,7 +162,7 @@ const RowOptions = ({
   tableRef,
 }: Interface__RowOptions) => {
   return (
-    <MenuRoot>
+    <MenuRoot lazyMount positioning={{ hideWhenDetached: true }}>
       <MenuTrigger
         asChild
         // borderRadius={"full"}
@@ -309,19 +309,6 @@ const TableComponent = ({
       rowClick(rowData);
     }
   };
-  // const [rowHover, setRowHover] = useState<boolean>(false);
-  // const [position, setPosition] = useState({ x: 0, y: 0 });
-  // useEffect(() => {
-  //   const handleMouseMove = (event: MouseEvent) => {
-  //     setPosition({ x: event.clientX, y: event.clientY });
-  //   };
-
-  //   window.addEventListener("mousemove", handleMouseMove);
-
-  //   return () => {
-  //     window.removeEventListener("mousemove", handleMouseMove);
-  //   };
-  // }, []);
 
   // Batch options
   const handleSelectAllRows = (isChecked: boolean) => {
@@ -504,26 +491,6 @@ const TableComponent = ({
       // bg={"bg.subtle"}
       minH={props?.minH || sh < 625 ? "400px" : ""}
     >
-      {/* Row Hover Indicator */}
-      {/* <Center
-        position="fixed"
-        w="fit"
-        px={3}
-        py={"2px"}
-        borderRadius={4}
-        bg="darktrans"
-        backdropFilter={"blur(5px)"}
-        color={"white"}
-        transform={`translate(0%, -50%)`}
-        zIndex={999}
-        opacity={rowHover ? 1 : 0}
-        left={position.x + 20}
-        top={position.y}
-        transition={"100ms"}
-      >
-        <Text fontSize={"sm"}>Klik untuk melihat detail</Text>
-      </Center> */}
-
       {/* Table content */}
       <CContainer
         minW={"full"}

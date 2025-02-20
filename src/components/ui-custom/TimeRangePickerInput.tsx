@@ -260,13 +260,16 @@ const TimeRangePickerInput = ({
             {inputValue?.from && inputValue?.to ? (
               <Text truncate>{renderValue}</Text>
             ) : (
-              <Text color={props?._placeholder?.color || "#96969691"}>
+              <Text
+                color={props?._placeholder?.color || "var(--placeholder)"}
+                truncate
+              >
                 {placeholder}
               </Text>
             )}
 
-            <Icon fontSize={"1.1rem"}>
-              <IconHourglassHigh />
+            <Icon opacity={0.4}>
+              <IconHourglassHigh stroke={1.5} />
             </Icon>
           </HStack>
         </BButton>

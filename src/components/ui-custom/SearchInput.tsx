@@ -61,7 +61,6 @@ export default function SearchInput({
     <Tooltip content={tooltipLabel || placeholder}>
       <InputGroup
         w={"full"}
-        flex={"1 0 200px"}
         startElement={
           !noIcon && <Icon w={"20px"}>{icon || <IconSearch />}</Icon>
         }

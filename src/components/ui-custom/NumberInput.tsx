@@ -82,6 +82,16 @@ const NumberInput = ({
       sanitizedInput = sanitizedInput.substring(0, 19);
     }
 
+    // Jika noFormat = true, tampilkan nilai tanpa format
+    if (noFormat) {
+      setLocalInputValue(sanitizedInput);
+      const parsedValue = parseNumber(sanitizedInput);
+      if (parsedValue !== undefined && onChangeSetter) {
+        onChangeSetter(parsedValue);
+      }
+      return;
+    }
+
     // Format input jika tidak noFormat
     let formattedValue = sanitizedInput.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     if (!integer && sanitizedInput.includes(",")) {

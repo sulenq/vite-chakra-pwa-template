@@ -115,7 +115,7 @@ const CenterContainer = ({ children, ...props }: any) => {
       p={4}
       borderRadius={8}
       border={"1px solid"}
-      borderColor={"border"}
+      borderColor={"border.muted"}
       bg={"body"}
       {...props}
     >

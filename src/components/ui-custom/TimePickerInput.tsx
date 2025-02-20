@@ -187,15 +187,16 @@ const TimePickerInput = ({
                 {withSeconds ? inputValue : formatTime(inputValue)}
               </Text>
             ) : (
-              <Text //@ts-ignore
-                color={props?._placeholder?.color || "#96969691"}
+              <Text
+                color={props?._placeholder?.color || "var(--placeholder)"}
+                truncate
               >
                 {placeholder}
               </Text>
             )}
 
-            <Icon fontSize={"1.1rem"}>
-              <IconClock stroke={1.8} />
+            <Icon fontSize={"1.1rem"} opacity={0.4}>
+              <IconClock stroke={1.5} />
             </Icon>
           </HStack>
         </BButton>

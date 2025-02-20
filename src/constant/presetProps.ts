@@ -7,7 +7,7 @@ const PRESET_LINE_CHART_TOOLTIP = {
   content: createElement(LineChartTooltipContent),
   cursor: {
     stroke: "var(--d3)",
-    strokeWidth: 2,
+    stroke: 2,
     strokeDasharray: "5",
   },
 };
@@ -16,14 +16,14 @@ const PRESET_DONUT_CHART_TOOLTIP = {
   content: createElement(DonutChartTooltipContent),
   cursor: {
     stroke: "var(--d3)",
-    strokeWidth: 2,
+    stroke: 2,
     strokeDasharray: "5",
   },
 };
 
 const PRESET_LINE_CHART = {
   type: "monotone" as CurveType,
-  strokeWidth: 2,
+  stroke: 2,
 };
 
 const PRESET_DOUGHNUT_CHART = {

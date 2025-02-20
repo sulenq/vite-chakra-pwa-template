@@ -201,6 +201,7 @@ const SelectInput = ({
             }
             onOpen();
           }}
+          pr={3}
           {...props}
         >
           <HStack w={"full"} justify={"space-between"}>
@@ -209,12 +210,15 @@ const SelectInput = ({
                 {inputValue?.map((item) => item.label).join(", ")}
               </Text>
             ) : (
-              <Text opacity={0.3} fontWeight={"normal"} truncate>
+              <Text
+                color={props?._placeholder?.color || "var(--placeholder)"}
+                truncate
+              >
                 {placeholder}
               </Text>
             )}
 
-            <Icon fontSize={"sm"} maxH={"14px"}>
+            <Icon fontSize={"sm"} maxH={"14px"} opacity={0.4}>
               <IconCaretDownFilled />
             </Icon>
           </HStack>
