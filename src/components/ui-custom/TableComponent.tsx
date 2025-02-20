@@ -566,7 +566,6 @@ const TableComponent = ({
                     borderColor={borderColor}
                     px={4}
                     py={3}
-                    gap={4}
                     h={thHeight}
                     pl={i === 0 ? 4 : ""}
                     pr={i === ths.length - 1 ? 4 : ""}
