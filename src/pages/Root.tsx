@@ -113,6 +113,7 @@ import * as yup from "yup";
 const ThemeConfig = () => {
   const { themeConfig, setThemeConfig } = useThemeConfig();
   const colorPalettes = [
+    "p",
     "gray",
     "red",
     "orange",
@@ -121,10 +122,10 @@ const ThemeConfig = () => {
     "olive",
     "green",
     "teal",
+    "kemenkes",
     "cyan",
     "sky",
     "blue",
-    "p",
     "indigo",
     "purple",
     "pink",

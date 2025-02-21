@@ -114,6 +114,18 @@ const customConfig = defineConfig({
           800: { value: "#075985" },
           900: { value: "#0C4A6E" },
         },
+        kemenkes: {
+          50: { value: "#E9FFF6" },
+          100: { value: "#CFFBE9" },
+          200: { value: "#A0F7DC" },
+          300: { value: "#6EE8CD" },
+          400: { value: "#47D1BF" },
+          500: { value: "#16B3AC" },
+          600: { value: "#109399" },
+          700: { value: "#0B7180" },
+          800: { value: "#075267" },
+          900: { value: "#043C55" },
+        },
       },
     },
     semanticTokens: {
@@ -314,6 +326,40 @@ const customConfig = defineConfig({
             value: {
               base: "{colors.sky.600}",
               _dark: "{colors.sky.300}",
+            },
+          },
+        },
+        kemenkes: {
+          solid: {
+            value: {
+              base: "{colors.kemenkes.500}",
+              _dark: "{colors.kemenkes.500}",
+            },
+          },
+          contrast: { value: { base: "#fff", _dark: "#000" } },
+          fg: {
+            value: {
+              base: "{colors.kemenkes.700}",
+              _dark: "{colors.kemenkes.200}",
+            },
+          },
+          muted: {
+            value: {
+              base: "{colors.kemenkes.200}",
+              _dark: "{colors.kemenkes.800}",
+            },
+          },
+          subtle: {
+            value: {
+              base: "{colors.kemenkes.100}",
+              _dark: "{colors.kemenkes.900}",
+            },
+          },
+          emphasized: { value: "{colors.kemenkes.400}" },
+          focusRing: {
+            value: {
+              base: "{colors.kemenkes.600}",
+              _dark: "{colors.kemenkes.700}",
             },
           },
         },
