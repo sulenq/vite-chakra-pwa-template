@@ -102,6 +102,18 @@ const customConfig = defineConfig({
           800: { value: "#00838F" },
           900: { value: "#006064" },
         },
+        yellow: {
+          50: { value: "#fffff0" },
+          100: { value: "#fefcbf" },
+          200: { value: "#faf089" },
+          300: { value: "#f6e05e" },
+          400: { value: "#ecc94b" },
+          500: { value: "#f6e05e" },
+          600: { value: "#b7791f" },
+          700: { value: "#975a16" },
+          800: { value: "#744210" },
+          900: { value: "#5f370e" },
+        },
       },
     },
     semanticTokens: {
@@ -262,6 +274,20 @@ const customConfig = defineConfig({
           focusRing: {
             value: { base: "{colors.ocean.500}", _dark: "{colors.ocean.900}" },
           },
+        },
+        yellow: {
+          solid: {
+            value: {
+              base: "{colors.yellow.500}",
+              _dark: "{colors.yellow.500}",
+            },
+          },
+          contrast: { value: "#000000" },
+          fg: { value: "{colors.yellow.900}" },
+          muted: { value: "{colors.yellow.300}" },
+          subtle: { value: "{colors.yellow.200}" },
+          emphasized: { value: "{colors.yellow.400}" },
+          focusRing: { value: "{colors.yellow.600}" },
         },
       },
     },
