@@ -228,7 +228,7 @@ const SelectInput = ({
         </BButton>
       </Tooltip>
 
-      <DisclosureRoot open={open} size={size}>
+      <DisclosureRoot open={open} size={size} lazyMount>
         <DisclosureContent>
           <DisclosureHeader>
             <HStack justify={"space-between"}>
