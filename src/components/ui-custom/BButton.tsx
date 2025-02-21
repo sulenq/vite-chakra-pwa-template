@@ -25,7 +25,7 @@ export default function BButton({
   ) : (
     <Button
       className={finalClassName}
-      fontSize={"bold !important"}
+      fontWeight={"semibold"}
       size={size}
       {...props}
     >
