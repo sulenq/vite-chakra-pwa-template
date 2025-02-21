@@ -139,9 +139,7 @@ const ThemeConfig = () => {
 
   return (
     <CContainer mb={5}>
-      <Heading5 mb={2} color={"p.500"}>
-        Primary Color Palette
-      </Heading5>
+      <Heading5 mb={2}>Primary Color Palette</Heading5>
       <HStack wrap={"wrap"}>
         {colorPalettes.map((item, i) => {
           return (
