@@ -31,16 +31,8 @@ const customConfig = defineConfig({
           900: { value: "#001B7A" },
         },
         gray: {
-          50: { value: "#fbfbfb" },
-          100: { value: "#f5f5f5" },
-          200: { value: "#e5e5e5" },
-          300: { value: "#d4d4d4" },
-          400: { value: "#bcbcbc" },
-          500: { value: "#9e9e9e" },
-          600: { value: "#626262" },
-          700: { value: "#515151" },
-          800: { value: "#272727" },
-          900: { value: "#202020" },
+          800: { value: "#202020" },
+          900: { value: "#7e7e7e12" },
         },
         indigo: {
           50: { value: "#E8EAF6" },
@@ -167,6 +159,20 @@ const customConfig = defineConfig({
           subtle: { value: "{white}" },
           emphasized: { value: "{white}" },
           focusRing: { value: "{white}" },
+        },
+        gray: {
+          muted: {
+            value: {
+              base: "{colors.gray.100}",
+              _dark: "{colors.gray.800}",
+            },
+          },
+          subtle: {
+            value: {
+              base: "{colors.gray.50}",
+              _dark: "{colors.gray.900}",
+            },
+          },
         },
         red: {
           contrast: { value: "{colors.red.100} !important" },
