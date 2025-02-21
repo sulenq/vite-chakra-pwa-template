@@ -738,7 +738,10 @@ const TableComponent = ({
             <MenuRoot>
               <MenuTrigger asChild>
                 <BButton unclicky variant={"outline"} size={"sm"}>
-                  Tampilkan <b>{limit === 0 ? "Semua" : limit}</b>
+                  Tampilkan
+                  <Text fontWeight={"bold"}>
+                    {limit === 0 ? "Semua" : limit}
+                  </Text>
                   <Icon maxW={"13px"}>
                     <IconCaretDownFilled />
                   </Icon>
@@ -810,7 +813,7 @@ const TableComponent = ({
                     minW={"45px"}
                     size={"sm"}
                   >
-                    <b>{pageControl}</b>
+                    {pageControl}
                   </BButton>
                 </MenuTrigger>
 
