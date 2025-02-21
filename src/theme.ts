@@ -201,14 +201,17 @@ const customConfig = defineConfig({
         },
         lime: {
           solid: {
-            value: { base: "{colors.lime.500}", _dark: "{colors.lime.500}" },
+            value: {
+              base: "{colors.lime.500}",
+              _dark: "{colors.lime.500}",
+            },
           },
           contrast: { value: "#000000" },
           fg: {
-            value: { base: "{colors.lime.700}", _dark: "{colors.lime.200}" },
+            value: { base: "{colors.lime.800}", _dark: "{colors.lime.200}" },
           },
           muted: {
-            value: { base: "{colors.lime.300}", _dark: "{colors.lime.800}" },
+            value: { base: "{colors.lime.500}", _dark: "{colors.lime.800}" },
           },
           subtle: {
             value: { base: "{colors.lime.200}", _dark: "{colors.lime.900}" },
