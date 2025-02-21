@@ -10,7 +10,7 @@ const customConfig = defineConfig({
     tokens: {
       colors: {
         light: { value: "#fff" },
-        dark: { value: "#191919" },
+        dark: { value: "#080808" },
         darktrans: { value: "#252525df" },
         d0: { value: "#8a8a8a08" },
         d1: { value: "#8a8a8a10" },
@@ -118,10 +118,10 @@ const customConfig = defineConfig({
     },
     semanticTokens: {
       colors: {
-        body: { value: { base: "#fff", _dark: "#191919" } },
-        bodytrans: { value: { base: "#ffffffaa", _dark: "#191919aa" } },
-        current: { value: { base: "#191919", _dark: "#fff" } },
-        ibody: { value: { base: "#191919", _dark: "#FAFAFC" } },
+        body: { value: { base: "#fff", _dark: "#080808" } },
+        bodytrans: { value: { base: "#ffffffaa", _dark: "#080808aa" } },
+        current: { value: { base: "#080808", _dark: "#fff" } },
+        ibody: { value: { base: "#080808", _dark: "#FAFAFC" } },
         p: {
           solid: { value: { base: "{colors.p.500}", _dark: "{colors.p.500}" } },
           contrast: { value: "{colors.p.50}" },
