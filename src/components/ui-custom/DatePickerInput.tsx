@@ -60,8 +60,6 @@ const DatePickerInput = ({
   const [month, setMonth] = useState<number>(date.getMonth());
   const [year, setYear] = useState<number>(date.getFullYear());
 
-  console.log(formatDate(date), month, year);
-
   const [selected, setSelected] = useState<any>(inputValue);
 
   function confirmSelected() {

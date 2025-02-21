@@ -122,8 +122,7 @@ const PeriodPickerDisclosure = ({
       intervalDecrementRef.current = null;
     }
   }
-  console.log("period picker", monthLocal, yearLocal);
-  
+
   function onConfirm() {
     if (setMonth) {
       setMonth(monthLocal);
