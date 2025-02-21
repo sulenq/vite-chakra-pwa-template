@@ -75,8 +75,8 @@ const customConfig = defineConfig({
           500: { value: "#795548" },
           600: { value: "#6D4C41" },
           700: { value: "#5D4037" },
-          800: { value: "#4E342E" },
-          900: { value: "#3E2723" },
+          800: { value: "#3E2723" },
+          900: { value: "#2A1916" },
         },
         olive: {
           50: { value: "#F2F4E7" },
@@ -227,10 +227,10 @@ const customConfig = defineConfig({
             value: { base: "{colors.brown.700}", _dark: "{colors.brown.200}" },
           },
           muted: {
-            value: { base: "{colors.brown.300}", _dark: "{colors.brown.800}" },
+            value: { base: "{colors.brown.200}", _dark: "{colors.brown.800}" },
           },
           subtle: {
-            value: { base: "{colors.brown.200}", _dark: "{colors.brown.900}" },
+            value: { base: "{colors.brown.100}", _dark: "{colors.brown.900}" },
           },
           emphasized: { value: "{colors.brown.300}" },
           focusRing: {
