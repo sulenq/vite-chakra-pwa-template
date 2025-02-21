@@ -30,10 +30,10 @@ import {
   DisclosureHeader,
   DisclosureRoot,
 } from "./Disclosure";
-import NoData from "./FeedbackNoData";
-import NotFound from "./FeedbackNotFound";
 import Heading6 from "./Heading6";
 import SearchInput from "./SearchInput";
+import FeedbackNoData from "./FeedbackNoData";
+import FeedbackNotFound from "./FeedbackNotFound";
 
 const SelectInput = ({
   id,
@@ -124,10 +124,10 @@ const SelectInput = ({
       <>
         {fl === undefined && <ComponentSpinner mb={2} />}
 
-        {fl === null && <NoData mb={12} />}
+        {fl === null && <FeedbackNoData mb={8} />}
 
         {fl && fl.length === 0 && (
-          <NotFound title="Opsi tidak ditemukan" mb={5} />
+          <FeedbackNotFound title="Opsi tidak ditemukan" mb={5} />
         )}
 
         {fl && fl.length > 0 && (
