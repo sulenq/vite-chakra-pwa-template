@@ -112,10 +112,10 @@ const useRequest = ({
             title:
               typeof response?.data?.message?.title === "string"
                 ? response?.data?.message?.title
-                : "Format judul salah",
+                : "Title's format isn't string",
             description: response?.data?.message?.description
               ? typeof response?.data?.message?.description === "string"
-              : "Format deskripsi salah",
+              : "Description's format isn't string",
 
             placement: iss ? "top" : "bottom-end",
             action: {

@@ -60,16 +60,17 @@ const AuthMiddleware = ({
 
   return (
     <>
-      {loading && (
-        <Center w={"100w"} minH={"100dvh"} color={"fg.subtle"}>
-          <Center position={"relative"}>
-            <Spinner position={"absolute"} w={"60px"} h={"60px"} />
-            <Icon>
-              <IconShieldCheckFilled size={32} />
-            </Icon>
+      {loading ||
+        (!permissions && (
+          <Center w={"100w"} minH={"100dvh"} color={"fg.subtle"}>
+            <Center position={"relative"}>
+              <Spinner position={"absolute"} w={"60px"} h={"60px"} />
+              <Icon>
+                <IconShieldCheckFilled size={32} />
+              </Icon>
+            </Center>
           </Center>
-        </Center>
-      )}
+        ))}
 
       {!loading && permissions && (
         <>
