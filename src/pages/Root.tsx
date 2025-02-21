@@ -91,6 +91,7 @@ import {
   HStack,
   Icon,
   IconButton,
+  Image,
   Menu,
   SimpleGrid,
   Text,
@@ -1340,11 +1341,11 @@ export default function Root() {
         borderColor={"border.muted"}
       >
         <HStack gap={3}>
-          {/* <Image
-            alt="Distro Studio Logo"
-            src="/assets/images/logo_color.png"
+          <Image
+            alt="Exium Logo"
+            src="/assets/images/logo_graphic.png"
             w={"20px"}
-          /> */}
+          />
 
           <Text fontSize={"1.25rem"} fontWeight={"bold"}>
             Mahaooo
