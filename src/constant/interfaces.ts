@@ -18,9 +18,8 @@ export interface Interface__Route {
 }
 
 export interface Interface__PrivateRoute extends Interface__Route {
-  requireAuth?: boolean;
-  requirePermissions?: boolean;
-  children?: any;
+  label?: string;
+  permissions?: number[];
 }
 
 export interface Interface__Nav {

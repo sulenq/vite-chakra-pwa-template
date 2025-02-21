@@ -11,8 +11,7 @@ import {
   Stack,
   VStack,
 } from "@chakra-ui/react";
-import { BellSimple } from "@phosphor-icons/react";
-import { IconSettings } from "@tabler/icons-react";
+import { IconBell, IconSettings } from "@tabler/icons-react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import BButton from "../ui-custom/BButton";
@@ -166,24 +165,14 @@ const NavContainer = ({ label, children, activePath }: Props) => {
             {label}
           </Heading5>
 
-          <HStack flexShrink={0} gap={0}>
-            <ColorModeButton size={"md"} fontSize={"1.1rem"} />
+          <HStack flexShrink={0}>
+            <ColorModeButton fontSize={"1.1rem"} />
 
             <BButton iconButton unclicky variant={"ghost"}>
-              <FloatCounter
-                circleProps={{
-                  h: "18px",
-                  fontSize: "xs",
-                  mt: "18px",
-                  mr: "18px",
-                }}
-                // display={"none"}
-              >
-                2
-              </FloatCounter>
+              <FloatCounter>2</FloatCounter>
 
-              <Icon fontSize={"lg"}>
-                <BellSimple />
+              <Icon>
+                <IconBell stroke={1.5} />
               </Icon>
             </BButton>
           </HStack>

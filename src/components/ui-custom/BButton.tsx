@@ -2,6 +2,7 @@ import { Button, ButtonProps } from "@/components/ui/button";
 import { IconButton } from "@chakra-ui/react";
 
 interface Props extends ButtonProps {
+  fRef?: any;
   children?: any;
   unclicky?: boolean;
   iconButton?: boolean;
@@ -9,6 +10,7 @@ interface Props extends ButtonProps {
 }
 
 export default function BButton({
+  fRef,
   children,
   unclicky = false,
   iconButton = false,
@@ -19,11 +21,12 @@ export default function BButton({
   const finalClassName = `${!unclicky ? "clicky" : ""} ${className}`.trim();
 
   return iconButton ? (
-    <IconButton className={finalClassName} size={size} {...props}>
+    <IconButton ref={fRef} className={finalClassName} size={size} {...props}>
       {children}
     </IconButton>
   ) : (
     <Button
+      ref={fRef}
       className={finalClassName}
       fontWeight={"semibold"}
       size={size}

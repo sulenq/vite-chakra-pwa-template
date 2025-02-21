@@ -4,6 +4,7 @@ import MaintenancePage from "@/pages/error/MaintenancePage";
 import MissingPage from "@/pages/error/MissingPage";
 import ServerErrorPage from "@/pages/error/ServerErrorPage";
 import { Route, Routes } from "react-router-dom";
+import AuthMiddleware from "./AuthMiddleware";
 
 const Routing = () => {
   return (
@@ -12,11 +13,17 @@ const Routing = () => {
         <Route key={path} path={path} element={element} />
       ))}
 
-      {PRIVATE_ROUTES.map(({ path, element }) => (
+      {PRIVATE_ROUTES.map(({ path, label, permissions, element }) => (
         <Route
           key={path}
           path={path}
-          element={<NavContainer activePath={path}>{element}</NavContainer>}
+          element={
+            <AuthMiddleware allowedPermissions={permissions}>
+              <NavContainer activePath={path} label={label}>
+                {element}
+              </NavContainer>
+            </AuthMiddleware>
+          }
         />
       ))}
 

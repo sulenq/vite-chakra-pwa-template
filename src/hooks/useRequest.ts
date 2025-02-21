@@ -33,9 +33,12 @@ const useRequest = ({
 
   // Make request func
   function req({ config, onResolve }: Interface__Req) {
-    setLoading(true);
-    setError(false);
-    setStatus(undefined);
+    if (!loading) setLoading(true);
+    if (error) setError(false);
+    if (status) setStatus(undefined);
+
+    // Add api base url
+    config.url = `${import.meta.env.VITE_API_BASE_URL}${config.url}`;
 
     // Abort request
     if (abortControllerRef.current) {

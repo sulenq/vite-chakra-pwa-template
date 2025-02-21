@@ -1,11 +1,12 @@
 "use client";
 
 import type { IconButtonProps } from "@chakra-ui/react";
-import { ClientOnly, Icon, IconButton, Skeleton } from "@chakra-ui/react";
-import { IconMoon, IconSunHigh } from "@tabler/icons-react";
+import { ClientOnly, Icon, Skeleton } from "@chakra-ui/react";
+import { IconMoon2, IconSunHigh } from "@tabler/icons-react";
 import type { ThemeProviderProps } from "next-themes";
 import { ThemeProvider, useTheme } from "next-themes";
 import { forwardRef } from "react";
+import BButton from "../ui-custom/BButton";
 
 export interface ColorModeProviderProps extends ThemeProviderProps {}
 
@@ -35,12 +36,12 @@ export function useColorModeValue<T>(light: T, dark: T) {
 export function ColorModeIcon({ ...props }: any) {
   const { colorMode } = useColorMode();
   return colorMode === "light" ? (
-    <Icon fontSize={"1.1rem"} {...props}>
-      <IconSunHigh />
+    <Icon {...props}>
+      <IconSunHigh stroke={1.5} />
     </Icon>
   ) : (
-    <Icon fontSize={"1.1rem"} {...props}>
-      <IconMoon />
+    <Icon {...props}>
+      <IconMoon2 stroke={1.5} />
     </Icon>
   );
 }
@@ -54,22 +55,16 @@ export const ColorModeButton = forwardRef<
   const { toggleColorMode } = useColorMode();
   return (
     <ClientOnly fallback={<Skeleton boxSize="8" />}>
-      <IconButton
+      <BButton
+        iconButton
+        fRef={ref}
         onClick={toggleColorMode}
         variant="ghost"
         aria-label="Toggle color mode"
-        size="sm"
-        ref={ref}
         {...props}
-        // css={{
-        //   _icon: {
-        //     width: "5",
-        //     height: "5",
-        //   },
-        // }}
       >
         <ColorModeIcon fontSize={props?.fontSize} />
-      </IconButton>
+      </BButton>
     </ClientOnly>
   );
 });

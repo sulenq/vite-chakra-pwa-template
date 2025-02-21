@@ -15,10 +15,10 @@ const RequirePermissions = ({
   redirectTo = "/",
   requirePermissions = false,
 }: Props) => {
-  // Contexts
+  // Context
   const { permissions, setPermissions } = useAuthMiddleware();
 
-  // States
+  // States, Refs
   const [isAllowed, setIsAllowed] = useState<boolean>(false);
 
   // Utils
@@ -48,8 +48,8 @@ const RequirePermissions = ({
     if (!loading && permissions && !isAllowed) {
       toaster.create({
         type: "error",
-        title: "Tidak memiliki izin",
-        description: "Silakan hubungi admin jika Anda membutuhkan akses.",
+        title: "Izin diperlukan",
+        description: "Silakan hubungi admin jika Anda membutuhkan akses",
         action: {
           label: "Close",
           onClick: () => {},

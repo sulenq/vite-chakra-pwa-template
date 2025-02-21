@@ -1,5 +1,5 @@
 import RootPage from "@/pages/RootPage";
-import { Interface__Route } from "./interfaces";
+import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
 import HomePage from "@/pages/HomePage";
 
 const ROUTES: Interface__Route[] = [
@@ -9,9 +9,10 @@ const ROUTES: Interface__Route[] = [
   },
 ];
 
-const PRIVATE_ROUTES: Interface__Route[] = [
+const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   {
     path: "/home",
+    label: "Home",
     element: <HomePage />,
   },
 ];

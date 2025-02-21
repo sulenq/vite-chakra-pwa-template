@@ -15,7 +15,7 @@ import { useThemeConfig } from "@/context/useThemeConfig";
 
 const LoginForm = () => {
   // Contexts
-  const { setPermissions } = useAuthMiddleware();
+  const { setAuthToken, setPermissions } = useAuthMiddleware();
   const { themeConfig } = useThemeConfig();
 
   // Utils
@@ -40,16 +40,17 @@ const LoginForm = () => {
       };
       const config = {
         method: "post",
-        url: ``,
+        url: `/login`,
         data: payload,
       };
       req({
         config,
         onResolve: {
           onSuccess: (r: any) => {
-            localStorage.setItem("__auth_token", r.data?.token);
-            localStorage.setItem("__user_data", r.data?.data?.user);
-            setPermissions(r.data.user.permission);
+            localStorage.setItem("__auth_token", r.data.token);
+            localStorage.setItem("__user_data", r.data.data?.user);
+            setAuthToken(r.data.token);
+            setPermissions(r.data.user.permission ?? []);
 
             navigate("/home");
           },
