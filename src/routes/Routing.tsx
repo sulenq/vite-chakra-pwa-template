@@ -1,4 +1,5 @@
-import { ROUTES } from "@/constant/routes";
+import NavContainer from "@/components/widget/NavContainer";
+import { PRIVATE_ROUTES, ROUTES } from "@/constant/routes";
 import MaintenancePage from "@/pages/error/MaintenancePage";
 import MissingPage from "@/pages/error/MissingPage";
 import ServerErrorPage from "@/pages/error/ServerErrorPage";
@@ -9,6 +10,14 @@ const Routing = () => {
     <Routes>
       {ROUTES.map(({ path, element }) => (
         <Route key={path} path={path} element={element} />
+      ))}
+
+      {PRIVATE_ROUTES.map(({ path, element }) => (
+        <Route
+          key={path}
+          path={path}
+          element={<NavContainer>{element}</NavContainer>}
+        />
       ))}
 
       <Route path="*" element={<MissingPage />} />

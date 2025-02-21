@@ -1,6 +1,9 @@
-import { SVGS_PATH } from "@/constant/path";
+import NAVS from "@/constant/navs";
+import { IMAGES_PATH } from "@/constant/path";
+import useCallBackOnNavigate from "@/hooks/useCallBackOnNavigate";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import {
+  Box,
   HStack,
   Icon,
   Image,
@@ -8,15 +11,16 @@ import {
   Stack,
   VStack,
 } from "@chakra-ui/react";
-import { BellSimple, GearSix } from "@phosphor-icons/react";
+import { BellSimple } from "@phosphor-icons/react";
+import { IconSettings } from "@tabler/icons-react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { Avatar } from "../ui/avatar";
 import { ColorModeButton } from "../ui/color-mode";
-import BButton from "./BButton";
-import CContainer from "./CContainer";
-import FloatCounter from "./FloatCounter";
-import Heading5 from "./Heading5";
-import NAVS from "@/constant/navs";
+import BButton from "../ui-custom/BButton";
+import FloatCounter from "../ui-custom/FloatCounter";
+import CContainer from "../ui-custom/CContainer";
+import Heading5 from "../ui-custom/Heading5";
 
 interface Props {
   label?: string;
@@ -24,42 +28,66 @@ interface Props {
   activeNavIndex?: number;
 }
 const NavContainer = ({ label, children, activeNavIndex }: Props) => {
+  // States, Refs
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Utils
+  useCallBackOnNavigate(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = 0;
+    }
+  });
   const iss = useIsSmScreenWidth();
 
+  // Component
   const NavList = () => {
     return (
       <>
-        {NAVS.map((nav: any, i) => (
-          <Link key={i} to={nav.link}>
-            <BButton
-              iconButton
-              unclicky
-              variant={"ghost"}
-              color={activeNavIndex === i ? "fg" : "fg.muted"}
-            >
-              <FloatCounter
-                circleProps={{ h: "18px", fontSize: "xs", mt: 1, mr: 1 }}
-                display={"none"}
-              >
-                2
-              </FloatCounter>
+        {NAVS.map((nav: any, i) => {
+          const active = activeNavIndex === i;
 
-              <Icon fontSize={"lg"} flexShrink={0} {...nav?.iconProps}>
-                <nav.icon weight={activeNavIndex === i ? "fill" : "regular"} />
-              </Icon>
-            </BButton>
-          </Link>
-        ))}
+          return (
+            <Link key={i} to={nav.link}>
+              <BButton
+                iconButton
+                unclicky
+                variant={"ghost"}
+                color={active ? "fg" : "fg.muted"}
+                position={"relative"}
+              >
+                {active && (
+                  <Box
+                    w={"12px"}
+                    h={"2px"}
+                    bg={"p.500"}
+                    position={"absolute"}
+                    bottom={0}
+                  />
+                )}
+
+                <FloatCounter
+                  circleProps={{ h: "18px", fontSize: "xs", mt: 1, mr: 1 }}
+                  display={"none"}
+                >
+                  2
+                </FloatCounter>
+
+                <Icon fontSize={"lg"} flexShrink={0} {...nav?.iconProps}>
+                  <nav.icon strokeWidth={1.5} />
+                </Icon>
+              </BButton>
+            </Link>
+          );
+        })}
       </>
     );
   };
-
   const NavList2 = () => {
     return (
       <>
         <BButton iconButton unclicky variant={"ghost"}>
           <Icon fontSize={"lg"} flexShrink={0}>
-            <GearSix />
+            <IconSettings strokeWidth={1.5} />
           </Icon>
         </BButton>
 
@@ -68,7 +96,7 @@ const NavContainer = ({ label, children, activeNavIndex }: Props) => {
         <Avatar
           name="Jolitos Kurniawan"
           cursor={"pointer"}
-          size={iss ? "xs" : "md"}
+          size={iss ? "2xs" : "xs"}
           // borderRadius={6}
         />
       </>
@@ -84,17 +112,18 @@ const NavContainer = ({ label, children, activeNavIndex }: Props) => {
           align={"center"}
           px={3}
           py={4}
-          borderColor={"d2"}
           overflowY={"auto"}
           overflowX={"hidden"}
           className="scrollY"
-          // bg={"bg.subtle"}
-          // borderRight={"1px solid"}
+          bg={"body"}
+          borderRight={"1px solid"}
+          borderColor={"border.muted"}
         >
           <Image
-            src={`${SVGS_PATH}/logo-color.svg`}
-            h={"28px"}
+            src={`${IMAGES_PATH}/logo_graphic.png`}
+            h={"24px"}
             objectFit={"contain"}
+            mt={1}
             mb={4}
           />
 
@@ -109,12 +138,13 @@ const NavContainer = ({ label, children, activeNavIndex }: Props) => {
       )}
 
       <CContainer
+        fRef={containerRef}
         position={"relative"}
         flex={1}
         overflowY={"auto"}
         overflowX={"clip"}
         className="scrollY"
-        bg={"bg.subtle"}
+        bg={"bgContent"}
       >
         <HStack
           justify={"space-between"}
@@ -123,11 +153,9 @@ const NavContainer = ({ label, children, activeNavIndex }: Props) => {
           borderColor={"d2"}
           position={"sticky"}
           top={0}
-          bg={"bg.subtle"}
+          bg={"bgContent"}
           zIndex={2}
           mb={1}
-          // borderBottom={"1px solid"}
-          // bg={"body"}
         >
           <Heading5 fontWeight={"bold"} truncate>
             {label}
@@ -162,11 +190,11 @@ const NavContainer = ({ label, children, activeNavIndex }: Props) => {
       {/* Sm screen nav */}
       {iss && (
         <HStack
+          h={"75px"}
           justify={"space-around"}
           pt={1}
-          pb={4}
-          pl={2}
-          pr={4}
+          pb={6}
+          px={4}
           borderTop={"1px solid"}
           borderColor={"d2"}
           overflowX={"auto"}

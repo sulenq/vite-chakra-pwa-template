@@ -10,13 +10,13 @@ const customConfig = defineConfig({
     tokens: {
       colors: {
         light: { value: "#fff" },
-        dark: { value: "#080808" },
+        dark: { value: "#0c0c0c" },
         darktrans: { value: "#252525df" },
-        d0: { value: "#8a8a8a08" },
-        d1: { value: "#8a8a8a10" },
-        d2: { value: "#8a8a8a20" },
-        d3: { value: "#8a8a8a36" },
-        dt: { value: "#858585ff" },
+        d0: { value: "#8a8a8a09" },
+        d1: { value: "#7e7e7e08" },
+        d2: { value: "#7e7e7e20" },
+        d3: { value: "#7e7e7e36" },
+        dt: { value: "#858585c1" },
         p: {
           50: { value: "#f5faff" },
           100: { value: "#CCE7FF" },
@@ -130,10 +130,13 @@ const customConfig = defineConfig({
     },
     semanticTokens: {
       colors: {
-        body: { value: { base: "#fff", _dark: "#080808" } },
-        bodytrans: { value: { base: "#ffffffaa", _dark: "#080808aa" } },
-        current: { value: { base: "#080808", _dark: "#fff" } },
-        ibody: { value: { base: "#080808", _dark: "#FAFAFC" } },
+        body: { value: { base: "#fff", _dark: "#0c0c0c" } },
+        bgContent: {
+          value: { base: "{colors.bg.subtle}", _dark: "#080808" },
+        },
+        bodytrans: { value: { base: "#ffffffaa", _dark: "#0c0c0caa" } },
+        current: { value: { base: "#0c0c0c", _dark: "#fff" } },
+        ibody: { value: { base: "#0c0c0c", _dark: "#FAFAFC" } },
         p: {
           solid: { value: { base: "{colors.p.500}", _dark: "{colors.p.500}" } },
           contrast: { value: "{colors.p.50}" },

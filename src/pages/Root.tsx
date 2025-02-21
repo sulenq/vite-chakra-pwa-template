@@ -1350,6 +1350,10 @@ export default function Root() {
           <Text fontSize={"1.25rem"} fontWeight={"bold"}>
             Mahaooo
           </Text>
+
+          <Link to={"/home"}>
+            <Text ml={8}>Home</Text>
+          </Link>
         </HStack>
 
         <HStack wrap={"wrap"}>
