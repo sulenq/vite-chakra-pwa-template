@@ -129,12 +129,6 @@ const ThemeConfig = () => {
     "purple",
     "pink",
     "brown",
-    // "linkedin",
-    // "facebook",
-    // "messenger",
-    // "whatsapp",
-    // "twitter",
-    // "telegram",
   ];
 
   return (
