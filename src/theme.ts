@@ -90,18 +90,6 @@ const customConfig = defineConfig({
           800: { value: "#506321" },
           900: { value: "#3D4F1C" },
         },
-        ocean: {
-          50: { value: "#E0F7FA" },
-          100: { value: "#B2EBF2" },
-          200: { value: "#80DEEA" },
-          300: { value: "#4DD0E1" },
-          400: { value: "#26C6DA" },
-          500: { value: "#00BCD4" },
-          600: { value: "#00ACC1" },
-          700: { value: "#0097A7" },
-          800: { value: "#00838F" },
-          900: { value: "#006064" },
-        },
         yellow: {
           50: { value: "#fffff0" },
           100: { value: "#fefcbf" },
@@ -113,6 +101,18 @@ const customConfig = defineConfig({
           700: { value: "#975a16" },
           800: { value: "#744210" },
           900: { value: "#5f370e" },
+        },
+        sky: {
+          50: { value: "#F0F9FF" },
+          100: { value: "#E0F2FE" },
+          200: { value: "#BAE6FD" },
+          300: { value: "#7DD3FC" },
+          400: { value: "#38BDF8" },
+          500: { value: "#0EA5E9" },
+          600: { value: "#0284C7" },
+          700: { value: "#0369A1" },
+          800: { value: "#075985" },
+          900: { value: "#0C4A6E" },
         },
       },
     },
@@ -256,25 +256,6 @@ const customConfig = defineConfig({
             value: { base: "{colors.olive.500}", _dark: "{colors.olive.900}" },
           },
         },
-        ocean: {
-          solid: {
-            value: { base: "{colors.ocean.500}", _dark: "{colors.ocean.500}" },
-          },
-          contrast: { value: "{colors.ocean.50}" },
-          fg: {
-            value: { base: "{colors.ocean.700}", _dark: "{colors.ocean.200}" },
-          },
-          muted: {
-            value: { base: "{colors.ocean.300}", _dark: "{colors.ocean.800}" },
-          },
-          subtle: {
-            value: { base: "{colors.ocean.200}", _dark: "{colors.ocean.900}" },
-          },
-          emphasized: { value: "{colors.ocean.300}" },
-          focusRing: {
-            value: { base: "{colors.ocean.500}", _dark: "{colors.ocean.900}" },
-          },
-        },
         yellow: {
           solid: {
             value: {
@@ -288,6 +269,50 @@ const customConfig = defineConfig({
           subtle: { value: "{colors.yellow.200}" },
           emphasized: { value: "{colors.yellow.400}" },
           focusRing: { value: "{colors.yellow.600}" },
+        },
+        sky: {
+          solid: {
+            value: {
+              base: "{colors.sky.500}",
+              _dark: "{colors.sky.400}",
+            },
+          },
+          contrast: {
+            value: {
+              base: "#fff",
+              _dark: "#000",
+            },
+          },
+          fg: {
+            value: {
+              base: "{colors.sky.900}",
+              _dark: "{colors.sky.200}",
+            },
+          },
+          muted: {
+            value: {
+              base: "{colors.sky.300}",
+              _dark: "{colors.sky.700}",
+            },
+          },
+          subtle: {
+            value: {
+              base: "{colors.sky.200}",
+              _dark: "{colors.sky.800}",
+            },
+          },
+          emphasized: {
+            value: {
+              base: "{colors.sky.400}",
+              _dark: "{colors.sky.600}",
+            },
+          },
+          focusRing: {
+            value: {
+              base: "{colors.sky.600}",
+              _dark: "{colors.sky.300}",
+            },
+          },
         },
       },
     },
