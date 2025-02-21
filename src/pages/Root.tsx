@@ -1352,7 +1352,9 @@ export default function Root() {
           </Text>
 
           <Link to={"/home"}>
-            <Text ml={8}>Home</Text>
+            <Text ml={8} color={"p.400"}>
+              Layout
+            </Text>
           </Link>
         </HStack>
 

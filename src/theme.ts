@@ -122,13 +122,15 @@ const customConfig = defineConfig({
     },
     semanticTokens: {
       colors: {
-        body: { value: { base: "{colors.light}", _dark: "#0c0c0c" } },
+        body: { value: { base: "{colors.light}", _dark: "{colors.dark}" } },
         bgContent: {
           value: { base: "{colors.bg.subtle}", _dark: "#080808" },
         },
-        bodytrans: { value: { base: "#ffffffaa", _dark: "#0c0c0caa" } },
-        current: { value: { base: "#0c0c0c", _dark: "{colors.light}" } },
-        ibody: { value: { base: "#0c0c0c", _dark: "#FAFAFC" } },
+        bodytrans: {
+          value: { base: "{colors.light}aa", _dark: "{colors.dark}aa" },
+        },
+        current: { value: { base: "{colors.dark}", _dark: "{colors.light}" } },
+        ibody: { value: { base: "{colors.dark}", _dark: "{colors.light" } },
         p: {
           solid: { value: { base: "{colors.p.500}", _dark: "{colors.p.500}" } },
           contrast: { value: "{colors.p.50}" },
