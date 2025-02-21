@@ -122,7 +122,8 @@ const PeriodPickerDisclosure = ({
       intervalDecrementRef.current = null;
     }
   }
-
+  console.log("period picker", monthLocal, yearLocal);
+  
   function onConfirm() {
     if (setMonth) {
       setMonth(monthLocal);
@@ -192,7 +193,7 @@ const PeriodPickerDisclosure = ({
                 }}
                 onTouchEnd={handleMouseUpDecrement}
               >
-                <Icon fontSize={"md"}>
+                <Icon h={"1rem"}>
                   <IconCaretLeftFilled />
                 </Icon>
               </BButton>
@@ -225,7 +226,7 @@ const PeriodPickerDisclosure = ({
                 }}
                 onTouchEnd={handleMouseUpIncrement}
               >
-                <Icon fontSize={"md"}>
+                <Icon h={"1rem"}>
                   <IconCaretRightFilled />
                 </Icon>
               </BButton>

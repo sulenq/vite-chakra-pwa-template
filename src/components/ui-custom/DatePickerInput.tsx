@@ -60,6 +60,8 @@ const DatePickerInput = ({
   const [month, setMonth] = useState<number>(date.getMonth());
   const [year, setYear] = useState<number>(date.getFullYear());
 
+  console.log(formatDate(date), month, year);
+
   const [selected, setSelected] = useState<any>(inputValue);
 
   function confirmSelected() {
@@ -99,27 +101,24 @@ const DatePickerInput = ({
 
   function nextMonth() {
     const currentMonth = date.getMonth();
-    const currentyear = date.getFullYear();
+    const currentYear = date.getFullYear();
 
-    const nextMonth = new Date(
-      month === 12 ? currentyear + 1 : year,
-      month === 12 ? 0 : currentMonth + 1
-    );
-    setDate(nextMonth);
-    setMonth(nextMonth.getMonth());
-    setYear(nextMonth.getFullYear());
+    const nextMonthDate = new Date(currentYear, currentMonth + 1, 1);
+
+    setDate(nextMonthDate);
+    setMonth(nextMonthDate.getMonth());
+    setYear(nextMonthDate.getFullYear());
   }
+
   function prevMonth() {
     const currentMonth = date.getMonth();
-    const currentyear = date.getFullYear();
+    const currentYear = date.getFullYear();
 
-    const prevMonth = new Date(
-      month === 1 ? currentyear - 1 : year,
-      month === 1 ? 11 : currentMonth - 1
-    );
-    setDate(prevMonth);
-    setMonth(prevMonth.getMonth());
-    setYear(prevMonth.getFullYear());
+    const prevMonthDate = new Date(currentYear, currentMonth - 1, 1);
+
+    setDate(prevMonthDate);
+    setMonth(prevMonthDate.getMonth());
+    setYear(prevMonthDate.getFullYear());
   }
 
   const fullDates = () => {
@@ -216,6 +215,7 @@ const DatePickerInput = ({
                 setMonth={setMonth}
                 year={year}
                 setYear={setYear}
+                setDate={setDate}
               />
 
               <BButton iconButton variant={"outline"} onClick={nextMonth}>
