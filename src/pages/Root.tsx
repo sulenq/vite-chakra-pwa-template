@@ -1294,6 +1294,9 @@ const TableComponentDemo = () => {
                 ", "
               )}`,
               confirmLabel: "Delete",
+              confirmButtonProps: {
+                colorPalette: "red",
+              },
               confirmCallback: () => {
                 toaster.create({
                   type: "success",
