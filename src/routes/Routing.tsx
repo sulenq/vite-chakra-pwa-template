@@ -16,7 +16,7 @@ const Routing = () => {
         <Route
           key={path}
           path={path}
-          element={<NavContainer>{element}</NavContainer>}
+          element={<NavContainer activePath={path}>{element}</NavContainer>}
         />
       ))}
 

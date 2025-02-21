@@ -15,19 +15,19 @@ import { BellSimple } from "@phosphor-icons/react";
 import { IconSettings } from "@tabler/icons-react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import BButton from "../ui-custom/BButton";
+import CContainer from "../ui-custom/CContainer";
+import FloatCounter from "../ui-custom/FloatCounter";
+import Heading5 from "../ui-custom/Heading5";
 import { Avatar } from "../ui/avatar";
 import { ColorModeButton } from "../ui/color-mode";
-import BButton from "../ui-custom/BButton";
-import FloatCounter from "../ui-custom/FloatCounter";
-import CContainer from "../ui-custom/CContainer";
-import Heading5 from "../ui-custom/Heading5";
 
 interface Props {
   label?: string;
   children?: any;
-  activeNavIndex?: number;
+  activePath?: string;
 }
-const NavContainer = ({ label, children, activeNavIndex }: Props) => {
+const NavContainer = ({ label, children, activePath }: Props) => {
   // States, Refs
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -44,7 +44,7 @@ const NavContainer = ({ label, children, activeNavIndex }: Props) => {
     return (
       <>
         {NAVS.map((nav: any, i) => {
-          const active = activeNavIndex === i;
+          const active = activePath === nav.path;
 
           return (
             <Link key={i} to={nav.link}>
@@ -85,13 +85,18 @@ const NavContainer = ({ label, children, activeNavIndex }: Props) => {
   const NavList2 = () => {
     return (
       <>
-        <BButton iconButton unclicky variant={"ghost"}>
+        <BButton
+          iconButton
+          unclicky
+          variant={"ghost"}
+          color={activePath === "/settings" ? "fg" : "fg.muted"}
+        >
           <Icon fontSize={"lg"} flexShrink={0}>
             <IconSettings strokeWidth={1.5} />
           </Icon>
         </BButton>
 
-        {!iss && <Separator mb={2} />}
+        {!iss && <Separator w={"full"} mb={2} />}
 
         <Avatar
           name="Jolitos Kurniawan"
@@ -148,8 +153,8 @@ const NavContainer = ({ label, children, activeNavIndex }: Props) => {
       >
         <HStack
           justify={"space-between"}
-          px={5}
-          py={2}
+          p={2}
+          pl={4}
           borderColor={"d2"}
           position={"sticky"}
           top={0}
@@ -161,7 +166,7 @@ const NavContainer = ({ label, children, activeNavIndex }: Props) => {
             {label}
           </Heading5>
 
-          <HStack flexShrink={0}>
+          <HStack flexShrink={0} gap={0}>
             <ColorModeButton size={"md"} fontSize={"1.1rem"} />
 
             <BButton iconButton unclicky variant={"ghost"}>
