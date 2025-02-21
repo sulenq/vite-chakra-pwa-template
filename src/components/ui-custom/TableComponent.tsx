@@ -418,11 +418,11 @@ const TableComponent = ({
       return (
         <>
           {sortConfig.direction === "asc" ? (
-            <Icon fontSize={"sm"} w={"16px"} color={"p.500"}>
+            <Icon fontSize={"sm"} w={"16px"} color={themeConfig.primaryColor}>
               <IconCaretUpFilled />
             </Icon>
           ) : (
-            <Icon fontSize={"sm"} w={"16px"} color={"p.500"}>
+            <Icon fontSize={"sm"} w={"16px"} color={themeConfig.primaryColor}>
               <IconCaretDownFilled />
             </Icon>
           )}

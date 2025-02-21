@@ -126,7 +126,7 @@ const SelectInput = ({
 
         {fl === null && <FeedbackNoData mb={8} />}
 
-        {fl && fl.length === 0 && (                 
+        {fl && fl.length === 0 && (
           <FeedbackNotFound title="Opsi tidak ditemukan" mb={5} />
         )}
 
