@@ -106,6 +106,10 @@ const customConfig = defineConfig({
     },
     semanticTokens: {
       colors: {
+        body: { value: { base: "#fff", _dark: "#191919" } },
+        bodytrans: { value: { base: "#ffffffaa", _dark: "#191919aa" } },
+        current: { value: { base: "#191919", _dark: "#fff" } },
+        ibody: { value: { base: "#191919", _dark: "#FAFAFC" } },
         p: {
           solid: { value: { base: "{colors.p.500}", _dark: "{colors.p.500}" } },
           contrast: { value: "{colors.p.50}" },
