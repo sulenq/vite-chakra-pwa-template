@@ -206,7 +206,7 @@ const DatePickerInput = ({
             {/* Period picker */}
             <HStack mb={5}>
               <BButton iconButton variant={"outline"} onClick={prevMonth}>
-                <Icon fontSize={"md"}>
+                <Icon h={"1rem"}>
                   <IconCaretLeftFilled />
                 </Icon>
               </BButton>
@@ -219,7 +219,7 @@ const DatePickerInput = ({
               />
 
               <BButton iconButton variant={"outline"} onClick={nextMonth}>
-                <Icon fontSize={"md"}>
+                <Icon h={"1rem"}>
                   <IconCaretRightFilled />
                 </Icon>
               </BButton>

@@ -323,12 +323,7 @@ const DateRangePickerInput = ({
             <DisclosureHeaderContent title={title} />
           </DisclosureHeader>
 
-          <DisclosureBody
-            className="scrollY"
-            pt={0}
-            // overflowY={"auto"}
-            // maxH={DRAWER_BODY_MAXH}
-          >
+          <DisclosureBody className="scrollY" pt={0}>
             {maxRange && (
               <Alert
                 variant={"surface"}
@@ -341,7 +336,7 @@ const DateRangePickerInput = ({
             {/* Period picker */}
             <HStack mb={5}>
               <BButton iconButton variant={"outline"} onClick={prevMonth}>
-                <Icon fontSize={"md"}>
+                <Icon h={"1rem"}>
                   <IconCaretLeftFilled />
                 </Icon>
               </BButton>
@@ -354,7 +349,7 @@ const DateRangePickerInput = ({
               />
 
               <BButton iconButton variant={"outline"} onClick={nextMonth}>
-                <Icon fontSize={"md"}>
+                <Icon h={"1rem"}>
                   <IconCaretRightFilled />
                 </Icon>
               </BButton>
