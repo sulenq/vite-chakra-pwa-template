@@ -4,7 +4,7 @@ import useRequest from "@/hooks/useRequest";
 import { Center, Icon, Spinner } from "@chakra-ui/react";
 import { IconShieldCheckFilled } from "@tabler/icons-react";
 import { useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 interface Props {
   allowedPermissions?: number[];
@@ -23,6 +23,7 @@ const AuthMiddleware = ({
 
   // Utils
   const { req, loading } = useRequest();
+  const navigate = useNavigate();
 
   // No auth token toast on 1st render
   useEffect(() => {
@@ -53,7 +54,15 @@ const AuthMiddleware = ({
         const config = {
           url: `/rski/dashboard/user-info`,
         };
-        req({ config, onResolve: { onSuccess: handleOnSuccess } });
+        req({
+          config,
+          onResolve: {
+            onSuccess: handleOnSuccess,
+            onError: () => {
+              navigate(redirectTo);
+            },
+          },
+        });
       }
     }
   }, []);
@@ -72,12 +81,18 @@ const AuthMiddleware = ({
           </Center>
         ))}
 
-      {!loading && permissions && (
+      {!loading && (
         <>
-          {authToken && hasPermissions(allowedPermissions) ? (
-            children
-          ) : (
-            <Navigate to={redirectTo} />
+          {!authToken && <Navigate to={redirectTo} />}
+
+          {authToken && (
+            <>
+              {permissions && hasPermissions(allowedPermissions) ? (
+                children
+              ) : (
+                <Navigate to={redirectTo} />
+              )}
+            </>
           )}
         </>
       )}
