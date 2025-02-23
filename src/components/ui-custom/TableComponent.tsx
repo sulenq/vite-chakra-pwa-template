@@ -493,6 +493,8 @@ const TableComponent = ({
     <CContainer
       // flex={1}
       // bg={"bg.subtle"}
+      // borderTop={"1px solid"}
+      borderColor={"border.muted"}
       minH={props?.minH || sh < 625 ? "400px" : ""}
     >
       {/* Table content */}

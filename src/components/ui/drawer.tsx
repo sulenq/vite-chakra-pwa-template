@@ -31,13 +31,13 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
           <ChakraDrawer.Backdrop
             bg={"var(--d1)"}
             backdropFilter={"blur(5px)"}
-            zIndex={20}
+            // zIndex={20}
           />
         )}
         <ChakraDrawer.Positioner padding={offset}>
           <ChakraDrawer.Content
             ref={ref}
-            zIndex={6}
+            // zIndex={6}
             h={"100%"}
             onClick={() => {
               back();

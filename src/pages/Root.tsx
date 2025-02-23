@@ -439,6 +439,8 @@ const DatePickerDemo = () => {
     },
   });
 
+  console.log(formik.values);
+
   return (
     <>
       <DatePickerInput
@@ -487,7 +489,6 @@ const DateRangePickerDemo = () => {
           formik.setFieldValue("date1", inputValue);
         }}
         inputValue={formik.values.date1}
-        maxRange={7}
         // nonNullable
       />
 
@@ -1341,7 +1342,7 @@ export default function Root() {
         px={4}
         position={"sticky"}
         top={0}
-        zIndex={99}
+        zIndex={2}
         bg={"body"}
         borderBottom={"1px solid"}
         borderColor={"border.muted"}
@@ -1374,7 +1375,7 @@ export default function Root() {
         </HStack>
       </HStack>
 
-      <CContainer p={5}>
+      <CContainer p={[5, null, 4]}>
         <ThemeConfig />
 
         <SimpleGrid columns={[1, 2, 3]} gap={4} maxW={"1400px"} mx={"auto"}>

@@ -38,7 +38,7 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
             borderRadius={8}
             bg={"body"}
             shadow={"none"}
-            border={"1px solid"}
+            // border={"1px solid"}
             borderColor={"d2"}
             onClick={(e) => {
               e.stopPropagation();

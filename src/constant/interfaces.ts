@@ -71,12 +71,16 @@ export type Type__DateRange = {
   from: Date | undefined;
   to: Date | undefined;
 };
+export interface Interface__SelectedDateList {
+  selectedDates: Date[];
+  selectedRenderValue: string;
+}
 export interface Interface__DatePicker extends ButtonProps {
   id?: string;
   name?: string;
   title?: string;
-  onConfirm?: (inputValue: Date | undefined) => void;
-  inputValue?: Date | undefined;
+  onConfirm?: (inputValue: Date[] | undefined) => void;
+  inputValue?: Date[] | undefined;
   dateFormatOptions?: Type__PrefixDateFormat | object;
   placeholder?: string;
   nonNullable?: boolean;

@@ -1,5 +1,8 @@
 import days from "@/constant/days";
-import { Interface__DatePicker } from "@/constant/interfaces";
+import {
+  Interface__DatePicker,
+  Interface__SelectedDateList,
+} from "@/constant/interfaces";
 import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
@@ -8,6 +11,8 @@ import formatDate from "@/utils/formatDate";
 import {
   HStack,
   Icon,
+  ListItem,
+  ListRoot,
   SimpleGrid,
   Text,
   useDisclosure,
@@ -21,6 +26,7 @@ import {
 import { addDays, startOfWeek } from "date-fns";
 import { useState } from "react";
 import { Tooltip } from "../ui/tooltip";
+import BackButton from "./BackButton";
 import BButton from "./BButton";
 import CContainer from "./CContainer";
 import {
@@ -32,6 +38,65 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
+
+const SelectedDateList = ({
+  selectedDates,
+  selectedRenderValue,
+}: Interface__SelectedDateList) => {
+  const { themeConfig } = useThemeConfig();
+  const { open, onOpen, onClose } = useDisclosure();
+  useBackOnClose(`selected-date-list-`, open, onOpen, onClose);
+
+  return (
+    <>
+      <CContainer
+        borderColor={"gray.muted"}
+        bg={"bg.muted"}
+        p={3}
+        borderRadius={6}
+        mt={2}
+        cursor={"pointer"}
+        onClick={onOpen}
+      >
+        <Text
+          textAlign={"center"}
+          fontWeight={"semibold"}
+          maxW={"calc(100% - 16px)"}
+          mx={"auto"}
+          truncate
+        >
+          {selectedRenderValue || "Pilih tanggal"}
+        </Text>
+      </CContainer>
+
+      <DisclosureRoot open={open} size={"xs"}>
+        <DisclosureContent>
+          <DisclosureHeader>
+            <DisclosureHeaderContent title="Tanggal dipilih" />
+          </DisclosureHeader>
+          <DisclosureBody>
+            <CContainer px={2}>
+              <ListRoot gap={2}>
+                {selectedDates.map((item, i) => {
+                  return <ListItem key={i}>{formatDate(item)}</ListItem>;
+                })}
+              </ListRoot>
+            </CContainer>
+          </DisclosureBody>
+          <DisclosureFooter>
+            <BackButton
+              size={MAIN_BUTTON_SIZE as any}
+              colorPalette={themeConfig.colorPalette}
+              variant={"solid"}
+            >
+              Mengerti
+            </BackButton>
+          </DisclosureFooter>
+        </DisclosureContent>
+      </DisclosureRoot>
+    </>
+  );
+};
 
 const DatePickerInput = ({
   id,
@@ -56,25 +121,27 @@ const DatePickerInput = ({
   const fc = useFieldContext();
   const { themeConfig } = useThemeConfig();
 
-  const [date, setDate] = useState<Date>(inputValue || new Date());
+  const [date, setDate] = useState<Date>(inputValue?.[0] || new Date());
   const [month, setMonth] = useState<number>(date.getMonth());
   const [year, setYear] = useState<number>(date.getFullYear());
 
-  const [selected, setSelected] = useState<any>(inputValue);
+  const [selectedDates, setSelectedDates] = useState<Date[]>(
+    inputValue ? inputValue : []
+  );
 
   function confirmSelected() {
     let confirmable = false;
     if (!nonNullable) {
       confirmable = true;
     } else {
-      if (selected) {
+      if (selectedDates.length > 0) {
         confirmable = true;
       }
     }
 
     if (confirmable) {
       if (onConfirm) {
-        onConfirm(selected);
+        onConfirm(selectedDates);
       }
       back();
     }
@@ -82,17 +149,18 @@ const DatePickerInput = ({
 
   function setSelectedToToday() {
     const today = new Date();
+    setSelectedDates([today]);
     setDate(today);
-    setSelected(today);
     setMonth(today.getMonth());
     setYear(today.getFullYear());
   }
+
   function setSelectedToTomorrow() {
     const today = new Date();
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
+    setSelectedDates([tomorrow]);
     setDate(tomorrow);
-    setSelected(tomorrow);
     setMonth(tomorrow.getMonth());
     setYear(tomorrow.getFullYear());
   }
@@ -146,12 +214,14 @@ const DatePickerInput = ({
     return weekDates;
   };
 
-  const renderValue = formatDate(inputValue, dateFormatOptions);
-  const selectedRenderValue = formatDate(selected);
+  // const renderValue = formatDate(inputValue, dateFormatOptions);
+  const selectedRenderValue = selectedDates
+    .map((date) => formatDate(date, dateFormatOptions))
+    .join(", ");
 
   return (
     <>
-      <Tooltip content={inputValue ? formatDate(inputValue) : placeholder}>
+      <Tooltip content={inputValue ? selectedRenderValue : placeholder}>
         <BButton
           w={"full"}
           unclicky
@@ -160,7 +230,7 @@ const DatePickerInput = ({
           borderColor={fc?.invalid || invalid ? "border.error" : "gray.muted"}
           onClick={() => {
             if (inputValue) {
-              setSelected(inputValue);
+              setSelectedDates(inputValue);
             }
             onOpen();
           }}
@@ -170,7 +240,7 @@ const DatePickerInput = ({
           <HStack w={"full"} justify={"space-between"}>
             {inputValue ? (
               <Text fontWeight={"normal"} truncate>
-                {renderValue}
+                {selectedRenderValue}
               </Text>
             ) : (
               <Text
@@ -194,12 +264,7 @@ const DatePickerInput = ({
             <DisclosureHeaderContent title={title} />
           </DisclosureHeader>
 
-          <DisclosureBody
-            className="scrollY"
-            pt={0}
-            // overflowY={"auto"}
-            // maxH={DRAWER_BODY_MAXH}
-          >
+          <DisclosureBody className="scrollY">
             {/* Period picker */}
             <HStack mb={5}>
               <BButton iconButton variant={"outline"} onClick={prevMonth}>
@@ -243,10 +308,12 @@ const DatePickerInput = ({
                 <SimpleGrid columns={[7]} key={i} gap={2}>
                   {weeks.map((date, ii) => {
                     const today = new Date();
-                    const dateSelected =
-                      selected?.getDate() === date.fullDate.getDate() &&
-                      selected?.getMonth() === date.month &&
-                      selected?.getFullYear() === date.year;
+                    const dateSelected = selectedDates.some(
+                      (selectedDate) =>
+                        selectedDate.getDate() === date.fullDate.getDate() &&
+                        selectedDate.getMonth() === date.month &&
+                        selectedDate.getFullYear() === date.year
+                    );
                     const dateToday =
                       date.date === today.getDate() &&
                       date.month === today.getMonth() &&
@@ -257,9 +324,27 @@ const DatePickerInput = ({
                         key={ii}
                         borderRadius={"full"}
                         onClick={() => {
-                          setSelected(date.fullDate);
+                          const newSelectedDates = selectedDates.some(
+                            (selectedDate) =>
+                              selectedDate.getDate() ===
+                                date.fullDate.getDate() &&
+                              selectedDate.getMonth() === date.month &&
+                              selectedDate.getFullYear() === date.year
+                          )
+                            ? selectedDates.filter(
+                                (selectedDate) =>
+                                  !(
+                                    selectedDate.getDate() ===
+                                      date.fullDate.getDate() &&
+                                    selectedDate.getMonth() === date.month &&
+                                    selectedDate.getFullYear() === date.year
+                                  )
+                              )
+                            : [...selectedDates, date.fullDate].sort(
+                                (a, b) => a.getTime() - b.getTime()
+                              );
+                          setSelectedDates(newSelectedDates);
                         }}
-                        // borderColor={dateSelected ? "ibody" : ""}
                         variant={dateSelected ? "surface" : "ghost"}
                         aspectRatio={1}
                       >
@@ -296,25 +381,17 @@ const DatePickerInput = ({
               </BButton>
             </HStack>
 
-            <CContainer
-              // border={"1px solid"}
-              borderColor={"gray.muted"}
-              bg={"bg.muted"}
-              p={3}
-              borderRadius={6}
-              mt={2}
-            >
-              <Text textAlign={"center"} fontWeight={"semibold"}>
-                {selectedRenderValue || "Pilih tanggal"}
-              </Text>
-            </CContainer>
+            <SelectedDateList
+              selectedDates={selectedDates}
+              selectedRenderValue={selectedRenderValue}
+            />
           </DisclosureBody>
 
           <DisclosureFooter>
             <BButton
               variant={"outline"}
               onClick={() => {
-                setSelected(undefined);
+                setSelectedDates([]);
               }}
               size={MAIN_BUTTON_SIZE}
             >
@@ -322,7 +399,7 @@ const DatePickerInput = ({
             </BButton>
             <BButton
               onClick={confirmSelected}
-              disabled={nonNullable && !selected}
+              disabled={nonNullable && selectedDates.length === 0}
               size={MAIN_BUTTON_SIZE}
               colorPalette={themeConfig.colorPalette}
             >
