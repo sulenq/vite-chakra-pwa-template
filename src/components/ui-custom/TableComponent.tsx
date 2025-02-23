@@ -173,7 +173,7 @@ const RowOptions = ({
         asChild
         // borderRadius={"full"}
         aria-label="row options"
-        // _expanded={{ border: "1px solid", borderColor: "gray.muted" }}
+        // _expanded={{ border: "1px solid", borderColor: "border.muted" }}
       >
         <BButton iconButton unclicky variant={"ghost"} size={"xs"}>
           <Icon fontSize={"lg !important"}>

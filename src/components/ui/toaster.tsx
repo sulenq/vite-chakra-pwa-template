@@ -27,7 +27,7 @@ export const Toaster = () => {
             }
           >
             {toast.type === "loading" ? (
-              <Spinner size="sm" color="gray.500" />
+              <Spinner size="xs" color="gray.500" mt={"4px"} />
             ) : (
               <Toast.Indicator />
             )}

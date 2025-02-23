@@ -248,7 +248,7 @@ const TimeRangePickerInput = ({
           unclicky
           variant={"ghost"}
           border={"1px solid"}
-          borderColor={fc?.invalid || invalid ? "border.error" : "gray.muted"}
+          borderColor={fc?.invalid || invalid ? "border.error" : "border.muted"}
           onClick={() => {
             if (inputValue) {
               setSelected(inputValue);

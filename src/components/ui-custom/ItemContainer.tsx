@@ -12,8 +12,6 @@ const ItemContainer = ({ children, ...props }: Props) => {
       border={"1px solid"}
       borderColor={"border.muted"}
       {...props}
-      // border={"1px solid"}
-      // borderColor={"border.muted"}
     >
       {children}
     </CContainer>

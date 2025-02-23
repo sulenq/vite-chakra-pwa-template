@@ -77,7 +77,7 @@ export default function SearchInput({
             }}
             inputValue={searchLocal}
             boxShadow={"none !important"}
-            borderColor={invalid ? "border.error" : "gray.muted"}
+            borderColor={invalid ? "border.error" : "border.muted"}
             {...inputProps}
           />
 

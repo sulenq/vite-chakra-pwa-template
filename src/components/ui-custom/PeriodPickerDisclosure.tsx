@@ -205,7 +205,7 @@ const PeriodPickerDisclosure = ({
                   setYearLocal(parseInt(inputValue as string));
                 }}
                 inputValue={yearLocal ? yearLocal.toString() : ""}
-                borderColor={"gray.muted"}
+                borderColor={"border.muted"}
               />
 
               <BButton

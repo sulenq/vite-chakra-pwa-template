@@ -286,7 +286,7 @@ const DateRangePickerInput = ({
           unclicky
           variant={"ghost"}
           border={"1px solid"}
-          borderColor={fc?.invalid || invalid ? "border.error" : "gray.muted"}
+          borderColor={fc?.invalid || invalid ? "border.error" : "border.muted"}
           onClick={() => {
             if (inputValue) {
               setSelected(inputValue);
@@ -480,7 +480,7 @@ const DateRangePickerInput = ({
 
             <CContainer
               // border={"1px solid"}
-              borderColor={"gray.muted"}
+              borderColor={"border.muted"}
               bg={"bg.muted"}
               p={3}
               borderRadius={6}

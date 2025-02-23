@@ -4,11 +4,6 @@ import { toaster } from "../components/ui/toaster";
 import request from "../utils/request";
 import useIsSmScreenWidth from "./useIsSmScreenWidth";
 
-interface Props {
-  showSuccessToast?: boolean;
-  showErrorToast?: boolean;
-}
-
 interface Interface__Req {
   config: AxiosRequestConfig;
   onResolve?: {
@@ -17,14 +12,19 @@ interface Interface__Req {
   };
 }
 
-const useRequest = ({
-  showSuccessToast = true,
-  showErrorToast = true,
-}: Props = {}) => {
+interface Props {
+  showToast?: boolean;
+  loadingMessage?: {
+    title?: string;
+    description?: string;
+  };
+}
+const useRequest = ({ showToast = true, loadingMessage }: Props = {}) => {
   // States
   const [loading, setLoading] = useState<boolean>(false);
   const [status, setStatus] = useState<number | undefined>(undefined);
   const [response, setResponse] = useState<any>(undefined);
+  const [message, setMessage] = useState<any>(undefined);
   const [error, setError] = useState<boolean>(false);
 
   // Utils
@@ -48,83 +48,89 @@ const useRequest = ({
     abortControllerRef.current = abortController;
 
     // Start request
-    request(config)
-      .then((r) => {
-        setStatus(r.status);
-        if (r.status === 200 || r.status === 201) {
-          setResponse(r);
-          setLoading(false);
-          if (onResolve?.onSuccess) {
-            onResolve.onSuccess(r);
+    const promise = new Promise<void>((resolve, reject) => {
+      request(config)
+        .then((r) => {
+          setStatus(r.status);
+          if (r.status === 200 || r.status === 201) {
+            setResponse(r);
+            setMessage(r?.data?.message);
+            setLoading(false);
+            if (onResolve?.onSuccess) {
+              onResolve.onSuccess(r);
+            }
           }
-          showSuccessToast &&
-            toaster.create({
-              type: "success",
-              title:
-                typeof response?.data?.message?.title === "string"
-                  ? response?.data?.message?.title
-                  : "Title's format isn't string",
-              description: response?.data?.message?.description
-                ? typeof response?.data?.message?.description === "string"
-                : "Description's format isn't string",
-              placement: iss ? "top" : "bottom-end",
-              action: {
-                label: "Close",
-                onClick: () => {},
-              },
+
+          resolve();
+        })
+        .catch((e) => {
+          console.log(e);
+
+          setStatus(e.response?.status);
+          setResponse(e.response);
+          setMessage(e.response.message);
+
+          // Network Error
+          if (e.code === "ERR_NETWORK") {
+            setMessage({
+              title: "Jaringan Error",
+              description:
+                "Gagal terhubung ke server. Cobalah periksa jaringan Anda",
             });
-        }
-      })
-      .catch((e) => {
-        console.log(e);
+          }
 
-        setStatus(e.response?.status);
-        setResponse(e.response);
+          // Check if the error is due to request cancellation
+          if (e.code !== "ERR_CANCELED") {
+            // Set error if the request fails and is not canceled
+            setError(true);
+            setLoading(false);
+          }
 
-        // Network Error
-        if (e.code === "ERR_NETWORK") {
-          toaster.error({
-            title: "Network error",
-            description:
-              "Gagal terhubung ke server. Cobalah periksa jaringan Anda.",
-            // duration: 3000,
-            action: {
-              label: "Close",
-              onClick: () => {},
-            },
-          });
-        }
+          if (onResolve?.onError) {
+            onResolve.onError(e);
+          }
 
-        // Check if the error is due to request cancellation
-        if (e.code !== "ERR_CANCELED") {
-          // Set error if the request fails and is not canceled
-          setError(true);
-          setLoading(false);
-        }
+          reject();
+        })
+        .finally(() => {});
+    });
 
-        if (onResolve?.onError) {
-          onResolve.onError(e);
-        }
+    showToast &&
+      toaster.promise(promise, {
+        loading: {
+          title: loadingMessage?.title ?? "Loading...",
+          description: loadingMessage?.description ?? "Harap Menunggu",
+        },
+        success: {
+          title:
+            typeof message?.title === "string"
+              ? message?.title
+              : "Title's format isn't string",
+          description: message?.description
+            ? typeof message?.description === "string"
+            : "Description's format isn't string",
+          placement: iss ? "top" : "bottom-end",
+          action: {
+            label: "Close",
+            onClick: () => {},
+          },
+        },
+        error: {
+          title:
+            typeof message?.title === "string"
+              ? message?.title
+              : "Title's format isn't string",
+          description: message?.description
+            ? typeof message?.description === "string"
+            : "Description's format isn't string",
 
-        showErrorToast &&
-          toaster.create({
-            type: "error",
-            title:
-              typeof response?.data?.message?.title === "string"
-                ? response?.data?.message?.title
-                : "Title's format isn't string",
-            description: response?.data?.message?.description
-              ? typeof response?.data?.message?.description === "string"
-              : "Description's format isn't string",
-
-            placement: iss ? "top" : "bottom-end",
-            action: {
-              label: "Close",
-              onClick: () => {},
-            },
-          });
-      })
-      .finally(() => {});
+          placement: iss ? "top" : "bottom-end",
+          action: {
+            label: "Close",
+            onClick: () => {},
+          },
+        },
+      });
   }
 
   return {

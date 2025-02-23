@@ -31,7 +31,7 @@ const InfoPopover = ({ children, ...props }: Props) => {
       <PopoverContent
         w={"fit"}
         maxW={"calc(100vw - 48px)"}
-        borderColor={"gray.muted"}
+        borderColor={"border.muted"}
       >
         <PopoverDescription px={3} py={2}>
           {children}

@@ -19,7 +19,12 @@ const LoginForm = () => {
   const { themeConfig } = useThemeConfig();
 
   // Utils
-  const { req, loading } = useRequest();
+  const { req, loading } = useRequest({
+    loadingMessage: {
+      title: "Login",
+      description: "Memverifikasi kredensial",
+    },
+  });
   const navigate = useNavigate();
 
   // Formik

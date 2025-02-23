@@ -70,7 +70,7 @@ export default function StringInput({
           onChange={handleChange}
           value={inputValue}
           placeholder={placeholder}
-          borderColor={fc?.invalid || invalid ? "border.error" : "gray.muted"}
+          borderColor={fc?.invalid || invalid ? "border.error" : "border.muted"}
           fontWeight={"medium"}
           _focus={{ borderColor: themeConfig.primaryColor }}
           autoComplete="off"

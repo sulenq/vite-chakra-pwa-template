@@ -26,7 +26,7 @@ const FloatingContainer = ({
       <CContainer
         bg={"body"}
         border={"1px solid"}
-        borderColor={"gray.muted"}
+        borderColor={"border.muted"}
         borderRadius={8}
         p={1}
         transition={"140ms"}
