@@ -69,25 +69,24 @@ const AuthMiddleware = ({
 
   return (
     <>
-      {loading ||
-        (!permissions && (
-          <Center w={"100w"} minH={"100dvh"} color={"fg.subtle"}>
-            <Center position={"relative"}>
-              <Spinner position={"absolute"} w={"60px"} h={"60px"} />
-              <Icon>
-                <IconShieldCheckFilled size={32} />
-              </Icon>
-            </Center>
+      {(loading || !permissions) && (
+        <Center w={"100w"} minH={"100dvh"} color={"fg.subtle"}>
+          <Center position={"relative"}>
+            <Spinner position={"absolute"} w={"60px"} h={"60px"} />
+            <Icon>
+              <IconShieldCheckFilled size={32} />
+            </Icon>
           </Center>
-        ))}
+        </Center>
+      )}
 
-      {!loading && (
+      {!loading && permissions && (
         <>
           {!authToken && <Navigate to={redirectTo} />}
 
           {authToken && (
             <>
-              {permissions && hasPermissions(allowedPermissions) ? (
+              {hasPermissions(allowedPermissions) ? (
                 children
               ) : (
                 <Navigate to={redirectTo} />
