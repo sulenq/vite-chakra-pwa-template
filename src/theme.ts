@@ -26,9 +26,9 @@ const customConfig = defineConfig({
           500: { value: "#0062FF" },
           "500a": { value: "#1a91ff20" },
           600: { value: "#004BDB" },
-          700: { value: "#0038B7" },
-          800: { value: "#002793" },
-          900: { value: "#001B7A" },
+          700: { value: "#001F7A" },
+          800: { value: "#001667" },
+          900: { value: "#00124F" },
         },
         yellow: {
           50: { value: "#fffff0" },
@@ -130,8 +130,8 @@ const customConfig = defineConfig({
         p: {
           solid: { value: { base: "{colors.p.500}", _dark: "{colors.p.500}" } },
           contrast: { value: "{colors.p.50}" },
-          fg: { value: { base: "{colors.p.700}", _dark: "{colors.p.200}" } },
-          muted: { value: { base: "{colors.p.200}", _dark: "{colors.p.800}" } },
+          fg: { value: { base: "{colors.p.500}", _dark: "{colors.p.300}" } },
+          muted: { value: { base: "{colors.p.200}", _dark: "{colors.p.700}" } },
           subtle: {
             value: { base: "{colors.p.100}", _dark: "{colors.p.900}" },
           },
