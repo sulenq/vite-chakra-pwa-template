@@ -172,9 +172,9 @@ export interface Interface__TableComponent extends StackProps {
   initialSortOrder?: "asc" | "desc";
   initialSortColumnIndex?: number;
   trBodyProps?: TableRowProps;
+  footerContent?: any;
   initialLimit?: number;
   initialPage?: number;
-  footerContent?: any;
   pagination?: any;
   pageControl?: number;
   setPageControl?: Dispatch<number>;
@@ -212,6 +212,21 @@ export interface Interface__BatchOptions {
   selectAllRows: boolean;
   handleSelectAllRows: (isChecked: boolean) => void;
   tableRef: any;
+}
+export interface Interface__TableFooterNote {
+  footerContent?: any;
+}
+export interface Interface__LimitControl extends StackProps {
+  initialLimit: number;
+  limitControl?: number;
+  setLimitControl?: Dispatch<number>;
+  limitOptions?: number[];
+}
+export interface Interface__PageControl extends StackProps {
+  initialPage?: number;
+  pagination?: any;
+  pageControl?: number;
+  setPageControl?: Dispatch<number>;
 }
 
 // Divider

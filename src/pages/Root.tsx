@@ -31,7 +31,7 @@ import SearchInput from "@/components/ui-custom/SearchInput";
 import SelectInput from "@/components/ui-custom/SelectInput";
 import StringInput from "@/components/ui-custom/StringInput";
 import TableComponent from "@/components/ui-custom/TableComponent";
-import TableFooterNote from "@/components/ui-custom/TableFooterNote";
+import TableFooterNoteContent from "@/components/ui-custom/TableFooterNoteContent";
 import TimePickerInput from "@/components/ui-custom/TimePickerInput";
 import TimeRangePickerInput from "@/components/ui-custom/TimeRangePickerInput";
 import TruncatedText from "@/components/ui-custom/TruncatedText";
@@ -1320,7 +1320,9 @@ const TableComponentDemo = () => {
         pageControl={pageControl}
         setPageControl={setPageControl}
         footerContent={
-          <TableFooterNote>Tabel footer note example</TableFooterNote>
+          <TableFooterNoteContent>
+            Tabel footer note example
+          </TableFooterNoteContent>
         }
       />
     </>

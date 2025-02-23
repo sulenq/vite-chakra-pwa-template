@@ -1,7 +1,10 @@
 import {
   Interface__BatchOptions,
+  Interface__LimitControl,
+  Interface__PageControl,
   Interface__RowOptions,
   Interface__TableComponent,
+  Interface__TableFooterNote,
 } from "@/constant/interfaces";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
@@ -236,6 +239,218 @@ const RowOptions = ({
   );
 };
 
+const TableFooterNote = ({ footerContent }: Interface__TableFooterNote) => {
+  return (
+    <CContainer
+      display={[!footerContent ? "none" : "", null, "block"]}
+      my={"auto"}
+    >
+      {footerContent}
+    </CContainer>
+  );
+};
+
+const LimitControl = ({
+  initialLimit,
+  limitControl,
+  setLimitControl,
+  limitOptions,
+  ...props
+}: Interface__LimitControl) => {
+  // States, Refs
+  const [limit, setLimit] = useState(initialLimit);
+  const limits = limitOptions || [
+    initialLimit,
+    initialLimit * 5,
+    initialLimit * 10,
+  ];
+
+  return (
+    <CContainer align={"start"} {...props}>
+      {limitControl && setLimitControl && (
+        <MenuRoot>
+          <MenuTrigger asChild>
+            <BButton unclicky w={"full"} variant={"outline"} size={"sm"}>
+              Tampilkan
+              <Text fontWeight={"bold"}>{limit === 0 ? "Semua" : limit}</Text>
+              <Icon maxW={"13px"}>
+                <IconCaretDownFilled />
+              </Icon>
+            </BButton>
+          </MenuTrigger>
+
+          <MenuContent>
+            {limits.map((item, i) => (
+              <MenuItem
+                key={i}
+                value={`${item}`}
+                fontWeight={item === limit ? "bold" : ""}
+                onClick={() => {
+                  setLimit(item);
+                }}
+              >
+                {item}
+              </MenuItem>
+            ))}
+            <MenuItem
+              value={`0`}
+              fontWeight={0 === limit ? "bold" : ""}
+              onClick={() => {
+                setLimit(0);
+              }}
+            >
+              Semua
+            </MenuItem>
+          </MenuContent>
+        </MenuRoot>
+      )}
+    </CContainer>
+  );
+};
+
+const PageControl = ({
+  initialPage,
+  pageControl,
+  setPageControl,
+  pagination,
+  ...props
+}: Interface__PageControl) => {
+  // Utils
+  const iss = useIsSmScreenWidth();
+
+  const formik = useFormik({
+    validateOnChange: false,
+    initialValues: {
+      page: initialPage,
+    },
+    validationSchema: yup.object().shape({
+      page: yup.number(),
+    }),
+    onSubmit: (values) => {
+      if (
+        values.page &&
+        values.page > 0 &&
+        values.page <= pagination?.meta?.last_page &&
+        setPageControl
+      ) {
+        setPageControl(values.page);
+      } else {
+        toaster.create({
+          type: "error",
+          title: `Lompat Page Gagal`,
+          description: `Input harus lebih dari 0 dan kurang dari/sama dengan halaman terakhir`,
+          placement: iss ? "top" : "bottom-end",
+          action: {
+            label: "Close",
+            onClick: () => {},
+          },
+        });
+      }
+    },
+  });
+  useEffect(() => {
+    if (pageControl) {
+      formik.setFieldValue("page", pageControl);
+    }
+  }, [pageControl]);
+
+  return (
+    <CContainer ml={["", null, "auto"]} {...props}>
+      {pageControl && setPageControl && pagination && (
+        <Group attached w={"full"}>
+          <BButton
+            unclicky
+            iconButton
+            variant={"outline"}
+            onClick={() => {
+              if (pageControl > 1) {
+                setPageControl(pageControl - 1);
+              }
+            }}
+            disabled={pageControl <= 1}
+            size={"sm"}
+          >
+            <Icon maxH={"14px"}>
+              <IconCaretLeftFilled />
+            </Icon>
+          </BButton>
+
+          <MenuRoot>
+            <MenuTrigger asChild>
+              <BButton
+                unclicky
+                variant={"outline"}
+                borderRight={"none"}
+                borderRadius={0}
+                minW={"45px"}
+                flex={1}
+                size={"sm"}
+              >
+                {pageControl}
+              </BButton>
+            </MenuTrigger>
+
+            <MenuContent w={"140px"}>
+              <CContainer px={2} py={1} mb={1}>
+                <Text fontSize={"sm"} opacity={0.5} fontWeight={500}>
+                  Terakhir : {pagination?.meta?.last_page || "?"}
+                </Text>
+              </CContainer>
+
+              <form id="page-jump-form" onSubmit={formik.handleSubmit}>
+                <Field>
+                  <NumberInput
+                    inputValue={formik.values.page}
+                    onChangeSetter={(input) => {
+                      formik.setFieldValue("page", input);
+                    }}
+                    textAlign={"center"}
+                    borderColor={"d3"}
+                    onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                      if (e.key === "Enter") {
+                        formik.submitForm();
+                      }
+                    }}
+                    _focus={{ borderColor: "white" }}
+                  />
+                </Field>
+              </form>
+
+              <BButton
+                type="submit"
+                form="page-jump-form"
+                w={"full"}
+                mt={1}
+                className="btn-solid"
+                borderColor={"d3"}
+                // variant={"outline"}
+                color={"white"}
+              >
+                Lompat
+              </BButton>
+            </MenuContent>
+          </MenuRoot>
+
+          <BButton
+            iconButton
+            unclicky
+            variant={"outline"}
+            onClick={() => {
+              setPageControl(pageControl + 1);
+            }}
+            disabled={pageControl === pagination.meta.last_page}
+            size={"sm"}
+          >
+            <Icon maxH={"14px"}>
+              <IconCaretRightFilled />
+            </Icon>
+          </BButton>
+        </Group>
+      )}
+    </CContainer>
+  );
+};
+
 const TableComponent = ({
   ths,
   tds,
@@ -436,51 +651,6 @@ const TableComponent = ({
     );
   };
 
-  // Limitation
-  const [limit, setLimit] = useState(initialLimit);
-  const limits = limitOptions || [
-    initialLimit,
-    initialLimit * 5,
-    initialLimit * 10,
-  ];
-
-  // Pagination
-  const formik = useFormik({
-    validateOnChange: false,
-    initialValues: {
-      page: initialPage,
-    },
-    validationSchema: yup.object().shape({
-      page: yup.number(),
-    }),
-    onSubmit: (values) => {
-      if (
-        values.page &&
-        values.page > 0 &&
-        values.page <= pagination?.meta?.last_page &&
-        setPageControl
-      ) {
-        setPageControl(values.page);
-      } else {
-        toaster.create({
-          type: "error",
-          title: `Lompat Page Gagal`,
-          description: `Input harus lebih dari 0 dan kurang dari/sama dengan halaman terakhir`,
-          placement: iss ? "top" : "bottom-end",
-          action: {
-            label: "Close",
-            onClick: () => {},
-          },
-        });
-      }
-    },
-  });
-  useEffect(() => {
-    if (pageControl) {
-      formik.setFieldValue("page", pageControl);
-    }
-  }, [pageControl]);
-
   const tableRef = useRef(null);
 
   const dataToMap =
@@ -491,9 +661,6 @@ const TableComponent = ({
 
   return (
     <CContainer
-      // flex={1}
-      // bg={"bg.subtle"}
-      // borderTop={"1px solid"}
       borderColor={"border.muted"}
       minH={props?.minH || sh < 625 ? "400px" : ""}
     >
@@ -728,156 +895,53 @@ const TableComponent = ({
       </CContainer>
 
       {/* Table footer */}
-      <SimpleGrid
-        columns={[1, null, 3]}
-        gap={4}
-        mt={4}
-        px={4}
-        {...footerContainerProps}
-      >
-        <CContainer align={"start"} order={[2, null, 1]}>
-          {limitControl && setLimitControl && (
-            <MenuRoot>
-              <MenuTrigger asChild>
-                <BButton unclicky variant={"outline"} size={"sm"}>
-                  Tampilkan
-                  <Text fontWeight={"bold"}>
-                    {limit === 0 ? "Semua" : limit}
-                  </Text>
-                  <Icon maxW={"13px"}>
-                    <IconCaretDownFilled />
-                  </Icon>
-                </BButton>
-              </MenuTrigger>
+      {iss && (
+        <CContainer gap={4} mt={4} px={4}>
+          <HStack wrap={"wrap"}>
+            <LimitControl
+              initialLimit={initialLimit}
+              limitControl={limitControl}
+              setLimitControl={setLimitControl}
+              limitOptions={limitOptions}
+              w={"fit"}
+              flex={"1 1 150px"}
+            />
 
-              <MenuContent>
-                {limits.map((item, i) => (
-                  <MenuItem
-                    key={i}
-                    value={`${item}`}
-                    fontWeight={item === limit ? "bold" : ""}
-                    onClick={() => {
-                      setLimit(item);
-                    }}
-                  >
-                    {item}
-                  </MenuItem>
-                ))}
-                <MenuItem
-                  value={`0`}
-                  fontWeight={0 === limit ? "bold" : ""}
-                  onClick={() => {
-                    setLimit(0);
-                  }}
-                >
-                  Semua
-                </MenuItem>
-              </MenuContent>
-            </MenuRoot>
-          )}
+            <PageControl
+              initialPage={initialPage}
+              pageControl={pageControl}
+              setPageControl={setPageControl}
+              pagination={pagination}
+              w={"fit"}
+              flex={"1 1 150px"}
+            />
+          </HStack>
+
+          <TableFooterNote footerContent={footerContent} />
         </CContainer>
+      )}
 
-        <CContainer
-          display={[!footerContent ? "none" : "", null, "block"]}
-          order={[1, null, 2]}
-          my={"auto"}
-        >
-          {footerContent}
-        </CContainer>
+      {!iss && (
+        <SimpleGrid columns={3} gap={4} mt={4} px={4} {...footerContainerProps}>
+          <LimitControl
+            initialLimit={initialLimit}
+            limitControl={limitControl}
+            setLimitControl={setLimitControl}
+            limitOptions={limitOptions}
+            w={"fit"}
+          />
 
-        <CContainer order={[3]} align={["start", null, "end"]}>
-          {pageControl && setPageControl && pagination && (
-            <Group attached>
-              <BButton
-                unclicky
-                iconButton
-                variant={"outline"}
-                onClick={() => {
-                  if (pageControl > 1) {
-                    setPageControl(pageControl - 1);
-                  }
-                }}
-                disabled={pageControl <= 1}
-                size={"sm"}
-              >
-                <Icon maxH={"14px"}>
-                  <IconCaretLeftFilled />
-                </Icon>
-              </BButton>
+          <TableFooterNote footerContent={footerContent} />
 
-              <MenuRoot>
-                <MenuTrigger asChild>
-                  <BButton
-                    unclicky
-                    variant={"outline"}
-                    borderRight={"none"}
-                    borderRadius={0}
-                    minW={"45px"}
-                    size={"sm"}
-                  >
-                    {pageControl}
-                  </BButton>
-                </MenuTrigger>
-
-                <MenuContent w={"140px"}>
-                  <CContainer px={2} py={1} mb={1}>
-                    <Text fontSize={"sm"} opacity={0.5} fontWeight={500}>
-                      Terakhir : {pagination?.meta?.last_page || "?"}
-                    </Text>
-                  </CContainer>
-
-                  <form id="page-jump-form" onSubmit={formik.handleSubmit}>
-                    <Field>
-                      <NumberInput
-                        inputValue={formik.values.page}
-                        onChangeSetter={(input) => {
-                          formik.setFieldValue("page", input);
-                        }}
-                        textAlign={"center"}
-                        borderColor={"d3"}
-                        onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
-                          if (e.key === "Enter") {
-                            formik.submitForm();
-                          }
-                        }}
-                        _focus={{ borderColor: "white" }}
-                      />
-                    </Field>
-                  </form>
-
-                  <BButton
-                    type="submit"
-                    form="page-jump-form"
-                    w={"full"}
-                    mt={1}
-                    className="btn-solid"
-                    borderColor={"d3"}
-                    // variant={"outline"}
-                    color={"white"}
-                  >
-                    Lompat
-                  </BButton>
-                </MenuContent>
-              </MenuRoot>
-
-              <BButton
-                iconButton
-                unclicky
-                variant={"outline"}
-                onClick={() => {
-                  setPageControl(pageControl + 1);
-                }}
-                disabled={pageControl === pagination.meta.last_page}
-                size={"sm"}
-              >
-                <Icon maxH={"14px"}>
-                  <IconCaretRightFilled />
-                </Icon>
-              </BButton>
-            </Group>
-          )}
-        </CContainer>
-      </SimpleGrid>
+          <PageControl
+            initialPage={initialPage}
+            pageControl={pageControl}
+            setPageControl={setPageControl}
+            pagination={pagination}
+            w={"fit"}
+          />
+        </SimpleGrid>
+      )}
     </CContainer>
   );
 };
