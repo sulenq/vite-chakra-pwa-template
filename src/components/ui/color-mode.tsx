@@ -37,7 +37,7 @@ export function ColorModeIcon({ ...props }: any) {
   const { colorMode } = useColorMode();
   return colorMode === "light" ? (
     <Icon {...props}>
-      <IconSunHigh stroke={1.5} />
+      <IconSunHigh stroke={1.8} />
     </Icon>
   ) : (
     <Icon {...props}>

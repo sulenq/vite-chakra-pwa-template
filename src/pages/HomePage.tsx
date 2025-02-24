@@ -12,11 +12,11 @@ import formatDate from "@/utils/formatDate";
 import getUserFromLocalStorage from "@/utils/getUserFromLocalStorage";
 import { Badge, Group, HStack, Icon, Stack, Text } from "@chakra-ui/react";
 import {
+  IconBuilding,
   IconCheck,
   IconDiscount2,
   IconHistory,
   IconLogout,
-  IconUser,
   IconX,
 } from "@tabler/icons-react";
 import { useRef } from "react";
@@ -183,7 +183,7 @@ const HomePage = () => {
           <ItemContainer flex={0}>
             <ItemHeaderContainer>
               <HStack>
-                <IconUser size={20} />
+                <IconBuilding size={20} />
                 <Text fontWeight={"bold"}>Profil</Text>
               </HStack>
 
@@ -249,7 +249,7 @@ const HomePage = () => {
             <ItemHeaderContainer>
               <HStack>
                 <Icon fontSize={"xl"}>
-                  <IconDiscount2 />
+                  <IconDiscount2 size={20} stroke={1.5} />
                 </Icon>
 
                 <Text fontWeight={"bold"}>Informasi Langganan</Text>
