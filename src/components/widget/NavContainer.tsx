@@ -11,6 +11,7 @@ import {
   Image,
   Separator,
   Stack,
+  StackProps,
   VStack,
 } from "@chakra-ui/react";
 import { IconBell, IconSettings } from "@tabler/icons-react";
@@ -24,6 +25,9 @@ import { Avatar } from "../ui/avatar";
 import { ColorModeButton } from "../ui/color-mode";
 import { Tooltip } from "../ui/tooltip";
 
+interface Interface__NavItemContainer extends StackProps {
+  active?: boolean;
+}
 interface Props {
   label?: string;
   children?: any;
@@ -45,6 +49,27 @@ const NavContainer = ({ label, children, activePath }: Props) => {
   const iss = useIsSmScreenWidth();
 
   // Component
+  const NavItemContainer = ({
+    children,
+    active,
+    ...props
+  }: Interface__NavItemContainer) => {
+    return (
+      <VStack
+        gap={0}
+        w={"40px"}
+        h={"40px"}
+        justify={"center"}
+        position={"relative"}
+        color={active ? "fg" : "fg.muted"}
+        {...props}
+      >
+        {active && <ActiveNavIndicator />}
+
+        {children}
+      </VStack>
+    );
+  };
   const ActiveNavIndicator = ({ ...props }: BoxProps) => {
     return (
       <Box
@@ -52,7 +77,7 @@ const NavContainer = ({ label, children, activePath }: Props) => {
         h={"2px"}
         bg={"p.500"}
         position={"absolute"}
-        bottom={0}
+        bottom={"-2px"}
         {...props}
       />
     );
@@ -61,8 +86,6 @@ const NavContainer = ({ label, children, activePath }: Props) => {
     return (
       <>
         {NAVS.map((nav: any, i) => {
-          const active = activePath === nav.path;
-
           return (
             <Link key={i} to={nav.path}>
               <Tooltip
@@ -70,23 +93,7 @@ const NavContainer = ({ label, children, activePath }: Props) => {
                 positioning={{ placement: "right" }}
                 contentProps={{ ml: 2 }}
               >
-                <BButton
-                  iconButton
-                  unclicky
-                  variant={"ghost"}
-                  color={active ? "fg" : "fg.muted"}
-                  position={"relative"}
-                >
-                  {active && (
-                    <Box
-                      w={"12px"}
-                      h={"2px"}
-                      bg={"p.500"}
-                      position={"absolute"}
-                      bottom={0}
-                    />
-                  )}
-
+                <NavItemContainer active={activePath === nav.path}>
                   <FloatCounter
                     circleProps={{ h: "18px", fontSize: "xs", mt: 1, mr: 1 }}
                     display={"none"}
@@ -94,10 +101,10 @@ const NavContainer = ({ label, children, activePath }: Props) => {
                     2
                   </FloatCounter>
 
-                  <Icon flexShrink={0} w={"30px"} {...nav?.iconProps}>
-                    <nav.icon strokeWidth={1.5} />
+                  <Icon {...nav?.iconProps}>
+                    <nav.icon strokeWidth={1.5} size={iss ? 28 : 20} />
                   </Icon>
-                </BButton>
+                </NavItemContainer>
               </Tooltip>
             </Link>
           );
@@ -114,18 +121,11 @@ const NavContainer = ({ label, children, activePath }: Props) => {
             positioning={{ placement: "right" }}
             contentProps={{ ml: 2 }}
           >
-            <BButton
-              iconButton
-              unclicky
-              variant={"ghost"}
-              color={activePath === "/settings" ? "fg" : "fg.muted"}
-            >
-              {activePath === "/settings" && <ActiveNavIndicator />}
-
-              <Icon fontSize={"lg"} flexShrink={0}>
-                <IconSettings strokeWidth={1.5} />
+            <NavItemContainer active={activePath === "/settings"}>
+              <Icon>
+                <IconSettings strokeWidth={1.5} size={iss ? 28 : 20} />
               </Icon>
-            </BButton>
+            </NavItemContainer>
           </Tooltip>
         </Link>
 
@@ -140,13 +140,9 @@ const NavContainer = ({ label, children, activePath }: Props) => {
             borderColor={themeConfig.primaryColor}
             position={"relative"}
           >
-            {activePath === "/profile" && <ActiveNavIndicator bottom={-1} />}
+            {activePath === "/profile" && <ActiveNavIndicator />}
 
-            <Avatar
-              name="Jolitos Kurniawan"
-              cursor={"pointer"}
-              size={iss ? "2xs" : "xs"}
-            />
+            <Avatar name="Jolitos Kurniawan" cursor={"pointer"} size={"xs"} />
           </Center>
         </Link>
       </>
