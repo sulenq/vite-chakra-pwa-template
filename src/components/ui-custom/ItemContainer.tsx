@@ -9,8 +9,8 @@ const ItemContainer = ({ children, ...props }: Props) => {
     <CContainer
       borderRadius={8}
       bg={"body"}
-      border={"1px solid"}
-      borderColor={"border.muted"}
+      flex={"1 1 300px"}
+      // h={"full"}
       {...props}
     >
       {children}

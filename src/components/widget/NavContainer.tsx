@@ -205,11 +205,11 @@ const NavContainer = ({ label, children, activePath }: Props) => {
         <HStack
           justify={"space-between"}
           p={2}
-          pl={4}
+          px={4}
+          mb={1}
           position={"sticky"}
           top={0}
           zIndex={2}
-          mb={1}
         >
           <Heading5 fontWeight={"bold"} truncate>
             {label}
