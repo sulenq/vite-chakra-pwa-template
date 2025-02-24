@@ -62,6 +62,9 @@ const NavContainer = ({ label, children, activePath }: Props) => {
         justify={"center"}
         position={"relative"}
         color={active ? "fg" : "fg.muted"}
+        _hover={{ bg: "bg.muted" }}
+        borderRadius={6}
+        transition={"200ms"}
         {...props}
       >
         {active && <ActiveNavIndicator />}
@@ -77,7 +80,7 @@ const NavContainer = ({ label, children, activePath }: Props) => {
         h={"2px"}
         bg={themeConfig.primaryColor}
         position={"absolute"}
-        bottom={"-2px"}
+        bottom={0}
         {...props}
       />
     );
@@ -136,13 +139,18 @@ const NavContainer = ({ label, children, activePath }: Props) => {
             w={"40px"}
             h={"40px"}
             borderRadius={"full"}
-            // border={activePath === "/profile" ? "1px solid" : ""}
             borderColor={themeConfig.primaryColor}
             position={"relative"}
           >
             {activePath === "/profile" && <ActiveNavIndicator />}
 
-            <Avatar name="Jolitos Kurniawan" cursor={"pointer"} size={"xs"} />
+            <Avatar
+              name="Jolitos Kurniawan"
+              cursor={"pointer"}
+              size={"xs"}
+              w={"28px"}
+              h={"28px"}
+            />
           </Center>
         </Link>
       </>
