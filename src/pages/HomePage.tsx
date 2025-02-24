@@ -12,7 +12,7 @@ import formatDate from "@/utils/formatDate";
 import getUserFromLocalStorage from "@/utils/getUserFromLocalStorage";
 import { Badge, Group, HStack, Icon, Stack, Text } from "@chakra-ui/react";
 import {
-  IconBuilding,
+  IconBuildingSkyscraper,
   IconCheck,
   IconDiscount2,
   IconHistory,
@@ -183,7 +183,9 @@ const HomePage = () => {
           <ItemContainer flex={0}>
             <ItemHeaderContainer>
               <HStack>
-                <IconBuilding size={20} />
+                <Icon mb={"2px"}>
+                  <IconBuildingSkyscraper size={18} />
+                </Icon>
                 <Text fontWeight={"bold"}>Profil</Text>
               </HStack>
 
@@ -339,7 +341,11 @@ const HomePage = () => {
         <ItemContainer
           flex={"1 1 350px"}
           maxH={
-            sw < 1620 ? "800px" : `${leftContainerRef?.current?.offsetHeight}px`
+            iss
+              ? "calc(100dvh - 200px)"
+              : sw < 1620
+              ? "740px"
+              : `${leftContainerRef?.current?.offsetHeight}px`
           }
         >
           <ItemHeaderContainer>

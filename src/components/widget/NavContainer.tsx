@@ -210,6 +210,7 @@ const NavContainer = ({ label, children, activePath }: Props) => {
           position={"sticky"}
           top={0}
           zIndex={2}
+          bg={"bgContent"}
         >
           <Heading5 fontWeight={"bold"} truncate>
             {label}
