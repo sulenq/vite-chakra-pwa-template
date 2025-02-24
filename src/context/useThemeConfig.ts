@@ -1,3 +1,4 @@
+import { IMAGES_PATH } from "@/constant/path";
 import { create } from "zustand";
 
 const THEME_STORAGE_KEY = "themeConfig";
@@ -5,11 +6,13 @@ const THEME_STORAGE_KEY = "themeConfig";
 interface ThemeConfigProps {
   colorPalette: string;
   primaryColor: string;
+  logo: string;
 }
 
 const DEFAULT_THEME: ThemeConfigProps = {
   colorPalette: "p",
   primaryColor: "p.500",
+  logo: `${IMAGES_PATH}/logo_graphic.png`,
 };
 
 interface Props {

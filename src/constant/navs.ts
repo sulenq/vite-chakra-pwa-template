@@ -1,20 +1,20 @@
-import { IconChartDots, IconCrown, IconDatabase } from "@tabler/icons-react";
+import { IconDiscount2, IconHelpCircle, IconLayout } from "@tabler/icons-react";
 
 const NAVS = [
   {
-    label: "Data Bidang",
-    path: "/data",
-    icon: IconDatabase,
-  },
-  {
     label: "Dashboard",
     path: "/dashboard",
-    icon: IconChartDots,
+    icon: IconLayout,
   },
   {
-    label: "Upgrade",
-    path: "/upgrade",
-    icon: IconCrown,
+    label: "Pricing",
+    path: "/pricing",
+    icon: IconDiscount2,
+  },
+  {
+    label: "Help Center",
+    path: "/help-center",
+    icon: IconHelpCircle,
   },
 ];
 

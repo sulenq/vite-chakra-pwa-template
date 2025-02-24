@@ -1,5 +1,5 @@
 import NAVS from "@/constant/navs";
-import { IMAGES_PATH } from "@/constant/path";
+import { useThemeConfig } from "@/context/useThemeConfig";
 import useCallBackOnNavigate from "@/hooks/useCallBackOnNavigate";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import {
@@ -20,6 +20,7 @@ import FloatCounter from "../ui-custom/FloatCounter";
 import Heading5 from "../ui-custom/Heading5";
 import { Avatar } from "../ui/avatar";
 import { ColorModeButton } from "../ui/color-mode";
+import { Tooltip } from "../ui/tooltip";
 
 interface Props {
   label?: string;
@@ -27,6 +28,9 @@ interface Props {
   activePath?: string;
 }
 const NavContainer = ({ label, children, activePath }: Props) => {
+  // Context
+  const { themeConfig } = useThemeConfig();
+
   // States, Refs
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -46,35 +50,41 @@ const NavContainer = ({ label, children, activePath }: Props) => {
           const active = activePath === nav.path;
 
           return (
-            <Link key={i} to={nav.link}>
-              <BButton
-                iconButton
-                unclicky
-                variant={"ghost"}
-                color={active ? "fg" : "fg.muted"}
-                position={"relative"}
+            <Link key={i} to={nav.path}>
+              <Tooltip
+                content={nav.label}
+                positioning={{ placement: "right" }}
+                contentProps={{ ml: 2 }}
               >
-                {active && (
-                  <Box
-                    w={"12px"}
-                    h={"2px"}
-                    bg={"p.500"}
-                    position={"absolute"}
-                    bottom={0}
-                  />
-                )}
-
-                <FloatCounter
-                  circleProps={{ h: "18px", fontSize: "xs", mt: 1, mr: 1 }}
-                  display={"none"}
+                <BButton
+                  iconButton
+                  unclicky
+                  variant={"ghost"}
+                  color={active ? "fg" : "fg.muted"}
+                  position={"relative"}
                 >
-                  2
-                </FloatCounter>
+                  {active && (
+                    <Box
+                      w={"12px"}
+                      h={"2px"}
+                      bg={"p.500"}
+                      position={"absolute"}
+                      bottom={0}
+                    />
+                  )}
 
-                <Icon fontSize={"lg"} flexShrink={0} {...nav?.iconProps}>
-                  <nav.icon strokeWidth={1.5} />
-                </Icon>
-              </BButton>
+                  <FloatCounter
+                    circleProps={{ h: "18px", fontSize: "xs", mt: 1, mr: 1 }}
+                    display={"none"}
+                  >
+                    2
+                  </FloatCounter>
+
+                  <Icon fontSize={"lg"} flexShrink={0} {...nav?.iconProps}>
+                    <nav.icon strokeWidth={1.5} />
+                  </Icon>
+                </BButton>
+              </Tooltip>
             </Link>
           );
         })}
@@ -84,16 +94,22 @@ const NavContainer = ({ label, children, activePath }: Props) => {
   const NavList2 = () => {
     return (
       <>
-        <BButton
-          iconButton
-          unclicky
-          variant={"ghost"}
-          color={activePath === "/settings" ? "fg" : "fg.muted"}
+        <Tooltip
+          content={"Pengaturan"}
+          positioning={{ placement: "right" }}
+          contentProps={{ ml: 2 }}
         >
-          <Icon fontSize={"lg"} flexShrink={0}>
-            <IconSettings strokeWidth={1.5} />
-          </Icon>
-        </BButton>
+          <BButton
+            iconButton
+            unclicky
+            variant={"ghost"}
+            color={activePath === "/settings" ? "fg" : "fg.muted"}
+          >
+            <Icon fontSize={"lg"} flexShrink={0}>
+              <IconSettings strokeWidth={1.5} />
+            </Icon>
+          </BButton>
+        </Tooltip>
 
         {!iss && <Separator w={"full"} mb={2} />}
 
@@ -114,7 +130,7 @@ const NavContainer = ({ label, children, activePath }: Props) => {
         <VStack
           w={"fit"}
           align={"center"}
-          px={3}
+          px={2}
           py={4}
           overflowY={"auto"}
           overflowX={"hidden"}
@@ -124,10 +140,9 @@ const NavContainer = ({ label, children, activePath }: Props) => {
           borderColor={"border.muted"}
         >
           <Image
-            src={`${IMAGES_PATH}/logo_graphic.png`}
+            src={themeConfig.logo}
             h={"24px"}
             objectFit={"contain"}
-            mt={1}
             mb={4}
           />
 
@@ -154,12 +169,13 @@ const NavContainer = ({ label, children, activePath }: Props) => {
           justify={"space-between"}
           p={2}
           pl={4}
-          borderColor={"d2"}
           position={"sticky"}
           top={0}
-          bg={"bgContent"}
           zIndex={2}
           mb={1}
+          // bg={"body"}
+          // borderBottom={"1px solid"}
+          // borderColor={"border.muted"}
         >
           <Heading5 fontWeight={"bold"} truncate>
             {label}

@@ -1,9 +1,11 @@
 import BButton from "@/components/ui-custom/BButton";
+import { useThemeConfig } from "@/context/useThemeConfig";
 import { Text, VStack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 export default function MaintenancePage() {
   const currentYear = new Date().getFullYear();
+  const { themeConfig } = useThemeConfig();
 
   return (
     <VStack h={"100vh"} gap={0}>
@@ -18,7 +20,9 @@ export default function MaintenancePage() {
         </Text>
 
         <Link to={"/"}>
-          <BButton w="full">Kembali ke halaman utama</BButton>
+          <BButton w="full" colorPalette={themeConfig.colorPalette}>
+            Kembali ke halaman utama
+          </BButton>
         </Link>
       </VStack>
 
