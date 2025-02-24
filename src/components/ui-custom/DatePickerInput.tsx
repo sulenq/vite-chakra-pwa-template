@@ -19,7 +19,7 @@ import {
   useFieldContext,
 } from "@chakra-ui/react";
 import {
-  IconCalendarDue,
+  IconCalendar,
   IconCaretLeftFilled,
   IconCaretRightFilled,
 } from "@tabler/icons-react";
@@ -252,7 +252,7 @@ const DatePickerInput = ({
             )}
 
             <Icon fontSize={"1.1rem"} opacity={0.4}>
-              <IconCalendarDue stroke={1.5} />
+              <IconCalendar stroke={1.5} />
             </Icon>
           </HStack>
         </BButton>

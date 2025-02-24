@@ -1465,7 +1465,7 @@ export default function Root() {
                     <ClipboardLabel>Link</ClipboardLabel>
                     <InputGroup
                       width="full"
-                      endElement={<ClipboardIconButton me="-2" />}
+                      endElement={<ClipboardIconButton />}
                     >
                       <ClipboardInput />
                     </InputGroup>
@@ -1805,6 +1805,7 @@ export default function Root() {
                       userSelect="none"
                       borderWidth="2px"
                       borderStyle="dashed"
+                      borderColor={"border.muted"}
                       rounded="lg"
                       padding="4"
                     >

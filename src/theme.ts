@@ -127,6 +127,14 @@ const customConfig = defineConfig({
         },
         current: { value: { base: "{colors.dark}", _dark: "{colors.light}" } },
         ibody: { value: { base: "{colors.dark}", _dark: "{colors.light" } },
+        border: {
+          muted: {
+            value: {
+              base: "#EBEBEC !important",
+              _dark: "#19191C !important",
+            },
+          },
+        },
         p: {
           solid: { value: { base: "{colors.p.500}", _dark: "{colors.p.500}" } },
           contrast: { value: "{colors.p.50}" },

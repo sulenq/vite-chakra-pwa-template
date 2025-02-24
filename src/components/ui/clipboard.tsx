@@ -4,11 +4,11 @@ import {
   Clipboard as ChakraClipboard,
   Icon,
   IconButton,
-  Input,
 } from "@chakra-ui/react";
 import { IconCheck, IconClipboard } from "@tabler/icons-react";
 import { forwardRef } from "react";
 import { LuLink } from "react-icons/lu";
+import StringInput from "../ui-custom/StringInput";
 
 const ClipboardIcon = forwardRef<
   HTMLDivElement,
@@ -96,7 +96,7 @@ export const ClipboardLink = forwardRef<HTMLButtonElement, ButtonProps>(
 export const ClipboardIconButton = forwardRef<HTMLButtonElement, ButtonProps>(
   function ClipboardIconButton(props, ref) {
     return (
-      <ChakraClipboard.Trigger asChild>
+      <ChakraClipboard.Trigger mr={-2} asChild>
         <IconButton ref={ref} size="xs" variant="plain" {...props}>
           <ClipboardIcon />
           <ClipboardCopyText srOnly />
@@ -110,7 +110,7 @@ export const ClipboardInput = forwardRef<HTMLInputElement, InputProps>(
   function ClipboardInputElement(props, ref) {
     return (
       <ChakraClipboard.Input asChild>
-        <Input ref={ref} {...props} />
+        <StringInput fRef={ref} {...props} />
       </ChakraClipboard.Input>
     );
   }

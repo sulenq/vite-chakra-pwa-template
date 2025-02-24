@@ -72,6 +72,7 @@ export default function StringInput({
           placeholder={placeholder}
           borderColor={fc?.invalid || invalid ? "border.error" : "border.muted"}
           fontWeight={"medium"}
+          outline={"none !important"}
           _focus={{ borderColor: themeConfig.primaryColor }}
           autoComplete="off"
           {...props}
