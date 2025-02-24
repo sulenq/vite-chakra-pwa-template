@@ -17,6 +17,10 @@ const customConfig = defineConfig({
         d2: { value: "#7e7e7e20" },
         d3: { value: "#7e7e7e36" },
         dt: { value: "#858585c1" },
+        gray: {
+          800: { value: "#19191C" },
+          // 900: { value: "#EBEBEC" },
+        },
         p: {
           50: { value: "#f5faff" },
           100: { value: "#CCE7FF" },
