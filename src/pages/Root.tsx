@@ -76,7 +76,6 @@ import { toaster } from "@/components/ui/toaster";
 import { Tooltip } from "@/components/ui/tooltip";
 import { Interface__Select } from "@/constant/interfaces";
 import { OPTIONS_RELIGION } from "@/constant/selectOptions";
-import useAuthMiddleware from "@/context/useAuthMiddleware";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
@@ -438,8 +437,6 @@ const DatePickerDemo = () => {
       console.log(values);
     },
   });
-
-  console.log(formik.values);
 
   return (
     <>
@@ -1331,8 +1328,6 @@ const TableComponentDemo = () => {
 
 export default function Root() {
   const { themeConfig } = useThemeConfig();
-  const { authToken } = useAuthMiddleware();
-  console.log(authToken);
 
   return (
     <CContainer minH={"100dvh"} overflowX={"clip"} pt={"0 !important"}>

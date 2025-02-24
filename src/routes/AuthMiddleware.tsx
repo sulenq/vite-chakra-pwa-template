@@ -69,6 +69,8 @@ const AuthMiddleware = ({
 
   return (
     <>
+      {!authToken && <Navigate to={redirectTo} />}
+
       {(loading || !permissions) && (
         <Center w={"100w"} minH={"100dvh"} color={"fg.subtle"}>
           <Center position={"relative"}>
