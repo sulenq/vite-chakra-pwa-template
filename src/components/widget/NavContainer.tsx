@@ -169,12 +169,15 @@ const NavContainer = ({ label, children, activePath }: Props) => {
           borderRight={"1px solid"}
           borderColor={"border.muted"}
         >
-          <Image
-            src={themeConfig.logo}
-            h={"24px"}
-            objectFit={"contain"}
-            mb={4}
-          />
+          <Link to={"/"}>
+            <Image
+              src={themeConfig.logo}
+              w={"20px"}
+              objectFit={"contain"}
+              mb={4}
+              mt={"2px"}
+            />
+          </Link>
 
           <VStack justify={"center"} flex={1}>
             <NavList />
