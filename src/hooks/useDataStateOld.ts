@@ -36,7 +36,7 @@ const useDataStateOld = <T>({
   const abortControllerRef = useRef<AbortController | null>(null);
 
   const { req, response, loading, error, status } = useRequest({
-    showSuccessToast: false,
+    showToast: false,
   });
 
   // useRef to store a stable reference to the request function
