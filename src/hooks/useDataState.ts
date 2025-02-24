@@ -37,7 +37,7 @@ const useDataState = <T>({
   const [pagination, setPagination] = useState<any>(undefined);
   const { rt } = useRenderTrigger();
   const { req, response, loading, error, status } = useRequest({
-    showSuccessToast: false,
+    showToast: false,
   });
 
   // Requset function

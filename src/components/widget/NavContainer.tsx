@@ -94,7 +94,7 @@ const NavContainer = ({ label, children, activePath }: Props) => {
                     2
                   </FloatCounter>
 
-                  <Icon fontSize={"lg"} flexShrink={0} {...nav?.iconProps}>
+                  <Icon flexShrink={0} w={"30px"} {...nav?.iconProps}>
                     <nav.icon strokeWidth={1.5} />
                   </Icon>
                 </BButton>
