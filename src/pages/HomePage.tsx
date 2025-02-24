@@ -251,7 +251,7 @@ const HomePage = () => {
             <ItemHeaderContainer>
               <HStack>
                 <Icon fontSize={"xl"}>
-                  <IconDiscount2 size={20} stroke={1.5} />
+                  <IconDiscount2 size={20} />
                 </Icon>
 
                 <Text fontWeight={"bold"}>Informasi Langganan</Text>
@@ -350,8 +350,8 @@ const HomePage = () => {
         >
           <ItemHeaderContainer>
             <HStack>
-              <Icon fontSize={"xl"}>
-                <IconHistory />
+              <Icon>
+                <IconHistory size={20} />
               </Icon>
 
               <Text fontWeight={"bold"}>Aktivitas</Text>
