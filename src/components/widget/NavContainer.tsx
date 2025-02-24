@@ -75,7 +75,7 @@ const NavContainer = ({ label, children, activePath }: Props) => {
       <Box
         w={"12px"}
         h={"2px"}
-        bg={"p.500"}
+        bg={themeConfig.primaryColor}
         position={"absolute"}
         bottom={"-2px"}
         {...props}
@@ -202,9 +202,6 @@ const NavContainer = ({ label, children, activePath }: Props) => {
           top={0}
           zIndex={2}
           mb={1}
-          // bg={"body"}
-          // borderBottom={"1px solid"}
-          // borderColor={"border.muted"}
         >
           <Heading5 fontWeight={"bold"} truncate>
             {label}

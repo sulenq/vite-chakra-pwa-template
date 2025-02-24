@@ -22,7 +22,7 @@ const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   },
   {
     path: "/help-center",
-    label: "Help Center",
+    label: "Pusat Bantuan",
     element: <HomePage />,
   },
   {

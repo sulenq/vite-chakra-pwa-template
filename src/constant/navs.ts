@@ -16,7 +16,7 @@ const NAVS = [
     icon: IconDiscount2,
   },
   {
-    label: "Help Center",
+    label: "Pusat Bantuan",
     path: "/help-center",
     icon: IconHelpCircle,
   },
