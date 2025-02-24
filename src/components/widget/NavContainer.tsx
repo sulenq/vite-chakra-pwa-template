@@ -4,6 +4,8 @@ import useCallBackOnNavigate from "@/hooks/useCallBackOnNavigate";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import {
   Box,
+  BoxProps,
+  Center,
   HStack,
   Icon,
   Image,
@@ -43,6 +45,18 @@ const NavContainer = ({ label, children, activePath }: Props) => {
   const iss = useIsSmScreenWidth();
 
   // Component
+  const ActiveNavIndicator = ({ ...props }: BoxProps) => {
+    return (
+      <Box
+        w={"12px"}
+        h={"2px"}
+        bg={"p.500"}
+        position={"absolute"}
+        bottom={0}
+        {...props}
+      />
+    );
+  };
   const NavList = () => {
     return (
       <>
@@ -94,31 +108,47 @@ const NavContainer = ({ label, children, activePath }: Props) => {
   const NavList2 = () => {
     return (
       <>
-        <Tooltip
-          content={"Pengaturan"}
-          positioning={{ placement: "right" }}
-          contentProps={{ ml: 2 }}
-        >
-          <BButton
-            iconButton
-            unclicky
-            variant={"ghost"}
-            color={activePath === "/settings" ? "fg" : "fg.muted"}
+        <Link to={"/settings"}>
+          <Tooltip
+            content={"Pengaturan"}
+            positioning={{ placement: "right" }}
+            contentProps={{ ml: 2 }}
           >
-            <Icon fontSize={"lg"} flexShrink={0}>
-              <IconSettings strokeWidth={1.5} />
-            </Icon>
-          </BButton>
-        </Tooltip>
+            <BButton
+              iconButton
+              unclicky
+              variant={"ghost"}
+              color={activePath === "/settings" ? "fg" : "fg.muted"}
+            >
+              {activePath === "/settings" && <ActiveNavIndicator />}
+
+              <Icon fontSize={"lg"} flexShrink={0}>
+                <IconSettings strokeWidth={1.5} />
+              </Icon>
+            </BButton>
+          </Tooltip>
+        </Link>
 
         {!iss && <Separator w={"full"} mb={2} />}
 
-        <Avatar
-          name="Jolitos Kurniawan"
-          cursor={"pointer"}
-          size={iss ? "2xs" : "xs"}
-          // borderRadius={6}
-        />
+        <Link to={"/profile"}>
+          <Center
+            w={"40px"}
+            h={"40px"}
+            borderRadius={"full"}
+            // border={activePath === "/profile" ? "1px solid" : ""}
+            borderColor={themeConfig.primaryColor}
+            position={"relative"}
+          >
+            {activePath === "/profile" && <ActiveNavIndicator bottom={-1} />}
+
+            <Avatar
+              name="Jolitos Kurniawan"
+              cursor={"pointer"}
+              size={iss ? "2xs" : "xs"}
+            />
+          </Center>
+        </Link>
       </>
     );
   };

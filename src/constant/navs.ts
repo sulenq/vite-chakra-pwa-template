@@ -1,10 +1,14 @@
-import { IconDiscount2, IconHelpCircle, IconLayout } from "@tabler/icons-react";
+import {
+  IconDiscount2,
+  IconHelpCircle,
+  IconSmartHome,
+} from "@tabler/icons-react";
 
 const NAVS = [
   {
-    label: "Dashboard",
-    path: "/dashboard",
-    icon: IconLayout,
+    label: "Home",
+    path: "/home",
+    icon: IconSmartHome,
   },
   {
     label: "Pricing",

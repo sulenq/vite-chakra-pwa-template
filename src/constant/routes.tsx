@@ -15,6 +15,26 @@ const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
     label: "Home",
     element: <HomePage />,
   },
+  {
+    path: "/pricing",
+    label: "Pricing",
+    element: <HomePage />,
+  },
+  {
+    path: "/help-center",
+    label: "Help Center",
+    element: <HomePage />,
+  },
+  {
+    path: "/settings",
+    label: "Pengaturan",
+    element: <HomePage />,
+  },
+  {
+    path: "/profile",
+    label: "Profile",
+    element: <HomePage />,
+  },
 ];
 
 export { PRIVATE_ROUTES, ROUTES };
