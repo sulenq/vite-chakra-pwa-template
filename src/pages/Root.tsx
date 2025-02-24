@@ -1357,7 +1357,7 @@ export default function Root() {
           />
 
           <Text fontSize={"1.25rem"} fontWeight={"bold"}>
-            Mahaooo
+            Exium
           </Text>
 
           <Link to={"/home"}>
@@ -1980,7 +1980,7 @@ export default function Root() {
                   transition={"200ms"}
                   fontWeight={700}
                 >
-                  Mahaooo
+                  Exium
                 </Text>
               </a>
             </HStack>
