@@ -22,6 +22,7 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import StringInput from "./StringInput";
+import { useThemeConfig } from "@/context/useThemeConfig";
 
 interface Props extends BoxProps {
   children?: any;
@@ -55,19 +56,23 @@ const PeriodPickerDisclosure = ({
     onClose
   );
 
+  // Context
+  const { themeConfig } = useThemeConfig();
+
+  // States, Refs
   const [monthLocal, setMonthLocal] = useState<number>(month);
   const [yearLocal, setYearLocal] = useState<number>(year);
+  const validYear = (year: number) => {
+    return year >= 100 && year <= 270000;
+  };
 
+  // Initial setter
   useEffect(() => {
     setMonthLocal(month);
   }, [month]);
   useEffect(() => {
     setYearLocal(year);
   }, [year]);
-
-  const validYear = (year: number) => {
-    return year >= 100 && year <= 270000;
-  };
 
   // Handle year increment decrement w/ hold button
   const intervalIncrementRef = useRef<ReturnType<typeof setInterval> | null>(
@@ -123,6 +128,7 @@ const PeriodPickerDisclosure = ({
     }
   }
 
+  // Handle confirm
   function onConfirm() {
     if (setMonth) {
       setMonth(monthLocal);
@@ -157,9 +163,8 @@ const PeriodPickerDisclosure = ({
                 <BButton
                   key={i}
                   flex={"1 1 100px"}
-                  borderColor={i === monthLocal ? "ibody" : ""}
-                  variant={"outline"}
-                  // bg={i === monthLocal ? "var(--p500a5) !important" : ""}
+                  variant={i === monthLocal ? "surface" : "outline"}
+                  color={i === monthLocal ? "" : "dt"}
                   onClick={() => {
                     setMonthLocal(i);
                   }}
@@ -233,7 +238,11 @@ const PeriodPickerDisclosure = ({
           </DisclosureBody>
 
           <DisclosureFooter>
-            <BButton onClick={onConfirm} disabled={!validYear(yearLocal)}>
+            <BButton
+              onClick={onConfirm}
+              colorPalette={themeConfig.colorPalette}
+              disabled={!validYear(yearLocal)}
+            >
               Konfirmasi
             </BButton>
           </DisclosureFooter>
