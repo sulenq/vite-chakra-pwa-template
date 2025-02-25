@@ -12,7 +12,7 @@ const ROUTES: Interface__Route[] = [
 const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   {
     path: "/home",
-    label: "Home",
+    label: "Beranda",
     element: <HomePage />,
   },
   {

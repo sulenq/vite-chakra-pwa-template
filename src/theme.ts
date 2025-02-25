@@ -5,6 +5,9 @@ const customConfig = defineConfig({
     "html, body": {
       bg: "body",
     },
+    "p, h1, h2, h3, h4, h5, h6, a": {
+      color: "text",
+    },
   },
   theme: {
     tokens: {
@@ -230,6 +233,7 @@ const customConfig = defineConfig({
     },
     semanticTokens: {
       colors: {
+        text: { value: { base: "{colors.dark}", _dark: "#ccc" } },
         body: { value: { base: "{colors.light}", _dark: "{colors.dark}" } },
         bgContent: {
           value: { base: "{colors.bg.subtle}", _dark: "#080808" },
@@ -237,7 +241,6 @@ const customConfig = defineConfig({
         bodytrans: {
           value: { base: "{colors.light}aa", _dark: "{colors.dark}aa" },
         },
-        current: { value: { base: "{colors.dark}", _dark: "{colors.light}" } },
         ibody: { value: { base: "{colors.dark}", _dark: "{colors.light}" } },
         border: {
           muted: {

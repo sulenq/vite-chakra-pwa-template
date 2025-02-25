@@ -28,7 +28,7 @@ const HomePage = () => {
     name: "Sulenq Wazawsky",
     avatar: "https://bit.ly/sage-adebayo",
     email: "sulengpol@gmail.com",
-    permissions: [],
+    permissions: [], // number array
     plan: {
       id: 1,
       label: "Basic",
@@ -48,120 +48,120 @@ const HomePage = () => {
     },
     current_activity: [
       {
-        activity_type: {
-          type: "menambahkan data bidang",
+        activity: {
+          label: "menambahkan data bidang",
           description: "menambahkan data bidang.",
         },
         description_addition: "Total ditambahkan: 1",
         created_at: "2025-01-25T10:00:00Z",
       },
       {
-        activity_type: {
-          type: "mengubah data bidang",
+        activity: {
+          label: "mengubah data bidang",
           description: "mengubah data bidang.",
         },
         description_addition: "Bidang id: 2, no sertifikat: 123456789",
         created_at: "2025-01-25T10:05:00Z",
       },
       {
-        activity_type: {
-          type: "menghapus data bidang",
+        activity: {
+          label: "menghapus data bidang",
           description: "menghapus data bidang.",
         },
         description_addition: "Bidang id: 3, no sertifikat: 987654321",
         created_at: "2025-01-25T10:10:00Z",
       },
       {
-        activity_type: {
-          type: "upgrade ke plan",
+        activity: {
+          label: "upgrade ke plan",
           description: "melakukan upgrade plan.",
         },
         description_addition: "Plan: Premium",
         created_at: "2025-01-25T10:15:00Z",
       },
       {
-        activity_type: {
-          type: "upgrade ke plan",
+        activity: {
+          label: "upgrade ke plan",
           description: "melakukan upgrade plan.",
         },
         description_addition: "Plan: Premium",
         created_at: "2025-01-25T10:15:00Z",
       },
       {
-        activity_type: {
-          type: "upgrade ke plan",
+        activity: {
+          label: "upgrade ke plan",
           description: "melakukan upgrade plan.",
         },
         description_addition: "Plan: Premium",
         created_at: "2025-01-25T10:15:00Z",
       },
       {
-        activity_type: {
-          type: "upgrade ke plan",
+        activity: {
+          label: "upgrade ke plan",
           description: "melakukan upgrade plan.",
         },
         description_addition: "Plan: Premium",
         created_at: "2025-01-25T10:15:00Z",
       },
       {
-        activity_type: {
-          type: "upgrade ke plan",
+        activity: {
+          label: "upgrade ke plan",
           description: "melakukan upgrade plan.",
         },
         description_addition: "Plan: Premium",
         created_at: "2025-01-25T10:15:00Z",
       },
       {
-        activity_type: {
-          type: "upgrade ke plan",
+        activity: {
+          label: "upgrade ke plan",
           description: "melakukan upgrade plan.",
         },
         description_addition: "Plan: Premium",
         created_at: "2025-01-25T10:15:00Z",
       },
       {
-        activity_type: {
-          type: "upgrade ke plan",
+        activity: {
+          label: "upgrade ke plan",
           description: "melakukan upgrade plan.",
         },
         description_addition: "Plan: Premium",
         created_at: "2025-01-25T10:15:00Z",
       },
       {
-        activity_type: {
-          type: "upgrade ke plan",
+        activity: {
+          label: "upgrade ke plan",
           description: "melakukan upgrade plan.",
         },
         description_addition: "Plan: Premium",
         created_at: "2025-01-25T10:15:00Z",
       },
       {
-        activity_type: {
-          type: "upgrade ke plan",
+        activity: {
+          label: "upgrade ke plan",
           description: "melakukan upgrade plan.",
         },
         description_addition: "Plan: Premium",
         created_at: "2025-01-25T10:15:00Z",
       },
       {
-        activity_type: {
-          type: "upgrade ke plan",
+        activity: {
+          label: "upgrade ke plan",
           description: "melakukan upgrade plan.",
         },
         description_addition: "Plan: Premium",
         created_at: "2025-01-25T10:15:00Z",
       },
       {
-        activity_type: {
-          type: "upgrade ke plan",
+        activity: {
+          label: "upgrade ke plan",
           description: "melakukan upgrade plan.",
         },
         description_addition: "Plan: Premium",
         created_at: "2025-01-25T10:15:00Z",
       },
       {
-        activity_type: {
-          type: "upgrade ke plan",
+        activity: {
+          label: "upgrade ke plan",
           description: "melakukan upgrade plan.",
         },
         description_addition: "Plan: Premium",
@@ -368,7 +368,7 @@ const HomePage = () => {
                 <CContainer key={i}>
                   <HStack>
                     <Text>
-                      <b>{user.name}</b>, {item.activity_type.description}{" "}
+                      <b>{user.name}</b>, {item.activity.label}{" "}
                       {item.description_addition}
                     </Text>
                   </HStack>

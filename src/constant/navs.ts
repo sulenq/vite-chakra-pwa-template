@@ -6,7 +6,7 @@ import {
 
 const NAVS = [
   {
-    label: "Home",
+    label: "Beranda",
     path: "/home",
     icon: IconSmartHome,
   },
