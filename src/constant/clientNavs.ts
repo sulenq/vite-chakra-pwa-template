@@ -4,7 +4,7 @@ import {
   IconSmartHome,
 } from "@tabler/icons-react";
 
-const NAVS = [
+const CLIENT_NAVS = [
   {
     label: "Beranda",
     path: "/home",
@@ -22,4 +22,4 @@ const NAVS = [
   },
 ];
 
-export default NAVS;
+export default CLIENT_NAVS;

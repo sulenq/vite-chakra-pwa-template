@@ -1,6 +1,6 @@
 import RootPage from "@/pages/RootPage";
 import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
-import ClientHomePage from "@/pages/ClientHomePage";
+import ClientHomePage from "@/pages/client/ClientHomePage";
 
 const ROUTES: Interface__Route[] = [
   {

@@ -1,4 +1,4 @@
-import NAVS from "@/constant/navs";
+import CLIENT_NAVS from "@/constant/clientNavs";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useCallBackOnNavigate from "@/hooks/useCallBackOnNavigate";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
@@ -33,7 +33,7 @@ interface Props {
   children?: any;
   activePath?: string;
 }
-const NavContainer = ({ label, children, activePath }: Props) => {
+const ClientNavContainer = ({ label, children, activePath }: Props) => {
   // Context
   const { themeConfig } = useThemeConfig();
 
@@ -88,7 +88,7 @@ const NavContainer = ({ label, children, activePath }: Props) => {
   const NavList = () => {
     return (
       <>
-        {NAVS.map((nav: any, i) => {
+        {CLIENT_NAVS.map((nav: any, i) => {
           return (
             <Link key={i} to={nav.path}>
               <Tooltip
@@ -256,4 +256,4 @@ const NavContainer = ({ label, children, activePath }: Props) => {
   );
 };
 
-export default NavContainer;
+export default ClientNavContainer;
