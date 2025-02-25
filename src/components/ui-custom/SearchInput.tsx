@@ -1,11 +1,11 @@
 import { Center, Icon, IconButton, InputProps } from "@chakra-ui/react";
 import { IconSearch, IconX } from "@tabler/icons-react";
 import { Dispatch, useCallback, useEffect, useState } from "react";
-import { InputGroup } from "../ui/input-group";
+import { InputGroup, InputGroupProps } from "../ui/input-group";
 import { Tooltip } from "../ui/tooltip";
 import StringInput from "./StringInput";
 
-interface Props {
+interface Props extends Omit<InputGroupProps, "children"> {
   inputValue?: string;
   onChangeSetter?: Dispatch<string>;
   name?: string;
@@ -16,6 +16,7 @@ interface Props {
   icon?: any;
   invalid?: boolean;
   noIcon?: boolean;
+  children?: React.ReactNode;
 }
 
 export default function SearchInput({
@@ -29,6 +30,7 @@ export default function SearchInput({
   icon,
   invalid = false,
   noIcon = false,
+  ...props
 }: Props) {
   const [searchLocal, setSearchLocal] = useState<string>(inputValue || "");
 
@@ -60,14 +62,29 @@ export default function SearchInput({
   return (
     <Tooltip content={tooltipLabel || placeholder}>
       <InputGroup
+        flex={"1 1 200px"}
         w={"full"}
         startElement={
-          !noIcon && <Icon w={"20px"}>{icon || <IconSearch />}</Icon>
+          !noIcon && (
+            <Icon
+              ml={
+                inputProps?.size === "xs" || inputProps?.size === "sm" ? -1 : ""
+              }
+              size={
+                inputProps?.size === "xs" || inputProps?.size === "sm"
+                  ? "sm"
+                  : "md"
+              }
+            >
+              {icon || <IconSearch />}
+            </Icon>
+          )
         }
+        {...props}
       >
         <>
           <StringInput
-            pl={10}
+            pl={inputProps?.size === "xs" || inputProps?.size === "sm" ? 8 : 10}
             name={name}
             fRef={inputRef ? inputRef : null}
             placeholder={placeholder}
@@ -97,7 +114,11 @@ export default function SearchInput({
                 colorScheme="error"
                 variant={"plain"}
                 borderRadius={"full"}
-                size={inputProps?.size === "sm" ? "xs" : "md"}
+                size={
+                  inputProps?.size === "xs" || inputProps?.size === "sm"
+                    ? "xs"
+                    : "md"
+                }
                 color={"fg.error"}
               >
                 <Icon>

@@ -3,12 +3,16 @@ import CContainer from "@/components/ui-custom/CContainer";
 import InfoPopover from "@/components/ui-custom/InfoPopover";
 import ItemContainer from "@/components/ui-custom/ItemContainer";
 import ItemHeaderContainer from "@/components/ui-custom/ItemHeaderContainer";
+import SearchInput from "@/components/ui-custom/SearchInput";
+import TableComponent from "@/components/ui-custom/TableComponent";
 import { Avatar } from "@/components/ui/avatar";
+import { Status } from "@/components/ui/status";
 import { PRICING_BENEFITS } from "@/constant/pricing";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import useScreen from "@/hooks/useScreen";
 import formatCount from "@/utils/formatCount";
 import formatDate from "@/utils/formatDate";
+import formatNumber from "@/utils/formatNumber";
 import getUserFromLocalStorage from "@/utils/getUserFromLocalStorage";
 import { Badge, Group, HStack, Icon, Stack, Text } from "@chakra-ui/react";
 import {
@@ -17,6 +21,7 @@ import {
   IconDiscount2,
   IconHistory,
   IconLogout,
+  IconReceipt2,
   IconX,
 } from "@tabler/icons-react";
 import { useRef } from "react";
@@ -24,28 +29,31 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
   // States, Refs
-  // const BILLING_CYCLE = {
-  //   monthly: {
-  //     label: "Ditagih setiap bulan",
-  //   },
-  //   yearly: {
-  //     label: "Ditagih setiap tahun",
-  //   },
-  // };
-  // const PRICING = {
-  //   essential: {
-  //     name: "Essential",
-  //     monthly_base_price: 500000,
-  //   },
-  //   bussiness: {
-  //     name: "Bussiness",
-  //     monthly_base_price: 500000,
-  //   },
-  //   enterprise: {
-  //     name: "Enterprise",
-  //     monthly_base_price: 0,
-  //   },
-  // };
+  const BILLING_CYCLES: Record<string, { label: string }> = {
+    monthly: {
+      label: "Ditagih setiap bulan",
+    },
+    yearly: {
+      label: "Ditagih setiap tahun",
+    },
+  };
+  const PRICING_LIST: Record<
+    string,
+    { name: string; monthly_base_price: number }
+  > = {
+    essential: {
+      name: "Essential",
+      monthly_base_price: 500000,
+    },
+    business: {
+      name: "Business",
+      monthly_base_price: 500000,
+    },
+    enterprise: {
+      name: "Enterprise",
+      monthly_base_price: 0,
+    },
+  };
   const ACTIVITY_TYPES: Record<string, { title: string; description: string }> =
     {
       subscription_purchase: {
@@ -70,11 +78,13 @@ const HomePage = () => {
       },
     };
 
-  const user_dummy = {
+  const dummy_user = {
     name: "Sulenq Wazawsky",
     avatar: "https://bit.ly/sage-adebayo",
     email: "sulengpol@gmail.com",
     permissions: [], // number array
+  };
+  const dummy_data = {
     plan: {
       id: 1,
       label: "Essential",
@@ -93,7 +103,7 @@ const HomePage = () => {
       },
       best: false,
     },
-    current_activities: [
+    activities: [
       {
         activity_type: "subscription_purchase",
         created_at: "2025-01-25T10:00:00Z",
@@ -127,9 +137,118 @@ const HomePage = () => {
         created_at: "2025-01-25T10:00:00Z",
       },
     ],
+    invoice: [
+      {
+        id: 5,
+        pricing: "enterprise",
+        subscription_start_date: new Date("2023-11-20T00:00:00Z").toISOString(),
+        subscription_end_date: new Date("2024-11-20T00:00:00Z").toISOString(),
+        billing_cycle: "yearly",
+        paid: false,
+        total: 5000000,
+      },
+      {
+        id: 4,
+        pricing: "business",
+        subscription_start_date: new Date("2024-03-01T00:00:00Z").toISOString(),
+        subscription_end_date: new Date("2024-04-01T00:00:00Z").toISOString(),
+        billing_cycle: "monthly",
+        paid: true,
+        total: 250000,
+      },
+      {
+        id: 3,
+        pricing: "essential",
+        subscription_start_date: new Date("2023-12-10T00:00:00Z").toISOString(),
+        subscription_end_date: new Date("2024-12-10T00:00:00Z").toISOString(),
+        billing_cycle: "yearly",
+        paid: true,
+        total: 2400000,
+      },
+      {
+        id: 2,
+        pricing: "essential",
+        subscription_start_date: new Date("2024-02-15T00:00:00Z").toISOString(),
+        subscription_end_date: new Date("2024-03-15T00:00:00Z").toISOString(),
+        billing_cycle: "monthly",
+        paid: true,
+        total: 100000,
+      },
+      {
+        id: 1,
+        pricing: "essential",
+        subscription_start_date: new Date("2024-01-01T00:00:00Z").toISOString(),
+        subscription_end_date: new Date("2025-01-01T00:00:00Z").toISOString(),
+        billing_cycle: "yearly",
+        paid: true,
+        total: 1200000,
+      },
+    ],
   };
-  const user = getUserFromLocalStorage() || user_dummy;
+  const user = getUserFromLocalStorage() || dummy_user;
+  const data = dummy_data;
   const leftContainerRef = useRef<HTMLDivElement>(null);
+  const ths = [
+    {
+      th: "Pricing",
+      sortable: true,
+    },
+    {
+      th: "Berlangganan",
+      sortable: true,
+    },
+    {
+      th: "Berakhir",
+      sortable: true,
+    },
+    {
+      th: "Siklus Penagihan",
+      sortable: true,
+    },
+    {
+      th: "Status Pembayaran",
+      sortable: true,
+    },
+    {
+      th: "Total",
+      sortable: true,
+    },
+  ];
+  const tds = data?.invoice.map((item) => {
+    return {
+      id: item.id,
+      columnsFormat: [
+        {
+          value: item.pricing,
+          td: <Text>{PRICING_LIST[item.pricing].name}</Text>,
+        },
+        {
+          value: item.subscription_start_date,
+          td: <Text>{formatDate(item.subscription_start_date)}</Text>,
+        },
+        {
+          value: item.subscription_end_date,
+          td: <Text>{formatDate(item.subscription_end_date)}</Text>,
+        },
+        {
+          value: item.billing_cycle,
+          td: <Text>{BILLING_CYCLES[item.billing_cycle].label}</Text>,
+        },
+        {
+          value: item.paid,
+          td: (
+            <Status colorPalette={item.paid ? "green" : "red"}>
+              {item.paid ? "Terbayar" : "Belum Dibayar"}
+            </Status>
+          ),
+        },
+        {
+          value: item.total,
+          td: <Text>Rp {formatNumber(item.total)}</Text>,
+        },
+      ],
+    };
+  });
 
   // Utils
   const iss = useIsSmScreenWidth();
@@ -233,16 +352,16 @@ const HomePage = () => {
               >
                 <HStack mb={2} justify={"space-between"}>
                   <Text fontSize={"lg"} fontWeight={"semibold"}>
-                    {user.plan.label}
+                    {data.plan.label}
                   </Text>
-                  {user.plan.best && (
+                  {data.plan.best && (
                     <Badge colorPalette={"orange"}>Best Value</Badge>
                   )}
                 </HStack>
 
                 <HStack>
                   <Text fontSize={"2xl"} fontWeight={"bold"}>
-                    IDR {formatCount(user.plan.monthly_price)}
+                    IDR {formatCount(data.plan.monthly_price)}
                   </Text>
                   <Text fontSize={"lg"} color={"fg.muted"}>
                     /bulan
@@ -258,7 +377,7 @@ const HomePage = () => {
                     return (
                       <HStack key={ii}>
                         {/* @ts-ignore */}
-                        {user.plan.benefits[benefit.id as any] ? (
+                        {data.plan.benefits[benefit.id as any] ? (
                           <Icon color={"green.500"}>
                             <IconCheck />
                           </Icon>
@@ -321,13 +440,14 @@ const HomePage = () => {
             </BButton>
           </ItemHeaderContainer>
 
-          <CContainer p={2} overflowY={"auto"} className="scrollY">
-            {user.current_activities.map((item: any, i: number) => {
+          <CContainer p={2} px={1} overflowY={"auto"} className="scrollY">
+            {data.activities.map((item: any, i: number) => {
               return (
                 <CContainer
                   key={i}
                   _hover={{ bg: "bg.muted" }}
                   p={2}
+                  px={3}
                   borderRadius={6}
                   transition={"200ms"}
                   cursor={"pointer"}
@@ -347,6 +467,28 @@ const HomePage = () => {
           </CContainer>
         </ItemContainer>
       </HStack>
+
+      <CContainer px={4} pb={4}>
+        <ItemContainer>
+          <ItemHeaderContainer>
+            <HStack flex={"1 1 0"}>
+              <Icon>
+                <IconReceipt2 size={20} />
+              </Icon>
+
+              <Text fontWeight={"bold"}>Invoice</Text>
+            </HStack>
+
+            <SearchInput
+              maxW={sw < 360 ? "" : "200px"}
+              inputProps={{ size: "xs" }}
+              pb={sw < 360 ? "6px" : ""}
+            />
+          </ItemHeaderContainer>
+
+          <TableComponent originalData={data?.invoice} ths={ths} tds={tds} />
+        </ItemContainer>
+      </CContainer>
     </CContainer>
   );
 };

@@ -76,7 +76,12 @@ const BatchOptions = ({
       <Portal container={tableRef}>
         <MenuContent zIndex={10} minW={"140px"}>
           <CContainer px={2} py={1}>
-            <Text fontSize={"xs"} opacity={0.5} fontWeight={500}>
+            <Text
+              color={"light"}
+              fontSize={"xs"}
+              opacity={0.5}
+              fontWeight={500}
+            >
               {selectedRows.length} Terpilih
             </Text>
           </CContainer>
@@ -91,7 +96,7 @@ const BatchOptions = ({
             }}
             closeOnSelect={false}
           >
-            <Text>Pilih Semua</Text>
+            <Text color={"light"}>Pilih Semua</Text>
             <Checkbox
               borderColor={"d3"}
               checked={selectAllRows}
@@ -895,52 +900,64 @@ const TableComponent = ({
       </CContainer>
 
       {/* Table footer */}
-      {iss && (
-        <CContainer gap={4} mt={4} px={4}>
-          <HStack wrap={"wrap"}>
-            <LimitControl
-              initialLimit={initialLimit}
-              limitControl={limitControl}
-              setLimitControl={setLimitControl}
-              limitOptions={limitOptions}
-              w={"fit"}
-              flex={"1 1 150px"}
-            />
+      {((limitControl && setLimitControl) ||
+        (pageControl && setPageControl) ||
+        footerContent) && (
+        <>
+          {iss && (
+            <CContainer gap={4} mt={4} px={4}>
+              <HStack wrap={"wrap"}>
+                <LimitControl
+                  initialLimit={initialLimit}
+                  limitControl={limitControl}
+                  setLimitControl={setLimitControl}
+                  limitOptions={limitOptions}
+                  w={"fit"}
+                  flex={"1 1 150px"}
+                />
 
-            <PageControl
-              initialPage={initialPage}
-              pageControl={pageControl}
-              setPageControl={setPageControl}
-              pagination={pagination}
-              w={"fit"}
-              flex={"1 1 150px"}
-            />
-          </HStack>
+                <PageControl
+                  initialPage={initialPage}
+                  pageControl={pageControl}
+                  setPageControl={setPageControl}
+                  pagination={pagination}
+                  w={"fit"}
+                  flex={"1 1 150px"}
+                />
+              </HStack>
 
-          <TableFooterNote footerContent={footerContent} />
-        </CContainer>
-      )}
+              <TableFooterNote footerContent={footerContent} />
+            </CContainer>
+          )}
 
-      {!iss && (
-        <SimpleGrid columns={3} gap={4} mt={4} px={4} {...footerContainerProps}>
-          <LimitControl
-            initialLimit={initialLimit}
-            limitControl={limitControl}
-            setLimitControl={setLimitControl}
-            limitOptions={limitOptions}
-            w={"fit"}
-          />
+          {!iss && (
+            <SimpleGrid
+              columns={3}
+              gap={4}
+              mt={4}
+              px={4}
+              {...footerContainerProps}
+            >
+              <LimitControl
+                initialLimit={initialLimit}
+                limitControl={limitControl}
+                setLimitControl={setLimitControl}
+                limitOptions={limitOptions}
+                w={"fit"}
+              />
 
-          <TableFooterNote footerContent={footerContent} />
+              <TableFooterNote footerContent={footerContent} />
 
-          <PageControl
-            initialPage={initialPage}
-            pageControl={pageControl}
-            setPageControl={setPageControl}
-            pagination={pagination}
-            w={"fit"}
-          />
-        </SimpleGrid>
+              <PageControl
+                initialPage={initialPage}
+                pageControl={pageControl}
+                setPageControl={setPageControl}
+                pagination={pagination}
+                w={"fit"}
+              />
+            </SimpleGrid>
+          )}
+        </>
       )}
     </CContainer>
   );
