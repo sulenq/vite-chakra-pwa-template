@@ -5,7 +5,7 @@ const customConfig = defineConfig({
     "html, body": {
       bg: "body",
     },
-    "p, h1, h2, h3, h4, h5, h6, a, label": {
+    "p, h1, h2, h3, h4, h5, h6, a, label, th, td": {
       color: "text",
     },
   },
