@@ -5,7 +5,7 @@ const customConfig = defineConfig({
     "html, body": {
       bg: "body",
     },
-    "p, h1, h2, h3, h4, h5, h6, a": {
+    "p, h1, h2, h3, h4, h5, h6, a, label": {
       color: "text",
     },
   },
@@ -233,7 +233,7 @@ const customConfig = defineConfig({
     },
     semanticTokens: {
       colors: {
-        text: { value: { base: "{colors.dark}", _dark: "#ccc" } },
+        text: { value: { base: "{colors.dark}", _dark: "#ddd" } },
         body: { value: { base: "{colors.light}", _dark: "{colors.dark}" } },
         bgContent: {
           value: { base: "{colors.bg.subtle}", _dark: "#080808" },

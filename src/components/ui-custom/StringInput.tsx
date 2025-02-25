@@ -75,6 +75,7 @@ export default function StringInput({
           outline={"none !important"}
           _focus={{ borderColor: themeConfig.primaryColor }}
           autoComplete="off"
+          color={"text"}
           {...props}
         />
       </Box>
