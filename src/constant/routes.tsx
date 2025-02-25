@@ -1,6 +1,6 @@
 import RootPage from "@/pages/RootPage";
 import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
-import HomePage from "@/pages/HomePage";
+import ClientHomePage from "@/pages/ClientHomePage";
 
 const ROUTES: Interface__Route[] = [
   {
@@ -13,27 +13,27 @@ const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   {
     path: "/home",
     label: "Beranda",
-    element: <HomePage />,
+    element: <ClientHomePage />,
   },
   {
     path: "/pricing",
     label: "Pricing",
-    element: <HomePage />,
+    element: <ClientHomePage />,
   },
   {
     path: "/help-center",
     label: "Pusat Bantuan",
-    element: <HomePage />,
+    element: <ClientHomePage />,
   },
   {
     path: "/settings",
     label: "Pengaturan",
-    element: <HomePage />,
+    element: <ClientHomePage />,
   },
   {
     path: "/profile",
     label: "Profile",
-    element: <HomePage />,
+    element: <ClientHomePage />,
   },
 ];
 

@@ -27,7 +27,7 @@ import {
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 
-const HomePage = () => {
+const ClientHomePage = () => {
   // States, Refs
   const BILLING_CYCLES: Record<string, { label: string }> = {
     monthly: {
@@ -493,4 +493,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default ClientHomePage;
