@@ -10,6 +10,7 @@ const ItemContainer = ({ children, ...props }: Props) => {
       borderRadius={8}
       bg={"body"}
       flex={"1 1 300px"}
+      overflow={"clip"}
       // h={"full"}
       {...props}
     >
