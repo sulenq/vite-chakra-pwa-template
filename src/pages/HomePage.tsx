@@ -24,6 +24,52 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
   // States, Refs
+  // const BILLING_CYCLE = {
+  //   monthly: {
+  //     label: "Ditagih setiap bulan",
+  //   },
+  //   yearly: {
+  //     label: "Ditagih setiap tahun",
+  //   },
+  // };
+  // const PRICING = {
+  //   essential: {
+  //     name: "Essential",
+  //     monthly_base_price: 500000,
+  //   },
+  //   bussiness: {
+  //     name: "Bussiness",
+  //     monthly_base_price: 500000,
+  //   },
+  //   enterprise: {
+  //     name: "Enterprise",
+  //     monthly_base_price: 0,
+  //   },
+  // };
+  const ACTIVITY_TYPES: Record<string, { title: string; description: string }> =
+    {
+      subscription_purchase: {
+        title: "Pembelian Berlangganan",
+        description: "melakukan pembelian berlangganan",
+      },
+      payment: {
+        title: "Pembayaran",
+        description: "melakukan pembelian berlangganan",
+      },
+      name_update: {
+        title: "Update Nama",
+        description: "melakukan pembelian berlangganan",
+      },
+      email_update: {
+        title: "Update Email",
+        description: "melakukan update email",
+      },
+      pasword_update: {
+        title: "Update Password",
+        description: "melakukan update password",
+      },
+    };
+
   const user_dummy = {
     name: "Sulenq Wazawsky",
     avatar: "https://bit.ly/sage-adebayo",
@@ -31,10 +77,11 @@ const HomePage = () => {
     permissions: [], // number array
     plan: {
       id: 1,
-      label: "Basic",
+      label: "Essential",
       monthly_price: 0,
       yearly_price: 0,
-      description: "Paket gratis.",
+      description:
+        "Paket esensial dengan fitur - fitur utama untuk kebutuhan pokok manajemen karyawan.",
       benefits: {
         gap_overlap_detection: true,
         dashboard_access: true,
@@ -46,126 +93,38 @@ const HomePage = () => {
       },
       best: false,
     },
-    current_activity: [
+    current_activities: [
       {
-        activity: {
-          label: "menambahkan data bidang",
-          description: "menambahkan data bidang.",
-        },
-        description_addition: "Total ditambahkan: 1",
+        activity_type: "subscription_purchase",
         created_at: "2025-01-25T10:00:00Z",
       },
       {
-        activity: {
-          label: "mengubah data bidang",
-          description: "mengubah data bidang.",
-        },
-        description_addition: "Bidang id: 2, no sertifikat: 123456789",
-        created_at: "2025-01-25T10:05:00Z",
+        activity_type: "payment",
+        created_at: "2025-01-25T10:00:00Z",
       },
       {
-        activity: {
-          label: "menghapus data bidang",
-          description: "menghapus data bidang.",
-        },
-        description_addition: "Bidang id: 3, no sertifikat: 987654321",
-        created_at: "2025-01-25T10:10:00Z",
+        activity_type: "payment",
+        created_at: "2025-01-25T10:00:00Z",
       },
       {
-        activity: {
-          label: "upgrade ke plan",
-          description: "melakukan upgrade plan.",
-        },
-        description_addition: "Plan: Premium",
-        created_at: "2025-01-25T10:15:00Z",
+        activity_type: "payment",
+        created_at: "2025-01-25T10:00:00Z",
       },
       {
-        activity: {
-          label: "upgrade ke plan",
-          description: "melakukan upgrade plan.",
-        },
-        description_addition: "Plan: Premium",
-        created_at: "2025-01-25T10:15:00Z",
+        activity_type: "subscription_purchase",
+        created_at: "2025-01-25T10:00:00Z",
       },
       {
-        activity: {
-          label: "upgrade ke plan",
-          description: "melakukan upgrade plan.",
-        },
-        description_addition: "Plan: Premium",
-        created_at: "2025-01-25T10:15:00Z",
+        activity_type: "payment",
+        created_at: "2025-01-25T10:00:00Z",
       },
       {
-        activity: {
-          label: "upgrade ke plan",
-          description: "melakukan upgrade plan.",
-        },
-        description_addition: "Plan: Premium",
-        created_at: "2025-01-25T10:15:00Z",
+        activity_type: "payment",
+        created_at: "2025-01-25T10:00:00Z",
       },
       {
-        activity: {
-          label: "upgrade ke plan",
-          description: "melakukan upgrade plan.",
-        },
-        description_addition: "Plan: Premium",
-        created_at: "2025-01-25T10:15:00Z",
-      },
-      {
-        activity: {
-          label: "upgrade ke plan",
-          description: "melakukan upgrade plan.",
-        },
-        description_addition: "Plan: Premium",
-        created_at: "2025-01-25T10:15:00Z",
-      },
-      {
-        activity: {
-          label: "upgrade ke plan",
-          description: "melakukan upgrade plan.",
-        },
-        description_addition: "Plan: Premium",
-        created_at: "2025-01-25T10:15:00Z",
-      },
-      {
-        activity: {
-          label: "upgrade ke plan",
-          description: "melakukan upgrade plan.",
-        },
-        description_addition: "Plan: Premium",
-        created_at: "2025-01-25T10:15:00Z",
-      },
-      {
-        activity: {
-          label: "upgrade ke plan",
-          description: "melakukan upgrade plan.",
-        },
-        description_addition: "Plan: Premium",
-        created_at: "2025-01-25T10:15:00Z",
-      },
-      {
-        activity: {
-          label: "upgrade ke plan",
-          description: "melakukan upgrade plan.",
-        },
-        description_addition: "Plan: Premium",
-        created_at: "2025-01-25T10:15:00Z",
-      },
-      {
-        activity: {
-          label: "upgrade ke plan",
-          description: "melakukan upgrade plan.",
-        },
-        description_addition: "Plan: Premium",
-        created_at: "2025-01-25T10:15:00Z",
-      },
-      {
-        activity: {
-          label: "upgrade ke plan",
-          description: "melakukan upgrade plan.",
-        },
-        description_addition: "Plan: Premium",
-        created_at: "2025-01-25T10:15:00Z",
+        activity_type: "payment",
+        created_at: "2025-01-25T10:00:00Z",
       },
     ],
   };
@@ -362,14 +321,21 @@ const HomePage = () => {
             </BButton>
           </ItemHeaderContainer>
 
-          <CContainer p={4} gap={4} overflowY={"auto"} className="scrollY">
-            {user.current_activity.map((item: any, i: number) => {
+          <CContainer p={2} overflowY={"auto"} className="scrollY">
+            {user.current_activities.map((item: any, i: number) => {
               return (
-                <CContainer key={i}>
+                <CContainer
+                  key={i}
+                  _hover={{ bg: "bg.muted" }}
+                  p={2}
+                  borderRadius={6}
+                  transition={"200ms"}
+                  cursor={"pointer"}
+                >
                   <HStack>
                     <Text>
-                      <b>{user.name}</b>, {item.activity.label}{" "}
-                      {item.description_addition}
+                      <b>{ACTIVITY_TYPES[item.activity_type].title}</b>,{" "}
+                      {ACTIVITY_TYPES[item.activity_type].description}
                     </Text>
                   </HStack>
                   <Text fontSize={"xs"} color={"fg.subtle"}>

@@ -20,6 +20,7 @@ const InfoPopover = ({ children, ...props }: Props) => {
           iconButton
           size={"3xs"}
           p={0}
+          borderRadius={"full"}
           variant={"ghost"}
           color={"fg.subtle"}
           {...props}
