@@ -12,7 +12,7 @@ import formatNumber from "@/utils/formatNumber";
 import { Text } from "@chakra-ui/react";
 import { IconCreditCardPay } from "@tabler/icons-react";
 
-const ClientInvoicePage = () => {
+const MerchantInvoicePage = () => {
   // Context
   const { themeConfig } = useThemeConfig();
 
@@ -177,4 +177,4 @@ const ClientInvoicePage = () => {
   );
 };
 
-export default ClientInvoicePage;
+export default MerchantInvoicePage;

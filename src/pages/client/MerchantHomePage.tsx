@@ -1,5 +1,13 @@
 import BButton from "@/components/ui-custom/BButton";
 import CContainer from "@/components/ui-custom/CContainer";
+import {
+  DisclosureBody,
+  DisclosureContent,
+  DisclosureFooter,
+  DisclosureHeader,
+  DisclosureRoot,
+} from "@/components/ui-custom/Disclosure";
+import DisclosureHeaderContent from "@/components/ui-custom/DisclosureHeaderContent";
 import InfoPopover from "@/components/ui-custom/InfoPopover";
 import ItemContainer from "@/components/ui-custom/ItemContainer";
 import ItemHeaderContainer from "@/components/ui-custom/ItemHeaderContainer";
@@ -7,15 +15,28 @@ import { Avatar } from "@/components/ui/avatar";
 import ACTIVITY_TYPES from "@/constant/parameters/activityTypes";
 import { BILLING_CYCLES } from "@/constant/parameters/pricing";
 import { useThemeConfig } from "@/context/useThemeConfig";
+import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
+import back from "@/utils/back";
 import formatCount from "@/utils/formatCount";
 import formatDate from "@/utils/formatDate";
 import formatNumber from "@/utils/formatNumber";
 import getUserFromLocalStorage from "@/utils/getUserFromLocalStorage";
-import { Group, HStack, Icon, Stack, StackProps, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Group,
+  HStack,
+  Icon,
+  Stack,
+  StackProps,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import {
   IconBuildingSkyscraper,
   IconCheck,
+  IconCircleCheck,
+  IconCircleX,
   IconDiscount2,
   IconHistory,
   IconLogout,
@@ -211,12 +232,12 @@ const CurrentInvoice = ({ ...props }: StackProps) => {
       subscription_end_date: "2024-11-20T00:00:00Z",
       billing_cycle: "yearly",
     },
-    paid: false,
+    paid: true,
     total: 5000000,
   };
 
   return (
-    <ItemContainer {...props}>
+    <ItemContainer flex={0} {...props}>
       <ItemHeaderContainer>
         <HStack>
           <Icon fontSize={"xl"}>
@@ -233,14 +254,45 @@ const CurrentInvoice = ({ ...props }: StackProps) => {
         </Link>
       </ItemHeaderContainer>
 
-      <CContainer p={4}>
-        <Text fontWeight={"semibold"}>{data.merchant.pricing.name}</Text>
-        <Text fontSize={"2xl"} fontWeight={"bold"}>
+      <CContainer p={4} position={"relative"}>
+        <Text fontWeight={"semibold"} mb={1}>
+          Total tagihan
+        </Text>
+        <Text fontSize={"2xl"} fontWeight={"bold"} mb={1}>
           Rp {formatNumber(data.total)}
         </Text>
         <Text color={"fg.muted"}>
           {BILLING_CYCLES[data.merchant.billing_cycle].label}
         </Text>
+
+        {/* Payment status */}
+        <Box
+          border={"2px solid"}
+          borderColor={data.paid ? "border.success" : "border.error"}
+          borderRadius={8}
+          p={1}
+          position={"absolute"}
+          right={-2}
+          bottom={1}
+          rotate={"-10deg"}
+          opacity={0.3}
+        >
+          <HStack
+            bg={data.paid ? "bg.success" : "bg.error"}
+            p={2}
+            borderRadius={6}
+            color={data.paid ? "fg.success" : "fg.error"}
+          >
+            {data.paid ? <IconCircleCheck /> : <IconCircleX />}
+            <Text
+              fontSize={"lg"}
+              fontWeight={"bold"}
+              color={data.paid ? "fg.success" : "fg.error"}
+            >
+              {data.paid ? "Terbayar" : "Belum Dibayar"}
+            </Text>
+          </HStack>
+        </Box>
       </CContainer>
     </ItemContainer>
   );
@@ -250,8 +302,7 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
   const data = {
     id: 1,
     label: "Essential",
-    monthly_price: 0,
-    yearly_price: 0,
+    monthly_base_price: 250000,
     description:
       "Paket esensial dengan fitur - fitur utama untuk kebutuhan pokok manajemen karyawan.",
     moduls: [1, 2, 3, 4, 5, 6, 7, 8],
@@ -332,6 +383,94 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
     return indexA - indexB;
   });
 
+  // Component
+  const FeatureItem = ({ item, include }: any) => {
+    return (
+      <HStack>
+        {include ? (
+          <Icon color={"green.500"}>
+            <IconCheck />
+          </Icon>
+        ) : (
+          <Icon opacity={0.2}>
+            <IconX />
+          </Icon>
+        )}
+
+        <HStack wrap={"wrap"}>
+          <Text>{item.name}</Text>
+          <InfoPopover>{item.name}</InfoPopover>
+        </HStack>
+      </HStack>
+    );
+  };
+  const AllFeatures = () => {
+    const { open, onOpen, onClose } = useDisclosure();
+    useBackOnClose("all-features", open, onOpen, onClose);
+
+    return (
+      <>
+        <BButton
+          w={"fit"}
+          variant={"outline"}
+          size={"xs"}
+          mt={2}
+          onClick={onOpen}
+        >
+          Lihat lebih detail...
+        </BButton>
+
+        <DisclosureRoot open={open} lazyLoad size={"xs"}>
+          <DisclosureContent>
+            <DisclosureHeader>
+              <DisclosureHeaderContent />
+            </DisclosureHeader>
+
+            <DisclosureBody>
+              <HStack ml={1} mb={4} justify={"space-between"}>
+                <Text fontSize={"lg"} fontWeight={"semibold"}>
+                  {data.label}
+                </Text>
+              </HStack>
+
+              <HStack ml={1} mb={4}>
+                <Text fontSize={"2xl"} fontWeight={"bold"}>
+                  IDR {formatCount(data.monthly_base_price)}
+                </Text>
+                <Text fontSize={"lg"} color={"fg.muted"}>
+                  /bulan
+                </Text>
+              </HStack>
+
+              <Text ml={1} mb={6} color={"fg.muted"}>
+                {data.description}
+              </Text>
+
+              <CContainer gap={2} ml={1} mt={1}>
+                {sortedModuls.map((item, ii) => {
+                  const include = data.moduls.includes(item.id);
+                  const valid = ii > 0;
+
+                  return (
+                    valid && (
+                      <FeatureItem key={ii} item={item} include={include} />
+                    )
+                  );
+                })}
+              </CContainer>
+            </DisclosureBody>
+
+            <DisclosureFooter>
+              <BButton variant={"subtle"} onClick={back}>
+                Mengerti
+              </BButton>
+            </DisclosureFooter>
+          </DisclosureContent>
+        </DisclosureRoot>
+      </>
+    );
+  };
+
   return (
     <ItemContainer {...props}>
       <ItemHeaderContainer>
@@ -350,14 +489,14 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
         </Link>
       </ItemHeaderContainer>
 
-      <CContainer p={4}>
+      <CContainer flex={1} p={4}>
         <CContainer
           px={1}
           bg={"body"}
           borderColor={"gray.subtle"}
           borderRadius={6}
         >
-          <HStack mb={2} justify={"space-between"}>
+          <HStack mb={1} justify={"space-between"}>
             <Text fontSize={"lg"} fontWeight={"semibold"}>
               {data.label}
             </Text>
@@ -365,7 +504,7 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
 
           <HStack mb={4}>
             <Text fontSize={"2xl"} fontWeight={"bold"}>
-              IDR {formatCount(data.monthly_price)}
+              IDR {formatCount(data.monthly_base_price)}
             </Text>
             <Text fontSize={"lg"} color={"fg.muted"}>
               /bulan
@@ -376,38 +515,18 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
           <CContainer gap={2}>
             {sortedModuls.map((item, ii) => {
               const include = data.moduls.includes(item.id);
-              const valid = ii < 8;
+              const valid = ii < 12;
 
               return (
-                valid && (
-                  <HStack key={ii}>
-                    {/* @ts-ignore */}
-                    {include ? (
-                      <Icon color={"green.500"}>
-                        <IconCheck />
-                      </Icon>
-                    ) : (
-                      <Icon opacity={0.2}>
-                        <IconX />
-                      </Icon>
-                    )}
-
-                    <HStack wrap={"wrap"}>
-                      <Text>{item.name}</Text>
-                      <InfoPopover>{item.name}</InfoPopover>
-                    </HStack>
-                  </HStack>
-                )
+                valid && <FeatureItem key={ii} item={item} include={include} />
               );
             })}
 
-            <BButton w={"fit"} variant={"outline"} size={"xs"} mt={2}>
-              Lihat Semua Fitur...
-            </BButton>
+            <AllFeatures />
           </CContainer>
         </CContainer>
 
-        <CContainer mt={6} gap={2} px={1}>
+        <CContainer mt={"auto"} pt={5} gap={2} px={1}>
           <HStack>
             <Text minW={"150px"} color={"fg.muted"}>
               Tanggal berlangganan
@@ -427,7 +546,7 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
   );
 };
 
-const ClientHomePage = () => {
+const MerchantHomePage = () => {
   return (
     <CContainer>
       <HStack wrap={"wrap"} gap={4} px={4} align={"stretch"} pb={4}>
@@ -447,4 +566,4 @@ const ClientHomePage = () => {
   );
 };
 
-export default ClientHomePage;
+export default MerchantHomePage;

@@ -14,8 +14,8 @@ const FloatCounter = ({ children, circleProps, ...props }: Props) => {
         color="white"
         fontSize={"xs"}
         h={"18px"}
-        mt={"18px"}
-        mr={"18px"}
+        mt={"8px"}
+        mr={"8px"}
         {...circleProps}
       >
         {children}

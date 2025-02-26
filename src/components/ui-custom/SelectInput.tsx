@@ -24,16 +24,16 @@ import CContainer from "./CContainer";
 import ComponentSpinner from "./ComponentSpinner";
 import {
   DisclosureBody,
-  DisclosureCloseTrigger,
   DisclosureContent,
   DisclosureFooter,
   DisclosureHeader,
   DisclosureRoot,
 } from "./Disclosure";
-import Heading6 from "./Heading6";
-import SearchInput from "./SearchInput";
+import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import FeedbackNoData from "./FeedbackNoData";
 import FeedbackNotFound from "./FeedbackNotFound";
+import Heading6 from "./Heading6";
+import SearchInput from "./SearchInput";
 
 const SelectInput = ({
   id,
@@ -231,43 +231,41 @@ const SelectInput = ({
       <DisclosureRoot open={open} size={size} lazyMount>
         <DisclosureContent>
           <DisclosureHeader>
-            <HStack justify={"space-between"}>
-              <Heading6
-                w={"full"}
-                fontWeight={"semibold"}
-                pr={"80px"}
-                truncate
-              >{`${title || placeholder}`}</Heading6>
+            <DisclosureHeaderContent
+              content={
+                <HStack justify={"space-between"}>
+                  <Heading6
+                    ml={1}
+                    w={"full"}
+                    fontWeight={"semibold"}
+                    pr={"80px"}
+                    truncate
+                  >{`${title || placeholder}`}</Heading6>
 
-              {fetch && (
-                <BButton
-                  unclicky
-                  iconButton
-                  variant={"ghost"}
-                  mr={5}
-                  size={"sm"}
-                  borderRadius={"full"}
-                  position={"absolute"}
-                  right={"30px"}
-                  // mb={"1px"}
-                  onClick={() => {
-                    setOptions(undefined);
-                    fetch(setOptions);
-                  }}
-                  disabled={options === undefined}
-                >
-                  <Icon>
-                    <IconRefresh />
-                  </Icon>
-                </BButton>
-              )}
-
-              <DisclosureCloseTrigger
-                borderRadius={"full"}
-                top={"14px"}
-                right={"14px"}
-              />
-            </HStack>
+                  {fetch && (
+                    <BButton
+                      unclicky
+                      iconButton
+                      variant={"ghost"}
+                      mr={5}
+                      size={"sm"}
+                      borderRadius={"full"}
+                      position={"absolute"}
+                      right={"30px"}
+                      onClick={() => {
+                        setOptions(undefined);
+                        fetch(setOptions);
+                      }}
+                      disabled={options === undefined}
+                    >
+                      <Icon>
+                        <IconRefresh />
+                      </Icon>
+                    </BButton>
+                  )}
+                </HStack>
+              }
+            />
           </DisclosureHeader>
 
           <DisclosureBody className="scrollY" py={"0px !important"}>

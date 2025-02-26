@@ -98,7 +98,12 @@ const ClientNavContainer = ({ label, children, activePath }: Props) => {
               >
                 <NavItemContainer active={activePath === nav.path}>
                   <FloatCounter
-                    circleProps={{ h: "18px", fontSize: "xs", mt: 1, mr: 1 }}
+                    circleProps={{
+                      h: "18px",
+                      fontSize: "xs",
+                      mt: "18px",
+                      mr: "18px",
+                    }}
                     display={"none"}
                   >
                     2
@@ -220,7 +225,9 @@ const ClientNavContainer = ({ label, children, activePath }: Props) => {
             <ColorModeButton fontSize={"1.1rem"} />
 
             <BButton iconButton unclicky variant={"ghost"}>
-              <FloatCounter>2</FloatCounter>
+              <FloatCounter circleProps={{ mt: "18px", mr: "18px" }}>
+                2
+              </FloatCounter>
 
               <Icon>
                 <IconBell stroke={1.5} />

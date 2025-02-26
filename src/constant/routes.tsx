@@ -1,7 +1,7 @@
 import RootPage from "@/pages/RootPage";
 import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
-import ClientHomePage from "@/pages/client/ClientHomePage";
-import ClientInvoicePage from "@/pages/client/ClientInvoicePage";
+import MerchantHomePage from "@/pages/client/MerchantHomePage";
+import MerchantInvoicePage from "@/pages/client/MerchantInvoicePage";
 
 const ROUTES: Interface__Route[] = [
   {
@@ -14,32 +14,32 @@ const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   {
     path: "/home",
     label: "Beranda",
-    element: <ClientHomePage />,
+    element: <MerchantHomePage />,
   },
   {
     path: "/invoice",
     label: "Invoice",
-    element: <ClientInvoicePage />,
+    element: <MerchantInvoicePage />,
   },
   {
     path: "/pricing",
     label: "Pricing",
-    element: <ClientHomePage />,
+    element: <MerchantHomePage />,
   },
   {
     path: "/help-center",
     label: "Pusat Bantuan",
-    element: <ClientHomePage />,
+    element: <MerchantHomePage />,
   },
   {
     path: "/settings",
     label: "Pengaturan",
-    element: <ClientHomePage />,
+    element: <MerchantHomePage />,
   },
   {
     path: "/profile",
     label: "Profile",
-    element: <ClientHomePage />,
+    element: <MerchantHomePage />,
   },
 ];
 

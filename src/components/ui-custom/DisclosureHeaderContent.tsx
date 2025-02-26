@@ -1,8 +1,7 @@
 import useBackOnDefaultPage from "@/hooks/useBackOnDefaultPage";
-import { HStack } from "@chakra-ui/react";
-import { DisclosureCloseTrigger } from "./Disclosure";
-import Heading6 from "./Heading6";
 import back from "@/utils/back";
+import { HStack, Text } from "@chakra-ui/react";
+import { DisclosureCloseTrigger } from "./Disclosure";
 
 type Props = {
   title?: string;
@@ -23,7 +22,13 @@ const DisclosureHeaderContent = ({
 
   return (
     <HStack justify={"space-between"}>
-      {content ? content : <Heading6 fontWeight={"semibold"}>{title}</Heading6>}
+      {content ? (
+        content
+      ) : (
+        <Text fontSize={"16px"} fontWeight={"semibold"} ml={1}>
+          {title}
+        </Text>
+      )}
 
       {withCloseButton && (
         <DisclosureCloseTrigger

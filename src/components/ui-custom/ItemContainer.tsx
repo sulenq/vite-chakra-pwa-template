@@ -14,6 +14,7 @@ const ItemContainer = ({ children, ...props }: Props) => {
       bg={"body"}
       flex={"1 1 300px"}
       overflow={"clip"}
+      border={"1px solid {colors.border.subtle}"}
       {...props}
     >
       {children}

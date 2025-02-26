@@ -41,6 +41,7 @@ import {
   DrawerTrigger,
 } from "../ui/drawer";
 import CContainer from "./CContainer";
+import { useThemeConfig } from "@/context/useThemeConfig";
 
 const DisclosureRoot = ({ children, ...props }: any) => {
   const { sw } = useScreen(0);
@@ -88,12 +89,23 @@ type DisclosureContentProps = {
   children: React.ReactNode;
 } & (DrawerContentProps | DialogContentProps);
 const DisclosureContent = ({ children, ...props }: DisclosureContentProps) => {
+  const { themeConfig } = useThemeConfig();
   const iss = useIsSmScreenWidth();
 
   return iss ? (
-    <DrawerContent {...(props as DrawerContentProps)}>{children}</DrawerContent>
+    <DrawerContent
+      borderRadius={themeConfig.radii.container}
+      {...(props as DrawerContentProps)}
+    >
+      {children}
+    </DrawerContent>
   ) : (
-    <DialogContent {...(props as DialogContentProps)}>{children}</DialogContent>
+    <DialogContent
+      borderRadius={themeConfig.radii.container}
+      {...(props as DialogContentProps)}
+    >
+      {children}
+    </DialogContent>
   );
 };
 
