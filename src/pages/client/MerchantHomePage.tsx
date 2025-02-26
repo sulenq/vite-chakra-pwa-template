@@ -24,7 +24,6 @@ import formatNumber from "@/utils/formatNumber";
 import getUserFromLocalStorage from "@/utils/getUserFromLocalStorage";
 import {
   Badge,
-  Box,
   Group,
   HStack,
   Icon,
@@ -37,8 +36,6 @@ import {
 import {
   IconBuildingSkyscraper,
   IconCheck,
-  IconCircleCheck,
-  IconCircleX,
   IconDiscount2,
   IconHistory,
   IconLogout,
