@@ -30,6 +30,7 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
           <ChakraDialog.Backdrop bg={"d1"} backdropFilter={"blur(5px)"} />
         )}
         <ChakraDialog.Positioner
+          pointerEvents="auto"
           onClick={() => {
             back();
             handleBackOnDefaultPage();
@@ -43,6 +44,7 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
             shadow={"none"}
             border={"1px solid {colors.border.subtle}"}
             onClick={(e) => {
+              console.log("asu");
               e.stopPropagation();
             }}
             {...rest}

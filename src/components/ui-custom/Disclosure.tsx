@@ -131,9 +131,15 @@ type DisclosureBodyProps = {
 } & (DrawerBodyProps | DialogBodyProps);
 const DisclosureBody = ({ children, ...props }: DisclosureBodyProps) => {
   const iss = useIsSmScreenWidth();
+  const finalClassName = `scrollY ${props.className}`;
 
   return iss ? (
-    <DrawerBody px={4} py={0} {...(props as DrawerHeaderProps)}>
+    <DrawerBody
+      px={4}
+      py={0}
+      className={finalClassName}
+      {...(props as DrawerHeaderProps)}
+    >
       {children}
     </DrawerBody>
   ) : (
@@ -141,6 +147,7 @@ const DisclosureBody = ({ children, ...props }: DisclosureBodyProps) => {
       px={4}
       pt={0}
       pb={"20px !important"}
+      className={finalClassName}
       {...(props as DialogBodyProps)}
     >
       {children}

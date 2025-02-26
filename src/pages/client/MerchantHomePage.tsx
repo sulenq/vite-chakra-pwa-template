@@ -220,6 +220,14 @@ const AllMerchantActivities = () => {
       activity_type: "payment",
       created_at: "2025-01-25T10:00:00Z",
     },
+    {
+      activity_type: "payment",
+      created_at: "2025-01-25T10:00:00Z",
+    },
+    {
+      activity_type: "payment",
+      created_at: "2025-01-25T10:00:00Z",
+    },
   ];
 
   return (
