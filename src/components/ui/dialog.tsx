@@ -3,6 +3,7 @@ import back from "@/utils/back";
 import { Dialog as ChakraDialog, Portal } from "@chakra-ui/react";
 import { forwardRef } from "react";
 import { CloseButton } from "./close-button";
+import useScreen from "@/hooks/useScreen";
 
 interface DialogContentProps extends ChakraDialog.ContentProps {
   portalled?: boolean;
@@ -21,6 +22,7 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
     } = props;
 
     const handleBackOnDefaultPage = useBackOnDefaultPage();
+    const { sh } = useScreen();
 
     return (
       <Portal disabled={!portalled} container={portalRef}>
@@ -36,10 +38,10 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
           <ChakraDialog.Content
             ref={ref}
             borderRadius={8}
+            minH={sh < 500 ? "90dvh" : ""}
             bg={"body"}
             shadow={"none"}
-            // border={"1px solid"}
-            borderColor={"d2"}
+            border={"1px solid {colors.border.subtle}"}
             onClick={(e) => {
               e.stopPropagation();
             }}

@@ -1,3 +1,4 @@
+import BackButton from "@/components/ui-custom/BackButton";
 import BButton from "@/components/ui-custom/BButton";
 import CContainer from "@/components/ui-custom/CContainer";
 import {
@@ -17,7 +18,6 @@ import { BILLING_CYCLES } from "@/constant/parameters/pricing";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
-import back from "@/utils/back";
 import formatCount from "@/utils/formatCount";
 import formatDate from "@/utils/formatDate";
 import formatNumber from "@/utils/formatNumber";
@@ -128,10 +128,128 @@ const Profile = ({ ...props }: StackProps) => {
   );
 };
 
-const Activities = ({ ...props }: StackProps) => {
+const MerchantActivityItem = ({ item }: any) => {
   // Context
   const { themeConfig } = useThemeConfig();
 
+  // Utils
+  const { open, onOpen, onClose } = useDisclosure();
+  useBackOnClose(`merchant-acivity-detail-${item.id}`, open, onOpen, onClose);
+
+  return (
+    <>
+      <CContainer
+        _hover={{ bg: "bg.muted" }}
+        p={2}
+        px={3}
+        borderRadius={themeConfig.radii.component}
+        transition={"200ms"}
+        cursor={"pointer"}
+      >
+        <HStack>
+          <Text>
+            <b>{ACTIVITY_TYPES[item.activity_type].title}</b>,{" "}
+            {ACTIVITY_TYPES[item.activity_type].description}
+          </Text>
+        </HStack>
+        <Text fontSize={"xs"} color={"fg.subtle"}>
+          {formatDate(item.created_at, "dmy-hm")}
+        </Text>
+      </CContainer>
+
+      <DisclosureRoot open={open} lazyLoad>
+        <DisclosureContent>
+          <DisclosureHeader>
+            <DisclosureHeaderContent title={``} />
+          </DisclosureHeader>
+
+          <DisclosureBody>Detail</DisclosureBody>
+
+          <DisclosureFooter>
+            <BackButton>Close</BackButton>
+          </DisclosureFooter>
+        </DisclosureContent>
+      </DisclosureRoot>
+    </>
+  );
+};
+const AllMerchantActivities = () => {
+  // Utils
+  const { open, onOpen, onClose } = useDisclosure();
+  useBackOnClose("all-merchant-activities", open, onOpen, onClose);
+
+  // States, Refs
+  const data = [
+    {
+      activity_type: "subscription_purchase",
+      created_at: "2025-01-25T10:00:00Z",
+    },
+    {
+      activity_type: "payment",
+      created_at: "2025-01-25T10:00:00Z",
+    },
+    {
+      activity_type: "payment",
+      created_at: "2025-01-25T10:00:00Z",
+    },
+    {
+      activity_type: "payment",
+      created_at: "2025-01-25T10:00:00Z",
+    },
+    {
+      activity_type: "subscription_purchase",
+      created_at: "2025-01-25T10:00:00Z",
+    },
+    {
+      activity_type: "payment",
+      created_at: "2025-01-25T10:00:00Z",
+    },
+    {
+      activity_type: "payment",
+      created_at: "2025-01-25T10:00:00Z",
+    },
+    {
+      activity_type: "payment",
+      created_at: "2025-01-25T10:00:00Z",
+    },
+    {
+      activity_type: "payment",
+      created_at: "2025-01-25T10:00:00Z",
+    },
+    {
+      activity_type: "payment",
+      created_at: "2025-01-25T10:00:00Z",
+    },
+  ];
+
+  return (
+    <>
+      <BButton variant={"outline"} size={"xs"} onClick={onOpen}>
+        Lihat Semua
+      </BButton>
+
+      <DisclosureRoot open={open} lazyLoad scrollBehavior={"inside"}>
+        <DisclosureContent>
+          <DisclosureHeader>
+            <DisclosureHeaderContent title={`Semua Aktivitas`} />
+          </DisclosureHeader>
+
+          <DisclosureBody>
+            {data.map((item: any, i: number) => {
+              return <MerchantActivityItem key={i} item={item} />;
+            })}
+          </DisclosureBody>
+
+          <DisclosureFooter>
+            <BackButton>Close</BackButton>
+          </DisclosureFooter>
+        </DisclosureContent>
+      </DisclosureRoot>
+    </>
+  );
+};
+const Activities = ({ ...props }: StackProps) => {
+  // States, Refs
   const data = [
     {
       activity_type: "subscription_purchase",
@@ -186,34 +304,12 @@ const Activities = ({ ...props }: StackProps) => {
           <Text fontWeight={"bold"}>Aktivitas</Text>
         </HStack>
 
-        <BButton variant={"outline"} size={"xs"}>
-          Lihat Semua
-        </BButton>
+        <AllMerchantActivities />
       </ItemHeaderContainer>
 
       <CContainer p={1} overflowY={"auto"} className="scrollY">
         {data.map((item: any, i: number) => {
-          return (
-            <CContainer
-              key={i}
-              _hover={{ bg: "bg.muted" }}
-              p={2}
-              px={3}
-              borderRadius={themeConfig.radii.component}
-              transition={"200ms"}
-              cursor={"pointer"}
-            >
-              <HStack>
-                <Text>
-                  <b>{ACTIVITY_TYPES[item.activity_type].title}</b>,{" "}
-                  {ACTIVITY_TYPES[item.activity_type].description}
-                </Text>
-              </HStack>
-              <Text fontSize={"xs"} color={"fg.subtle"}>
-                {formatDate(item.created_at, "dmy-hm")}
-              </Text>
-            </CContainer>
-          );
+          return <MerchantActivityItem key={i} item={item} />;
         })}
       </CContainer>
     </ItemContainer>
@@ -404,9 +500,9 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
       </HStack>
     );
   };
-  const AllFeatures = () => {
+  const AllMerchantSubcriptionFeatures = () => {
     const { open, onOpen, onClose } = useDisclosure();
-    useBackOnClose("all-features", open, onOpen, onClose);
+    useBackOnClose("all-merchant-subcription-features", open, onOpen, onClose);
 
     return (
       <>
@@ -461,9 +557,7 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
             </DisclosureBody>
 
             <DisclosureFooter>
-              <BButton variant={"subtle"} onClick={back}>
-                Mengerti
-              </BButton>
+              <BackButton>Close</BackButton>
             </DisclosureFooter>
           </DisclosureContent>
         </DisclosureRoot>
@@ -522,7 +616,7 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
               );
             })}
 
-            <AllFeatures />
+            <AllMerchantSubcriptionFeatures />
           </CContainer>
         </CContainer>
 
