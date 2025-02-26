@@ -19,4 +19,4 @@ const CHART_COLORS: string[] = [
   "#E53E3E", // Merah kecokelatan
 ];
 
-export default CHART_COLORS;
+export { CHART_COLORS };

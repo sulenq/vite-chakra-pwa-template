@@ -9,13 +9,13 @@ import {
   DisclosureRoot,
 } from "@/components/ui-custom/Disclosure";
 import DisclosureHeaderContent from "@/components/ui-custom/DisclosureHeaderContent";
-import InfoPopover from "@/components/ui-custom/InfoPopover";
 import ItemContainer from "@/components/ui-custom/ItemContainer";
 import ItemHeaderContainer from "@/components/ui-custom/ItemHeaderContainer";
 import { Avatar } from "@/components/ui/avatar";
-import ACTIVITY_TYPES from "@/constant/parameters/activityTypes";
+import AllMerchantActivitiesDisclosure from "@/components/widget/AllMerchantActivitiesDisclosure";
+import MerchantActivityItem from "@/components/widget/MerchantActivityItem";
 import { BILLING_CYCLES } from "@/constant/parameters/pricing";
-import { useThemeConfig } from "@/context/useThemeConfig";
+import { SVGS_PATH } from "@/constant/path";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import formatCount from "@/utils/formatCount";
@@ -23,10 +23,12 @@ import formatDate from "@/utils/formatDate";
 import formatNumber from "@/utils/formatNumber";
 import getUserFromLocalStorage from "@/utils/getUserFromLocalStorage";
 import {
+  Badge,
   Box,
   Group,
   HStack,
   Icon,
+  Image,
   Stack,
   StackProps,
   Text,
@@ -128,134 +130,6 @@ const Profile = ({ ...props }: StackProps) => {
   );
 };
 
-const MerchantActivityItem = ({ item }: any) => {
-  // Context
-  const { themeConfig } = useThemeConfig();
-
-  // Utils
-  const { open, onOpen, onClose } = useDisclosure();
-  useBackOnClose(`merchant-acivity-detail-${item.id}`, open, onOpen, onClose);
-
-  return (
-    <>
-      <CContainer
-        _hover={{ bg: "bg.muted" }}
-        p={2}
-        px={3}
-        borderRadius={themeConfig.radii.component}
-        transition={"200ms"}
-        cursor={"pointer"}
-      >
-        <HStack>
-          <Text>
-            <b>{ACTIVITY_TYPES[item.activity_type].title}</b>,{" "}
-            {ACTIVITY_TYPES[item.activity_type].description}
-          </Text>
-        </HStack>
-        <Text fontSize={"xs"} color={"fg.subtle"}>
-          {formatDate(item.created_at, "dmy-hm")}
-        </Text>
-      </CContainer>
-
-      <DisclosureRoot open={open} lazyLoad>
-        <DisclosureContent>
-          <DisclosureHeader>
-            <DisclosureHeaderContent title={``} />
-          </DisclosureHeader>
-
-          <DisclosureBody>Detail</DisclosureBody>
-
-          <DisclosureFooter>
-            <BackButton>Close</BackButton>
-          </DisclosureFooter>
-        </DisclosureContent>
-      </DisclosureRoot>
-    </>
-  );
-};
-const AllMerchantActivities = () => {
-  // Utils
-  const { open, onOpen, onClose } = useDisclosure();
-  useBackOnClose("all-merchant-activities", open, onOpen, onClose);
-
-  // States, Refs
-  const data = [
-    {
-      activity_type: "subscription_purchase",
-      created_at: "2025-01-25T10:00:00Z",
-    },
-    {
-      activity_type: "payment",
-      created_at: "2025-01-25T10:00:00Z",
-    },
-    {
-      activity_type: "payment",
-      created_at: "2025-01-25T10:00:00Z",
-    },
-    {
-      activity_type: "payment",
-      created_at: "2025-01-25T10:00:00Z",
-    },
-    {
-      activity_type: "subscription_purchase",
-      created_at: "2025-01-25T10:00:00Z",
-    },
-    {
-      activity_type: "payment",
-      created_at: "2025-01-25T10:00:00Z",
-    },
-    {
-      activity_type: "payment",
-      created_at: "2025-01-25T10:00:00Z",
-    },
-    {
-      activity_type: "payment",
-      created_at: "2025-01-25T10:00:00Z",
-    },
-    {
-      activity_type: "payment",
-      created_at: "2025-01-25T10:00:00Z",
-    },
-    {
-      activity_type: "payment",
-      created_at: "2025-01-25T10:00:00Z",
-    },
-    {
-      activity_type: "payment",
-      created_at: "2025-01-25T10:00:00Z",
-    },
-    {
-      activity_type: "payment",
-      created_at: "2025-01-25T10:00:00Z",
-    },
-  ];
-
-  return (
-    <>
-      <BButton variant={"outline"} size={"xs"} onClick={onOpen}>
-        Lihat Semua
-      </BButton>
-
-      <DisclosureRoot open={open} lazyLoad scrollBehavior={"inside"}>
-        <DisclosureContent>
-          <DisclosureHeader>
-            <DisclosureHeaderContent title={`Semua Aktivitas`} />
-          </DisclosureHeader>
-
-          <DisclosureBody>
-            {data.map((item: any, i: number) => {
-              return <MerchantActivityItem key={i} item={item} />;
-            })}
-          </DisclosureBody>
-
-          <DisclosureFooter>
-            <BackButton>Close</BackButton>
-          </DisclosureFooter>
-        </DisclosureContent>
-      </DisclosureRoot>
-    </>
-  );
-};
 const Activities = ({ ...props }: StackProps) => {
   // States, Refs
   const data = [
@@ -312,7 +186,11 @@ const Activities = ({ ...props }: StackProps) => {
           <Text fontWeight={"bold"}>Aktivitas</Text>
         </HStack>
 
-        <AllMerchantActivities />
+        <AllMerchantActivitiesDisclosure>
+          <BButton variant={"outline"} size={"xs"}>
+            Lihat Semua
+          </BButton>
+        </AllMerchantActivitiesDisclosure>
       </ItemHeaderContainer>
 
       <CContainer p={1} overflowY={"auto"} className="scrollY">
@@ -325,6 +203,7 @@ const Activities = ({ ...props }: StackProps) => {
 };
 
 const CurrentInvoice = ({ ...props }: StackProps) => {
+  // States, Refs
   const data = {
     id: 5,
     merchant: {
@@ -336,7 +215,7 @@ const CurrentInvoice = ({ ...props }: StackProps) => {
       subscription_end_date: "2024-11-20T00:00:00Z",
       billing_cycle: "yearly",
     },
-    paid: false,
+    paid: true,
     total: 5000000,
   };
 
@@ -359,44 +238,36 @@ const CurrentInvoice = ({ ...props }: StackProps) => {
       </ItemHeaderContainer>
 
       <CContainer p={4} position={"relative"}>
-        <Text fontWeight={"semibold"} mb={1}>
-          Total tagihan
-        </Text>
+        <HStack>
+          <Text fontSize={"md"} fontWeight={"semibold"} mb={1}>
+            Total tagihan
+          </Text>
+
+          <Badge colorPalette={data.paid ? "green" : "red"} size={"xs"}>
+            {data.paid ? "Terbayar" : "Belum dibayar"}
+          </Badge>
+        </HStack>
+
         <Text fontSize={"2xl"} fontWeight={"bold"} mb={1}>
           Rp {formatNumber(data.total)}
         </Text>
+
         <Text color={"fg.muted"}>
           {BILLING_CYCLES[data.merchant.billing_cycle].label}
         </Text>
 
-        {/* Payment status */}
-        <Box
-          border={"2px solid"}
-          borderColor={data.paid ? "border.success" : "border.error"}
-          borderRadius={8}
-          p={1}
-          position={"absolute"}
-          right={-2}
-          bottom={1}
-          rotate={"-10deg"}
-          opacity={0.3}
-        >
-          <HStack
-            bg={data.paid ? "bg.success" : "bg.error"}
-            p={2}
-            borderRadius={6}
-            color={data.paid ? "fg.success" : "fg.error"}
-          >
-            {data.paid ? <IconCircleCheck /> : <IconCircleX />}
-            <Text
-              fontSize={"lg"}
-              fontWeight={"bold"}
-              color={data.paid ? "fg.success" : "fg.error"}
-            >
-              {data.paid ? "Terbayar" : "Belum Dibayar"}
-            </Text>
-          </HStack>
-        </Box>
+        {/* Payment status stamp */}
+        {data.paid && (
+          <Image
+            src={`${SVGS_PATH}/paid_stample.svg`}
+            position={"absolute"}
+            w={"120px"}
+            bottom={-5}
+            right={-1}
+            rotate={"-20deg"}
+            opacity={0.2}
+          />
+        )}
       </CContainer>
     </ItemContainer>
   );
@@ -503,7 +374,6 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
 
         <HStack wrap={"wrap"}>
           <Text>{item.name}</Text>
-          <InfoPopover>{item.name}</InfoPopover>
         </HStack>
       </HStack>
     );
@@ -521,7 +391,7 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
           mt={2}
           onClick={onOpen}
         >
-          Lihat lebih detail...
+          Lihat lebih detail
         </BButton>
 
         <DisclosureRoot open={open} lazyLoad size={"xs"}>

@@ -28,4 +28,4 @@ const CLIENT_NAVS = [
   },
 ];
 
-export default CLIENT_NAVS;
+export { CLIENT_NAVS };

@@ -1,4 +1,4 @@
-import CLIENT_NAVS from "@/constant/clientNavs";
+import { CLIENT_NAVS } from "@/constant/navs";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useCallBackOnNavigate from "@/hooks/useCallBackOnNavigate";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";

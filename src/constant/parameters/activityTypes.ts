@@ -21,4 +21,4 @@ const ACTIVITY_TYPES: Record<string, { title: string; description: string }> = {
   },
 };
 
-export default ACTIVITY_TYPES;
+export { ACTIVITY_TYPES };
