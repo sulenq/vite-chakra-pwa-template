@@ -232,7 +232,7 @@ const CurrentInvoice = ({ ...props }: StackProps) => {
       subscription_end_date: "2024-11-20T00:00:00Z",
       billing_cycle: "yearly",
     },
-    paid: true,
+    paid: false,
     total: 5000000,
   };
 

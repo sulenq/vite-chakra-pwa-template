@@ -12,7 +12,7 @@ const CLIENT_NAVS = [
     icon: IconSmartHome,
   },
   {
-    label: "Invoice",
+    label: "Tagihan",
     path: "/invoice",
     icon: IconReceipt2,
   },

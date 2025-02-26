@@ -18,7 +18,7 @@ const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   },
   {
     path: "/invoice",
-    label: "Invoice",
+    label: "Tagihan",
     element: <MerchantInvoicePage />,
   },
   {
