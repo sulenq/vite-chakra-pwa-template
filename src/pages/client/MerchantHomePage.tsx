@@ -1,6 +1,7 @@
 import BackButton from "@/components/ui-custom/BackButton";
 import BButton from "@/components/ui-custom/BButton";
 import CContainer from "@/components/ui-custom/CContainer";
+import ConfirmationDisclosure from "@/components/ui-custom/ConfirmationDisclosure";
 import {
   DisclosureBody,
   DisclosureContent,
@@ -108,17 +109,26 @@ const Profile = ({ ...props }: StackProps) => {
             </Text>
 
             <Group mt={4}>
-              <BButton
-                variant={"surface"}
-                colorPalette={"red"}
-                w={"fit"}
-                size={"xs"}
+              <ConfirmationDisclosure
+                id="loggingout"
+                title="Log out?"
+                description="Pastikan tidak ada proses ke server sebelum logout dikonfirmasi untuk menghindari error autentikasi"
+                confirmLabel="Logout"
+                confirmButtonProps={{ colorPalette: "red" }}
+                confirmCallback={() => {}}
               >
-                <Icon>
-                  <IconLogout />
-                </Icon>
-                Log out
-              </BButton>
+                <BButton
+                  variant={"surface"}
+                  colorPalette={"red"}
+                  w={"fit"}
+                  size={"xs"}
+                >
+                  <Icon>
+                    <IconLogout />
+                  </Icon>
+                  Log out
+                </BButton>
+              </ConfirmationDisclosure>
             </Group>
           </CContainer>
         </Stack>
