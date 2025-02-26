@@ -1,6 +1,7 @@
 import {
   IconDiscount2,
   IconHelpCircle,
+  IconReceipt2,
   IconSmartHome,
 } from "@tabler/icons-react";
 
@@ -9,6 +10,11 @@ const CLIENT_NAVS = [
     label: "Beranda",
     path: "/home",
     icon: IconSmartHome,
+  },
+  {
+    label: "Invoice",
+    path: "/invoice",
+    icon: IconReceipt2,
   },
   {
     label: "Pricing",

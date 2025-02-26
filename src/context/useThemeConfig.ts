@@ -7,12 +7,20 @@ interface ThemeConfigProps {
   colorPalette: string;
   primaryColor: string;
   logo: string;
+  radii: {
+    component: string;
+    container: string;
+  };
 }
 
 const DEFAULT_THEME: ThemeConfigProps = {
   colorPalette: "p",
   primaryColor: "p.500",
   logo: `${IMAGES_PATH}/logo_graphic.png`,
+  radii: {
+    component: "lg",
+    container: "xl",
+  },
 };
 
 interface Props {

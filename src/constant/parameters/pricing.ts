@@ -48,76 +48,23 @@ const PRICING_BENEFITS = [
   },
 ];
 
-const PRICING_LIST = [
-  {
-    id: 1,
-    label: "Basic",
-    monthly_price: 0,
-    yearly_price: 0,
-    description: "Paket gratis.",
-    benefits: {
-      gap_overlap_detection: true,
-      dashboard_access: true,
-      data_analysis: false,
-      priority_support: false,
-      report_export: false,
-      api_integration: false,
-      customization: false,
-    },
-    best: false,
+const PRICING_LIST: Record<
+  string,
+  { name: string; monthly_base_price: number }
+> = {
+  essential: {
+    name: "Essential",
+    monthly_base_price: 500000,
   },
-  {
-    id: 2,
-    label: "Essential",
-    monthly_price: 50000,
-    yearly_price: 500000,
-    description: "Paket dasar untuk kebutuhan GIS standar.",
-    benefits: {
-      gap_overlap_detection: true,
-      dashboard_access: true,
-      data_analysis: true,
-      priority_support: false,
-      report_export: false,
-      api_integration: false,
-      customization: false,
-    },
-    best: false,
+  business: {
+    name: "Business",
+    monthly_base_price: 500000,
   },
-  {
-    id: 3,
-    label: "Premium",
-    monthly_price: 100000,
-    yearly_price: 1000000,
-    description: "Paket lengkap untuk pengelolaan GIS yang lebih luas.",
-    benefits: {
-      gap_overlap_detection: true,
-      dashboard_access: true,
-      data_analysis: true,
-      priority_support: true,
-      report_export: true,
-      api_integration: false,
-      customization: false,
-    },
-    best: true,
+  enterprise: {
+    name: "Enterprise",
+    monthly_base_price: 0,
   },
-  {
-    id: 4,
-    label: "Premium+",
-    monthly_price: 200000,
-    yearly_price: 2000000,
-    description: "Paket profesional untuk kebutuhan GIS tingkat lanjut.",
-    benefits: {
-      gap_overlap_detection: true,
-      dashboard_access: true,
-      data_analysis: true,
-      priority_support: true,
-      report_export: true,
-      api_integration: true,
-      customization: true,
-    },
-    best: false,
-  },
-];
+};
 
 const PRICING_TRUST_SIGNALS = [
   {
@@ -146,4 +93,18 @@ const PRICING_TRUST_SIGNALS = [
   },
 ];
 
-export { PRICING_BENEFITS, PRICING_LIST, PRICING_TRUST_SIGNALS };
+const BILLING_CYCLES: Record<string, { label: string }> = {
+  monthly: {
+    label: "Ditagih setiap bulan",
+  },
+  yearly: {
+    label: "Ditagih setiap tahun",
+  },
+};
+
+export {
+  PRICING_BENEFITS,
+  PRICING_LIST,
+  PRICING_TRUST_SIGNALS,
+  BILLING_CYCLES,
+};

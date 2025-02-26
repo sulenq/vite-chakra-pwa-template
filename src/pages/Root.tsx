@@ -174,10 +174,12 @@ const ThemeConfig = () => {
   );
 };
 const CenterContainer = ({ children, ...props }: any) => {
+  const { themeConfig } = useThemeConfig();
+
   return (
     <Center
       p={4}
-      borderRadius={8}
+      borderRadius={themeConfig.radii.container}
       border={"1px solid"}
       borderColor={"border.muted"}
       bg={"body"}

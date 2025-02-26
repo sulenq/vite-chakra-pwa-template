@@ -62,7 +62,6 @@ export default function SearchInput({
   return (
     <Tooltip content={tooltipLabel || placeholder}>
       <InputGroup
-        flex={"1 1 200px"}
         w={"full"}
         startElement={
           !noIcon && (

@@ -1,4 +1,5 @@
 import { Button, ButtonProps } from "@/components/ui/button";
+import { useThemeConfig } from "@/context/useThemeConfig";
 import { IconButton } from "@chakra-ui/react";
 
 interface Props extends ButtonProps {
@@ -18,6 +19,8 @@ export default function BButton({
   size = "md",
   ...props
 }: Props) {
+  const { themeConfig } = useThemeConfig();
+
   const finalClassName = `${!unclicky ? "clicky" : ""} ${className}`.trim();
 
   return iconButton ? (
@@ -30,6 +33,7 @@ export default function BButton({
       className={finalClassName}
       fontWeight={"semibold"}
       size={size}
+      borderRadius={themeConfig.radii.component}
       {...props}
     >
       {children}

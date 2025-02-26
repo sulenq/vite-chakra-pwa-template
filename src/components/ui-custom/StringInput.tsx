@@ -74,6 +74,7 @@ export default function StringInput({
           fontWeight={"medium"}
           outline={"none !important"}
           _focus={{ borderColor: themeConfig.primaryColor }}
+          borderRadius={themeConfig.radii.component}
           autoComplete="off"
           color={"text"}
           {...props}

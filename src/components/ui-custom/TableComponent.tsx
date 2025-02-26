@@ -596,6 +596,11 @@ const TableComponent = ({
         ) => number;
 
         const sortHandlers: Record<string, SortHandler> = {
+          string: (aValue, bValue, direction) =>
+            direction === "asc"
+              ? String(aValue).localeCompare(String(bValue))
+              : String(bValue).localeCompare(String(aValue)),
+
           number: (aValue, bValue, direction) =>
             direction === "asc"
               ? Number(aValue) - Number(bValue)
@@ -615,11 +620,6 @@ const TableComponent = ({
             direction === "asc"
               ? aValue.localeCompare(bValue)
               : bValue.localeCompare(aValue),
-
-          string: (aValue, bValue, direction) =>
-            direction === "asc"
-              ? String(aValue).localeCompare(String(bValue))
-              : String(bValue).localeCompare(String(aValue)),
         };
 
         const columnType: string =
@@ -840,12 +840,6 @@ const TableComponent = ({
                       key={colIndex}
                       whiteSpace={"nowrap"}
                       p={0}
-                      // onMouseEnter={() => {
-                      //   setRowHover(true);
-                      // }}
-                      // onMouseLeave={() => {
-                      //   setRowHover(false);
-                      // }}
                       {...col?.tableCellProps}
                     >
                       <HStack

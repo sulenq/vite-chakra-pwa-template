@@ -155,7 +155,7 @@ export interface Interface__FormattedTableBody {
     td: any;
     value: any;
     columnKey?: string; // unused yet
-    dataType?: "string" | "number" | "date" | "time";
+    dataType?: string; // "string" | "number" | "date" | "time" |
     original_data?: any;
     tableCellProps?: TableCellProps;
     stackProps?: StackProps;
