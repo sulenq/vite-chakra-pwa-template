@@ -80,7 +80,7 @@ const MerchantActivityItem = ({ item }: any) => {
         </Text>
       </CContainer>
 
-      <DisclosureRoot open={open} lazyLoad>
+      <DisclosureRoot open={open} size={"sm"} lazyLoad>
         <DisclosureContent>
           <DisclosureHeader>
             <DisclosureHeaderContent title={`Detail Aktivitas`} />
