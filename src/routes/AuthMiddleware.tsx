@@ -86,17 +86,23 @@ const AuthMiddleware = ({
 
       {!loading && (
         <>
-          {!authToken && permissions && <Navigate to={redirectTo} />}
-
-          {authToken && (
+          {permissions && (
             <>
-              {permissions && hasPermissions(allowedPermissions) ? (
-                children
-              ) : (
-                <Navigate to={redirectTo} />
+              {!authToken && <Navigate to={redirectTo} />}
+
+              {authToken && (
+                <>
+                  {hasPermissions(allowedPermissions) ? (
+                    children
+                  ) : (
+                    <Navigate to={redirectTo} />
+                  )}
+                </>
               )}
             </>
           )}
+
+          {!permissions && <Navigate to={redirectTo} />}
         </>
       )}
     </>
