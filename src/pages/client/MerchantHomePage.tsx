@@ -141,42 +141,52 @@ const Activities = ({ ...props }: StackProps) => {
   // States, Refs
   const data = [
     {
+      id: 1,
       activity_type: "subscription_purchase",
       created_at: "2025-01-25T10:00:00Z",
     },
     {
+      id: 2,
       activity_type: "payment",
       created_at: "2025-01-25T10:00:00Z",
     },
     {
+      id: 3,
       activity_type: "payment",
       created_at: "2025-01-25T10:00:00Z",
     },
     {
+      id: 4,
       activity_type: "payment",
       created_at: "2025-01-25T10:00:00Z",
     },
     {
+      id: 5,
       activity_type: "subscription_purchase",
       created_at: "2025-01-25T10:00:00Z",
     },
     {
+      id: 6,
       activity_type: "payment",
       created_at: "2025-01-25T10:00:00Z",
     },
     {
+      id: 7,
       activity_type: "payment",
       created_at: "2025-01-25T10:00:00Z",
     },
     {
+      id: 8,
       activity_type: "payment",
       created_at: "2025-01-25T10:00:00Z",
     },
     {
+      id: 9,
       activity_type: "payment",
       created_at: "2025-01-25T10:00:00Z",
     },
     {
+      id: 10,
       activity_type: "payment",
       created_at: "2025-01-25T10:00:00Z",
     },
@@ -529,13 +539,13 @@ const MerchantHomePage = () => {
   return (
     <CContainer>
       <HStack wrap={"wrap"} gap={4} px={4} align={"stretch"} pb={4}>
-        <CContainer gap={4} flex={"1 1 350px"}>
+        <CContainer gap={4} flex={"1 1 350px"} w={"50%"}>
           <Profile />
 
           <Activities />
         </CContainer>
 
-        <CContainer gap={4} flex={"1 1 350px"}>
+        <CContainer gap={4} flex={"1 1 350px"} w={"50%"}>
           <CurrentInvoice />
 
           <SubscriptionInfo />

@@ -145,9 +145,8 @@ const DisclosureBody = ({ children, ...props }: DisclosureBodyProps) => {
     </DrawerBody>
   ) : (
     <DialogBody
-      px={4}
-      pt={0}
-      pb={"20px !important"}
+      p={"5 !important"}
+      pt={"0 !important"}
       className={finalClassName}
       overflowX={"clip"}
       {...(props as DialogBodyProps)}

@@ -80,7 +80,7 @@ const AllMerchantActivitiesDisclosure = ({ children, ...props }: BoxProps) => {
             <DisclosureHeaderContent title={`Semua Aktivitas`} />
           </DisclosureHeader>
 
-          <DisclosureBody>
+          <DisclosureBody px={"2 !important"}>
             {data.map((item: any, i: number) => {
               return <MerchantActivityItem key={i} item={item} />;
             })}

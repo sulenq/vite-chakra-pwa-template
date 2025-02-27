@@ -1,9 +1,17 @@
+import { ACTIVITY_TYPES } from "@/constant/parameters/activityTypes";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
-import { HStack, Text, useDisclosure } from "@chakra-ui/react";
-import CContainer from "../ui-custom/CContainer";
-import { ACTIVITY_TYPES } from "@/constant/parameters/activityTypes";
 import formatDate from "@/utils/formatDate";
+import formatTimeFromDateFormat from "@/utils/formatTimeFromDateFormat";
+import {
+  HStack,
+  StackProps,
+  Text,
+  TextProps,
+  useDisclosure,
+} from "@chakra-ui/react";
+import BackButton from "../ui-custom/BackButton";
+import CContainer from "../ui-custom/CContainer";
 import {
   DisclosureBody,
   DisclosureContent,
@@ -12,11 +20,39 @@ import {
   DisclosureRoot,
 } from "../ui-custom/Disclosure";
 import DisclosureHeaderContent from "../ui-custom/DisclosureHeaderContent";
-import BackButton from "../ui-custom/BackButton";
+
+const ActivityDetailItemContainer = ({ children, ...props }: StackProps) => {
+  return (
+    <HStack
+      align={"start"}
+      py={2}
+      borderBottom={"1px solid {colors.gray.subtle}"}
+      {...props}
+    >
+      {children}
+    </HStack>
+  );
+};
+
+const ActivityDetailItemLabel = ({ children, ...props }: TextProps) => {
+  return (
+    <Text w={"50%"} flex={"1 1 150px"} {...props}>
+      {children}
+    </Text>
+  );
+};
 
 const MerchantActivityItem = ({ item }: any) => {
   // Context
   const { themeConfig } = useThemeConfig();
+
+  // States, Refs
+  const data: any = {
+    id: 1,
+    activity_type: "subscription_purchase",
+    metadata: [],
+    created_at: "2025-01-25T10:00:00Z",
+  };
 
   // Utils
   const { open, onOpen, onClose } = useDisclosure();
@@ -34,7 +70,7 @@ const MerchantActivityItem = ({ item }: any) => {
         onClick={onOpen}
       >
         <HStack>
-          <Text>
+          <Text truncate>
             <b>{ACTIVITY_TYPES[item.activity_type].title}</b>,{" "}
             {ACTIVITY_TYPES[item.activity_type].description}
           </Text>
@@ -47,10 +83,48 @@ const MerchantActivityItem = ({ item }: any) => {
       <DisclosureRoot open={open} lazyLoad>
         <DisclosureContent>
           <DisclosureHeader>
-            <DisclosureHeaderContent title={``} />
+            <DisclosureHeaderContent title={`Detail Aktivitas`} />
           </DisclosureHeader>
 
-          <DisclosureBody>Detail</DisclosureBody>
+          <DisclosureBody pb={"4 !important"}>
+            <CContainer>
+              <Text mb={4}>
+                <b>{ACTIVITY_TYPES[item.activity_type].title}</b>,{" "}
+                {ACTIVITY_TYPES[item.activity_type].description}
+              </Text>
+
+              <CContainer>
+                <ActivityDetailItemContainer>
+                  <ActivityDetailItemLabel>Tanggal</ActivityDetailItemLabel>
+                  <ActivityDetailItemLabel>
+                    {formatDate(item.created_at)}
+                  </ActivityDetailItemLabel>
+                </ActivityDetailItemContainer>
+
+                <ActivityDetailItemContainer
+                  borderBottom={data.metadata.length === 0 ? "none" : ""}
+                >
+                  <ActivityDetailItemLabel>Waktu</ActivityDetailItemLabel>
+                  <ActivityDetailItemLabel>
+                    {formatTimeFromDateFormat(item.created_at)}
+                  </ActivityDetailItemLabel>
+                </ActivityDetailItemContainer>
+
+                {data.metadata.map((item: any, i: number) => {
+                  return (
+                    <ActivityDetailItemContainer key={i}>
+                      <ActivityDetailItemLabel>
+                        {item.label}
+                      </ActivityDetailItemLabel>
+                      <ActivityDetailItemLabel>
+                        {item.value}
+                      </ActivityDetailItemLabel>
+                    </ActivityDetailItemContainer>
+                  );
+                })}
+              </CContainer>
+            </CContainer>
+          </DisclosureBody>
 
           <DisclosureFooter>
             <BackButton>Close</BackButton>
