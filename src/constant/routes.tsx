@@ -23,8 +23,8 @@ const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
     element: <MerchantInvoicePage />,
   },
   {
-    path: "/pricing",
-    label: "Pricing",
+    path: "/apps",
+    label: "Apps",
     element: <MerchantPricingPage />,
   },
   {

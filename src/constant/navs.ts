@@ -1,5 +1,5 @@
 import {
-  IconDiscount2,
+  IconApps,
   IconHelpCircle,
   IconReceipt2,
   IconSmartHome,
@@ -17,9 +17,9 @@ const CLIENT_NAVS = [
     icon: IconReceipt2,
   },
   {
-    label: "Pricing",
-    path: "/pricing",
-    icon: IconDiscount2,
+    label: "Apps",
+    path: "/apps",
+    icon: IconApps,
   },
   {
     label: "Pusat Bantuan",
