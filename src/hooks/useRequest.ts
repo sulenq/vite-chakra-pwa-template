@@ -75,7 +75,7 @@ const useRequest = ({ showToast = true, loadingMessage }: Props = {}) => {
             setMessage({
               title: "Jaringan Error",
               description:
-                "Gagal terhubung ke server. Cobalah periksa jaringan Anda",
+                "Gagal terhubung ke server. Cobalah periksa jaringan Anda.",
             });
           }
 
@@ -108,7 +108,7 @@ const useRequest = ({ showToast = true, loadingMessage }: Props = {}) => {
               : "Title's format isn't string",
           description: message?.description
             ? typeof message?.description === "string"
-            : "Description's format isn't string",
+            : "Description's format isn't string.",
           placement: iss ? "top" : "bottom-end",
           action: {
             label: "Close",
@@ -122,7 +122,7 @@ const useRequest = ({ showToast = true, loadingMessage }: Props = {}) => {
               : "Title's format isn't string",
           description: message?.description
             ? typeof message?.description === "string"
-            : "Description's format isn't string",
+            : "Description's format isn't string.",
 
           placement: iss ? "top" : "bottom-end",
           action: {

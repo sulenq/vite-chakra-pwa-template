@@ -112,7 +112,7 @@ const Profile = ({ ...props }: StackProps) => {
               <ConfirmationDisclosure
                 id="loggingout"
                 title="Log out?"
-                description="Pastikan tidak ada proses ke server sebelum logout dikonfirmasi untuk menghindari error autentikasi"
+                description="Pastikan tidak ada proses ke server sebelum logout dikonfirmasi untuk menghindari error autentikasi."
                 confirmLabel="Logout"
                 confirmButtonProps={{ colorPalette: "red" }}
                 confirmCallback={() => {}}
