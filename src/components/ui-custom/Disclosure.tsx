@@ -133,10 +133,13 @@ const DisclosureBody = ({ children, ...props }: DisclosureBodyProps) => {
   const iss = useIsSmScreenWidth();
   const finalClassName = `scrollY ${props.className}`;
 
+  console.log(`${props.pb || 5} !important`);
+
   return iss ? (
     <DrawerBody
       px={4}
       py={0}
+      pb={`${props.pb ?? 5} !important`}
       className={finalClassName}
       overflowX={"clip"}
       {...(props as DrawerHeaderProps)}
@@ -145,8 +148,9 @@ const DisclosureBody = ({ children, ...props }: DisclosureBodyProps) => {
     </DrawerBody>
   ) : (
     <DialogBody
-      p={"5 !important"}
+      px={"5"}
       pt={"0 !important"}
+      pb={`${props.pb ?? 5} !important`}
       className={finalClassName}
       overflowX={"clip"}
       {...(props as DialogBodyProps)}

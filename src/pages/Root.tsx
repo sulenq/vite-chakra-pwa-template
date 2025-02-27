@@ -205,7 +205,7 @@ const DisclosureDemo = () => {
           <DisclosureHeaderContent title="Header 1" />
         </DisclosureHeader>
 
-        <DisclosureBody pb={5}>
+        <DisclosureBody>
           <p>
             Dislosure responsive, jika viewport large maka render dialog modal,
             jika viewport small maka render bottom drawer, kamu bisa back untuk

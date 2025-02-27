@@ -44,7 +44,6 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
             shadow={"none"}
             border={"1px solid {colors.border.subtle}"}
             onClick={(e) => {
-              console.log("asu");
               e.stopPropagation();
             }}
             {...rest}
