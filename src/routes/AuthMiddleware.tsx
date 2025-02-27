@@ -67,6 +67,8 @@ const AuthMiddleware = ({
     }
   }, []);
 
+  console.log(authToken, permissions, loading);
+
   return (
     <>
       {!authToken && <Navigate to={redirectTo} />}
@@ -82,13 +84,13 @@ const AuthMiddleware = ({
         </Center>
       )}
 
-      {!loading && permissions && (
+      {!loading && (
         <>
-          {!authToken && <Navigate to={redirectTo} />}
+          {!authToken && permissions && <Navigate to={redirectTo} />}
 
           {authToken && (
             <>
-              {hasPermissions(allowedPermissions) ? (
+              {permissions && hasPermissions(allowedPermissions) ? (
                 children
               ) : (
                 <Navigate to={redirectTo} />
