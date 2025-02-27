@@ -2,6 +2,7 @@ import RootPage from "@/pages/RootPage";
 import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
 import MerchantHomePage from "@/pages/client/MerchantHomePage";
 import MerchantInvoicePage from "@/pages/client/MerchantInvoicePage";
+import MerchantPricingPage from "@/pages/client/MerchantPricingPage";
 
 const ROUTES: Interface__Route[] = [
   {
@@ -24,7 +25,7 @@ const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   {
     path: "/pricing",
     label: "Pricing",
-    element: <MerchantHomePage />,
+    element: <MerchantPricingPage />,
   },
   {
     path: "/help-center",

@@ -52,8 +52,28 @@ const LoginForm = () => {
         config,
         onResolve: {
           onSuccess: (r: any) => {
+            //! Dummy Alert
+            const dummy_user = {
+              name: "Sulenq Wazawsky",
+              avatar: "https://bit.ly/sage-adebayo",
+              email: "sulengpol@gmail.com",
+              subscriptions: [
+                {
+                  id: 1,
+                  name: "HRIS",
+                  pricing: {
+                    id: 1,
+                    name: "Essential",
+                  },
+                },
+              ],
+              permissions: [], // number array
+            };
             localStorage.setItem("__auth_token", r.data.token);
-            localStorage.setItem("__user_data", r.data.data?.user);
+            localStorage.setItem(
+              "__user_data",
+              r.data.data?.user || JSON.stringify(dummy_user)
+            );
             setAuthToken(r.data.token);
             setPermissions(r.data.user.permission ?? []);
 
