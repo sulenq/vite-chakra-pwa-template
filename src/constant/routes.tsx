@@ -4,6 +4,8 @@ import MerchantHomePage from "@/pages/client/MerchantHomePage";
 import MerchantInvoicePage from "@/pages/client/MerchantInvoicePage";
 import MerchantServicePage from "@/pages/client/MerchantServicePage";
 import MerchantHelpCenterPage from "@/pages/client/MerchantHelpCenterPage";
+import MerchantProfilePage from "@/pages/client/MerchantProfilePage";
+import MerchantSettingsPage from "@/pages/client/MerchantSettingsPage";
 
 const ROUTES: Interface__Route[] = [
   {
@@ -36,12 +38,12 @@ const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   {
     path: "/settings",
     label: "Pengaturan",
-    element: <MerchantHomePage />,
+    element: <MerchantSettingsPage />,
   },
   {
     path: "/profile",
     label: "Profile",
-    element: <MerchantHomePage />,
+    element: <MerchantProfilePage />,
   },
 ];
 
