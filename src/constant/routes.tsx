@@ -26,8 +26,8 @@ const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
     element: <MerchantInvoicePage />,
   },
   {
-    path: "/apps",
-    label: "Apps",
+    path: "/services",
+    label: "Layanan",
     element: <MerchantServicePage />,
   },
   {

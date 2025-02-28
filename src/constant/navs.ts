@@ -17,8 +17,8 @@ const CLIENT_NAVS = [
     icon: IconReceipt2,
   },
   {
-    label: "Apps",
-    path: "/apps",
+    label: "Layanan",
+    path: "/services",
     icon: IconApps,
   },
   {

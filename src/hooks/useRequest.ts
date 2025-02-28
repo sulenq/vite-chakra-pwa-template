@@ -67,20 +67,38 @@ const useRequest = ({ showToast = true, loadingMessage }: Props = {}) => {
           console.log(e);
 
           // Network Error
-          if (e.code === "ERR_NETWORK") {
-            console.log("Network Error");
-            setMessage({
-              title: "Jaringan Error",
-              description:
-                "Gagal terhubung ke server. Cobalah periksa jaringan Anda.",
-            });
-          }
-
-          // Check if the error is due to request cancellation
-          if (e.code !== "ERR_CANCELED") {
-            // Set error if the request fails and is not canceled
-            setError(true);
-            setLoading(false);
+          switch (e.code) {
+            default:
+              if (!showToast) {
+                toaster.error({
+                  title:
+                    typeof message?.title === "string"
+                      ? message?.title
+                      : "Title's format isn't string",
+                  description: message?.description
+                    ? typeof message?.description === "string"
+                    : "Description's format isn't string.",
+                });
+              }
+              break;
+            case "ERR_NETWORK":
+              setMessage({
+                title: "Jaringan Error",
+                description:
+                  "Gagal terhubung ke server. Cobalah periksa jaringan Anda.",
+              });
+              if (!showToast) {
+                toaster.error({
+                  title: "Jaringan Error",
+                  description:
+                    "Gagal terhubung ke server. Cobalah periksa jaringan Anda.",
+                });
+              }
+              break;
+            case "ERR_CANCELED":
+              setError(true);
+              setLoading(false);
+              break;
           }
 
           if (onResolve?.onError) {
@@ -97,7 +115,6 @@ const useRequest = ({ showToast = true, loadingMessage }: Props = {}) => {
     });
 
     showToast &&
-      !error &&
       toaster.promise(promise, {
         loading: {
           title: loadingMessage?.title ?? "Loading...",
@@ -134,8 +151,6 @@ const useRequest = ({ showToast = true, loadingMessage }: Props = {}) => {
         },
       });
   }
-
-  console.log(message);
 
   return {
     req,
