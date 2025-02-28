@@ -14,6 +14,7 @@ import { IMAGES_PATH } from "@/constant/path";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import {
+  Group,
   HStack,
   Icon,
   Image,
@@ -22,10 +23,13 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import {
+  IconBrandWhatsapp,
   IconCaretLeftFilled,
   IconCaretRightFilled,
   IconCrown,
+  IconWorld,
 } from "@tabler/icons-react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 
 const ProductItem = ({ product }: any) => {
@@ -40,6 +44,7 @@ const ProductItem = ({ product }: any) => {
       "Cupidatat tempor consectetur consequat irure non consequat aute minim ut officia excepteur. Ut officia labore irure mollit dolore exercitation culpa incididunt. Quis velit laborum nisi fugiat in anim cillum fugiat. Non mollit et anim est Lorem sint enim qui labore labore ullamco cupidatat excepteur. Laborum culpa pariatur minim esse sint aliqua sint fugiat ex veniam. Nulla sint est sunt enim nostrud laboris proident amet.",
     thumbnail: `${IMAGES_PATH}/hris.png`,
   };
+  const ImageGalleryRef = useRef<HTMLDivElement>(null);
 
   // Utils
   const { open, onOpen, onClose } = useDisclosure();
@@ -82,7 +87,7 @@ const ProductItem = ({ product }: any) => {
             <SimpleGrid columns={[1, null, 2]} p={[0, null, 4]}>
               <CContainer px={[0, null, 4]}>
                 <Image src={data.thumbnail} mb={4} />
-                <HScroll mt={4} gap={4}>
+                <HScroll fRef={ImageGalleryRef} mt={4} gap={4}>
                   <Image w={"100px"} src={data.thumbnail} />
                   <Image w={"100px"} src={data.thumbnail} />
                   <Image w={"100px"} src={data.thumbnail} />
@@ -90,12 +95,18 @@ const ProductItem = ({ product }: any) => {
                   <Image w={"100px"} src={data.thumbnail} />
                 </HScroll>
 
-                <HStack ml={"auto"} mt={4} px={4}>
+                <HStack ml={"auto"} mt={4}>
                   <BButton
                     iconButton
                     size={"2xs"}
                     borderRadius={"full"}
-                    variant={"subtle"}
+                    variant={"outline"}
+                    onClick={() => {
+                      ImageGalleryRef.current?.scrollBy({
+                        left: -100,
+                        behavior: "smooth",
+                      });
+                    }}
                   >
                     <IconCaretLeftFilled />
                   </BButton>
@@ -104,7 +115,13 @@ const ProductItem = ({ product }: any) => {
                     iconButton
                     size={"2xs"}
                     borderRadius={"full"}
-                    variant={"subtle"}
+                    variant={"outline"}
+                    onClick={() => {
+                      ImageGalleryRef.current?.scrollBy({
+                        left: 100,
+                        behavior: "smooth",
+                      });
+                    }}
                   >
                     <IconCaretRightFilled />
                   </BButton>
@@ -118,7 +135,7 @@ const ProductItem = ({ product }: any) => {
                 <Text>{data.description}</Text>
 
                 <HStack mt={"auto"} pt={4}>
-                  <Rating value={4.5} />
+                  <Rating value={4.5} readOnly />
                   <Link to={"/reviews"}>
                     <Text textDecor={"underline !important"}>23 reviews</Text>
                   </Link>
@@ -131,7 +148,20 @@ const ProductItem = ({ product }: any) => {
                   IDR 500.000
                 </Text>
 
-                <BButton mt={4}>Website</BButton>
+                <Text mt={1} color={"fg.subtle"} fontSize={"xs"}>
+                  Harga belum termasuk pajak
+                </Text>
+
+                <Group mt={4}>
+                  <BButton flex={"1"} variant={"outline"}>
+                    <IconWorld stroke={1.5} />
+                    Website
+                  </BButton>
+                  <BButton flex={"1"} colorPalette={themeConfig.colorPalette}>
+                    <IconBrandWhatsapp stroke={1.5} />
+                    WA Sales
+                  </BButton>
+                </Group>
               </CContainer>
             </SimpleGrid>
           </DisclosureBody>

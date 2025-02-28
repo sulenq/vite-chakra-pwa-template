@@ -133,8 +133,6 @@ const DisclosureBody = ({ children, ...props }: DisclosureBodyProps) => {
   const iss = useIsSmScreenWidth();
   const finalClassName = `scrollY ${props.className}`;
 
-  console.log(`${props.pb || 5} !important`);
-
   return iss ? (
     <DrawerBody
       px={4}

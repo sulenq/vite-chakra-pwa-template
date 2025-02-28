@@ -1,9 +1,12 @@
 import { StackProps } from "@chakra-ui/react";
 import CContainer from "./CContainer";
 
-const VScroll = ({ children, ...props }: StackProps) => {
+interface Props extends StackProps {
+  fRef?: any;
+}
+const VScroll = ({ fRef, children, ...props }: Props) => {
   return (
-    <CContainer className={`scrollY ${props.className}`} {...props}>
+    <CContainer fRef={fRef} className={`scrollY ${props.className}`} {...props}>
       {children}
     </CContainer>
   );

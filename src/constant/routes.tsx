@@ -2,7 +2,8 @@ import RootPage from "@/pages/RootPage";
 import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
 import MerchantHomePage from "@/pages/client/MerchantHomePage";
 import MerchantInvoicePage from "@/pages/client/MerchantInvoicePage";
-import MerchantPricingPage from "@/pages/client/MerchantPricingPage";
+import MerchantServicePage from "@/pages/client/MerchantServicePage";
+import MerchantHelpCenterPage from "@/pages/client/MerchantHelpCenterPage";
 
 const ROUTES: Interface__Route[] = [
   {
@@ -25,12 +26,12 @@ const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   {
     path: "/apps",
     label: "Apps",
-    element: <MerchantPricingPage />,
+    element: <MerchantServicePage />,
   },
   {
     path: "/help-center",
     label: "Pusat Bantuan",
-    element: <MerchantHomePage />,
+    element: <MerchantHelpCenterPage />,
   },
   {
     path: "/settings",

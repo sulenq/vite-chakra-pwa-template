@@ -1,8 +1,13 @@
 import { HStack, StackProps } from "@chakra-ui/react";
 import { useRef, useEffect } from "react";
 
-const HScroll = ({ children, ...props }: StackProps) => {
-  const hStackRef = useRef<HTMLDivElement>(null);
+interface Props extends StackProps {
+  fRef?: any;
+  children?: any;
+}
+
+const HScroll = ({ fRef, children, ...props }: Props) => {
+  const hStackRef = fRef ?? useRef<HTMLDivElement>(null);
   const scrollVelocity = useRef(0);
   const rafId = useRef<number | null>(null);
 
