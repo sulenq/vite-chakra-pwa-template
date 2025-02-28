@@ -22,7 +22,7 @@ const AuthMiddleware = ({
     useAuthMiddleware();
 
   // Utils
-  const { req, loading, setLoading } = useRequest({ showToast: true });
+  const { req, loading } = useRequest({ showToast: true });
   const navigate = useNavigate();
 
   // No auth token toast on 1st render
@@ -72,16 +72,9 @@ const AuthMiddleware = ({
     return <Navigate to={redirectTo} />;
   };
 
-  // Handle has already permissions
-  useEffect(() => {
-    if (permissions) {
-      setLoading(false);
-    }
-  }, []);
-
   return (
     <>
-      {!authToken && <Navigate to={redirectTo} />}
+      {!authToken && <Redirect />}
 
       {(loading || !permissions) && (
         <Center w={"100w"} minH={"100dvh"} color={"fg.subtle"}>
@@ -94,12 +87,8 @@ const AuthMiddleware = ({
         </Center>
       )}
 
-      {!loading && (
-        <>
-          {permissions && <>{hasPermissions(allowedPermissions) && children}</>}
-
-          {!permissions && <Redirect />}
-        </>
+      {!loading && permissions && (
+        <>{hasPermissions(allowedPermissions) ? children : <Redirect />}</>
       )}
     </>
   );
