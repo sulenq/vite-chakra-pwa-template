@@ -21,7 +21,7 @@ interface Props {
 }
 const useRequest = ({ showToast = true, loadingMessage }: Props = {}) => {
   // States
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [status, setStatus] = useState<number | undefined>(undefined);
   const [response, setResponse] = useState<any>(undefined);
   const [message, setMessage] = useState<any>(undefined);
@@ -66,12 +66,9 @@ const useRequest = ({ showToast = true, loadingMessage }: Props = {}) => {
         .catch((e) => {
           console.log(e);
 
-          setStatus(e.response?.status);
-          setResponse(e.response);
-          setMessage(e.response.message);
-
           // Network Error
           if (e.code === "ERR_NETWORK") {
+            console.log("Network Error");
             setMessage({
               title: "Jaringan Error",
               description:
@@ -91,11 +88,16 @@ const useRequest = ({ showToast = true, loadingMessage }: Props = {}) => {
           }
 
           reject();
+
+          setStatus(e.response?.status);
+          setResponse(e.response);
+          setMessage(e.response.message);
         })
         .finally(() => {});
     });
 
     showToast &&
+      !error &&
       toaster.promise(promise, {
         loading: {
           title: loadingMessage?.title ?? "Loading...",
@@ -132,6 +134,8 @@ const useRequest = ({ showToast = true, loadingMessage }: Props = {}) => {
         },
       });
   }
+
+  console.log(message);
 
   return {
     req,

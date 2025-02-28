@@ -22,7 +22,7 @@ const AuthMiddleware = ({
     useAuthMiddleware();
 
   // Utils
-  const { req, loading } = useRequest({ showToast: false });
+  const { req, loading, setLoading } = useRequest({ showToast: true });
   const navigate = useNavigate();
 
   // No auth token toast on 1st render
@@ -40,7 +40,7 @@ const AuthMiddleware = ({
     }
   }, [authToken, permissions]);
 
-  // Handle permissions
+  // Handle permiss ions
   useEffect(() => {
     function handleOnSuccess(r: any) {
       const permissions = r?.data?.data?.permission;
@@ -67,7 +67,17 @@ const AuthMiddleware = ({
     }
   }, []);
 
-  console.log(authToken, permissions, loading);
+  // Handle redirect to
+  const Redirect = () => {
+    return <Navigate to={redirectTo} />;
+  };
+
+  // Handle has already permissions
+  useEffect(() => {
+    if (permissions) {
+      setLoading(false);
+    }
+  }, []);
 
   return (
     <>
@@ -86,23 +96,9 @@ const AuthMiddleware = ({
 
       {!loading && (
         <>
-          {permissions && (
-            <>
-              {!authToken && <Navigate to={redirectTo} />}
+          {permissions && <>{hasPermissions(allowedPermissions) && children}</>}
 
-              {authToken && (
-                <>
-                  {hasPermissions(allowedPermissions) ? (
-                    children
-                  ) : (
-                    <Navigate to={redirectTo} />
-                  )}
-                </>
-              )}
-            </>
-          )}
-
-          {!permissions && <Navigate to={redirectTo} />}
+          {!permissions && <Redirect />}
         </>
       )}
     </>

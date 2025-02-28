@@ -1,42 +1,49 @@
 import { HStack, StackProps } from "@chakra-ui/react";
-import { useEffect, useRef } from "react";
+import { useRef, useEffect } from "react";
 
-interface Props extends StackProps {
-  children?: any;
-}
-
-const HScroll = ({ children, ...props }: Props) => {
+const HScroll = ({ children, ...props }: StackProps) => {
   const hStackRef = useRef<HTMLDivElement>(null);
+  const scrollVelocity = useRef(0);
+  const rafId = useRef<number | null>(null);
 
   useEffect(() => {
     const handleScroll = (event: WheelEvent) => {
       if (!hStackRef.current) return;
 
-      // Scroll horizontal
-      hStackRef.current.scrollBy({
-        left: event.deltaY, // Gunakan deltaY untuk scroll horizontal
-        behavior: "smooth",
-      });
-
-      // Mencegah scroll default (vertikal)
       event.preventDefault();
+      scrollVelocity.current += event.deltaY * 0.2;
+
+      if (!rafId.current) {
+        const smoothScroll = () => {
+          if (!hStackRef.current) return;
+          hStackRef.current.scrollLeft += scrollVelocity.current;
+          scrollVelocity.current *= 0.85;
+
+          if (Math.abs(scrollVelocity.current) > 0.5) {
+            rafId.current = requestAnimationFrame(smoothScroll);
+          } else {
+            rafId.current = null;
+          }
+        };
+        rafId.current = requestAnimationFrame(smoothScroll);
+      }
     };
 
-    const hStackElement = hStackRef.current;
-    hStackElement?.addEventListener("wheel", handleScroll, { passive: false });
+    window.addEventListener("wheel", handleScroll, { passive: false });
 
     return () => {
-      hStackElement?.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("wheel", handleScroll);
+      if (rafId.current) cancelAnimationFrame(rafId.current);
     };
   }, []);
 
   return (
     <HStack
       ref={hStackRef}
-      className="scrollX"
-      overflowX={"auto"}
-      overflowY={"clip"}
-      w={"full"}
+      overflowX="auto"
+      overflowY="hidden"
+      w="full"
+      className={`scrollX ${props.className}`}
       {...props}
     >
       {children}
