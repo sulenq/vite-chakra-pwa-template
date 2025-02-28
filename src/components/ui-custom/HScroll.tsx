@@ -1,5 +1,5 @@
 import { HStack, StackProps } from "@chakra-ui/react";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 
 interface Props extends StackProps {
   fRef?: any;
@@ -11,10 +11,13 @@ const HScroll = ({ fRef, children, ...props }: Props) => {
   const scrollVelocity = useRef(0);
   const rafId = useRef<number | null>(null);
 
-  useEffect(() => {
-    const handleScroll = (event: WheelEvent) => {
-      if (!hStackRef.current) return;
+  const handleScroll = (event: React.WheelEvent<HTMLDivElement>) => {
+    if (!hStackRef.current) return;
 
+    const canScroll =
+      hStackRef.current.scrollWidth > hStackRef.current.clientWidth;
+
+    if (canScroll) {
       event.preventDefault();
       scrollVelocity.current += event.deltaY * 0.2;
 
@@ -32,15 +35,8 @@ const HScroll = ({ fRef, children, ...props }: Props) => {
         };
         rafId.current = requestAnimationFrame(smoothScroll);
       }
-    };
-
-    window.addEventListener("wheel", handleScroll, { passive: false });
-
-    return () => {
-      window.removeEventListener("wheel", handleScroll);
-      if (rafId.current) cancelAnimationFrame(rafId.current);
-    };
-  }, []);
+    }
+  };
 
   return (
     <HStack
@@ -49,6 +45,7 @@ const HScroll = ({ fRef, children, ...props }: Props) => {
       overflowY="hidden"
       w="full"
       className={`scrollX ${props.className}`}
+      onWheel={handleScroll}
       {...props}
     >
       {children}

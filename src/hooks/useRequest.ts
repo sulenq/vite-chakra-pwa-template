@@ -21,7 +21,7 @@ interface Props {
 }
 const useRequest = ({ showToast = true, loadingMessage }: Props = {}) => {
   // States
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [status, setStatus] = useState<number | undefined>(undefined);
   const [response, setResponse] = useState<any>(undefined);
   const [message, setMessage] = useState<any>(undefined);
