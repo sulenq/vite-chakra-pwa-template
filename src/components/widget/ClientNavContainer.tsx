@@ -12,7 +12,7 @@ import {
   StackProps,
   VStack,
 } from "@chakra-ui/react";
-import { IconSettings } from "@tabler/icons-react";
+import { IconHelpCircle } from "@tabler/icons-react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import CContainer from "../ui-custom/CContainer";
@@ -120,15 +120,15 @@ const ClientNavContainer = ({ label, children, activePath }: Props) => {
   const NavList2 = () => {
     return (
       <>
-        <Link to={"/settings"}>
+        <Link to={"/help-center"}>
           <Tooltip
-            content={"Pengaturan"}
+            content={"Pusat Bantuan"}
             positioning={{ placement: "right" }}
             contentProps={{ ml: 2 }}
           >
-            <NavItemContainer active={activePath === "/settings"}>
+            <NavItemContainer active={activePath === "/help-center"}>
               <Icon>
-                <IconSettings strokeWidth={1.5} size={iss ? 28 : 20} />
+                <IconHelpCircle strokeWidth={1.5} size={iss ? 28 : 20} />
               </Icon>
             </NavItemContainer>
           </Tooltip>

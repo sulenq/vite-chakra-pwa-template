@@ -1,9 +1,4 @@
-import {
-  IconApps,
-  IconHelpCircle,
-  IconReceipt2,
-  IconSmartHome,
-} from "@tabler/icons-react";
+import { IconApps, IconReceipt2, IconSmartHome } from "@tabler/icons-react";
 
 const CLIENT_NAVS = [
   {
@@ -21,11 +16,11 @@ const CLIENT_NAVS = [
     path: "/services",
     icon: IconApps,
   },
-  {
-    label: "Pusat Bantuan",
-    path: "/help-center",
-    icon: IconHelpCircle,
-  },
+  // {
+  //   label: "Pusat Bantuan",
+  //   path: "/help-center",
+  //   icon: IconHelpCircle,
+  // },
 ];
 
 export { CLIENT_NAVS };
