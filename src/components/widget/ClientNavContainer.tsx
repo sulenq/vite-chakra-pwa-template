@@ -5,11 +5,9 @@ import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import {
   Box,
   BoxProps,
-  Center,
   HStack,
   Icon,
   Image,
-  Separator,
   Stack,
   StackProps,
   VStack,
@@ -20,7 +18,6 @@ import { Link } from "react-router-dom";
 import CContainer from "../ui-custom/CContainer";
 import FloatCounter from "../ui-custom/FloatCounter";
 import Heading5 from "../ui-custom/Heading5";
-import { Avatar } from "../ui/avatar";
 import { ColorModeButton } from "../ui/color-mode";
 import { Tooltip } from "../ui/tooltip";
 import MerchantInbox from "./MerchantInbox";
@@ -137,7 +134,7 @@ const ClientNavContainer = ({ label, children, activePath }: Props) => {
           </Tooltip>
         </Link>
 
-        {!iss && <Separator w={"full"} mb={2} />}
+        {/* {!iss && <Separator w={"full"} mb={2} />}
 
         <Link to={"/profile"}>
           <Center
@@ -157,7 +154,7 @@ const ClientNavContainer = ({ label, children, activePath }: Props) => {
               h={"28px"}
             />
           </Center>
-        </Link>
+        </Link> */}
       </>
     );
   };
