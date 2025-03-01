@@ -1,9 +1,8 @@
+import useBackOnDefaultPage from "@/hooks/useBackOnDefaultPage";
+import back from "@/utils/back";
 import { Box, Drawer as ChakraDrawer, Portal } from "@chakra-ui/react";
 import { forwardRef } from "react";
 import { CloseButton } from "./close-button";
-import CContainer from "../ui-custom/CContainer";
-import back from "@/utils/back";
-import useBackOnDefaultPage from "@/hooks/useBackOnDefaultPage";
 
 interface DrawerContentProps extends ChakraDrawer.ContentProps {
   portalled?: boolean;
@@ -34,40 +33,32 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
             // zIndex={20}
           />
         )}
-        <ChakraDrawer.Positioner padding={offset}>
+        <ChakraDrawer.Positioner
+          padding={offset}
+          pointerEvents={"auto"}
+          onClick={() => {
+            back();
+            handleBackOnDefaultPage();
+          }}
+        >
           <ChakraDrawer.Content
             ref={ref}
-            // zIndex={6}
-            h={"100%"}
-            onClick={() => {
-              back();
-              handleBackOnDefaultPage();
-            }}
-            bg={"transparent"}
             justifyContent={"end"}
             shadow={"none"}
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
             {...rest}
           >
-            <CContainer
-              bg={"body"}
-              justify={"end"}
-              maxH={"calc(100dvh) !important"}
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
-              position={"relative"}
-              borderRadius={"6px 6px 0 0"}
-            >
-              <Box
-                w={"40px"}
-                h={"4px"}
-                borderRadius={"full"}
-                bg={"var(--d2)"}
-                mx={"auto"}
-                mt={"6px"}
-              />
-              {children}
-            </CContainer>
+            <Box
+              w={"40px"}
+              h={"4px"}
+              borderRadius={"full"}
+              bg={"var(--d2)"}
+              mx={"auto"}
+              mt={"6px"}
+            />
+            {children}
           </ChakraDrawer.Content>
         </ChakraDrawer.Positioner>
       </Portal>
