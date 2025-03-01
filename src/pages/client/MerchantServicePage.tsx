@@ -83,7 +83,7 @@ const ProductItem = ({ product }: any) => {
             <DisclosureHeaderContent title={``} />
           </DisclosureHeader>
 
-          <DisclosureBody px={0} pt={4}>
+          <DisclosureBody px={0} pt={[6, null, 4]}>
             <SimpleGrid columns={[1, null, 2]} px={[0, null, 4]} pb={4}>
               <CContainer px={[0, null, 4]}>
                 <Image src={data.thumbnail} mb={4} />
