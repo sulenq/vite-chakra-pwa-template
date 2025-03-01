@@ -299,7 +299,7 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
       "Paket esensial dengan fitur - fitur utama untuk kebutuhan pokok manajemen karyawan.",
     moduls: [1, 2, 3, 4, 5, 6, 7, 8],
   };
-  const MODULS = [
+  const FEATURES = [
     {
       id: 1,
       name: `Manajemen Rekrutmen`,
@@ -366,7 +366,7 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
       price: 1000000,
     },
   ];
-  const sortedModuls = MODULS.sort((a, b) => {
+  const sortedFeatures = FEATURES.sort((a, b) => {
     const indexA = data.moduls.indexOf(a.id);
     const indexB = data.moduls.indexOf(b.id);
 
@@ -438,7 +438,7 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
               </Text>
 
               <CContainer gap={2} ml={1} mt={1}>
-                {sortedModuls.map((item, ii) => {
+                {sortedFeatures.map((item, ii) => {
                   const include = data.moduls.includes(item.id);
                   const valid = ii > 0;
 
@@ -502,7 +502,7 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
 
           {/* Fitur */}
           <CContainer gap={2}>
-            {sortedModuls.map((item, ii) => {
+            {sortedFeatures.map((item, ii) => {
               const include = data.moduls.includes(item.id);
               const valid = ii < 12;
 
@@ -538,7 +538,13 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
 const MerchantHomePage = () => {
   return (
     <CContainer>
-      <HStack wrap={"wrap"} gap={4} p={[2, null, 4]} pt={0} align={"stretch"}>
+      <HStack
+        wrap={"wrap"}
+        gap={4}
+        p={[2, null, 4]}
+        pt={"0 !important"}
+        align={"stretch"}
+      >
         <CContainer gap={4} flex={"1 1 350px"} w={"50%"}>
           <Profile />
 

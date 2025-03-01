@@ -161,7 +161,7 @@ const MerchantInvoicePage = () => {
   });
 
   return (
-    <CContainer p={[2, null, 4]} pt={0}>
+    <CContainer p={[2, null, 4]} pt={"0 !important"}>
       <ItemContainer pt={4}>
         <HScroll px={4} pb={4}>
           <SearchInput />
