@@ -208,7 +208,7 @@ const MerchantPricingPage = () => {
         kebutuhan Anda.
       </Text>
 
-      <CContainer p={4}>
+      <CContainer p={[2, null, 4]}>
         <ProductList />
       </CContainer>
     </CContainer>

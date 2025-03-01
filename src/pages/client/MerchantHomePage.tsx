@@ -538,7 +538,7 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
 const MerchantHomePage = () => {
   return (
     <CContainer>
-      <HStack wrap={"wrap"} gap={4} px={4} align={"stretch"} pb={4}>
+      <HStack wrap={"wrap"} gap={4} p={[2, null, 4]} pt={0} align={"stretch"}>
         <CContainer gap={4} flex={"1 1 350px"} w={"50%"}>
           <Profile />
 
