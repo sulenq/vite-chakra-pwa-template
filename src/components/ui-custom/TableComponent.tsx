@@ -174,12 +174,7 @@ const RowOptions = ({
 }: Interface__RowOptions) => {
   return (
     <MenuRoot lazyMount positioning={{ hideWhenDetached: true }}>
-      <MenuTrigger
-        asChild
-        // borderRadius={"full"}
-        aria-label="row options"
-        // _expanded={{ border: "1px solid", borderColor: "border.muted" }}
-      >
+      <MenuTrigger asChild aria-label="row options">
         <BButton iconButton unclicky variant={"ghost"} size={"xs"}>
           <Icon fontSize={"lg !important"}>
             <IconDots />
