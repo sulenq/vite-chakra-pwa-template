@@ -150,6 +150,10 @@ const LoginForm = () => {
           </BButton>
         </form>
       </FieldsetRoot>
+
+      <Text mt={4}>Demo Credential</Text>
+      <Text>test.akun</Text>
+      <Text>testakun123</Text>
     </CContainer>
   );
 };

@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { toaster } from "../components/ui/toaster";
 import request from "../utils/request";
 import useIsSmScreenWidth from "./useIsSmScreenWidth";
+import { useNavigate } from "react-router-dom";
 
 interface Interface__Req {
   config: AxiosRequestConfig;
@@ -18,8 +19,13 @@ interface Props {
     title?: string;
     description?: string;
   };
+  loginPath?: string;
 }
-const useRequest = ({ showToast = true, loadingMessage }: Props = {}) => {
+const useRequest = ({
+  showToast = true,
+  loadingMessage,
+  loginPath = "/",
+}: Props = {}) => {
   // States
   const [loading, setLoading] = useState<boolean>(false);
   const [status, setStatus] = useState<number | undefined>(undefined);
@@ -30,6 +36,7 @@ const useRequest = ({ showToast = true, loadingMessage }: Props = {}) => {
   // Utils
   const abortControllerRef = useRef<AbortController | null>(null);
   const iss = useIsSmScreenWidth();
+  const navigate = useNavigate();
 
   // Make request func
   function req({ config, onResolve }: Interface__Req) {
@@ -66,7 +73,6 @@ const useRequest = ({ showToast = true, loadingMessage }: Props = {}) => {
         .catch((e) => {
           console.log(e);
 
-          // Network Error
           switch (e.code) {
             default:
               if (!showToast) {
@@ -98,6 +104,20 @@ const useRequest = ({ showToast = true, loadingMessage }: Props = {}) => {
             case "ERR_CANCELED":
               setError(true);
               setLoading(false);
+              break;
+          }
+
+          switch (e.status) {
+            default:
+              break;
+            case 401:
+              navigate(loginPath);
+              break;
+            case 500:
+              navigate("/server-error");
+              break;
+            case 503:
+              navigate("/maintenance");
               break;
           }
 

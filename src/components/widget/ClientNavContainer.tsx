@@ -14,16 +14,16 @@ import {
   StackProps,
   VStack,
 } from "@chakra-ui/react";
-import { IconBell, IconSettings } from "@tabler/icons-react";
+import { IconSettings } from "@tabler/icons-react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import BButton from "../ui-custom/BButton";
 import CContainer from "../ui-custom/CContainer";
 import FloatCounter from "../ui-custom/FloatCounter";
 import Heading5 from "../ui-custom/Heading5";
 import { Avatar } from "../ui/avatar";
 import { ColorModeButton } from "../ui/color-mode";
 import { Tooltip } from "../ui/tooltip";
+import MerchantInbox from "./MerchantInbox";
 
 interface Interface__NavItemContainer extends StackProps {
   active?: boolean;
@@ -211,7 +211,6 @@ const ClientNavContainer = ({ label, children, activePath }: Props) => {
           justify={"space-between"}
           p={2}
           px={4}
-          mb={1}
           position={"sticky"}
           top={0}
           zIndex={2}
@@ -221,18 +220,10 @@ const ClientNavContainer = ({ label, children, activePath }: Props) => {
             {label}
           </Heading5>
 
-          <HStack flexShrink={0}>
+          <HStack flexShrink={0} gap={1}>
             <ColorModeButton fontSize={"1.1rem"} />
 
-            <BButton iconButton unclicky variant={"ghost"}>
-              <FloatCounter circleProps={{ mt: "18px", mr: "18px" }}>
-                2
-              </FloatCounter>
-
-              <Icon>
-                <IconBell stroke={1.5} />
-              </Icon>
-            </BButton>
+            <MerchantInbox />
           </HStack>
         </HStack>
 

@@ -15,8 +15,8 @@ export default function MissingPage() {
         </Text>
 
         <Text textAlign={"center"} mb={4} maxW={"600px"} color={"fg.muted"}>
-          Halaman yang Anda cari tidak tersedia. Kemungkinan ada URL yang
-          keliru.
+          Halaman yang Anda cari tidak tersedia. Kemungkinan ada URL yang keliru
+          atau halaman ini sudah tidak tersedia.
         </Text>
 
         <Link to={"/"}>

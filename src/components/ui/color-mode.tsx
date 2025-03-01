@@ -7,6 +7,7 @@ import type { ThemeProviderProps } from "next-themes";
 import { ThemeProvider, useTheme } from "next-themes";
 import { forwardRef } from "react";
 import BButton from "../ui-custom/BButton";
+import { useThemeConfig } from "@/context/useThemeConfig";
 
 export interface ColorModeProviderProps extends ThemeProviderProps {}
 
@@ -52,6 +53,7 @@ export const ColorModeButton = forwardRef<
   HTMLButtonElement,
   ColorModeButtonProps
 >(function ColorModeButton(props, ref) {
+  const { themeConfig } = useThemeConfig();
   const { toggleColorMode } = useColorMode();
   return (
     <ClientOnly fallback={<Skeleton boxSize="8" />}>
@@ -61,6 +63,7 @@ export const ColorModeButton = forwardRef<
         onClick={toggleColorMode}
         variant="ghost"
         aria-label="Toggle color mode"
+        borderRadius={themeConfig.radii.component}
         {...props}
       >
         <ColorModeIcon fontSize={props?.fontSize} />
