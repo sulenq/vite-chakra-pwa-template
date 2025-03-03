@@ -25,7 +25,7 @@ const DisclosureHeaderContent = ({
       {content ? (
         content
       ) : (
-        <Text fontSize={"16px"} fontWeight={"semibold"} ml={1}>
+        <Text fontSize={"16px"} fontWeight={"semibold"} ml={[0, null, 1]}>
           {title}
         </Text>
       )}
