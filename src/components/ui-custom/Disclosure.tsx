@@ -137,7 +137,6 @@ const DisclosureBody = ({ children, ...props }: DisclosureBodyProps) => {
     <DrawerBody
       px={4}
       py={0}
-      pb={`${props.pb ?? 5} !important`}
       className={finalClassName}
       overflowX={"clip"}
       {...(props as DrawerHeaderProps)}
