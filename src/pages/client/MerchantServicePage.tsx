@@ -80,7 +80,7 @@ const ProductItem = ({ product }: any) => {
       <DisclosureRoot open={open} size={"xl"} lazyLoad>
         <DisclosureContent>
           <DisclosureHeader>
-            <DisclosureHeaderContent title={``} />
+            <DisclosureHeaderContent title={`Detail ${product.name}`} />
           </DisclosureHeader>
 
           <DisclosureBody px={0} pt={[6, null, 4]}>
@@ -95,7 +95,7 @@ const ProductItem = ({ product }: any) => {
                   <Image w={"100px"} src={data.thumbnail} />
                 </HScroll>
 
-                <HStack ml={"auto"} mt={4}>
+                <HStack ml={"auto"} mr={4} mt={4}>
                   <BButton
                     iconButton
                     size={"2xs"}
