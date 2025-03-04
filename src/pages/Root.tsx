@@ -1205,7 +1205,7 @@ const TableComponentDemo = () => {
           inputValue={search}
         />
 
-        <BButton colorPalette={themeConfig.colorPalette}>
+        <BButton size={"md"} colorPalette={themeConfig.colorPalette}>
           Call To Action
         </BButton>
       </HScroll>

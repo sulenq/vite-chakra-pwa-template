@@ -1,7 +1,8 @@
 import { useThemeConfig } from "@/context/useThemeConfig";
-import { Button, Group, Icon, StackProps } from "@chakra-ui/react";
+import { Icon, StackProps } from "@chakra-ui/react";
 import { IconAlertTriangle } from "@tabler/icons-react";
 import { EmptyState } from "../ui/empty-state";
+import BButton from "./BButton";
 import CContainer from "./CContainer";
 
 interface Props extends StackProps {
@@ -28,11 +29,9 @@ export default function FeedbackRetry({
         description={description}
         maxW={"500px"}
       >
-        <Group>
-          <Button className="clicky" colorPalette={themeConfig.colorPalette}>
-            Muat Ulang
-          </Button>
-        </Group>
+        <BButton className="clicky" colorPalette={themeConfig.colorPalette}>
+          Muat Ulang
+        </BButton>
       </EmptyState>
     </CContainer>
   );

@@ -270,9 +270,17 @@ const LimitControl = ({
       {limitControl && setLimitControl && (
         <MenuRoot>
           <MenuTrigger asChild>
-            <BButton unclicky w={"full"} variant={"outline"} size={"sm"}>
-              Tampilkan
-              <Text fontWeight={"bold"}>{limit === 0 ? "Semua" : limit}</Text>
+            <BButton
+              unclicky
+              w={"full"}
+              variant={"outline"}
+              size={"sm"}
+              justifyContent={"space-between"}
+            >
+              <HStack gap={1}>
+                Tampilkan
+                <Text fontWeight={"bold"}>{limit === 0 ? "Semua" : limit}</Text>
+              </HStack>
               <Icon maxW={"13px"}>
                 <IconCaretDownFilled />
               </Icon>
