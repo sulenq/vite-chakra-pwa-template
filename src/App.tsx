@@ -6,13 +6,18 @@ import Routing from "./routes/Routing";
 import theme from "./theme";
 import useStatusBarColor from "./utils/statusBarColor";
 import { useEffect, useState } from "react";
+import useOffline from "./context/useOffilne";
+import OfflineDisclosure from "./components/widget/OfflineDisclosure";
 
-// Styling notif bar color
 const EndpointWrapper = ({ children }: { children: React.ReactNode }) => {
+  // States, Refs
   const location = useLocation();
+
+  // Utils
   const setStatusBarBody = useStatusBarColor("#ffffff", "#101010");
   const setStatusBarDark = useStatusBarColor("#101010", "#101010");
 
+  // Handle notif bar color
   useEffect(() => {
     // Dapatkan endpoint dari lokasi saat ini
     const endpoint = location.pathname.split("/").pop();
@@ -30,45 +35,43 @@ const EndpointWrapper = ({ children }: { children: React.ReactNode }) => {
 };
 
 function App() {
+  // Context
+  const { setOffline } = useOffline();
+
+  // States, Refs
   const [firstLoad, setFirstLoad] = useState<boolean>(true);
 
-  useEffect(() => {
-    const handleOnline = () => {
-      if (!firstLoad) {
-        toaster.success({
-          title: "Koneksi Pulih",
-          description: "Anda kembali online.",
-          action: {
-            label: "Close",
-            onClick: () => {},
-          },
-        });
-      }
-    };
-
-    const handleOffline = () => {
-      toaster.error({
-        title: "Jaringan Terputus",
-        description: "Anda sedang offline.",
+  // Utils
+  function handleOnline() {
+    setOffline(false);
+    if (!firstLoad) {
+      toaster.success({
+        title: "Koneksi Pulih",
+        description: "Anda kembali online.",
         action: {
           label: "Close",
           onClick: () => {},
         },
       });
-    };
+    }
+  }
+  function handleOffline() {
+    setOffline(true);
+  }
 
+  // Handle offline online
+  useEffect(() => {
     // Tambahkan event listener
     window.addEventListener("online", handleOnline);
     window.addEventListener("offline", handleOffline);
 
-    // Cleanup event listener saat komponen di-unmount
     return () => {
       window.removeEventListener("online", handleOnline);
       window.removeEventListener("offline", handleOffline);
     };
   }, [firstLoad]);
 
-  // Hindari toast pertama kali
+  // Hide online toast when first render
   useEffect(() => {
     if (firstLoad) {
       setFirstLoad(false);
@@ -79,6 +82,8 @@ function App() {
     <ChakraProvider value={theme}>
       <Toaster />
       <BrowserRouter>
+        <OfflineDisclosure />
+
         <EndpointWrapper>
           <Routing />
         </EndpointWrapper>

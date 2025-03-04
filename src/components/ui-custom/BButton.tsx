@@ -1,4 +1,5 @@
 import { Button, ButtonProps } from "@/components/ui/button";
+import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import { IconButton } from "@chakra-ui/react";
 
@@ -16,7 +17,7 @@ export default function BButton({
   unclicky = false,
   iconButton = false,
   className = "",
-  size = "md",
+  size,
   ...props
 }: Props) {
   const { themeConfig } = useThemeConfig();
@@ -32,7 +33,7 @@ export default function BButton({
       ref={fRef}
       className={finalClassName}
       fontWeight={"semibold"}
-      size={size}
+      size={size || MAIN_BUTTON_SIZE}
       borderRadius={themeConfig.radii.component}
       {...props}
     >
