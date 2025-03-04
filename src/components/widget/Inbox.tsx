@@ -13,7 +13,7 @@ import {
 import DisclosureHeaderContent from "../ui-custom/DisclosureHeaderContent";
 import FloatCounter from "../ui-custom/FloatCounter";
 
-const MerchantInbox = () => {
+const Inbox = () => {
   // Utils
   const { open, onOpen, onClose } = useDisclosure();
   useBackOnClose(`merchant-inbox`, open, onOpen, onClose);
@@ -38,6 +38,7 @@ const MerchantInbox = () => {
 
           <DisclosureFooter>
             <BackButton>Close</BackButton>
+            <BButton colorPalette={"red"}>Delete dibaca</BButton>
           </DisclosureFooter>
         </DisclosureContent>
       </DisclosureRoot>
@@ -45,4 +46,4 @@ const MerchantInbox = () => {
   );
 };
 
-export default MerchantInbox;
+export default Inbox;

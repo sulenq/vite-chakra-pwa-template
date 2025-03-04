@@ -20,7 +20,7 @@ import FloatCounter from "../ui-custom/FloatCounter";
 import Heading5 from "../ui-custom/Heading5";
 import { ColorModeButton } from "../ui/color-mode";
 import { Tooltip } from "../ui/tooltip";
-import MerchantInbox from "./MerchantInbox";
+import MerchantInbox from "./Inbox";
 
 interface Interface__NavItemContainer extends StackProps {
   active?: boolean;

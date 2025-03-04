@@ -194,19 +194,21 @@ const ProductList = () => {
 const MerchantPricingPage = () => {
   return (
     <CContainer>
-      <HStack mt={4} mb={2} justify={"center"} wrap={"wrap"} mx={"auto"}>
-        <Icon color={"orange.400"} transform={"rotate(16deg)"} mb={1} ml={-4}>
-          <IconCrown size={36} />
-        </Icon>
-        <Heading3 fontWeight={"bold"} textAlign={"center"}>
-          Pricing
-        </Heading3>
-      </HStack>
-      <Text textAlign={"center"} maxW={"600px"} mx={"auto"} mb={8}>
-        Temukan solusi SaaS terbaik untuk bisnis Anda. Saat ini, kami masih
-        menyediakan HRIS, tetapi segera hadir lebih banyak pilihan untuk
-        kebutuhan Anda.
-      </Text>
+      <CContainer px={4}>
+        <HStack mt={4} mb={2} justify={"center"} wrap={"wrap"} mx={"auto"}>
+          <Icon color={"orange.400"} transform={"rotate(16deg)"} mb={1} ml={-4}>
+            <IconCrown size={36} />
+          </Icon>
+          <Heading3 fontWeight={"bold"} textAlign={"center"}>
+            Pricing
+          </Heading3>
+        </HStack>
+        <Text textAlign={"center"} maxW={"600px"} mx={"auto"} mb={8}>
+          Temukan solusi SaaS terbaik untuk bisnis Anda. Saat ini, kami masih
+          menyediakan HRIS, tetapi segera hadir lebih banyak pilihan untuk
+          kebutuhan Anda.
+        </Text>
+      </CContainer>
 
       <CContainer p={[2, null, 4]}>
         <ProductList />
