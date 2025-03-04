@@ -233,6 +233,7 @@ const DatePickerInput = ({
             onOpen();
           }}
           px={3}
+          size={"md"}
           {...props}
         >
           <HStack w={"full"} justify={"space-between"}>

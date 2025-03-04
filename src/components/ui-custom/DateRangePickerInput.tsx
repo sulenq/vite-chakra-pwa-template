@@ -292,6 +292,7 @@ const DateRangePickerInput = ({
             }
             onOpen();
           }}
+          size={"md"}
           px={3}
           {...props}
         >
