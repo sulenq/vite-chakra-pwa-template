@@ -1,4 +1,3 @@
-import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import {
@@ -65,7 +64,6 @@ const ConfirmationDisclosure = ({
           <DisclosureFooter>
             <BackButton />
             <BButton
-              size={MAIN_BUTTON_SIZE}
               onClick={confirmCallback}
               colorPalette={themeConfig.colorPalette}
               {...confirmButtonProps}

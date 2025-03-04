@@ -1,5 +1,4 @@
 import { Interface__TimePicker } from "@/constant/interfaces";
-import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useScreen from "@/hooks/useScreen";
@@ -475,7 +474,6 @@ const TimePickerInput = ({
                   setSeconds(0);
                 }
               }}
-              size={MAIN_BUTTON_SIZE}
             >
               {selected && hours === 0 && minutes === 0 && seconds === 0
                 ? "Clear"
@@ -484,7 +482,6 @@ const TimePickerInput = ({
             <BButton
               onClick={confirmSelected}
               disabled={nonNullable ? (selected ? false : true) : false}
-              size={MAIN_BUTTON_SIZE}
               colorPalette={themeConfig.colorPalette}
             >
               Konfirmasi

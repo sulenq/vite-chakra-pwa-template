@@ -3,7 +3,6 @@ import {
   Interface__DateRangePicker,
   Type__DateRange,
 } from "@/constant/interfaces";
-import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
@@ -498,7 +497,6 @@ const DateRangePickerInput = ({
               onClick={() => {
                 setSelected(undefined);
               }}
-              size={MAIN_BUTTON_SIZE}
             >
               Clear
             </BButton>
@@ -508,7 +506,6 @@ const DateRangePickerInput = ({
                 (nonNullable && !(selected?.from && selected?.to)) ||
                 (!nonNullable && selected?.from && !selected?.to)
               }
-              size={MAIN_BUTTON_SIZE}
               colorPalette={themeConfig.colorPalette}
             >
               Konfirmasi

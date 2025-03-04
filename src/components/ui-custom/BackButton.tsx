@@ -1,10 +1,9 @@
-import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
 import useBackOnDefaultPage from "@/hooks/useBackOnDefaultPage";
 import back from "@/utils/back";
 import { ButtonProps, Icon } from "@chakra-ui/react";
 import { IconChevronLeft } from "@tabler/icons-react";
-import BButton from "./BButton";
 import { useNavigate } from "react-router-dom";
+import BButton from "./BButton";
 
 interface Props extends ButtonProps {
   children?: any;
@@ -47,12 +46,7 @@ const BackButton = ({
     );
 
   return (
-    <BButton
-      size={MAIN_BUTTON_SIZE}
-      variant={"outline"}
-      onClick={handleBack}
-      {...props}
-    >
+    <BButton variant={"outline"} onClick={handleBack} {...props}>
       {children || "Cancel"}
     </BButton>
   );

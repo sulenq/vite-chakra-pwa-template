@@ -2,7 +2,6 @@ import {
   Interface__Select,
   Interface__SelectOption,
 } from "@/constant/interfaces";
-import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
@@ -334,13 +333,11 @@ const SelectInput = ({
                 onClick={() => {
                   setSelected(undefined);
                 }}
-                size={MAIN_BUTTON_SIZE}
               >
                 Clear
               </BButton>
               <BButton
                 onClick={confirmSelected}
-                size={MAIN_BUTTON_SIZE}
                 colorPalette={themeConfig.colorPalette}
               >
                 Konfirmasi
