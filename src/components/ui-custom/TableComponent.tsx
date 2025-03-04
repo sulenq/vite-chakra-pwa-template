@@ -796,7 +796,7 @@ const TableComponent = ({
                   borderColor={borderColor}
                   position={"relative"}
                   bg={"body"}
-                  _hover={rowClick && { bg: "d0" }}
+                  _hover={rowClick && { bg: "d0 !important" }}
                   {...trBodyProps}
                 >
                   {batchOptions && (
@@ -806,7 +806,6 @@ const TableComponent = ({
                       p={0}
                       position={"sticky"}
                       left={0}
-                      bg={"body"}
                       zIndex={2}
                     >
                       <Center
@@ -835,6 +834,7 @@ const TableComponent = ({
                       key={colIndex}
                       whiteSpace={"nowrap"}
                       p={0}
+                      className={rowClick && "td-content-group-hover"}
                       {...col?.tableCellProps}
                     >
                       <HStack
