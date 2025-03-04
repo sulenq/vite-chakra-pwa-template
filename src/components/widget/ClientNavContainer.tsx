@@ -201,7 +201,6 @@ const ClientNavContainer = ({ label, children, activePath }: Props) => {
         flex={1}
         overflowY={"auto"}
         overflowX={"clip"}
-        className="scrollY"
         bg={"bgContent"}
       >
         <HStack
