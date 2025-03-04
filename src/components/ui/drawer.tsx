@@ -30,7 +30,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
           <ChakraDrawer.Backdrop
             bg={"var(--d1)"}
             backdropFilter={"blur(5px)"}
-            // zIndex={20}
+            zIndex={1}
           />
         )}
         <ChakraDrawer.Positioner
@@ -40,6 +40,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
             back();
             handleBackOnDefaultPage();
           }}
+          zIndex={2}
         >
           <ChakraDrawer.Content
             ref={ref}
