@@ -1,6 +1,12 @@
 "use client";
 
-import { AbsoluteCenter, Menu as ChakraMenu, Portal } from "@chakra-ui/react";
+import { useThemeConfig } from "@/context/useThemeConfig";
+import {
+  AbsoluteCenter,
+  Menu as ChakraMenu,
+  MenuItemProps,
+  Portal,
+} from "@chakra-ui/react";
 import { forwardRef } from "react";
 import { LuCheck, LuChevronRight } from "react-icons/lu";
 
@@ -20,7 +26,7 @@ export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(
             bg={"darktrans"}
             backdropFilter={"blur(15px)"}
             boxShadow={"none"}
-            borderRadius={6}
+            borderRadius={10}
             border={"1px solid var(--d2)"}
             p={1}
             ref={ref}
@@ -107,12 +113,29 @@ export const MenuTriggerItem = forwardRef<HTMLDivElement, MenuTriggerItemProps>(
   }
 );
 
+export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
+  function MenuItem(props, ref) {
+    // Context
+    const { themeConfig } = useThemeConfig();
+
+    const { children, ...rest } = props;
+    return (
+      <ChakraMenu.Item
+        ref={ref}
+        borderRadius={themeConfig.radii.component}
+        {...rest}
+      >
+        {children}
+      </ChakraMenu.Item>
+    );
+  }
+);
+
 export const MenuRadioItemGroup = ChakraMenu.RadioItemGroup;
 export const MenuContextTrigger = ChakraMenu.ContextTrigger;
 export const MenuRoot = ChakraMenu.Root;
 export const MenuSeparator = ChakraMenu.Separator;
 
-export const MenuItem = ChakraMenu.Item;
 export const MenuItemText = ChakraMenu.ItemText;
 export const MenuItemCommand = ChakraMenu.ItemCommand;
 export const MenuTrigger = ChakraMenu.Trigger;

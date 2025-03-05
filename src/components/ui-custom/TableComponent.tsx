@@ -58,15 +58,8 @@ const BatchOptions = ({
         asChild
         // borderRadius={"full"}
         aria-label="batch options"
-        _expanded={{ bg: "d1" }}
       >
-        <BButton
-          iconButton
-          unclicky
-          variant={"ghost"}
-          size={"xs"}
-          _hover={{ bg: "d1" }}
-        >
+        <BButton iconButton unclicky variant={"ghost"} size={"xs"}>
           <Icon>
             <IconMenu />
           </Icon>
@@ -383,6 +376,7 @@ const PageControl = ({
               }
             }}
             disabled={pageControl <= 1}
+            borderRadius={themeConfig.radii.component}
             size={"sm"}
           >
             <Icon maxH={"14px"}>
@@ -460,6 +454,7 @@ const PageControl = ({
               setPageControl(pageControl + 1);
             }}
             disabled={pageControl === pagination.meta.last_page}
+            borderRadius={themeConfig.radii.component}
             size={"sm"}
           >
             <Icon maxH={"14px"}>
