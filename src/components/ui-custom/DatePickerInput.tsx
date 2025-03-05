@@ -96,7 +96,7 @@ const DatePickerInput = ({
   title = "Pilih Tanggal",
   onConfirm,
   inputValue,
-  dateFormatOptions = "basicShort",
+  dateFormatOptions = "basic",
   placeholder = "Pilih tanggal",
   nonNullable,
   invalid,
@@ -122,7 +122,7 @@ const DatePickerInput = ({
     inputValue ? inputValue : []
   );
 
-  function confirmSelected() {
+  function onConfirmSelected() {
     let confirmable = false;
     if (!nonNullable) {
       confirmable = true;
@@ -140,6 +140,7 @@ const DatePickerInput = ({
     }
   }
 
+  // Preset setter
   function setSelectedToToday() {
     const today = new Date();
     setSelectedDates([today]);
@@ -147,7 +148,6 @@ const DatePickerInput = ({
     setMonth(today.getMonth());
     setYear(today.getFullYear());
   }
-
   function setSelectedToTomorrow() {
     const today = new Date();
     const tomorrow = new Date(today);
@@ -157,7 +157,6 @@ const DatePickerInput = ({
     setMonth(tomorrow.getMonth());
     setYear(tomorrow.getFullYear());
   }
-
   function setSelectedToThisWeek() {
     const today = new Date();
     const dayOfWeek = today.getDay();
@@ -179,7 +178,6 @@ const DatePickerInput = ({
     setMonth(startOfWeek.getMonth());
     setYear(startOfWeek.getFullYear());
   }
-
   function setSelectedToThisMonth() {
     const today = new Date();
     const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
@@ -196,6 +194,7 @@ const DatePickerInput = ({
     setYear(startOfMonth.getFullYear());
   }
 
+  // Period increment decrement
   function nextMonth() {
     const currentMonth = date.getMonth();
     const currentYear = date.getFullYear();
@@ -206,7 +205,6 @@ const DatePickerInput = ({
     setMonth(nextMonthDate.getMonth());
     setYear(nextMonthDate.getFullYear());
   }
-
   function prevMonth() {
     const currentMonth = date.getMonth();
     const currentYear = date.getFullYear();
@@ -469,7 +467,7 @@ const DatePickerInput = ({
               Clear
             </BButton>
             <BButton
-              onClick={confirmSelected}
+              onClick={onConfirmSelected}
               disabled={nonNullable && selectedDates.length === 0}
               colorPalette={themeConfig.colorPalette}
             >

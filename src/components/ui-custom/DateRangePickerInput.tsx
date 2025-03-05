@@ -75,7 +75,7 @@ const DateRangePickerInput = ({
 
   const [selected, setSelected] = useState<any>(inputValue);
 
-  function confirmSelected() {
+  function onConfirmSelected() {
     let confirmable = false;
     if (!nonNullable) {
       confirmable = true;
@@ -93,6 +93,7 @@ const DateRangePickerInput = ({
     }
   }
 
+  // Preset setter
   function setSelectedToThisWeek() {
     const today = new Date();
 
@@ -211,6 +212,7 @@ const DateRangePickerInput = ({
     ),
   };
 
+  // Period increment decrement
   function nextMonth() {
     const currentMonth = date.getMonth();
     const currentyear = date.getFullYear();
@@ -510,7 +512,7 @@ const DateRangePickerInput = ({
               Clear
             </BButton>
             <BButton
-              onClick={confirmSelected}
+              onClick={onConfirmSelected}
               disabled={
                 (nonNullable && !(selected?.from && selected?.to)) ||
                 (!nonNullable && selected?.from && !selected?.to)
