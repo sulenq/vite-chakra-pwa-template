@@ -1763,7 +1763,7 @@ export default function Root() {
                     </MenuItemGroup>
 
                     <MenuRoot
-                      positioning={{ placement: "right-start", gutter: 8 }}
+                      positioning={{ placement: "right-start", gutter: 12 }}
                     >
                       <MenuTriggerItem value="open-recent">
                         Open Recent

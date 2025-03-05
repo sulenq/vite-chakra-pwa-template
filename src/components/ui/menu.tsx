@@ -87,7 +87,7 @@ export const MenuItemGroup = forwardRef<
   return (
     <ChakraMenu.ItemGroup ref={ref} {...rest}>
       {title && (
-        <ChakraMenu.ItemGroupLabel userSelect="none">
+        <ChakraMenu.ItemGroupLabel color={"fg.subtle"} userSelect="none">
           {title}
         </ChakraMenu.ItemGroupLabel>
       )}
@@ -102,9 +102,16 @@ export interface MenuTriggerItemProps extends ChakraMenu.ItemProps {
 
 export const MenuTriggerItem = forwardRef<HTMLDivElement, MenuTriggerItemProps>(
   function MenuTriggerItem(props, ref) {
+    // Context
+    const { themeConfig } = useThemeConfig();
+
     const { startIcon, children, ...rest } = props;
     return (
-      <ChakraMenu.TriggerItem ref={ref} {...rest}>
+      <ChakraMenu.TriggerItem
+        ref={ref}
+        borderRadius={themeConfig.radii.component}
+        {...rest}
+      >
         {startIcon}
         {children}
         <LuChevronRight />
