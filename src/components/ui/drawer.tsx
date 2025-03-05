@@ -1,6 +1,10 @@
 import useBackOnDefaultPage from "@/hooks/useBackOnDefaultPage";
 import back from "@/utils/back";
-import { Drawer as ChakraDrawer, Portal } from "@chakra-ui/react";
+import {
+  Drawer as ChakraDrawer,
+  Portal,
+  useDrawerContext,
+} from "@chakra-ui/react";
 import { forwardRef } from "react";
 import { CloseButton } from "./close-button";
 
@@ -23,33 +27,36 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
     } = props;
 
     const handleBackOnDefaultPage = useBackOnDefaultPage();
+    const { open } = useDrawerContext();
 
     return (
       <Portal disabled={!portalled} container={portalRef}>
         {backdrop && (
           <ChakraDrawer.Backdrop bg={"d1"} backdropFilter={"blur(5px)"} />
         )}
-        <ChakraDrawer.Positioner
-          padding={offset}
-          pointerEvents={"auto"}
-          onClick={() => {
-            back();
-            handleBackOnDefaultPage();
-          }}
-        >
-          <ChakraDrawer.Content
-            ref={ref}
-            justifyContent={"end"}
-            shadow={"none"}
-            onClick={(e) => {
-              e.stopPropagation();
+        {open && (
+          <ChakraDrawer.Positioner
+            padding={offset}
+            pointerEvents={"auto"}
+            onClick={() => {
+              back();
+              handleBackOnDefaultPage();
             }}
-            asChild={false}
-            {...rest}
           >
-            {children}
-          </ChakraDrawer.Content>
-        </ChakraDrawer.Positioner>
+            <ChakraDrawer.Content
+              ref={ref}
+              justifyContent={"end"}
+              shadow={"none"}
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              asChild={false}
+              {...rest}
+            >
+              {children}
+            </ChakraDrawer.Content>
+          </ChakraDrawer.Positioner>
+        )}
       </Portal>
     );
   }
