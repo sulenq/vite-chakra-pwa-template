@@ -449,7 +449,12 @@ const DateRangePickerInput = ({
                             ? "surface"
                             : "ghost"
                         }
-                        // borderColor={dateSelected ? "ibody" : ""}
+                        borderColor={
+                          dateInRange(date.fullDate, selected, true, true) ||
+                          dateSelected
+                            ? "d2"
+                            : ""
+                        }
                         aspectRatio={1}
                       >
                         <Text
@@ -459,6 +464,12 @@ const DateRangePickerInput = ({
                             dateSelected
                               ? 1
                               : 0.3
+                          }
+                          color={
+                            dateInRange(date.fullDate, selected, true, true) ||
+                            dateSelected
+                              ? ""
+                              : "fg.muted"
                           }
                           fontWeight={dateToday ? "bold" : ""}
                         >

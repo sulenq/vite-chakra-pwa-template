@@ -351,12 +351,14 @@ const DatePickerInput = ({
                           }
                         }}
                         variant={dateSelected ? "surface" : "ghost"}
+                        borderColor={dateSelected ? "d2" : ""}
                         aspectRatio={1}
                       >
                         <Text
                           opacity={
                             date.month !== month && !dateSelected ? 0.3 : 1
                           }
+                          color={dateSelected ? "" : "fg.muted"}
                           fontWeight={dateToday ? "bold" : ""}
                         >
                           {date.date}

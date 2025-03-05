@@ -140,13 +140,14 @@ const SelectInput = ({
                 }
                 bg={isSelected(item) ? "d1" : ""}
                 borderRadius={multiple ? "full" : ""}
+                borderColor={isSelected(item) ? "d2" : ""}
                 justifyContent={"start"}
                 onClick={() => {
                   handleSelect(item);
                 }}
                 {...props}
               >
-                <Text truncate color={isSelected(item) ? "ibody" : "dt"}>
+                <Text truncate color={isSelected(item) ? "ibody" : "fg.muted"}>
                   {item?.label}
                 </Text>
               </BButton>
