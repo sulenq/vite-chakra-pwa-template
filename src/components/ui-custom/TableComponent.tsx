@@ -12,7 +12,6 @@ import useScreen from "@/hooks/useScreen";
 import formatDate from "@/utils/formatDate";
 import {
   Center,
-  Group,
   HStack,
   Icon,
   MenuSeparator,
@@ -269,16 +268,17 @@ const LimitControl = ({
           <MenuTrigger asChild>
             <BButton
               unclicky
-              w={"full"}
-              variant={"outline"}
-              size={"sm"}
+              // w={"full"}
+              variant={"ghost"}
+              size={"xs"}
               justifyContent={"space-between"}
             >
               <HStack gap={1}>
                 Tampilkan
                 <Text fontWeight={"bold"}>{limit === 0 ? "Semua" : limit}</Text>
               </HStack>
-              <Icon maxW={"13px"}>
+
+              <Icon maxW={"13px"} ml={1}>
                 <IconCaretDownFilled />
               </Icon>
             </BButton>
@@ -365,11 +365,12 @@ const PageControl = ({
   return (
     <CContainer ml={["", null, "auto"]} {...props}>
       {pageControl && setPageControl && pagination && (
-        <Group w={"full"} attached>
+        <HStack w={"full"} gap={1} justify={"end"}>
           <BButton
             unclicky
             iconButton
-            variant={"outline"}
+            // variant={iss ? "outline" : "ghost"}
+            variant={"ghost"}
             onClick={() => {
               if (pageControl > 1) {
                 setPageControl(pageControl - 1);
@@ -377,7 +378,7 @@ const PageControl = ({
             }}
             disabled={pageControl <= 1}
             borderRadius={themeConfig.radii.component}
-            size={"sm"}
+            size={"xs"}
           >
             <Icon maxH={"14px"}>
               <IconCaretLeftFilled />
@@ -388,12 +389,11 @@ const PageControl = ({
             <MenuTrigger asChild>
               <BButton
                 unclicky
-                variant={"outline"}
-                borderRight={"none"}
-                minW={"45px"}
-                flex={1}
-                size={"sm"}
-                borderRadius={0}
+                variant={"ghost"}
+                size={"xs"}
+                // minW={"45px"}
+                // flex={1}
+                // borderRadius={0}
               >
                 {pageControl}
               </BButton>
@@ -449,19 +449,20 @@ const PageControl = ({
           <BButton
             iconButton
             unclicky
-            variant={"outline"}
+            // variant={iss ? "outline" : "ghost"}
+            variant={"ghost"}
             onClick={() => {
               setPageControl(pageControl + 1);
             }}
             disabled={pageControl === pagination.meta.last_page}
             borderRadius={themeConfig.radii.component}
-            size={"sm"}
+            size={"xs"}
           >
             <Icon maxH={"14px"}>
               <IconCaretRightFilled />
             </Icon>
           </BButton>
-        </Group>
+        </HStack>
       )}
     </CContainer>
   );
