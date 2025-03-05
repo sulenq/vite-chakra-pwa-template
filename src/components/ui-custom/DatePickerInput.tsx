@@ -43,7 +43,7 @@ const SelectedDateList = ({
   selectedRenderValue,
 }: Interface__SelectedDateList) => {
   const { open, onOpen, onClose } = useDisclosure();
-  useBackOnClose(`selected-date-list-`, open, onOpen, onClose);
+  useBackOnClose(`selected-date-list`, open, onOpen, onClose);
 
   return (
     <>
@@ -73,7 +73,7 @@ const SelectedDateList = ({
             <DisclosureHeaderContent title="Tanggal dipilih" />
           </DisclosureHeader>
           <DisclosureBody>
-            <CContainer px={2}>
+            <CContainer px={2} pt={1}>
               <ListRoot gap={2}>
                 {selectedDates.map((item, i) => {
                   return <ListItem key={i}>{formatDate(item)}</ListItem>;
@@ -388,21 +388,17 @@ const DatePickerInput = ({
                             setSelectedDates([date.fullDate]);
                           }
                         }}
-                        variant={dateSelected ? "surface" : "ghost"}
-                        borderColor={dateSelected ? "d2" : ""}
+                        variant={dateSelected ? "outline" : "ghost"}
+                        borderColor={
+                          dateSelected ? themeConfig.primaryColor : ""
+                        }
                         aspectRatio={1}
                       >
                         <Text
                           opacity={
                             date.month !== month && !dateSelected ? 0.3 : 1
                           }
-                          color={
-                            dateToday
-                              ? themeConfig.primaryColor
-                              : dateSelected
-                              ? ""
-                              : "fg.muted"
-                          }
+                          color={dateToday ? themeConfig.primaryColor : ""}
                           fontWeight={dateToday ? "extrabold" : ""}
                         >
                           {date.date}

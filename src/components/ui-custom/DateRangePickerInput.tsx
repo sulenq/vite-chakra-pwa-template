@@ -446,13 +446,13 @@ const DateRangePickerInput = ({
                         variant={
                           dateInRange(date.fullDate, selected, true, true) ||
                           dateSelected
-                            ? "surface"
+                            ? "outline"
                             : "ghost"
                         }
                         borderColor={
                           dateInRange(date.fullDate, selected, true, true) ||
                           dateSelected
-                            ? "d2"
+                            ? themeConfig.primaryColor
                             : ""
                         }
                         aspectRatio={1}
@@ -465,18 +465,7 @@ const DateRangePickerInput = ({
                               ? 1
                               : 0.3
                           }
-                          color={
-                            dateToday
-                              ? themeConfig.primaryColor
-                              : dateInRange(
-                                  date.fullDate,
-                                  selected,
-                                  true,
-                                  true
-                                ) || dateSelected
-                              ? ""
-                              : "fg.muted"
-                          }
+                          color={dateToday ? themeConfig.primaryColor : ""}
                           fontWeight={dateToday ? "bold" : ""}
                         >
                           {date.date}

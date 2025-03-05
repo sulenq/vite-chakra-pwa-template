@@ -136,20 +136,17 @@ const SelectInput = ({
                 unclicky
                 key={i}
                 variant={
-                  isSelected(item) ? "surface" : !multiple ? "ghost" : "outline"
+                  isSelected(item) ? "outline" : !multiple ? "ghost" : "outline"
                 }
-                bg={isSelected(item) ? "d1" : ""}
                 borderRadius={multiple ? "full" : ""}
-                borderColor={isSelected(item) ? "d2" : ""}
+                borderColor={isSelected(item) ? themeConfig.primaryColor : ""}
                 justifyContent={"start"}
                 onClick={() => {
                   handleSelect(item);
                 }}
                 {...props}
               >
-                <Text truncate color={isSelected(item) ? "ibody" : "fg.muted"}>
-                  {item?.label}
-                </Text>
+                <Text truncate>{item?.label}</Text>
               </BButton>
             ))}
           </>
