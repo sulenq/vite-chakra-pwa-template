@@ -204,6 +204,7 @@ const RowOptions = ({
                     key={i}
                     value={option.label}
                     justifyContent={"space-between"}
+                    color={"light"}
                     {...option.menuItemProps}
                   >
                     {option.label}
@@ -217,6 +218,7 @@ const RowOptions = ({
               <MenuItem
                 key={i}
                 value={option.label}
+                color={"light"}
                 onClick={() => {
                   if (
                     option.callback &&
@@ -800,11 +802,9 @@ const TableComponent = ({
                   borderBottom={
                     rowIndex !== dataToMap.length - 1 ? "1px solid" : ""
                   }
-                  // borderBottom={"1px solid"}
                   borderColor={borderColor}
                   position={"relative"}
                   bg={"body"}
-                  _hover={rowClick && { bg: "d0 !important" }}
                   {...trBodyProps}
                 >
                   {batchOptions && (
@@ -814,6 +814,7 @@ const TableComponent = ({
                       p={0}
                       position={"sticky"}
                       left={0}
+                      bg={"body"}
                       zIndex={2}
                     >
                       <Center
