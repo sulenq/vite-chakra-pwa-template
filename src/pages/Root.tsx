@@ -1348,7 +1348,7 @@ export default function Root() {
         px={4}
         position={"sticky"}
         top={0}
-        zIndex={2}
+        zIndex={3}
         bg={"body"}
         borderBottom={"1px solid"}
         borderColor={"border.muted"}
