@@ -132,6 +132,7 @@ const BatchOptions = ({
                     key={i}
                     value={option.label}
                     disabled={disabled}
+                    color={"light"}
                     justifyContent={"space-between"}
                     {...option.menuItemProps}
                   >
@@ -152,6 +153,7 @@ const BatchOptions = ({
                       !disabled) &&
                     option.callback(selectedRows);
                 }}
+                color={"light"}
                 disabled={disabled}
                 justifyContent={"space-between"}
                 {...option.menuItemProps}
