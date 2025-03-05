@@ -28,7 +28,7 @@ const OfflineDisclosure = () => {
 
   useEffect(() => {
     if (offline) onOpen();
-    if (!offline) back();
+    if (!offline && open) back();
   }, [offline]);
 
   return (
