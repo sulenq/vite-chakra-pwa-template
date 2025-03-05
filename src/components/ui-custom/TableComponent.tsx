@@ -365,7 +365,7 @@ const PageControl = ({
   return (
     <CContainer ml={["", null, "auto"]} {...props}>
       {pageControl && setPageControl && pagination && (
-        <Group attached w={"full"}>
+        <Group w={"full"} attached>
           <BButton
             unclicky
             iconButton
@@ -390,10 +390,10 @@ const PageControl = ({
                 unclicky
                 variant={"outline"}
                 borderRight={"none"}
-                borderRadius={0}
                 minW={"45px"}
                 flex={1}
                 size={"sm"}
+                borderRadius={0}
               >
                 {pageControl}
               </BButton>
@@ -420,8 +420,8 @@ const PageControl = ({
                     }}
                     color={"light"}
                     textAlign={"center"}
-                    borderColor={"d3"}
-                    _focus={{ borderColor: themeConfig.primaryColor }}
+                    borderColor={"d3 !important"}
+                    // _focus={{ borderColor: themeConfig.primaryColor }}
                     onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
                       if (e.key === "Enter") {
                         formik.submitForm();
