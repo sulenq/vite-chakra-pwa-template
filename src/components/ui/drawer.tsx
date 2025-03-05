@@ -27,11 +27,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
     return (
       <Portal disabled={!portalled} container={portalRef}>
         {backdrop && (
-          <ChakraDrawer.Backdrop
-            bg={"var(--d1)"}
-            backdropFilter={"blur(5px)"}
-            zIndex={10}
-          />
+          <ChakraDrawer.Backdrop bg={"d1"} backdropFilter={"blur(5px)"} />
         )}
         <ChakraDrawer.Positioner
           padding={offset}
@@ -40,7 +36,6 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
             back();
             handleBackOnDefaultPage();
           }}
-          zIndex={11}
         >
           <ChakraDrawer.Content
             ref={ref}
@@ -55,7 +50,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
               w={"40px"}
               h={"4px"}
               borderRadius={"full"}
-              bg={"var(--d2)"}
+              bg={"d2"}
               mx={"auto"}
               mt={"6px"}
             />
