@@ -144,10 +144,11 @@ const SelectInput = ({
                 onClick={() => {
                   handleSelect(item);
                 }}
-                color={isSelected(item) ? "ibody" : !multiple ? "" : "dt"}
                 {...props}
               >
-                <Text truncate>{item?.label}</Text>
+                <Text truncate color={isSelected(item) ? "ibody" : "dt"}>
+                  {item?.label}
+                </Text>
               </BButton>
             ))}
           </>
