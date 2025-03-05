@@ -466,8 +466,14 @@ const DateRangePickerInput = ({
                               : 0.3
                           }
                           color={
-                            dateInRange(date.fullDate, selected, true, true) ||
-                            dateSelected
+                            dateToday
+                              ? themeConfig.primaryColor
+                              : dateInRange(
+                                  date.fullDate,
+                                  selected,
+                                  true,
+                                  true
+                                ) || dateSelected
                               ? ""
                               : "fg.muted"
                           }

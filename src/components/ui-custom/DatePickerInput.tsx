@@ -67,7 +67,7 @@ const SelectedDateList = ({
         </Text>
       </CContainer>
 
-      <DisclosureRoot open={open} size={"xs"}>
+      <DisclosureRoot open={open} size={"xs"} scrollBehavior={"inside"}>
         <DisclosureContent>
           <DisclosureHeader>
             <DisclosureHeaderContent title="Tanggal dipilih" />
@@ -156,6 +156,44 @@ const DatePickerInput = ({
     setDate(tomorrow);
     setMonth(tomorrow.getMonth());
     setYear(tomorrow.getFullYear());
+  }
+
+  function setSelectedToThisWeek() {
+    const today = new Date();
+    const dayOfWeek = today.getDay();
+    const startOfWeek = new Date(today);
+
+    startOfWeek.setDate(
+      today.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1)
+    );
+
+    const selectedDates = [];
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(startOfWeek);
+      date.setDate(startOfWeek.getDate() + i);
+      selectedDates.push(date);
+    }
+
+    setSelectedDates(selectedDates);
+    setDate(startOfWeek);
+    setMonth(startOfWeek.getMonth());
+    setYear(startOfWeek.getFullYear());
+  }
+
+  function setSelectedToThisMonth() {
+    const today = new Date();
+    const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+    const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
+    const selectedDates = [];
+    for (let i = 1; i <= endOfMonth.getDate(); i++) {
+      selectedDates.push(new Date(today.getFullYear(), today.getMonth(), i));
+    }
+
+    setSelectedDates(selectedDates);
+    setDate(startOfMonth);
+    setMonth(startOfMonth.getMonth());
+    setYear(startOfMonth.getFullYear());
   }
 
   function nextMonth() {
@@ -358,8 +396,14 @@ const DatePickerInput = ({
                           opacity={
                             date.month !== month && !dateSelected ? 0.3 : 1
                           }
-                          color={dateSelected ? "" : "fg.muted"}
-                          fontWeight={dateToday ? "bold" : ""}
+                          color={
+                            dateToday
+                              ? themeConfig.primaryColor
+                              : dateSelected
+                              ? ""
+                              : "fg.muted"
+                          }
+                          fontWeight={dateToday ? "extrabold" : ""}
                         >
                           {date.date}
                         </Text>
@@ -372,20 +416,45 @@ const DatePickerInput = ({
 
             {/* Preset Buttons */}
             <HStack mt={2}>
-              <BButton
-                flex={"1 1 120px"}
-                variant={"outline"}
-                onClick={setSelectedToToday}
-              >
-                Hari ini
-              </BButton>
-              <BButton
-                flex={"1 1 120px"}
-                variant={"outline"}
-                onClick={setSelectedToTomorrow}
-              >
-                Besok
-              </BButton>
+              {!multiple && (
+                <>
+                  <BButton
+                    flex={"1 1 120px"}
+                    variant={"outline"}
+                    onClick={setSelectedToToday}
+                  >
+                    Hari ini
+                  </BButton>
+
+                  <BButton
+                    flex={"1 1 120px"}
+                    variant={"outline"}
+                    onClick={setSelectedToTomorrow}
+                  >
+                    Besok
+                  </BButton>
+                </>
+              )}
+
+              {multiple && (
+                <>
+                  <BButton
+                    flex={"1 1 120px"}
+                    variant={"outline"}
+                    onClick={setSelectedToThisWeek}
+                  >
+                    Minggu ini
+                  </BButton>
+
+                  <BButton
+                    flex={"1 1 120px"}
+                    variant={"outline"}
+                    onClick={setSelectedToThisMonth}
+                  >
+                    Bulan ini
+                  </BButton>
+                </>
+              )}
             </HStack>
 
             <SelectedDateList
