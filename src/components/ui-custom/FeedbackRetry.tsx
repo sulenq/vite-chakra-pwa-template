@@ -22,7 +22,7 @@ export default function FeedbackRetry({
       <EmptyState
         icon={
           <Icon>
-            <IconAlertTriangle stroke={2} />
+            <IconAlertTriangle />
           </Icon>
         }
         title={title}

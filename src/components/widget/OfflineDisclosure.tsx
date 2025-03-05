@@ -1,10 +1,12 @@
 import useOffline from "@/context/useOffilne";
+import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
-import { Icon, Text, useDisclosure, VStack } from "@chakra-ui/react";
+import { Icon, useDisclosure } from "@chakra-ui/react";
 import { IconAccessPointOff } from "@tabler/icons-react";
 import { useEffect } from "react";
 import BackButton from "../ui-custom/BackButton";
+import BButton from "../ui-custom/BButton";
 import {
   DisclosureBody,
   DisclosureContent,
@@ -13,8 +15,7 @@ import {
   DisclosureRoot,
 } from "../ui-custom/Disclosure";
 import DisclosureHeaderContent from "../ui-custom/DisclosureHeaderContent";
-import BButton from "../ui-custom/BButton";
-import { useThemeConfig } from "@/context/useThemeConfig";
+import { EmptyState } from "../ui/empty-state";
 
 const OfflineDisclosure = () => {
   // Context
@@ -38,22 +39,22 @@ const OfflineDisclosure = () => {
         </DisclosureHeader>
 
         <DisclosureBody>
-          <VStack gap={4}>
-            <Icon color={"fg.subtle"}>
-              <IconAccessPointOff size={36} />
-            </Icon>
-            <Text textAlign={"center"} fontSize={"lg"} fontWeight={"bold"}>
-              Koneksi Terputus
-            </Text>
-            <Text textAlign={"center"}>
-              Sepertinya Anda sedang offline. Periksa koneksi internet Anda dan
-              coba lagi.
-            </Text>
-          </VStack>
+          <EmptyState
+            icon={
+              <Icon>
+                <IconAccessPointOff />
+              </Icon>
+            }
+            title={"Koneksi Terputus"}
+            description={
+              "Sepertinya Anda sedang offline. Periksa koneksi internet Anda dan coba lagi."
+            }
+            maxW={"500px"}
+          />
         </DisclosureBody>
 
         <DisclosureFooter>
-          <BackButton />
+          <BackButton>Close</BackButton>
           <BButton
             colorPalette={themeConfig.colorPalette}
             onClick={() => {
