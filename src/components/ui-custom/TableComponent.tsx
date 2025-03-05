@@ -494,7 +494,7 @@ const TableComponent = ({
   const thHeight = "48px";
   const thWidth = "52.4px";
   const thBg = "body";
-  const borderColor = "border.muted";
+  const borderColor = "border.subtle";
 
   // States, Refs
   const { themeConfig } = useThemeConfig();
