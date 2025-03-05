@@ -327,6 +327,9 @@ const PageControl = ({
   pagination,
   ...props
 }: Interface__PageControl) => {
+  // Context
+  const { themeConfig } = useThemeConfig();
+
   // Utils
   const iss = useIsSmScreenWidth();
 
@@ -404,7 +407,12 @@ const PageControl = ({
 
             <MenuContent w={"140px"}>
               <CContainer px={2} py={1} mb={1}>
-                <Text fontSize={"sm"} opacity={0.5} fontWeight={500}>
+                <Text
+                  fontSize={"sm"}
+                  opacity={0.5}
+                  fontWeight={500}
+                  color={"light"}
+                >
                   Terakhir : {pagination?.meta?.last_page || "?"}
                 </Text>
               </CContainer>
@@ -416,14 +424,15 @@ const PageControl = ({
                     onChangeSetter={(input) => {
                       formik.setFieldValue("page", input);
                     }}
+                    color={"light"}
                     textAlign={"center"}
                     borderColor={"d3"}
+                    _focus={{ borderColor: themeConfig.primaryColor }}
                     onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
                       if (e.key === "Enter") {
                         formik.submitForm();
                       }
                     }}
-                    _focus={{ borderColor: "white" }}
                   />
                 </Field>
               </form>
