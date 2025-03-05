@@ -2,6 +2,7 @@ import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import useScreen from "@/hooks/useScreen";
 import back from "@/utils/back";
 import {
+  Box,
   DialogActionTriggerProps,
   DialogBackdropProps,
   DialogBodyProps,
@@ -57,11 +58,6 @@ const DisclosureRoot = ({ children, ...props }: any) => {
       {children}
     </DialogRoot>
   );
-  // return (
-  //   <DialogRoot>
-  //     <DrawerRoot>{children}</DrawerRoot>
-  //   </DialogRoot>
-  // );
 };
 
 type DisclosureBackdropProps = {} & (DrawerBackdropProps | DialogBackdropProps);
@@ -97,6 +93,14 @@ const DisclosureContent = ({ children, ...props }: DisclosureContentProps) => {
       borderRadius={themeConfig.radii.container}
       {...(props as DrawerContentProps)}
     >
+      <Box
+        w={"40px"}
+        h={"4px"}
+        borderRadius={"full"}
+        bg={"d2"}
+        mx={"auto"}
+        mt={"6px"}
+      />
       {children}
     </DrawerContent>
   ) : (

@@ -1,6 +1,6 @@
 import useBackOnDefaultPage from "@/hooks/useBackOnDefaultPage";
 import back from "@/utils/back";
-import { Box, Drawer as ChakraDrawer, Portal } from "@chakra-ui/react";
+import { Drawer as ChakraDrawer, Portal } from "@chakra-ui/react";
 import { forwardRef } from "react";
 import { CloseButton } from "./close-button";
 
@@ -44,16 +44,9 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
             onClick={(e) => {
               e.stopPropagation();
             }}
+            asChild={false}
             {...rest}
           >
-            <Box
-              w={"40px"}
-              h={"4px"}
-              borderRadius={"full"}
-              bg={"d2"}
-              mx={"auto"}
-              mt={"6px"}
-            />
             {children}
           </ChakraDrawer.Content>
         </ChakraDrawer.Positioner>

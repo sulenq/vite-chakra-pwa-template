@@ -38,7 +38,6 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
         >
           <ChakraDialog.Content
             ref={ref}
-            borderRadius={8}
             minH={sh < 500 ? "90dvh" : ""}
             bg={"body"}
             shadow={"none"}
