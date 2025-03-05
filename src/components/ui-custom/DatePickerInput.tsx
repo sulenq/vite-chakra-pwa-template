@@ -414,6 +414,7 @@ const DatePickerInput = ({
                 <>
                   <BButton
                     flex={"1 1 120px"}
+                    size={"md"}
                     variant={"outline"}
                     onClick={setSelectedToToday}
                   >
@@ -422,6 +423,7 @@ const DatePickerInput = ({
 
                   <BButton
                     flex={"1 1 120px"}
+                    size={"md"}
                     variant={"outline"}
                     onClick={setSelectedToTomorrow}
                   >
@@ -434,6 +436,7 @@ const DatePickerInput = ({
                 <>
                   <BButton
                     flex={"1 1 120px"}
+                    size={"md"}
                     variant={"outline"}
                     onClick={setSelectedToThisWeek}
                   >
@@ -442,6 +445,7 @@ const DatePickerInput = ({
 
                   <BButton
                     flex={"1 1 120px"}
+                    size={"md"}
                     variant={"outline"}
                     onClick={setSelectedToThisMonth}
                   >

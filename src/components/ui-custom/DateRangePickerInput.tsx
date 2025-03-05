@@ -173,6 +173,7 @@ const DateRangePickerInput = ({
     thisMonth: (
       <BButton
         w={"full"}
+        size={"md"}
         variant={"outline"}
         onClick={setSelectedToThisMonth}
         disabled={!!(maxRange && maxRange < 31)}
@@ -183,6 +184,7 @@ const DateRangePickerInput = ({
     nextMonth: (
       <BButton
         w={"full"}
+        size={"md"}
         variant={"outline"}
         onClick={setSelectedToNextMonth}
         disabled={!!(maxRange && maxRange < 31)}
@@ -193,6 +195,7 @@ const DateRangePickerInput = ({
     thisWeek: (
       <BButton
         w={"full"}
+        size={"md"}
         variant={"outline"}
         onClick={setSelectedToThisWeek}
         disabled={!!(maxRange && maxRange < 7)}
@@ -203,6 +206,7 @@ const DateRangePickerInput = ({
     nextWeek: (
       <BButton
         w={"full"}
+        size={"md"}
         variant={"outline"}
         onClick={setSelectedToNextWeek}
         disabled={!!(maxRange && maxRange < 7)}
