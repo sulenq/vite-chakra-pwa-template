@@ -1229,13 +1229,11 @@ const TableComponentDemo = () => {
         rowOptions={[
           {
             label: (
-              <CContainer p={2}>
-                <Text>Edit</Text>
+              <CContainer>
+                <Text color={"light"}>Edit</Text>
               </CContainer>
             ),
-            menuItemProps: {
-              p: "0 !important",
-            },
+
             callback: (rowData: any) => {
               toaster.create({
                 type: "success",
