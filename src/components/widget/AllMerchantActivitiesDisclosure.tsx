@@ -87,7 +87,7 @@ const AllMerchantActivitiesDisclosure = ({ children, ...props }: BoxProps) => {
           </DisclosureBody>
 
           <DisclosureFooter>
-            <BackButton>Close</BackButton>
+            <BackButton />
           </DisclosureFooter>
         </DisclosureContent>
       </DisclosureRoot>

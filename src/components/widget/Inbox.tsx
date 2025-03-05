@@ -37,7 +37,7 @@ const Inbox = () => {
           <DisclosureBody>List</DisclosureBody>
 
           <DisclosureFooter>
-            <BackButton>Close</BackButton>
+            <BackButton />
             <BButton colorPalette={"red"}>Delete dibaca</BButton>
           </DisclosureFooter>
         </DisclosureContent>

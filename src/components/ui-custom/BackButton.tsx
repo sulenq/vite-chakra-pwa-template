@@ -47,7 +47,7 @@ const BackButton = ({
 
   return (
     <BButton variant={"outline"} onClick={handleBack} {...props}>
-      {children || "Cancel"}
+      {children || "Close"}
     </BButton>
   );
 };

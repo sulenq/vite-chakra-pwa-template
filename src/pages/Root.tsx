@@ -214,7 +214,7 @@ const DisclosureDemo = () => {
         </DisclosureBody>
 
         <DisclosureFooter>
-          <BackButton>Close</BackButton>
+          <BackButton />
 
           <DisclosureDemo2 />
         </DisclosureFooter>
@@ -242,7 +242,7 @@ const DisclosureDemo2 = () => {
         </DisclosureBody>
 
         <DisclosureFooter>
-          <BackButton>Close</BackButton>
+          <BackButton />
 
           <BButton
             onClick={() => {
@@ -467,6 +467,7 @@ const DatePickerDemo = () => {
           formik.setFieldValue("date3", inputValue);
         }}
         inputValue={formik.values.date3}
+        placeholder="Pilih tanggal multiple"
         multiple
         // nonNullable
       />

@@ -127,7 +127,7 @@ const MerchantActivityItem = ({ item }: any) => {
           </DisclosureBody>
 
           <DisclosureFooter>
-            <BackButton>Close</BackButton>
+            <BackButton />
           </DisclosureFooter>
         </DisclosureContent>
       </DisclosureRoot>

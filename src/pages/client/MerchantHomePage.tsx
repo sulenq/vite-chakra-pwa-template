@@ -452,7 +452,7 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
             </DisclosureBody>
 
             <DisclosureFooter>
-              <BackButton>Close</BackButton>
+              <BackButton />
             </DisclosureFooter>
           </DisclosureContent>
         </DisclosureRoot>

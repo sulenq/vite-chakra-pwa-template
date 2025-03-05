@@ -42,7 +42,6 @@ const SelectedDateList = ({
   selectedDates,
   selectedRenderValue,
 }: Interface__SelectedDateList) => {
-  const { themeConfig } = useThemeConfig();
   const { open, onOpen, onClose } = useDisclosure();
   useBackOnClose(`selected-date-list-`, open, onOpen, onClose);
 
@@ -83,12 +82,7 @@ const SelectedDateList = ({
             </CContainer>
           </DisclosureBody>
           <DisclosureFooter>
-            <BackButton
-              colorPalette={themeConfig.colorPalette}
-              variant={"solid"}
-            >
-              Mengerti
-            </BackButton>
+            <BackButton />
           </DisclosureFooter>
         </DisclosureContent>
       </DisclosureRoot>
