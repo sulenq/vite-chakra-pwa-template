@@ -24,6 +24,7 @@ const customConfig = defineConfig({
           800: { value: "#1B1B1B" },
           900: { value: "#151515" },
         },
+        placeholder: { value: "#96969691" },
         p: {
           50: { value: "#f5faff" },
           100: { value: "#CCE7FF" },

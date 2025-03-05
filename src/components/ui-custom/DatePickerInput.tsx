@@ -107,6 +107,7 @@ const DatePickerInput = ({
   nonNullable,
   invalid,
   size = "xs",
+  multiple,
   ...props
 }: Interface__DatePicker) => {
   const { open, onOpen, onClose } = useDisclosure();
@@ -212,10 +213,12 @@ const DatePickerInput = ({
     return weekDates;
   };
 
-  // const renderValue = formatDate(inputValue, dateFormatOptions);
-  const selectedRenderValue = selectedDates
-    .map((date) => formatDate(date, dateFormatOptions))
-    .join(", ");
+  const selectedRenderValue =
+    selectedDates?.length > 0
+      ? selectedDates
+          .map((date) => formatDate(date, dateFormatOptions))
+          .join(", ")
+      : placeholder;
 
   return (
     <>
@@ -237,13 +240,13 @@ const DatePickerInput = ({
           {...props}
         >
           <HStack w={"full"} justify={"space-between"}>
-            {inputValue ? (
+            {inputValue && inputValue?.length > 0 ? (
               <Text fontWeight={"normal"} truncate>
                 {selectedRenderValue}
               </Text>
             ) : (
               <Text
-                color={props?._placeholder?.color || "var(--placeholder)"}
+                color={props?._placeholder?.color || "placeholder"}
                 truncate
               >
                 {placeholder}
@@ -323,26 +326,30 @@ const DatePickerInput = ({
                         key={ii}
                         borderRadius={"full"}
                         onClick={() => {
-                          const newSelectedDates = selectedDates.some(
-                            (selectedDate) =>
-                              selectedDate.getDate() ===
-                                date.fullDate.getDate() &&
-                              selectedDate.getMonth() === date.month &&
-                              selectedDate.getFullYear() === date.year
-                          )
-                            ? selectedDates.filter(
-                                (selectedDate) =>
-                                  !(
-                                    selectedDate.getDate() ===
-                                      date.fullDate.getDate() &&
-                                    selectedDate.getMonth() === date.month &&
-                                    selectedDate.getFullYear() === date.year
-                                  )
-                              )
-                            : [...selectedDates, date.fullDate].sort(
-                                (a, b) => a.getTime() - b.getTime()
-                              );
-                          setSelectedDates(newSelectedDates);
+                          if (multiple) {
+                            const newSelectedDates = selectedDates.some(
+                              (selectedDate) =>
+                                selectedDate.getDate() ===
+                                  date.fullDate.getDate() &&
+                                selectedDate.getMonth() === date.month &&
+                                selectedDate.getFullYear() === date.year
+                            )
+                              ? selectedDates.filter(
+                                  (selectedDate) =>
+                                    !(
+                                      selectedDate.getDate() ===
+                                        date.fullDate.getDate() &&
+                                      selectedDate.getMonth() === date.month &&
+                                      selectedDate.getFullYear() === date.year
+                                    )
+                                )
+                              : [...selectedDates, date.fullDate].sort(
+                                  (a, b) => a.getTime() - b.getTime()
+                                );
+                            setSelectedDates(newSelectedDates);
+                          } else {
+                            setSelectedDates([date.fullDate]);
+                          }
                         }}
                         variant={dateSelected ? "surface" : "ghost"}
                         aspectRatio={1}

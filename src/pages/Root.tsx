@@ -442,6 +442,7 @@ const DatePickerDemo = () => {
     initialValues: {
       date1: undefined as any,
       date2: undefined as any,
+      date3: undefined as any,
     },
     validationSchema: yup.object().shape({}),
     onSubmit: (values) => {
@@ -457,6 +458,16 @@ const DatePickerDemo = () => {
           formik.setFieldValue("date1", inputValue);
         }}
         inputValue={formik.values.date1}
+        // nonNullable
+      />
+
+      <DatePickerInput
+        name="date3"
+        onConfirm={(inputValue) => {
+          formik.setFieldValue("date3", inputValue);
+        }}
+        inputValue={formik.values.date3}
+        multiple
         // nonNullable
       />
 

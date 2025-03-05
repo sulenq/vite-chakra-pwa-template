@@ -86,6 +86,7 @@ export interface Interface__DatePicker extends ButtonProps {
   nonNullable?: boolean;
   invalid?: boolean;
   disclosureSize?: Type__DisclosureSizes;
+  multiple?: boolean;
 }
 
 // Date Range Picker
