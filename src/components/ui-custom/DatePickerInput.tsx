@@ -214,6 +214,11 @@ const DatePickerInput = ({
           .join(", ")
       : placeholder;
 
+  const renderValue =
+    inputValue && inputValue?.length > 0
+      ? inputValue.map((date) => formatDate(date, dateFormatOptions)).join(", ")
+      : placeholder;
+
   return (
     <>
       <Tooltip content={inputValue ? selectedRenderValue : placeholder}>
@@ -236,7 +241,7 @@ const DatePickerInput = ({
           <HStack w={"full"} justify={"space-between"}>
             {inputValue && inputValue?.length > 0 ? (
               <Text fontWeight={"normal"} truncate>
-                {selectedRenderValue}
+                {renderValue}
               </Text>
             ) : (
               <Text

@@ -263,13 +263,6 @@ const DateRangePickerInput = ({
     return weekDates;
   };
 
-  const renderValue =
-    inputValue?.from &&
-    inputValue?.to &&
-    `${formatDate(inputValue?.from, dateFormatOptions)} - ${formatDate(
-      inputValue?.to,
-      dateFormatOptions
-    )} (${countDay(inputValue?.from, inputValue?.to)} hari)`;
   const selectedRenderValue =
     selected?.from &&
     selected?.to &&
@@ -277,6 +270,15 @@ const DateRangePickerInput = ({
       selected?.to,
       dateFormatOptions
     )} (${countDay(selected?.from, selected?.to)} hari)`;
+
+  const renderValue =
+    inputValue?.from &&
+    inputValue?.to &&
+    `${formatDate(inputValue?.from, dateFormatOptions)} - ${formatDate(
+      inputValue?.to,
+      dateFormatOptions
+    )} (${countDay(inputValue?.from, inputValue?.to)} hari)`;
+
   return (
     <>
       <Tooltip content={inputValue ? renderValue : placeholder}>
