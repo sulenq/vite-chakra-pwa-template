@@ -65,9 +65,8 @@ const TimeRangePickerInput = ({
     from: "00:00:00",
     to: "00:00:00",
   };
-  const [selected, setSelected] = useState<any>(
-    inputValue ? inputValue : defaultTime
-  );
+  const [selected, setSelected] = useState<any>(inputValue);
+  const [firstRender, setFirstRender] = useState(true);
   const [hoursFrom, setHoursFrom] = useState<number>(
     getHours(inputValue?.from)
   );
@@ -96,23 +95,31 @@ const TimeRangePickerInput = ({
   }, [inputValue]);
 
   useEffect(() => {
+    setFirstRender(false);
+  }, []);
+
+  useEffect(() => {
     const fHours = String(hoursFrom).padStart(2, "0");
     const fMinutes = String(minutesFrom).padStart(2, "0");
     const fSeconds = String(secondsFrom).padStart(2, "0");
-    setSelected((ps: any) => ({
-      ...ps,
-      from: `${fHours}:${fMinutes}:${fSeconds}`,
-    }));
+    if (!firstRender) {
+      setSelected((ps: any) => ({
+        ...ps,
+        from: `${fHours}:${fMinutes}:${fSeconds}`,
+      }));
+    }
   }, [hoursFrom, minutesFrom, secondsFrom]);
 
   useEffect(() => {
     const fHours = String(hoursTo).padStart(2, "0");
     const fMinutes = String(minutesTo).padStart(2, "0");
     const fSeconds = String(secondsTo).padStart(2, "0");
-    setSelected((ps: any) => ({
-      ...ps,
-      to: `${fHours}:${fMinutes}:${fSeconds}`,
-    }));
+    if (!firstRender) {
+      setSelected((ps: any) => ({
+        ...ps,
+        to: `${fHours}:${fMinutes}:${fSeconds}`,
+      }));
+    }
   }, [hoursTo, minutesTo, secondsTo]);
 
   // console.log(inputValue, time, hours, minutes, seconds);

@@ -57,9 +57,8 @@ const TimePickerInput = ({
 
   const { themeConfig } = useThemeConfig();
   const defaultTime = "00:00:00";
-  const [selected, setSelected] = useState<string | undefined>(
-    inputValue ? inputValue : defaultTime
-  );
+  const [selected, setSelected] = useState<string | undefined>(inputValue);
+  const [firstRender, setFirstRender] = useState(true);
   const [hours, setHours] = useState<number>(getHours(inputValue));
   const [minutes, setMinutes] = useState<number>(getMinutes(inputValue));
   const [seconds, setSeconds] = useState<number>(getSeconds(inputValue));
@@ -72,10 +71,16 @@ const TimePickerInput = ({
   }, [inputValue]);
 
   useEffect(() => {
+    setFirstRender(false);
+  }, []);
+
+  useEffect(() => {
     const fHours = String(hours).padStart(2, "0");
     const fMinutes = String(minutes).padStart(2, "0");
     const fSeconds = String(seconds).padStart(2, "0");
-    setSelected(`${fHours}:${fMinutes}:${fSeconds}`);
+    if (!firstRender) {
+      setSelected(`${fHours}:${fMinutes}:${fSeconds}`);
+    }
   }, [hours, minutes, seconds]);
 
   // console.log(inputValue, time, hours, minutes, seconds);
