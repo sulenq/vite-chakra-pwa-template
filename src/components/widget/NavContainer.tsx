@@ -7,7 +7,6 @@ import {
   BoxProps,
   HStack,
   Icon,
-  Image,
   Stack,
   StackProps,
   VStack,
@@ -18,6 +17,7 @@ import { Link } from "react-router-dom";
 import CContainer from "../ui-custom/CContainer";
 import FloatCounter from "../ui-custom/FloatCounter";
 import Heading5 from "../ui-custom/Heading5";
+import Logo from "../ui-custom/Logo";
 import { ColorModeButton } from "../ui/color-mode";
 import { Tooltip } from "../ui/tooltip";
 import MerchantInbox from "./Inbox";
@@ -176,13 +176,7 @@ const NavContainer = ({ label, children, activePath }: Props) => {
           borderColor={"border.muted"}
         >
           <Link to={"/"}>
-            <Image
-              src={themeConfig.logo}
-              w={"20px"}
-              objectFit={"contain"}
-              mb={4}
-              mt={"2px"}
-            />
+            <Logo size={16} color={themeConfig.primaryColorHex} />
           </Link>
 
           <VStack justify={"center"} flex={1}>

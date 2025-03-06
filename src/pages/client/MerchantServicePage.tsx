@@ -95,7 +95,7 @@ const ProductItem = ({ product }: any) => {
                   <Image w={"100px"} src={data.thumbnail} />
                 </HScroll>
 
-                <HStack ml={"auto"} mr={4} mt={4}>
+                <HStack ml={"auto"} mr={[4, null, 0]} mt={4}>
                   <BButton
                     iconButton
                     size={"2xs"}

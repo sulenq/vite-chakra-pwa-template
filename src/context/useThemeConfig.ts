@@ -6,6 +6,7 @@ const THEME_STORAGE_KEY = "themeConfig";
 interface ThemeConfigProps {
   colorPalette: string;
   primaryColor: string;
+  primaryColorHex: string;
   logo: string;
   radii: {
     component: string;
@@ -16,6 +17,7 @@ interface ThemeConfigProps {
 const DEFAULT_THEME: ThemeConfigProps = {
   colorPalette: "p",
   primaryColor: "p.500",
+  primaryColorHex: "#0062FF",
   logo: `${IMAGES_PATH}/logo_graphic.png`,
   radii: {
     component: "lg",

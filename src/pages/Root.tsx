@@ -114,58 +114,59 @@ import * as yup from "yup";
 const ThemeConfig = () => {
   const { themeConfig, setThemeConfig } = useThemeConfig();
   const colorPalettes = [
-    "p",
-    "gray",
-    "red",
-    "salmon",
-    "orange",
-    "pastelSalmon",
-    "yellow",
-    "lime",
-    "olive",
-    "green",
-    "teal",
-    "kemenkes",
-    "cyan",
-    "sky",
-    "blue",
-    "indigo",
-    "lavender",
-    "powderLavender",
-    "purple",
-    "pink",
-    "flamingoPink",
-    "bubblegumPink",
-    "cream",
-    "caramel",
-    "mocha",
-    "brown",
+    { palette: "p", primaryHex: "#0062FF" },
+    { palette: "gray", primaryHex: "#1B1B1B" },
+    { palette: "red", primaryHex: "#FF0000" },
+    { palette: "salmon", primaryHex: "#FF6242" },
+    { palette: "orange", primaryHex: "#FF8E62" },
+    { palette: "pastelSalmon", primaryHex: "#FF8E62" },
+    { palette: "yellow", primaryHex: "#f6e05e" },
+    { palette: "lime", primaryHex: "#CDDC39" },
+    { palette: "olive", primaryHex: "#879F30" },
+    { palette: "green", primaryHex: "#4CAF50" },
+    { palette: "teal", primaryHex: "#009688" },
+    { palette: "kemenkes", primaryHex: "#16B3AC" },
+    { palette: "cyan", primaryHex: "#00BCD4" },
+    { palette: "sky", primaryHex: "#0EA5E9" },
+    { palette: "blue", primaryHex: "#2196F3" },
+    { palette: "indigo", primaryHex: "#3F51B5" },
+    { palette: "lavender", primaryHex: "#7A42FF" },
+    { palette: "powderLavender", primaryHex: "#AB87FF" },
+    { palette: "purple", primaryHex: "#9C27B0" },
+    { palette: "pink", primaryHex: "#E91E63" },
+    { palette: "flamingoPink", primaryHex: "#FF478B" },
+    { palette: "bubblegumPink", primaryHex: "#FF4ABB" },
+    { palette: "cream", primaryHex: "#D7BF8C" },
+    { palette: "caramel", primaryHex: "#C47B27" },
+    { palette: "mocha", primaryHex: "#9F5D39" },
+    { palette: "brown", primaryHex: "#795548" },
   ];
 
   return (
     <CContainer mb={5}>
       <Heading5 mb={2}>Primary Color Palette</Heading5>
       <HStack wrap={"wrap"}>
-        {colorPalettes.map((item, i) => {
+        {colorPalettes.map((color, i) => {
           return (
             <Circle
               key={i}
               p={1}
               border={"2px solid"}
               borderColor={
-                item === themeConfig.colorPalette
+                color.palette === themeConfig.colorPalette
                   ? themeConfig.primaryColor
                   : "transparent"
               }
               cursor={"pointer"}
               onClick={() => {
                 setThemeConfig({
-                  colorPalette: item,
-                  primaryColor: `${item}.500`,
+                  colorPalette: color.palette,
+                  primaryColor: `${color.palette}.500`,
+                  primaryColorHex: color.primaryHex,
                 });
               }}
             >
-              <Circle w={"20px"} h={"20px"} bg={`${item}.500`} />
+              <Circle w={"20px"} h={"20px"} bg={`${color.palette}.500`} />
             </Circle>
           );
         })}
