@@ -4,7 +4,7 @@ import { SVGS_PATH } from "@/constant/path";
 
 interface Props extends ImageProps {}
 
-const Logo = ({ ...props }: Props) => {
+const BnwLogo = ({ ...props }: Props) => {
   const { colorMode } = useColorMode();
 
   return (
@@ -18,4 +18,4 @@ const Logo = ({ ...props }: Props) => {
   );
 };
 
-export default Logo;
+export default BnwLogo;

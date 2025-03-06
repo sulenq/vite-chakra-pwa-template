@@ -76,6 +76,7 @@ export default function StringInput({
           _focus={{ borderColor: themeConfig.primaryColor }}
           borderRadius={themeConfig.radii.component}
           autoComplete="off"
+          transition={"200ms"}
           color={"text"}
           {...props}
         />
