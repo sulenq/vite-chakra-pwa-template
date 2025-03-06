@@ -12,17 +12,20 @@ import PasswordInput from "../ui-custom/PasswordInput";
 import StringInput from "../ui-custom/StringInput";
 import { Field } from "../ui/field";
 import { useThemeConfig } from "@/context/useThemeConfig";
+import { login_loading } from "@/constant/appLabels";
+import useLang from "@/hooks/useLang";
 
 const LoginForm = () => {
   // Contexts
+  const { lang } = useLang();
   const { setAuthToken, setPermissions } = useAuthMiddleware();
   const { themeConfig } = useThemeConfig();
 
   // Utils
   const { req, loading } = useRequest({
     loadingMessage: {
-      title: "Login",
-      description: "Memverifikasi kredensial",
+      title: login_loading.title[lang],
+      description: login_loading.description[lang],
     },
   });
   const navigate = useNavigate();
@@ -52,7 +55,7 @@ const LoginForm = () => {
         config,
         onResolve: {
           onSuccess: (r: any) => {
-            //! Dummy Alert
+            //! Dummy
             const dummy_user = {
               name: "Sulenq Wazawsky",
               avatar: "https://bit.ly/sage-adebayo",

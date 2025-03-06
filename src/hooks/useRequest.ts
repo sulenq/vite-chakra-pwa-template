@@ -88,11 +88,11 @@ const useRequest = ({
               }
               break;
             case "ERR_NETWORK":
-              setMessage({
-                title: "Jaringan Error",
-                description:
-                  "Gagal terhubung ke server. Cobalah periksa jaringan Anda.",
-              });
+              // setMessage({
+              //   title: "Jaringan Error",
+              //   description:
+              //     "Gagal terhubung ke server. Cobalah periksa jaringan Anda.",
+              // });
               if (!showToast) {
                 toaster.error({
                   title: "Jaringan Error",

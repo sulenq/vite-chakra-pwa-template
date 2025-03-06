@@ -1,26 +1,43 @@
-import { IconApps, IconReceipt2, IconSmartHome } from "@tabler/icons-react";
+import {
+  IconApps,
+  IconHelpCircle,
+  IconReceipt2,
+  IconSmartHome,
+} from "@tabler/icons-react";
 
-const CLIENT_NAVS = [
+const NAVS = [
   {
-    label: "Beranda",
+    label: {
+      id: "Beranda",
+      en: "Home",
+    },
     path: "/home",
     icon: IconSmartHome,
   },
   {
-    label: "Tagihan",
+    label: {
+      id: "Tagihan",
+      en: "Invoice",
+    },
     path: "/invoice",
     icon: IconReceipt2,
   },
   {
-    label: "Layanan",
+    label: {
+      id: "Layanan",
+      en: "Services",
+    },
     path: "/services",
     icon: IconApps,
   },
-  // {
-  //   label: "Pusat Bantuan",
-  //   path: "/help-center",
-  //   icon: IconHelpCircle,
-  // },
+  {
+    label: {
+      id: "Pusat Bantuan",
+      en: "Help Center",
+    },
+    path: "/help-center",
+    icon: IconHelpCircle,
+  },
 ];
 
-export { CLIENT_NAVS };
+export { NAVS };

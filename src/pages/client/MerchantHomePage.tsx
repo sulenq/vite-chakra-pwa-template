@@ -15,10 +15,12 @@ import ItemHeaderContainer from "@/components/ui-custom/ItemHeaderContainer";
 import { Avatar } from "@/components/ui/avatar";
 import AllMerchantActivitiesDisclosure from "@/components/widget/AllMerchantActivitiesDisclosure";
 import MerchantActivityItem from "@/components/widget/MerchantActivityItem";
+import { logout_disclosure } from "@/constant/appLabels";
 import { BILLING_CYCLES } from "@/constant/parameters/pricing";
 import { SVGS_PATH } from "@/constant/path";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
+import useLang from "@/hooks/useLang";
 import formatCount from "@/utils/formatCount";
 import formatDate from "@/utils/formatDate";
 import formatNumber from "@/utils/formatNumber";
@@ -46,6 +48,9 @@ import {
 import { Link } from "react-router-dom";
 
 const Profile = ({ ...props }: StackProps) => {
+  // Context
+  const { lang } = useLang();
+
   // States, Refs
   const dummy_user = {
     name: "Sulenq Wazawsky",
@@ -111,8 +116,8 @@ const Profile = ({ ...props }: StackProps) => {
             <Group mt={4}>
               <ConfirmationDisclosure
                 id="loggingout"
-                title="Log out?"
-                description="Pastikan tidak ada proses ke server sebelum logout dikonfirmasi untuk menghindari error autentikasi."
+                title={logout_disclosure.title[lang]}
+                description={logout_disclosure.description[lang]}
                 confirmLabel="Logout"
                 confirmButtonProps={{ colorPalette: "red" }}
                 confirmCallback={() => {}}

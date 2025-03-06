@@ -47,7 +47,7 @@ const ConfirmationDisclosure = ({
 
   return (
     <>
-      <Box w={"full"} onClick={disabled ? undefined : onOpen} {...boxProps}>
+      <Box onClick={disabled ? undefined : onOpen} {...boxProps}>
         {children}
       </Box>
 

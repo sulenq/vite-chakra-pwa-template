@@ -1,5 +1,7 @@
 import { toaster } from "@/components/ui/toaster";
+import { no_auth_toast } from "@/constant/appLabels";
 import useAuthMiddleware from "@/context/useAuthMiddleware";
+import useLang from "@/hooks/useLang";
 import useRequest from "@/hooks/useRequest";
 import { Center, Icon, Spinner } from "@chakra-ui/react";
 import { IconShieldCheckFilled } from "@tabler/icons-react";
@@ -18,6 +20,7 @@ const AuthMiddleware = ({
   redirectTo = "/",
 }: Props) => {
   // Context
+  const { lang } = useLang();
   const { authToken, permissions, setPermissions, hasPermissions } =
     useAuthMiddleware();
 
@@ -30,8 +33,8 @@ const AuthMiddleware = ({
     if (!authToken || !hasPermissions(allowedPermissions)) {
       toaster.create({
         type: "error",
-        title: "Tidak memiliki akses",
-        description: "Silahkan login dengan akun anda",
+        title: no_auth_toast.title[lang],
+        description: no_auth_toast.description[lang],
         action: {
           label: "Close",
           onClick: () => {},
@@ -40,7 +43,7 @@ const AuthMiddleware = ({
     }
   }, [authToken, permissions]);
 
-  // Handle permiss ions
+  // Handle permissions
   useEffect(() => {
     function handleOnSuccess(r: any) {
       const permissions = r?.data?.data?.permission;

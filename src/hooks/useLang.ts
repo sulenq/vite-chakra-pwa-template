@@ -1,49 +1,27 @@
-import { useState, useEffect } from "react";
-import { LanguageOptions } from "../constant/interfaces";
+import { create } from "zustand";
 
-const DEFAULT_LANGUAGE: LanguageOptions = "en";
+const STORAGE_KEY = "lang";
 
-const getLang = (): LanguageOptions => {
-  const langString = localStorage.getItem("lang");
-  return (langString as LanguageOptions) || DEFAULT_LANGUAGE;
-};
+const DEFAULT = "en";
 
-const setLang = (newLang: LanguageOptions): void => {
-  localStorage.setItem("lang", newLang);
-  window.dispatchEvent(new Event("storage"));
-};
+interface Props {
+  lang: string;
+  setLang: (newState: string) => void;
+}
 
-// Fungsi untuk toggle bahasa antara dua opsi
-const toggleLang = (): void => {
-  const currentLang = getLang();
-  const newLang = currentLang === "en" ? "id" : "en";
-  setLang(newLang);
-};
+const useLang = create<Props>((set) => {
+  const stored = localStorage.getItem(STORAGE_KEY);
+  const initial = stored ? JSON.parse(stored) : DEFAULT;
 
-const useLang = (): {
-  lang: LanguageOptions;
-  toggleLang: () => void;
-} => {
-  const [lang, setLanguage] = useState<LanguageOptions>(getLang);
-
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setLanguage(getLang());
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
-
-  const toggleLanguage = () => {
-    toggleLang();
-    setLanguage(getLang());
+  return {
+    lang: initial,
+    setLang: (newState) =>
+      set(() => {
+        const newLang = newState;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(newLang));
+        return { lang: newState };
+      }),
   };
+});
 
-  return { lang, toggleLang: toggleLanguage };
-};
-
-export { useLang };
+export default useLang;

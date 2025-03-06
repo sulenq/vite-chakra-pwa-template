@@ -1,7 +1,7 @@
 import { IMAGES_PATH } from "@/constant/path";
 import { create } from "zustand";
 
-const THEME_STORAGE_KEY = "themeConfig";
+const STORAGE_KEY = "themeConfig";
 
 interface ThemeConfigProps {
   colorPalette: string;
@@ -14,7 +14,7 @@ interface ThemeConfigProps {
   };
 }
 
-const DEFAULT_THEME: ThemeConfigProps = {
+const DEFAULT: ThemeConfigProps = {
   colorPalette: "p",
   primaryColor: "p.500",
   primaryColorHex: "#0062FF",
@@ -31,15 +31,15 @@ interface Props {
 }
 
 export const useThemeConfig = create<Props>((set) => {
-  const storedConfig = localStorage.getItem(THEME_STORAGE_KEY);
-  const initialTheme = storedConfig ? JSON.parse(storedConfig) : DEFAULT_THEME;
+  const stored = localStorage.getItem(STORAGE_KEY);
+  const initial = stored ? JSON.parse(stored) : DEFAULT;
 
   return {
-    themeConfig: initialTheme,
+    themeConfig: initial,
     setThemeConfig: (config) => {
       set((state) => {
         const newConfig = { ...state.themeConfig, ...config };
-        localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify(newConfig));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(newConfig));
         return { themeConfig: newConfig };
       });
     },

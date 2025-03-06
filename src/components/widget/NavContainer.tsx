@@ -1,4 +1,4 @@
-import { CLIENT_NAVS } from "@/constant/navs";
+import { NAVS } from "@/constant/navs";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useCallBackOnNavigate from "@/hooks/useCallBackOnNavigate";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
@@ -11,7 +11,7 @@ import {
   StackProps,
   VStack,
 } from "@chakra-ui/react";
-import { IconHelpCircle } from "@tabler/icons-react";
+import { IconSettings } from "@tabler/icons-react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import CContainer from "../ui-custom/CContainer";
@@ -21,6 +21,7 @@ import Logo from "../ui-custom/Logo";
 import { ColorModeButton } from "../ui/color-mode";
 import { Tooltip } from "../ui/tooltip";
 import MerchantInbox from "./Inbox";
+import useLang from "@/hooks/useLang";
 
 interface Interface__NavItemContainer extends StackProps {
   active?: boolean;
@@ -33,6 +34,7 @@ interface Props {
 const NavContainer = ({ label, children, activePath }: Props) => {
   // Context
   const { themeConfig } = useThemeConfig();
+  const { lang } = useLang();
 
   // States, Refs
   const containerRef = useRef<HTMLDivElement>(null);
@@ -85,11 +87,11 @@ const NavContainer = ({ label, children, activePath }: Props) => {
   const NavList = () => {
     return (
       <>
-        {CLIENT_NAVS.map((nav: any, i) => {
+        {NAVS.map((nav: any, i) => {
           return (
             <Link key={i} to={nav.path}>
               <Tooltip
-                content={nav.label}
+                content={nav.label[lang]}
                 positioning={{ placement: "right" }}
                 contentProps={{ ml: 2 }}
               >
@@ -120,15 +122,15 @@ const NavContainer = ({ label, children, activePath }: Props) => {
   const NavList2 = () => {
     return (
       <>
-        <Link to={"/help-center"}>
+        <Link to={"/settings"}>
           <Tooltip
-            content={"Pusat Bantuan"}
+            content={"Pengaturan"}
             positioning={{ placement: "right" }}
             contentProps={{ ml: 2 }}
           >
-            <NavItemContainer active={activePath === "/help-center"}>
+            <NavItemContainer active={activePath === "/settings"}>
               <Icon>
-                <IconHelpCircle strokeWidth={1.5} size={iss ? 28 : 20} />
+                <IconSettings strokeWidth={1.5} size={iss ? 28 : 20} />
               </Icon>
             </NavItemContainer>
           </Tooltip>
@@ -167,7 +169,8 @@ const NavContainer = ({ label, children, activePath }: Props) => {
           w={"fit"}
           align={"center"}
           px={2}
-          py={4}
+          pt={5}
+          pb={4}
           overflowY={"auto"}
           overflowX={"hidden"}
           className="scrollY"

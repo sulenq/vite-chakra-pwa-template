@@ -18,7 +18,7 @@ export interface Interface__Route {
 }
 
 export interface Interface__PrivateRoute extends Interface__Route {
-  label?: string;
+  label?: any;
   permissions?: number[];
 }
 
@@ -32,7 +32,7 @@ export interface Interface__Nav {
 
 // Select
 export interface Interface__SelectOption {
-  value: any;
+  id: any;
   label: any;
   label2?: any;
   original_data?: any;

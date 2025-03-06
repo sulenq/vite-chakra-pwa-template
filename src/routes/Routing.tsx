@@ -5,8 +5,12 @@ import MissingPage from "@/pages/error/MissingPage";
 import ServerErrorPage from "@/pages/error/ServerErrorPage";
 import { Route, Routes } from "react-router-dom";
 import AuthMiddleware from "./AuthMiddleware";
+import useLang from "@/hooks/useLang";
 
 const Routing = () => {
+  // Context
+  const { lang } = useLang();
+
   return (
     <Routes>
       {ROUTES.map(({ path, element }) => (
@@ -19,7 +23,7 @@ const Routing = () => {
           path={path}
           element={
             <AuthMiddleware allowedPermissions={permissions}>
-              <NavContainer activePath={path} label={label}>
+              <NavContainer activePath={path} label={label[lang]}>
                 {element}
               </NavContainer>
             </AuthMiddleware>

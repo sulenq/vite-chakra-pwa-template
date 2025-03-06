@@ -63,8 +63,7 @@ const SelectInput = ({
   >(inputValue);
   function isSelected(item: Interface__SelectOption) {
     return selected?.some(
-      (listItem) =>
-        listItem.value === item.value && listItem.label === item.label
+      (listItem) => listItem.id === item.id && listItem.label === item.label
     );
   }
 
@@ -109,7 +108,7 @@ const SelectInput = ({
       } else {
         if (isSelected(item)) {
           const newState = selected?.filter((fitem) => {
-            return fitem.value !== item.value;
+            return fitem.id !== item.id;
           });
           setSelected(newState);
         } else {

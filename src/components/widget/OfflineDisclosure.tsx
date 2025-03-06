@@ -1,6 +1,7 @@
 import useOffline from "@/context/useOffilne";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
+import useLang from "@/hooks/useLang";
 import back from "@/utils/back";
 import { Icon, useDisclosure } from "@chakra-ui/react";
 import { IconAccessPointOff } from "@tabler/icons-react";
@@ -16,11 +17,13 @@ import {
 } from "../ui-custom/Disclosure";
 import DisclosureHeaderContent from "../ui-custom/DisclosureHeaderContent";
 import { EmptyState } from "../ui/empty-state";
+import { offline_disclosure } from "@/constant/appLabels";
 
 const OfflineDisclosure = () => {
   // Context
   const { offline } = useOffline();
   const { themeConfig } = useThemeConfig();
+  const { lang } = useLang();
 
   // Utils
   const { open, onOpen, onClose } = useDisclosure();
@@ -45,10 +48,8 @@ const OfflineDisclosure = () => {
                 <IconAccessPointOff />
               </Icon>
             }
-            title={"Koneksi Terputus"}
-            description={
-              "Sepertinya Anda sedang offline. Periksa koneksi internet Anda dan coba lagi."
-            }
+            title={offline_disclosure.title[lang]}
+            description={offline_disclosure.description[lang]}
             maxW={"500px"}
           />
         </DisclosureBody>

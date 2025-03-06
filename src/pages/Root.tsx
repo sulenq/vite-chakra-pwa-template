@@ -75,7 +75,7 @@ import { Status } from "@/components/ui/status";
 import { toaster } from "@/components/ui/toaster";
 import { Tooltip } from "@/components/ui/tooltip";
 import { Interface__Select } from "@/constant/interfaces";
-import { OPTIONS_RELIGION } from "@/constant/selectOptions";
+import { OPTIONS_RELIGION } from "@/constant/parameters/selectOptions";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";

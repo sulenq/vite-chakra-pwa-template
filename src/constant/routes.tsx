@@ -1,11 +1,12 @@
-import RootPage from "@/pages/RootPage";
-import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
+import MerchantHelpCenterPage from "@/pages/client/MerchantHelpCenterPage";
 import MerchantHomePage from "@/pages/client/MerchantHomePage";
 import MerchantInvoicePage from "@/pages/client/MerchantInvoicePage";
 import MerchantServicePage from "@/pages/client/MerchantServicePage";
-import MerchantHelpCenterPage from "@/pages/client/MerchantHelpCenterPage";
-import MerchantProfilePage from "@/pages/client/MerchantProfilePage";
 import MerchantSettingsPage from "@/pages/client/MerchantSettingsPage";
+import RootPage from "@/pages/RootPage";
+import { settings } from "./appLabels";
+import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
+import { NAVS } from "./navs";
 
 const ROUTES: Interface__Route[] = [
   {
@@ -17,34 +18,34 @@ const ROUTES: Interface__Route[] = [
 const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   {
     path: "/home",
-    label: "Beranda",
+    label: NAVS[0].label,
     element: <MerchantHomePage />,
   },
   {
     path: "/invoice",
-    label: "Tagihan",
+    label: NAVS[1].label,
     element: <MerchantInvoicePage />,
   },
   {
     path: "/services",
-    label: "Layanan",
+    label: NAVS[2].label,
     element: <MerchantServicePage />,
   },
   {
     path: "/help-center",
-    label: "Pusat Bantuan",
+    label: NAVS[3].label,
     element: <MerchantHelpCenterPage />,
   },
   {
     path: "/settings",
-    label: "Pengaturan",
+    label: settings.label,
     element: <MerchantSettingsPage />,
   },
-  {
-    path: "/profile",
-    label: "Profile",
-    element: <MerchantProfilePage />,
-  },
+  // {
+  //   path: "/profile",
+  //   label: NAVS[0].label,
+  //   element: <MerchantProfilePage />,
+  // },
 ];
 
 export { PRIVATE_ROUTES, ROUTES };
