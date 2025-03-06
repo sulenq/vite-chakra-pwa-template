@@ -30,7 +30,7 @@ interface Props {
   children?: any;
   activePath?: string;
 }
-const ClientNavContainer = ({ label, children, activePath }: Props) => {
+const NavContainer = ({ label, children, activePath }: Props) => {
   // Context
   const { themeConfig } = useThemeConfig();
 
@@ -250,4 +250,4 @@ const ClientNavContainer = ({ label, children, activePath }: Props) => {
   );
 };
 
-export default ClientNavContainer;
+export default NavContainer;
