@@ -2,6 +2,7 @@ import { NAVS } from "@/constant/navs";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useCallBackOnNavigate from "@/hooks/useCallBackOnNavigate";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
+import useLang from "@/hooks/useLang";
 import {
   Box,
   BoxProps,
@@ -16,12 +17,11 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import CContainer from "../ui-custom/CContainer";
 import FloatCounter from "../ui-custom/FloatCounter";
-import Heading5 from "../ui-custom/Heading5";
+import Heading6 from "../ui-custom/Heading6";
 import Logo from "../ui-custom/Logo";
 import { ColorModeButton } from "../ui/color-mode";
 import { Tooltip } from "../ui/tooltip";
 import MerchantInbox from "./Inbox";
-import useLang from "@/hooks/useLang";
 
 interface Interface__NavItemContainer extends StackProps {
   active?: boolean;
@@ -207,11 +207,14 @@ const NavContainer = ({ label, children, activePath }: Props) => {
           position={"sticky"}
           top={0}
           zIndex={2}
-          bg={"bgContent"}
+          // bg={"bgContent"}
+          bg={"body"}
+          mb={4}
+          borderBottom={"1px solid {colors.border.muted}"}
         >
-          <Heading5 fontWeight={"bold"} truncate>
+          <Heading6 fontWeight={"bold"} truncate>
             {label}
-          </Heading5>
+          </Heading6>
 
           <HStack flexShrink={0} gap={1}>
             <ColorModeButton fontSize={"1.1rem"} />
