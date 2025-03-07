@@ -25,7 +25,7 @@ export default function StringInput({
   name,
   onChangeSetter,
   inputValue,
-  placeholder = "",
+  placeholder = "Input text",
   boxProps,
   invalid,
   ...props
