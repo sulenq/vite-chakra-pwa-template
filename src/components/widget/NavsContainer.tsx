@@ -89,7 +89,6 @@ const NavContainer = ({ label, children, activePath }: Props) => {
     return (
       <>
         {NAVS.map((nav: any, i) => {
-          console.log(nav.labelKey, l, getValueByKey(l, nav.labelKey));
           return (
             <Link key={i} to={nav.path}>
               <Tooltip
