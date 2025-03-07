@@ -113,7 +113,7 @@ const MerchantInvoicePage = () => {
     {
       th: "Total Pembayaran",
       sortable: true,
-      stackProps: {
+      wrapperProps: {
         justify: "end",
       },
     },
@@ -152,7 +152,7 @@ const MerchantInvoicePage = () => {
           value: item.total,
           td: <Text>Rp {formatNumber(item.total)}</Text>,
           dataType: "number",
-          stackProps: {
+          wrapperProps: {
             justify: "end",
           },
         },

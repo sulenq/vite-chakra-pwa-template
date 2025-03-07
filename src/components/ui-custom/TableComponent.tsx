@@ -573,7 +573,7 @@ const TableComponent = ({
   };
 
   // Sort
-  const requestSort = (columnIndex: number) => {
+  const sort = (columnIndex: number) => {
     setSortConfig((prevConfig) => {
       if (prevConfig.sortColumnIndex === columnIndex) {
         if (prevConfig.direction === "asc") {
@@ -743,7 +743,7 @@ const TableComponent = ({
                   key={i}
                   whiteSpace={"nowrap"}
                   onClick={() => {
-                    tableColumnHeader.sortable && requestSort(i);
+                    tableColumnHeader.sortable && sort(i);
                   }}
                   cursor={tableColumnHeader?.sortable ? "pointer" : "auto"}
                   borderBottom={"none !important"}
@@ -759,7 +759,7 @@ const TableComponent = ({
                     h={thHeight}
                     pl={i === 0 ? 4 : ""}
                     pr={i === ths.length - 1 ? 4 : ""}
-                    {...tableColumnHeader?.stackProps}
+                    {...tableColumnHeader?.wrapperProps}
                   >
                     <Text>{tableColumnHeader?.th}</Text>
 
@@ -858,7 +858,7 @@ const TableComponent = ({
                         px={4}
                         h={"48px"}
                         transition={"200ms"}
-                        {...col?.stackProps}
+                        {...col?.wrapperProps}
                       >
                         {typeof col?.td === "string" ||
                         typeof col?.td === "number" ? (

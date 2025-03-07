@@ -1116,7 +1116,7 @@ const TableComponentDemo = () => {
     {
       th: "Jenis Jam Kerja",
       sortable: true,
-      stackProps: {
+      wrapperProps: {
         justify: "center",
       },
     },
@@ -1167,7 +1167,7 @@ const TableComponentDemo = () => {
             {item.unit_kerja.jenis_karyawan ? "Shift" : "Non-Shift"}
           </Badge>
         ),
-        stackProps: {
+        wrapperProps: {
           justify: "center",
         },
       },

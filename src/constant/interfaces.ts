@@ -148,7 +148,7 @@ export interface Interface__FormattedTableHeader {
   columnKey?: string; // unused yet
   sortable?: boolean;
   tableColumnHeaderProps?: TableColumnHeaderProps;
-  stackProps?: StackProps;
+  wrapperProps?: StackProps;
 }
 export interface Interface__FormattedTableBody {
   id: number;
@@ -159,7 +159,7 @@ export interface Interface__FormattedTableBody {
     dataType?: string; // "string" | "number" | "date" | "time" |
     original_data?: any;
     tableCellProps?: TableCellProps;
-    stackProps?: StackProps;
+    wrapperProps?: StackProps;
   }[];
 }
 export interface Interface__TableComponent extends StackProps {

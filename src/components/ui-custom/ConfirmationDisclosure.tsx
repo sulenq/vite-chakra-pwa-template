@@ -1,14 +1,9 @@
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
-import {
-  Box,
-  BoxProps,
-  ButtonProps,
-  Text,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { ButtonProps, StackProps, Text, useDisclosure } from "@chakra-ui/react";
 import BackButton from "./BackButton";
 import BButton from "./BButton";
+import CContainer from "./CContainer";
 import {
   DisclosureBody,
   DisclosureContent,
@@ -26,7 +21,7 @@ interface Props {
   confirmCallback: () => void;
   confirmButtonProps?: ButtonProps;
   children?: any;
-  boxProps?: BoxProps;
+  triggerProps?: StackProps;
   disabled?: boolean;
 }
 
@@ -38,7 +33,7 @@ const ConfirmationDisclosure = ({
   confirmCallback = () => {},
   confirmButtonProps,
   children,
-  boxProps,
+  triggerProps,
   disabled = false,
 }: Props) => {
   const { open, onOpen, onClose } = useDisclosure();
@@ -47,9 +42,13 @@ const ConfirmationDisclosure = ({
 
   return (
     <>
-      <Box onClick={disabled ? undefined : onOpen} {...boxProps}>
+      <CContainer
+        w={"unset"}
+        onClick={disabled ? undefined : onOpen}
+        {...triggerProps}
+      >
         {children}
-      </Box>
+      </CContainer>
 
       <DisclosureRoot open={open} size={"xs"}>
         <DisclosureContent>

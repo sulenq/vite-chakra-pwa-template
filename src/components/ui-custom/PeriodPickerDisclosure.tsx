@@ -1,18 +1,20 @@
 import months from "@/constant/months";
+import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
+import useScreen from "@/hooks/useScreen";
 import back from "@/utils/back";
 import {
-  Box,
-  BoxProps,
   HStack,
   Icon,
   SimpleGrid,
+  StackProps,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
 import { IconCaretLeftFilled, IconCaretRightFilled } from "@tabler/icons-react";
 import { Dispatch, useEffect, useRef, useState } from "react";
 import BButton from "./BButton";
+import CContainer from "./CContainer";
 import {
   DisclosureBody,
   DisclosureContent,
@@ -22,10 +24,8 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import StringInput from "./StringInput";
-import { useThemeConfig } from "@/context/useThemeConfig";
-import useScreen from "@/hooks/useScreen";
 
-interface Props extends BoxProps {
+interface Props {
   children?: any;
   id?: string;
   name?: string;
@@ -35,6 +35,8 @@ interface Props extends BoxProps {
   year?: number;
   setYear?: Dispatch<number>;
   setDate?: Dispatch<Date>;
+  disabled?: boolean;
+  triggerProps?: StackProps;
 }
 
 const PeriodPickerDisclosure = ({
@@ -47,7 +49,8 @@ const PeriodPickerDisclosure = ({
   year = new Date().getFullYear(),
   setYear,
   setDate,
-  ...props
+  disabled = false,
+  triggerProps,
 }: Props) => {
   // Context
   const { themeConfig } = useThemeConfig();
@@ -147,9 +150,13 @@ const PeriodPickerDisclosure = ({
 
   return (
     <>
-      <Box w={"full"} onClick={onOpen} {...props}>
+      <CContainer
+        w={"unset"}
+        onClick={disabled ? undefined : onOpen}
+        {...triggerProps}
+      >
         {children}
-      </Box>
+      </CContainer>
 
       <DisclosureRoot open={open} size={"xs"}>
         <DisclosureContent>
