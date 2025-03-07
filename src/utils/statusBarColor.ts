@@ -6,8 +6,6 @@ export default function useStatusBarColor(
 ) {
   const { colorMode } = useColorMode();
 
-  console.log(colorMode);
-
   const setStatusBarColor = () => {
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (metaThemeColor) {
