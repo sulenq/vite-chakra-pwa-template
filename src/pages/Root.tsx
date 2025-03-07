@@ -1267,7 +1267,6 @@ const TableComponentDemo = () => {
               disabled: true,
             },
           },
-          "divider",
           {
             label: "Delete...",
             menuItemProps: {
@@ -1303,7 +1302,6 @@ const TableComponentDemo = () => {
               disabled: true,
             },
           },
-          "divider",
           {
             label: "Delete...",
             menuItemProps: {
