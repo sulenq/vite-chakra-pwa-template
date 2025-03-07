@@ -327,7 +327,7 @@ const NumberInputDemo = () => {
           formik.setFieldValue("number3", inputValue);
         }}
         inputValue={formik.values.number3}
-        placeholder={"Tanpa format, bisa dipakai untuk input tahun"}
+        placeholder={"Without format, for years input for example"}
         noFormat
       />
 
