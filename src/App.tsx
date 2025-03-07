@@ -10,28 +10,39 @@ import useOffline from "./context/useOffilne";
 import OfflineDisclosure from "./components/widget/OfflineDisclosure";
 import { back_online_toast } from "./locales/master";
 import useLang from "./hooks/useLang";
+import { useThemeConfig } from "./context/useThemeConfig";
 
 const EndpointWrapper = ({ children }: { children: React.ReactNode }) => {
+  // Context
+  const { themeConfig } = useThemeConfig();
+
   // States, Refs
   const location = useLocation();
 
   // Utils
+  const setStatusBarPrimary = useStatusBarColor(
+    themeConfig.primaryColorHex,
+    themeConfig.primaryColorHex
+  );
   const setStatusBarBody = useStatusBarColor("#ffffff", "#101010");
   const setStatusBarDark = useStatusBarColor("#101010", "#101010");
 
   // Handle notif bar color
   useEffect(() => {
     // Dapatkan endpoint dari lokasi saat ini
-    const endpoint = location.pathname.split("/").pop();
+    const endpoint = location.pathname;
     switch (endpoint) {
       default:
         setStatusBarBody();
         break;
-      case "foto":
+      case "beranda":
+        setStatusBarPrimary();
+        break;
+      case "employee/foto":
         setStatusBarDark();
         break;
     }
-  }, [location]);
+  }, [location, setStatusBarBody, setStatusBarDark]);
 
   return <>{children}</>;
 };

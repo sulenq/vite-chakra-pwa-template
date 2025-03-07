@@ -1,4 +1,3 @@
-import { ACTIVITY_TYPES } from "@/constant/gens/activityTypes";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import formatDate from "@/utils/formatDate";
@@ -20,6 +19,7 @@ import {
   DisclosureRoot,
 } from "../ui-custom/Disclosure";
 import DisclosureHeaderContent from "../ui-custom/DisclosureHeaderContent";
+import { ACTIVITY_TYPES } from "@/gens/activityTypes";
 
 const ActivityDetailItemContainer = ({ children, ...props }: StackProps) => {
   return (

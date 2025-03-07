@@ -16,7 +16,6 @@ import { Avatar } from "@/components/ui/avatar";
 import AllMerchantActivitiesDisclosure from "@/components/widget/AllMerchantActivitiesDisclosure";
 import MerchantActivityItem from "@/components/widget/MerchantActivityItem";
 import { logout_disclosure } from "@/locales/master";
-import { BILLING_CYCLES } from "@/constant/gens/pricing";
 import { SVGS_PATH } from "@/constant/path";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
@@ -46,6 +45,7 @@ import {
   IconX,
 } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
+import { BILLING_CYCLES } from "@/gens/pricing";
 
 const Profile = ({ ...props }: StackProps) => {
   // Context
