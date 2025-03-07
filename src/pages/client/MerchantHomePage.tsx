@@ -15,7 +15,6 @@ import ItemHeaderContainer from "@/components/ui-custom/ItemHeaderContainer";
 import { Avatar } from "@/components/ui/avatar";
 import AllMerchantActivitiesDisclosure from "@/components/widget/AllMerchantActivitiesDisclosure";
 import MerchantActivityItem from "@/components/widget/MerchantActivityItem";
-import { logout_disclosure } from "@/locales/_master";
 import { SVGS_PATH } from "@/constant/path";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
@@ -49,7 +48,7 @@ import { BILLING_CYCLES } from "@/gens/pricing";
 
 const Profile = ({ ...props }: StackProps) => {
   // Context
-  const { lang } = useLang();
+  const { l } = useLang();
 
   // States, Refs
   const dummy_user = {
@@ -116,8 +115,8 @@ const Profile = ({ ...props }: StackProps) => {
             <Group mt={4}>
               <ConfirmationDisclosure
                 id="loggingout"
-                title={logout_disclosure.title[lang]}
-                description={logout_disclosure.description[lang]}
+                title={l.logout_disclosure.title}
+                description={l.logout_disclosure.description}
                 confirmLabel="Logout"
                 confirmButtonProps={{ colorPalette: "red" }}
                 confirmCallback={() => {}}

@@ -12,20 +12,19 @@ import PasswordInput from "../ui-custom/PasswordInput";
 import StringInput from "../ui-custom/StringInput";
 import { Field } from "../ui/field";
 import { useThemeConfig } from "@/context/useThemeConfig";
-import { login_loading } from "@/locales/_master";
 import useLang from "@/context/useLang";
 
 const LoginForm = () => {
   // Contexts
-  const { lang } = useLang();
+  const { l } = useLang();
   const { setAuthToken, setPermissions } = useAuthMiddleware();
   const { themeConfig } = useThemeConfig();
 
   // Utils
   const { req, loading } = useRequest({
     loadingMessage: {
-      title: login_loading.title[lang],
-      description: login_loading.description[lang],
+      title: l.login_loading.title,
+      description: l.login_loading.description,
     },
   });
   const navigate = useNavigate();

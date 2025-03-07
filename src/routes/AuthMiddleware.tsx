@@ -1,5 +1,4 @@
 import { toaster } from "@/components/ui/toaster";
-import { no_auth_toast } from "@/locales/_master";
 import useAuthMiddleware from "@/context/useAuthMiddleware";
 import useLang from "@/context/useLang";
 import useRequest from "@/hooks/useRequest";
@@ -20,7 +19,7 @@ const AuthMiddleware = ({
   redirectTo = "/",
 }: Props) => {
   // Context
-  const { lang } = useLang();
+  const { l } = useLang();
   const { authToken, permissions, setPermissions, hasPermissions } =
     useAuthMiddleware();
 
@@ -33,8 +32,8 @@ const AuthMiddleware = ({
     if (!authToken || !hasPermissions(allowedPermissions)) {
       toaster.create({
         type: "error",
-        title: no_auth_toast.title[lang],
-        description: no_auth_toast.description[lang],
+        title: l.no_auth_toast.title,
+        description: l.no_auth_toast.description,
         action: {
           label: "Close",
           onClick: () => {},

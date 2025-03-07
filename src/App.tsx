@@ -8,7 +8,6 @@ import useStatusBarColor from "./utils/statusBarColor";
 import { useEffect, useState } from "react";
 import useOffline from "./context/useOffilne";
 import OfflineDisclosure from "./components/widget/OfflineDisclosure";
-import { back_online_toast } from "./locales/_master";
 import useLang from "./context/useLang";
 import { useThemeConfig } from "./context/useThemeConfig";
 
@@ -47,7 +46,7 @@ const EndpointWrapper = ({ children }: { children: React.ReactNode }) => {
 
 function App() {
   // Context
-  const { lang } = useLang();
+  const { l } = useLang();
   const { setOffline } = useOffline();
 
   // States, Refs
@@ -58,8 +57,8 @@ function App() {
     setOffline(false);
     if (!firstRender) {
       toaster.success({
-        title: back_online_toast.title[lang],
-        description: back_online_toast.description[lang],
+        title: l.back_online_toast.title,
+        description: l.back_online_toast.description,
         action: {
           label: "Close",
           onClick: () => {},

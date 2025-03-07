@@ -1,7 +1,3 @@
-import {
-  delete_all_inbox_button_label,
-  delete_all_inbox_disclosure,
-} from "@/locales/_master";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useLang from "@/context/useLang";
 import { Icon, useDisclosure } from "@chakra-ui/react";
@@ -21,7 +17,7 @@ import FloatCounter from "../ui-custom/FloatCounter";
 
 const Inbox = () => {
   // Context
-  const { lang } = useLang();
+  const { l } = useLang();
 
   // Utils
   const { open, onOpen, onClose } = useDisclosure();
@@ -49,14 +45,14 @@ const Inbox = () => {
             <BackButton />
             <ConfirmationDisclosure
               id="loggingout"
-              title={delete_all_inbox_disclosure.title[lang]}
-              description={delete_all_inbox_disclosure.description[lang]}
+              title={l.delete_all_inbox_disclosure.title}
+              description={l.delete_all_inbox_disclosure.description}
               confirmLabel="Delete"
               confirmButtonProps={{ colorPalette: "red" }}
               confirmCallback={() => {}}
             >
               <BButton colorPalette={"red"} variant={"surface"}>
-                {delete_all_inbox_button_label[lang]}
+                {l.delete_all_inbox_button_label}
               </BButton>
             </ConfirmationDisclosure>
           </DisclosureFooter>

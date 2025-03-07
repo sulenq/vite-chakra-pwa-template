@@ -17,13 +17,12 @@ import {
 } from "../ui-custom/Disclosure";
 import DisclosureHeaderContent from "../ui-custom/DisclosureHeaderContent";
 import { EmptyState } from "../ui/empty-state";
-import { offline_disclosure } from "@/locales/_master";
 
 const OfflineDisclosure = () => {
   // Context
   const { offline } = useOffline();
   const { themeConfig } = useThemeConfig();
-  const { lang } = useLang();
+  const { l } = useLang();
 
   // Utils
   const { open, onOpen, onClose } = useDisclosure();
@@ -48,8 +47,8 @@ const OfflineDisclosure = () => {
                 <IconAccessPointOff />
               </Icon>
             }
-            title={offline_disclosure.title[lang]}
-            description={offline_disclosure.description[lang]}
+            title={l.offline_disclosure.title}
+            description={l.offline_disclosure.description}
             maxW={"500px"}
           />
         </DisclosureBody>

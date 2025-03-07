@@ -3,7 +3,7 @@ import id from "../locales/id";
 import en from "../locales/en";
 
 const STORAGE_KEY = "lang";
-const DEFAULT = "en";
+const DEFAULT = "id";
 
 const translations = {
   id,
@@ -18,6 +18,7 @@ interface Props {
 
 const useLang = create<Props>((set) => {
   const stored = localStorage.getItem(STORAGE_KEY);
+  if (!stored) localStorage.setItem(STORAGE_KEY, DEFAULT);
   const initial = stored ? JSON.parse(stored) : DEFAULT;
 
   return {
