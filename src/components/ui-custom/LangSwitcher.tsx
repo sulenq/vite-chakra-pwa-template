@@ -1,17 +1,20 @@
 import { Button, ButtonProps } from "@chakra-ui/react";
-import { useLang } from "../../hooks/useLang";
+import useLang from "../../hooks/useLang";
 import { Tooltip } from "../ui/tooltip";
 
 interface Props extends ButtonProps {}
 
 export default function LangSwitcher({ ...props }: Props) {
-  const { lang, toggleLang } = useLang();
+  const { lang, setLang } = useLang();
 
   return (
     <Tooltip content={""}>
       <Button
         className={"btn"}
-        onClick={toggleLang}
+        onClick={() => {
+          if (lang === "id") setLang("en");
+          if (lang === "en") setLang("id");
+        }}
         px={"4px !important"}
         {...props}
       >

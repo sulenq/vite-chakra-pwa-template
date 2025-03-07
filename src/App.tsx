@@ -53,12 +53,12 @@ function App() {
   const { setOffline } = useOffline();
 
   // States, Refs
-  const [firstLoad, setFirstLoad] = useState<boolean>(true);
+  const [firstRender, setFirstRender] = useState<boolean>(true);
 
   // Utils
   function handleOnline() {
     setOffline(false);
-    if (!firstLoad) {
+    if (!firstRender) {
       toaster.success({
         title: back_online_toast.title[lang],
         description: back_online_toast.description[lang],
@@ -83,14 +83,14 @@ function App() {
       window.removeEventListener("online", handleOnline);
       window.removeEventListener("offline", handleOffline);
     };
-  }, [firstLoad]);
+  }, [firstRender]);
 
   // Hide online toast when first render
   useEffect(() => {
-    if (firstLoad) {
-      setFirstLoad(false);
+    if (firstRender) {
+      setFirstRender(false);
     }
-  }, [firstLoad]);
+  }, [firstRender]);
 
   return (
     <ChakraProvider value={theme}>
