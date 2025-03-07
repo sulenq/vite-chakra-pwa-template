@@ -6,7 +6,7 @@ export function useSettingsContent(settingsPath: string = "/settings") {
 
   const settingsRoute = location.pathname === settingsPath;
   const { sw } = useScreen();
-  const iss = sw < 1200;
+  const siss = sw < 1200;
 
-  return { settingsRoute, iss };
+  return { settingsRoute, siss };
 }

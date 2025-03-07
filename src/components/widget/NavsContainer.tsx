@@ -109,7 +109,7 @@ const NavContainer = ({ label, children, activePath }: Props) => {
                   </FloatCounter>
 
                   <Icon {...nav?.iconProps}>
-                    <nav.icon strokeWidth={1.5} size={iss ? 28 : 20} />
+                    <nav.icon strokeWidth={1.5} size={iss ? 24 : 20} />
                   </Icon>
                 </NavItemContainer>
               </Tooltip>
@@ -130,7 +130,7 @@ const NavContainer = ({ label, children, activePath }: Props) => {
           >
             <NavItemContainer active={activePath === "/settings"}>
               <Icon>
-                <IconSettings strokeWidth={1.5} size={iss ? 28 : 20} />
+                <IconSettings strokeWidth={1.5} size={iss ? 24 : 20} />
               </Icon>
             </NavItemContainer>
           </Tooltip>
