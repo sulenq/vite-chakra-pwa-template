@@ -210,7 +210,7 @@ const NavContainer = ({ label, children, activePath }: Props) => {
           // bg={"bgContent"}
           bg={"body"}
           mb={4}
-          borderBottom={"1px solid {colors.border.muted}"}
+          borderBottom={"1px solid {colors.border.subtle}"}
         >
           <Heading6 fontWeight={"bold"} truncate>
             {label}
