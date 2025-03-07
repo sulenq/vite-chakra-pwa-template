@@ -19,7 +19,7 @@ interface Props {
 const useLang = create<Props>((set) => {
   const stored = localStorage.getItem(STORAGE_KEY);
   if (!stored) localStorage.setItem(STORAGE_KEY, DEFAULT);
-  const initial = stored ? JSON.parse(stored) : DEFAULT;
+  const initial = stored ? stored : DEFAULT;
 
   return {
     lang: initial,
