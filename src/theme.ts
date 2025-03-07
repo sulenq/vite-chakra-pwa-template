@@ -627,7 +627,7 @@ const customConfig = defineConfig({
           contrast: {
             value: {
               base: "{colors.powderLavender.50}",
-              _dark: "{colors.powderLavender.900}",
+              _dark: "{colors.dark}",
             },
           },
           fg: {
