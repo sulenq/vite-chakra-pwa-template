@@ -5,9 +5,8 @@ import {
   Portal,
   useDrawerContext,
 } from "@chakra-ui/react";
-import { forwardRef, useEffect } from "react";
+import { forwardRef } from "react";
 import { CloseButton } from "./close-button";
-import useStatusBarColor from "@/utils/statusBarColor";
 
 interface DrawerContentProps extends ChakraDrawer.ContentProps {
   portalled?: boolean;
@@ -31,12 +30,6 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
 
     // Utils
     const handleBackOnDefaultPage = useBackOnDefaultPage();
-    const setStatusBarDark = useStatusBarColor("#101010", "#101010");
-
-    // Handle status bar color when open
-    useEffect(() => {
-      if (open) setStatusBarDark();
-    }, [open, setStatusBarDark]);
 
     return (
       <Portal disabled={!portalled} container={portalRef}>
