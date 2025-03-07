@@ -6,7 +6,7 @@ import {
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
-import formatDate from "@/utils/formatDate";
+import formatDate from "@/utils/formatDateOld";
 import {
   HStack,
   Icon,

@@ -3,7 +3,7 @@ const translations = {
     "title": "Koneksi Pulih",
     "description": "Anda kembali online."
   },
-  "delete_all_inbox_button_label": {},
+  "delete_all_inbox_button_label": "Delete semua",
   "delete_all_inbox_disclosure": {
     "title": "Delete semua?",
     "description": "Delete semua inbox yang sudah dibaca."
@@ -24,8 +24,8 @@ const translations = {
     "title": "Koneksi Terputus",
     "description": "Sepertinya Anda sedang offline. Periksa koneksi internet Anda dan coba lagi."
   },
-  "pay": {},
-  "see_all": {},
+  "pay": "Bayar",
+  "see_all": "Lihat semua",
   "settings": {
     "label": "Pengaturan"
   }

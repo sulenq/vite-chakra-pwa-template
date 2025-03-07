@@ -9,7 +9,7 @@ import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import back from "@/utils/back";
 import countDay from "@/utils/countDay";
 import dateInRange from "@/utils/dateInRange";
-import formatDate from "@/utils/formatDate";
+import formatDate from "@/utils/formatDateOld";
 import {
   Box,
   HStack,

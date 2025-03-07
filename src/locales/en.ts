@@ -3,7 +3,7 @@ const translations = {
     "title": "Connection Recovered",
     "description": "You are back online."
   },
-  "delete_all_inbox_button_label": {},
+  "delete_all_inbox_button_label": "Delete all",
   "delete_all_inbox_disclosure": {
     "title": "Delete all?",
     "description": "Delete all of the read inboxes."
@@ -24,8 +24,8 @@ const translations = {
     "title": "Connection Lost",
     "description": "It looks like you are offline. Check your internet connection and try again."
   },
-  "pay": {},
-  "see_all": {},
+  "pay": "Pay",
+  "see_all": "See all",
   "settings": {
     "label": "Settings"
   }

@@ -9,7 +9,7 @@ import {
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import useScreen from "@/hooks/useScreen";
-import formatDate from "@/utils/formatDate";
+import formatDate from "@/utils/formatDateOld";
 import {
   Center,
   HStack,
