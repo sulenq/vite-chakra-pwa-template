@@ -125,7 +125,7 @@ const NavContainer = ({ label, children, activePath }: Props) => {
       <>
         <Link to={"/settings"}>
           <Tooltip
-            content={"Pengaturan"}
+            content={l.navs.settings}
             positioning={{ placement: "right" }}
             contentProps={{ ml: 2 }}
           >

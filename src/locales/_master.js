@@ -85,12 +85,6 @@ const navs = {
     en: "Settings",
   },
 };
-const settings = {
-  label: {
-    id: "Pengaturan",
-    en: "Settings",
-  },
-};
 
 // Widget
 const delete_all_inbox_button_label = {
@@ -118,7 +112,6 @@ export {
   delete_all_inbox_button_label,
   delete_all_inbox_disclosure,
   offline_disclosure,
-  settings,
   logout_disclosure,
   pay,
   see_all,

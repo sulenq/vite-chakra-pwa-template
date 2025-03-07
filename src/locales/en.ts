@@ -32,10 +32,7 @@ const translations = {
     "description": "It looks like you are offline. Check your internet connection and try again."
   },
   "pay": "Pay",
-  "see_all": "See all",
-  "settings": {
-    "label": "Settings"
-  }
+  "see_all": "See all"
 };
 
 export default translations;

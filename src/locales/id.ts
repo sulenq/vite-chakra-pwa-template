@@ -32,10 +32,7 @@ const translations = {
     "description": "Sepertinya Anda sedang offline. Periksa koneksi internet Anda dan coba lagi."
   },
   "pay": "Bayar",
-  "see_all": "Lihat semua",
-  "settings": {
-    "label": "Pengaturan"
-  }
+  "see_all": "Lihat semua"
 };
 
 export default translations;
