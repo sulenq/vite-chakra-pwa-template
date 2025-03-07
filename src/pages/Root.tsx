@@ -1,4 +1,4 @@
-import LoginForm from "@/components/form/LoginForm";
+import LoginForm from "@/components/widget/LoginForm";
 import BackButton from "@/components/ui-custom/BackButton";
 import BButton from "@/components/ui-custom/BButton";
 import CContainer from "@/components/ui-custom/CContainer";
