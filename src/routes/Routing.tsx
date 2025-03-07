@@ -1,4 +1,4 @@
-import NavContainer from "@/components/widget/NavContainer";
+import NavsContainer from "@/components/widget/NavsContainer";
 import { PRIVATE_ROUTES, ROUTES } from "@/constant/routes";
 import MaintenancePage from "@/pages/error/MaintenancePage";
 import MissingPage from "@/pages/error/MissingPage";
@@ -23,9 +23,9 @@ const Routing = () => {
           path={path}
           element={
             <AuthMiddleware allowedPermissions={permissions}>
-              <NavContainer activePath={path} label={label[lang]}>
+              <NavsContainer activePath={path} label={label[lang]}>
                 {element}
-              </NavContainer>
+              </NavsContainer>
             </AuthMiddleware>
           }
         />
