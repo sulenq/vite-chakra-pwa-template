@@ -19,7 +19,7 @@ export default function PasswordInput({
   onChangeSetter,
   inputValue,
   isError,
-  placeholder,
+  placeholder = "********",
   boxProps,
   invalid = false,
   ...props
@@ -30,7 +30,7 @@ export default function PasswordInput({
     <Box w={"full"} position={"relative"} {...boxProps}>
       <StringInput
         name={name}
-        placeholder={placeholder || "*******"}
+        placeholder={placeholder}
         onChangeSetter={(inputValue) => {
           if (onChangeSetter) onChangeSetter(inputValue);
         }}
