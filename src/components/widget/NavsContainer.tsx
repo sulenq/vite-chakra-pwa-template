@@ -1,8 +1,9 @@
 import { NAVS } from "@/constant/navs";
+import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useCallBackOnNavigate from "@/hooks/useCallBackOnNavigate";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
-import useLang from "@/context/useLang";
+import getValueByKey from "@/utils/getValueByKey";
 import {
   Box,
   BoxProps,
@@ -34,7 +35,7 @@ interface Props {
 const NavContainer = ({ label, children, activePath }: Props) => {
   // Context
   const { themeConfig } = useThemeConfig();
-  const { lang } = useLang();
+  const { l } = useLang();
 
   // States, Refs
   const containerRef = useRef<HTMLDivElement>(null);
@@ -88,10 +89,11 @@ const NavContainer = ({ label, children, activePath }: Props) => {
     return (
       <>
         {NAVS.map((nav: any, i) => {
+          console.log(nav.labelKey, l, getValueByKey(l, nav.labelKey));
           return (
             <Link key={i} to={nav.path}>
               <Tooltip
-                content={nav.label[lang]}
+                content={getValueByKey(l, nav.labelKey)}
                 positioning={{ placement: "right" }}
                 contentProps={{ ml: 2 }}
               >

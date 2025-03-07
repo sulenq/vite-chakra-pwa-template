@@ -16,6 +16,13 @@ const translations = {
     "title": "Logout?",
     "description": "Make sure there is no process to the server before the logout is confirmed to avoid authentication errors."
   },
+  "navs": {
+    "home": "Home",
+    "invoice": "Invoice",
+    "services": "Services",
+    "helpCenter": "Help Center",
+    "settings": "Settings"
+  },
   "no_auth_toast": {
     "title": "No authentication",
     "description": "Please login with your account."

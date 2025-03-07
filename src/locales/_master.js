@@ -63,6 +63,28 @@ const delete_all_inbox_disclosure = {
 };
 
 // Navs
+const navs = {
+  home: {
+    id: "Beranda",
+    en: "Home",
+  },
+  invoice: {
+    id: "Tagihan",
+    en: "Invoice",
+  },
+  services: {
+    id: "Layanan",
+    en: "Services",
+  },
+  helpCenter: {
+    id: "Pusat Bantuan",
+    en: "Help Center",
+  },
+  settings: {
+    id: "Pengaturan",
+    en: "Settings",
+  },
+};
 const settings = {
   label: {
     id: "Pengaturan",
@@ -89,6 +111,7 @@ const see_all = {
 };
 
 export {
+  navs,
   no_auth_toast,
   back_online_toast,
   login_loading,

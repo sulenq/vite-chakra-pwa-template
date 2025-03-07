@@ -7,34 +7,22 @@ import {
 
 const NAVS = [
   {
-    label: {
-      id: "Beranda",
-      en: "Home",
-    },
+    labelKey: "navs.home",
     path: "/home",
     icon: IconSmartHome,
   },
   {
-    label: {
-      id: "Tagihan",
-      en: "Invoice",
-    },
+    labelKey: "navs.invoice",
     path: "/invoice",
     icon: IconReceipt2,
   },
   {
-    label: {
-      id: "Layanan",
-      en: "Services",
-    },
+    labelKey: "navs.services",
     path: "/services",
     icon: IconApps,
   },
   {
-    label: {
-      id: "Pusat Bantuan",
-      en: "Help Center",
-    },
+    labelKey: "navs.helpCenter",
     path: "/help-center",
     icon: IconHelpCircle,
   },

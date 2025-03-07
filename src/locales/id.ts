@@ -16,6 +16,13 @@ const translations = {
     "title": "Logout?",
     "description": "Pastikan tidak ada proses ke server sebelum logout dikonfirmasi untuk menghindari error autentikasi."
   },
+  "navs": {
+    "home": "Beranda",
+    "invoice": "Tagihan",
+    "services": "Layanan",
+    "helpCenter": "Pusat Bantuan",
+    "settings": "Pengaturan"
+  },
   "no_auth_toast": {
     "title": "Tidak memiliki autentikasi",
     "description": "Silahkan login dengan akun anda."

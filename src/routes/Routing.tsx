@@ -6,10 +6,11 @@ import ServerErrorPage from "@/pages/error/ServerErrorPage";
 import { Route, Routes } from "react-router-dom";
 import AuthMiddleware from "./AuthMiddleware";
 import useLang from "@/context/useLang";
+import getValueByKey from "@/utils/getValueByKey";
 
 const Routing = () => {
   // Context
-  const { lang } = useLang();
+  const { l } = useLang();
 
   return (
     <Routes>
@@ -17,13 +18,16 @@ const Routing = () => {
         <Route key={path} path={path} element={element} />
       ))}
 
-      {PRIVATE_ROUTES.map(({ path, label, permissions, element }) => (
+      {PRIVATE_ROUTES.map(({ path, labelKey, permissions, element }) => (
         <Route
           key={path}
           path={path}
           element={
             <AuthMiddleware allowedPermissions={permissions}>
-              <NavsContainer activePath={path} label={label[lang]}>
+              <NavsContainer
+                activePath={path}
+                label={getValueByKey(l, labelKey)}
+              >
                 {element}
               </NavsContainer>
             </AuthMiddleware>

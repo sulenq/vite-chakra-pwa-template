@@ -5,7 +5,6 @@ import MerchantServicePage from "@/pages/client/MerchantServicePage";
 import MerchantSettingsPage from "@/pages/client/MerchantSettingsPage";
 import RootPage from "@/pages/RootPage";
 import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
-import { NAVS } from "./navs";
 
 const ROUTES: Interface__Route[] = [
   {
@@ -17,35 +16,32 @@ const ROUTES: Interface__Route[] = [
 const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   {
     path: "/home",
-    label: NAVS[0].label,
+    labelKey: "navs.home",
     element: <MerchantHomePage />,
   },
   {
     path: "/invoice",
-    label: NAVS[1].label,
+    labelKey: "navs.invoice",
     element: <MerchantInvoicePage />,
   },
   {
     path: "/services",
-    label: NAVS[2].label,
+    labelKey: "navs.services",
     element: <MerchantServicePage />,
   },
   {
     path: "/help-center",
-    label: NAVS[3].label,
+    labelKey: "navs.helpCenter",
     element: <MerchantHelpCenterPage />,
   },
   {
     path: "/settings",
-    label: {
-      id: "Pengaturan",
-      en: "Settings",
-    },
+    labelKey: "navs.settings",
     element: <MerchantSettingsPage />,
   },
   // {
   //   path: "/profile",
-  //   label: NAVS[0].label,
+  //   labelKey: "navs.profile",
   //   element: <MerchantProfilePage />,
   // },
 ];
