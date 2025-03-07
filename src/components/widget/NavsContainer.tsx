@@ -192,6 +192,7 @@ const NavContainer = ({ label, children, activePath }: Props) => {
         </VStack>
       )}
 
+      {/* Content */}
       <CContainer
         fRef={containerRef}
         position={"relative"}
