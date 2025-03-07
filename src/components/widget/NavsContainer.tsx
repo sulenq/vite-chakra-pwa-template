@@ -209,10 +209,9 @@ const NavContainer = ({ label, children, activePath }: Props) => {
           position={"sticky"}
           top={0}
           zIndex={2}
-          // bg={"bgContent"}
-          bg={"body"}
-          mb={4}
-          borderBottom={"1px solid {colors.border.subtle}"}
+          bg={iss ? "body" : "bgContent"}
+          mb={iss ? 4 : 0}
+          borderBottom={iss ? "1px solid {colors.border.subtle}" : ""}
         >
           <Heading6 fontWeight={"bold"} truncate>
             {label}
