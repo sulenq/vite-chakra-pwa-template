@@ -1,9 +1,14 @@
 import useBackOnDefaultPage from "@/hooks/useBackOnDefaultPage";
 import back from "@/utils/back";
-import { Dialog as ChakraDialog, Portal } from "@chakra-ui/react";
-import { forwardRef } from "react";
+import {
+  Dialog as ChakraDialog,
+  Portal,
+  useDialogContext,
+} from "@chakra-ui/react";
+import { forwardRef, useEffect } from "react";
 import { CloseButton } from "./close-button";
 import useScreen from "@/hooks/useScreen";
+import useStatusBarColor from "@/utils/statusBarColor";
 
 interface DialogContentProps extends ChakraDialog.ContentProps {
   portalled?: boolean;
@@ -21,8 +26,18 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
       ...rest
     } = props;
 
+    // Context
+    const { open } = useDialogContext();
+
+    // Utils
     const handleBackOnDefaultPage = useBackOnDefaultPage();
     const { sh } = useScreen();
+    const setStatusBarDark = useStatusBarColor("#101010", "#101010");
+
+    // Handle status bar color when open
+    useEffect(() => {
+      if (open) setStatusBarDark();
+    }, [open, setStatusBarDark]);
 
     return (
       <Portal disabled={!portalled} container={portalRef}>

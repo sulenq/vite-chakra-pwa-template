@@ -1,3 +1,4 @@
+import { useThemeConfig } from "@/context/useThemeConfig";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import useScreen from "@/hooks/useScreen";
 import back from "@/utils/back";
@@ -42,11 +43,10 @@ import {
   DrawerTrigger,
 } from "../ui/drawer";
 import CContainer from "./CContainer";
-import { useThemeConfig } from "@/context/useThemeConfig";
 
 const DisclosureRoot = ({ children, ...props }: any) => {
+  // Utils
   const { sw } = useScreen(0);
-
   const iss = sw < 768;
 
   return iss ? (

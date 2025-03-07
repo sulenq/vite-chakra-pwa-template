@@ -16,10 +16,8 @@ const EndpointWrapper = ({ children }: { children: React.ReactNode }) => {
   // Context
   const { themeConfig } = useThemeConfig();
 
-  // States, Refs
-  const location = useLocation();
-
   // Utils
+  const location = useLocation();
   const setStatusBarPrimary = useStatusBarColor(
     themeConfig.primaryColorHex,
     themeConfig.primaryColorHex
