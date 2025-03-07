@@ -5,7 +5,7 @@ import MissingPage from "@/pages/error/MissingPage";
 import ServerErrorPage from "@/pages/error/ServerErrorPage";
 import { Route, Routes } from "react-router-dom";
 import AuthMiddleware from "./AuthMiddleware";
-import useLang from "@/hooks/useLang";
+import useLang from "@/context/useLang";
 
 const Routing = () => {
   // Context

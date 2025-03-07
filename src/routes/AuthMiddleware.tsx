@@ -1,7 +1,7 @@
 import { toaster } from "@/components/ui/toaster";
-import { no_auth_toast } from "@/locales/master";
+import { no_auth_toast } from "@/locales/_master";
 import useAuthMiddleware from "@/context/useAuthMiddleware";
-import useLang from "@/hooks/useLang";
+import useLang from "@/context/useLang";
 import useRequest from "@/hooks/useRequest";
 import { Center, Icon, Spinner } from "@chakra-ui/react";
 import { IconShieldCheckFilled } from "@tabler/icons-react";

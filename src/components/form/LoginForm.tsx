@@ -12,8 +12,8 @@ import PasswordInput from "../ui-custom/PasswordInput";
 import StringInput from "../ui-custom/StringInput";
 import { Field } from "../ui/field";
 import { useThemeConfig } from "@/context/useThemeConfig";
-import { login_loading } from "@/locales/master";
-import useLang from "@/hooks/useLang";
+import { login_loading } from "@/locales/_master";
+import useLang from "@/context/useLang";
 
 const LoginForm = () => {
   // Contexts

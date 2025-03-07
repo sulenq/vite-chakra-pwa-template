@@ -1,7 +1,7 @@
 import useOffline from "@/context/useOffilne";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
-import useLang from "@/hooks/useLang";
+import useLang from "@/context/useLang";
 import back from "@/utils/back";
 import { Icon, useDisclosure } from "@chakra-ui/react";
 import { IconAccessPointOff } from "@tabler/icons-react";
@@ -17,7 +17,7 @@ import {
 } from "../ui-custom/Disclosure";
 import DisclosureHeaderContent from "../ui-custom/DisclosureHeaderContent";
 import { EmptyState } from "../ui/empty-state";
-import { offline_disclosure } from "@/locales/master";
+import { offline_disclosure } from "@/locales/_master";
 
 const OfflineDisclosure = () => {
   // Context

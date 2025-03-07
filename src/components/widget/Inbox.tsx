@@ -1,9 +1,9 @@
 import {
   delete_all_inbox_button_label,
   delete_all_inbox_disclosure,
-} from "@/locales/master";
+} from "@/locales/_master";
 import useBackOnClose from "@/hooks/useBackOnClose";
-import useLang from "@/hooks/useLang";
+import useLang from "@/context/useLang";
 import { Icon, useDisclosure } from "@chakra-ui/react";
 import { IconInbox } from "@tabler/icons-react";
 import BackButton from "../ui-custom/BackButton";

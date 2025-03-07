@@ -2,7 +2,7 @@ import { NAVS } from "@/constant/navs";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useCallBackOnNavigate from "@/hooks/useCallBackOnNavigate";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
-import useLang from "@/hooks/useLang";
+import useLang from "@/context/useLang";
 import {
   Box,
   BoxProps,

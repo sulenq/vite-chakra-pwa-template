@@ -1,5 +1,5 @@
 // Toasters
-const no_auth_toast: any = {
+const no_auth_toast = {
   title: {
     id: "Tidak memiliki autentikasi",
     en: "No authentication",
@@ -9,7 +9,7 @@ const no_auth_toast: any = {
     en: "Please login with your account.",
   },
 };
-const back_online_toast: any = {
+const back_online_toast = {
   title: {
     id: "Koneksi Pulih",
     en: "Connection Recovered",
@@ -19,7 +19,7 @@ const back_online_toast: any = {
     en: "You are back online.",
   },
 };
-const login_loading: any = {
+const login_loading = {
   title: {
     id: "Login",
     en: "Login",
@@ -31,7 +31,7 @@ const login_loading: any = {
 };
 
 // Disclosures
-const logout_disclosure: any = {
+const logout_disclosure = {
   title: {
     id: "Logout?",
     en: "Logout?",
@@ -41,7 +41,7 @@ const logout_disclosure: any = {
     en: "Make sure there is no process to the server before the logout is confirmed to avoid authentication errors.",
   },
 };
-const offline_disclosure: any = {
+const offline_disclosure = {
   title: {
     id: "Koneksi Terputus",
     en: "Connection Lost",
@@ -51,7 +51,7 @@ const offline_disclosure: any = {
     en: "It looks like you are offline. Check your internet connection and try again.",
   },
 };
-const delete_all_inbox_disclosure: any = {
+const delete_all_inbox_disclosure = {
   title: {
     id: "Delete semua?",
     en: "Delete all?",
@@ -63,7 +63,7 @@ const delete_all_inbox_disclosure: any = {
 };
 
 // Navs
-const settings: any = {
+const settings = {
   label: {
     id: "Pengaturan",
     en: "Settings",
@@ -71,7 +71,7 @@ const settings: any = {
 };
 
 // Widget
-const delete_all_inbox_button_label: any = {
+const delete_all_inbox_button_label = {
   id: "Delete semua",
   en: "Delete all",
 };
@@ -79,11 +79,11 @@ const delete_all_inbox_button_label: any = {
 // Responses
 
 // Others
-const pay: any = {
+const pay = {
   id: "Bayar",
   en: "Pay",
 };
-const see_all: any = {
+const see_all = {
   id: "Lihat semua",
   en: "See all",
 };

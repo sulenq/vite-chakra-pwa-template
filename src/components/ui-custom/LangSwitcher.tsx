@@ -1,5 +1,5 @@
 import { Button, ButtonProps } from "@chakra-ui/react";
-import useLang from "../../hooks/useLang";
+import useLang from "../../context/useLang";
 import { Tooltip } from "../ui/tooltip";
 
 interface Props extends ButtonProps {}
