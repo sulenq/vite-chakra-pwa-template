@@ -8,7 +8,7 @@ import useStatusBarColor from "./utils/statusBarColor";
 import { useEffect, useState } from "react";
 import useOffline from "./context/useOffilne";
 import OfflineDisclosure from "./components/widget/OfflineDisclosure";
-import { back_online_toast } from "./constant/appLabels";
+import { back_online_toast } from "./locales/master";
 import useLang from "./hooks/useLang";
 
 const EndpointWrapper = ({ children }: { children: React.ReactNode }) => {

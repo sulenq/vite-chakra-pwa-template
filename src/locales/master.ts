@@ -76,6 +76,8 @@ const delete_all_inbox_button_label: any = {
   en: "Delete all",
 };
 
+// Responses
+
 // Others
 const pay: any = {
   id: "Bayar",

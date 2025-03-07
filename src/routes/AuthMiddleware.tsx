@@ -1,5 +1,5 @@
 import { toaster } from "@/components/ui/toaster";
-import { no_auth_toast } from "@/constant/appLabels";
+import { no_auth_toast } from "@/locales/master";
 import useAuthMiddleware from "@/context/useAuthMiddleware";
 import useLang from "@/hooks/useLang";
 import useRequest from "@/hooks/useRequest";

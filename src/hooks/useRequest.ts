@@ -77,22 +77,12 @@ const useRequest = ({
             default:
               if (!showToast) {
                 toaster.error({
-                  title:
-                    typeof message?.title === "string"
-                      ? message?.title
-                      : "Title's format isn't string",
-                  description: message?.description
-                    ? typeof message?.description === "string"
-                    : "Description's format isn't string.",
+                  title: "Default error title",
+                  description: "Default error description",
                 });
               }
               break;
             case "ERR_NETWORK":
-              // setMessage({
-              //   title: "Jaringan Error",
-              //   description:
-              //     "Gagal terhubung ke server. Cobalah periksa jaringan Anda.",
-              // });
               if (!showToast) {
                 toaster.error({
                   title: "Jaringan Error",
@@ -129,7 +119,6 @@ const useRequest = ({
 
           setStatus(e.response?.status);
           setResponse(e.response);
-          setMessage(e.response.message);
         })
         .finally(() => {});
     });

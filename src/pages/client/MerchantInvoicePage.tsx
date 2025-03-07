@@ -5,7 +5,7 @@ import ItemContainer from "@/components/ui-custom/ItemContainer";
 import SearchInput from "@/components/ui-custom/SearchInput";
 import TableComponent from "@/components/ui-custom/TableComponent";
 import { Status } from "@/components/ui/status";
-import { BILLING_CYCLES } from "@/constant/parameters/pricing";
+import { BILLING_CYCLES } from "@/constant/gens/pricing";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import formatDate from "@/utils/formatDate";
 import formatNumber from "@/utils/formatNumber";

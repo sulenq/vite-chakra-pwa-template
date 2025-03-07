@@ -17,7 +17,7 @@ import {
 } from "../ui-custom/Disclosure";
 import DisclosureHeaderContent from "../ui-custom/DisclosureHeaderContent";
 import { EmptyState } from "../ui/empty-state";
-import { offline_disclosure } from "@/constant/appLabels";
+import { offline_disclosure } from "@/locales/master";
 
 const OfflineDisclosure = () => {
   // Context

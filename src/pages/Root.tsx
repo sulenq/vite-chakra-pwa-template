@@ -75,7 +75,7 @@ import { Status } from "@/components/ui/status";
 import { toaster } from "@/components/ui/toaster";
 import { Tooltip } from "@/components/ui/tooltip";
 import { Interface__Select } from "@/constant/interfaces";
-import { OPTIONS_RELIGION } from "@/constant/parameters/selectOptions";
+import { OPTIONS_RELIGION } from "@/constant/gens/selectOptions";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
@@ -130,6 +130,7 @@ const ThemeConfig = () => {
     { palette: "sky", primaryHex: "#0EA5E9" },
     { palette: "blue", primaryHex: "#2196F3" },
     { palette: "indigo", primaryHex: "#3F51B5" },
+    { palette: "discord", primaryHex: "#5865F2" },
     { palette: "lavender", primaryHex: "#7A42FF" },
     { palette: "powderLavender", primaryHex: "#AB87FF" },
     { palette: "purple", primaryHex: "#9C27B0" },

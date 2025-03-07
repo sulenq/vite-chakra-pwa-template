@@ -134,6 +134,18 @@ const customConfig = defineConfig({
           800: { value: "#283593" },
           900: { value: "#141A63" },
         },
+        discord: {
+          50: { value: "#EDEFFD" },
+          100: { value: "#D0D6FA" },
+          200: { value: "#B3BCF7" },
+          300: { value: "#96A3F4" },
+          400: { value: "#7989F1" },
+          500: { value: "#5865F2" },
+          600: { value: "#4A55D2" },
+          700: { value: "#3C46B2" },
+          800: { value: "#2E3792" },
+          900: { value: "#181C5D" },
+        },
         lavender: {
           50: { value: "#F5F0FF" },
           100: { value: "#E6DAFF" },
@@ -534,6 +546,40 @@ const customConfig = defineConfig({
             value: {
               base: "{colors.indigo.500}",
               _dark: "{colors.indigo.900}",
+            },
+          },
+        },
+        discord: {
+          solid: {
+            value: {
+              base: "{colors.discord.500}",
+              _dark: "{colors.discord.500}",
+            },
+          },
+          contrast: { value: "{colors.discord.50}" },
+          fg: {
+            value: {
+              base: "{colors.discord.700}",
+              _dark: "{colors.discord.200}",
+            },
+          },
+          muted: {
+            value: {
+              base: "{colors.discord.100}",
+              _dark: "{colors.discord.800}",
+            },
+          },
+          subtle: {
+            value: {
+              base: "{colors.discord.50}",
+              _dark: "{colors.discord.900}",
+            },
+          },
+          emphasized: { value: "{colors.discord.300}" },
+          focusRing: {
+            value: {
+              base: "{colors.discord.500}",
+              _dark: "{colors.discord.900}",
             },
           },
         },

@@ -1,7 +1,7 @@
 import {
   delete_all_inbox_button_label,
   delete_all_inbox_disclosure,
-} from "@/constant/appLabels";
+} from "@/locales/master";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useLang from "@/hooks/useLang";
 import { Icon, useDisclosure } from "@chakra-ui/react";

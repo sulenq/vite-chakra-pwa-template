@@ -1,4 +1,4 @@
-import { ACTIVITY_TYPES } from "@/constant/parameters/activityTypes";
+import { ACTIVITY_TYPES } from "@/constant/gens/activityTypes";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import formatDate from "@/utils/formatDate";

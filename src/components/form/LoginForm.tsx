@@ -12,7 +12,7 @@ import PasswordInput from "../ui-custom/PasswordInput";
 import StringInput from "../ui-custom/StringInput";
 import { Field } from "../ui/field";
 import { useThemeConfig } from "@/context/useThemeConfig";
-import { login_loading } from "@/constant/appLabels";
+import { login_loading } from "@/locales/master";
 import useLang from "@/hooks/useLang";
 
 const LoginForm = () => {
