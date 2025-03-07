@@ -23,6 +23,7 @@ import {
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import StringInput from "./StringInput";
 import { useThemeConfig } from "@/context/useThemeConfig";
+import useScreen from "@/hooks/useScreen";
 
 interface Props extends BoxProps {
   children?: any;
@@ -48,14 +49,6 @@ const PeriodPickerDisclosure = ({
   setDate,
   ...props
 }: Props) => {
-  const { open, onOpen, onClose } = useDisclosure();
-  useBackOnClose(
-    id || `period-picker${name ? `-${name}` : ""}`,
-    open,
-    onOpen,
-    onClose
-  );
-
   // Context
   const { themeConfig } = useThemeConfig();
 
@@ -65,6 +58,16 @@ const PeriodPickerDisclosure = ({
   const validYear = (year: number) => {
     return year >= 100 && year <= 270000;
   };
+
+  // Utils
+  const { open, onOpen, onClose } = useDisclosure();
+  useBackOnClose(
+    id || `period-picker${name ? `-${name}` : ""}`,
+    open,
+    onOpen,
+    onClose
+  );
+  const { sw } = useScreen();
 
   // Initial setter
   useEffect(() => {
@@ -156,25 +159,6 @@ const PeriodPickerDisclosure = ({
 
           <DisclosureBody>
             <Text fontWeight={"medium"} mb={2}>
-              Bulan
-            </Text>
-            <SimpleGrid columns={[2, 3]} gap={2}>
-              {months.map((month, i) => (
-                <BButton
-                  key={i}
-                  flex={"1 1 100px"}
-                  variant={i === monthLocal ? "surface" : "outline"}
-                  color={i === monthLocal ? "" : "dt"}
-                  onClick={() => {
-                    setMonthLocal(i);
-                  }}
-                >
-                  {month}
-                </BButton>
-              ))}
-            </SimpleGrid>
-
-            <Text fontWeight={"medium"} mt={5} mb={2}>
               Tahun
             </Text>
             <HStack>
@@ -235,6 +219,29 @@ const PeriodPickerDisclosure = ({
                 </Icon>
               </BButton>
             </HStack>
+
+            <Text fontWeight={"medium"} mt={4} mb={2}>
+              Bulan
+            </Text>
+            <SimpleGrid columns={sw < 350 ? 2 : 3} gap={2}>
+              {months.map((month, i) => {
+                const active = i === monthLocal;
+
+                return (
+                  <BButton
+                    key={i}
+                    flex={"1 1 100px"}
+                    variant={"outline"}
+                    borderColor={active ? themeConfig.primaryColor : ""}
+                    onClick={() => {
+                      setMonthLocal(i);
+                    }}
+                  >
+                    {month}
+                  </BButton>
+                );
+              })}
+            </SimpleGrid>
           </DisclosureBody>
 
           <DisclosureFooter>
