@@ -35,32 +35,29 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import StringInput from "./StringInput";
+import useLang from "@/context/useLang";
 
 const TimeRangePickerInput = ({
   id,
   name,
-  title = "Pilih Rentang Waktu",
+  title,
   onConfirm,
   inputValue,
   withSeconds = false,
-  placeholder = "Pilih rentang waktu",
+  placeholder,
   nonNullable,
   invalid,
   size = withSeconds ? "xl" : "lg",
   ...props
 }: Interface__TimeRangePicker) => {
-  const { open, onOpen, onClose } = useDisclosure();
-  useBackOnClose(
-    id || `time-range-picker${name ? `-${name}` : ""}`,
-    open,
-    onOpen,
-    onClose
-  );
-  const { sw } = useScreen();
+  // Context
   const fc = useFieldContext();
-  const overflow = sw < 450 && withSeconds;
-
   const { themeConfig } = useThemeConfig();
+  const { l } = useLang();
+
+  // States, Refs
+  const finalPlaceholder =
+    placeholder || l.time_range_picker_default_placeholder;
   const defaultTime = {
     from: "00:00:00",
     to: "00:00:00",
@@ -83,47 +80,6 @@ const TimeRangePickerInput = ({
   const [secondsTo, setSecondsTo] = useState<number>(
     getSeconds(inputValue?.to)
   );
-  useEffect(() => {
-    if (inputValue) {
-      setHoursFrom(getHours(inputValue?.from));
-      setMinutesFrom(getMinutes(inputValue?.from));
-      setSecondsFrom(getSeconds(inputValue?.from));
-      setHoursTo(getHours(inputValue?.to));
-      setMinutesTo(getMinutes(inputValue?.to));
-      setSecondsTo(getSeconds(inputValue?.to));
-    }
-  }, [inputValue]);
-
-  useEffect(() => {
-    setFirstRender(false);
-  }, []);
-
-  useEffect(() => {
-    const fHours = String(hoursFrom).padStart(2, "0");
-    const fMinutes = String(minutesFrom).padStart(2, "0");
-    const fSeconds = String(secondsFrom).padStart(2, "0");
-    if (!firstRender) {
-      setSelected((ps: any) => ({
-        ...ps,
-        from: `${fHours}:${fMinutes}:${fSeconds}`,
-      }));
-    }
-  }, [hoursFrom, minutesFrom, secondsFrom]);
-
-  useEffect(() => {
-    const fHours = String(hoursTo).padStart(2, "0");
-    const fMinutes = String(minutesTo).padStart(2, "0");
-    const fSeconds = String(secondsTo).padStart(2, "0");
-    if (!firstRender) {
-      setSelected((ps: any) => ({
-        ...ps,
-        to: `${fHours}:${fMinutes}:${fSeconds}`,
-      }));
-    }
-  }, [hoursTo, minutesTo, secondsTo]);
-
-  // console.log(inputValue, time, hours, minutes, seconds);
-
   const intervalIncrementRef = useRef<ReturnType<typeof setInterval> | null>(
     null
   );
@@ -136,7 +92,67 @@ const TimeRangePickerInput = ({
   const timeoutDecrementRef = useRef<ReturnType<typeof setTimeout> | null>(
     null
   );
+  const renderValue = withSeconds
+    ? `${inputValue?.from} - ${inputValue?.to} (${formatDuration(
+        getSecondsDurationFromTimeRange(inputValue?.from, inputValue?.to)
+      )})`
+    : `${formatTime(inputValue?.from)} - ${formatTime(
+        inputValue?.to
+      )} (${formatDuration(
+        getSecondsDurationFromTimeRange(inputValue?.from, inputValue?.to)
+      )})`;
 
+  // Utils
+  const { open, onOpen, onClose } = useDisclosure();
+  useBackOnClose(
+    id || `time-range-picker${name ? `-${name}` : ""}`,
+    open,
+    onOpen,
+    onClose
+  );
+  const { sw } = useScreen();
+  const overflow = sw < 450 && withSeconds;
+
+  // Handle initial
+  useEffect(() => {
+    if (inputValue) {
+      setHoursFrom(getHours(inputValue?.from));
+      setMinutesFrom(getMinutes(inputValue?.from));
+      setSecondsFrom(getSeconds(inputValue?.from));
+      setHoursTo(getHours(inputValue?.to));
+      setMinutesTo(getMinutes(inputValue?.to));
+      setSecondsTo(getSeconds(inputValue?.to));
+    }
+  }, [inputValue]);
+  useEffect(() => {
+    setFirstRender(false);
+  }, []);
+
+  // Handle selected
+  useEffect(() => {
+    const fHours = String(hoursFrom).padStart(2, "0");
+    const fMinutes = String(minutesFrom).padStart(2, "0");
+    const fSeconds = String(secondsFrom).padStart(2, "0");
+    if (!firstRender) {
+      setSelected((ps: any) => ({
+        ...ps,
+        from: `${fHours}:${fMinutes}:${fSeconds}`,
+      }));
+    }
+  }, [hoursFrom, minutesFrom, secondsFrom]);
+  useEffect(() => {
+    const fHours = String(hoursTo).padStart(2, "0");
+    const fMinutes = String(minutesTo).padStart(2, "0");
+    const fSeconds = String(secondsTo).padStart(2, "0");
+    if (!firstRender) {
+      setSelected((ps: any) => ({
+        ...ps,
+        to: `${fHours}:${fMinutes}:${fSeconds}`,
+      }));
+    }
+  }, [hoursTo, minutesTo, secondsTo]);
+
+  // Handle increment, decrement
   function handleMouseDownIncrementFrom(type: string) {
     if (timeoutIncrementRef.current || intervalIncrementRef.current) return;
 
@@ -218,7 +234,8 @@ const TimeRangePickerInput = ({
     }
   }
 
-  function confirmSelected() {
+  // Handle confirm selected
+  function onConfirmSelected() {
     let confirmable = false;
     if (!nonNullable) {
       confirmable = true;
@@ -236,19 +253,9 @@ const TimeRangePickerInput = ({
     }
   }
 
-  const renderValue = withSeconds
-    ? `${inputValue?.from} - ${inputValue?.to} (${formatDuration(
-        getSecondsDurationFromTimeRange(inputValue?.from, inputValue?.to)
-      )})`
-    : `${formatTime(inputValue?.from)} - ${formatTime(
-        inputValue?.to
-      )} (${formatDuration(
-        getSecondsDurationFromTimeRange(inputValue?.from, inputValue?.to)
-      )})`;
-
   return (
     <>
-      <Tooltip content={inputValue ? renderValue : placeholder}>
+      <Tooltip content={inputValue ? renderValue : finalPlaceholder}>
         <BButton
           w={"full"}
           unclicky
@@ -273,7 +280,7 @@ const TimeRangePickerInput = ({
                 color={props?._placeholder?.color || "var(--placeholder)"}
                 truncate
               >
-                {placeholder}
+                {finalPlaceholder}
               </Text>
             )}
 
@@ -287,7 +294,9 @@ const TimeRangePickerInput = ({
       <DisclosureRoot open={open} size={size}>
         <DisclosureContent>
           <DisclosureHeader>
-            <DisclosureHeaderContent title={title} />
+            <DisclosureHeaderContent
+              title={title || l.time_range_picker_default_title}
+            />
           </DisclosureHeader>
 
           <DisclosureBody
@@ -851,7 +860,7 @@ const TimeRangePickerInput = ({
                 : "Reset"}
             </BButton>
             <BButton
-              onClick={confirmSelected}
+              onClick={onConfirmSelected}
               disabled={nonNullable ? (selected ? false : true) : false}
               colorPalette={themeConfig.colorPalette}
             >

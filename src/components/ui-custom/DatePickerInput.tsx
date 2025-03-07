@@ -1,12 +1,12 @@
-import days from "@/constant/days";
 import {
   Interface__DatePicker,
   Interface__SelectedDateList,
 } from "@/constant/interfaces";
+import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
-import formatDate from "@/utils/formatDateOld";
+import formatDate from "@/utils/formatDate";
 import {
   HStack,
   Icon,
@@ -93,17 +93,69 @@ const SelectedDateList = ({
 const DatePickerInput = ({
   id,
   name,
-  title = "Pilih Tanggal",
+  title,
   onConfirm,
   inputValue,
   dateFormatOptions = "basic",
-  placeholder = "Pilih tanggal",
+  placeholder,
   nonNullable,
   invalid,
   size = "xs",
   multiple,
   ...props
 }: Interface__DatePicker) => {
+  // Context
+  const fc = useFieldContext();
+  const { themeConfig } = useThemeConfig();
+  const { l } = useLang();
+
+  // States, Refs
+  const finalPlaceholder = placeholder || l.date_picker_default_placeholder;
+  const [date, setDate] = useState<Date>(inputValue?.[0] || new Date());
+  const [month, setMonth] = useState<number>(date.getMonth());
+  const [year, setYear] = useState<number>(date.getFullYear());
+  const [selectedDates, setSelectedDates] = useState<Date[]>(
+    inputValue ? inputValue : []
+  );
+  const fullDates = () => {
+    const firstDayOfMonth = new Date(year, month, 1);
+
+    const startOfFirstWeek = startOfWeek(firstDayOfMonth, { weekStartsOn: 1 }); // 0 = Sunday
+
+    let weekDates = [];
+    let currentWeek = [];
+
+    for (let i = 0; i < 6; i++) {
+      currentWeek = [];
+
+      for (let j = 0; j < 7; j++) {
+        const fullDate = addDays(startOfFirstWeek, i * 7 + j);
+        currentWeek.push({
+          fullDate: fullDate,
+          date: fullDate.getDate(),
+          month: fullDate.getMonth(),
+          year: fullDate.getFullYear(),
+        });
+      }
+
+      weekDates.push(currentWeek);
+    }
+
+    return weekDates;
+  };
+  const selectedRenderValue =
+    selectedDates?.length > 0
+      ? selectedDates
+          .map((date) => formatDate(date, dateFormatOptions))
+          .join(", ")
+      : finalPlaceholder;
+
+  const renderValue =
+    inputValue && inputValue?.length > 0
+      ? inputValue.map((date) => formatDate(date, dateFormatOptions)).join(", ")
+      : finalPlaceholder;
+
+  // Utils
   const { open, onOpen, onClose } = useDisclosure();
   useBackOnClose(
     id || `date-picker${name ? `-${name}` : ""}`,
@@ -111,34 +163,6 @@ const DatePickerInput = ({
     onOpen,
     onClose
   );
-  const fc = useFieldContext();
-  const { themeConfig } = useThemeConfig();
-
-  const [date, setDate] = useState<Date>(inputValue?.[0] || new Date());
-  const [month, setMonth] = useState<number>(date.getMonth());
-  const [year, setYear] = useState<number>(date.getFullYear());
-
-  const [selectedDates, setSelectedDates] = useState<Date[]>(
-    inputValue ? inputValue : []
-  );
-
-  function onConfirmSelected() {
-    let confirmable = false;
-    if (!nonNullable) {
-      confirmable = true;
-    } else {
-      if (selectedDates.length > 0) {
-        confirmable = true;
-      }
-    }
-
-    if (confirmable) {
-      if (onConfirm) {
-        onConfirm(selectedDates);
-      }
-      back();
-    }
-  }
 
   // Preset setter
   function setSelectedToToday() {
@@ -216,48 +240,28 @@ const DatePickerInput = ({
     setYear(prevMonthDate.getFullYear());
   }
 
-  const fullDates = () => {
-    const firstDayOfMonth = new Date(year, month, 1);
-
-    const startOfFirstWeek = startOfWeek(firstDayOfMonth, { weekStartsOn: 1 }); // 0 = Sunday
-
-    let weekDates = [];
-    let currentWeek = [];
-
-    for (let i = 0; i < 6; i++) {
-      currentWeek = [];
-
-      for (let j = 0; j < 7; j++) {
-        const fullDate = addDays(startOfFirstWeek, i * 7 + j);
-        currentWeek.push({
-          fullDate: fullDate,
-          date: fullDate.getDate(),
-          month: fullDate.getMonth(),
-          year: fullDate.getFullYear(),
-        });
+  // Handle confirm selected
+  function onConfirmSelected() {
+    let confirmable = false;
+    if (!nonNullable) {
+      confirmable = true;
+    } else {
+      if (selectedDates.length > 0) {
+        confirmable = true;
       }
-
-      weekDates.push(currentWeek);
     }
 
-    return weekDates;
-  };
-
-  const selectedRenderValue =
-    selectedDates?.length > 0
-      ? selectedDates
-          .map((date) => formatDate(date, dateFormatOptions))
-          .join(", ")
-      : placeholder;
-
-  const renderValue =
-    inputValue && inputValue?.length > 0
-      ? inputValue.map((date) => formatDate(date, dateFormatOptions)).join(", ")
-      : placeholder;
+    if (confirmable) {
+      if (onConfirm) {
+        onConfirm(selectedDates);
+      }
+      back();
+    }
+  }
 
   return (
     <>
-      <Tooltip content={inputValue ? selectedRenderValue : placeholder}>
+      <Tooltip content={inputValue ? selectedRenderValue : finalPlaceholder}>
         <BButton
           w={"full"}
           unclicky
@@ -284,7 +288,7 @@ const DatePickerInput = ({
                 color={props?._placeholder?.color || "placeholder"}
                 truncate
               >
-                {placeholder}
+                {finalPlaceholder}
               </Text>
             )}
 
@@ -298,7 +302,9 @@ const DatePickerInput = ({
       <DisclosureRoot open={open} size={size}>
         <DisclosureContent>
           <DisclosureHeader>
-            <DisclosureHeaderContent title={title} />
+            <DisclosureHeaderContent
+              title={title || l.date_picker_default_title}
+            />
           </DisclosureHeader>
 
           <DisclosureBody className="scrollY">
@@ -334,11 +340,21 @@ const DatePickerInput = ({
               pb={2}
               mb={2}
             >
-              {days.map((day, i) => (
+              {Object.keys(l.week_days).map((key, i) => {
+                return (
+                  <Text key={i} fontWeight={"semibold"} textAlign={"center"}>
+                    {l.week_days[key as keyof typeof l.week_days].substring(
+                      0,
+                      3
+                    )}
+                  </Text>
+                );
+              })}
+              {/* {days.map((day, i) => (
                 <Text key={i} fontWeight={"semibold"} textAlign={"center"}>
                   {day.substring(0, 3)}
                 </Text>
-              ))}
+              ))} */}
             </SimpleGrid>
             <CContainer gap={2}>
               {fullDates().map((weeks, i) => (

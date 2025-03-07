@@ -1,7 +1,7 @@
 import { Dispatch } from "react";
 import BButton from "./BButton";
 import PeriodPickerDisclosure from "./PeriodPickerDisclosure";
-import formatDate from "@/utils/formatDateOld";
+import formatDate from "@/utils/formatDate";
 
 interface Props {
   id?: string;

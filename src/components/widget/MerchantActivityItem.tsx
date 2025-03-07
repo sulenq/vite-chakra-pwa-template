@@ -1,6 +1,6 @@
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
-import formatDate from "@/utils/formatDateOld";
+import formatDate from "@/utils/formatDate";
 import formatTimeFromDateFormat from "@/utils/formatTimeFromDateFormat";
 import {
   HStack,

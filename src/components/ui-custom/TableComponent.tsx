@@ -9,7 +9,7 @@ import {
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import useScreen from "@/hooks/useScreen";
-import formatDate from "@/utils/formatDateOld";
+import formatDate from "@/utils/formatDate";
 import {
   Center,
   HStack,
@@ -40,6 +40,7 @@ import BButton from "./BButton";
 import CContainer from "./CContainer";
 import ConfirmationDisclosure from "./ConfirmationDisclosure";
 import NumberInput from "./NumberInput";
+import useLang from "@/context/useLang";
 
 const BatchOptions = ({
   selectedRows,
@@ -48,6 +49,9 @@ const BatchOptions = ({
   handleSelectAllRows,
   tableRef,
 }: Interface__BatchOptions) => {
+  // Context
+  const { l } = useLang();
+
   // States, Refs
   const { themeConfig } = useThemeConfig();
 
@@ -74,7 +78,7 @@ const BatchOptions = ({
               opacity={0.5}
               fontWeight={500}
             >
-              {selectedRows.length} Terpilih
+              {selectedRows.length} {l.selected_label}
             </Text>
           </CContainer>
 
@@ -88,7 +92,7 @@ const BatchOptions = ({
             }}
             closeOnSelect={false}
           >
-            <Text color={"light"}>Pilih Semua</Text>
+            <Text color={"light"}>{l.select_all_label}</Text>
             <Checkbox
               borderColor={"d3"}
               checked={selectAllRows}

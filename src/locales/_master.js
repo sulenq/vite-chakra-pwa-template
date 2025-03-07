@@ -1,3 +1,97 @@
+// Component UI
+const confirm_label = {
+  id: "Konfirmasi",
+  en: "Confirm",
+};
+const select_all_label = {
+  id: "Pilih semua",
+  en: "Select all",
+};
+const selected_label = {
+  id: "terpilih",
+  en: "selected",
+};
+const search_input_default_placeholder = {
+  id: "Pencarian...",
+  en: "Search...",
+};
+const select_input_default_title = {
+  id: "Pilih",
+  en: "Select",
+};
+const select_input_default_placeholder = {
+  id: "Pilih...",
+  en: "Select...",
+};
+const week_days = {
+  mon: {
+    id: "Senin",
+    en: "Monday",
+  },
+  tue: {
+    id: "Selasa",
+    en: "Tuesday",
+  },
+  wed: {
+    id: "Rabu",
+    en: "Wednesday",
+  },
+  thu: {
+    id: "Kamis",
+    en: "Thursday",
+  },
+  fri: {
+    id: "Jumat",
+    en: "Friday",
+  },
+  sat: {
+    id: "Sabtu",
+    en: "Saturday",
+  },
+  sun: {
+    id: "Minggu",
+    en: "Sunday",
+  },
+};
+const date_picker_default_title = {
+  id: "Pilih Tanggal",
+  en: "Select Date",
+};
+const date_picker_default_placeholder = {
+  id: "Pilih tanggal...",
+  en: "Select date...",
+};
+const date_range_picker_default_title = {
+  id: "Pilih Rentang Tanggal",
+  en: "Select Date Range",
+};
+const date_range_picker_default_placeholder = {
+  id: "Pilih rentang tanggal...",
+  en: "Select date range...",
+};
+const time_picker_default_title = {
+  id: "Pilih Waktu",
+  en: "Select Time",
+};
+const time_picker_default_placeholder = {
+  id: "Pilih waktu...",
+  en: "Select time...",
+};
+const time_range_picker_default_title = {
+  id: "Pilih Rentang Waktu",
+  en: "Select Time Range",
+};
+const time_range_picker_default_placeholder = {
+  id: "Pilih rentang waktu...",
+  en: "Select time range...",
+};
+
+// Widget
+const delete_all_inbox_button_label = {
+  id: "Delete semua",
+  en: "Delete all",
+};
+
 // Toasters
 const no_auth_toast = {
   title: {
@@ -19,7 +113,7 @@ const back_online_toast = {
     en: "You are back online.",
   },
 };
-const login_loading = {
+const login_loading_toast = {
   title: {
     id: "Login",
     en: "Login",
@@ -27,6 +121,16 @@ const login_loading = {
   description: {
     id: "Memverifikasi kredensial.",
     en: "Verifying credentials.",
+  },
+};
+const date_range_picker_error_toast = {
+  title: {
+    id: "Gagal memilih rentang tanggal",
+    en: "Failed to select date range",
+  },
+  description: {
+    id: "Tidak boleh melebihi rentang maksimum",
+    en: "Must not exceed the maximum range",
   },
 };
 
@@ -86,10 +190,9 @@ const navs = {
   },
 };
 
-// Widget
-const delete_all_inbox_button_label = {
-  id: "Delete semua",
-  en: "Delete all",
+const religion_label = {
+  id: "Agama",
+  en: "Religion",
 };
 
 // Responses
@@ -105,10 +208,27 @@ const see_all = {
 };
 
 export {
+  select_all_label,
+  selected_label,
+  select_input_default_title,
+  religion_label,
+  confirm_label,
+  date_range_picker_error_toast,
+  date_picker_default_title,
+  date_range_picker_default_title,
+  time_picker_default_title,
+  time_range_picker_default_title,
+  week_days,
+  time_picker_default_placeholder,
+  time_range_picker_default_placeholder,
+  date_picker_default_placeholder,
+  date_range_picker_default_placeholder,
+  select_input_default_placeholder,
+  search_input_default_placeholder,
   navs,
   no_auth_toast,
   back_online_toast,
-  login_loading,
+  login_loading_toast,
   delete_all_inbox_button_label,
   delete_all_inbox_disclosure,
   offline_disclosure,

@@ -2,6 +2,7 @@ import {
   Interface__Select,
   Interface__SelectOption,
 } from "@/constant/interfaces";
+import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
@@ -31,7 +32,6 @@ import {
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import FeedbackNoData from "./FeedbackNoData";
 import FeedbackNotFound from "./FeedbackNotFound";
-import Heading6 from "./Heading6";
 import SearchInput from "./SearchInput";
 
 const SelectInput = ({
@@ -41,7 +41,7 @@ const SelectInput = ({
   initialOptions,
   name,
   title,
-  placeholder = "Pilih",
+  placeholder,
   invalid,
   nonNullable = false,
   multiple = false,
@@ -49,11 +49,12 @@ const SelectInput = ({
   fetch,
   ...props
 }: Interface__Select) => {
-  const { open, onOpen, onClose } = useDisclosure();
-  useBackOnClose(id || `${name ? `-${name}` : ""}`, open, onOpen, onClose);
+  // Context
   const fc = useFieldContext();
-  const { themeConfig } = useThemeConfig();
+  const { l } = useLang();
 
+  // States, Refs
+  const finalPlaceholder = placeholder || l.select_input_default_placeholder;
   const [options, setOptions] = useState<
     Interface__SelectOption[] | undefined | null
   >(initialOptions);
@@ -61,12 +62,18 @@ const SelectInput = ({
   const [selected, setSelected] = useState<
     Interface__SelectOption[] | undefined
   >(inputValue);
-  function isSelected(item: Interface__SelectOption) {
+
+  // Utils
+  const { open, onOpen, onClose } = useDisclosure();
+  useBackOnClose(id || `${name ? `-${name}` : ""}`, open, onOpen, onClose);
+  const { themeConfig } = useThemeConfig();
+  const isSelected = (item: Interface__SelectOption) => {
     return selected?.some(
       (listItem) => listItem.id === item.id && listItem.label === item.label
     );
-  }
+  };
 
+  // Handle fetch
   useEffect(() => {
     if (fetch) {
       if (open) {
@@ -183,7 +190,7 @@ const SelectInput = ({
         content={
           inputValue && inputValue.length > 0
             ? `${inputValue && inputValue.map((item) => ` ${item.label}`)}`
-            : placeholder
+            : finalPlaceholder
         }
       >
         <BButton
@@ -212,7 +219,7 @@ const SelectInput = ({
                 color={props?._placeholder?.color || "var(--placeholder)"}
                 truncate
               >
-                {placeholder}
+                {finalPlaceholder}
               </Text>
             )}
 
@@ -232,13 +239,18 @@ const SelectInput = ({
             <DisclosureHeaderContent
               content={
                 <HStack justify={"space-between"}>
-                  <Heading6
+                  <Text
+                    fontSize={"1rem"}
                     ml={1}
                     w={"full"}
                     fontWeight={"semibold"}
                     pr={"80px"}
                     truncate
-                  >{`${title || placeholder}`}</Heading6>
+                  >{`${
+                    title
+                      ? `${l.select_input_default_title} ${title}`
+                      : finalPlaceholder
+                  }`}</Text>
 
                   {fetch && (
                     <BButton
@@ -308,7 +320,7 @@ const SelectInput = ({
                       size={"sm"}
                       colorPalette={themeConfig.colorPalette}
                     >
-                      <Text>Pilih Semua</Text>
+                      <Text>{l.select_all_label}</Text>
                     </Checkbox>
                   </Box>
                 )}

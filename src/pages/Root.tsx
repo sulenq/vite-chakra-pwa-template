@@ -80,7 +80,7 @@ import { OPTIONS_RELIGION } from "@/gens/selectOptions";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import back from "@/utils/back";
-import formatDate from "@/utils/formatDateOld";
+import formatDate from "@/utils/formatDate";
 import formatNumber from "@/utils/formatNumber";
 import formatTimeFromDateFormat from "@/utils/formatTimeFromDateFormat";
 import {
@@ -110,6 +110,7 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
+import useLang from "@/context/useLang";
 
 const ThemeConfig = () => {
   const { themeConfig, setThemeConfig } = useThemeConfig();
@@ -275,7 +276,6 @@ const SearchInputDemo = () => {
   return (
     <>
       <SearchInput
-        placeholder="Pencarian"
         onChangeSetter={(input) => {
           formik.setFieldValue("search", input);
         }}
@@ -363,6 +363,8 @@ const PromiseSelectDemo = ({ ...props }: Interface__Select) => {
   );
 };
 const SelectInputDemo = () => {
+  const { l } = useLang();
+
   const formik = useFormik({
     validateOnChange: false,
     initialValues: {
@@ -382,7 +384,7 @@ const SelectInputDemo = () => {
       <SelectInput
         id="select_empty"
         name="select_empty"
-        title="Select Kosong"
+        title={l.religion_label}
         placeholder="Select kosong"
         initialOptions={null}
         onConfirm={(inputValue) => {
@@ -392,8 +394,7 @@ const SelectInputDemo = () => {
 
       <SelectInput
         name="select1"
-        title="Single Select"
-        placeholder="Single select"
+        title={l.religion_label}
         initialOptions={OPTIONS_RELIGION}
         onConfirm={(inputValue) => {
           formik.setFieldValue("select1", inputValue);
@@ -403,7 +404,7 @@ const SelectInputDemo = () => {
 
       <SelectInput
         name="select2"
-        title="Multi Select"
+        title={l.religion_label}
         placeholder="Multi select"
         initialOptions={OPTIONS_RELIGION}
         multiple
@@ -415,6 +416,7 @@ const SelectInputDemo = () => {
 
       <PromiseSelectDemo
         name="select3"
+        title={l.religion_label}
         onConfirm={(inputValue) => {
           formik.setFieldValue("select3", inputValue);
         }}
@@ -424,7 +426,7 @@ const SelectInputDemo = () => {
       <Field invalid>
         <SelectInput
           name="select4"
-          title="Multi Select"
+          title={l.religion_label}
           placeholder="Multi select invalid state"
           initialOptions={OPTIONS_RELIGION}
           multiple
@@ -469,7 +471,7 @@ const DatePickerDemo = () => {
           formik.setFieldValue("date3", inputValue);
         }}
         inputValue={formik.values.date3}
-        placeholder="Pilih tanggal multiple"
+        placeholder="Select date multiple"
         multiple
         // nonNullable
       />
@@ -521,7 +523,7 @@ const DateRangePickerDemo = () => {
         }}
         inputValue={formik.values.date2}
         maxRange={7}
-        placeholder="Dengan max rentang"
+        placeholder="With max range"
         // nonNullable
       />
 
@@ -572,7 +574,7 @@ const TimePickerDemo = () => {
           formik.setFieldValue("time2", inputValue);
         }}
         inputValue={formik.values.time2}
-        placeholder="Dengan input detik"
+        placeholder="With seconds"
         withSeconds
         // nonNullable
       />
@@ -625,7 +627,7 @@ const TimeRangePickerDemo = () => {
           formik.setFieldValue("time2", inputValue);
         }}
         inputValue={formik.values.time2}
-        placeholder="Dengan input detik"
+        placeholder="With seconds"
         // nonNullable
       />
 
@@ -1262,7 +1264,7 @@ const TableComponentDemo = () => {
             },
           },
           {
-            label: "Disabled Menu",
+            label: "Disabled menu",
             menuItemProps: {
               disabled: true,
             },
@@ -1297,7 +1299,7 @@ const TableComponentDemo = () => {
         ]}
         batchOptions={[
           {
-            label: "Disabled Menu",
+            label: "Disabled menu",
             menuItemProps: {
               disabled: true,
             },

@@ -4,6 +4,7 @@ import { Dispatch, useCallback, useEffect, useState } from "react";
 import { InputGroup, InputGroupProps } from "../ui/input-group";
 import { Tooltip } from "../ui/tooltip";
 import StringInput from "./StringInput";
+import useLang from "@/context/useLang";
 
 interface Props extends Omit<InputGroupProps, "children"> {
   inputValue?: string;
@@ -25,15 +26,20 @@ export default function SearchInput({
   inputValue,
   onChangeSetter,
   tooltipLabel,
-  placeholder = "Search...",
+  placeholder,
   inputProps,
   icon,
   invalid = false,
   noIcon = false,
   ...props
 }: Props) {
+  // Context
+  const { l } = useLang();
+
+  // States, Refs
   const [searchLocal, setSearchLocal] = useState<string>(inputValue || "");
 
+  // Handle onchange
   const handleOnChange = useCallback(
     (value: string) => {
       if (value !== inputValue) {
@@ -60,7 +66,11 @@ export default function SearchInput({
   }, [inputValue]);
 
   return (
-    <Tooltip content={tooltipLabel || placeholder}>
+    <Tooltip
+      content={
+        tooltipLabel || placeholder || l.search_input_default_placeholder
+      }
+    >
       <InputGroup
         w={"full"}
         startElement={
@@ -86,7 +96,7 @@ export default function SearchInput({
             pl={inputProps?.size === "xs" || inputProps?.size === "sm" ? 8 : 10}
             name={name}
             fRef={inputRef ? inputRef : null}
-            placeholder={placeholder}
+            placeholder={placeholder || l.search_input_default_placeholder}
             pr={"40px"}
             onChangeSetter={(input) => {
               setSearchLocal(input as string);

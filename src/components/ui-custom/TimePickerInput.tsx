@@ -30,61 +30,34 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import StringInput from "./StringInput";
+import useLang from "@/context/useLang";
 
 const TimePickerInput = ({
   id,
   name,
-  title = "Pilih Waktu",
+  title,
   onConfirm,
   inputValue,
   withSeconds = false,
-  placeholder = "Pilih waktu",
+  placeholder,
   nonNullable,
   invalid,
   size = withSeconds ? "sm" : "xs",
   ...props
 }: Interface__TimePicker) => {
-  const { open, onOpen, onClose } = useDisclosure();
-  useBackOnClose(
-    id || `time-picker${name ? `-${name}` : ""}`,
-    open,
-    onOpen,
-    onClose
-  );
-  const { sw } = useScreen();
+  // Context
   const fc = useFieldContext();
-  const overflow = sw < 450 && withSeconds;
-
   const { themeConfig } = useThemeConfig();
+  const { l } = useLang();
+
+  // States, Refs
+  const finalPlaceholder = placeholder || l.time_picker_default_placeholder;
   const defaultTime = "00:00:00";
   const [selected, setSelected] = useState<string | undefined>(inputValue);
   const [firstRender, setFirstRender] = useState(true);
   const [hours, setHours] = useState<number>(getHours(inputValue));
   const [minutes, setMinutes] = useState<number>(getMinutes(inputValue));
   const [seconds, setSeconds] = useState<number>(getSeconds(inputValue));
-  useEffect(() => {
-    if (inputValue) {
-      setHours(getHours(inputValue));
-      setMinutes(getMinutes(inputValue));
-      setSeconds(getSeconds(inputValue));
-    }
-  }, [inputValue]);
-
-  useEffect(() => {
-    setFirstRender(false);
-  }, []);
-
-  useEffect(() => {
-    const fHours = String(hours).padStart(2, "0");
-    const fMinutes = String(minutes).padStart(2, "0");
-    const fSeconds = String(seconds).padStart(2, "0");
-    if (!firstRender) {
-      setSelected(`${fHours}:${fMinutes}:${fSeconds}`);
-    }
-  }, [hours, minutes, seconds]);
-
-  // console.log(inputValue, time, hours, minutes, seconds);
-
   const intervalIncrementRef = useRef<ReturnType<typeof setInterval> | null>(
     null
   );
@@ -97,7 +70,42 @@ const TimePickerInput = ({
   const timeoutDecrementRef = useRef<ReturnType<typeof setTimeout> | null>(
     null
   );
+  const renderValue = formatTime(inputValue);
 
+  // Utils
+  const { open, onOpen, onClose } = useDisclosure();
+  useBackOnClose(
+    id || `time-picker${name ? `-${name}` : ""}`,
+    open,
+    onOpen,
+    onClose
+  );
+  const { sw } = useScreen();
+  const overflow = sw < 450 && withSeconds;
+
+  // Handle initial
+  useEffect(() => {
+    if (inputValue) {
+      setHours(getHours(inputValue));
+      setMinutes(getMinutes(inputValue));
+      setSeconds(getSeconds(inputValue));
+    }
+  }, [inputValue]);
+  useEffect(() => {
+    setFirstRender(false);
+  }, []);
+
+  // Handle selected
+  useEffect(() => {
+    const fHours = String(hours).padStart(2, "0");
+    const fMinutes = String(minutes).padStart(2, "0");
+    const fSeconds = String(seconds).padStart(2, "0");
+    if (!firstRender) {
+      setSelected(`${fHours}:${fMinutes}:${fSeconds}`);
+    }
+  }, [hours, minutes, seconds]);
+
+  // Handle increment, decrement
   function handleMouseDownIncrement(type: string) {
     if (timeoutIncrementRef.current || intervalIncrementRef.current) return;
 
@@ -149,7 +157,8 @@ const TimePickerInput = ({
     }
   }
 
-  function confirmSelected() {
+  // Handle confirm selected
+  function onConfirmSelected() {
     let confirmable = false;
     if (!nonNullable) {
       confirmable = true;
@@ -167,11 +176,9 @@ const TimePickerInput = ({
     }
   }
 
-  const renderValue = formatTime(inputValue);
-
   return (
     <>
-      <Tooltip content={inputValue ? renderValue : placeholder}>
+      <Tooltip content={inputValue ? renderValue : finalPlaceholder}>
         <BButton
           w={"full"}
           unclicky
@@ -198,7 +205,7 @@ const TimePickerInput = ({
                 color={props?._placeholder?.color || "var(--placeholder)"}
                 truncate
               >
-                {placeholder}
+                {finalPlaceholder}
               </Text>
             )}
 
@@ -212,7 +219,9 @@ const TimePickerInput = ({
       <DisclosureRoot open={open} size={size}>
         <DisclosureContent>
           <DisclosureHeader>
-            <DisclosureHeaderContent title={title} />
+            <DisclosureHeaderContent
+              title={title || l.time_picker_default_title}
+            />
           </DisclosureHeader>
 
           <DisclosureBody
@@ -486,7 +495,7 @@ const TimePickerInput = ({
                 : "Reset"}
             </BButton>
             <BButton
-              onClick={confirmSelected}
+              onClick={onConfirmSelected}
               disabled={nonNullable ? (selected ? false : true) : false}
               colorPalette={themeConfig.colorPalette}
             >

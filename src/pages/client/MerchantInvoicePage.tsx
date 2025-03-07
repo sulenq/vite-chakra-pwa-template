@@ -7,7 +7,7 @@ import TableComponent from "@/components/ui-custom/TableComponent";
 import { Status } from "@/components/ui/status";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import { BILLING_CYCLES } from "@/gens/pricing";
-import formatDate from "@/utils/formatDateOld";
+import formatDate from "@/utils/formatDate";
 import formatNumber from "@/utils/formatNumber";
 import { Text } from "@chakra-ui/react";
 import { IconCreditCardPay } from "@tabler/icons-react";

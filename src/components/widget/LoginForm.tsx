@@ -23,8 +23,8 @@ const LoginForm = () => {
   // Utils
   const { req, loading } = useRequest({
     loadingMessage: {
-      title: l.login_loading.title,
-      description: l.login_loading.description,
+      title: l.login_loading_toast.title,
+      description: l.login_loading_toast.description,
     },
   });
   const navigate = useNavigate();

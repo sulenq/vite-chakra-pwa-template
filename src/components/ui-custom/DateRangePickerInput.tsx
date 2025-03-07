@@ -3,13 +3,13 @@ import {
   Interface__DateRangePicker,
   Type__DateRange,
 } from "@/constant/interfaces";
+import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
-import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import back from "@/utils/back";
 import countDay from "@/utils/countDay";
 import dateInRange from "@/utils/dateInRange";
-import formatDate from "@/utils/formatDateOld";
+import formatDate from "@/utils/formatDate";
 import {
   Box,
   HStack,
@@ -44,11 +44,11 @@ import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
 const DateRangePickerInput = ({
   id,
   name,
-  title = "Pilih Rentang Tanggal",
+  title,
   onConfirm,
   inputValue,
   dateFormatOptions = "basicShort",
-  placeholder = "Pilih rentang tanggal",
+  placeholder,
   nonNullable,
   invalid,
   size = "xs",
@@ -56,6 +56,63 @@ const DateRangePickerInput = ({
   maxRange,
   ...props
 }: Interface__DateRangePicker) => {
+  // Context
+  const fc = useFieldContext();
+  const { themeConfig } = useThemeConfig();
+  const { l } = useLang();
+
+  // States, Refs
+  const finalPlaceholder =
+    placeholder || l.date_range_picker_default_placeholder;
+  const [date, setDate] = useState<Date>(
+    inputValue?.from || inputValue?.to || new Date()
+  );
+  const [month, setMonth] = useState<number>(date.getMonth());
+  const [year, setYear] = useState<number>(date.getFullYear());
+  const [selected, setSelected] = useState<any>(inputValue);
+  const fullDates = () => {
+    const firstDayOfMonth = new Date(year, month, 1);
+
+    const startOfFirstWeek = startOfWeek(firstDayOfMonth, { weekStartsOn: 1 }); // 0 = Sunday
+
+    let weekDates = [];
+    let currentWeek = [];
+
+    for (let i = 0; i < 6; i++) {
+      currentWeek = [];
+
+      for (let j = 0; j < 7; j++) {
+        const fullDate = addDays(startOfFirstWeek, i * 7 + j);
+        currentWeek.push({
+          fullDate: fullDate,
+          date: fullDate.getDate(),
+          month: fullDate.getMonth(),
+          year: fullDate.getFullYear(),
+        });
+      }
+
+      weekDates.push(currentWeek);
+    }
+
+    return weekDates;
+  };
+  const selectedRenderValue =
+    selected?.from &&
+    selected?.to &&
+    `${formatDate(selected?.from, dateFormatOptions)} - ${formatDate(
+      selected?.to,
+      dateFormatOptions
+    )} (${countDay(selected?.from, selected?.to)} hari)`;
+
+  const renderValue =
+    inputValue?.from &&
+    inputValue?.to &&
+    `${formatDate(inputValue?.from, dateFormatOptions)} - ${formatDate(
+      inputValue?.to,
+      dateFormatOptions
+    )} (${countDay(inputValue?.from, inputValue?.to)} hari)`;
+
+  // Utils
   const { open, onOpen, onClose } = useDisclosure();
   useBackOnClose(
     id || `date-range-picker${name ? `-${name}` : ""}`,
@@ -63,35 +120,6 @@ const DateRangePickerInput = ({
     onOpen,
     onClose
   );
-  const iss = useIsSmScreenWidth();
-  const fc = useFieldContext();
-  const { themeConfig } = useThemeConfig();
-
-  const [date, setDate] = useState<Date>(
-    inputValue?.from || inputValue?.to || new Date()
-  );
-  const [month, setMonth] = useState<number>(date.getMonth());
-  const [year, setYear] = useState<number>(date.getFullYear());
-
-  const [selected, setSelected] = useState<any>(inputValue);
-
-  function onConfirmSelected() {
-    let confirmable = false;
-    if (!nonNullable) {
-      confirmable = true;
-    } else {
-      if (selected) {
-        confirmable = true;
-      }
-    }
-
-    if (confirmable) {
-      if (onConfirm) {
-        onConfirm(selected);
-      }
-      back();
-    }
-  }
 
   // Preset setter
   function setSelectedToThisWeek() {
@@ -242,52 +270,28 @@ const DateRangePickerInput = ({
     setYear(prevMonth.getFullYear());
   }
 
-  const fullDates = () => {
-    const firstDayOfMonth = new Date(year, month, 1);
-
-    const startOfFirstWeek = startOfWeek(firstDayOfMonth, { weekStartsOn: 1 }); // 0 = Sunday
-
-    let weekDates = [];
-    let currentWeek = [];
-
-    for (let i = 0; i < 6; i++) {
-      currentWeek = [];
-
-      for (let j = 0; j < 7; j++) {
-        const fullDate = addDays(startOfFirstWeek, i * 7 + j);
-        currentWeek.push({
-          fullDate: fullDate,
-          date: fullDate.getDate(),
-          month: fullDate.getMonth(),
-          year: fullDate.getFullYear(),
-        });
+  // Handle confirm selected
+  function onConfirmSelected() {
+    let confirmable = false;
+    if (!nonNullable) {
+      confirmable = true;
+    } else {
+      if (selected) {
+        confirmable = true;
       }
-
-      weekDates.push(currentWeek);
     }
 
-    return weekDates;
-  };
-
-  const selectedRenderValue =
-    selected?.from &&
-    selected?.to &&
-    `${formatDate(selected?.from, dateFormatOptions)} - ${formatDate(
-      selected?.to,
-      dateFormatOptions
-    )} (${countDay(selected?.from, selected?.to)} hari)`;
-
-  const renderValue =
-    inputValue?.from &&
-    inputValue?.to &&
-    `${formatDate(inputValue?.from, dateFormatOptions)} - ${formatDate(
-      inputValue?.to,
-      dateFormatOptions
-    )} (${countDay(inputValue?.from, inputValue?.to)} hari)`;
+    if (confirmable) {
+      if (onConfirm) {
+        onConfirm(selected);
+      }
+      back();
+    }
+  }
 
   return (
     <>
-      <Tooltip content={inputValue ? renderValue : placeholder}>
+      <Tooltip content={inputValue ? renderValue : finalPlaceholder}>
         <BButton
           w={"full"}
           unclicky
@@ -314,7 +318,7 @@ const DateRangePickerInput = ({
                 color={props?._placeholder?.color || "var(--placeholder)"}
                 truncate
               >
-                {placeholder}
+                {finalPlaceholder}
               </Text>
             )}
 
@@ -328,7 +332,9 @@ const DateRangePickerInput = ({
       <DisclosureRoot open={open} size={size}>
         <DisclosureContent>
           <DisclosureHeader>
-            <DisclosureHeaderContent title={title} />
+            <DisclosureHeaderContent
+              title={title || l.date_range_picker_default_title}
+            />
           </DisclosureHeader>
 
           <DisclosureBody className="scrollY" pt={0}>
@@ -422,9 +428,9 @@ const DateRangePickerInput = ({
                             const showError = () => {
                               toaster.create({
                                 type: "error",
-                                title: "Gagal Memilih Rentang Tanggal",
-                                description: `Tidak boleh melebihi maksimal rentang ${maxRange} hari `,
-                                placement: iss ? "top" : "bottom-end",
+                                title: l.date_range_picker_error_toast.title,
+                                description:
+                                  l.date_range_picker_error_toast.description,
                                 action: {
                                   label: "Close",
                                   onClick: () => {},
