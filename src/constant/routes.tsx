@@ -4,7 +4,6 @@ import MerchantInvoicePage from "@/pages/client/MerchantInvoicePage";
 import MerchantServicePage from "@/pages/client/MerchantServicePage";
 import MerchantSettingsPage from "@/pages/client/MerchantSettingsPage";
 import RootPage from "@/pages/RootPage";
-import { settings } from "../locales/_master";
 import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
 import { NAVS } from "./navs";
 
@@ -38,7 +37,10 @@ const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   },
   {
     path: "/settings",
-    label: settings.label,
+    label: {
+      id: "Pengaturan",
+      en: "Settings",
+    },
     element: <MerchantSettingsPage />,
   },
   // {
