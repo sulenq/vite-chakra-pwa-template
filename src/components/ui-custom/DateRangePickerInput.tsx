@@ -1,8 +1,5 @@
-import days from "@/constant/days";
-import {
-  Interface__DateRangePicker,
-  Type__DateRange,
-} from "@/constant/interfaces";
+import WEEKDAYS from "@/constant/weekdays";
+import { Interface__DateRangePicker } from "@/constant/interfaces";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
@@ -40,6 +37,7 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
+import { Type__DateRange } from "@/constant/types";
 
 const DateRangePickerInput = ({
   id,
@@ -59,7 +57,7 @@ const DateRangePickerInput = ({
   // Context
   const fc = useFieldContext();
   const { themeConfig } = useThemeConfig();
-  const { l } = useLang();
+  const { l, lang } = useLang();
 
   // States, Refs
   const finalPlaceholder =
@@ -206,7 +204,7 @@ const DateRangePickerInput = ({
         onClick={setSelectedToThisMonth}
         disabled={!!(maxRange && maxRange < 31)}
       >
-        {l.date_range_picker_preset_label.thisMonth}
+        {l.this_month}
       </BButton>
     ),
     nextMonth: (
@@ -217,7 +215,7 @@ const DateRangePickerInput = ({
         onClick={setSelectedToNextMonth}
         disabled={!!(maxRange && maxRange < 31)}
       >
-        {l.date_range_picker_preset_label.nextMonth}
+        {l.next_month}
       </BButton>
     ),
     thisWeek: (
@@ -228,7 +226,7 @@ const DateRangePickerInput = ({
         onClick={setSelectedToThisWeek}
         disabled={!!(maxRange && maxRange < 7)}
       >
-        {l.date_range_picker_preset_label.thisWeek}
+        {l.this_week}
       </BButton>
     ),
     nextWeek: (
@@ -239,7 +237,7 @@ const DateRangePickerInput = ({
         onClick={setSelectedToNextWeek}
         disabled={!!(maxRange && maxRange < 7)}
       >
-        {l.date_range_picker_preset_label.nextWeek}
+        {l.next_week}
       </BButton>
     ),
   };
@@ -378,7 +376,7 @@ const DateRangePickerInput = ({
               pb={2}
               mb={2}
             >
-              {days.map((day, i) => (
+              {WEEKDAYS[lang].map((day, i) => (
                 <Text key={i} fontWeight={"semibold"} textAlign={"center"}>
                   {day.substring(0, 3)}
                 </Text>

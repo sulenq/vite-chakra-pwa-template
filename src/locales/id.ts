@@ -7,23 +7,11 @@ const translations = {
   "date_format_settings_title": "Format Tanggal",
   "date_picker_default_placeholder": "Pilih tanggal...",
   "date_picker_default_title": "Pilih Tanggal",
-  "date_picker_preset_label": {
-    "today": "Hari ini",
-    "tomorrow": "Besok",
-    "thisMonth": "Bulan ini",
-    "thisWeek": "Minggu ini"
-  },
   "date_range_picker_default_placeholder": "Pilih rentang tanggal...",
   "date_range_picker_default_title": "Pilih Rentang Tanggal",
   "date_range_picker_error_toast": {
     "title": "Gagal memilih rentang tanggal",
     "description": "Tidak boleh melebihi rentang maksimum"
-  },
-  "date_range_picker_preset_label": {
-    "thisWeek": "Minggu ini",
-    "nextWeek": "Minggu depan",
-    "thisMonth": "Bulan ini",
-    "nextMonth": "Bulan depan"
   },
   "delete_all_inbox_button_label": "Delete semua",
   "delete_all_inbox_disclosure": {
@@ -40,6 +28,7 @@ const translations = {
     "title": "Logout?",
     "description": "Pastikan tidak ada proses ke server sebelum logout dikonfirmasi untuk menghindari error autentikasi."
   },
+  "month_label": "Bulan",
   "navs": {
     "home": "Beranda",
     "invoice": "Tagihan",
@@ -47,6 +36,8 @@ const translations = {
     "helpCenter": "Pusat Bantuan",
     "settings": "Pengaturan"
   },
+  "next_month": "Bulan ini",
+  "next_week": "Minggu ini",
   "no_auth_toast": {
     "title": "Tidak memiliki autentikasi",
     "description": "Silahkan login dengan akun anda."
@@ -56,6 +47,7 @@ const translations = {
     "description": "Sepertinya Anda sedang offline. Periksa koneksi internet Anda dan coba lagi."
   },
   "pay": "Bayar",
+  "periode_picker_default_title": "Pilih Periode",
   "religion_label": "Agama",
   "search_input_default_placeholder": "Pencarian...",
   "see_all": "Lihat semua",
@@ -80,11 +72,15 @@ const translations = {
     "title": "Pengaturan",
     "description": "Silahkan pilih menu pengaturan."
   },
+  "this_month": "Bulan ini",
+  "this_week": "Minggu ini",
   "time_picker_default_placeholder": "Pilih waktu...",
   "time_picker_default_title": "Pilih Waktu",
   "time_range_picker_default_placeholder": "Pilih rentang waktu...",
   "time_range_picker_default_title": "Pilih Rentang Waktu",
-  "week_days": {
+  "today": "Hari ini",
+  "tomorrow": "Besok",
+  "weekdays": {
     "mon": "Senin",
     "tue": "Selasa",
     "wed": "Rabu",
@@ -92,7 +88,8 @@ const translations = {
     "fri": "Jumat",
     "sat": "Sabtu",
     "sun": "Minggu"
-  }
+  },
+  "year_label": "Tahun"
 };
 
 export default translations;

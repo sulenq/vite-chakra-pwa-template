@@ -1,5 +1,7 @@
 const DATE_FORMATS = [
   {
+    key: "dmy",
+    description: "Day-Month-Year",
     label: "DMY", // Format: Day-Month-Year
     basic: { day: "numeric", month: "numeric", year: "numeric" },
     // example: 5-11-2001
@@ -45,6 +47,8 @@ const DATE_FORMATS = [
     // example: Senin, 5 November 2001
   },
   {
+    key: "mdy",
+    description: "Month-Day-Year",
     label: "MDY", // Format: Month-Day-Year
     basic: { month: "numeric", day: "numeric", year: "numeric" },
     // example: 11-5-2001
@@ -90,6 +94,8 @@ const DATE_FORMATS = [
     // example: Senin, November 5, 2001
   },
   {
+    key: "ymd",
+    description: "Year-Month-Day",
     label: "YMD", // Format: Year-Month-Day
     basic: { year: "numeric", month: "numeric", day: "numeric" },
     // example: 2001-11-5

@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import id from "../locales/id";
 import en from "../locales/en";
+import id from "../locales/id";
 
 const STORAGE_KEY = "lang";
 const DEFAULT = "id";
@@ -13,7 +13,7 @@ const translations = {
 interface Props {
   lang: string;
   l: typeof id | typeof en;
-  setLang: (newState: string) => void;
+  setLang: (newState: Props["lang"]) => void;
 }
 
 const useLang = create<Props>((set) => {

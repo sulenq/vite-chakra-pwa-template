@@ -1,4 +1,16 @@
 // Component UI
+const year_label = {
+  id: "Tahun",
+  en: "Year",
+};
+const month_label = {
+  id: "Bulan",
+  en: "Month",
+};
+const periode_picker_default_title = {
+  id: "Pilih Periode",
+  en: "Select Periode",
+};
 const confirm_label = {
   id: "Konfirmasi",
   en: "Confirm",
@@ -23,7 +35,7 @@ const select_input_default_placeholder = {
   id: "Pilih...",
   en: "Select...",
 };
-const week_days = {
+const weekdays = {
   mon: {
     id: "Senin",
     en: "Monday",
@@ -53,41 +65,29 @@ const week_days = {
     en: "Sunday",
   },
 };
-const date_picker_preset_label = {
-  today: {
-    id: "Hari ini",
-    en: "Today",
-  },
-  tomorrow: {
-    id: "Besok",
-    en: "Tomorrow",
-  },
-  thisMonth: {
-    id: "Bulan ini",
-    en: "This month",
-  },
-  thisWeek: {
-    id: "Minggu ini",
-    en: "This week",
-  },
+const today = {
+  id: "Hari ini",
+  en: "Today",
 };
-const date_range_picker_preset_label = {
-  thisWeek: {
-    id: "Minggu ini",
-    en: "This week",
-  },
-  nextWeek: {
-    id: "Minggu depan",
-    en: "Next week",
-  },
-  thisMonth: {
-    id: "Bulan ini",
-    en: "This month",
-  },
-  nextMonth: {
-    id: "Bulan depan",
-    en: "Next month",
-  },
+const tomorrow = {
+  id: "Besok",
+  en: "Tomorrow",
+};
+const this_week = {
+  id: "Minggu ini",
+  en: "This week",
+};
+const next_week = {
+  id: "Minggu ini",
+  en: "This week",
+};
+const this_month = {
+  id: "Bulan ini",
+  en: "This month",
+};
+const next_month = {
+  id: "Bulan ini",
+  en: "This month",
 };
 const date_picker_default_title = {
   id: "Pilih Tanggal",
@@ -326,14 +326,21 @@ const see_all = {
 };
 
 export {
+  today,
+  tomorrow,
+  this_week,
+  next_week,
+  this_month,
+  next_month,
+  periode_picker_default_title,
+  month_label,
+  year_label,
   settings_navs_group,
   language_region_helper_text,
   language_settings_title,
   date_format_settings_title,
   settings_page,
   settings_navs,
-  date_range_picker_preset_label,
-  date_picker_preset_label,
   select_all_label,
   selected_label,
   select_input_default_title,
@@ -344,7 +351,7 @@ export {
   date_range_picker_default_title,
   time_picker_default_title,
   time_range_picker_default_title,
-  week_days,
+  weekdays,
   time_picker_default_placeholder,
   time_range_picker_default_placeholder,
   date_picker_default_placeholder,

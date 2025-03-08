@@ -1,7 +1,6 @@
 import { ButtonProps } from "@/components/ui/button";
 import {
   BoxProps,
-  MenuItemProps,
   SimpleGridProps,
   StackProps,
   TableCellProps,
@@ -9,8 +8,14 @@ import {
   TableRowProps,
 } from "@chakra-ui/react";
 import { Dispatch, SetStateAction } from "react";
-
-export type LanguageOptions = "id" | "en";
+import {
+  Type__DateRange,
+  Type__DateRangePresets,
+  Type__DisclosureSizes,
+  Type__PrefixDateFormat,
+  Type__TableOptions,
+  Type__TimeRange,
+} from "./types";
 
 export interface Interface__Route {
   path: string;
@@ -25,14 +30,6 @@ export interface Interface__PrivateRoute extends Interface__Route {
   permissions?: number[];
 }
 
-export interface Interface__Nav {
-  label: {
-    [lang in LanguageOptions]: string;
-  };
-  link: string;
-  icon?: any;
-}
-
 // Select
 export interface Interface__SelectOption {
   id: any;
@@ -40,7 +37,6 @@ export interface Interface__SelectOption {
   label2?: any;
   original_data?: any;
 }
-export type Type__DisclosureSizes = "xs" | "sm" | "md" | "lg" | "xl";
 export interface Interface__Select extends ButtonProps {
   id?: string;
   name: string;
@@ -61,19 +57,6 @@ export interface Interface__Select extends ButtonProps {
 }
 
 // Date Picker
-export type Type__PrefixDateFormat =
-  | "basic"
-  | "basicShort"
-  | "long"
-  | "longShort"
-  | "dmy"
-  | "ymd"
-  | "periode"
-  | "iso";
-export type Type__DateRange = {
-  from: Date | undefined;
-  to: Date | undefined;
-};
 export interface Interface__SelectedDateList {
   selectedDates: Date[];
   selectedRenderValue: string;
@@ -93,11 +76,6 @@ export interface Interface__DatePicker extends ButtonProps {
 }
 
 // Date Range Picker
-type Type__DateRangePresets =
-  | "thisWeek"
-  | "nextWeek"
-  | "thisMonth"
-  | "nextMonth";
 export interface Interface__DateRangePicker extends ButtonProps {
   id?: string;
   name?: string;
@@ -114,10 +92,6 @@ export interface Interface__DateRangePicker extends ButtonProps {
 }
 
 // Time Picker
-export type Type__TimeRange = {
-  from: string | undefined;
-  to: string | undefined;
-};
 export interface Interface__TimePicker extends ButtonProps {
   id?: string;
   name?: string;
@@ -187,25 +161,7 @@ export interface Interface__TableComponent extends StackProps {
   setLimitControl?: Dispatch<number>;
   footerContainerProps?: SimpleGridProps;
 }
-export type Type__TableOptions = (
-  | {
-      label: string;
-      icon?: any;
-      callback?: (dataParams: any) => void;
-      confirmation?: (dataParams: any) => {
-        id: string;
-        title: string;
-        description: string;
-        confirmLabel: string;
-        confirmCallback: () => void;
-        confirmButtonProps?: ButtonProps;
-      };
-      subMenu?: any; // unused yet
-      menuItemProps?: MenuItemProps;
-      disabled?: (rowData: any) => boolean | boolean;
-    }
-  | "divider"
-)[];
+
 export interface Interface__RowOptions {
   rowData: any;
   rowOptions: Type__TableOptions;

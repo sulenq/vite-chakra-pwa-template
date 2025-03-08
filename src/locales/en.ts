@@ -7,23 +7,11 @@ const translations = {
   "date_format_settings_title": "Date Format",
   "date_picker_default_placeholder": "Select date...",
   "date_picker_default_title": "Select Date",
-  "date_picker_preset_label": {
-    "today": "Today",
-    "tomorrow": "Tomorrow",
-    "thisMonth": "This month",
-    "thisWeek": "This week"
-  },
   "date_range_picker_default_placeholder": "Select date range...",
   "date_range_picker_default_title": "Select Date Range",
   "date_range_picker_error_toast": {
     "title": "Failed to select date range",
     "description": "Must not exceed the maximum range"
-  },
-  "date_range_picker_preset_label": {
-    "thisWeek": "This week",
-    "nextWeek": "Next week",
-    "thisMonth": "This month",
-    "nextMonth": "Next month"
   },
   "delete_all_inbox_button_label": "Delete all",
   "delete_all_inbox_disclosure": {
@@ -40,6 +28,7 @@ const translations = {
     "title": "Logout?",
     "description": "Make sure there is no process to the server before the logout is confirmed to avoid authentication errors."
   },
+  "month_label": "Month",
   "navs": {
     "home": "Home",
     "invoice": "Invoice",
@@ -47,6 +36,8 @@ const translations = {
     "helpCenter": "Help Center",
     "settings": "Settings"
   },
+  "next_month": "This month",
+  "next_week": "This week",
   "no_auth_toast": {
     "title": "No authentication",
     "description": "Please login with your account."
@@ -56,6 +47,7 @@ const translations = {
     "description": "It looks like you are offline. Check your internet connection and try again."
   },
   "pay": "Pay",
+  "periode_picker_default_title": "Select Periode",
   "religion_label": "Religion",
   "search_input_default_placeholder": "Search...",
   "see_all": "See all",
@@ -80,11 +72,15 @@ const translations = {
     "title": "Settings",
     "description": "Please select the settings menu."
   },
+  "this_month": "This month",
+  "this_week": "This week",
   "time_picker_default_placeholder": "Select time...",
   "time_picker_default_title": "Select Time",
   "time_range_picker_default_placeholder": "Select time range...",
   "time_range_picker_default_title": "Select Time Range",
-  "week_days": {
+  "today": "Today",
+  "tomorrow": "Tomorrow",
+  "weekdays": {
     "mon": "Monday",
     "tue": "Tuesday",
     "wed": "Wednesday",
@@ -92,7 +88,8 @@ const translations = {
     "fri": "Friday",
     "sat": "Saturday",
     "sun": "Sunday"
-  }
+  },
+  "year_label": "Year"
 };
 
 export default translations;

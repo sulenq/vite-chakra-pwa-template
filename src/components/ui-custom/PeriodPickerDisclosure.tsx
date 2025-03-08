@@ -1,4 +1,3 @@
-import months from "@/constant/months";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useScreen from "@/hooks/useScreen";
@@ -24,6 +23,8 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import StringInput from "./StringInput";
+import useLang from "@/context/useLang";
+import MONTHS from "@/constant/months";
 
 interface Props {
   children?: any;
@@ -43,7 +44,7 @@ const PeriodPickerDisclosure = ({
   children,
   id,
   name,
-  title = `Pilih Periode`,
+  title,
   month = new Date().getMonth(),
   setMonth,
   year = new Date().getFullYear(),
@@ -54,6 +55,7 @@ const PeriodPickerDisclosure = ({
 }: Props) => {
   // Context
   const { themeConfig } = useThemeConfig();
+  const { l, lang } = useLang();
 
   // States, Refs
   const [monthLocal, setMonthLocal] = useState<number>(month);
@@ -161,12 +163,14 @@ const PeriodPickerDisclosure = ({
       <DisclosureRoot open={open} size={"xs"}>
         <DisclosureContent>
           <DisclosureHeader>
-            <DisclosureHeaderContent title={title} />
+            <DisclosureHeaderContent
+              title={title || l.periode_picker_default_title}
+            />
           </DisclosureHeader>
 
           <DisclosureBody>
             <Text fontWeight={"medium"} mb={2}>
-              Tahun
+              {l.year_label}
             </Text>
             <HStack>
               <BButton
@@ -228,10 +232,10 @@ const PeriodPickerDisclosure = ({
             </HStack>
 
             <Text fontWeight={"medium"} mt={4} mb={2}>
-              Bulan
+              {l.month_label}
             </Text>
             <SimpleGrid columns={sw < 350 ? 2 : 3} gap={2}>
-              {months.map((month, i) => {
+              {MONTHS[lang].map((month, i) => {
                 const active = i === monthLocal;
 
                 return (

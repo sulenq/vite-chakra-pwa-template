@@ -37,6 +37,7 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
+import WEEKDAYS from "@/constant/weekdays";
 
 const SelectedDateList = ({
   selectedDates,
@@ -107,7 +108,7 @@ const DatePickerInput = ({
   // Context
   const fc = useFieldContext();
   const { themeConfig } = useThemeConfig();
-  const { l } = useLang();
+  const { l, lang } = useLang();
 
   // States, Refs
   const finalPlaceholder = placeholder || l.date_picker_default_placeholder;
@@ -340,16 +341,11 @@ const DatePickerInput = ({
               pb={2}
               mb={2}
             >
-              {Object.keys(l.week_days).map((key, i) => {
-                return (
-                  <Text key={i} fontWeight={"semibold"} textAlign={"center"}>
-                    {l.week_days[key as keyof typeof l.week_days].substring(
-                      0,
-                      3
-                    )}
-                  </Text>
-                );
-              })}
+              {WEEKDAYS[lang].map((day, i) => (
+                <Text key={i} fontWeight={"semibold"} textAlign={"center"}>
+                  {day.substring(0, 3)}
+                </Text>
+              ))}
             </SimpleGrid>
             <CContainer gap={2}>
               {fullDates().map((weeks, i) => (
@@ -429,7 +425,7 @@ const DatePickerInput = ({
                     variant={"outline"}
                     onClick={setSelectedToToday}
                   >
-                    {l.date_picker_preset_label.today}
+                    {l.today}
                   </BButton>
 
                   <BButton
@@ -438,7 +434,7 @@ const DatePickerInput = ({
                     variant={"outline"}
                     onClick={setSelectedToTomorrow}
                   >
-                    {l.date_picker_preset_label.tomorrow}
+                    {l.tomorrow}
                   </BButton>
                 </>
               )}
@@ -451,7 +447,7 @@ const DatePickerInput = ({
                     variant={"outline"}
                     onClick={setSelectedToThisWeek}
                   >
-                    {l.date_picker_preset_label.thisWeek}
+                    {l.this_week}
                   </BButton>
 
                   <BButton
@@ -460,7 +456,7 @@ const DatePickerInput = ({
                     variant={"outline"}
                     onClick={setSelectedToThisMonth}
                   >
-                    {l.date_picker_preset_label.thisMonth}
+                    {l.this_month}
                   </BButton>
                 </>
               )}

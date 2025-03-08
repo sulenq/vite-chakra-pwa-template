@@ -9,7 +9,7 @@ const CheckIndicator = ({ ...props }: Props) => {
 
   return (
     <Icon color={themeConfig.primaryColor} {...props}>
-      <IconCheck size={"1rem"} />
+      <IconCheck size={20} />
     </Icon>
   );
 };
