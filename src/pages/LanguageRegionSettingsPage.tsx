@@ -55,7 +55,6 @@ const LanguageRegionSettingsPage = () => {
                   key={i}
                   border={"1px solid {colors.border.muted}"}
                   borderRadius={themeConfig.radii.component}
-                  p={4}
                   gap={1}
                   variant={"ghost"}
                   justifyContent={"space-between"}
