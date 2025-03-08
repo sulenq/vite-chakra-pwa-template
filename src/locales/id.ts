@@ -4,6 +4,7 @@ const translations = {
     "description": "Anda kembali online."
   },
   "confirm_label": "Konfirmasi",
+  "date_format_settings_title": "Format Tanggal",
   "date_picker_default_placeholder": "Pilih tanggal...",
   "date_picker_default_title": "Pilih Tanggal",
   "date_picker_preset_label": {
@@ -29,6 +30,8 @@ const translations = {
     "title": "Delete semua?",
     "description": "Delete semua inbox yang sudah dibaca."
   },
+  "language_region_helper_text": "Pengaturan bahasa & wilayah ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun.",
+  "language_settings_title": "Bahasa",
   "login_loading_toast": {
     "title": "Login",
     "description": "Memverifikasi kredensial."
@@ -62,10 +65,14 @@ const translations = {
   "selected_label": "terpilih",
   "settings_navs": {
     "display": "Tampilan",
-    "language": "Bahasa",
+    "language": "Bahasa & Wilayah",
     "about": "Tentang",
     "termsOfService": "Ketentuan Layanan",
     "privacyPolicy": "Kebijakan Privasi"
+  },
+  "settings_page": {
+    "title": "Pengaturan",
+    "description": "Silahkan pilih menu pengaturan."
   },
   "time_picker_default_placeholder": "Pilih waktu...",
   "time_picker_default_title": "Pilih Waktu",

@@ -12,7 +12,6 @@ const ItemContainer = ({ children, ...props }: Props) => {
     <CContainer
       borderRadius={themeConfig.radii.container}
       bg={"body"}
-      flex={"1 1 300px"}
       overflow={"clip"}
       border={"1px solid {colors.border.subtle}"}
       {...props}

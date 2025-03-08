@@ -1,10 +1,14 @@
 import ItemContainer from "@/components/ui-custom/ItemContainer";
 import { EmptyState } from "@/components/ui/empty-state";
 import SettingsNavsContainer from "@/components/widget/SettingsNavsContainer";
+import useLang from "@/context/useLang";
 import { Icon } from "@chakra-ui/react";
 import { IconSettings } from "@tabler/icons-react";
 
-const MerchantSettingsPage = () => {
+const SettingsPage = () => {
+  // Context
+  const { l } = useLang();
+
   return (
     <SettingsNavsContainer align={"stretch"}>
       <ItemContainer minH={"full"}>
@@ -14,8 +18,8 @@ const MerchantSettingsPage = () => {
               <IconSettings />
             </Icon>
           }
-          title="Pengaturan"
-          description="Silahkan pilih menu pengaturan"
+          title={l.settings_page.title}
+          description={l.settings_page.description}
           m={"auto"}
         />
       </ItemContainer>
@@ -23,4 +27,4 @@ const MerchantSettingsPage = () => {
   );
 };
 
-export default MerchantSettingsPage;
+export default SettingsPage;

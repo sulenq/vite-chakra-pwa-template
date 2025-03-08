@@ -121,6 +121,28 @@ const time_range_picker_default_placeholder = {
   id: "Pilih rentang waktu...",
   en: "Select time range...",
 };
+const settings_page = {
+  title: {
+    id: "Pengaturan",
+    en: "Settings",
+  },
+  description: {
+    id: "Silahkan pilih menu pengaturan.",
+    en: "Please select the settings menu.",
+  },
+};
+const language_region_helper_text = {
+  id: "Pengaturan bahasa & wilayah ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun.",
+  en: "These language & region settings are stored locally on your device and will not be synced with your account.",
+};
+const language_settings_title = {
+  id: "Bahasa",
+  en: "Language",
+};
+const date_format_settings_title = {
+  id: "Format Tanggal",
+  en: "Date Format",
+};
 
 // Widget
 const delete_all_inbox_button_label = {
@@ -231,8 +253,8 @@ const settings_navs = {
     en: "Display",
   },
   language: {
-    id: "Bahasa",
-    en: "Language",
+    id: "Bahasa & Wilayah",
+    en: "Language & Region",
   },
   about: {
     id: "Tentang",
@@ -266,6 +288,10 @@ const see_all = {
 };
 
 export {
+  language_region_helper_text,
+  language_settings_title,
+  date_format_settings_title,
+  settings_page,
   settings_navs,
   date_range_picker_preset_label,
   date_picker_preset_label,

@@ -14,12 +14,14 @@ export type LanguageOptions = "id" | "en";
 
 export interface Interface__Route {
   path: string;
+  activePath: string;
   element: any;
 }
 
 export interface Interface__PrivateRoute extends Interface__Route {
   label?: any;
-  labelKey: string;
+  titleKey: string;
+  backPath?: string;
   permissions?: number[];
 }
 

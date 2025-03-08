@@ -4,6 +4,7 @@ const translations = {
     "description": "You are back online."
   },
   "confirm_label": "Confirm",
+  "date_format_settings_title": "Date Format",
   "date_picker_default_placeholder": "Select date...",
   "date_picker_default_title": "Select Date",
   "date_picker_preset_label": {
@@ -29,6 +30,8 @@ const translations = {
     "title": "Delete all?",
     "description": "Delete all of the read inboxes."
   },
+  "language_region_helper_text": "These language & region settings are stored locally on your device and will not be synced with your account.",
+  "language_settings_title": "Language",
   "login_loading_toast": {
     "title": "Login",
     "description": "Verifying credentials."
@@ -62,10 +65,14 @@ const translations = {
   "selected_label": "selected",
   "settings_navs": {
     "display": "Display",
-    "language": "Language",
+    "language": "Language & Region",
     "about": "About",
     "termsOfService": "Terms of Service",
     "privacyPolicy": "Privacy Policy"
+  },
+  "settings_page": {
+    "title": "Settings",
+    "description": "Please select the settings menu."
   },
   "time_picker_default_placeholder": "Select time...",
   "time_picker_default_title": "Select Time",

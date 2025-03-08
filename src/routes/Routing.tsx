@@ -18,19 +18,25 @@ const Routing = () => {
         <Route key={path} path={path} element={element} />
       ))}
 
-      {PRIVATE_ROUTES.map(({ path, labelKey, permissions, element }) => (
-        <Route
-          key={path}
-          path={path}
-          element={
-            <AuthMiddleware allowedPermissions={permissions}>
-              <NavsContainer activePath={path} label={pluck(l, labelKey)}>
-                {element}
-              </NavsContainer>
-            </AuthMiddleware>
-          }
-        />
-      ))}
+      {PRIVATE_ROUTES.map(
+        ({ path, activePath, backPath, titleKey, permissions, element }) => (
+          <Route
+            key={path}
+            path={path}
+            element={
+              <AuthMiddleware allowedPermissions={permissions}>
+                <NavsContainer
+                  activePath={activePath}
+                  title={pluck(l, titleKey)}
+                  backPath={backPath}
+                >
+                  {element}
+                </NavsContainer>
+              </AuthMiddleware>
+            }
+          />
+        )
+      )}
 
       <Route path="*" element={<MissingPage />} />
       <Route path="/server-error" element={<ServerErrorPage />} />

@@ -1,5 +1,12 @@
 import { useSettingsContent } from "@/hooks/useSettingsContent";
-import { HStack, Icon, StackProps, Text } from "@chakra-ui/react";
+import {
+  Circle,
+  CircleProps,
+  HStack,
+  Icon,
+  StackProps,
+  Text,
+} from "@chakra-ui/react";
 import CContainer from "../ui-custom/CContainer";
 import SETTINGS_NAVS from "@/constant/settingsNavs";
 import { Link } from "react-router-dom";
@@ -8,6 +15,7 @@ import { IconChevronRight } from "@tabler/icons-react";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import useLang from "@/context/useLang";
 import pluck from "@/utils/pluck";
+import { useThemeConfig } from "@/context/useThemeConfig";
 
 interface Props extends StackProps {
   children?: any;
@@ -16,11 +24,26 @@ interface Props extends StackProps {
 
 const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
   // Context
+  const { themeConfig } = useThemeConfig();
   const { l } = useLang();
 
   // Utils
   const iss = useIsSmScreenWidth();
   const { settingsRoute } = useSettingsContent();
+
+  // Components
+  const ActiveNavIndicator = ({ ...props }: CircleProps) => {
+    return (
+      <Circle
+        w={"2px"}
+        h={"12px"}
+        bg={themeConfig.primaryColor}
+        position={"absolute"}
+        left={0}
+        {...props}
+      />
+    );
+  };
 
   return (
     <HStack
@@ -38,14 +61,14 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
       {(!iss || settingsRoute) && (
         <CContainer
           pb={4}
-          w={iss ? "full" : "190px"}
+          w={iss ? "full" : "200px"}
           flexShrink={0}
           overflowY={"auto"}
           maxH={"full"}
         >
           <CContainer
             bg={"body"}
-            borderRadius={8}
+            borderRadius={themeConfig.radii.container}
             p={2}
             pt={3}
             gap={4}
@@ -74,8 +97,11 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
                           size={"sm"}
                           justifyContent={"start"}
                           px={2}
-                          color={active ? "p.500" : ""}
+                          // color={active ? "p.500" : ""}
+                          position={"relative"}
                         >
+                          {active && <ActiveNavIndicator />}
+
                           <Icon>
                             <nav.icon />
                           </Icon>

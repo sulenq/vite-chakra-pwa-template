@@ -5,8 +5,8 @@ import useCallBackOnNavigate from "@/hooks/useCallBackOnNavigate";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import pluck from "@/utils/pluck";
 import {
-  Box,
-  BoxProps,
+  Circle,
+  CircleProps,
   HStack,
   Icon,
   Stack,
@@ -23,16 +23,19 @@ import Logo from "../ui-custom/Logo";
 import { ColorModeButton } from "../ui/color-mode";
 import { Tooltip } from "../ui/tooltip";
 import MerchantInbox from "./Inbox";
+import BackButton from "../ui-custom/BackButton";
 
 interface Interface__NavItemContainer extends StackProps {
   active?: boolean;
 }
+
 interface Props {
-  label?: string;
   children?: any;
+  title?: string;
+  backPath?: string;
   activePath?: string;
 }
-const NavContainer = ({ label, children, activePath }: Props) => {
+const NavContainer = ({ children, title, backPath, activePath }: Props) => {
   // Context
   const { themeConfig } = useThemeConfig();
   const { l } = useLang();
@@ -48,12 +51,15 @@ const NavContainer = ({ label, children, activePath }: Props) => {
   });
   const iss = useIsSmScreenWidth();
 
-  // Component
+  // Components
   const NavItemContainer = ({
     children,
     active,
     ...props
   }: Interface__NavItemContainer) => {
+    // Context
+    const { themeConfig } = useThemeConfig();
+
     return (
       <VStack
         gap={0}
@@ -63,7 +69,7 @@ const NavContainer = ({ label, children, activePath }: Props) => {
         position={"relative"}
         color={active ? "fg" : "fg.muted"}
         _hover={{ bg: "bg.muted" }}
-        borderRadius={6}
+        borderRadius={themeConfig.radii.component}
         transition={"200ms"}
         {...props}
       >
@@ -73,9 +79,9 @@ const NavContainer = ({ label, children, activePath }: Props) => {
       </VStack>
     );
   };
-  const ActiveNavIndicator = ({ ...props }: BoxProps) => {
+  const ActiveNavIndicator = ({ ...props }: CircleProps) => {
     return (
-      <Box
+      <Circle
         w={"12px"}
         h={"2px"}
         bg={themeConfig.primaryColor}
@@ -213,9 +219,13 @@ const NavContainer = ({ label, children, activePath }: Props) => {
           mb={iss ? 4 : 0}
           borderBottom={iss ? "1px solid {colors.border.subtle}" : ""}
         >
-          <Heading6 fontWeight={"bold"} truncate>
-            {label}
-          </Heading6>
+          <HStack>
+            {backPath && <BackButton iconButton />}
+
+            <Heading6 fontWeight={"bold"} truncate>
+              {title}
+            </Heading6>
+          </HStack>
 
           <HStack flexShrink={0} gap={1}>
             <ColorModeButton fontSize={"1.1rem"} />

@@ -197,7 +197,7 @@ const Activities = ({ ...props }: StackProps) => {
   ];
 
   return (
-    <ItemContainer {...props}>
+    <ItemContainer flex={"1 1 300px"} {...props}>
       <ItemHeaderContainer>
         <HStack>
           <Icon>
@@ -465,7 +465,7 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
   };
 
   return (
-    <ItemContainer {...props}>
+    <ItemContainer flex={"1 1 300px"} {...props}>
       <ItemHeaderContainer>
         <HStack>
           <Icon fontSize={"xl"}>
