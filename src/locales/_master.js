@@ -1,41 +1,41 @@
 // Component UI
-const year_label = {
+export const year_label = {
   id: "Tahun",
   en: "Year",
 };
-const month_label = {
+export const month_label = {
   id: "Bulan",
   en: "Month",
 };
-const periode_picker_default_title = {
+export const periode_picker_default_title = {
   id: "Pilih Periode",
   en: "Select Periode",
 };
-const confirm_label = {
+export const confirm_label = {
   id: "Konfirmasi",
   en: "Confirm",
 };
-const select_all_label = {
+export const select_all_label = {
   id: "Pilih semua",
   en: "Select all",
 };
-const selected_label = {
+export const selected_label = {
   id: "terpilih",
   en: "selected",
 };
-const search_input_default_placeholder = {
+export const search_input_default_placeholder = {
   id: "Pencarian...",
   en: "Search...",
 };
-const select_input_default_title = {
+export const select_input_default_title = {
   id: "Pilih",
   en: "Select",
 };
-const select_input_default_placeholder = {
+export const select_input_default_placeholder = {
   id: "Pilih...",
   en: "Select...",
 };
-const weekdays = {
+export const weekdays = {
   mon: {
     id: "Senin",
     en: "Monday",
@@ -65,63 +65,63 @@ const weekdays = {
     en: "Sunday",
   },
 };
-const today = {
+export const today = {
   id: "Hari ini",
   en: "Today",
 };
-const tomorrow = {
+export const tomorrow = {
   id: "Besok",
   en: "Tomorrow",
 };
-const this_week = {
+export const this_week = {
   id: "Minggu ini",
   en: "This week",
 };
-const next_week = {
+export const next_week = {
   id: "Minggu ini",
   en: "This week",
 };
-const this_month = {
+export const this_month = {
   id: "Bulan ini",
   en: "This month",
 };
-const next_month = {
+export const next_month = {
   id: "Bulan ini",
   en: "This month",
 };
-const date_picker_default_title = {
+export const date_picker_default_title = {
   id: "Pilih Tanggal",
   en: "Select Date",
 };
-const date_picker_default_placeholder = {
+export const date_picker_default_placeholder = {
   id: "Pilih tanggal...",
   en: "Select date...",
 };
-const date_range_picker_default_title = {
+export const date_range_picker_default_title = {
   id: "Pilih Rentang Tanggal",
   en: "Select Date Range",
 };
-const date_range_picker_default_placeholder = {
+export const date_range_picker_default_placeholder = {
   id: "Pilih rentang tanggal...",
   en: "Select date range...",
 };
-const time_picker_default_title = {
+export const time_picker_default_title = {
   id: "Pilih Waktu",
   en: "Select Time",
 };
-const time_picker_default_placeholder = {
+export const time_picker_default_placeholder = {
   id: "Pilih waktu...",
   en: "Select time...",
 };
-const time_range_picker_default_title = {
+export const time_range_picker_default_title = {
   id: "Pilih Rentang Waktu",
   en: "Select Time Range",
 };
-const time_range_picker_default_placeholder = {
+export const time_range_picker_default_placeholder = {
   id: "Pilih rentang waktu...",
   en: "Select time range...",
 };
-const settings_page = {
+export const settings_page = {
   title: {
     id: "Pengaturan",
     en: "Settings",
@@ -131,31 +131,31 @@ const settings_page = {
     en: "Please select the settings menu.",
   },
 };
-const language_region_helper_text = {
+export const language_region_helper_text = {
   id: "Pengaturan bahasa & wilayah ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   en: "These language & region settings are stored locally on your device and will not be synced with your account.",
 };
-const language_settings_title = {
+export const language_settings_title = {
   id: "Bahasa",
   en: "Language",
 };
-const date_format_settings_title = {
+export const date_format_settings_title = {
   id: "Format Tanggal",
   en: "Date Format",
 };
-const religion_label = {
+export const religion_label = {
   id: "Agama",
   en: "Religion",
 };
 
 // Widget
-const delete_all_inbox_button_label = {
+export const delete_all_inbox_button_label = {
   id: "Delete semua",
   en: "Delete all",
 };
 
 // Toasters
-const no_auth_toast = {
+export const no_auth_toast = {
   title: {
     id: "Tidak memiliki autentikasi",
     en: "No authentication",
@@ -165,7 +165,7 @@ const no_auth_toast = {
     en: "Please login with your account.",
   },
 };
-const back_online_toast = {
+export const back_online_toast = {
   title: {
     id: "Koneksi Pulih",
     en: "Connection Recovered",
@@ -175,7 +175,7 @@ const back_online_toast = {
     en: "You are back online.",
   },
 };
-const login_loading_toast = {
+export const login_loading_toast = {
   title: {
     id: "Login",
     en: "Login",
@@ -185,7 +185,7 @@ const login_loading_toast = {
     en: "Verifying credentials.",
   },
 };
-const date_range_picker_error_toast = {
+export const date_range_picker_error_toast = {
   title: {
     id: "Gagal memilih rentang tanggal",
     en: "Failed to select date range",
@@ -197,7 +197,7 @@ const date_range_picker_error_toast = {
 };
 
 // Disclosures
-const logout_disclosure = {
+export const logout_disclosure = {
   title: {
     id: "Logout?",
     en: "Logout?",
@@ -207,7 +207,7 @@ const logout_disclosure = {
     en: "Make sure there is no process to the server before the logout is confirmed to avoid authentication errors.",
   },
 };
-const offline_disclosure = {
+export const offline_disclosure = {
   title: {
     id: "Koneksi Terputus",
     en: "Connection Lost",
@@ -217,7 +217,7 @@ const offline_disclosure = {
     en: "It looks like you are offline. Check your internet connection and try again.",
   },
 };
-const delete_all_inbox_disclosure = {
+export const delete_all_inbox_disclosure = {
   title: {
     id: "Delete semua?",
     en: "Delete all?",
@@ -229,7 +229,7 @@ const delete_all_inbox_disclosure = {
 };
 
 // Navs
-const navs = {
+export const navs = {
   home: {
     id: "Beranda",
     en: "Home",
@@ -251,7 +251,7 @@ const navs = {
     en: "Settings",
   },
 };
-const settings_navs_group = {
+export const settings_navs_group = {
   main: {
     id: "Utama",
     en: "Main",
@@ -261,7 +261,7 @@ const settings_navs_group = {
     en: "Others",
   },
 };
-const settings_navs = {
+export const settings_navs = {
   display: {
     id: "Tampilan",
     en: "Display",
@@ -316,56 +316,11 @@ const settings_navs = {
 // Responses
 
 // Others
-const pay = {
+export const pay = {
   id: "Bayar",
   en: "Pay",
 };
-const see_all = {
+export const see_all = {
   id: "Lihat semua",
   en: "See all",
-};
-
-export {
-  today,
-  tomorrow,
-  this_week,
-  next_week,
-  this_month,
-  next_month,
-  periode_picker_default_title,
-  month_label,
-  year_label,
-  settings_navs_group,
-  language_region_helper_text,
-  language_settings_title,
-  date_format_settings_title,
-  settings_page,
-  settings_navs,
-  select_all_label,
-  selected_label,
-  select_input_default_title,
-  religion_label,
-  confirm_label,
-  date_range_picker_error_toast,
-  date_picker_default_title,
-  date_range_picker_default_title,
-  time_picker_default_title,
-  time_range_picker_default_title,
-  weekdays,
-  time_picker_default_placeholder,
-  time_range_picker_default_placeholder,
-  date_picker_default_placeholder,
-  date_range_picker_default_placeholder,
-  select_input_default_placeholder,
-  search_input_default_placeholder,
-  navs,
-  no_auth_toast,
-  back_online_toast,
-  login_loading_toast,
-  delete_all_inbox_button_label,
-  delete_all_inbox_disclosure,
-  offline_disclosure,
-  logout_disclosure,
-  pay,
-  see_all,
 };
