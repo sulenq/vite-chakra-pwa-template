@@ -88,7 +88,6 @@ const PreferenceSettingsPage = () => {
                     px={4}
                     py={3}
                     borderRadius={themeConfig.radii.component}
-                    // border={"1px solid {colors.border.muted}"}
                     onClick={() => {
                       setDateFormat(item.key);
                     }}
