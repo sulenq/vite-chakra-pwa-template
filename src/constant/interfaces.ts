@@ -200,6 +200,7 @@ export type Type__TableOptions = (
       };
       subMenu?: any; // unused yet
       menuItemProps?: MenuItemProps;
+      disabled?: (rowData: any) => boolean | boolean;
     }
   | "divider"
 )[];

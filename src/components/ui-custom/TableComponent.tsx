@@ -127,7 +127,11 @@ const BatchOptions = ({
                   <MenuItem
                     key={i}
                     value={option.label}
-                    disabled={disabled}
+                    disabled={
+                      typeof option?.disabled === "boolean"
+                        ? option?.disabled
+                        : disabled
+                    }
                     color={"light"}
                     justifyContent={"space-between"}
                     {...option.menuItemProps}
@@ -150,7 +154,11 @@ const BatchOptions = ({
                     option.callback(selectedRows);
                 }}
                 color={"light"}
-                disabled={disabled}
+                disabled={
+                  typeof option?.disabled === "boolean"
+                    ? option?.disabled
+                    : disabled
+                }
                 justifyContent={"space-between"}
                 {...option.menuItemProps}
               >
@@ -220,12 +228,17 @@ const RowOptions = ({
                 onClick={() => {
                   if (
                     option.callback &&
-                    (!option.menuItemProps || !option.menuItemProps.disabled)
+                    (!option.menuItemProps || !option.disabled)
                   ) {
                     option.callback(rowData);
                   }
                 }}
                 justifyContent={"space-between"}
+                disabled={
+                  typeof option?.disabled === "boolean"
+                    ? option.disabled
+                    : !!option.disabled?.(rowData)
+                }
                 {...option.menuItemProps}
               >
                 {option.label}

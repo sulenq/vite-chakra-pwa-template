@@ -1265,12 +1265,13 @@ const TableComponentDemo = () => {
           },
           {
             label: "Disabled menu",
-            menuItemProps: {
-              disabled: true,
-            },
+            disabled: true,
           },
           {
             label: "Delete...",
+            disabled: (rowData: any) => {
+              return true;
+            },
             menuItemProps: {
               color: "red.400",
             },
@@ -1300,9 +1301,7 @@ const TableComponentDemo = () => {
         batchOptions={[
           {
             label: "Disabled menu",
-            menuItemProps: {
-              disabled: true,
-            },
+            disabled: true,
           },
           {
             label: "Delete...",
