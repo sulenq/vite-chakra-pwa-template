@@ -35,7 +35,7 @@ const PreferenceSettingsPage = () => {
           </ItemHeaderContainer>
 
           <CContainer gap={4} py={2}>
-            <SimpleGrid px={2} columns={[1, 2]}>
+            <SimpleGrid px={2} columns={[1, 2, 3]}>
               {LANGUAGES.map((item, i) => {
                 const active = lang === item.key;
 
@@ -93,7 +93,8 @@ const PreferenceSettingsPage = () => {
                       setDateFormat(item.key);
                     }}
                     cursor={"pointer"}
-                    _hover={{ bg: "bg.muted" }}
+                    _hover={{ bg: "gray.subtle" }}
+                    _active={{ bg: "gray.subtle" }}
                     transition={"200ms"}
                   >
                     <HStack justify={"space-between"} align={"start"}>
