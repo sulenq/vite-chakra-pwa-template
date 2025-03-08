@@ -6,7 +6,7 @@ import ServerErrorPage from "@/pages/error/ServerErrorPage";
 import { Route, Routes } from "react-router-dom";
 import AuthMiddleware from "./AuthMiddleware";
 import useLang from "@/context/useLang";
-import getValueByKey from "@/utils/getValueByKey";
+import pluck from "@/utils/pluck";
 
 const Routing = () => {
   // Context
@@ -24,10 +24,7 @@ const Routing = () => {
           path={path}
           element={
             <AuthMiddleware allowedPermissions={permissions}>
-              <NavsContainer
-                activePath={path}
-                label={getValueByKey(l, labelKey)}
-              >
+              <NavsContainer activePath={path} label={pluck(l, labelKey)}>
                 {element}
               </NavsContainer>
             </AuthMiddleware>

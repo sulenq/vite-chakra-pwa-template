@@ -3,7 +3,7 @@ import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useCallBackOnNavigate from "@/hooks/useCallBackOnNavigate";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
-import getValueByKey from "@/utils/getValueByKey";
+import pluck from "@/utils/pluck";
 import {
   Box,
   BoxProps,
@@ -92,7 +92,7 @@ const NavContainer = ({ label, children, activePath }: Props) => {
           return (
             <Link key={i} to={nav.path}>
               <Tooltip
-                content={getValueByKey(l, nav.labelKey)}
+                content={pluck(l, nav.labelKey)}
                 positioning={{ placement: "right" }}
                 contentProps={{ ml: 2 }}
               >

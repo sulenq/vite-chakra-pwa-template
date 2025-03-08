@@ -2,7 +2,7 @@ import {
   IconDeviceDesktop,
   IconGavel,
   IconInfoCircle,
-  IconPalette,
+  IconLanguage,
   IconShieldLock,
 } from "@tabler/icons-react";
 
@@ -12,12 +12,12 @@ const SETTINGS_NAVS = [
     list: [
       {
         icon: IconDeviceDesktop,
-        label: "Tampilan",
+        labelKey: "settings_navs.display",
         path: "/settings/display",
       },
       {
-        icon: IconPalette,
-        label: "Warna Bidang",
+        icon: IconLanguage,
+        labelKey: "settings_navs.language",
         path: "/settings/field",
       },
     ],
@@ -27,17 +27,17 @@ const SETTINGS_NAVS = [
     list: [
       {
         icon: IconInfoCircle,
-        label: "Tentang",
+        labelKey: "settings_navs.about",
         path: "/settings/about",
       },
       {
         icon: IconGavel,
-        label: "Ketentuan Layanan",
+        labelKey: "settings_navs.termsOfService",
         path: "/settings/terms-of-service",
       },
       {
         icon: IconShieldLock,
-        label: "Kebijakan Privasi",
+        labelKey: "settings_navs.privacyPolicy",
         path: "/settings/privacy-policy",
       },
     ],

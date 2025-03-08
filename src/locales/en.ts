@@ -60,6 +60,13 @@ const translations = {
   "select_input_default_placeholder": "Select...",
   "select_input_default_title": "Select",
   "selected_label": "selected",
+  "settings_navs": {
+    "display": "Display",
+    "language": "Language",
+    "about": "About",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy"
+  },
   "time_picker_default_placeholder": "Select time...",
   "time_picker_default_title": "Select Time",
   "time_range_picker_default_placeholder": "Select time range...",

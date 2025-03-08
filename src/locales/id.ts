@@ -60,6 +60,13 @@ const translations = {
   "select_input_default_placeholder": "Pilih...",
   "select_input_default_title": "Pilih",
   "selected_label": "terpilih",
+  "settings_navs": {
+    "display": "Tampilan",
+    "language": "Bahasa",
+    "about": "Tentang",
+    "termsOfService": "Ketentuan Layanan",
+    "privacyPolicy": "Kebijakan Privasi"
+  },
   "time_picker_default_placeholder": "Pilih waktu...",
   "time_picker_default_title": "Pilih Waktu",
   "time_range_picker_default_placeholder": "Pilih rentang waktu...",

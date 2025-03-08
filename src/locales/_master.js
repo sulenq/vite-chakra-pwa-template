@@ -225,6 +225,28 @@ const navs = {
     en: "Settings",
   },
 };
+const settings_navs = {
+  display: {
+    id: "Tampilan",
+    en: "Display",
+  },
+  language: {
+    id: "Bahasa",
+    en: "Language",
+  },
+  about: {
+    id: "Tentang",
+    en: "About",
+  },
+  termsOfService: {
+    id: "Ketentuan Layanan",
+    en: "Terms of Service",
+  },
+  privacyPolicy: {
+    id: "Kebijakan Privasi",
+    en: "Privacy Policy",
+  },
+};
 
 const religion_label = {
   id: "Agama",
@@ -244,6 +266,7 @@ const see_all = {
 };
 
 export {
+  settings_navs,
   date_range_picker_preset_label,
   date_picker_preset_label,
   select_all_label,

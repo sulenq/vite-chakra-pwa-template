@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import BButton from "../ui-custom/BButton";
 import { IconChevronRight } from "@tabler/icons-react";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
+import useLang from "@/context/useLang";
+import pluck from "@/utils/pluck";
 
 interface Props extends StackProps {
   children?: any;
@@ -13,6 +15,9 @@ interface Props extends StackProps {
 }
 
 const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
+  // Context
+  const { l } = useLang();
+
   // Utils
   const iss = useIsSmScreenWidth();
   const { settingsRoute } = useSettingsContent();
@@ -74,7 +79,8 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
                           <Icon>
                             <nav.icon />
                           </Icon>
-                          {nav.label}
+
+                          {pluck(l, nav.labelKey)}
 
                           {iss && (
                             <Icon ml={"auto"}>
