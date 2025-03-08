@@ -1,7 +1,7 @@
 const LANGUAGES = [
   {
     key: "id",
-    code: "id_ID",
+    code: "id-ID",
     label: "Indonesia",
   },
   {

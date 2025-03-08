@@ -66,9 +66,15 @@ const translations = {
   "settings_navs": {
     "display": "Display",
     "language": "Language & Region",
+    "permissions": "Permissions",
     "about": "About",
+    "reportProblem": "Report a Problem",
     "termsOfService": "Terms of Service",
     "privacyPolicy": "Privacy Policy"
+  },
+  "settings_navs_group": {
+    "main": "Main",
+    "others": "Others"
   },
   "settings_page": {
     "title": "Settings",

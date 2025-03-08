@@ -8,7 +8,7 @@ import {
 
 const SETTINGS_NAVS = [
   {
-    groupLabel: "Utama",
+    groupLabelKey: "settings_navs_group.main",
     list: [
       {
         icon: IconDeviceDesktop,
@@ -23,7 +23,7 @@ const SETTINGS_NAVS = [
     ],
   },
   {
-    groupLabel: "Lainnya",
+    groupLabelKey: "settings_navs_group.others",
     list: [
       {
         icon: IconInfoCircle,

@@ -66,9 +66,15 @@ const translations = {
   "settings_navs": {
     "display": "Tampilan",
     "language": "Bahasa & Wilayah",
+    "permissions": "Izn Akses",
     "about": "Tentang",
+    "reportProblem": "Laporkan Masalah",
     "termsOfService": "Ketentuan Layanan",
     "privacyPolicy": "Kebijakan Privasi"
+  },
+  "settings_navs_group": {
+    "main": "Utama",
+    "others": "Lainnya"
   },
   "settings_page": {
     "title": "Pengaturan",

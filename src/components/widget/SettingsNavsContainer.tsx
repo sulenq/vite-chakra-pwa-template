@@ -82,7 +82,7 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
               return (
                 <CContainer key={i}>
                   <Text fontWeight={"bold"} color={"fg.subtle"} mx={2} mb={2}>
-                    {item.groupLabel}
+                    {pluck(l, item.groupLabelKey)}
                   </Text>
 
                   {item.list.map((nav, ii) => {

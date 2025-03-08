@@ -143,6 +143,10 @@ const date_format_settings_title = {
   id: "Format Tanggal",
   en: "Date Format",
 };
+const religion_label = {
+  id: "Agama",
+  en: "Religion",
+};
 
 // Widget
 const delete_all_inbox_button_label = {
@@ -247,6 +251,16 @@ const navs = {
     en: "Settings",
   },
 };
+const settings_navs_group = {
+  main: {
+    id: "Utama",
+    en: "Main",
+  },
+  others: {
+    id: "Lainnya",
+    en: "Others",
+  },
+};
 const settings_navs = {
   display: {
     id: "Tampilan",
@@ -256,9 +270,17 @@ const settings_navs = {
     id: "Bahasa & Wilayah",
     en: "Language & Region",
   },
+  permissions: {
+    id: "Izn Akses",
+    en: "Permissions",
+  },
   about: {
     id: "Tentang",
     en: "About",
+  },
+  reportProblem: {
+    id: "Laporkan Masalah",
+    en: "Report a Problem",
   },
   termsOfService: {
     id: "Ketentuan Layanan",
@@ -270,10 +292,26 @@ const settings_navs = {
   },
 };
 
-const religion_label = {
-  id: "Agama",
-  en: "Religion",
-};
+// Tampilan
+// dark mode
+// theme
+// font size
+
+// Language & Region
+// language
+// date format
+// time zone
+// currency
+
+// Permissions
+// lokasi
+// camera
+
+// Help & Support
+// help center
+// report a problem
+// terms of service
+// privacy policy
 
 // Responses
 
@@ -288,6 +326,7 @@ const see_all = {
 };
 
 export {
+  settings_navs_group,
   language_region_helper_text,
   language_settings_title,
   date_format_settings_title,
