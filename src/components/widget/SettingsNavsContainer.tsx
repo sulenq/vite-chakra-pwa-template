@@ -16,6 +16,7 @@ import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import useLang from "@/context/useLang";
 import pluck from "@/utils/pluck";
 import { useThemeConfig } from "@/context/useThemeConfig";
+import PageContainer from "./PageContainer";
 
 interface Props extends StackProps {
   children?: any;
@@ -60,11 +61,12 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
       {/* Settings Navs */}
       {(!iss || settingsRoute) && (
         <CContainer
+          pt={iss ? 4 : ""}
           pb={4}
           w={iss ? "full" : "200px"}
           flexShrink={0}
-          maxH={"full"}
           overflowY={"auto"}
+          maxH={"full"}
         >
           <CContainer
             bg={"body"}
@@ -75,8 +77,8 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
             border={"1px solid"}
             borderColor={"border.subtle"}
             h={"fit"}
-            maxH={"full"}
             overflowY={"auto"}
+            maxH={"full"}
           >
             {SETTINGS_NAVS.map((item, i) => {
               return (
@@ -164,7 +166,7 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
       )}
 
       {/* Content */}
-      <CContainer
+      <PageContainer
         display={iss && settingsRoute ? "none" : "flex"}
         overflowY={"auto"}
         maxH={"full"}
@@ -173,7 +175,7 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
         // border={"1px solid red"}
       >
         {children}
-      </CContainer>
+      </PageContainer>
     </HStack>
   );
 };

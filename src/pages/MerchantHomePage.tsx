@@ -45,6 +45,7 @@ import {
 } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import { BILLING_CYCLES } from "@/gens/pricing";
+import PageContainer from "@/components/widget/PageContainer";
 
 const Profile = ({ ...props }: StackProps) => {
   // Context
@@ -541,14 +542,8 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
 
 const MerchantHomePage = () => {
   return (
-    <CContainer>
-      <HStack
-        wrap={"wrap"}
-        gap={4}
-        p={[2, null, 4]}
-        pt={"0 !important"}
-        align={"stretch"}
-      >
+    <PageContainer>
+      <HStack wrap={"wrap"} gap={4} align={"stretch"}>
         <CContainer gap={4} flex={"1 1 350px"} w={"50%"}>
           <Profile />
 
@@ -561,7 +556,7 @@ const MerchantHomePage = () => {
           <SubscriptionInfo />
         </CContainer>
       </HStack>
-    </CContainer>
+    </PageContainer>
   );
 };
 

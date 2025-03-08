@@ -58,7 +58,7 @@ const translations = {
   "selected": "terpilih",
   "settings_navs": {
     "display": "Tampilan",
-    "language_region": "Bahasa & Wilayah",
+    "preference": "Preferensi",
     "permissions": "Izn Akses",
     "report_problem": "Laporkan Masalah",
     "terms_of_service": "Ketentuan Layanan",

@@ -233,7 +233,7 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
           </HStack>
         </HStack>
 
-        <CContainer pt={iss ? 4 : 0}>{children}</CContainer>
+        {children}
       </CContainer>
 
       {/* Sm screen nav */}

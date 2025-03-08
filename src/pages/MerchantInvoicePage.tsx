@@ -1,10 +1,10 @@
 import BButton from "@/components/ui-custom/BButton";
-import CContainer from "@/components/ui-custom/CContainer";
 import HScroll from "@/components/ui-custom/HScroll";
 import ItemContainer from "@/components/ui-custom/ItemContainer";
 import SearchInput from "@/components/ui-custom/SearchInput";
 import TableComponent from "@/components/ui-custom/TableComponent";
 import { Status } from "@/components/ui/status";
+import PageContainer from "@/components/widget/PageContainer";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import { BILLING_CYCLES } from "@/gens/pricing";
 import formatDate from "@/utils/formatDateOld";
@@ -161,7 +161,7 @@ const MerchantInvoicePage = () => {
   });
 
   return (
-    <CContainer p={[2, null, 4]} pt={"0 !important"}>
+    <PageContainer px={[2, null, 4]} pb={[2, null, 4]}>
       <ItemContainer pt={4}>
         <HScroll px={4} pb={4}>
           <SearchInput />
@@ -173,7 +173,7 @@ const MerchantInvoicePage = () => {
 
         <TableComponent originalData={data} ths={ths} tds={tds} />
       </ItemContainer>
-    </CContainer>
+    </PageContainer>
   );
 };
 

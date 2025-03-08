@@ -58,7 +58,7 @@ const translations = {
   "selected": "selected",
   "settings_navs": {
     "display": "Display",
-    "language_region": "Language & Region",
+    "preference": "Preference",
     "permissions": "Permissions",
     "report_problem": "Report a Problem",
     "terms_of_service": "Terms of Service",

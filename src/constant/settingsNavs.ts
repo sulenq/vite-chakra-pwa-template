@@ -18,7 +18,7 @@ const SETTINGS_NAVS = [
       },
       {
         icon: IconLanguage,
-        labelKey: "settings_navs.language_region",
+        labelKey: "settings_navs.preference",
         path: "/settings/language",
       },
       {

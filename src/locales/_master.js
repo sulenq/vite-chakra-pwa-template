@@ -36,9 +36,9 @@ export const settings_navs = {
     id: "Tampilan",
     en: "Display",
   },
-  language_region: {
-    id: "Bahasa & Wilayah",
-    en: "Language & Region",
+  preference: {
+    id: "Preferensi",
+    en: "Preference",
   },
   permissions: {
     id: "Izn Akses",

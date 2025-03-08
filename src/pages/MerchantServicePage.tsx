@@ -10,6 +10,7 @@ import DisclosureHeaderContent from "@/components/ui-custom/DisclosureHeaderCont
 import Heading3 from "@/components/ui-custom/Heading3";
 import HScroll from "@/components/ui-custom/HScroll";
 import { Rating } from "@/components/ui/rating";
+import PageContainer from "@/components/widget/PageContainer";
 import { IMAGES_PATH } from "@/constant/path";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
@@ -193,7 +194,7 @@ const ProductList = () => {
 
 const MerchantPricingPage = () => {
   return (
-    <CContainer>
+    <PageContainer>
       <CContainer px={4}>
         <HStack mt={4} mb={2} justify={"center"} wrap={"wrap"} mx={"auto"}>
           <Icon color={"orange.400"} transform={"rotate(16deg)"} mb={1} ml={-4}>
@@ -210,10 +211,10 @@ const MerchantPricingPage = () => {
         </Text>
       </CContainer>
 
-      <CContainer p={[2, null, 4]}>
+      <CContainer>
         <ProductList />
       </CContainer>
-    </CContainer>
+    </PageContainer>
   );
 };
 

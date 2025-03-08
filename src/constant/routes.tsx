@@ -5,7 +5,7 @@ import MerchantServicePage from "@/pages/MerchantServicePage";
 import SettingsPage from "@/pages/SettingsPage";
 import RootPage from "@/pages/RootPage";
 import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
-import LanguageRegionSettingsPage from "@/pages/LanguageRegionSettingsPage";
+import PreferenceSettingsPage from "@/pages/PreferenceSettingsPage";
 
 const ROUTES: Interface__Route[] = [
   {
@@ -49,9 +49,9 @@ const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   {
     path: "/settings/language",
     activePath: "/settings",
-    titleKey: "settings_navs.language_region",
+    titleKey: "settings_navs.preference",
     backPath: "/settings",
-    element: <LanguageRegionSettingsPage />,
+    element: <PreferenceSettingsPage />,
   },
   // {
   //   path: "/profile",
