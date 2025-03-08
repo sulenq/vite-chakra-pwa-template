@@ -38,7 +38,7 @@ const LanguageRegionSettingsPage = () => {
             </HStack>
           </ItemHeaderContainer>
 
-          <CContainer gap={4} pt={4} pb={3}>
+          <CContainer gap={4} py={3}>
             <SimpleGrid px={3} gap={2} columns={[1, 2]}>
               {LANGUAGES.map((item, i) => {
                 const active = lang === item.key;
@@ -80,13 +80,7 @@ const LanguageRegionSettingsPage = () => {
             </HStack>
           </ItemHeaderContainer>
 
-          <CContainer gap={4} pt={4} pb={3}>
-            {/* <CContainer px={4}>
-              <Text color={"fg.muted"}>
-                {l.today} - {formatDate(new Date(), "weekdayFullMonth")}
-              </Text>
-            </CContainer> */}
-
+          <CContainer gap={4} py={3}>
             <SimpleGrid px={3} gap={2} columns={[1, 2, 3]}>
               {DATE_FORMATS.map((item, i) => {
                 const active = item.key === dateFormat;
