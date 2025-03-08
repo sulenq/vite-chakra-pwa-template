@@ -94,10 +94,8 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
                           unclicky
                           variant={"ghost"}
                           w={"full"}
-                          size={"sm"}
                           justifyContent={"start"}
                           px={2}
-                          // color={active ? "p.500" : ""}
                           position={"relative"}
                         >
                           {active && <ActiveNavIndicator />}

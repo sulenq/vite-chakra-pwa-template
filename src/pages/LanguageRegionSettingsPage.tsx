@@ -4,12 +4,10 @@ import CheckIndicator from "@/components/ui-custom/CheckIndicator";
 import HelperText from "@/components/ui-custom/HelperText";
 import ItemContainer from "@/components/ui-custom/ItemContainer";
 import ItemHeaderContainer from "@/components/ui-custom/ItemHeaderContainer";
-import SearchInput from "@/components/ui-custom/SearchInput";
 import SettingsNavsContainer from "@/components/widget/SettingsNavsContainer";
 import LANGUAGES from "@/constant/languages";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
-import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import { HStack, Icon, SimpleGrid, Text } from "@chakra-ui/react";
 import { IconLanguage } from "@tabler/icons-react";
 
@@ -17,9 +15,6 @@ const LanguageRegionSettingsPage = () => {
   // Context
   const { themeConfig } = useThemeConfig();
   const { l, lang, setLang } = useLang();
-
-  // Utils
-  const iss = useIsSmScreenWidth();
 
   return (
     <SettingsNavsContainer align={"stretch"} activePath="/settings/language">
@@ -35,28 +30,23 @@ const LanguageRegionSettingsPage = () => {
             </Icon>
             <Text fontWeight={"bold"}>{l.language_settings_title}</Text>
           </HStack>
-
-          {!iss && <SearchInput maxW={"200px"} inputProps={{ size: "xs" }} />}
         </ItemHeaderContainer>
 
-        <CContainer gap={4} py={3}>
-          {iss && (
-            <CContainer px={3}>
-              <SearchInput />
-            </CContainer>
-          )}
+        <CContainer gap={4} pt={4} pb={3}>
+          <CContainer px={4}>
+            <HelperText>Silahkan sesuaikan preferensi bahasa Anda</HelperText>
+          </CContainer>
 
-          <SimpleGrid px={3} gap={2} columns={[1, 2, 3]}>
+          <SimpleGrid px={3} gap={2} columns={[1, 2]}>
             {LANGUAGES.map((item, i) => {
               const active = lang === item.key;
 
               return (
                 <BButton
                   key={i}
-                  border={"1px solid {colors.border.muted}"}
                   borderRadius={themeConfig.radii.component}
                   gap={1}
-                  variant={"ghost"}
+                  variant={"outline"}
                   justifyContent={"space-between"}
                   onClick={() => {
                     setLang(item.key);

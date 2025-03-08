@@ -132,7 +132,7 @@ const settings_page = {
   },
 };
 const language_region_helper_text = {
-  id: "Pengaturan bahasa & wilayah ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun.",
+  id: "Pengaturan bahasa & wilayah ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   en: "These language & region settings are stored locally on your device and will not be synced with your account.",
 };
 const language_settings_title = {

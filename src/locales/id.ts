@@ -30,7 +30,7 @@ const translations = {
     "title": "Delete semua?",
     "description": "Delete semua inbox yang sudah dibaca."
   },
-  "language_region_helper_text": "Pengaturan bahasa & wilayah ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun.",
+  "language_region_helper_text": "Pengaturan bahasa & wilayah ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   "language_settings_title": "Bahasa",
   "login_loading_toast": {
     "title": "Login",
