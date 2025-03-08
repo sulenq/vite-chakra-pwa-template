@@ -51,16 +51,16 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
       id="settingsNavsContainer"
       w={"full"}
       h={"full"}
+      pl={!iss ? 4 : ""}
       align={"start"}
-      pl={4}
-      pr={iss && settingsRoute ? 4 : 0}
-      gap={4}
+      gap={0}
       overflowY={"auto"}
       {...props}
     >
       {/* Settings Navs */}
       {(!iss || settingsRoute) && (
         <CContainer
+          px={iss && settingsRoute ? 2 : 0}
           pt={iss ? 4 : ""}
           pb={4}
           w={iss ? "full" : "200px"}
@@ -120,47 +120,6 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
                 </CContainer>
               );
             })}
-
-            {SETTINGS_NAVS.map((item, i) => {
-              return (
-                <CContainer key={i}>
-                  <Text fontWeight={"bold"} color={"fg.subtle"} mx={2} mb={2}>
-                    {pluck(l, item.groupLabelKey)}
-                  </Text>
-
-                  {item.list.map((nav, ii) => {
-                    const active = activePath === nav.path;
-
-                    return (
-                      <Link key={ii} to={nav.path}>
-                        <BButton
-                          unclicky
-                          variant={"ghost"}
-                          w={"full"}
-                          justifyContent={"start"}
-                          px={2}
-                          position={"relative"}
-                        >
-                          {active && <ActiveNavIndicator />}
-
-                          <Icon>
-                            <nav.icon />
-                          </Icon>
-
-                          {pluck(l, nav.labelKey)}
-
-                          {iss && (
-                            <Icon ml={"auto"}>
-                              <IconChevronRight />
-                            </Icon>
-                          )}
-                        </BButton>
-                      </Link>
-                    );
-                  })}
-                </CContainer>
-              );
-            })}
           </CContainer>
         </CContainer>
       )}
@@ -170,8 +129,8 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
         display={iss && settingsRoute ? "none" : "flex"}
         overflowY={"auto"}
         maxH={"full"}
-        pr={4}
-        pb={4}
+        // pr={4}
+        // pb={4}
         // border={"1px solid red"}
       >
         {children}
