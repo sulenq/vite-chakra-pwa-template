@@ -1,7 +1,7 @@
 import { Dispatch } from "react";
 import BButton from "./BButton";
 import PeriodPickerDisclosure from "./PeriodPickerDisclosure";
-import formatDate from "@/utils/formatDateOld";
+import formatDate from "@/utils/formatDate";
 
 interface Props {
   id?: string;
@@ -28,7 +28,7 @@ const PeriodPickerForDatePicker = ({
         {...props}
       >
         <BButton w={"full"} variant={"outline"} size={"md"}>
-          {`${formatDate(new Date(year, month), "periode")}`}
+          {`${formatDate(new Date(year, month), "monthYear")}`}
         </BButton>
       </PeriodPickerDisclosure>
     </>

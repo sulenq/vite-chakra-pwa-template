@@ -9,7 +9,7 @@ export const month = {
 };
 export const periode_picker_default_title = {
   id: "Pilih Periode",
-  en: "Select Periode",
+  en: "Select Period",
 };
 export const confirm = {
   id: "Konfirmasi",

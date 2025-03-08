@@ -3,7 +3,7 @@ const translations = {
     "title": "Koneksi Pulih",
     "description": "Anda kembali online."
   },
-  "confirm_label": "Konfirmasi",
+  "confirm": "Konfirmasi",
   "date_format_settings_title": "Format Tanggal",
   "date_picker_default_placeholder": "Pilih tanggal...",
   "date_picker_default_title": "Pilih Tanggal",
@@ -14,7 +14,7 @@ const translations = {
     "description": "Tidak boleh melebihi rentang maksimum"
   },
   "date_range_picker_max_range_alert": "Maksimal rentang tanggal ${maxRange} hari",
-  "delete_all_inbox_button_label": "Delete semua",
+  "delete_all_inbox_button": "Delete semua",
   "delete_all_inbox_disclosure": {
     "title": "Delete semua?",
     "description": "Delete semua inbox yang sudah dibaca."
@@ -29,7 +29,7 @@ const translations = {
     "title": "Logout?",
     "description": "Pastikan tidak ada proses ke server sebelum logout dikonfirmasi untuk menghindari error autentikasi."
   },
-  "month_label": "Bulan",
+  "month": "Bulan",
   "navs": {
     "home": "Beranda",
     "invoice": "Tagihan",
@@ -49,13 +49,13 @@ const translations = {
   },
   "pay": "Bayar",
   "periode_picker_default_title": "Pilih Periode",
-  "religion_label": "Agama",
+  "religion": "Agama",
   "search_input_default_placeholder": "Pencarian...",
   "see_all": "Lihat semua",
-  "select_all_label": "Pilih semua",
+  "select_all": "Pilih semua",
   "select_input_default_placeholder": "Pilih...",
   "select_input_default_title": "Pilih",
-  "selected_label": "terpilih",
+  "selected": "terpilih",
   "settings_navs": {
     "display": "Tampilan",
     "language": "Bahasa & Wilayah",
@@ -90,7 +90,7 @@ const translations = {
     "sat": "Sabtu",
     "sun": "Minggu"
   },
-  "year_label": "Tahun"
+  "year": "Tahun"
 };
 
 export default translations;

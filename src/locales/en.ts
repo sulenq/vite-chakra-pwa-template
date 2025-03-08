@@ -3,7 +3,7 @@ const translations = {
     "title": "Connection Recovered",
     "description": "You are back online."
   },
-  "confirm_label": "Confirm",
+  "confirm": "Confirm",
   "date_format_settings_title": "Date Format",
   "date_picker_default_placeholder": "Select date...",
   "date_picker_default_title": "Select Date",
@@ -14,7 +14,7 @@ const translations = {
     "description": "Must not exceed the maximum range"
   },
   "date_range_picker_max_range_alert": "Maximum date range is ${maxRange} days",
-  "delete_all_inbox_button_label": "Delete all",
+  "delete_all_inbox_button": "Delete all",
   "delete_all_inbox_disclosure": {
     "title": "Delete all?",
     "description": "Delete all of the read inboxes."
@@ -29,7 +29,7 @@ const translations = {
     "title": "Logout?",
     "description": "Make sure there is no process to the server before the logout is confirmed to avoid authentication errors."
   },
-  "month_label": "Month",
+  "month": "Month",
   "navs": {
     "home": "Home",
     "invoice": "Invoice",
@@ -48,14 +48,14 @@ const translations = {
     "description": "It looks like you are offline. Check your internet connection and try again."
   },
   "pay": "Pay",
-  "periode_picker_default_title": "Select Periode",
-  "religion_label": "Religion",
+  "periode_picker_default_title": "Select Period",
+  "religion": "Religion",
   "search_input_default_placeholder": "Search...",
   "see_all": "See all",
-  "select_all_label": "Select all",
+  "select_all": "Select all",
   "select_input_default_placeholder": "Select...",
   "select_input_default_title": "Select",
-  "selected_label": "selected",
+  "selected": "selected",
   "settings_navs": {
     "display": "Display",
     "language": "Language & Region",
@@ -90,7 +90,7 @@ const translations = {
     "sat": "Saturday",
     "sun": "Sunday"
   },
-  "year_label": "Year"
+  "year": "Year"
 };
 
 export default translations;

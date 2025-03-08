@@ -2,7 +2,7 @@ import MONTHS from "@/constant/months";
 import WEEKDAYS from "@/constant/weekdays";
 import { Type__DateVariant } from "@/constant/types";
 
-const formatDateManual = (
+const formatDate = (
   date?: Date,
   variant?: Type__DateVariant,
   prerfixDateFormat?: string
@@ -61,4 +61,4 @@ const formatDateManual = (
   }
 };
 
-export default formatDateManual;
+export default formatDate;
