@@ -384,7 +384,7 @@ const SelectInputDemo = () => {
       <SelectInput
         id="select_empty"
         name="select_empty"
-        title={l.religion_label}
+        title={l.religion}
         placeholder="Select kosong"
         initialOptions={null}
         onConfirm={(inputValue) => {
@@ -394,7 +394,7 @@ const SelectInputDemo = () => {
 
       <SelectInput
         name="select1"
-        title={l.religion_label}
+        title={l.religion}
         initialOptions={OPTIONS_RELIGION}
         onConfirm={(inputValue) => {
           formik.setFieldValue("select1", inputValue);
@@ -404,7 +404,7 @@ const SelectInputDemo = () => {
 
       <SelectInput
         name="select2"
-        title={l.religion_label}
+        title={l.religion}
         placeholder="Multi select"
         initialOptions={OPTIONS_RELIGION}
         multiple
@@ -416,7 +416,7 @@ const SelectInputDemo = () => {
 
       <PromiseSelectDemo
         name="select3"
-        title={l.religion_label}
+        title={l.religion}
         onConfirm={(inputValue) => {
           formik.setFieldValue("select3", inputValue);
         }}
@@ -426,7 +426,7 @@ const SelectInputDemo = () => {
       <Field invalid>
         <SelectInput
           name="select4"
-          title={l.religion_label}
+          title={l.religion}
           placeholder="Multi select invalid state"
           initialOptions={OPTIONS_RELIGION}
           multiple

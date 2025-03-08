@@ -78,7 +78,7 @@ const BatchOptions = ({
               opacity={0.5}
               fontWeight={500}
             >
-              {selectedRows.length} {l.selected_label}
+              {selectedRows.length} {l.selected}
             </Text>
           </CContainer>
 
@@ -92,7 +92,7 @@ const BatchOptions = ({
             }}
             closeOnSelect={false}
           >
-            <Text color={"light"}>{l.select_all_label}</Text>
+            <Text color={"light"}>{l.select_all}</Text>
             <Checkbox
               borderColor={"d3"}
               checked={selectAllRows}

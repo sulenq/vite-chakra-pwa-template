@@ -170,7 +170,7 @@ const PeriodPickerDisclosure = ({
 
           <DisclosureBody>
             <Text fontWeight={"medium"} mb={2}>
-              {l.year_label}
+              {l.year}
             </Text>
             <HStack>
               <BButton
@@ -232,7 +232,7 @@ const PeriodPickerDisclosure = ({
             </HStack>
 
             <Text fontWeight={"medium"} mt={4} mb={2}>
-              {l.month_label}
+              {l.month}
             </Text>
             <SimpleGrid columns={sw < 350 ? 2 : 3} gap={2}>
               {MONTHS[lang].map((month, i) => {

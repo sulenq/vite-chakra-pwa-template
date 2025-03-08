@@ -1,9 +1,9 @@
 // Component UI
-export const year_label = {
+export const year = {
   id: "Tahun",
   en: "Year",
 };
-export const month_label = {
+export const month = {
   id: "Bulan",
   en: "Month",
 };
@@ -11,15 +11,15 @@ export const periode_picker_default_title = {
   id: "Pilih Periode",
   en: "Select Periode",
 };
-export const confirm_label = {
+export const confirm = {
   id: "Konfirmasi",
   en: "Confirm",
 };
-export const select_all_label = {
+export const select_all = {
   id: "Pilih semua",
   en: "Select all",
 };
-export const selected_label = {
+export const selected = {
   id: "terpilih",
   en: "selected",
 };
@@ -147,13 +147,13 @@ export const date_format_settings_title = {
   id: "Format Tanggal",
   en: "Date Format",
 };
-export const religion_label = {
+export const religion = {
   id: "Agama",
   en: "Religion",
 };
 
 // Widget
-export const delete_all_inbox_button_label = {
+export const delete_all_inbox_button = {
   id: "Delete semua",
   en: "Delete all",
 };

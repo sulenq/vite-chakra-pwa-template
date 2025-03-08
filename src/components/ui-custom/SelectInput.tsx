@@ -320,7 +320,7 @@ const SelectInput = ({
                       size={"sm"}
                       colorPalette={themeConfig.colorPalette}
                     >
-                      <Text>{l.select_all_label}</Text>
+                      <Text>{l.select_all}</Text>
                     </Checkbox>
                   </Box>
                 )}
