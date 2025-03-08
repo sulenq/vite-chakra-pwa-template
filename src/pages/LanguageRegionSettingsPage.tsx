@@ -48,7 +48,7 @@ const LanguageRegionSettingsPage = () => {
                     key={i}
                     borderRadius={themeConfig.radii.component}
                     gap={1}
-                    variant={"outline"}
+                    variant={"ghost"}
                     justifyContent={"space-between"}
                     onClick={() => {
                       setLang(item.key);
@@ -91,7 +91,7 @@ const LanguageRegionSettingsPage = () => {
                     px={4}
                     py={3}
                     borderRadius={themeConfig.radii.component}
-                    border={"1px solid {colors.border.muted}"}
+                    // border={"1px solid {colors.border.muted}"}
                     onClick={() => {
                       setDateFormat(item.key);
                     }}

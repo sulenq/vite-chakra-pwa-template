@@ -58,12 +58,11 @@ const translations = {
   "selected": "terpilih",
   "settings_navs": {
     "display": "Tampilan",
-    "language": "Bahasa & Wilayah",
+    "language_region": "Bahasa & Wilayah",
     "permissions": "Izn Akses",
-    "about": "Tentang",
-    "reportProblem": "Laporkan Masalah",
-    "termsOfService": "Ketentuan Layanan",
-    "privacyPolicy": "Kebijakan Privasi"
+    "report_problem": "Laporkan Masalah",
+    "terms_of_service": "Ketentuan Layanan",
+    "privacy_policy": "Kebijakan Privasi"
   },
   "settings_navs_group": {
     "main": "Utama",

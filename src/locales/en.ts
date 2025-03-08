@@ -58,12 +58,11 @@ const translations = {
   "selected": "selected",
   "settings_navs": {
     "display": "Display",
-    "language": "Language & Region",
+    "language_region": "Language & Region",
     "permissions": "Permissions",
-    "about": "About",
-    "reportProblem": "Report a Problem",
-    "termsOfService": "Terms of Service",
-    "privacyPolicy": "Privacy Policy"
+    "report_problem": "Report a Problem",
+    "terms_of_service": "Terms of Service",
+    "privacy_policy": "Privacy Policy"
   },
   "settings_navs_group": {
     "main": "Main",

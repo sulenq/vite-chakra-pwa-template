@@ -1,3 +1,63 @@
+// Navs
+export const navs = {
+  home: {
+    id: "Beranda",
+    en: "Home",
+  },
+  invoice: {
+    id: "Tagihan",
+    en: "Invoice",
+  },
+  services: {
+    id: "Layanan",
+    en: "Services",
+  },
+  helpCenter: {
+    id: "Pusat Bantuan",
+    en: "Help Center",
+  },
+  settings: {
+    id: "Pengaturan",
+    en: "Settings",
+  },
+};
+export const settings_navs_group = {
+  main: {
+    id: "Utama",
+    en: "Main",
+  },
+  others: {
+    id: "Lainnya",
+    en: "Others",
+  },
+};
+export const settings_navs = {
+  display: {
+    id: "Tampilan",
+    en: "Display",
+  },
+  language_region: {
+    id: "Bahasa & Wilayah",
+    en: "Language & Region",
+  },
+  permissions: {
+    id: "Izn Akses",
+    en: "Permissions",
+  },
+  report_problem: {
+    id: "Laporkan Masalah",
+    en: "Report a Problem",
+  },
+  terms_of_service: {
+    id: "Ketentuan Layanan",
+    en: "Terms of Service",
+  },
+  privacy_policy: {
+    id: "Kebijakan Privasi",
+    en: "Privacy Policy",
+  },
+};
+
 // Component UI
 export const year = {
   id: "Tahun",
@@ -229,70 +289,6 @@ export const delete_all_inbox_disclosure = {
   description: {
     id: "Delete semua inbox yang sudah dibaca.",
     en: "Delete all of the read inboxes.",
-  },
-};
-
-// Navs
-export const navs = {
-  home: {
-    id: "Beranda",
-    en: "Home",
-  },
-  invoice: {
-    id: "Tagihan",
-    en: "Invoice",
-  },
-  services: {
-    id: "Layanan",
-    en: "Services",
-  },
-  helpCenter: {
-    id: "Pusat Bantuan",
-    en: "Help Center",
-  },
-  settings: {
-    id: "Pengaturan",
-    en: "Settings",
-  },
-};
-export const settings_navs_group = {
-  main: {
-    id: "Utama",
-    en: "Main",
-  },
-  others: {
-    id: "Lainnya",
-    en: "Others",
-  },
-};
-export const settings_navs = {
-  display: {
-    id: "Tampilan",
-    en: "Display",
-  },
-  language: {
-    id: "Bahasa & Wilayah",
-    en: "Language & Region",
-  },
-  permissions: {
-    id: "Izn Akses",
-    en: "Permissions",
-  },
-  about: {
-    id: "Tentang",
-    en: "About",
-  },
-  reportProblem: {
-    id: "Laporkan Masalah",
-    en: "Report a Problem",
-  },
-  termsOfService: {
-    id: "Ketentuan Layanan",
-    en: "Terms of Service",
-  },
-  privacyPolicy: {
-    id: "Kebijakan Privasi",
-    en: "Privacy Policy",
   },
 };
 

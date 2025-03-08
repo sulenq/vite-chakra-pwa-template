@@ -1,8 +1,9 @@
 import {
   IconDeviceDesktop,
+  IconExclamationCircle,
   IconGavel,
-  IconInfoCircle,
   IconLanguage,
+  IconShieldHalf,
   IconShieldLock,
 } from "@tabler/icons-react";
 
@@ -17,8 +18,13 @@ const SETTINGS_NAVS = [
       },
       {
         icon: IconLanguage,
-        labelKey: "settings_navs.language",
+        labelKey: "settings_navs.language_region",
         path: "/settings/language",
+      },
+      {
+        icon: IconShieldHalf,
+        labelKey: "settings_navs.permissions",
+        path: "/settings/permissions",
       },
     ],
   },
@@ -26,18 +32,18 @@ const SETTINGS_NAVS = [
     groupLabelKey: "settings_navs_group.others",
     list: [
       {
-        icon: IconInfoCircle,
-        labelKey: "settings_navs.about",
-        path: "/settings/about",
+        icon: IconExclamationCircle,
+        labelKey: "settings_navs.report_problem",
+        path: "/settings/report-problem",
       },
       {
         icon: IconGavel,
-        labelKey: "settings_navs.termsOfService",
+        labelKey: "settings_navs.terms_of_service",
         path: "/settings/terms-of-service",
       },
       {
         icon: IconShieldLock,
-        labelKey: "settings_navs.privacyPolicy",
+        labelKey: "settings_navs.privacy_policy",
         path: "/settings/privacy-policy",
       },
     ],

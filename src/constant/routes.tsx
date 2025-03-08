@@ -49,7 +49,7 @@ const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   {
     path: "/settings/language",
     activePath: "/settings",
-    titleKey: "settings_navs.language",
+    titleKey: "settings_navs.language_region",
     backPath: "/settings",
     element: <LanguageRegionSettingsPage />,
   },
