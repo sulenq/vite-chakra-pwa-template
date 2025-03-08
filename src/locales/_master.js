@@ -53,6 +53,42 @@ const week_days = {
     en: "Sunday",
   },
 };
+const date_picker_preset_label = {
+  today: {
+    id: "Hari ini",
+    en: "Today",
+  },
+  tomorrow: {
+    id: "Besok",
+    en: "Tomorrow",
+  },
+  thisMonth: {
+    id: "Bulan ini",
+    en: "This month",
+  },
+  thisWeek: {
+    id: "Minggu ini",
+    en: "This week",
+  },
+};
+const date_range_picker_preset_label = {
+  thisWeek: {
+    id: "Minggu ini",
+    en: "This week",
+  },
+  nextWeek: {
+    id: "Minggu depan",
+    en: "Next week",
+  },
+  thisMonth: {
+    id: "Bulan ini",
+    en: "This month",
+  },
+  nextMonth: {
+    id: "Bulan depan",
+    en: "Next month",
+  },
+};
 const date_picker_default_title = {
   id: "Pilih Tanggal",
   en: "Select Date",
@@ -208,6 +244,8 @@ const see_all = {
 };
 
 export {
+  date_range_picker_preset_label,
+  date_picker_preset_label,
   select_all_label,
   selected_label,
   select_input_default_title,

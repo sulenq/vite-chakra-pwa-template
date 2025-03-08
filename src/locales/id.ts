@@ -6,11 +6,23 @@ const translations = {
   "confirm_label": "Konfirmasi",
   "date_picker_default_placeholder": "Pilih tanggal...",
   "date_picker_default_title": "Pilih Tanggal",
+  "date_picker_preset_label": {
+    "today": "Hari ini",
+    "tomorrow": "Besok",
+    "thisMonth": "Bulan ini",
+    "thisWeek": "Minggu ini"
+  },
   "date_range_picker_default_placeholder": "Pilih rentang tanggal...",
   "date_range_picker_default_title": "Pilih Rentang Tanggal",
   "date_range_picker_error_toast": {
     "title": "Gagal memilih rentang tanggal",
     "description": "Tidak boleh melebihi rentang maksimum"
+  },
+  "date_range_picker_preset_label": {
+    "thisWeek": "Minggu ini",
+    "nextWeek": "Minggu depan",
+    "thisMonth": "Bulan ini",
+    "nextMonth": "Bulan depan"
   },
   "delete_all_inbox_button_label": "Delete semua",
   "delete_all_inbox_disclosure": {

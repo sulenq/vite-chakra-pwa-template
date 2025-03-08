@@ -20,7 +20,7 @@ import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import useLang from "@/context/useLang";
 import formatCount from "@/utils/formatCount";
-import formatDate from "@/utils/formatDate";
+import formatDate from "@/utils/formatDateOld";
 import formatNumber from "@/utils/formatNumber";
 import getUserFromLocalStorage from "@/utils/getUserFromLocalStorage";
 import {

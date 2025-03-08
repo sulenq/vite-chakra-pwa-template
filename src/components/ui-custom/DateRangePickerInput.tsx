@@ -9,7 +9,7 @@ import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
 import countDay from "@/utils/countDay";
 import dateInRange from "@/utils/dateInRange";
-import formatDate from "@/utils/formatDate";
+import formatDate from "@/utils/formatDateOld";
 import {
   Box,
   HStack,
@@ -206,7 +206,7 @@ const DateRangePickerInput = ({
         onClick={setSelectedToThisMonth}
         disabled={!!(maxRange && maxRange < 31)}
       >
-        Bulan Ini
+        {l.date_range_picker_preset_label.thisMonth}
       </BButton>
     ),
     nextMonth: (
@@ -217,7 +217,7 @@ const DateRangePickerInput = ({
         onClick={setSelectedToNextMonth}
         disabled={!!(maxRange && maxRange < 31)}
       >
-        Bulan Depan
+        {l.date_range_picker_preset_label.nextMonth}
       </BButton>
     ),
     thisWeek: (
@@ -228,7 +228,7 @@ const DateRangePickerInput = ({
         onClick={setSelectedToThisWeek}
         disabled={!!(maxRange && maxRange < 7)}
       >
-        Minggu Ini
+        {l.date_range_picker_preset_label.thisWeek}
       </BButton>
     ),
     nextWeek: (
@@ -239,7 +239,7 @@ const DateRangePickerInput = ({
         onClick={setSelectedToNextWeek}
         disabled={!!(maxRange && maxRange < 7)}
       >
-        Minggu Depan
+        {l.date_range_picker_preset_label.nextWeek}
       </BButton>
     ),
   };

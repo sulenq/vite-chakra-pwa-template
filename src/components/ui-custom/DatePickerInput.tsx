@@ -6,7 +6,7 @@ import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
-import formatDate from "@/utils/formatDate";
+import formatDate from "@/utils/formatDateOld";
 import {
   HStack,
   Icon,
@@ -350,11 +350,6 @@ const DatePickerInput = ({
                   </Text>
                 );
               })}
-              {/* {days.map((day, i) => (
-                <Text key={i} fontWeight={"semibold"} textAlign={"center"}>
-                  {day.substring(0, 3)}
-                </Text>
-              ))} */}
             </SimpleGrid>
             <CContainer gap={2}>
               {fullDates().map((weeks, i) => (
@@ -434,7 +429,7 @@ const DatePickerInput = ({
                     variant={"outline"}
                     onClick={setSelectedToToday}
                   >
-                    Hari ini
+                    {l.date_picker_preset_label.today}
                   </BButton>
 
                   <BButton
@@ -443,7 +438,7 @@ const DatePickerInput = ({
                     variant={"outline"}
                     onClick={setSelectedToTomorrow}
                   >
-                    Besok
+                    {l.date_picker_preset_label.tomorrow}
                   </BButton>
                 </>
               )}
@@ -456,7 +451,7 @@ const DatePickerInput = ({
                     variant={"outline"}
                     onClick={setSelectedToThisWeek}
                   >
-                    Minggu ini
+                    {l.date_picker_preset_label.thisWeek}
                   </BButton>
 
                   <BButton
@@ -465,7 +460,7 @@ const DatePickerInput = ({
                     variant={"outline"}
                     onClick={setSelectedToThisMonth}
                   >
-                    Bulan ini
+                    {l.date_picker_preset_label.thisMonth}
                   </BButton>
                 </>
               )}

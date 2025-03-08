@@ -6,11 +6,23 @@ const translations = {
   "confirm_label": "Confirm",
   "date_picker_default_placeholder": "Select date...",
   "date_picker_default_title": "Select Date",
+  "date_picker_preset_label": {
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "thisMonth": "This month",
+    "thisWeek": "This week"
+  },
   "date_range_picker_default_placeholder": "Select date range...",
   "date_range_picker_default_title": "Select Date Range",
   "date_range_picker_error_toast": {
     "title": "Failed to select date range",
     "description": "Must not exceed the maximum range"
+  },
+  "date_range_picker_preset_label": {
+    "thisWeek": "This week",
+    "nextWeek": "Next week",
+    "thisMonth": "This month",
+    "nextMonth": "Next month"
   },
   "delete_all_inbox_button_label": "Delete all",
   "delete_all_inbox_disclosure": {

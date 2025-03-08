@@ -80,7 +80,7 @@ import { OPTIONS_RELIGION } from "@/gens/selectOptions";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import back from "@/utils/back";
-import formatDate from "@/utils/formatDate";
+import formatDate from "@/utils/formatDateOld";
 import formatNumber from "@/utils/formatNumber";
 import formatTimeFromDateFormat from "@/utils/formatTimeFromDateFormat";
 import {
