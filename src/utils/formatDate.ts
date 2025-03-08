@@ -1,6 +1,6 @@
 import MONTHS from "@/constant/months";
-import WEEKDAYS from "@/constant/weekdays";
 import { Type__DateVariant } from "@/constant/types";
+import { WEEKDAYS_0_BASED } from "@/constant/weekdays";
 
 const formatDate = (
   date?: Date,
@@ -21,17 +21,29 @@ const formatDate = (
 
   const monthName = MONTHS[lang][month];
   const shortMonthName = monthName.substring(0, 3);
-  const weekdayName = WEEKDAYS[lang][weekday];
+  const weekdayName = WEEKDAYS_0_BASED[lang][weekday];
   const shortWeekdayName = weekdayName.substring(0, 3);
 
-  const formatDate = (day: number, year: number, monthName: string) => {
+  const basicVariant = variant === "basic";
+
+  const formatDate = (
+    day: number,
+    year: number,
+    monthName: string | number
+  ) => {
     switch (dateFormat.toLowerCase()) {
       case "dmy":
-        return `${day} ${monthName} ${year}`;
+        return `${day}${basicVariant ? "-" : " "}${monthName}${
+          basicVariant ? "-" : " "
+        }${year}`;
       case "mdy":
-        return `${monthName} ${day}, ${year}`;
+        return `${monthName}${basicVariant ? "-" : " "}${day}${
+          basicVariant ? "-" : ", "
+        }${year}`;
       case "ymd":
-        return `${year} ${monthName} ${day}`;
+        return `${year}${basicVariant ? "-" : " "}${monthName}${
+          basicVariant ? "-" : " "
+        }${day}`;
       default:
         return `${day} ${monthName} ${year}`;
     }
@@ -39,7 +51,7 @@ const formatDate = (
 
   switch (variant) {
     case "basic":
-      return formatDate(day, year, monthName);
+      return formatDate(day, year, month);
     case "shortMonth":
       return formatDate(day, year, shortMonthName);
     case "fullMonth":

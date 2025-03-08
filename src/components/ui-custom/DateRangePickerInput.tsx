@@ -1,4 +1,4 @@
-import WEEKDAYS from "@/constant/weekdays";
+import { WEEKDAYS } from "@/constant/weekdays";
 import { Interface__DateRangePicker } from "@/constant/interfaces";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";

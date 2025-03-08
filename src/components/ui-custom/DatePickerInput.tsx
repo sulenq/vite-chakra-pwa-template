@@ -37,7 +37,7 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
-import WEEKDAYS from "@/constant/weekdays";
+import { WEEKDAYS } from "@/constant/weekdays";
 
 const SelectedDateList = ({
   selectedDates,
