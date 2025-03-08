@@ -22,10 +22,6 @@ const LanguageRegionSettingsPage = () => {
 
   return (
     <SettingsNavsContainer align={"stretch"} activePath="/settings/language">
-      <HelperText px={2} mb={4}>
-        {l.language_region_helper_text}
-      </HelperText>
-
       <CContainer gap={4}>
         {/* Language */}
         <ItemContainer>
@@ -38,8 +34,8 @@ const LanguageRegionSettingsPage = () => {
             </HStack>
           </ItemHeaderContainer>
 
-          <CContainer gap={4} py={3}>
-            <SimpleGrid px={3} gap={2} columns={[1, 2]}>
+          <CContainer gap={4} py={2}>
+            <SimpleGrid px={2} columns={[1, 2]}>
               {LANGUAGES.map((item, i) => {
                 const active = lang === item.key;
 
@@ -80,8 +76,8 @@ const LanguageRegionSettingsPage = () => {
             </HStack>
           </ItemHeaderContainer>
 
-          <CContainer gap={4} py={3}>
-            <SimpleGrid px={3} gap={2} columns={[1, 2, 3]}>
+          <CContainer gap={4} py={2}>
+            <SimpleGrid px={2} columns={[1, 2, 3]}>
               {DATE_FORMATS.map((item, i) => {
                 const active = item.key === dateFormat;
 
@@ -107,7 +103,7 @@ const LanguageRegionSettingsPage = () => {
                       {active && <CheckIndicator />}
                     </HStack>
 
-                    <Text color={"fg.subtle"} mb={4}>
+                    <Text color={"fg.subtle"} mb={2}>
                       {item.description}
                     </Text>
 
@@ -123,6 +119,10 @@ const LanguageRegionSettingsPage = () => {
           </CContainer>
         </ItemContainer>
       </CContainer>
+
+      <HelperText px={2} mt={4}>
+        {l.language_region_helper_text}
+      </HelperText>
     </SettingsNavsContainer>
   );
 };

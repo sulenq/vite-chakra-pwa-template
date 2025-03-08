@@ -5,7 +5,7 @@ interface Props extends TextProps {
 }
 const HelperText = ({ children, ...props }: Props) => {
   return (
-    <Text fontSize={"xs"} color={"fg.subtle"} {...props}>
+    <Text fontSize={"sm"} color={"fg.subtle"} {...props}>
       {children}
     </Text>
   );
