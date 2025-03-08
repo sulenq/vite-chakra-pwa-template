@@ -1270,7 +1270,7 @@ const TableComponentDemo = () => {
           {
             label: "Delete...",
             disabled: (rowData: any) => {
-              return true;
+              return rowData.id === 1249;
             },
             menuItemProps: {
               color: "red.400",

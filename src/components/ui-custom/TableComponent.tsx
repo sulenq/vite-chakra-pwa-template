@@ -205,12 +205,22 @@ const RowOptions = ({
                   confirmButtonProps={
                     option.confirmation(rowData)?.confirmButtonProps
                   }
+                  disabled={
+                    typeof option?.disabled === "boolean"
+                      ? option.disabled
+                      : !!option?.disabled?.(rowData)
+                  }
                 >
                   <MenuItem
                     key={i}
                     value={option.label}
                     justifyContent={"space-between"}
                     color={"light"}
+                    disabled={
+                      typeof option?.disabled === "boolean"
+                        ? option.disabled
+                        : !!option?.disabled?.(rowData)
+                    }
                     {...option.menuItemProps}
                   >
                     {option.label}
