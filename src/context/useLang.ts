@@ -26,7 +26,7 @@ const useLang = create<Props>((set) => {
     l: translations[initial as keyof typeof translations],
     setLang: (newState) =>
       set(() => {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
+        localStorage.setItem(STORAGE_KEY, newState);
         return {
           lang: newState,
           l: translations[newState as keyof typeof translations],
