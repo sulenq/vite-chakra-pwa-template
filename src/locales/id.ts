@@ -13,6 +13,7 @@ const translations = {
     "title": "Gagal memilih rentang tanggal",
     "description": "Tidak boleh melebihi rentang maksimum"
   },
+  "date_range_picker_max_range_alert": "Maksimal rentang tanggal ${maxRange} hari",
   "delete_all_inbox_button_label": "Delete semua",
   "delete_all_inbox_disclosure": {
     "title": "Delete semua?",

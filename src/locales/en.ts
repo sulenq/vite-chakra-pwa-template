@@ -13,6 +13,7 @@ const translations = {
     "title": "Failed to select date range",
     "description": "Must not exceed the maximum range"
   },
+  "date_range_picker_max_range_alert": "Maximum date range is ${maxRange} days",
   "delete_all_inbox_button_label": "Delete all",
   "delete_all_inbox_disclosure": {
     "title": "Delete all?",

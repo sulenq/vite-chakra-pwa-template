@@ -105,6 +105,10 @@ export const date_range_picker_default_placeholder = {
   id: "Pilih rentang tanggal...",
   en: "Select date range...",
 };
+export const date_range_picker_max_range_alert = {
+  id: "Maksimal rentang tanggal ${maxRange} hari",
+  en: "Maximum date range is ${maxRange} days",
+};
 export const time_picker_default_title = {
   id: "Pilih Waktu",
   en: "Select Time",

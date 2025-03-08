@@ -38,6 +38,7 @@ import {
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
 import { Type__DateRange } from "@/constant/types";
+import interpolate from "@/utils/interpolate";
 
 const DateRangePickerInput = ({
   id,
@@ -340,7 +341,9 @@ const DateRangePickerInput = ({
               <Alert
                 variant={"surface"}
                 status="warning"
-                title={`Maksimal rentang tanggal ${maxRange} hari`}
+                title={interpolate(l.date_range_picker_max_range_alert, {
+                  maxRange,
+                })}
                 mb={4}
               />
             )}
