@@ -42,6 +42,7 @@ const LanguageRegionSettingsPage = () => {
                 return (
                   <BButton
                     key={i}
+                    unclicky
                     borderRadius={themeConfig.radii.component}
                     gap={1}
                     variant={"ghost"}

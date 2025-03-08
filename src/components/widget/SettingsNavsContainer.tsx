@@ -63,8 +63,8 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
           pb={4}
           w={iss ? "full" : "200px"}
           flexShrink={0}
-          overflowY={"auto"}
           maxH={"full"}
+          overflowY={"auto"}
         >
           <CContainer
             bg={"body"}
@@ -75,9 +75,50 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
             border={"1px solid"}
             borderColor={"border.subtle"}
             h={"fit"}
-            overflowY={"auto"}
             maxH={"full"}
+            overflowY={"auto"}
           >
+            {SETTINGS_NAVS.map((item, i) => {
+              return (
+                <CContainer key={i}>
+                  <Text fontWeight={"bold"} color={"fg.subtle"} mx={2} mb={2}>
+                    {pluck(l, item.groupLabelKey)}
+                  </Text>
+
+                  {item.list.map((nav, ii) => {
+                    const active = activePath === nav.path;
+
+                    return (
+                      <Link key={ii} to={nav.path}>
+                        <BButton
+                          unclicky
+                          variant={"ghost"}
+                          w={"full"}
+                          justifyContent={"start"}
+                          px={2}
+                          position={"relative"}
+                        >
+                          {active && <ActiveNavIndicator />}
+
+                          <Icon>
+                            <nav.icon />
+                          </Icon>
+
+                          {pluck(l, nav.labelKey)}
+
+                          {iss && (
+                            <Icon ml={"auto"}>
+                              <IconChevronRight />
+                            </Icon>
+                          )}
+                        </BButton>
+                      </Link>
+                    );
+                  })}
+                </CContainer>
+              );
+            })}
+
             {SETTINGS_NAVS.map((item, i) => {
               return (
                 <CContainer key={i}>

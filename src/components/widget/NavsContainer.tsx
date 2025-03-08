@@ -216,7 +216,6 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
           top={0}
           zIndex={2}
           bg={iss ? "body" : "bgContent"}
-          mb={iss ? 4 : 0}
           borderBottom={iss ? "1px solid {colors.border.subtle}" : ""}
         >
           <HStack>
@@ -234,7 +233,7 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
           </HStack>
         </HStack>
 
-        {children}
+        <CContainer pt={iss ? 4 : 0}>{children}</CContainer>
       </CContainer>
 
       {/* Sm screen nav */}
