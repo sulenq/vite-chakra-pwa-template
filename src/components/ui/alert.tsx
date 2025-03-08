@@ -7,6 +7,7 @@ import {
   IconCircleCheck,
   IconInfoCircle,
 } from "@tabler/icons-react";
+import { useThemeConfig } from "@/context/useThemeConfig";
 
 export interface AlertProps extends Omit<ChakraAlert.RootProps, "title"> {
   startElement?: React.ReactNode;
@@ -32,6 +33,9 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
     ...rest
   } = props;
 
+  // Context
+  const { themeConfig } = useThemeConfig();
+
   let PresetIcon;
   switch (rest?.status) {
     case "success":
@@ -48,7 +52,12 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
   }
 
   return (
-    <ChakraAlert.Root ref={ref} variant={"surface"} {...rest}>
+    <ChakraAlert.Root
+      ref={ref}
+      variant={"surface"}
+      borderRadius={themeConfig.radii.component}
+      {...rest}
+    >
       {startElement || (
         <ChakraAlert.Indicator>
           {icon || (
