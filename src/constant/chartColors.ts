@@ -1,4 +1,4 @@
-const CHART_COLORS: string[] = [
+export const CHART_COLORS: string[] = [
   "#63B3ED", // Biru muda
   "#3182CE", // Biru
   "#5A67D8", // Ungu
@@ -18,5 +18,3 @@ const CHART_COLORS: string[] = [
   "#D53F8C", // Merah muda gelap
   "#E53E3E", // Merah kecokelatan
 ];
-
-export { CHART_COLORS };

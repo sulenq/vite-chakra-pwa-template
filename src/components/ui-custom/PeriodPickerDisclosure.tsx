@@ -24,7 +24,7 @@ import {
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import StringInput from "./StringInput";
 import useLang from "@/context/useLang";
-import MONTHS from "@/constant/months";
+import { MONTHS } from "@/constant/months";
 
 interface Props {
   children?: any;

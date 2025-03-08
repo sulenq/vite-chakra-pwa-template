@@ -7,7 +7,7 @@ import RootPage from "@/pages/RootPage";
 import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
 import PreferenceSettingsPage from "@/pages/PreferenceSettingsPage";
 
-const ROUTES: Interface__Route[] = [
+export const ROUTES: Interface__Route[] = [
   {
     path: "/",
     activePath: "/",
@@ -15,7 +15,7 @@ const ROUTES: Interface__Route[] = [
   },
 ];
 
-const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
+export const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   {
     path: "/home",
     activePath: "/home",
@@ -59,5 +59,3 @@ const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   //   element: <MerchantProfilePage />,
   // },
 ];
-
-export { PRIVATE_ROUTES, ROUTES };

@@ -1,4 +1,4 @@
-const MONTHS: Record<string, string[]> = {
+export const MONTHS: Record<string, string[]> = {
   id: [
     "Januari",
     "Februari",
@@ -28,5 +28,3 @@ const MONTHS: Record<string, string[]> = {
     "December",
   ],
 };
-
-export default MONTHS;

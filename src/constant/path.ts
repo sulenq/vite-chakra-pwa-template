@@ -1,5 +1,3 @@
-const ASSETS_PATH = "/assets";
-const IMAGES_PATH = "/assets/images";
-const SVGS_PATH = "/assets/svgs";
-
-export { ASSETS_PATH, IMAGES_PATH, SVGS_PATH };
+export const ASSETS_PATH = "/assets";
+export const IMAGES_PATH = "/assets/images";
+export const SVGS_PATH = "/assets/svgs";

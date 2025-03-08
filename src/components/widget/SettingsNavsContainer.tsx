@@ -8,7 +8,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import CContainer from "../ui-custom/CContainer";
-import SETTINGS_NAVS from "@/constant/settingsNavs";
+import { SETTINGS_NAVS } from "@/constant/navs";
 import { Link } from "react-router-dom";
 import BButton from "../ui-custom/BButton";
 import { IconChevronRight } from "@tabler/icons-react";

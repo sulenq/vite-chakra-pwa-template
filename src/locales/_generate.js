@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import LANGUAGES from "./_languages.js"; // ✅ Bisa langsung import
+import { LANGUAGES } from "./_languages.js"; // ✅ Bisa langsung import
 
 // Path ke master translation
 const __filename = fileURLToPath(import.meta.url);

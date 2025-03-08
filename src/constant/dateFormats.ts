@@ -1,4 +1,4 @@
-const DATE_FORMATS = [
+export const DATE_FORMATS = [
   {
     key: "dmy",
     description: "Day-Month-Year",
@@ -141,5 +141,3 @@ const DATE_FORMATS = [
     // example: Senin, 2001 November 5
   },
 ];
-
-export default DATE_FORMATS;

@@ -1,4 +1,4 @@
-import MONTHS from "@/constant/months";
+import { MONTHS } from "@/constant/months";
 import { Type__DateVariant } from "@/constant/types";
 import { WEEKDAYS_0_BASED } from "@/constant/weekdays";
 

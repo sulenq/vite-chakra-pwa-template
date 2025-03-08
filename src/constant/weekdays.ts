@@ -1,4 +1,4 @@
-const WEEKDAYS: Record<string, string[]> = {
+export const WEEKDAYS: Record<string, string[]> = {
   id: ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"],
   en: [
     "Monday",
@@ -11,7 +11,7 @@ const WEEKDAYS: Record<string, string[]> = {
   ],
 };
 
-const WEEKDAYS_0_BASED: Record<string, string[]> = {
+export const WEEKDAYS_0_BASED: Record<string, string[]> = {
   id: ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"],
   en: [
     "Sunday",
@@ -23,5 +23,3 @@ const WEEKDAYS_0_BASED: Record<string, string[]> = {
     "Saturday",
   ],
 };
-
-export { WEEKDAYS, WEEKDAYS_0_BASED };
