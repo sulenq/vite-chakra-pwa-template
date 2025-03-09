@@ -2,10 +2,10 @@ import MerchantHelpCenterPage from "@/pages/MerchantHelpCenterPage";
 import MerchantHomePage from "@/pages/MerchantHomePage";
 import MerchantInvoicePage from "@/pages/MerchantInvoicePage";
 import MerchantServicePage from "@/pages/MerchantServicePage";
-import SettingsPage from "@/pages/SettingsPage";
-import RootPage from "@/pages/RootPage";
-import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
 import PreferenceSettingsPage from "@/pages/PreferenceSettingsPage";
+import RootPage from "@/pages/RootPage";
+import SettingsPage from "@/pages/SettingsPage";
+import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
 
 export const ROUTES: Interface__Route[] = [
   {

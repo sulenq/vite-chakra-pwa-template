@@ -75,6 +75,13 @@
   color: white !important;
 }
 
+/* Active */
+button:active,
+a:active,
+.canActive {
+  opacity: 0.8;
+}
+
 /* Border Radius */
 button,
 input,
