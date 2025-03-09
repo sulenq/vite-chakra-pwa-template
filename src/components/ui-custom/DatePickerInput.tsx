@@ -2,10 +2,12 @@ import {
   Interface__DatePicker,
   Interface__SelectedDateList,
 } from "@/constant/interfaces";
+import { WEEKDAYS } from "@/constant/weekdays";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
+import formatDate from "@/utils/formatDate";
 import {
   HStack,
   Icon,
@@ -36,8 +38,8 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
-import { WEEKDAYS } from "@/constant/weekdays";
-import formatDate from "@/utils/formatDate";
+import moment from "moment-timezone";
+import userTimeZone from "@/utils/userTimeZone";
 
 const SelectedDateList = ({
   selectedDates,
@@ -115,16 +117,25 @@ const DatePickerInput = ({
 
   // States, Refs
   const finalPlaceholder = placeholder || l.date_picker_default_placeholder;
-  const [date, setDate] = useState<Date>(inputValue?.[0] || new Date());
+  const [date, setDate] = useState<Date>(
+    inputValue?.[0] ? new Date(inputValue?.[0]) : new Date()
+  );
   const [month, setMonth] = useState<number>(date.getMonth());
   const [year, setYear] = useState<number>(date.getFullYear());
   const [selectedDates, setSelectedDates] = useState<Date[]>(
-    inputValue ? inputValue : []
+    inputValue
+      ? inputValue.map((item) => moment.utc(item).tz(userTimeZone()).toDate())
+      : []
   );
+
   const fullDates = () => {
     const firstDayOfMonth = new Date(year, month, 1);
 
-    const startOfFirstWeek = startOfWeek(firstDayOfMonth, { weekStartsOn: 1 }); // 0 = Sunday
+    const startOfFirstWeek = startOfWeek(firstDayOfMonth, { weekStartsOn: 1 });
+
+    if (startOfFirstWeek.getMonth() !== month) {
+      startOfFirstWeek.setDate(startOfFirstWeek.getDate() + 7);
+    }
 
     let weekDates = [];
     let currentWeek = [];
@@ -154,7 +165,7 @@ const DatePickerInput = ({
 
   const renderValue =
     inputValue && inputValue?.length > 0
-      ? inputValue.map((date) => formatDate(date)).join(", ")
+      ? inputValue.map((date) => formatDate(date as any)).join(", ")
       : finalPlaceholder;
 
   // Utils
@@ -244,19 +255,8 @@ const DatePickerInput = ({
 
   // Handle confirm selected
   function onConfirmSelected() {
-    let confirmable = false;
-    if (!nonNullable) {
-      confirmable = true;
-    } else {
-      if (selectedDates.length > 0) {
-        confirmable = true;
-      }
-    }
-
-    if (confirmable) {
-      if (onConfirm) {
-        onConfirm(selectedDates);
-      }
+    if (!nonNullable || selectedDates.length > 0) {
+      onConfirm?.(selectedDates.map((item) => item.toISOString()));
       back();
     }
   }
@@ -272,7 +272,11 @@ const DatePickerInput = ({
           borderColor={fc?.invalid || invalid ? "border.error" : "border.muted"}
           onClick={() => {
             if (inputValue) {
-              setSelectedDates(inputValue);
+              setSelectedDates(
+                inputValue.map((item) =>
+                  moment.utc(item).tz(userTimeZone()).toDate()
+                )
+              );
             }
             onOpen();
           }}

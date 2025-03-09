@@ -76,8 +76,8 @@
 }
 
 /* Active */
-button:active,
-a:active,
+button:active:not(:disabled),
+a:active:not(:disabled),
 .canActive {
   opacity: 0.8;
 }

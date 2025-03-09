@@ -462,7 +462,7 @@ const DatePickerDemo = () => {
           formik.setFieldValue("date1", inputValue);
         }}
         inputValue={formik.values.date1}
-        // nonNullable
+        nonNullable
       />
 
       <DatePickerInput

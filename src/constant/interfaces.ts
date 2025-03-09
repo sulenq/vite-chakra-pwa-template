@@ -64,8 +64,8 @@ export interface Interface__DatePicker extends ButtonProps {
   id?: string;
   name?: string;
   title?: string;
-  onConfirm?: (inputValue: Date[] | undefined) => void;
-  inputValue?: Date[] | undefined;
+  onConfirm?: (inputValue: string[] | undefined) => void;
+  inputValue?: string[] | undefined;
   placeholder?: string;
   nonNullable?: boolean;
   invalid?: boolean;
