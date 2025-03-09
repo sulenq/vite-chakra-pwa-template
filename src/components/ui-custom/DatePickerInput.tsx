@@ -6,7 +6,6 @@ import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
-import formatDate from "@/utils/formatDateOld";
 import {
   HStack,
   Icon,
@@ -38,6 +37,7 @@ import {
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
 import { WEEKDAYS } from "@/constant/weekdays";
+import formatDate from "@/utils/formatDate";
 
 const SelectedDateList = ({
   selectedDates,
@@ -77,7 +77,11 @@ const SelectedDateList = ({
             <CContainer px={2} pt={1}>
               <ListRoot gap={2}>
                 {selectedDates.map((item, i) => {
-                  return <ListItem key={i}>{formatDate(item)}</ListItem>;
+                  return (
+                    <ListItem key={i}>
+                      {formatDate(item, "weekdayFullMonth")}
+                    </ListItem>
+                  );
                 })}
               </ListRoot>
             </CContainer>
@@ -97,7 +101,6 @@ const DatePickerInput = ({
   title,
   onConfirm,
   inputValue,
-  dateFormatOptions = "basic",
   placeholder,
   nonNullable,
   invalid,
@@ -146,14 +149,12 @@ const DatePickerInput = ({
   };
   const selectedRenderValue =
     selectedDates?.length > 0
-      ? selectedDates
-          .map((date) => formatDate(date, dateFormatOptions))
-          .join(", ")
+      ? selectedDates.map((date) => formatDate(date)).join(", ")
       : finalPlaceholder;
 
   const renderValue =
     inputValue && inputValue?.length > 0
-      ? inputValue.map((date) => formatDate(date, dateFormatOptions)).join(", ")
+      ? inputValue.map((date) => formatDate(date)).join(", ")
       : finalPlaceholder;
 
   // Utils

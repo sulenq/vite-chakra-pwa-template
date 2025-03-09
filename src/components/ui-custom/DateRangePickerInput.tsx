@@ -6,7 +6,7 @@ import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
 import countDay from "@/utils/countDay";
 import dateInRange from "@/utils/dateInRange";
-import formatDate from "@/utils/formatDateOld";
+import formatDate from "@/utils/formatDate";
 import {
   Box,
   HStack,
@@ -46,7 +46,6 @@ const DateRangePickerInput = ({
   title,
   onConfirm,
   inputValue,
-  dateFormatOptions = "basicShort",
   placeholder,
   nonNullable,
   invalid,
@@ -98,17 +97,16 @@ const DateRangePickerInput = ({
   const selectedRenderValue =
     selected?.from &&
     selected?.to &&
-    `${formatDate(selected?.from, dateFormatOptions)} - ${formatDate(
-      selected?.to,
-      dateFormatOptions
-    )} (${countDay(selected?.from, selected?.to)} hari)`;
+    `${formatDate(selected?.from)} - ${formatDate(selected?.to)} (${countDay(
+      selected?.from,
+      selected?.to
+    )} hari)`;
 
   const renderValue =
     inputValue?.from &&
     inputValue?.to &&
-    `${formatDate(inputValue?.from, dateFormatOptions)} - ${formatDate(
-      inputValue?.to,
-      dateFormatOptions
+    `${formatDate(inputValue?.from)} - ${formatDate(
+      inputValue?.to
     )} (${countDay(inputValue?.from, inputValue?.to)} hari)`;
 
   // Utils
@@ -508,7 +506,7 @@ const DateRangePickerInput = ({
               mt={2}
             >
               <Text textAlign={"center"} fontWeight={"semibold"}>
-                {selectedRenderValue || "Pilih rentang tanggal"}
+                {selectedRenderValue || finalPlaceholder}
               </Text>
             </CContainer>
           </DisclosureBody>

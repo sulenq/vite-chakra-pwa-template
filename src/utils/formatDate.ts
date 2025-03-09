@@ -4,7 +4,7 @@ import { WEEKDAYS_0_BASED } from "@/constant/weekdays";
 
 const formatDate = (
   date?: Date,
-  variant?: Type__DateVariant,
+  variant: Type__DateVariant = "fullMonth",
   prerfixDateFormat?: string
 ) => {
   if (!date) return "";

@@ -385,7 +385,6 @@ const SelectInputDemo = () => {
         id="select_empty"
         name="select_empty"
         title={l.religion}
-        placeholder="Select kosong"
         initialOptions={null}
         onConfirm={(inputValue) => {
           formik.setFieldValue("select", inputValue);

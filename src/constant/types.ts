@@ -4,16 +4,6 @@ export type LanguageOptions = "id" | "en";
 
 export type Type__DisclosureSizes = "xs" | "sm" | "md" | "lg" | "xl";
 
-export type Type__PrefixDateFormat =
-  | "basic"
-  | "basicShort"
-  | "long"
-  | "longShort"
-  | "dmy"
-  | "ymd"
-  | "periode"
-  | "iso";
-
 export type Type__DateRange = {
   from: Date | undefined;
   to: Date | undefined;

@@ -12,7 +12,6 @@ import {
   Type__DateRange,
   Type__DateRangePresets,
   Type__DisclosureSizes,
-  Type__PrefixDateFormat,
   Type__TableOptions,
   Type__TimeRange,
 } from "./types";
@@ -67,7 +66,6 @@ export interface Interface__DatePicker extends ButtonProps {
   title?: string;
   onConfirm?: (inputValue: Date[] | undefined) => void;
   inputValue?: Date[] | undefined;
-  dateFormatOptions?: Type__PrefixDateFormat | object;
   placeholder?: string;
   nonNullable?: boolean;
   invalid?: boolean;
@@ -82,7 +80,6 @@ export interface Interface__DateRangePicker extends ButtonProps {
   title?: string;
   onConfirm?: (inputValue: Type__DateRange) => void;
   inputValue?: Type__DateRange;
-  dateFormatOptions?: Type__PrefixDateFormat | object;
   placeholder?: string;
   nonNullable?: boolean;
   invalid?: boolean;
