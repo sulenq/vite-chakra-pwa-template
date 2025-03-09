@@ -1,23 +1,30 @@
+import moment from "moment-timezone";
 import { MONTHS } from "@/constant/months";
-import { Type__DateVariant } from "@/constant/types";
+import { Type__DateFormat, Type__DateVariant } from "@/constant/types";
 import { WEEKDAYS_0_BASED } from "@/constant/weekdays";
+import userTimeZone from "@/utils/userTimeZone";
 
 const formatDate = (
   date?: Date,
   variant: Type__DateVariant = "fullMonth",
-  prerfixDateFormat?: string
+  options: {
+    prefixDateFormat?: Type__DateFormat;
+    prefixTimeZone?: string;
+  } = {}
 ) => {
   if (!date) return "";
 
   const lang = localStorage.getItem("lang") || "id";
-  const dateFormat = prerfixDateFormat
-    ? prerfixDateFormat
-    : localStorage.getItem("dateFormat") || "dmy";
+  const dateFormat =
+    options.prefixDateFormat || localStorage.getItem("dateFormat") || "dmy";
+  const timeZone = options.prefixTimeZone || userTimeZone();
 
-  const day = date.getDate();
-  const month = date.getMonth(); // (0 = Januari, 11 = Desember)
-  const year = date.getFullYear();
-  const weekday = date.getDay(); // (0 = Minggu, 6 = Sabtu)
+  const momentDate = moment(date).tz(timeZone);
+
+  const day = momentDate.date();
+  const month = momentDate.month();
+  const year = momentDate.year();
+  const weekday = momentDate.day();
 
   const monthName = MONTHS[lang][month];
   const shortMonthName = monthName.substring(0, 3);

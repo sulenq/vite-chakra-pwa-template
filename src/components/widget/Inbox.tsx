@@ -16,7 +16,7 @@ import DisclosureHeaderContent from "../ui-custom/DisclosureHeaderContent";
 import FloatCounter from "../ui-custom/FloatCounter";
 
 const Inbox = () => {
-  // Context
+  // Contexts
   const { l } = useLang();
 
   // Utils

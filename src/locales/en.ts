@@ -40,6 +40,12 @@ const translations = {
     "title": "Logout?",
     "description": "Make sure there is no process to the server before the logout is confirmed to avoid authentication errors."
   },
+  "measurment_unit_format_settings_title": "Measurement Units Format",
+  "measurment_unit_formats_description": {
+    "metric": "The measurement system used in most of the world.",
+    "imperial": "The measurement system commonly used in the United States.",
+    "iso": "International standard measurement system. Based on metric."
+  },
   "month": "Month",
   "navs": {
     "home": "Home",
@@ -68,7 +74,7 @@ const translations = {
   },
   "pay": "Pay",
   "periode_picker_default_title": "Select Period",
-  "perma_delete_confirmation": "This action cannot be undone, do it with caution.",
+  "perma_delete_confirmation": "This action cannot be undone, please be careful.",
   "religion": "Religion",
   "retry": "Retry now",
   "retry_feedback": {
@@ -84,7 +90,7 @@ const translations = {
   "settings_navs": {
     "display": "Display",
     "preference": "Preference",
-    "permissions": "Permissions",
+    "permissions": "App Permissions",
     "report_problem": "Report a Problem",
     "terms_of_service": "Terms of Service",
     "privacy_policy": "Privacy Policy"
@@ -100,10 +106,12 @@ const translations = {
   "show": "Show",
   "this_month": "This month",
   "this_week": "This week",
+  "time_format_settings_title": "Time Format",
   "time_picker_default_placeholder": "Select time...",
   "time_picker_default_title": "Select Time",
   "time_range_picker_default_placeholder": "Select time range...",
   "time_range_picker_default_title": "Select Time Range",
+  "time_zone_settings_title": "Time Zone",
   "today": "Today",
   "tomorrow": "Tomorrow",
   "weekdays": {

@@ -12,7 +12,7 @@ interface Props extends StackProps {
 }
 
 export default function FeedbackRetry({ title, description, ...props }: Props) {
-  // Context
+  // Contexts
   const { themeConfig } = useThemeConfig();
   const { l } = useLang();
 

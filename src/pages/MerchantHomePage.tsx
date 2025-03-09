@@ -48,7 +48,7 @@ import { BILLING_CYCLES } from "@/gens/pricing";
 import PageContainer from "@/components/widget/PageContainer";
 
 const Profile = ({ ...props }: StackProps) => {
-  // Context
+  // Contexts
   const { l } = useLang();
 
   // States, Refs

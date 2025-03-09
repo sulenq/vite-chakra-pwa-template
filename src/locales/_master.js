@@ -41,8 +41,8 @@ export const settings_navs = {
     en: "Preference",
   },
   permissions: {
-    id: "Izn Akses",
-    en: "Permissions",
+    id: "Izn Aplikasi",
+    en: "App Permissions",
   },
   report_problem: {
     id: "Laporkan Masalah",
@@ -59,6 +59,20 @@ export const settings_navs = {
 };
 
 // Component UI
+export const measurment_unit_formats_description = {
+  metric: {
+    id: "Sistem pengukuran yang digunakan di sebagian besar dunia.",
+    en: "The measurement system used in most of the world.",
+  },
+  imperial: {
+    id: "Sistem pengukuran yang umum digunakan di Amerika Serikat.",
+    en: "The measurement system commonly used in the United States.",
+  },
+  iso: {
+    id: "Sistem pengukuran standar internasional. Berdasarkan metric.",
+    en: "International standard measurement system. Based on metric.",
+  },
+};
 export const perma_delete_confirmation = {
   id: "Aksi ini tidak dapat dibatalkan, harap hati-hati.",
   en: "This action cannot be undone, please be careful.",
@@ -277,9 +291,21 @@ export const language_settings_title = {
   id: "Bahasa",
   en: "Language",
 };
+export const time_zone_settings_title = {
+  id: "Zona Waktu",
+  en: "Time Zone",
+};
 export const date_format_settings_title = {
   id: "Format Tanggal",
   en: "Date Format",
+};
+export const time_format_settings_title = {
+  id: "Format Waktu",
+  en: "Time Format",
+};
+export const measurment_unit_format_settings_title = {
+  id: "Format Satuan Pengukuran",
+  en: "Measurement Units Format",
 };
 export const religion = {
   id: "Agama",
@@ -365,27 +391,6 @@ export const delete_all_inbox_disclosure = {
     en: "Delete all of the read inboxes.",
   },
 };
-
-// Tampilan
-// dark mode
-// theme
-// font size
-
-// Language & Region
-// language
-// date format
-// time zone
-// currency
-
-// Permissions
-// lokasi
-// camera
-
-// Help & Support
-// help center
-// report a problem
-// terms of service
-// privacy policy
 
 // Responses
 

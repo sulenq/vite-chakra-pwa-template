@@ -36,7 +36,7 @@ interface Props {
   activePath?: string;
 }
 const NavContainer = ({ children, title, backPath, activePath }: Props) => {
-  // Context
+  // Contexts
   const { themeConfig } = useThemeConfig();
   const { l } = useLang();
 
@@ -57,7 +57,7 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
     active,
     ...props
   }: Interface__NavItemContainer) => {
-    // Context
+    // Contexts
     const { themeConfig } = useThemeConfig();
 
     return (

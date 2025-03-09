@@ -13,7 +13,7 @@ import { Text } from "@chakra-ui/react";
 import { IconCreditCardPay } from "@tabler/icons-react";
 
 const MerchantInvoicePage = () => {
-  // Context
+  // Contexts
   const { themeConfig } = useThemeConfig();
 
   // States, Refs

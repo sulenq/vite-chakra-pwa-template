@@ -108,7 +108,7 @@ const DatePickerInput = ({
   multiple,
   ...props
 }: Interface__DatePicker) => {
-  // Context
+  // Contexts
   const fc = useFieldContext();
   const { themeConfig } = useThemeConfig();
   const { l, lang } = useLang();

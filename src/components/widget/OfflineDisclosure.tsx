@@ -19,7 +19,7 @@ import DisclosureHeaderContent from "../ui-custom/DisclosureHeaderContent";
 import { EmptyState } from "../ui/empty-state";
 
 const OfflineDisclosure = () => {
-  // Context
+  // Contexts
   const { offline } = useOffline();
   const { themeConfig } = useThemeConfig();
   const { l } = useLang();

@@ -34,7 +34,7 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 
 const ProductItem = ({ product }: any) => {
-  // Context
+  // Contexts
   const { themeConfig } = useThemeConfig();
 
   // States, Refs

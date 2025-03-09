@@ -17,7 +17,7 @@ interface MenuContentProps extends ChakraMenu.ContentProps {
 
 export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(
   function MenuContent(props, ref) {
-    // Context
+    // Contexts
     const { themeConfig } = useThemeConfig();
 
     const { portalled = true, portalRef, ...rest } = props;
@@ -106,7 +106,7 @@ export interface MenuTriggerItemProps extends ChakraMenu.ItemProps {
 
 export const MenuTriggerItem = forwardRef<HTMLDivElement, MenuTriggerItemProps>(
   function MenuTriggerItem(props, ref) {
-    // Context
+    // Contexts
     const { themeConfig } = useThemeConfig();
 
     const { startIcon, children, ...rest } = props;
@@ -126,7 +126,7 @@ export const MenuTriggerItem = forwardRef<HTMLDivElement, MenuTriggerItemProps>(
 
 export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
   function MenuItem(props, ref) {
-    // Context
+    // Contexts
     const { themeConfig } = useThemeConfig();
 
     const { children, ...rest } = props;

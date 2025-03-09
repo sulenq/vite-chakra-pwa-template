@@ -49,7 +49,7 @@ const BatchOptions = ({
   handleSelectAllRows,
   tableRef,
 }: Interface__BatchOptions) => {
-  // Context
+  // Contexts
   const { l } = useLang();
 
   // States, Refs
@@ -280,7 +280,7 @@ const LimitControl = ({
   limitOptions,
   ...props
 }: Interface__LimitControl) => {
-  // Context
+  // Contexts
   const { l } = useLang();
 
   // States, Refs
@@ -350,7 +350,7 @@ const PageControl = ({
   pagination,
   ...props
 }: Interface__PageControl) => {
-  // Context
+  // Contexts
   const { themeConfig } = useThemeConfig();
   const { l } = useLang();
 

@@ -40,6 +40,12 @@ const translations = {
     "title": "Logout?",
     "description": "Pastikan tidak ada proses ke server sebelum logout dikonfirmasi untuk menghindari error autentikasi."
   },
+  "measurment_unit_format_settings_title": "Format Satuan Pengukuran",
+  "measurment_unit_formats_description": {
+    "metric": "Sistem pengukuran yang digunakan di sebagian besar dunia.",
+    "imperial": "Sistem pengukuran yang umum digunakan di Amerika Serikat.",
+    "iso": "Sistem pengukuran standar internasional. Berdasarkan metric."
+  },
   "month": "Bulan",
   "navs": {
     "home": "Beranda",
@@ -68,7 +74,7 @@ const translations = {
   },
   "pay": "Bayar",
   "periode_picker_default_title": "Pilih Periode",
-  "perma_delete_confirmation": "Aksi ini tidak bisa dibatalkan, harap hati-hati.",
+  "perma_delete_confirmation": "Aksi ini tidak dapat dibatalkan, harap hati-hati.",
   "religion": "Agama",
   "retry": "Muat ulang",
   "retry_feedback": {
@@ -84,7 +90,7 @@ const translations = {
   "settings_navs": {
     "display": "Tampilan",
     "preference": "Preferensi",
-    "permissions": "Izn Akses",
+    "permissions": "Izn Aplikasi",
     "report_problem": "Laporkan Masalah",
     "terms_of_service": "Ketentuan Layanan",
     "privacy_policy": "Kebijakan Privasi"
@@ -100,10 +106,12 @@ const translations = {
   "show": "Tampilkan",
   "this_month": "Bulan ini",
   "this_week": "Minggu ini",
+  "time_format_settings_title": "Format Waktu",
   "time_picker_default_placeholder": "Pilih waktu...",
   "time_picker_default_title": "Pilih Waktu",
   "time_range_picker_default_placeholder": "Pilih rentang waktu...",
   "time_range_picker_default_title": "Pilih Rentang Waktu",
+  "time_zone_settings_title": "Zona Waktu",
   "today": "Hari ini",
   "tomorrow": "Besok",
   "weekdays": {

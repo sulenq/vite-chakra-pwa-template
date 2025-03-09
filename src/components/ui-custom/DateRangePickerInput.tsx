@@ -54,7 +54,7 @@ const DateRangePickerInput = ({
   maxRange,
   ...props
 }: Interface__DateRangePicker) => {
-  // Context
+  // Contexts
   const fc = useFieldContext();
   const { themeConfig } = useThemeConfig();
   const { l, lang } = useLang();

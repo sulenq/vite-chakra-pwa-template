@@ -25,7 +25,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
       backdrop = true,
       ...rest
     } = props;
-    // Context
+    // Contexts
     const { open } = useDrawerContext();
 
     // Utils

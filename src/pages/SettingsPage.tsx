@@ -6,7 +6,7 @@ import { Icon } from "@chakra-ui/react";
 import { IconSettings } from "@tabler/icons-react";
 
 const SettingsPage = () => {
-  // Context
+  // Contexts
   const { l } = useLang();
 
   return (

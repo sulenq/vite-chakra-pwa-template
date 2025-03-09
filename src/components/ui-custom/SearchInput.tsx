@@ -33,7 +33,7 @@ export default function SearchInput({
   noIcon = false,
   ...props
 }: Props) {
-  // Context
+  // Contexts
   const { l } = useLang();
 
   // States, Refs

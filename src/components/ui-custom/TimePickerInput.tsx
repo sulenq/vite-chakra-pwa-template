@@ -45,7 +45,7 @@ const TimePickerInput = ({
   size = withSeconds ? "sm" : "xs",
   ...props
 }: Interface__TimePicker) => {
-  // Context
+  // Contexts
   const fc = useFieldContext();
   const { themeConfig } = useThemeConfig();
   const { l } = useLang();

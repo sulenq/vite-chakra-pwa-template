@@ -50,7 +50,7 @@ const TimeRangePickerInput = ({
   size = withSeconds ? "xl" : "lg",
   ...props
 }: Interface__TimeRangePicker) => {
-  // Context
+  // Contexts
   const fc = useFieldContext();
   const { themeConfig } = useThemeConfig();
   const { l } = useLang();

@@ -49,7 +49,7 @@ const SelectInput = ({
   fetch,
   ...props
 }: Interface__Select) => {
-  // Context
+  // Contexts
   const fc = useFieldContext();
   const { l } = useLang();
 

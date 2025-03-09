@@ -4,7 +4,7 @@ import { IconCheck } from "@tabler/icons-react";
 
 interface Props extends IconProps {}
 const CheckIndicator = ({ ...props }: Props) => {
-  // Context
+  // Contexts
   const { themeConfig } = useThemeConfig();
 
   return (

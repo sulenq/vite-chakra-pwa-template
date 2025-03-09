@@ -43,7 +43,7 @@ const ActivityDetailItemLabel = ({ children, ...props }: TextProps) => {
 };
 
 const MerchantActivityItem = ({ item }: any) => {
-  // Context
+  // Contexts
   const { themeConfig } = useThemeConfig();
 
   // States, Refs

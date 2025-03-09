@@ -14,7 +14,7 @@ export default function FeedbackForbidden({
   description,
   ...props
 }: Props) {
-  // Context
+  // Contexts
   const { l } = useLang();
 
   return (

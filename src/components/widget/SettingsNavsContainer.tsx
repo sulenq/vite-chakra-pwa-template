@@ -24,7 +24,7 @@ interface Props extends StackProps {
 }
 
 const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
-  // Context
+  // Contexts
   const { themeConfig } = useThemeConfig();
   const { l } = useLang();
 

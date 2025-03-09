@@ -35,7 +35,7 @@ export default function StringInput({
   const darkLightColorManual = colorMode === "light" ? "#fff" : "var(--dark)";
   const fc = useFieldContext();
 
-  // Context
+  // Contexts
   const { themeConfig } = useThemeConfig();
 
   // Track first render

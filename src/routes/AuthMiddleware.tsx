@@ -18,7 +18,7 @@ const AuthMiddleware = ({
   children,
   redirectTo = "/",
 }: Props) => {
-  // Context
+  // Contexts
   const { l } = useLang();
   const { authToken, permissions, setPermissions, hasPermissions } =
     useAuthMiddleware();

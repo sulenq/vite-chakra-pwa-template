@@ -1,14 +1,21 @@
-import { HStack } from "@chakra-ui/react";
+import { HStack, StackProps } from "@chakra-ui/react";
 import CContainer from "../ui-custom/CContainer";
 
-const ItemHeaderContainer = ({ children, ...props }: any) => {
+interface Props extends StackProps {
+  borderLess?: boolean;
+}
+const ItemHeaderContainer = ({
+  children,
+  borderLess = false,
+  ...props
+}: Props) => {
   return (
     <CContainer px={3} pt={2} pb={0}>
       <HStack
-        borderBottom={"1px solid"}
-        borderColor={"border.muted"}
+        borderBottom={borderLess ? "" : "1px solid"}
+        borderColor={borderLess ? "" : "border.muted"}
         justify={"space-between"}
-        pb={2}
+        pb={borderLess ? 0 : 2}
         pl={1}
         gap={4}
         minH={"50px"}

@@ -16,7 +16,7 @@ export default function FeedbackNotFound({
   children,
   ...props
 }: Props) {
-  // Context
+  // Contexts
   const { l } = useLang();
 
   return (

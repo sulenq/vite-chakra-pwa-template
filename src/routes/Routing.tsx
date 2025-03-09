@@ -9,7 +9,7 @@ import useLang from "@/context/useLang";
 import pluck from "@/utils/pluck";
 
 const Routing = () => {
-  // Context
+  // Contexts
   const { l } = useLang();
 
   return (

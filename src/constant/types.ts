@@ -2,6 +2,10 @@ import { ButtonProps, MenuItemProps } from "@chakra-ui/react";
 
 export type LanguageOptions = "id" | "en";
 
+export type Type__TimeFormat = "24-hour" | "12-hour";
+
+export type Type__DateFormat = "dmy" | "mdy" | "ymd";
+
 export type Type__DisclosureSizes = "xs" | "sm" | "md" | "lg" | "xl";
 
 export type Type__DateRange = {

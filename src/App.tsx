@@ -12,7 +12,7 @@ import useLang from "./context/useLang";
 import { useThemeConfig } from "./context/useThemeConfig";
 
 const EndpointWrapper = ({ children }: { children: React.ReactNode }) => {
-  // Context
+  // Contexts
   const { themeConfig } = useThemeConfig();
 
   // Utils
@@ -45,7 +45,7 @@ const EndpointWrapper = ({ children }: { children: React.ReactNode }) => {
 };
 
 function App() {
-  // Context
+  // Contexts
   const { l } = useLang();
   const { setOffline } = useOffline();
 

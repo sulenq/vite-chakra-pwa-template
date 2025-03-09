@@ -33,7 +33,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
     ...rest
   } = props;
 
-  // Context
+  // Contexts
   const { themeConfig } = useThemeConfig();
 
   let PresetIcon;

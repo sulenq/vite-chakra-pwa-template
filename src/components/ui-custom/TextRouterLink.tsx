@@ -6,7 +6,7 @@ interface Props extends TextProps {
   to: string;
 }
 const TextRouterLink = ({ children, to, ...props }: Props) => {
-  // Context
+  // Contexts
   const { themeConfig } = useThemeConfig();
 
   return (

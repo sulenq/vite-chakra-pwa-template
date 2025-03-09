@@ -53,7 +53,7 @@ const PeriodPickerDisclosure = ({
   disabled = false,
   triggerProps,
 }: Props) => {
-  // Context
+  // Contexts
   const { themeConfig } = useThemeConfig();
   const { l, lang } = useLang();
 
