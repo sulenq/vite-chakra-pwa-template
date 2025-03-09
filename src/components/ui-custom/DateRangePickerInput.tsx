@@ -39,6 +39,8 @@ import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
 import { Type__DateRange } from "@/constant/types";
 import interpolate from "@/utils/interpolate";
+import moment from "moment-timezone";
+import userTimeZone from "@/utils/userTimeZone";
 
 const DateRangePickerInput = ({
   id,
@@ -67,7 +69,16 @@ const DateRangePickerInput = ({
   );
   const [month, setMonth] = useState<number>(date.getMonth());
   const [year, setYear] = useState<number>(date.getFullYear());
-  const [selected, setSelected] = useState<any>(inputValue);
+  const [selected, setSelected] = useState<any>({
+    from: moment
+      .utc(inputValue?.from as any)
+      .tz(userTimeZone())
+      .toDate(),
+    to: moment
+      .utc(inputValue?.to as any)
+      .tz(userTimeZone())
+      .toDate(),
+  });
   const fullDates = () => {
     const firstDayOfMonth = new Date(year, month, 1);
 
@@ -269,19 +280,11 @@ const DateRangePickerInput = ({
 
   // Handle confirm selected
   function onConfirmSelected() {
-    let confirmable = false;
-    if (!nonNullable) {
-      confirmable = true;
-    } else {
-      if (selected) {
-        confirmable = true;
-      }
-    }
-
-    if (confirmable) {
-      if (onConfirm) {
-        onConfirm(selected);
-      }
+    if (!nonNullable || selected.length > 0) {
+      onConfirm?.({
+        from: selected.from.toISOString(),
+        to: selected.to.toISOString(),
+      });
       back();
     }
   }
@@ -297,7 +300,16 @@ const DateRangePickerInput = ({
           borderColor={fc?.invalid || invalid ? "border.error" : "border.muted"}
           onClick={() => {
             if (inputValue) {
-              setSelected(inputValue);
+              setSelected({
+                from: moment
+                  .utc(inputValue.from as any)
+                  .tz(userTimeZone())
+                  .toDate(),
+                to: moment
+                  .utc(inputValue.to as any)
+                  .tz(userTimeZone())
+                  .toDate(),
+              });
             }
             onOpen();
           }}
