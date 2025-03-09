@@ -34,7 +34,7 @@ const OfflineDisclosure = () => {
   }, [offline]);
 
   return (
-    <DisclosureRoot open={open} lazyLoad size={"xs"}>
+    <DisclosureRoot open={true} lazyLoad size={"xs"}>
       <DisclosureContent>
         <DisclosureHeader>
           <DisclosureHeaderContent title={``} />
@@ -49,7 +49,8 @@ const OfflineDisclosure = () => {
             }
             title={l.offline_disclosure.title}
             description={l.offline_disclosure.description}
-            maxW={"500px"}
+            maxW={"300px"}
+            m={"auto"}
           />
         </DisclosureBody>
 

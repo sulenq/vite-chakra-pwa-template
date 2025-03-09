@@ -19,6 +19,10 @@ const translations = {
     "title": "Delete semua?",
     "description": "Delete semua inbox yang sudah dibaca."
   },
+  "forbidden_feedback": {
+    "title": "Tidak ada akses",
+    "description": "Anda tidak memiliki izin untuk mengakses informasi ini."
+  },
   "language_region_helper_text": "Pengaturan bahasa & wilayah ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   "language_settings_title": "Bahasa",
   "login_loading_toast": {
@@ -43,6 +47,14 @@ const translations = {
     "title": "Tidak memiliki autentikasi",
     "description": "Silahkan login dengan akun anda."
   },
+  "no_data_feedback": {
+    "title": "Tidak ada data",
+    "description": "Cobalah untuk memperbarui data."
+  },
+  "not_found_feedback": {
+    "title": "Tidak ditemukan",
+    "description": "Cobalah untuk menyesuaikan pencarian."
+  },
   "offline_disclosure": {
     "title": "Koneksi Terputus",
     "description": "Sepertinya Anda sedang offline. Periksa koneksi internet Anda dan coba lagi."
@@ -50,6 +62,11 @@ const translations = {
   "pay": "Bayar",
   "periode_picker_default_title": "Pilih Periode",
   "religion": "Agama",
+  "retry": "Muat ulang",
+  "retry_feedback": {
+    "title": "Terjadi error",
+    "description": "Cobalah untuk memuat ulang menggunakan tombol di bawah."
+  },
   "search_input_default_placeholder": "Pencarian...",
   "see_all": "Lihat semua",
   "select_all": "Pilih semua",

@@ -19,6 +19,10 @@ const translations = {
     "title": "Delete all?",
     "description": "Delete all of the read inboxes."
   },
+  "forbidden_feedback": {
+    "title": "No Access",
+    "description": "You don't have permission to access this information."
+  },
   "language_region_helper_text": "These language & region settings are stored locally on your device and will not be synced with your account.",
   "language_settings_title": "Language",
   "login_loading_toast": {
@@ -43,6 +47,14 @@ const translations = {
     "title": "No authentication",
     "description": "Please login with your account."
   },
+  "no_data_feedback": {
+    "title": "No data",
+    "description": "Try to update the data."
+  },
+  "not_found_feedback": {
+    "title": "Not found",
+    "description": "Try to adjust the search."
+  },
   "offline_disclosure": {
     "title": "Connection Lost",
     "description": "It looks like you are offline. Check your internet connection and try again."
@@ -50,6 +62,11 @@ const translations = {
   "pay": "Pay",
   "periode_picker_default_title": "Select Period",
   "religion": "Religion",
+  "retry": "Retry now",
+  "retry_feedback": {
+    "title": "An Error Occurred",
+    "description": "Try to reload using the button below."
+  },
   "search_input_default_placeholder": "Search...",
   "see_all": "See all",
   "select_all": "Select all",

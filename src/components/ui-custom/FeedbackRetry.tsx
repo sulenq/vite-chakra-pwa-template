@@ -4,18 +4,17 @@ import { IconAlertTriangle } from "@tabler/icons-react";
 import { EmptyState } from "../ui/empty-state";
 import BButton from "./BButton";
 import CContainer from "./CContainer";
+import useLang from "@/context/useLang";
 
 interface Props extends StackProps {
   title?: string;
   description?: string;
 }
 
-export default function FeedbackRetry({
-  title = "Data gagal dimuat",
-  description = "Cobalah untuk memuat ulang menggunakan tombol di bawah.",
-  ...props
-}: Props) {
+export default function FeedbackRetry({ title, description, ...props }: Props) {
+  // Context
   const { themeConfig } = useThemeConfig();
+  const { l } = useLang();
 
   return (
     <CContainer w={"fit"} m={"auto"} {...props}>
@@ -25,12 +24,12 @@ export default function FeedbackRetry({
             <IconAlertTriangle />
           </Icon>
         }
-        title={title}
-        description={description}
-        maxW={"500px"}
+        title={title || l.retry_feedback.title}
+        description={description || l.retry_feedback.description}
+        maxW={"300px"}
       >
         <BButton className="clicky" colorPalette={themeConfig.colorPalette}>
-          Muat Ulang
+          {l.retry}
         </BButton>
       </EmptyState>
     </CContainer>

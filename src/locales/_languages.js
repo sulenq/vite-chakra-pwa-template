@@ -1,4 +1,4 @@
-const LANGUAGES = [
+export const LANGUAGES = [
   {
     key: "id",
     code: "id-ID",
@@ -10,5 +10,3 @@ const LANGUAGES = [
     label: "English",
   },
 ];
-
-export default LANGUAGES;

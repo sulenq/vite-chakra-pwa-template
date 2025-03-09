@@ -483,7 +483,7 @@ const DatePickerInput = ({
               disabled={nonNullable && selectedDates.length === 0}
               colorPalette={themeConfig.colorPalette}
             >
-              Konfirmasi
+              {l.confirm}
             </BButton>
           </DisclosureFooter>
         </DisclosureContent>

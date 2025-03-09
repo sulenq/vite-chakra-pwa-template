@@ -2,6 +2,7 @@ import { Icon, StackProps } from "@chakra-ui/react";
 import { IconBan } from "@tabler/icons-react";
 import { EmptyState } from "../ui/empty-state";
 import CContainer from "./CContainer";
+import useLang from "@/context/useLang";
 
 interface Props extends StackProps {
   title?: string;
@@ -9,10 +10,13 @@ interface Props extends StackProps {
 }
 
 export default function FeedbackForbidden({
-  title = "Tidak memiliki akses",
-  description = "Jika memerlukan akses, hubungi tim admin untuk menyesuaikan izin Anda.",
+  title,
+  description,
   ...props
 }: Props) {
+  // Context
+  const { l } = useLang();
+
   return (
     <CContainer w={"fit"} m={"auto"} {...props}>
       <EmptyState
@@ -21,9 +25,9 @@ export default function FeedbackForbidden({
             <IconBan />
           </Icon>
         }
-        title={title}
-        description={description}
-        maxW={"500px"}
+        title={title || l.forbidden_feedback.title}
+        description={description || l.forbidden_feedback.description}
+        maxW={"300px"}
       />
     </CContainer>
   );

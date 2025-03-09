@@ -59,6 +59,50 @@ export const settings_navs = {
 };
 
 // Component UI
+export const no_data_feedback = {
+  title: {
+    id: "Tidak ada data",
+    en: "No data",
+  },
+  description: {
+    id: "Cobalah untuk memperbarui data.",
+    en: "Try to update the data.",
+  },
+};
+export const not_found_feedback = {
+  title: {
+    id: "Tidak ditemukan",
+    en: "Not found",
+  },
+  description: {
+    id: "Cobalah untuk menyesuaikan pencarian.",
+    en: "Try to adjust the search.",
+  },
+};
+export const forbidden_feedback = {
+  title: {
+    id: "Tidak ada akses",
+    en: "No Access",
+  },
+  description: {
+    id: "Anda tidak memiliki izin untuk mengakses informasi ini.",
+    en: "You don't have permission to access this information.",
+  },
+};
+export const retry_feedback = {
+  title: {
+    id: "Terjadi error",
+    en: "An Error Occurred",
+  },
+  description: {
+    id: "Cobalah untuk memuat ulang menggunakan tombol di bawah.",
+    en: "Try to reload using the button below.",
+  },
+};
+export const retry = {
+  id: "Muat ulang",
+  en: "Retry now",
+};
 export const year = {
   id: "Tahun",
   en: "Year",

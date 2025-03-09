@@ -528,7 +528,7 @@ const DateRangePickerInput = ({
               }
               colorPalette={themeConfig.colorPalette}
             >
-              Konfirmasi
+              {l.confirm}
             </BButton>
           </DisclosureFooter>
         </DisclosureContent>

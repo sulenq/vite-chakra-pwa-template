@@ -351,7 +351,7 @@ const SelectInput = ({
                 onClick={confirmSelected}
                 colorPalette={themeConfig.colorPalette}
               >
-                Konfirmasi
+                {l.confirm}
               </BButton>
             </DisclosureFooter>
           )}

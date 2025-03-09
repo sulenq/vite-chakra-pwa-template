@@ -864,7 +864,7 @@ const TimeRangePickerInput = ({
               disabled={nonNullable ? (selected ? false : true) : false}
               colorPalette={themeConfig.colorPalette}
             >
-              Konfirmasi
+              {l.confirm}
             </BButton>
           </DisclosureFooter>
         </DisclosureContent>

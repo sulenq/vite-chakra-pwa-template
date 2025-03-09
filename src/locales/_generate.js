@@ -1,25 +1,23 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { LANGUAGES } from "./_languages.js"; // ✅ Bisa langsung import
+import { LANGUAGES } from "./_languages.js";
 
-// Path ke master translation
+// Path to master translation
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const MASTER_PATH = path.join(__dirname, "_master.js");
 
-// Load _master.js sebagai CommonJS
+// Load _master.js as CommonJS
 const MASTER = await import(`file://${MASTER_PATH}`).then(
   (m) => m.default || m
 );
 
-// Pastikan objek tidak kosong
 if (!Object.keys(MASTER).length) {
   console.error("❌ No objects found in _master.js");
   process.exit(1);
 }
 
-// Ambil daftar bahasa dari LANGUAGES
 const languages = LANGUAGES.map(({ key }) => key);
 
 languages.forEach((lang) => {
