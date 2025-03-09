@@ -13,6 +13,7 @@ import { useThemeConfig } from "@/context/useThemeConfig";
 import formatDate from "@/utils/formatDate";
 import { HStack, Icon, SimpleGrid, Text } from "@chakra-ui/react";
 import { IconCalendar, IconLanguage } from "@tabler/icons-react";
+import { chakra } from "@chakra-ui/react";
 
 const PreferenceSettingsPage = () => {
   // Context
@@ -53,9 +54,13 @@ const PreferenceSettingsPage = () => {
                   >
                     <Text fontWeight={"bold"} truncate>
                       {item.label}{" "}
-                      <span style={{ color: "var(--dt)", marginLeft: "4px" }}>
+                      <chakra.span
+                        color={"fg.subtle"}
+                        ml={2}
+                        fontWeight={"normal"}
+                      >
                         {item.code}
-                      </span>
+                      </chakra.span>
                     </Text>
 
                     {active && <CheckIndicator />}
