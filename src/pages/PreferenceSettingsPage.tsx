@@ -33,6 +33,56 @@ import {
 import moment from "moment-timezone";
 import { useState } from "react";
 
+const Language = () => {
+  // Contexts
+  const { themeConfig } = useThemeConfig();
+  const { lang, setLang, l } = useLang();
+
+  return (
+    <ItemContainer>
+      <ItemHeaderContainer>
+        <HStack>
+          <Icon maxW={"20px"}>
+            <IconLanguage />
+          </Icon>
+          <Text fontWeight={"bold"}>{l.language_settings_title}</Text>
+        </HStack>
+      </ItemHeaderContainer>
+
+      <CContainer gap={4} py={2}>
+        <SimpleGrid px={2} columns={[1, 2]}>
+          {LANGUAGES.map((item, i) => {
+            const active = lang === item.key;
+
+            return (
+              <BButton
+                key={i}
+                unclicky
+                borderRadius={themeConfig.radii.component}
+                gap={1}
+                variant={"ghost"}
+                justifyContent={"start"}
+                onClick={() => {
+                  setLang(item.key);
+                }}
+              >
+                <Text fontWeight={"bold"} truncate>
+                  {item.label}{" "}
+                  <chakra.span color={"fg.subtle"} mx={2} fontWeight={"normal"}>
+                    {item.code}
+                  </chakra.span>
+                </Text>
+
+                {active && <CheckIndicator />}
+              </BButton>
+            );
+          })}
+        </SimpleGrid>
+      </CContainer>
+    </ItemContainer>
+  );
+};
+
 const TimeZone = () => {
   // Contexts
   const { l } = useLang();
@@ -92,7 +142,7 @@ const TimeZone = () => {
           </CContainer>
         )}
 
-        <CContainer h={"300px"} overflowY={"auto"}>
+        <CContainer h={"178px"} overflowY={"auto"}>
           {fd.length === 0 && <FeedbackNotFound />}
 
           <SimpleGrid px={2} columns={[1, 2, 3, 4]} my={2}>
@@ -123,231 +173,216 @@ const TimeZone = () => {
   );
 };
 
-const PreferenceSettingsPage = () => {
+const DateFormat = () => {
   // Contexts
   const { themeConfig } = useThemeConfig();
-  const { l, lang, setLang } = useLang();
+  const { l } = useLang();
   const { dateFormat, setDateFormat } = useDateFormat();
+
+  return (
+    <ItemContainer>
+      <ItemHeaderContainer>
+        <HStack>
+          <Icon maxW={"20px"}>
+            <IconCalendar />
+          </Icon>
+          <Text fontWeight={"bold"}>{l.date_format_settings_title}</Text>
+        </HStack>
+      </ItemHeaderContainer>
+
+      <CContainer gap={4} py={2}>
+        <SimpleGrid px={2} columns={[1, 2, 3]}>
+          {DATE_FORMATS.map((item, i) => {
+            const active = item.key === dateFormat;
+
+            return (
+              <CContainer
+                key={i}
+                px={4}
+                py={3}
+                borderRadius={themeConfig.radii.component}
+                onClick={() => {
+                  setDateFormat(item.key);
+                }}
+                cursor={"pointer"}
+                _hover={{ bg: "gray.subtle" }}
+                _active={{ bg: "gray.subtle" }}
+                transition={"200ms"}
+              >
+                <HStack align={"start"}>
+                  <Text fontWeight={"bold"} truncate>
+                    {item.label}
+                  </Text>
+
+                  {active && <CheckIndicator />}
+                </HStack>
+
+                <Text color={"fg.subtle"} mt={1} mb={2}>
+                  {item.description}
+                </Text>
+
+                <Text>
+                  {formatDate(new Date(), "basic", {
+                    prefixDateFormat: item.key as Type__DateFormat,
+                  })}
+                </Text>
+                <Text>
+                  {formatDate(new Date(), "fullMonth", {
+                    prefixDateFormat: item.key as Type__DateFormat,
+                  })}
+                </Text>
+                <Text>
+                  {formatDate(new Date(), "weekdayFullMonth", {
+                    prefixDateFormat: item.key as Type__DateFormat,
+                  })}
+                </Text>
+              </CContainer>
+            );
+          })}
+        </SimpleGrid>
+      </CContainer>
+    </ItemContainer>
+  );
+};
+
+const TimeFormat = () => {
+  // Contexts
+  const { themeConfig } = useThemeConfig();
+  const { l } = useLang();
   const { timeFormat, setTimeFormat } = useTimeFormat();
+
+  return (
+    <ItemContainer>
+      <ItemHeaderContainer>
+        <HStack>
+          <Icon maxW={"20px"}>
+            <IconClock12 />
+          </Icon>
+          <Text fontWeight={"bold"}>{l.time_format_settings_title}</Text>
+        </HStack>
+      </ItemHeaderContainer>
+
+      <CContainer gap={4} py={2}>
+        <SimpleGrid px={2} columns={[1, 2]}>
+          {TIME_FORMATS.map((item, i) => {
+            const active = item.key === timeFormat;
+
+            return (
+              <CContainer
+                key={i}
+                px={4}
+                py={3}
+                borderRadius={themeConfig.radii.component}
+                onClick={() => {
+                  setTimeFormat(item.key);
+                }}
+                cursor={"pointer"}
+                _hover={{ bg: "gray.subtle" }}
+                _active={{ bg: "gray.subtle" }}
+                transition={"200ms"}
+              >
+                <HStack align={"start"}>
+                  <Text fontWeight={"bold"} truncate>
+                    {item.label}
+                  </Text>
+
+                  {active && <CheckIndicator />}
+                </HStack>
+
+                <Text>
+                  {formatTime(new Date().toISOString(), {
+                    prefixTimeFormat: item.key as Type__TimeFormat,
+                  })}
+                </Text>
+              </CContainer>
+            );
+          })}
+        </SimpleGrid>
+      </CContainer>
+    </ItemContainer>
+  );
+};
+
+const MeasurementUnitFormat = () => {
+  // Contexts
+  const { themeConfig } = useThemeConfig();
+  const { l } = useLang();
   const { measurementUnitFormat, setMeasurementUnitFormat } =
     useMeasurementUnitFormat();
+
+  return (
+    <ItemContainer>
+      <ItemHeaderContainer>
+        <HStack>
+          <Icon maxW={"20px"}>
+            <IconRulerMeasure />
+          </Icon>
+          <Text fontWeight={"bold"}>
+            {l.measurment_unit_format_settings_title}
+          </Text>
+        </HStack>
+      </ItemHeaderContainer>
+
+      <CContainer gap={4} py={2}>
+        <SimpleGrid px={2} columns={[1, 2, 3]}>
+          {MEASURMENT_UNIT_FORMATS.map((item, i) => {
+            const active = item.key === measurementUnitFormat;
+
+            return (
+              <CContainer
+                key={i}
+                px={4}
+                py={3}
+                borderRadius={themeConfig.radii.component}
+                onClick={() => {
+                  setMeasurementUnitFormat(item.key);
+                }}
+                cursor={"pointer"}
+                _hover={{ bg: "gray.subtle" }}
+                _active={{ bg: "gray.subtle" }}
+                transition={"200ms"}
+              >
+                <HStack align={"start"}>
+                  <Text fontWeight={"bold"} truncate>
+                    {item.label}
+                  </Text>
+
+                  {active && <CheckIndicator />}
+                </HStack>
+
+                <Text color={"fg.subtle"} mt={1}>
+                  {pluck(l, item.descriptionKey)}
+                </Text>
+              </CContainer>
+            );
+          })}
+        </SimpleGrid>
+      </CContainer>
+    </ItemContainer>
+  );
+};
+
+const PreferenceSettingsPage = () => {
+  // Contexts
+  const { l } = useLang();
 
   return (
     <SettingsNavsContainer align={"stretch"} activePath="/settings/language">
       <CContainer gap={4}>
         {/* Language */}
-        <ItemContainer>
-          <ItemHeaderContainer>
-            <HStack>
-              <Icon maxW={"20px"}>
-                <IconLanguage />
-              </Icon>
-              <Text fontWeight={"bold"}>{l.language_settings_title}</Text>
-            </HStack>
-          </ItemHeaderContainer>
-
-          <CContainer gap={4} py={2}>
-            <SimpleGrid px={2} columns={[1, 2]}>
-              {LANGUAGES.map((item, i) => {
-                const active = lang === item.key;
-
-                return (
-                  <BButton
-                    key={i}
-                    unclicky
-                    borderRadius={themeConfig.radii.component}
-                    gap={1}
-                    variant={"ghost"}
-                    justifyContent={"start"}
-                    onClick={() => {
-                      setLang(item.key);
-                    }}
-                  >
-                    <Text fontWeight={"bold"} truncate>
-                      {item.label}{" "}
-                      <chakra.span
-                        color={"fg.subtle"}
-                        mx={2}
-                        fontWeight={"normal"}
-                      >
-                        {item.code}
-                      </chakra.span>
-                    </Text>
-
-                    {active && <CheckIndicator />}
-                  </BButton>
-                );
-              })}
-            </SimpleGrid>
-          </CContainer>
-        </ItemContainer>
+        <Language />
 
         {/* Time Zone */}
         <TimeZone />
 
         {/* Date Format */}
-        <ItemContainer>
-          <ItemHeaderContainer>
-            <HStack>
-              <Icon maxW={"20px"}>
-                <IconCalendar />
-              </Icon>
-              <Text fontWeight={"bold"}>{l.date_format_settings_title}</Text>
-            </HStack>
-          </ItemHeaderContainer>
-
-          <CContainer gap={4} py={2}>
-            <SimpleGrid px={2} columns={[1, 2, 3]}>
-              {DATE_FORMATS.map((item, i) => {
-                const active = item.key === dateFormat;
-
-                return (
-                  <CContainer
-                    key={i}
-                    px={4}
-                    py={3}
-                    borderRadius={themeConfig.radii.component}
-                    onClick={() => {
-                      setDateFormat(item.key);
-                    }}
-                    cursor={"pointer"}
-                    _hover={{ bg: "gray.subtle" }}
-                    _active={{ bg: "gray.subtle" }}
-                    transition={"200ms"}
-                  >
-                    <HStack align={"start"}>
-                      <Text fontWeight={"bold"} truncate>
-                        {item.label}
-                      </Text>
-
-                      {active && <CheckIndicator />}
-                    </HStack>
-
-                    <Text color={"fg.subtle"} mt={1} mb={2}>
-                      {item.description}
-                    </Text>
-
-                    <Text>
-                      {formatDate(new Date(), "basic", {
-                        prefixDateFormat: item.key as Type__DateFormat,
-                      })}
-                    </Text>
-                    <Text>
-                      {formatDate(new Date(), "fullMonth", {
-                        prefixDateFormat: item.key as Type__DateFormat,
-                      })}
-                    </Text>
-                    <Text>
-                      {formatDate(new Date(), "weekdayFullMonth", {
-                        prefixDateFormat: item.key as Type__DateFormat,
-                      })}
-                    </Text>
-                  </CContainer>
-                );
-              })}
-            </SimpleGrid>
-          </CContainer>
-        </ItemContainer>
+        <DateFormat />
 
         {/* Time Format */}
-        <ItemContainer>
-          <ItemHeaderContainer>
-            <HStack>
-              <Icon maxW={"20px"}>
-                <IconClock12 />
-              </Icon>
-              <Text fontWeight={"bold"}>{l.time_format_settings_title}</Text>
-            </HStack>
-          </ItemHeaderContainer>
-
-          <CContainer gap={4} py={2}>
-            <SimpleGrid px={2} columns={[1, 2]}>
-              {TIME_FORMATS.map((item, i) => {
-                const active = item.key === timeFormat;
-
-                return (
-                  <CContainer
-                    key={i}
-                    px={4}
-                    py={3}
-                    borderRadius={themeConfig.radii.component}
-                    onClick={() => {
-                      setTimeFormat(item.key);
-                    }}
-                    cursor={"pointer"}
-                    _hover={{ bg: "gray.subtle" }}
-                    _active={{ bg: "gray.subtle" }}
-                    transition={"200ms"}
-                  >
-                    <HStack align={"start"}>
-                      <Text fontWeight={"bold"} truncate>
-                        {item.label}
-                      </Text>
-
-                      {active && <CheckIndicator />}
-                    </HStack>
-
-                    <Text>
-                      {formatTime(new Date().toISOString(), {
-                        prefixTimeFormat: item.key as Type__TimeFormat,
-                      })}
-                    </Text>
-                  </CContainer>
-                );
-              })}
-            </SimpleGrid>
-          </CContainer>
-        </ItemContainer>
+        <TimeFormat />
 
         {/* Measurment Unit Format */}
-        <ItemContainer>
-          <ItemHeaderContainer>
-            <HStack>
-              <Icon maxW={"20px"}>
-                <IconRulerMeasure />
-              </Icon>
-              <Text fontWeight={"bold"}>
-                {l.measurment_unit_format_settings_title}
-              </Text>
-            </HStack>
-          </ItemHeaderContainer>
-
-          <CContainer gap={4} py={2}>
-            <SimpleGrid px={2} columns={[1, 2, 3]}>
-              {MEASURMENT_UNIT_FORMATS.map((item, i) => {
-                const active = item.key === measurementUnitFormat;
-
-                return (
-                  <CContainer
-                    key={i}
-                    px={4}
-                    py={3}
-                    borderRadius={themeConfig.radii.component}
-                    onClick={() => {
-                      setMeasurementUnitFormat(item.key);
-                    }}
-                    cursor={"pointer"}
-                    _hover={{ bg: "gray.subtle" }}
-                    _active={{ bg: "gray.subtle" }}
-                    transition={"200ms"}
-                  >
-                    <HStack align={"start"}>
-                      <Text fontWeight={"bold"} truncate>
-                        {item.label}
-                      </Text>
-
-                      {active && <CheckIndicator />}
-                    </HStack>
-
-                    <Text color={"fg.subtle"} mt={1}>
-                      {pluck(l, item.descriptionKey)}
-                    </Text>
-                  </CContainer>
-                );
-              })}
-            </SimpleGrid>
-          </CContainer>
-        </ItemContainer>
+        <MeasurementUnitFormat />
       </CContainer>
 
       <HelperText px={2} mt={4}>
