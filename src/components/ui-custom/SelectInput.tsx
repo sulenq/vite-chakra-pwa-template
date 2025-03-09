@@ -293,7 +293,7 @@ const SelectInput = ({
             )}
 
             {!multiple && (
-              <CContainer gap={1} pt={4} pb={2}>
+              <CContainer gap={1} pt={4} pb={[2, null, 4]}>
                 <OptionsList />
               </CContainer>
             )}
@@ -327,7 +327,7 @@ const SelectInput = ({
                 )}
 
                 <CContainer>
-                  <HStack wrap={"wrap"} pt={4} pb={2}>
+                  <HStack wrap={"wrap"} pt={4} pb={[2, null, 4]}>
                     <OptionsList />
                   </HStack>
                 </CContainer>
