@@ -831,7 +831,7 @@ const TableComponent = ({
                 <Table.Row
                   key={rowIndex}
                   role="group"
-                  transition={"200ms"}
+                  // transition={"500ms"}
                   onClick={() => {
                     handleRowClick(row);
                   }}
@@ -859,7 +859,7 @@ const TableComponent = ({
                         className={rowClick && "td-content-group-hover"}
                         h={"48px"}
                         px={"10px"}
-                        transition={"200ms"}
+                        // transition={"500ms"}
                         cursor={"pointer"}
                         onClick={(e) => {
                           e.stopPropagation();
@@ -888,7 +888,7 @@ const TableComponent = ({
                         py={3}
                         px={4}
                         h={"48px"}
-                        transition={"200ms"}
+                        // transition={"500ms"}
                         {...col?.wrapperProps}
                       >
                         {typeof col?.td === "string" ||
@@ -915,7 +915,7 @@ const TableComponent = ({
                         h={"48px"}
                         className={rowClick && "td-content-group-hover"}
                         px={"10px"}
-                        transition={"200ms"}
+                        // transition={"500ms"}
                         onClick={(e) => {
                           e.stopPropagation();
                         }}
