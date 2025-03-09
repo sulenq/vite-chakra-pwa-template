@@ -129,9 +129,6 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
         display={iss && settingsRoute ? "none" : "flex"}
         overflowY={"auto"}
         maxH={"full"}
-        // pr={4}
-        // pb={4}
-        // border={"1px solid red"}
       >
         {children}
       </PageContainer>
