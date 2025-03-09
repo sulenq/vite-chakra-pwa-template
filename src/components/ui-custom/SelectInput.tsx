@@ -144,6 +144,7 @@ const SelectInput = ({
                 variant={
                   isSelected(item) ? "outline" : !multiple ? "ghost" : "outline"
                 }
+                size={"md"}
                 borderRadius={multiple ? "full" : ""}
                 borderColor={isSelected(item) ? themeConfig.primaryColor : ""}
                 justifyContent={"start"}
@@ -292,7 +293,7 @@ const SelectInput = ({
             )}
 
             {!multiple && (
-              <CContainer gap={1} py={5}>
+              <CContainer gap={1} pt={4} pb={2}>
                 <OptionsList />
               </CContainer>
             )}
@@ -326,7 +327,7 @@ const SelectInput = ({
                 )}
 
                 <CContainer>
-                  <HStack wrap={"wrap"} py={5}>
+                  <HStack wrap={"wrap"} pt={4} pb={2}>
                     <OptionsList />
                   </HStack>
                 </CContainer>
@@ -336,9 +337,6 @@ const SelectInput = ({
 
           {fl !== undefined && fl !== null && (
             <DisclosureFooter>
-              {/* <BButton w={iss ? "100%" : ""} variant={"subtle"} mr={"auto"}>
-              Reload
-            </BButton> */}
               <BButton
                 variant={"outline"}
                 onClick={() => {

@@ -35,6 +35,13 @@ export default function BButton({
       fontWeight={"semibold"}
       size={size || MAIN_BUTTON_SIZE}
       borderRadius={themeConfig.radii.component}
+      _active={{
+        bg:
+          !props?.colorPalette &&
+          (props?.variant === "ghost" || props?.variant === "outline")
+            ? "gray.subtle"
+            : "",
+      }}
       {...props}
     >
       {children}
