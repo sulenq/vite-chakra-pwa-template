@@ -23,8 +23,13 @@ const translations = {
     "title": "No Access",
     "description": "You don't have permission to access this information."
   },
+  "forgot_password": "Forgot password",
   "language_region_helper_text": "These language & region settings are stored locally on your device and will not be synced with your account.",
   "language_settings_title": "Language",
+  "login_form": {
+    "title": "Login to System",
+    "description": "Enter your account details to continue."
+  },
   "login_loading_toast": {
     "title": "Login",
     "description": "Verifying credentials."

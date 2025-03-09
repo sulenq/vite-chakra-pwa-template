@@ -59,6 +59,20 @@ export const settings_navs = {
 };
 
 // Component UI
+export const login_form = {
+  title: {
+    id: "Login ke Sistem",
+    en: "Login to System",
+  },
+  description: {
+    id: "Masukkan detail akun Anda untuk melanjutkan.",
+    en: "Enter your account details to continue.",
+  },
+};
+export const forgot_password = {
+  id: "Lupa password",
+  en: "Forgot password",
+};
 export const no_data_feedback = {
   title: {
     id: "Tidak ada data",

@@ -23,8 +23,13 @@ const translations = {
     "title": "Tidak ada akses",
     "description": "Anda tidak memiliki izin untuk mengakses informasi ini."
   },
+  "forgot_password": "Lupa password",
   "language_region_helper_text": "Pengaturan bahasa & wilayah ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   "language_settings_title": "Bahasa",
+  "login_form": {
+    "title": "Login ke Sistem",
+    "description": "Masukkan detail akun Anda untuk melanjutkan."
+  },
   "login_loading_toast": {
     "title": "Login",
     "description": "Memverifikasi kredensial."

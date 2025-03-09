@@ -111,6 +111,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import useLang from "@/context/useLang";
+import TextRouterLink from "@/components/ui-custom/TextRouterLink";
 
 const ThemeConfig = () => {
   const { themeConfig, setThemeConfig } = useThemeConfig();
@@ -1376,11 +1377,9 @@ export default function Root() {
             Exium
           </Text>
 
-          <Link to={"/home"}>
-            <Text ml={8} color={"p.400"}>
-              Layout
-            </Text>
-          </Link>
+          <TextRouterLink to={"/home"} ml={8}>
+            Layout
+          </TextRouterLink>
         </HStack>
 
         <HStack wrap={"wrap"}>
