@@ -300,14 +300,14 @@ const customConfig = defineConfig({
           emphasized: { value: "{white}" },
           focusRing: { value: "{white}" },
         },
-        gray: {
-          subtle: {
-            value: {
-              base: "{colors.gray.50} !important",
-              _dark: "{colors.gray.900} !important",
-            },
-          },
-        },
+        // gray: {
+        //   subtle: {
+        //     value: {
+        //       base: "{colors.gray.100} !important",
+        //       _dark: "{colors.gray.900} !important",
+        //     },
+        //   },
+        // },
         red: {
           contrast: { value: "{colors.red.100} !important" },
         },
