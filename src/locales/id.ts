@@ -1,4 +1,5 @@
 const translations = {
+  "all": "Semua",
   "back_online_toast": {
     "title": "Koneksi Pulih",
     "description": "Anda kembali online."
@@ -26,6 +27,7 @@ const translations = {
   "forgot_password": "Lupa password",
   "language_region_helper_text": "Pengaturan bahasa & wilayah ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   "language_settings_title": "Bahasa",
+  "last": "Terakhir",
   "login_form": {
     "title": "Login ke Sistem",
     "description": "Masukkan detail akun Anda untuk melanjutkan."
@@ -66,6 +68,7 @@ const translations = {
   },
   "pay": "Bayar",
   "periode_picker_default_title": "Pilih Periode",
+  "perma_delete_confirmation": "Aksi ini tidak bisa dibatalkan, harap hati-hati.",
   "religion": "Agama",
   "retry": "Muat ulang",
   "retry_feedback": {
@@ -94,6 +97,7 @@ const translations = {
     "title": "Pengaturan",
     "description": "Silahkan pilih menu pengaturan."
   },
+  "show": "Tampilkan",
   "this_month": "Bulan ini",
   "this_week": "Minggu ini",
   "time_picker_default_placeholder": "Pilih waktu...",

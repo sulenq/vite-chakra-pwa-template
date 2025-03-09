@@ -59,6 +59,22 @@ export const settings_navs = {
 };
 
 // Component UI
+export const perma_delete_confirmation = {
+  id: "Aksi ini tidak dapat dibatalkan, harap hati-hati.",
+  en: "This action cannot be undone, please be careful.",
+};
+export const all = {
+  id: "Semua",
+  en: "All",
+};
+export const show = {
+  id: "Tampilkan",
+  en: "Show",
+};
+export const last = {
+  id: "Terakhir",
+  en: "Last",
+};
 export const login_form = {
   title: {
     id: "Login ke Sistem",

@@ -1,4 +1,5 @@
 const translations = {
+  "all": "All",
   "back_online_toast": {
     "title": "Connection Recovered",
     "description": "You are back online."
@@ -26,6 +27,7 @@ const translations = {
   "forgot_password": "Forgot password",
   "language_region_helper_text": "These language & region settings are stored locally on your device and will not be synced with your account.",
   "language_settings_title": "Language",
+  "last": "Last",
   "login_form": {
     "title": "Login to System",
     "description": "Enter your account details to continue."
@@ -66,6 +68,7 @@ const translations = {
   },
   "pay": "Pay",
   "periode_picker_default_title": "Select Period",
+  "perma_delete_confirmation": "This action cannot be undone, do it with caution.",
   "religion": "Religion",
   "retry": "Retry now",
   "retry_feedback": {
@@ -94,6 +97,7 @@ const translations = {
     "title": "Settings",
     "description": "Please select the settings menu."
   },
+  "show": "Show",
   "this_month": "This month",
   "this_week": "This week",
   "time_picker_default_placeholder": "Select time...",

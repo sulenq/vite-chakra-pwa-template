@@ -280,6 +280,9 @@ const LimitControl = ({
   limitOptions,
   ...props
 }: Interface__LimitControl) => {
+  // Context
+  const { l } = useLang();
+
   // States, Refs
   const [limit, setLimit] = useState(initialLimit);
   const limits = limitOptions || [
@@ -301,8 +304,8 @@ const LimitControl = ({
               justifyContent={"space-between"}
             >
               <HStack gap={1}>
-                Tampilkan
-                <Text fontWeight={"bold"}>{limit === 0 ? "Semua" : limit}</Text>
+                {l.show}
+                <Text fontWeight={"bold"}>{limit === 0 ? l.all : limit}</Text>
               </HStack>
 
               <Icon maxW={"13px"} ml={1}>
@@ -331,7 +334,7 @@ const LimitControl = ({
                 setLimit(0);
               }}
             >
-              Semua
+              {l.all}
             </MenuItem>
           </MenuContent>
         </MenuRoot>
@@ -349,6 +352,7 @@ const PageControl = ({
 }: Interface__PageControl) => {
   // Context
   const { themeConfig } = useThemeConfig();
+  const { l } = useLang();
 
   // Utils
   const iss = useIsSmScreenWidth();
@@ -434,7 +438,7 @@ const PageControl = ({
                   fontWeight={500}
                   color={"light"}
                 >
-                  Terakhir : {pagination?.meta?.last_page || "?"}
+                  {l.last} : {pagination?.meta?.last_page || "?"}
                 </Text>
               </CContainer>
 
@@ -468,7 +472,7 @@ const PageControl = ({
                 // variant={"outline"}
                 color={"white"}
               >
-                Lompat
+                Go
               </BButton>
             </MenuContent>
           </MenuRoot>

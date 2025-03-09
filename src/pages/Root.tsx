@@ -647,6 +647,7 @@ const TimeRangePickerDemo = () => {
 };
 
 const TableComponentDemo = () => {
+  const { l } = useLang();
   const iss = useIsSmScreenWidth();
 
   const res = {
@@ -1277,8 +1278,8 @@ const TableComponentDemo = () => {
             },
             confirmation: (rowData: any) => ({
               id: `${rowData.id}`,
-              title: "Delete",
-              description: `Aksi ini tidak bisa dibatalkan, data id ${rowData.id}`,
+              title: "Delete?",
+              description: `${l.perma_delete_confirmation}`,
               confirmLabel: "Delete",
               confirmButtonProps: {
                 colorPalette: "red",
@@ -1311,9 +1312,7 @@ const TableComponentDemo = () => {
             confirmation: (selectedRows: number[]) => ({
               id: `${selectedRows.join("-")}`,
               title: "Delete",
-              description: `Aksi ini tidak bisa dibatalkan, data ids ${selectedRows.join(
-                ", "
-              )}`,
+              description: `${l.perma_delete_confirmation}`,
               confirmLabel: "Delete",
               confirmButtonProps: {
                 colorPalette: "red",
