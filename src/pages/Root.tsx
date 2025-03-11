@@ -112,6 +112,7 @@ import { Link } from "react-router-dom";
 import * as yup from "yup";
 import useLang from "@/context/useLang";
 import TextRouterLink from "@/components/ui-custom/TextRouterLink";
+import useADM from "@/context/useADM";
 
 const ThemeConfig = () => {
   const { themeConfig, setThemeConfig } = useThemeConfig();
@@ -1364,6 +1365,7 @@ const TableComponentDemo = () => {
 
 export default function Root() {
   const { themeConfig } = useThemeConfig();
+  const { ADM } = useADM();
 
   return (
     <CContainer minH={"100dvh"} overflowX={"clip"} pt={"0 !important"}>
@@ -1401,11 +1403,12 @@ export default function Root() {
         </HStack>
 
         <HStack wrap={"wrap"}>
+          {ADM === "true" && <Text>Adaptive Dark Mode is ON</Text>}
           <ColorModeButton
             w={"fit"}
             borderRadius={"full"}
             className="btn"
-            // color={"white"}
+            disabled={ADM === "true"}
           />
         </HStack>
       </HStack>

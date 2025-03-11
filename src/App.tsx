@@ -10,6 +10,8 @@ import useOffline from "./context/useOffilne";
 import OfflineDisclosure from "./components/widget/OfflineDisclosure";
 import useLang from "./context/useLang";
 import { useThemeConfig } from "./context/useThemeConfig";
+import useADM from "./context/useADM";
+import { useColorMode } from "./components/ui/color-mode";
 
 const EndpointWrapper = ({ children }: { children: React.ReactNode }) => {
   // Contexts
@@ -48,6 +50,8 @@ function App() {
   // Contexts
   const { l } = useLang();
   const { setOffline } = useOffline();
+  const { ADM } = useADM();
+  const { setColorMode } = useColorMode();
 
   // States, Refs
   const [firstRender, setFirstRender] = useState<boolean>(true);
@@ -88,6 +92,21 @@ function App() {
       setFirstRender(false);
     }
   }, [firstRender]);
+
+  // Handle adaptive dark mode
+  useEffect(() => {
+    if (ADM === "false") return;
+
+    const updateDarkMode = () => {
+      const hour = new Date().getHours();
+      setColorMode(hour >= 18 || hour < 6 ? "dark" : "light"); // Dark mode 18:00 ~ 06:00
+    };
+
+    updateDarkMode();
+    const interval = setInterval(updateDarkMode, 60000);
+
+    return () => clearInterval(interval);
+  }, [ADM, setColorMode]);
 
   return (
     <ChakraProvider value={theme}>

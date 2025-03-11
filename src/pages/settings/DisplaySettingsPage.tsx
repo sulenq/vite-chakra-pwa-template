@@ -14,29 +14,14 @@ import { useThemeConfig } from "@/context/useThemeConfig";
 import { OPTIONS_RELIGION } from "@/gens/selectOptions";
 import { Center, HStack, Icon, SimpleGrid, Text } from "@chakra-ui/react";
 import { IconCheck, IconMoon2, IconPalette } from "@tabler/icons-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const DarkMode = () => {
   // Contexts
   const { themeConfig } = useThemeConfig();
   const { l } = useLang();
-  const { colorMode, setColorMode, toggleColorMode } = useColorMode();
+  const { colorMode, toggleColorMode } = useColorMode();
   const { ADM, setADM } = useADM(); // Adaptive Dark Mode (Time-based)
-
-  // Handle adaptive dark mode
-  useEffect(() => {
-    if (ADM === "false") return;
-
-    const updateDarkMode = () => {
-      const hour = new Date().getHours();
-      setColorMode(hour >= 18 || hour < 6 ? "dark" : "light"); // Dark mode 18:00 ~ 06:00
-    };
-
-    updateDarkMode();
-    const interval = setInterval(updateDarkMode, 60000);
-
-    return () => clearInterval(interval);
-  }, [ADM, setColorMode]);
 
   const handleAdaptiveToggle = () => {
     if (ADM === "true") {
