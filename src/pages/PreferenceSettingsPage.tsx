@@ -1,7 +1,6 @@
 import BButton from "@/components/ui-custom/BButton";
 import CContainer from "@/components/ui-custom/CContainer";
 import CheckIndicator from "@/components/ui-custom/CheckIndicator";
-import DatePickerInput from "@/components/ui-custom/DatePickerInput";
 import FeedbackNotFound from "@/components/ui-custom/FeedbackNotFound";
 import HelperText from "@/components/ui-custom/HelperText";
 import ItemContainer from "@/components/ui-custom/ItemContainer";
@@ -33,7 +32,6 @@ import {
   IconRulerMeasure,
   IconTimezone,
 } from "@tabler/icons-react";
-import { useFormik } from "formik";
 import { useState } from "react";
 
 const Language = () => {
@@ -104,23 +102,8 @@ const TimeZone = () => {
   // Utils
   const iss = useIsSmScreenWidth();
 
-  const formik = useFormik({
-    validateOnChange: false,
-    initialValues: { date: undefined as any },
-    onSubmit: (values) => {
-      console.log(values);
-    },
-  });
-
   return (
     <ItemContainer>
-      <DatePickerInput
-        onConfirm={(input) => {
-          formik.setFieldValue("date", input);
-        }}
-        inputValue={formik.values.date}
-      />
-
       <ItemHeaderContainer borderLess={!!iss}>
         <HStack>
           <Icon maxW={"20px"}>
