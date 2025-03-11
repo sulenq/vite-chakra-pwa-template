@@ -24,7 +24,6 @@ const formatDate = (
   } else {
     localDate = moment.tz(date, timeZone);
   }
-
   const day = localDate.date();
   const month = localDate.month();
   const year = localDate.year();

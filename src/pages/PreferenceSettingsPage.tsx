@@ -24,6 +24,7 @@ import formatDate from "@/utils/formatDate";
 import formatTime from "@/utils/formatTime";
 import pluck from "@/utils/pluck";
 import timeZones from "@/utils/timeZones";
+import userTimeZone from "@/utils/userTimeZone";
 import { chakra, HStack, Icon, SimpleGrid, Text } from "@chakra-ui/react";
 import {
   IconCalendar,
@@ -110,6 +111,9 @@ const TimeZone = () => {
             <IconTimezone />
           </Icon>
           <Text fontWeight={"bold"}>{l.time_zone_settings_title}</Text>
+          <Text color={"fg.subtle"}>
+            {userTimeZone().key} {userTimeZone().formattedOffset}
+          </Text>
         </HStack>
 
         {!iss && (
@@ -152,6 +156,7 @@ const TimeZone = () => {
               return (
                 <BButton
                   key={i}
+                  unclicky
                   onClick={() => {
                     setTimeZone(item);
                   }}

@@ -71,16 +71,20 @@ const DateRangePickerInput = ({
   );
   const [month, setMonth] = useState<number>(date.getMonth());
   const [year, setYear] = useState<number>(date.getFullYear());
-  const [selected, setSelected] = useState<any>({
-    from: new Date(
-      new Date(inputValue?.from as any).getTime() -
-        getTzOffsetMs(moment.tz.guess())
-    ),
-    to: new Date(
-      new Date(inputValue?.to as any).getTime() -
-        getTzOffsetMs(moment.tz.guess())
-    ),
-  });
+  const [selected, setSelected] = useState<any>(
+    inputValue
+      ? {
+          from: new Date(
+            new Date(inputValue?.from as any).getTime() -
+              getTzOffsetMs(moment.tz.guess())
+          ),
+          to: new Date(
+            new Date(inputValue?.to as any).getTime() -
+              getTzOffsetMs(moment.tz.guess())
+          ),
+        }
+      : undefined
+  );
   const fullDates = () => {
     const firstDayOfMonth = new Date(year, month, 1);
 
@@ -285,11 +289,11 @@ const DateRangePickerInput = ({
     if (!nonNullable || selected.length > 0) {
       onConfirm?.({
         from: new Date(
-          new Date(inputValue?.from as any).getTime() +
+          new Date(selected?.from as any).getTime() +
             getTzOffsetMs(moment.tz.guess())
         ),
         to: new Date(
-          new Date(inputValue?.to as any).getTime() +
+          new Date(selected?.to as any).getTime() +
             getTzOffsetMs(moment.tz.guess())
         ),
       });
