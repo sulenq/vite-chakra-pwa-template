@@ -43,8 +43,6 @@ const ConfirmationDisclosure = ({
   const { open, onOpen, onClose } = useDisclosure();
   useBackOnClose(`confirm-${title}-${id}`, open, onOpen, onClose);
 
-  console.log(confirmButtonProps);
-
   return (
     <>
       <CContainer
