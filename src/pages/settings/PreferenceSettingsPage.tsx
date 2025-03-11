@@ -119,8 +119,8 @@ const TimeZone = () => {
             <Text fontWeight={"bold"}>{l.time_zone_settings_title}</Text>
           </HStack>
           <Text color={"fg.subtle"}>
-            {userTimeZone().localAbbr} ({userTimeZone().key}{" "}
-            {userTimeZone().formattedOffset})
+            {userTimeZone().key} {userTimeZone().formattedOffset} (
+            {userTimeZone().localAbbr} )
           </Text>
         </HStack>
 
