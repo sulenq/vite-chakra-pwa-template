@@ -9,7 +9,7 @@ const translations = {
     "description": "Anda kembali online."
   },
   "confirm": "Konfirmasi",
-  "dark_mode_settings": "Mode Gelap",
+  "dark_mode_settings_title": "Mode Gelap",
   "dark_mode_ui_settings": {
     "label": "UI mode gelap",
     "description": "Mode gelap untuk UI, default mengikuti system"
@@ -108,6 +108,7 @@ const translations = {
     "description": "Silahkan pilih menu pengaturan."
   },
   "show": "Tampilkan",
+  "theme_settings_title": "Tema",
   "this_month": "Bulan ini",
   "this_week": "Minggu ini",
   "time_format_settings_title": "Format Waktu",

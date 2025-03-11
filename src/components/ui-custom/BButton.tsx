@@ -43,10 +43,9 @@ export default function BButton({
       borderRadius={`${themeConfig.radii.component}`}
       _active={{
         bg:
-          !props?.colorPalette &&
-          (props?.variant === "ghost" || props?.variant === "outline")
-            ? "gray.subtle"
-            : "",
+          props?.variant === "ghost" || props?.variant === "outline"
+            ? `${themeConfig.colorPalette}.subtle`
+            : ``,
       }}
       {...props}
     >

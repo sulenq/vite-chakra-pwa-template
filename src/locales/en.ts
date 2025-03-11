@@ -9,7 +9,7 @@ const translations = {
     "description": "You are back online."
   },
   "confirm": "Confirm",
-  "dark_mode_settings": "Dark Mode",
+  "dark_mode_settings_title": "Dark Mode",
   "dark_mode_ui_settings": {
     "label": "Dark mode UI",
     "description": "Dark mode for UI, defaults to system settings"
@@ -108,6 +108,7 @@ const translations = {
     "description": "Please select the settings menu."
   },
   "show": "Show",
+  "theme_settings_title": "Theme",
   "this_month": "This month",
   "this_week": "This week",
   "time_format_settings_title": "Time Format",

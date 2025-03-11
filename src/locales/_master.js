@@ -59,7 +59,11 @@ export const settings_navs = {
 };
 
 // UI
-export const dark_mode_settings = {
+export const theme_settings_title = {
+  id: "Tema",
+  en: "Theme",
+};
+export const dark_mode_settings_title = {
   id: "Mode Gelap",
   en: "Dark Mode",
 };
