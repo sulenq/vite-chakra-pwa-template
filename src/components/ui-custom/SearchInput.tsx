@@ -1,4 +1,10 @@
-import { Center, Icon, IconButton, InputProps } from "@chakra-ui/react";
+import {
+  Center,
+  Icon,
+  IconButton,
+  IconProps,
+  InputProps,
+} from "@chakra-ui/react";
 import { IconSearch, IconX } from "@tabler/icons-react";
 import { Dispatch, useCallback, useEffect, useState } from "react";
 import { InputGroup, InputGroupProps } from "../ui/input-group";
@@ -15,6 +21,7 @@ interface Props extends Omit<InputGroupProps, "children"> {
   inputRef?: any;
   inputProps?: InputProps;
   icon?: any;
+  iconProps?: IconProps;
   invalid?: boolean;
   noIcon?: boolean;
   children?: React.ReactNode;
@@ -29,6 +36,7 @@ export default function SearchInput({
   placeholder,
   inputProps,
   icon,
+  iconProps,
   invalid = false,
   noIcon = false,
   ...props
@@ -84,6 +92,7 @@ export default function SearchInput({
                   ? "sm"
                   : "md"
               }
+              {...iconProps}
             >
               {icon || <IconSearch />}
             </Icon>

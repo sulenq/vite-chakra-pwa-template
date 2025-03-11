@@ -41,11 +41,6 @@ const translations = {
     "description": "Make sure there is no process to the server before the logout is confirmed to avoid authentication errors."
   },
   "measurment_unit_format_settings_title": "Measurement Units Format",
-  "measurment_unit_formats_description": {
-    "metric": "The measurement system used in most of the world.",
-    "imperial": "The measurement system commonly used in the United States.",
-    "iso": "International standard measurement system. Based on metric."
-  },
   "month": "Month",
   "navs": {
     "home": "Home",
@@ -114,6 +109,19 @@ const translations = {
   "time_zone_settings_title": "Time Zone",
   "today": "Today",
   "tomorrow": "Tomorrow",
+  "uom": {
+    "mass": "Weight",
+    "length": "Height",
+    "volume": "Volume",
+    "temperature": "Temperature",
+    "area": "Area",
+    "speed": "Speed"
+  },
+  "uom_formats_description": {
+    "metric": "The measurement system used in most of the world.",
+    "imperial": "The measurement system commonly used in the United States.",
+    "iso": "International standard measurement system. Based on metric."
+  },
   "weekdays": {
     "mon": "Monday",
     "tue": "Tuesday",

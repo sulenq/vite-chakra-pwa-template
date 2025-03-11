@@ -41,11 +41,6 @@ const translations = {
     "description": "Pastikan tidak ada proses ke server sebelum logout dikonfirmasi untuk menghindari error autentikasi."
   },
   "measurment_unit_format_settings_title": "Format Satuan Pengukuran",
-  "measurment_unit_formats_description": {
-    "metric": "Sistem pengukuran yang digunakan di sebagian besar dunia.",
-    "imperial": "Sistem pengukuran yang umum digunakan di Amerika Serikat.",
-    "iso": "Sistem pengukuran standar internasional. Berdasarkan metric."
-  },
   "month": "Bulan",
   "navs": {
     "home": "Beranda",
@@ -114,6 +109,19 @@ const translations = {
   "time_zone_settings_title": "Zona Waktu",
   "today": "Hari ini",
   "tomorrow": "Besok",
+  "uom": {
+    "mass": "Berat",
+    "length": "Tinggi",
+    "volume": "Volume",
+    "temperature": "Suhu",
+    "area": "Luas",
+    "speed": "Kecepatan"
+  },
+  "uom_formats_description": {
+    "metric": "Sistem pengukuran yang digunakan di sebagian besar dunia.",
+    "imperial": "Sistem pengukuran yang umum digunakan di Amerika Serikat.",
+    "iso": "Sistem pengukuran standar internasional. Berdasarkan metric."
+  },
   "weekdays": {
     "mon": "Senin",
     "tue": "Selasa",

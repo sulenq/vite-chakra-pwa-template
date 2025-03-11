@@ -34,6 +34,7 @@ import {
   IconTimezone,
 } from "@tabler/icons-react";
 import { useState } from "react";
+import { makeTime } from "@/utils/getTime";
 
 const Language = () => {
   // Contexts
@@ -143,7 +144,9 @@ const TimeZone = () => {
               inputProps={{
                 variant: "flushed",
                 borderRadius: 0,
+                pl: "36px",
               }}
+              iconProps={{ ml: "-6px" }}
             />
           </CContainer>
         )}
@@ -227,28 +230,29 @@ const DateFormat = () => {
                   {active && <CheckIndicator />}
                 </HStack>
 
-                <Text color={"fg.subtle"} mt={1} mb={2}>
-                  {item.description}
-                </Text>
+                <Text mb={2}>{item.description}</Text>
 
-                <Text>
-                  {formatDate(new Date(), {
-                    variant: "basic",
-                    prefixDateFormat: item.key as Type__DateFormat,
-                  })}
-                </Text>
-                <Text>
-                  {formatDate(new Date(), {
-                    variant: "fullMonth",
-                    prefixDateFormat: item.key as Type__DateFormat,
-                  })}
-                </Text>
-                <Text>
-                  {formatDate(new Date(), {
-                    variant: "weekdayFullMonth",
-                    prefixDateFormat: item.key as Type__DateFormat,
-                  })}
-                </Text>
+                {/* Example */}
+                <>
+                  <Text color={"fg.subtle"}>
+                    {formatDate(new Date(), {
+                      variant: "basic",
+                      prefixDateFormat: item.key as Type__DateFormat,
+                    })}
+                  </Text>
+                  <Text color={"fg.subtle"}>
+                    {formatDate(new Date(), {
+                      variant: "fullMonth",
+                      prefixDateFormat: item.key as Type__DateFormat,
+                    })}
+                  </Text>
+                  <Text color={"fg.subtle"}>
+                    {formatDate(new Date(), {
+                      variant: "weekdayFullMonth",
+                      prefixDateFormat: item.key as Type__DateFormat,
+                    })}
+                  </Text>
+                </>
               </CContainer>
             );
           })}
@@ -303,7 +307,7 @@ const TimeFormat = () => {
                 </HStack>
 
                 <Text>
-                  {formatTime(new Date().toISOString(), {
+                  {formatTime(makeTime(new Date().toISOString()), {
                     prefixTimeFormat: item.key as Type__TimeFormat,
                   })}
                 </Text>
@@ -362,9 +366,19 @@ const UOMFormat = () => {
                   {active && <CheckIndicator />}
                 </HStack>
 
-                <Text color={"fg.subtle"} mt={1}>
+                <Text color={"fg.muted"} mb={2}>
                   {pluck(l, item.descriptionKey)}
                 </Text>
+
+                {/* Example */}
+                <HStack wrap={"wrap"}>
+                  <Text color={"fg.subtle"}>{item.units.mass}</Text>
+                  <Text color={"fg.subtle"}>{item.units.length}</Text>
+                  <Text color={"fg.subtle"}>{item.units.height}</Text>
+                  <Text color={"fg.subtle"}>{item.units.volume}</Text>
+                  <Text color={"fg.subtle"}>{item.units.area}</Text>
+                  <Text color={"fg.subtle"}>{item.units.speed}</Text>
+                </HStack>
               </CContainer>
             );
           })}

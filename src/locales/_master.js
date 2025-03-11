@@ -58,8 +58,37 @@ export const settings_navs = {
   },
 };
 
-// Component UI
-export const measurment_unit_formats_description = {
+export const uom = {
+  mass: {
+    id: "Berat",
+    en: "Weight",
+  },
+  length: {
+    id: "Panjang",
+    en: "Length",
+  },
+  length: {
+    id: "Tinggi",
+    en: "Height",
+  },
+  volume: {
+    id: "Volume",
+    en: "Volume",
+  },
+  temperature: {
+    id: "Suhu",
+    en: "Temperature",
+  },
+  area: {
+    id: "Luas",
+    en: "Area",
+  },
+  speed: {
+    id: "Kecepatan",
+    en: "Speed",
+  },
+};
+export const uom_formats_description = {
   metric: {
     id: "Sistem pengukuran yang digunakan di sebagian besar dunia.",
     en: "The measurement system used in most of the world.",

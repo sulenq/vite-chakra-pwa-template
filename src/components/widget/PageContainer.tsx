@@ -7,12 +7,7 @@ const PageContainer = ({ children, ...props }: Props) => {
   const iss = useIsSmScreenWidth();
 
   return (
-    <CContainer
-      pt={iss ? 4 : ""}
-      px={[2, null, 4]}
-      pb={[2, null, 4]}
-      {...props}
-    >
+    <CContainer pt={iss ? 4 : ""} px={[2, null, 4]} pb={4} {...props}>
       {children}
     </CContainer>
   );
