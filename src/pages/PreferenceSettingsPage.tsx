@@ -233,7 +233,9 @@ const DateFormat = () => {
                   {active && <CheckIndicator />}
                 </HStack>
 
-                <Text mb={2}>{item.description}</Text>
+                <Text color={"fg.muted"} mb={2}>
+                  {item.description}
+                </Text>
 
                 {/* Example */}
                 <>
