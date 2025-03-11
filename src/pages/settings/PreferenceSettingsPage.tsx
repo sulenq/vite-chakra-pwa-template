@@ -368,7 +368,7 @@ const UOMFormat = () => {
                 </Text>
 
                 {/* Example */}
-                <HStack wrap={"wrap"}>
+                <HStack wrap={"wrap"} mt={"auto"}>
                   <Text color={"fg.subtle"}>{item.units.mass}</Text>
                   <Text color={"fg.subtle"}>{item.units.length}</Text>
                   <Text color={"fg.subtle"}>{item.units.height}</Text>
