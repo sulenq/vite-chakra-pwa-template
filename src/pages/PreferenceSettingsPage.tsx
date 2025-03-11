@@ -19,7 +19,7 @@ import { useThemeConfig } from "@/context/useThemeConfig";
 import useTimeFormat from "@/context/useTimeFormat";
 import useTimeZone from "@/context/useTimeZone";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
-import autoTimezone from "@/utils/autoTimeZone";
+import autoTimeZone from "@/utils/autoTimeZone";
 import formatDate from "@/utils/formatDate";
 import formatTime from "@/utils/formatTime";
 import pluck from "@/utils/pluck";
@@ -93,7 +93,7 @@ const TimeZone = () => {
   // States, Refs
   const TIME_ZONES = timeZones();
   const [search, setSearch] = useState("");
-  const fd = [autoTimezone(), ...TIME_ZONES].filter((item) => {
+  const fd = [autoTimeZone(), ...TIME_ZONES].filter((item) => {
     const itemTerm = `${item.key.toLowerCase()} ${item.formattedOffset}`;
     const searchTerm = search.toLowerCase();
 

@@ -1,9 +1,9 @@
 import { Type__TimeZoneObject } from "@/constant/types";
-import autoTimezone from "@/utils/autoTimeZone";
+import autoTimeZone from "@/utils/autoTimeZone";
 import { create } from "zustand";
 
 const STORAGE_KEY = "timeZone";
-const DEFAULT: Type__TimeZoneObject = autoTimezone();
+const DEFAULT: Type__TimeZoneObject = autoTimeZone();
 
 interface Props {
   timeZone: Type__TimeZoneObject;

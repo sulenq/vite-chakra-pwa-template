@@ -1,5 +1,5 @@
 import { Type__TimeZoneObject } from "@/constant/types";
-import autoTimezone from "./autoTimeZone";
+import autoTimeZone from "./autoTimeZone";
 
 const tryParseJSON = (value: string): Type__TimeZoneObject | null => {
   try {
@@ -17,7 +17,7 @@ const userTimeZone = (): Type__TimeZoneObject => {
   const storedTimeZone = localStorage.getItem("timeZone");
 
   if (!storedTimeZone || storedTimeZone.startsWith("Auto")) {
-    return autoTimezone();
+    return autoTimeZone();
   }
 
   const parsedTimeZone = tryParseJSON(storedTimeZone);
@@ -29,7 +29,7 @@ const userTimeZone = (): Type__TimeZoneObject => {
     };
   }
 
-  return autoTimezone();
+  return autoTimeZone();
 };
 
 export default userTimeZone;

@@ -1,7 +1,7 @@
 import { Type__TimeZoneObject } from "@/constant/types";
 import moment from "moment-timezone";
 
-const autoTimezone = (): Type__TimeZoneObject => {
+const autoTimeZone = (): Type__TimeZoneObject => {
   const timeZone = moment.tz.guess();
   const autoTimeZone = `Auto (${timeZone})`;
   const offsetMinutes = moment.tz(timeZone).utcOffset();
@@ -18,4 +18,4 @@ const autoTimezone = (): Type__TimeZoneObject => {
   };
 };
 
-export default autoTimezone;
+export default autoTimeZone;
