@@ -202,7 +202,7 @@ const TimeZone = () => {
           </CContainer>
         )}
 
-        <CContainer h="178px" py={2}>
+        <CContainer h="178px">
           {fd.length === 0 ? (
             <FeedbackNotFound />
           ) : (
@@ -218,6 +218,7 @@ const TimeZone = () => {
                   cellRenderer={cellRenderer}
                   className="scrollY"
                   style={{
+                    padding: "8px 0",
                     overflowX: "clip",
                   }}
                 />
