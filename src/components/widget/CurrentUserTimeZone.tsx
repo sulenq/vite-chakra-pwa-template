@@ -16,7 +16,7 @@ const CurrentUserTimeZone = () => {
 
   return (
     <PopoverRoot>
-      <PopoverTrigger>
+      <PopoverTrigger asChild>
         <BButton iconButton unclicky variant={"ghost"}>
           <Icon>
             <IconTimezone stroke={1.5} />
