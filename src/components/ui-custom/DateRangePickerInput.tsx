@@ -114,17 +114,20 @@ const DateRangePickerInput = ({
   const selectedRenderValue =
     selected?.from &&
     selected?.to &&
-    `${formatDate(selected?.from)} - ${formatDate(selected?.to)} (${countDay(
-      selected?.from,
-      selected?.to
-    )} hari)`;
+    `${formatDate(selected?.from, {
+      prefixTimeZone: moment.tz.guess(),
+    })} - ${formatDate(selected?.to, {
+      prefixTimeZone: moment.tz.guess(),
+    })} (${countDay(selected?.from, selected?.to)} hari)`;
 
   const renderValue =
     inputValue?.from &&
     inputValue?.to &&
-    `${formatDate(inputValue?.from)} - ${formatDate(
-      inputValue?.to
-    )} (${countDay(inputValue?.from, inputValue?.to)} hari)`;
+    `${formatDate(inputValue?.from, {
+      prefixTimeZone: moment.tz.guess(),
+    })} - ${formatDate(inputValue?.to, {
+      prefixTimeZone: moment.tz.guess(),
+    })} (${countDay(inputValue?.from, inputValue?.to)} hari)`;
 
   // Utils
   const { open, onOpen, onClose } = useDisclosure();
