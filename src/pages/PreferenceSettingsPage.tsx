@@ -102,7 +102,7 @@ const TimeZone = () => {
 
   // Utils
   const iss = useIsSmScreenWidth();
-  //
+
   return (
     <ItemContainer>
       <ItemHeaderContainer borderLess={!!iss}>

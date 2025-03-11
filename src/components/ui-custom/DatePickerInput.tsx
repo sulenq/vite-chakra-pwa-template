@@ -121,8 +121,7 @@ const DatePickerInput = ({
   // States, Refs
   const userTz = userTimeZone();
   const offsetInMs = moment.tz(userTz.key).utcOffset() * 60 * 1000;
-  const finalPlaceholder =
-    placeholder || `${userTz.key} ${userTz.formattedOffset}`;
+  const finalPlaceholder = placeholder || l.date_picker_default_placeholder;
   const [date, setDate] = useState<Date>(
     inputValue?.[0] ? new Date(inputValue?.[0]) : new Date()
   );
