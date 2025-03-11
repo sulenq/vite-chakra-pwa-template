@@ -65,7 +65,7 @@ const Language = () => {
                 gap={1}
                 variant={"ghost"}
                 justifyContent={"start"}
-                px={[3, null, 4]}
+                px={[3, null, 3]}
                 onClick={() => {
                   setLang(item.key);
                 }}
@@ -167,7 +167,7 @@ const TimeZone = () => {
                   }}
                   variant={"ghost"}
                   justifyContent={"start"}
-                  px={[3, null, 4]}
+                  px={[3, null, 3]}
                 >
                   <Text fontWeight={"bold"} truncate>
                     {item.key}{" "}
@@ -211,7 +211,7 @@ const DateFormat = () => {
             return (
               <CContainer
                 key={i}
-                px={[3, null, 4]}
+                px={[3, null, 3]}
                 py={3}
                 borderRadius={themeConfig.radii.component}
                 onClick={() => {
@@ -287,7 +287,7 @@ const TimeFormat = () => {
             return (
               <CContainer
                 key={i}
-                px={4}
+                px={[3, null, 3]}
                 py={3}
                 borderRadius={themeConfig.radii.component}
                 onClick={() => {
@@ -347,7 +347,7 @@ const UOMFormat = () => {
             return (
               <CContainer
                 key={i}
-                px={4}
+                px={[3, null, 3]}
                 py={3}
                 borderRadius={themeConfig.radii.component}
                 onClick={() => {

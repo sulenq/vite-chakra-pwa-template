@@ -8,9 +8,11 @@ export default function formatTime(
     showSeconds?: boolean;
     prefixTimeFormat?: Type__TimeFormat;
     prefixTimeZone?: string;
+    withSuffix?: boolean;
   } = {
     showSeconds: false,
     prefixTimeZone: userTimeZone().key,
+    withSuffix: true,
   }
 ): string {
   if (!time) return "";
@@ -36,8 +38,10 @@ export default function formatTime(
     const hour12 = hh % 12 || 12;
     formattedTime = `${hour12}:${String(mm).padStart(2, "0")}`;
     formattedTime = options.showSeconds
-      ? `${formattedTime}:${String(ss).padStart(2, "0")} ${suffix}`
-      : `${formattedTime} ${suffix}`;
+      ? `${formattedTime}:${String(ss).padStart(2, "0")} ${
+          options.withSuffix ? suffix : ""
+        }`
+      : `${formattedTime} ${options.withSuffix ? suffix : ""}`;
   } else {
     formattedTime = `${String(hh).padStart(2, "0")}:${String(mm).padStart(
       2,
