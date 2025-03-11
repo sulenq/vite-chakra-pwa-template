@@ -176,7 +176,7 @@ const Theme = () => {
           </BButton>
           <StringInput
             boxProps={{ flex: "1 1 100px" }}
-            placeholder="example@gmail.com"
+            placeholder="example@email.com"
           />
           <SelectInput
             flex={"1 1 100px"}
