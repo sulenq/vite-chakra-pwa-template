@@ -46,6 +46,9 @@ export default function BButton({
           (props?.variant === "ghost" || props?.variant === "outline") &&
           props.colorPalette === themeConfig.colorPalette
             ? `${themeConfig.colorPalette}.subtle`
+            : (props?.variant === "subtle" || props?.variant === "surface") &&
+              props.colorPalette === themeConfig.colorPalette
+            ? `${themeConfig.colorPalette}.muted`
             : !props?.variant && props.colorPalette === themeConfig.colorPalette
             ? ""
             : `gray.subtle`,
