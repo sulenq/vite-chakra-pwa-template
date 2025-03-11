@@ -9,18 +9,26 @@ interface Props {
 }
 
 const useDateFormat = create<Props>((set) => {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (!stored) localStorage.setItem(STORAGE_KEY, DEFAULT);
-  const initial = stored ? stored : DEFAULT;
+  const getStoredFormat = (): string => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) return stored;
+      localStorage.setItem(STORAGE_KEY, DEFAULT);
+    } catch (error) {
+      console.error("Failed to access dateFormat from localStorage:", error);
+    }
+    return DEFAULT;
+  };
 
   return {
-    dateFormat: initial,
+    dateFormat: getStoredFormat(),
     setDateFormat: (newState) =>
-      set(() => {
-        localStorage.setItem(STORAGE_KEY, newState);
-        return {
-          dateFormat: newState,
-        };
+      set((state) => {
+        if (state.dateFormat !== newState) {
+          localStorage.setItem(STORAGE_KEY, newState);
+          return { dateFormat: newState };
+        }
+        return state;
       }),
   };
 });

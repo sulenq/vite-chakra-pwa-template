@@ -1,6 +1,6 @@
 import { ButtonProps, MenuItemProps } from "@chakra-ui/react";
 
-export type LanguageOptions = "id" | "en";
+export type Type__LanguageOptions = "id" | "en";
 
 export type Type__TimeZoneObject = {
   key: string;

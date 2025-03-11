@@ -9,18 +9,26 @@ interface Props {
 }
 
 const useUOM = create<Props>((set) => {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (!stored) localStorage.setItem(STORAGE_KEY, DEFAULT);
-  const initial = stored ? stored : DEFAULT;
+  const getStoredUOM = (): string => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) return stored;
+      localStorage.setItem(STORAGE_KEY, DEFAULT);
+    } catch (error) {
+      console.error("Failed to access UOM from localStorage:", error);
+    }
+    return DEFAULT;
+  };
 
   return {
-    UOM: initial,
+    UOM: getStoredUOM(),
     setUOM: (newState) =>
-      set(() => {
-        localStorage.setItem(STORAGE_KEY, newState);
-        return {
-          UOM: newState,
-        };
+      set((state) => {
+        if (state.UOM !== newState) {
+          localStorage.setItem(STORAGE_KEY, newState);
+          return { UOM: newState };
+        }
+        return state;
       }),
   };
 });

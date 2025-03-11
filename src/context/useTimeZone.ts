@@ -3,7 +3,6 @@ import autoTimeZone from "@/utils/autoTimeZone";
 import { create } from "zustand";
 
 const STORAGE_KEY = "timeZone";
-const DEFAULT: Type__TimeZoneObject = autoTimeZone();
 
 interface Props {
   timeZone: Type__TimeZoneObject;
@@ -11,27 +10,29 @@ interface Props {
 }
 
 const useTimeZone = create<Props>((set) => {
-  let stored: Type__TimeZoneObject | null = null;
-
-  try {
-    const rawStored = localStorage.getItem(STORAGE_KEY);
-    if (rawStored) {
-      stored = JSON.parse(rawStored) as Type__TimeZoneObject;
+  const getStoredTimeZone = (): Type__TimeZoneObject => {
+    try {
+      const rawStored = localStorage.getItem(STORAGE_KEY);
+      if (rawStored) {
+        const parsed = JSON.parse(rawStored) as Type__TimeZoneObject;
+        return parsed.key.startsWith("Auto") ? autoTimeZone() : parsed;
+      }
+    } catch (error) {
+      console.error("Failed to parse timezone from localStorage:", error);
     }
-  } catch (error) {
-    console.error("Failed to parse timezone from localStorage:", error);
-  }
-
-  if (!stored || stored.key.startsWith("Auto")) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT));
-    stored = DEFAULT;
-  }
+    return autoTimeZone();
+  };
 
   return {
-    timeZone: stored,
+    timeZone: getStoredTimeZone(),
     setTimeZone: (newState) => {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
-      set({ timeZone: newState });
+      set((state) => {
+        if (state.timeZone.key !== newState.key) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
+          return { timeZone: newState };
+        }
+        return state;
+      });
     },
   };
 });

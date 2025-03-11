@@ -9,18 +9,26 @@ interface Props {
 }
 
 const useTimeFormat = create<Props>((set) => {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (!stored) localStorage.setItem(STORAGE_KEY, DEFAULT);
-  const initial = stored ? stored : DEFAULT;
+  const getStoredFormat = (): string => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) return stored;
+      localStorage.setItem(STORAGE_KEY, DEFAULT);
+    } catch (error) {
+      console.error("Failed to access timeFormat from localStorage:", error);
+    }
+    return DEFAULT;
+  };
 
   return {
-    timeFormat: initial,
+    timeFormat: getStoredFormat(),
     setTimeFormat: (newState) =>
-      set(() => {
-        localStorage.setItem(STORAGE_KEY, newState);
-        return {
-          timeFormat: newState,
-        };
+      set((state) => {
+        if (state.timeFormat !== newState) {
+          localStorage.setItem(STORAGE_KEY, newState);
+          return { timeFormat: newState };
+        }
+        return state;
       }),
   };
 });

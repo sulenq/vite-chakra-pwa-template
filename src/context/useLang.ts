@@ -3,7 +3,7 @@ import en from "../locales/en";
 import id from "../locales/id";
 
 const STORAGE_KEY = "lang";
-const DEFAULT = "id";
+const DEFAULT: keyof typeof translations = "id";
 
 const translations = {
   id,
@@ -11,26 +11,39 @@ const translations = {
 };
 
 interface Props {
-  lang: string;
-  l: typeof id | typeof en;
-  setLang: (newState: Props["lang"]) => void;
+  lang: keyof typeof translations;
+  l: (typeof translations)[keyof typeof translations];
+  setLang: (newState: keyof typeof translations) => void;
 }
 
 const useLang = create<Props>((set) => {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (!stored) localStorage.setItem(STORAGE_KEY, DEFAULT);
-  const initial = stored ? stored : DEFAULT;
+  const getStoredLang = (): keyof typeof translations => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored && stored in translations)
+        return stored as keyof typeof translations;
+      localStorage.setItem(STORAGE_KEY, DEFAULT);
+    } catch (error) {
+      console.error("Failed to access language from localStorage:", error);
+    }
+    return DEFAULT;
+  };
+
+  const initialLang = getStoredLang();
 
   return {
-    lang: initial,
-    l: translations[initial as keyof typeof translations],
+    lang: initialLang,
+    l: translations[initialLang],
     setLang: (newState) =>
-      set(() => {
-        localStorage.setItem(STORAGE_KEY, newState);
-        return {
-          lang: newState,
-          l: translations[newState as keyof typeof translations],
-        };
+      set((state) => {
+        if (state.lang !== newState) {
+          localStorage.setItem(STORAGE_KEY, newState);
+          return {
+            lang: newState,
+            l: translations[newState],
+          };
+        }
+        return state;
       }),
   };
 });

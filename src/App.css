@@ -3,6 +3,7 @@
 * {
   font-family: "Nunito Sans", serif !important;
   font-optical-sizing: auto;
+  box-sizing: border-box !important;
 }
 
 :root {
