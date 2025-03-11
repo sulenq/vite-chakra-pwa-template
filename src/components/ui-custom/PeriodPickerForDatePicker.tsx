@@ -2,6 +2,7 @@ import { Dispatch } from "react";
 import BButton from "./BButton";
 import PeriodPickerDisclosure from "./PeriodPickerDisclosure";
 import formatDate from "@/utils/formatDate";
+import moment from "moment-timezone";
 
 interface Props {
   id?: string;
@@ -28,7 +29,10 @@ const PeriodPickerForDatePicker = ({
         {...props}
       >
         <BButton w={"full"} variant={"outline"} size={"md"}>
-          {`${formatDate(new Date(year, month), "monthYear")}`}
+          {`${formatDate(new Date(year, month), {
+            variant: "monthYear",
+            prefixTimeZone: moment.tz.guess(),
+          })}`}
         </BButton>
       </PeriodPickerDisclosure>
     </>

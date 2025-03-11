@@ -16,12 +16,12 @@ import {
   Type__TimeRange,
 } from "./types";
 
+// Routes
 export interface Interface__Route {
   path: string;
   activePath: string;
   element: any;
 }
-
 export interface Interface__PrivateRoute extends Interface__Route {
   label?: any;
   titleKey: string;

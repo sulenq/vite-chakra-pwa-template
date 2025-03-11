@@ -1,6 +1,7 @@
 import BButton from "@/components/ui-custom/BButton";
 import CContainer from "@/components/ui-custom/CContainer";
 import CheckIndicator from "@/components/ui-custom/CheckIndicator";
+import DatePickerInput from "@/components/ui-custom/DatePickerInput";
 import FeedbackNotFound from "@/components/ui-custom/FeedbackNotFound";
 import HelperText from "@/components/ui-custom/HelperText";
 import ItemContainer from "@/components/ui-custom/ItemContainer";
@@ -19,9 +20,11 @@ import { useThemeConfig } from "@/context/useThemeConfig";
 import useTimeFormat from "@/context/useTimeFormat";
 import useTimeZone from "@/context/useTimeZone";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
+import autoTimezone from "@/utils/autoTimeZone";
 import formatDate from "@/utils/formatDate";
 import formatTime from "@/utils/formatTime";
 import pluck from "@/utils/pluck";
+import timeZones from "@/utils/timeZones";
 import { chakra, HStack, Icon, SimpleGrid, Text } from "@chakra-ui/react";
 import {
   IconCalendar,
@@ -30,7 +33,7 @@ import {
   IconRulerMeasure,
   IconTimezone,
 } from "@tabler/icons-react";
-import moment from "moment-timezone";
+import { useFormik } from "formik";
 import { useState } from "react";
 
 const Language = () => {
@@ -89,11 +92,10 @@ const TimeZone = () => {
   const { timeZone, setTimeZone } = useTimeZone();
 
   // States, Refs
-  const userTimezone = moment.tz.guess();
-  const TIME_ZONES = moment.tz.names();
+  const TIME_ZONES = timeZones();
   const [search, setSearch] = useState("");
-  const fd = [`Auto (${userTimezone})`, ...TIME_ZONES].filter((item) => {
-    const itemTerm = item.toLowerCase();
+  const fd = [autoTimezone(), ...TIME_ZONES].filter((item) => {
+    const itemTerm = `${item.key.toLowerCase()} ${item.formattedOffset}`;
     const searchTerm = search.toLowerCase();
 
     return itemTerm.includes(searchTerm);
@@ -102,8 +104,23 @@ const TimeZone = () => {
   // Utils
   const iss = useIsSmScreenWidth();
 
+  const formik = useFormik({
+    validateOnChange: false,
+    initialValues: { date: undefined as any },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
   return (
     <ItemContainer>
+      <DatePickerInput
+        onConfirm={(input) => {
+          formik.setFieldValue("date", input);
+        }}
+        inputValue={formik.values.date}
+      />
+
       <ItemHeaderContainer borderLess={!!iss}>
         <HStack>
           <Icon maxW={"20px"}>
@@ -145,9 +162,9 @@ const TimeZone = () => {
         <CContainer h={"178px"} overflowY={"auto"}>
           {fd.length === 0 && <FeedbackNotFound />}
 
-          <SimpleGrid px={2} columns={[1, 2, 3, 4]} my={2}>
+          <SimpleGrid px={2} columns={[1, 2, null, 3]} my={2}>
             {fd.map((item, i) => {
-              const active = item === timeZone;
+              const active = item.key === timeZone.key;
 
               return (
                 <BButton
@@ -159,8 +176,10 @@ const TimeZone = () => {
                   justifyContent={"start"}
                 >
                   <Text fontWeight={"bold"} truncate>
-                    {item}
+                    {item.key}{" "}
                   </Text>
+
+                  <Text color={"fg.subtle"}>{item.formattedOffset}</Text>
 
                   {active && <CheckIndicator />}
                 </BButton>
@@ -222,17 +241,20 @@ const DateFormat = () => {
                 </Text>
 
                 <Text>
-                  {formatDate(new Date(), "basic", {
+                  {formatDate(new Date(), {
+                    variant: "basic",
                     prefixDateFormat: item.key as Type__DateFormat,
                   })}
                 </Text>
                 <Text>
-                  {formatDate(new Date(), "fullMonth", {
+                  {formatDate(new Date(), {
+                    variant: "fullMonth",
                     prefixDateFormat: item.key as Type__DateFormat,
                   })}
                 </Text>
                 <Text>
-                  {formatDate(new Date(), "weekdayFullMonth", {
+                  {formatDate(new Date(), {
+                    variant: "weekdayFullMonth",
                     prefixDateFormat: item.key as Type__DateFormat,
                   })}
                 </Text>

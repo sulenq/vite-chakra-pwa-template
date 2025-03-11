@@ -6,12 +6,18 @@ import PreferenceSettingsPage from "@/pages/PreferenceSettingsPage";
 import RootPage from "@/pages/RootPage";
 import SettingsPage from "@/pages/SettingsPage";
 import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
+import TestPage from "@/pages/TestPage";
 
 export const ROUTES: Interface__Route[] = [
   {
     path: "/",
     activePath: "/",
     element: <RootPage />,
+  },
+  {
+    path: "/test",
+    activePath: "/test",
+    element: <TestPage />,
   },
 ];
 

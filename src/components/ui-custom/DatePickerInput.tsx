@@ -8,6 +8,8 @@ import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
 import formatDate from "@/utils/formatDate";
+import getTzOffsetMs from "@/utils/getTzOffsetMs";
+import userTimeZone from "@/utils/userTimeZone";
 import {
   HStack,
   Icon,
@@ -24,6 +26,7 @@ import {
   IconCaretRightFilled,
 } from "@tabler/icons-react";
 import { addDays, startOfWeek } from "date-fns";
+import moment from "moment-timezone";
 import { useState } from "react";
 import { Tooltip } from "../ui/tooltip";
 import BackButton from "./BackButton";
@@ -38,8 +41,6 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
-import moment from "moment-timezone";
-import userTimeZone from "@/utils/userTimeZone";
 
 const SelectedDateList = ({
   selectedDates,
@@ -66,7 +67,7 @@ const SelectedDateList = ({
           mx={"auto"}
           truncate
         >
-          {selectedRenderValue || "Pilih tanggal"}
+          {selectedRenderValue}
         </Text>
       </CContainer>
 
@@ -81,7 +82,9 @@ const SelectedDateList = ({
                 {selectedDates.map((item, i) => {
                   return (
                     <ListItem key={i}>
-                      {formatDate(item, "weekdayFullMonth")}
+                      {formatDate(item, {
+                        variant: "weekdayFullMonth",
+                      })}
                     </ListItem>
                   );
                 })}
@@ -116,7 +119,10 @@ const DatePickerInput = ({
   const { l, lang } = useLang();
 
   // States, Refs
-  const finalPlaceholder = placeholder || l.date_picker_default_placeholder;
+  const userTz = userTimeZone();
+  const offsetInMs = moment.tz(userTz.key).utcOffset() * 60 * 1000;
+  const finalPlaceholder =
+    placeholder || `${userTz.key} ${userTz.formattedOffset}`;
   const [date, setDate] = useState<Date>(
     inputValue?.[0] ? new Date(inputValue?.[0]) : new Date()
   );
@@ -124,7 +130,12 @@ const DatePickerInput = ({
   const [year, setYear] = useState<number>(date.getFullYear());
   const [selectedDates, setSelectedDates] = useState<Date[]>(
     inputValue
-      ? inputValue.map((item) => moment.utc(item).tz(userTimeZone()).toDate())
+      ? inputValue.map(
+          (item) =>
+            new Date(
+              new Date(item).getTime() - getTzOffsetMs(moment.tz.guess())
+            )
+        )
       : []
   );
 
@@ -132,10 +143,6 @@ const DatePickerInput = ({
     const firstDayOfMonth = new Date(year, month, 1);
 
     const startOfFirstWeek = startOfWeek(firstDayOfMonth, { weekStartsOn: 1 });
-
-    if (startOfFirstWeek.getMonth() !== month) {
-      startOfFirstWeek.setDate(startOfFirstWeek.getDate() + 7);
-    }
 
     let weekDates = [];
     let currentWeek = [];
@@ -158,14 +165,23 @@ const DatePickerInput = ({
 
     return weekDates;
   };
+
   const selectedRenderValue =
     selectedDates?.length > 0
-      ? selectedDates.map((date) => formatDate(date)).join(", ")
+      ? selectedDates
+          .map((date) =>
+            formatDate(date, { prefixTimeZone: moment.tz.guess() })
+          )
+          .join(", ")
       : finalPlaceholder;
 
   const renderValue =
     inputValue && inputValue?.length > 0
-      ? inputValue.map((date) => formatDate(date as any)).join(", ")
+      ? inputValue
+          .map((date) =>
+            formatDate(new Date(date), { prefixTimeZone: moment.tz.guess() })
+          )
+          .join(", ")
       : finalPlaceholder;
 
   // Utils
@@ -256,7 +272,13 @@ const DatePickerInput = ({
   // Handle confirm selected
   function onConfirmSelected() {
     if (!nonNullable || selectedDates.length > 0) {
-      onConfirm?.(selectedDates.map((item) => item.toISOString()));
+      onConfirm?.(
+        selectedDates.map((item) =>
+          new Date(
+            item.getTime() + getTzOffsetMs(moment.tz.guess())
+          ).toISOString()
+        )
+      );
       back();
     }
   }
@@ -273,8 +295,8 @@ const DatePickerInput = ({
           onClick={() => {
             if (inputValue) {
               setSelectedDates(
-                inputValue.map((item) =>
-                  moment.utc(item).tz(userTimeZone()).toDate()
+                inputValue.map(
+                  (item) => new Date(new Date(item).getTime() + offsetInMs)
                 )
               );
             }
@@ -395,7 +417,11 @@ const DatePickerInput = ({
                                 );
                             setSelectedDates(newSelectedDates);
                           } else {
-                            setSelectedDates([date.fullDate]);
+                            if (dateSelected) {
+                              setSelectedDates([]);
+                            } else {
+                              setSelectedDates([date.fullDate]);
+                            }
                           }
                         }}
                         variant={dateSelected ? "outline" : "ghost"}

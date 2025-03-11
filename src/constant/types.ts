@@ -2,6 +2,13 @@ import { ButtonProps, MenuItemProps } from "@chakra-ui/react";
 
 export type LanguageOptions = "id" | "en";
 
+export type Type__TimeZoneObject = {
+  key: string;
+  offset: number;
+  offsetMs: number;
+  formattedOffset: string;
+};
+
 export type Type__TimeFormat = "24-hour" | "12-hour";
 
 export type Type__DateFormat = "dmy" | "mdy" | "ymd";

@@ -1,13 +1,12 @@
-import moment from "moment-timezone";
 import { MONTHS } from "@/constant/months";
 import { Type__DateFormat, Type__DateVariant } from "@/constant/types";
 import { WEEKDAYS_0_BASED } from "@/constant/weekdays";
-import userTimeZone from "@/utils/userTimeZone";
+import moment from "moment-timezone";
 
 const formatDate = (
   date?: Date,
-  variant: Type__DateVariant = "fullMonth",
   options: {
+    variant?: Type__DateVariant;
     prefixDateFormat?: Type__DateFormat;
     prefixTimeZone?: string;
   } = {}
@@ -17,23 +16,27 @@ const formatDate = (
   const lang = localStorage.getItem("lang") || "id";
   const dateFormat =
     options.prefixDateFormat || localStorage.getItem("dateFormat") || "dmy";
-  const timeZone = options.prefixTimeZone || userTimeZone();
+  const timeZone = options.prefixTimeZone || "UTC";
+  let localDate;
+  if (timeZone.startsWith("Auto")) {
+    localDate = moment.tz(date, moment.tz.guess());
+  } else {
+    localDate = moment.tz(date, timeZone);
+  }
 
-  const momentDate = moment(date).tz(timeZone);
-
-  const day = momentDate.date();
-  const month = momentDate.month();
-  const year = momentDate.year();
-  const weekday = momentDate.day();
+  const day = localDate.date();
+  const month = localDate.month();
+  const year = localDate.year();
+  const weekday = localDate.day();
 
   const monthName = MONTHS[lang][month];
   const shortMonthName = monthName.substring(0, 3);
   const weekdayName = WEEKDAYS_0_BASED[lang][weekday];
   const shortWeekdayName = weekdayName.substring(0, 3);
 
-  const basicVariant = variant === "basic";
+  const basicVariant = options.variant === "basic";
 
-  const formatDate = (
+  const formatDateString = (
     day: number,
     year: number,
     monthName: string | number
@@ -56,13 +59,13 @@ const formatDate = (
     }
   };
 
-  switch (variant) {
+  switch (options.variant) {
     case "basic":
-      return formatDate(day, year, month);
+      return formatDateString(day, year, month);
     case "shortMonth":
-      return formatDate(day, year, shortMonthName);
+      return formatDateString(day, year, shortMonthName);
     case "fullMonth":
-      return formatDate(day, year, monthName);
+      return formatDateString(day, year, monthName);
     case "monthYear":
       return `${monthName} ${year}`;
     case "shortMonthDay":
@@ -70,13 +73,17 @@ const formatDate = (
     case "fullMonthDay":
       return `${day} ${monthName}`;
     case "weekdayBasic":
-      return `${shortWeekdayName}, ${formatDate(day, year, monthName)}`;
+      return `${shortWeekdayName}, ${formatDateString(day, year, monthName)}`;
     case "weekdayShortMonth":
-      return `${shortWeekdayName}, ${formatDate(day, year, shortMonthName)}`;
+      return `${shortWeekdayName}, ${formatDateString(
+        day,
+        year,
+        shortMonthName
+      )}`;
     case "weekdayFullMonth":
-      return `${weekdayName}, ${formatDate(day, year, monthName)}`;
+      return `${weekdayName}, ${formatDateString(day, year, monthName)}`;
     default:
-      return formatDate(day, year, monthName);
+      return formatDateString(day, year, monthName);
   }
 };
 

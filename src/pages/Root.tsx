@@ -1379,6 +1379,10 @@ export default function Root() {
           <TextRouterLink to={"/home"} ml={8}>
             Layout
           </TextRouterLink>
+
+          <TextRouterLink to={"/test"} ml={8}>
+            Test
+          </TextRouterLink>
         </HStack>
 
         <HStack wrap={"wrap"}>

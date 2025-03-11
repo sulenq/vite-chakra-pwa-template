@@ -41,6 +41,7 @@ import { Type__DateRange } from "@/constant/types";
 import interpolate from "@/utils/interpolate";
 import moment from "moment-timezone";
 import userTimeZone from "@/utils/userTimeZone";
+import getTzOffsetMs from "@/utils/getTzOffsetMs";
 
 const DateRangePickerInput = ({
   id,
@@ -62,6 +63,7 @@ const DateRangePickerInput = ({
   const { l, lang } = useLang();
 
   // States, Refs
+  const userTz = userTimeZone();
   const finalPlaceholder =
     placeholder || l.date_range_picker_default_placeholder;
   const [date, setDate] = useState<Date>(
@@ -70,14 +72,14 @@ const DateRangePickerInput = ({
   const [month, setMonth] = useState<number>(date.getMonth());
   const [year, setYear] = useState<number>(date.getFullYear());
   const [selected, setSelected] = useState<any>({
-    from: moment
-      .utc(inputValue?.from as any)
-      .tz(userTimeZone())
-      .toDate(),
-    to: moment
-      .utc(inputValue?.to as any)
-      .tz(userTimeZone())
-      .toDate(),
+    from: new Date(
+      new Date(inputValue?.from as any).getTime() -
+        getTzOffsetMs(moment.tz.guess())
+    ),
+    to: new Date(
+      new Date(inputValue?.to as any).getTime() -
+        getTzOffsetMs(moment.tz.guess())
+    ),
   });
   const fullDates = () => {
     const firstDayOfMonth = new Date(year, month, 1);
@@ -282,8 +284,14 @@ const DateRangePickerInput = ({
   function onConfirmSelected() {
     if (!nonNullable || selected.length > 0) {
       onConfirm?.({
-        from: selected.from.toISOString(),
-        to: selected.to.toISOString(),
+        from: new Date(
+          new Date(inputValue?.from as any).getTime() +
+            getTzOffsetMs(moment.tz.guess())
+        ),
+        to: new Date(
+          new Date(inputValue?.to as any).getTime() +
+            getTzOffsetMs(moment.tz.guess())
+        ),
       });
       back();
     }
@@ -303,11 +311,11 @@ const DateRangePickerInput = ({
               setSelected({
                 from: moment
                   .utc(inputValue.from as any)
-                  .tz(userTimeZone())
+                  .tz(userTz.key)
                   .toDate(),
                 to: moment
                   .utc(inputValue.to as any)
-                  .tz(userTimeZone())
+                  .tz(userTz.key)
                   .toDate(),
               });
             }
