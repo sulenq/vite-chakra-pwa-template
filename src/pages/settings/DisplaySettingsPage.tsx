@@ -172,7 +172,7 @@ const Theme = () => {
           />
         </HStack>
 
-        <SimpleGrid columns={[4, 6, 8]} gap={1}>
+        <SimpleGrid columns={[5, 10, null, 15]} gap={1}>
           {colorPalettes.map((color, i) => {
             const active = color.palette === themeConfig.colorPalette;
 
