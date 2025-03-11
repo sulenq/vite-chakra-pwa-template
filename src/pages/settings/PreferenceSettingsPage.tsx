@@ -111,11 +111,13 @@ const TimeZone = () => {
   return (
     <ItemContainer>
       <ItemHeaderContainer borderLess={!!iss} gap={2}>
-        <HStack>
-          <Icon maxW={"20px"}>
-            <IconTimezone />
-          </Icon>
-          <Text fontWeight={"bold"}>{l.time_zone_settings_title}</Text>
+        <HStack wrap={"wrap"}>
+          <HStack>
+            <Icon maxW={"20px"}>
+              <IconTimezone />
+            </Icon>
+            <Text fontWeight={"bold"}>{l.time_zone_settings_title}</Text>
+          </HStack>
           <Text color={"fg.subtle"}>
             {userTimeZone().localAbbr} ({userTimeZone().key}{" "}
             {userTimeZone().formattedOffset})

@@ -68,6 +68,11 @@
   --reda3: rgba(255, 109, 109, 0.2);
 }
 
+/* Smooth shadow */
+.ss {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.01) !important;
+}
+
 /* Dark Transparent Blured */
 .dsb {
   background: var(--darktrans) !important;

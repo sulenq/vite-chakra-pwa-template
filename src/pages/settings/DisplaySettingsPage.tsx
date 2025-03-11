@@ -5,27 +5,23 @@ import { useColorMode } from "@/components/ui/color-mode";
 import { Switch } from "@/components/ui/switch";
 import SettingsNavsContainer from "@/components/widget/SettingsNavsContainer";
 import ToggleSettingsContainer from "@/components/widget/ToggleSettingsContainer";
+import useADM from "@/context/useADM";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import { HStack, Icon, Text } from "@chakra-ui/react";
 import { IconMoon2 } from "@tabler/icons-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const DarkMode = () => {
   // Contexts
   const { themeConfig } = useThemeConfig();
   const { l } = useLang();
-  const { setColorMode } = useColorMode();
-
-  // States
-  const [ADM, setADM] = useState(false); // Adaptive Dark Mode (Time-based)
-  const [manualDarkMode, setManualDarkMode] = useState(
-    localStorage.getItem("darkMode") === "true"
-  );
+  const { colorMode, setColorMode, toggleColorMode } = useColorMode();
+  const { ADM, setADM } = useADM(); // Adaptive Dark Mode (Time-based)
 
   // Handle adaptive dark mode
   useEffect(() => {
-    if (!ADM) return; // Jika ADM nonaktif, tidak perlu menjalankan auto mode
+    if (ADM === "false") return;
 
     const updateDarkMode = () => {
       const hour = new Date().getHours();
@@ -38,22 +34,11 @@ const DarkMode = () => {
     return () => clearInterval(interval);
   }, [ADM, setColorMode]);
 
-  // Handle manual dark mode toggle
-  const handleManualToggle = () => {
-    const newMode = !manualDarkMode;
-    setManualDarkMode(newMode);
-    setColorMode(newMode ? "dark" : "light");
-    localStorage.setItem("darkMode", newMode.toString());
-  };
-
-  // Handle Adaptive Dark Mode toggle
   const handleAdaptiveToggle = () => {
-    const newADM = !ADM;
-    setADM(newADM);
-    localStorage.setItem("adaptiveDarkMode", newADM.toString());
-
-    if (!newADM) {
-      setColorMode(manualDarkMode ? "dark" : "light");
+    if (ADM === "true") {
+      setADM("false");
+    } else {
+      setADM("true");
     }
   };
 
@@ -70,7 +55,7 @@ const DarkMode = () => {
 
       <CContainer gap={4} py={3}>
         {/* Manual Dark Mode Toggle */}
-        <ToggleSettingsContainer disabled={ADM}>
+        <ToggleSettingsContainer disabled={ADM === "true"}>
           <CContainer>
             <Text>{l.dark_mode_ui_settings.label}</Text>
             <Text color={"fg.subtle"}>
@@ -79,8 +64,8 @@ const DarkMode = () => {
           </CContainer>
 
           <Switch
-            checked={manualDarkMode}
-            onChange={handleManualToggle}
+            checked={colorMode === "dark"}
+            onChange={toggleColorMode}
             colorPalette={themeConfig.colorPalette}
           />
         </ToggleSettingsContainer>
@@ -95,7 +80,7 @@ const DarkMode = () => {
           </CContainer>
 
           <Switch
-            checked={ADM}
+            checked={ADM === "true"}
             onChange={handleAdaptiveToggle}
             colorPalette={themeConfig.colorPalette}
           />

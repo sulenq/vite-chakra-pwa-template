@@ -16,14 +16,14 @@ import {
 import { IconSettings } from "@tabler/icons-react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import BackButton from "../ui-custom/BackButton";
 import CContainer from "../ui-custom/CContainer";
 import FloatCounter from "../ui-custom/FloatCounter";
 import Heading6 from "../ui-custom/Heading6";
 import Logo from "../ui-custom/Logo";
-import { ColorModeButton } from "../ui/color-mode";
 import { Tooltip } from "../ui/tooltip";
+import CurrentUserTimeZone from "./CurrentUserTimeZone";
 import MerchantInbox from "./Inbox";
-import BackButton from "../ui-custom/BackButton";
 
 interface Interface__NavItemContainer extends StackProps {
   active?: boolean;
@@ -227,7 +227,8 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
           </HStack>
 
           <HStack flexShrink={0} gap={1}>
-            <ColorModeButton fontSize={"1.1rem"} />
+            {/* <ColorModeButton fontSize={"1.1rem"} /> */}
+            <CurrentUserTimeZone />
 
             <MerchantInbox />
           </HStack>

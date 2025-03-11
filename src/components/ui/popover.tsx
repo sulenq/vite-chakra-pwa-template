@@ -1,6 +1,7 @@
 import { Popover as ChakraPopover, Portal } from "@chakra-ui/react";
 import { CloseButton } from "./close-button";
 import { forwardRef } from "react";
+import { useThemeConfig } from "@/context/useThemeConfig";
 
 interface PopoverContentProps extends ChakraPopover.ContentProps {
   portalled?: boolean;
@@ -9,17 +10,23 @@ interface PopoverContentProps extends ChakraPopover.ContentProps {
 
 export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
   function PopoverContent(props, ref) {
+    // Contexts
+    const { themeConfig } = useThemeConfig();
     const { portalled = true, portalRef, ...rest } = props;
+
     return (
       <Portal disabled={!portalled} container={portalRef}>
         <ChakraPopover.Positioner>
           <ChakraPopover.Content
             ref={ref}
             bg={"body"}
-            // backdropFilter={"blur(5px)"}
-            // color={"light"}
-            // boxShadow={"none"}
-            border={"1px solid var(--d2)"}
+            w={"fit"}
+            p={3}
+            borderRadius={themeConfig.radii.container}
+            border={"1px solid"}
+            borderColor={"border.subtle"}
+            shadow={"none"}
+            className="ss"
             {...rest}
           />
         </ChakraPopover.Positioner>
