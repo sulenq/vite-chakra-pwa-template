@@ -1,17 +1,17 @@
-import { Icon, Text } from "@chakra-ui/react";
-import BButton from "../ui-custom/BButton";
-import { IconTimezone } from "@tabler/icons-react";
-import userTimeZone from "@/utils/userTimeZone";
 import { useThemeConfig } from "@/context/useThemeConfig";
-import { PopoverContent, PopoverRoot, PopoverTrigger } from "../ui/popover";
+import useTimeZone from "@/context/useTimeZone";
+import { Icon, Text } from "@chakra-ui/react";
+import { IconTimezone } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
+import BButton from "../ui-custom/BButton";
+import { PopoverContent, PopoverRoot, PopoverTrigger } from "../ui/popover";
 
 const CurrentUserTimeZone = () => {
   // Contexts
   const { themeConfig } = useThemeConfig();
+  const { timeZone } = useTimeZone();
 
   // States, Refs
-  const timeZone = userTimeZone();
 
   return (
     <PopoverRoot>
