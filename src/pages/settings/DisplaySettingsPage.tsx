@@ -172,19 +172,19 @@ const Theme = () => {
           />
         </HStack>
 
-        <SimpleGrid columns={[5, 10, null, 15]} gap={1}>
+        <SimpleGrid columns={[5, 10, null, 15]} gap={2}>
           {colorPalettes.map((color, i) => {
             const active = color.palette === themeConfig.colorPalette;
 
             return (
               <Center
                 key={i}
-                p={1}
+                p={color.palette === themeConfig.colorPalette ? 1 : 0}
                 border={"2px solid"}
                 borderColor={
                   color.palette === themeConfig.colorPalette
                     ? themeConfig.primaryColor
-                    : "transparent"
+                    : `${color.palette}.500`
                 }
                 borderRadius={themeConfig.radii.component}
                 cursor={"pointer"}
@@ -199,7 +199,9 @@ const Theme = () => {
                 <Center
                   w={"full"}
                   aspectRatio={1}
-                  borderRadius={5}
+                  borderRadius={
+                    color.palette === themeConfig.colorPalette ? 5 : 6
+                  }
                   bg={`${color.palette}.500`}
                 >
                   {active && (
