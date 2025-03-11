@@ -27,7 +27,6 @@ import autoTimeZone from "@/utils/autoTimeZone";
 import formatDate from "@/utils/formatDate";
 import formatTime from "@/utils/formatTime";
 import { makeTime } from "@/utils/getTime";
-import onRenderCallback from "@/utils/onRenderCallback";
 import pluck from "@/utils/pluck";
 import { TIME_ZONES } from "@/utils/timeZones";
 import { chakra, HStack, Icon, SimpleGrid, Text } from "@chakra-ui/react";
@@ -38,7 +37,7 @@ import {
   IconRulerMeasure,
   IconTimezone,
 } from "@tabler/icons-react";
-import { Profiler, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { AutoSizer, Grid, GridCellRenderer } from "react-virtualized";
 
 const Language = () => {
@@ -47,54 +46,48 @@ const Language = () => {
   const { lang, setLang, l } = useLang();
 
   return (
-    <Profiler id="Language" onRender={onRenderCallback}>
-      <ItemContainer>
-        <ItemHeaderContainer>
-          <HStack>
-            <Icon maxW={"20px"}>
-              <IconLanguage />
-            </Icon>
-            <Text fontWeight={"bold"}>{l.language_settings_title}</Text>
-          </HStack>
-        </ItemHeaderContainer>
+    <ItemContainer>
+      <ItemHeaderContainer>
+        <HStack>
+          <Icon maxW={"20px"}>
+            <IconLanguage />
+          </Icon>
+          <Text fontWeight={"bold"}>{l.language_settings_title}</Text>
+        </HStack>
+      </ItemHeaderContainer>
 
-        <CContainer gap={4} py={2}>
-          <SimpleGrid px={2} columns={[1, 2]}>
-            {LANGUAGES.map((item, i) => {
-              const active = lang === item.key;
+      <CContainer gap={4} py={2}>
+        <SimpleGrid px={2} columns={[1, 2]}>
+          {LANGUAGES.map((item, i) => {
+            const active = lang === item.key;
 
-              return (
-                <BButton
-                  key={i}
-                  unclicky
-                  borderRadius={themeConfig.radii.component}
-                  gap={1}
-                  variant={"ghost"}
-                  justifyContent={"start"}
-                  px={[3, null, 3]}
-                  onClick={() => {
-                    setLang(item.key as Type__LanguageOptions);
-                  }}
-                >
-                  <Text fontWeight={"bold"} truncate>
-                    {item.label}{" "}
-                    <chakra.span
-                      color={"fg.subtle"}
-                      mx={2}
-                      fontWeight={"normal"}
-                    >
-                      {item.code}
-                    </chakra.span>
-                  </Text>
+            return (
+              <BButton
+                key={i}
+                unclicky
+                borderRadius={themeConfig.radii.component}
+                gap={1}
+                variant={"ghost"}
+                justifyContent={"start"}
+                px={[3, null, 3]}
+                onClick={() => {
+                  setLang(item.key as Type__LanguageOptions);
+                }}
+              >
+                <Text fontWeight={"bold"} truncate>
+                  {item.label}{" "}
+                  <chakra.span color={"fg.subtle"} mx={2} fontWeight={"normal"}>
+                    {item.code}
+                  </chakra.span>
+                </Text>
 
-                  {active && <CheckIndicator />}
-                </BButton>
-              );
-            })}
-          </SimpleGrid>
-        </CContainer>
-      </ItemContainer>
-    </Profiler>
+                {active && <CheckIndicator />}
+              </BButton>
+            );
+          })}
+        </SimpleGrid>
+      </CContainer>
+    </ItemContainer>
   );
 };
 
@@ -168,73 +161,73 @@ const TimeZone = () => {
   };
 
   return (
-    <Profiler id="TimeZone" onRender={onRenderCallback}>
-      <ItemContainer>
-        <ItemHeaderContainer borderLess={iss} gap={2}>
-          <HStack wrap="wrap">
-            <HStack>
-              <Icon maxW="20px">
-                <IconTimezone />
-              </Icon>
-              <Text fontWeight="bold">{l.time_zone_settings_title}</Text>
-            </HStack>
-            <Text color="fg.subtle">
-              {timeZone.key} {timeZone.formattedOffset} ({timeZone.localAbbr})
-            </Text>
+    // <Profiler id="TimeZone" onRender={onRenderCallback}>
+    <ItemContainer>
+      <ItemHeaderContainer borderLess={iss} gap={2}>
+        <HStack wrap="wrap">
+          <HStack>
+            <Icon maxW="20px">
+              <IconTimezone />
+            </Icon>
+            <Text fontWeight="bold">{l.time_zone_settings_title}</Text>
           </HStack>
+          <Text color="fg.subtle">
+            {timeZone.key} {timeZone.formattedOffset} ({timeZone.localAbbr})
+          </Text>
+        </HStack>
 
-          {!iss && (
+        {!iss && (
+          <SearchInput
+            onChangeSetter={setSearch}
+            inputValue={search}
+            inputProps={{ size: "xs" }}
+            maxW="300px"
+          />
+        )}
+      </ItemHeaderContainer>
+
+      <CContainer>
+        {iss && (
+          <CContainer px={3} mt={2}>
             <SearchInput
               onChangeSetter={setSearch}
               inputValue={search}
-              inputProps={{ size: "xs" }}
-              maxW="300px"
+              inputProps={{
+                variant: "flushed",
+                borderRadius: 0,
+                pl: "36px",
+              }}
+              iconProps={{ ml: "-6px" }}
             />
-          )}
-        </ItemHeaderContainer>
-
-        <CContainer>
-          {iss && (
-            <CContainer px={3} mt={2}>
-              <SearchInput
-                onChangeSetter={setSearch}
-                inputValue={search}
-                inputProps={{
-                  variant: "flushed",
-                  borderRadius: 0,
-                  pl: "36px",
-                }}
-                iconProps={{ ml: "-6px" }}
-              />
-            </CContainer>
-          )}
-
-          <CContainer h="178px" py={2}>
-            {fd.length === 0 ? (
-              <FeedbackNotFound />
-            ) : (
-              <AutoSizer>
-                {({ height, width }) => (
-                  <Grid
-                    width={width}
-                    height={height}
-                    columnCount={columnCount}
-                    columnWidth={width / columnCount}
-                    rowCount={Math.ceil(fd.length / columnCount)}
-                    rowHeight={40}
-                    cellRenderer={cellRenderer}
-                    className="scrollY"
-                    style={{
-                      overflowX: "clip",
-                    }}
-                  />
-                )}
-              </AutoSizer>
-            )}
           </CContainer>
+        )}
+
+        <CContainer h="178px" py={2}>
+          {fd.length === 0 ? (
+            <FeedbackNotFound />
+          ) : (
+            <AutoSizer>
+              {({ height, width }) => (
+                <Grid
+                  width={width}
+                  height={height}
+                  columnCount={columnCount}
+                  columnWidth={width / columnCount}
+                  rowCount={Math.ceil(fd.length / columnCount)}
+                  rowHeight={40}
+                  cellRenderer={cellRenderer}
+                  className="scrollY"
+                  style={{
+                    overflowX: "clip",
+                  }}
+                />
+              )}
+            </AutoSizer>
+          )}
         </CContainer>
-      </ItemContainer>
-    </Profiler>
+      </CContainer>
+    </ItemContainer>
+    // </Profiler>
   );
 };
 

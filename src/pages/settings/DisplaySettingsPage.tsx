@@ -143,38 +143,6 @@ const Theme = () => {
       </ItemHeaderContainer>
 
       <CContainer gap={4} py={3} px={3}>
-        <HStack wrap={"wrap"} gapY={4}>
-          <BButton
-            flex={"1 1 100px"}
-            colorPalette={themeConfig.colorPalette}
-            size={"md"}
-          >
-            Button
-          </BButton>
-          <BButton
-            flex={"1 1 100px"}
-            colorPalette={themeConfig.colorPalette}
-            size={"md"}
-            variant={"outline"}
-          >
-            Button
-          </BButton>
-          <StringInput
-            boxProps={{ flex: "1 1 100px" }}
-            placeholder="example@email.com"
-          />
-          <SelectInput
-            flex={"1 1 100px"}
-            name="select1"
-            title={l.religion}
-            initialOptions={OPTIONS_RELIGION}
-            onConfirm={(inputValue) => {
-              setSelect(inputValue);
-            }}
-            inputValue={select}
-          />
-        </HStack>
-
         <SimpleGrid columns={[5, 10, null, 15]} gap={2}>
           {colorPalettes.map((color, i) => {
             const active = color.palette === themeConfig.colorPalette;
@@ -217,6 +185,39 @@ const Theme = () => {
             );
           })}
         </SimpleGrid>
+
+        {/* Example */}
+        <HStack wrap={"wrap"} gapY={4}>
+          <BButton
+            flex={"1 1 100px"}
+            colorPalette={themeConfig.colorPalette}
+            size={"md"}
+          >
+            Button
+          </BButton>
+          <BButton
+            flex={"1 1 100px"}
+            colorPalette={themeConfig.colorPalette}
+            size={"md"}
+            variant={"outline"}
+          >
+            Button
+          </BButton>
+          <StringInput
+            boxProps={{ flex: "1 1 100px" }}
+            placeholder="example@email.com"
+          />
+          <SelectInput
+            flex={"1 1 100px"}
+            name="select1"
+            title={l.religion}
+            initialOptions={OPTIONS_RELIGION}
+            onConfirm={(inputValue) => {
+              setSelect(inputValue);
+            }}
+            inputValue={select}
+          />
+        </HStack>
       </CContainer>
     </ItemContainer>
   );
