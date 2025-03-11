@@ -159,7 +159,7 @@ const TimeZone = () => {
         <CContainer h={"178px"} overflowY={"auto"}>
           {fd.length === 0 && <FeedbackNotFound />}
 
-          <SimpleGrid px={2} columns={[1, 2, null, 3]} my={2}>
+          <SimpleGrid px={2} columns={[1, 2, null, null, 3]} my={2}>
             {fd.map((item, i) => {
               const active = item.key === timeZone.key;
 
@@ -179,6 +179,10 @@ const TimeZone = () => {
                   </Text>
 
                   <Text color={"fg.subtle"}>{item.formattedOffset}</Text>
+
+                  <Text color={"fg.subtle"} ml={-1}>
+                    ({item.localAbbr})
+                  </Text>
 
                   {active && <CheckIndicator />}
                 </BButton>
