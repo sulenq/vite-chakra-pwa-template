@@ -2,6 +2,7 @@ import { MONTHS } from "@/constant/months";
 import { Type__DateFormat, Type__DateVariant } from "@/constant/types";
 import { WEEKDAYS_0_BASED } from "@/constant/weekdays";
 import moment from "moment-timezone";
+import userTimeZone from "./userTimeZone";
 
 const formatDate = (
   date?: Date,
@@ -16,7 +17,7 @@ const formatDate = (
   const lang = localStorage.getItem("lang") || "id";
   const dateFormat =
     options.prefixDateFormat || localStorage.getItem("dateFormat") || "dmy";
-  const timeZone = options.prefixTimeZone || "UTC";
+  const timeZone = options.prefixTimeZone || userTimeZone().key;
   let localDate;
   if (timeZone.startsWith("Auto")) {
     localDate = moment.tz(date, moment.tz.guess());
