@@ -24,8 +24,7 @@ import formatDate from "@/utils/formatDate";
 import formatTime from "@/utils/formatTime";
 import { makeTime } from "@/utils/getTime";
 import pluck from "@/utils/pluck";
-import timeZones from "@/utils/timeZones";
-import userTimeZone from "@/utils/userTimeZone";
+import { TIME_ZONES } from "@/utils/timeZones";
 import { chakra, HStack, Icon, SimpleGrid, Text } from "@chakra-ui/react";
 import {
   IconCalendar,
@@ -34,7 +33,7 @@ import {
   IconRulerMeasure,
   IconTimezone,
 } from "@tabler/icons-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 const Language = () => {
   // Contexts
@@ -92,17 +91,25 @@ const TimeZone = () => {
   const { l } = useLang();
   const { timeZone, setTimeZone } = useTimeZone();
 
-  // States, Refs
-  const TIME_ZONES = timeZones();
-  const [search, setSearch] = useState("");
-  const fd = [autoTimeZone(), ...TIME_ZONES].filter((item) => {
-    const itemTerm = `${item.key.toLowerCase()} ${item.formattedOffset} ${
-      item.localAbbr
-    }`;
-    const searchTerm = search.toLowerCase();
+  // Constants
+  const autoTZ = useMemo(() => autoTimeZone(), []);
+  const FINAL_TIME_ZONES = [autoTZ, ...TIME_ZONES];
 
-    return itemTerm.includes(searchTerm);
-  });
+  // States
+  const [search, setSearch] = useState("");
+
+  // Filtered Timezones
+  const fd = useMemo(() => {
+    if (!search) return FINAL_TIME_ZONES;
+
+    const searchTerm = search.toLowerCase().normalize("NFD");
+
+    return FINAL_TIME_ZONES.filter(({ key, formattedOffset, localAbbr }) =>
+      `${key} ${formattedOffset} ${localAbbr}`
+        .toLowerCase()
+        .includes(searchTerm)
+    );
+  }, [search]);
 
   // Utils
   const { sw } = useScreen();
@@ -110,7 +117,7 @@ const TimeZone = () => {
 
   return (
     <ItemContainer>
-      <ItemHeaderContainer borderLess={!!iss} gap={2}>
+      <ItemHeaderContainer borderLess={iss} gap={2}>
         <HStack wrap={"wrap"}>
           <HStack>
             <Icon maxW={"20px"}>
@@ -119,20 +126,15 @@ const TimeZone = () => {
             <Text fontWeight={"bold"}>{l.time_zone_settings_title}</Text>
           </HStack>
           <Text color={"fg.subtle"}>
-            {userTimeZone().key} {userTimeZone().formattedOffset} (
-            {userTimeZone().localAbbr} )
+            {timeZone.key} {timeZone.formattedOffset} ({timeZone.localAbbr})
           </Text>
         </HStack>
 
         {!iss && (
           <SearchInput
-            onChangeSetter={(input) => {
-              setSearch(input);
-            }}
+            onChangeSetter={setSearch}
             inputValue={search}
-            inputProps={{
-              size: "xs",
-            }}
+            inputProps={{ size: "xs" }}
             maxW={"300px"}
           />
         )}
@@ -142,9 +144,7 @@ const TimeZone = () => {
         {iss && (
           <CContainer px={3} mt={2}>
             <SearchInput
-              onChangeSetter={(input) => {
-                setSearch(input);
-              }}
+              onChangeSetter={setSearch}
               inputValue={search}
               inputProps={{
                 variant: "flushed",
@@ -157,38 +157,31 @@ const TimeZone = () => {
         )}
 
         <CContainer h={"178px"} overflowY={"auto"}>
-          {fd.length === 0 && <FeedbackNotFound />}
-
-          <SimpleGrid px={2} columns={[1, 2, null, null, 3]} my={2}>
-            {fd.map((item, i) => {
-              const active = item.key === timeZone.key;
-
-              return (
+          {fd.length === 0 ? (
+            <FeedbackNotFound />
+          ) : (
+            <SimpleGrid px={2} columns={[1, 2, null, null, 3]} my={2}>
+              {fd.map((item) => (
                 <BButton
-                  key={i}
+                  key={item.key}
                   unclicky
-                  onClick={() => {
-                    setTimeZone(item);
-                  }}
+                  onClick={() => setTimeZone(item)}
                   variant={"ghost"}
                   justifyContent={"start"}
                   px={[3, null, 3]}
                 >
                   <Text fontWeight={"bold"} truncate>
-                    {item.key}{" "}
+                    {item.key}
                   </Text>
-
                   <Text color={"fg.subtle"}>{item.formattedOffset}</Text>
-
                   <Text color={"fg.subtle"} ml={-1}>
                     ({item.localAbbr})
                   </Text>
-
-                  {active && <CheckIndicator />}
+                  {item.key === timeZone.key && <CheckIndicator />}
                 </BButton>
-              );
-            })}
-          </SimpleGrid>
+              ))}
+            </SimpleGrid>
+          )}
         </CContainer>
       </CContainer>
     </ItemContainer>
