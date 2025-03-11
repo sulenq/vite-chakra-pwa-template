@@ -135,8 +135,8 @@ const TimeZone = () => {
         key={key}
         style={{
           ...style,
-          paddingLeft: itemIndex % 2 === 0 ? "8px" : "",
-          paddingRight: itemIndex % 2 === 0 ? "" : "14px",
+          paddingLeft: itemIndex % 2 === 0 || iss ? "8px" : "",
+          paddingRight: itemIndex % 2 === 0 && !iss ? "" : "14px",
         }}
       >
         <BButton
