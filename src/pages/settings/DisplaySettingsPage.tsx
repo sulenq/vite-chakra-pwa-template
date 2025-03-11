@@ -102,18 +102,35 @@ const Theme = () => {
   // States, Refs
   const colorPalettes = [
     { palette: "p", primaryHex: "#0062FF" },
+
+    // Neutral & Dark Shades
     { palette: "gray", primaryHex: "#1B1B1B" },
-    { palette: "red", primaryHex: "#FF0000" },
+    { palette: "brown", primaryHex: "#795548" },
+    { palette: "mocha", primaryHex: "#9F5D39" },
+    { palette: "caramel", primaryHex: "#C47B27" },
+    { palette: "cream", primaryHex: "#D7BF8C" },
+
+    // Reds & Pinks
     { palette: "maroon", primaryHex: "#800000" },
+    { palette: "red", primaryHex: "#FF0000" },
     { palette: "salmon", primaryHex: "#FF6242" },
+    { palette: "flamingoPink", primaryHex: "#FF478B" },
+    { palette: "bubblegumPink", primaryHex: "#FF4ABB" },
+    { palette: "pink", primaryHex: "#E91E63" },
+
+    // Oranges & Yellows
     { palette: "orange", primaryHex: "#FF8E62" },
     { palette: "pastelSalmon", primaryHex: "#FF8E62" },
     { palette: "yellow", primaryHex: "#f6e05e" },
+
+    // Greens
     { palette: "lime", primaryHex: "#CDDC39" },
     { palette: "olive", primaryHex: "#879F30" },
     { palette: "green", primaryHex: "#4CAF50" },
     { palette: "jade", primaryHex: "#00A86B" },
     { palette: "teal", primaryHex: "#009688" },
+
+    // Cyans & Blues
     { palette: "kemenkes", primaryHex: "#16B3AC" },
     { palette: "cyan", primaryHex: "#00BCD4" },
     { palette: "sky", primaryHex: "#0EA5E9" },
@@ -121,16 +138,11 @@ const Theme = () => {
     { palette: "sapphire", primaryHex: "#1939B7" },
     { palette: "discord", primaryHex: "#5865F2" },
     { palette: "indigo", primaryHex: "#3F51B5" },
+
+    // Purples & Lavenders
     { palette: "lavender", primaryHex: "#7A42FF" },
     { palette: "powderLavender", primaryHex: "#AB87FF" },
     { palette: "purple", primaryHex: "#9C27B0" },
-    { palette: "pink", primaryHex: "#E91E63" },
-    { palette: "flamingoPink", primaryHex: "#FF478B" },
-    { palette: "bubblegumPink", primaryHex: "#FF4ABB" },
-    { palette: "cream", primaryHex: "#D7BF8C" },
-    { palette: "caramel", primaryHex: "#C47B27" },
-    { palette: "mocha", primaryHex: "#9F5D39" },
-    { palette: "brown", primaryHex: "#795548" },
   ];
   const [select, setSelect] = useState<any>();
 
