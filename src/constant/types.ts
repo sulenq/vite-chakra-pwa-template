@@ -7,6 +7,7 @@ export type Type__TimeZoneObject = {
   offset: number;
   offsetMs: number;
   formattedOffset: string;
+  localAbbr: string;
 };
 
 export type Type__TimeFormat = "24-hour" | "12-hour";

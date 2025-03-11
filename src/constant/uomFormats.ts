@@ -1,4 +1,4 @@
-export const MEASURMENT_UNIT_FORMATS = [
+export const UOM_FORMATS = [
   {
     key: "metric",
     label: "Metric",

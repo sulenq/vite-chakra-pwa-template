@@ -9,12 +9,12 @@ import SearchInput from "@/components/ui-custom/SearchInput";
 import SettingsNavsContainer from "@/components/widget/SettingsNavsContainer";
 import { DATE_FORMATS } from "@/constant/dateFormats";
 import { LANGUAGES } from "@/constant/languages";
-import { MEASURMENT_UNIT_FORMATS } from "@/constant/measurmentUnitFormats";
+import { UOM_FORMATS } from "@/constant/uomFormats";
 import { TIME_FORMATS } from "@/constant/timeFormats";
 import { Type__DateFormat, Type__TimeFormat } from "@/constant/types";
 import useDateFormat from "@/context/useDateFormat";
 import useLang from "@/context/useLang";
-import useMeasurementUnitFormat from "@/context/useMeasurementUnitFormat";
+import useUOM from "@/context/useUOM";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useTimeFormat from "@/context/useTimeFormat";
 import useTimeZone from "@/context/useTimeZone";
@@ -64,6 +64,7 @@ const Language = () => {
                 gap={1}
                 variant={"ghost"}
                 justifyContent={"start"}
+                px={[3, null, 4]}
                 onClick={() => {
                   setLang(item.key);
                 }}
@@ -112,7 +113,8 @@ const TimeZone = () => {
           </Icon>
           <Text fontWeight={"bold"}>{l.time_zone_settings_title}</Text>
           <Text color={"fg.subtle"}>
-            {userTimeZone().key} {userTimeZone().formattedOffset}
+            {userTimeZone().localAbbr} ({userTimeZone().key}{" "}
+            {userTimeZone().formattedOffset})
           </Text>
         </HStack>
 
@@ -162,6 +164,7 @@ const TimeZone = () => {
                   }}
                   variant={"ghost"}
                   justifyContent={"start"}
+                  px={[3, null, 4]}
                 >
                   <Text fontWeight={"bold"} truncate>
                     {item.key}{" "}
@@ -205,7 +208,7 @@ const DateFormat = () => {
             return (
               <CContainer
                 key={i}
-                px={4}
+                px={[3, null, 4]}
                 py={3}
                 borderRadius={themeConfig.radii.component}
                 onClick={() => {
@@ -313,12 +316,11 @@ const TimeFormat = () => {
   );
 };
 
-const MeasurementUnitFormat = () => {
+const UOMFormat = () => {
   // Contexts
   const { themeConfig } = useThemeConfig();
   const { l } = useLang();
-  const { measurementUnitFormat, setMeasurementUnitFormat } =
-    useMeasurementUnitFormat();
+  const { UOM, setUOM } = useUOM();
 
   return (
     <ItemContainer>
@@ -335,8 +337,8 @@ const MeasurementUnitFormat = () => {
 
       <CContainer gap={4} py={2}>
         <SimpleGrid px={2} columns={[1, 2, 3]}>
-          {MEASURMENT_UNIT_FORMATS.map((item, i) => {
-            const active = item.key === measurementUnitFormat;
+          {UOM_FORMATS.map((item, i) => {
+            const active = item.key === UOM;
 
             return (
               <CContainer
@@ -345,7 +347,7 @@ const MeasurementUnitFormat = () => {
                 py={3}
                 borderRadius={themeConfig.radii.component}
                 onClick={() => {
-                  setMeasurementUnitFormat(item.key);
+                  setUOM(item.key);
                 }}
                 cursor={"pointer"}
                 _hover={{ bg: "gray.subtle" }}
@@ -392,7 +394,7 @@ const PreferenceSettingsPage = () => {
         <TimeFormat />
 
         {/* Measurment Unit Format */}
-        <MeasurementUnitFormat />
+        <UOMFormat />
       </CContainer>
 
       <HelperText px={2} mt={4}>

@@ -1,28 +1,28 @@
 import { create } from "zustand";
 
-const STORAGE_KEY = "measurementUnitFormat";
+const STORAGE_KEY = "uom";
 const DEFAULT = "metric";
 
 interface Props {
-  measurementUnitFormat: string;
-  setMeasurementUnitFormat: (newState: string) => void;
+  UOM: string;
+  setUOM: (newState: string) => void;
 }
 
-const useMeasurementUnitFormat = create<Props>((set) => {
+const useUOM = create<Props>((set) => {
   const stored = localStorage.getItem(STORAGE_KEY);
   if (!stored) localStorage.setItem(STORAGE_KEY, DEFAULT);
   const initial = stored ? stored : DEFAULT;
 
   return {
-    measurementUnitFormat: initial,
-    setMeasurementUnitFormat: (newState) =>
+    UOM: initial,
+    setUOM: (newState) =>
       set(() => {
         localStorage.setItem(STORAGE_KEY, newState);
         return {
-          measurementUnitFormat: newState,
+          UOM: newState,
         };
       }),
   };
 });
 
-export default useMeasurementUnitFormat;
+export default useUOM;

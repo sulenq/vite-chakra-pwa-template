@@ -1,33 +1,52 @@
 import { Type__TimeFormat } from "@/constant/types";
+import userTimeZone from "./userTimeZone";
+import getTzOffsetMs from "./getTzOffsetMs";
 
 export default function formatTime(
   time?: string,
   options: {
     showSeconds?: boolean;
     prefixTimeFormat?: Type__TimeFormat;
-    timeZonePrefix?: string;
-  } = {}
+    prefixTimeZone?: string;
+  } = {
+    showSeconds: false,
+    prefixTimeZone: userTimeZone().key,
+  }
 ): string {
   if (!time) return "";
 
   const timeFormat =
     options.prefixTimeFormat || localStorage.getItem("timeFormat") || "24-hour";
-  const showSeconds = options.showSeconds || false;
 
-  let timePart = time.includes("T") ? time.split("T")[1] : time; // Handle datetime
-  timePart = timePart.split(".")[0];
-  const [hh, mm, ss] = timePart.split(":");
+  const timeZone = options.prefixTimeZone || userTimeZone().key;
+  const offsetMs = getTzOffsetMs(timeZone);
+  const offsetHours = offsetMs / (1000 * 60 * 60);
+
+  let [hh, mm, ss = "00"] = time.split(":").map(Number);
+
+  hh += offsetHours;
+
+  if (hh >= 24) hh -= 24;
+  if (hh < 0) hh += 24;
+
+  let formattedTime: string;
 
   if (timeFormat === "12-hour") {
-    const hour = parseInt(hh, 10);
-    const suffix = hour >= 12 ? "PM" : "AM";
-    const hour12 = hour % 12 || 12; //  0 to 12 for AM
-    const formattedTime = `${hour12}:${mm}`; // Base : "hh:mm"
-    return showSeconds
-      ? `${formattedTime}:${ss} ${suffix}`
+    const suffix = hh >= 12 ? "PM" : "AM";
+    const hour12 = hh % 12 || 12;
+    formattedTime = `${hour12}:${String(mm).padStart(2, "0")}`;
+    formattedTime = options.showSeconds
+      ? `${formattedTime}:${String(ss).padStart(2, "0")} ${suffix}`
       : `${formattedTime} ${suffix}`;
+  } else {
+    formattedTime = `${String(hh).padStart(2, "0")}:${String(mm).padStart(
+      2,
+      "0"
+    )}`;
+    formattedTime = options.showSeconds
+      ? `${formattedTime}:${String(ss).padStart(2, "0")}`
+      : formattedTime;
   }
 
-  const formattedTime = `${hh}:${mm}`;
-  return showSeconds ? `${formattedTime}:${ss}` : formattedTime;
+  return formattedTime;
 }
