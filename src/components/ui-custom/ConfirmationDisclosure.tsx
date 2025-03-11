@@ -36,9 +36,14 @@ const ConfirmationDisclosure = ({
   triggerProps,
   disabled = false,
 }: Props) => {
+  // Contexts
+  const { themeConfig } = useThemeConfig();
+
+  // Utils
   const { open, onOpen, onClose } = useDisclosure();
   useBackOnClose(`confirm-${title}-${id}`, open, onOpen, onClose);
-  const { themeConfig } = useThemeConfig();
+
+  console.log(confirmButtonProps);
 
   return (
     <>

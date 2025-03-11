@@ -143,7 +143,7 @@ const Theme = () => {
       </ItemHeaderContainer>
 
       <CContainer gap={4} py={3} px={3}>
-        <SimpleGrid columns={[5, 10, null, 15]} gap={2}>
+        <SimpleGrid columns={[5, 10, null, null, 15]} gap={2}>
           {colorPalettes.map((color, i) => {
             const active = color.palette === themeConfig.colorPalette;
 
