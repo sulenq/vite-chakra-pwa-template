@@ -9,19 +9,20 @@ import SearchInput from "@/components/ui-custom/SearchInput";
 import SettingsNavsContainer from "@/components/widget/SettingsNavsContainer";
 import { DATE_FORMATS } from "@/constant/dateFormats";
 import { LANGUAGES } from "@/constant/languages";
-import { UOM_FORMATS } from "@/constant/uomFormats";
 import { TIME_FORMATS } from "@/constant/timeFormats";
 import { Type__DateFormat, Type__TimeFormat } from "@/constant/types";
+import { UOM_FORMATS } from "@/constant/uomFormats";
 import useDateFormat from "@/context/useDateFormat";
 import useLang from "@/context/useLang";
-import useUOM from "@/context/useUOM";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useTimeFormat from "@/context/useTimeFormat";
 import useTimeZone from "@/context/useTimeZone";
-import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
+import useUOM from "@/context/useUOM";
+import useScreen from "@/hooks/useScreen";
 import autoTimeZone from "@/utils/autoTimeZone";
 import formatDate from "@/utils/formatDate";
 import formatTime from "@/utils/formatTime";
+import { makeTime } from "@/utils/getTime";
 import pluck from "@/utils/pluck";
 import timeZones from "@/utils/timeZones";
 import userTimeZone from "@/utils/userTimeZone";
@@ -34,7 +35,6 @@ import {
   IconTimezone,
 } from "@tabler/icons-react";
 import { useState } from "react";
-import { makeTime } from "@/utils/getTime";
 
 const Language = () => {
   // Contexts
@@ -96,18 +96,21 @@ const TimeZone = () => {
   const TIME_ZONES = timeZones();
   const [search, setSearch] = useState("");
   const fd = [autoTimeZone(), ...TIME_ZONES].filter((item) => {
-    const itemTerm = `${item.key.toLowerCase()} ${item.formattedOffset}`;
+    const itemTerm = `${item.key.toLowerCase()} ${item.formattedOffset} ${
+      item.localAbbr
+    }`;
     const searchTerm = search.toLowerCase();
 
     return itemTerm.includes(searchTerm);
   });
 
   // Utils
-  const iss = useIsSmScreenWidth();
+  const { sw } = useScreen();
+  const iss = sw < 1000;
 
   return (
     <ItemContainer>
-      <ItemHeaderContainer borderLess={!!iss}>
+      <ItemHeaderContainer borderLess={!!iss} gap={2}>
         <HStack>
           <Icon maxW={"20px"}>
             <IconTimezone />
