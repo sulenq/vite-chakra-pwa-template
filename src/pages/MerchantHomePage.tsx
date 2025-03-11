@@ -46,6 +46,7 @@ import {
 import { Link } from "react-router-dom";
 import { BILLING_CYCLES } from "@/gens/pricing";
 import PageContainer from "@/components/widget/PageContainer";
+import { useColorModeValue } from "@/components/ui/color-mode";
 
 const Profile = ({ ...props }: StackProps) => {
   // Contexts
@@ -287,7 +288,7 @@ const CurrentInvoice = ({ ...props }: StackProps) => {
             bottom={-5}
             right={-1}
             rotate={"-20deg"}
-            opacity={0.2}
+            opacity={useColorModeValue(0.2, 0.05)}
           />
         )}
       </CContainer>

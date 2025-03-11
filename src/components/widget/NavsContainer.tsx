@@ -226,7 +226,7 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
             </Heading6>
           </HStack>
 
-          <HStack flexShrink={0} gap={1}>
+          <HStack flexShrink={0} gap={0}>
             {/* <ColorModeButton fontSize={"1.1rem"} /> */}
             <CurrentUserTimeZone />
 
