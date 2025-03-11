@@ -9,11 +9,7 @@ export default function formatTime(
     prefixTimeFormat?: Type__TimeFormat;
     prefixTimeZone?: string;
     withSuffix?: boolean;
-  } = {
-    showSeconds: false,
-    prefixTimeZone: userTimeZone().key,
-    withSuffix: true,
-  }
+  } = {}
 ): string {
   if (!time) return "";
 
@@ -32,24 +28,29 @@ export default function formatTime(
   if (hh < 0) hh += 24;
 
   let formattedTime: string;
-
   if (timeFormat === "12-hour") {
     const suffix = hh >= 12 ? "PM" : "AM";
     const hour12 = hh % 12 || 12;
     formattedTime = `${hour12}:${String(mm).padStart(2, "0")}`;
-    formattedTime = options.showSeconds
-      ? `${formattedTime}:${String(ss).padStart(2, "0")} ${
-          options.withSuffix ? suffix : ""
-        }`
-      : `${formattedTime} ${options.withSuffix ? suffix : ""}`;
+
+    if (options.showSeconds) {
+      formattedTime += `:${String(ss).padStart(2, "0")}`;
+    }
+
+    const withSuffix = options.withSuffix || true;
+
+    if (withSuffix) {
+      formattedTime += ` ${suffix}`;
+    }
   } else {
     formattedTime = `${String(hh).padStart(2, "0")}:${String(mm).padStart(
       2,
       "0"
     )}`;
-    formattedTime = options.showSeconds
-      ? `${formattedTime}:${String(ss).padStart(2, "0")}`
-      : formattedTime;
+
+    if (options.showSeconds) {
+      formattedTime += `:${String(ss).padStart(2, "0")}`;
+    }
   }
 
   return formattedTime;

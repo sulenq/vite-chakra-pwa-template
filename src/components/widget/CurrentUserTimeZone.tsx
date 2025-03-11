@@ -5,6 +5,7 @@ import { IconTimezone } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import BButton from "../ui-custom/BButton";
 import { PopoverContent, PopoverRoot, PopoverTrigger } from "../ui/popover";
+import CContainer from "../ui-custom/CContainer";
 
 const CurrentUserTimeZone = () => {
   // Contexts
@@ -24,10 +25,12 @@ const CurrentUserTimeZone = () => {
       </PopoverTrigger>
 
       <PopoverContent mr={2}>
-        <Text>{timeZone.key}</Text>
-        <Text color={"fg.subtle"}>
-          {timeZone.formattedOffset} ({timeZone.localAbbr})
-        </Text>
+        <CContainer px={1}>
+          <Text>{timeZone.key}</Text>
+          <Text color={"fg.subtle"}>
+            {timeZone.formattedOffset} ({timeZone.localAbbr})
+          </Text>
+        </CContainer>
 
         <Link to={"/settings/preference"}>
           <BButton

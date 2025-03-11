@@ -244,26 +244,12 @@ const DateFormat = () => {
                 </Text>
 
                 {/* Example */}
-                <>
-                  <Text color={"fg.subtle"}>
-                    {formatDate(new Date(), {
-                      variant: "basic",
-                      prefixDateFormat: item.key as Type__DateFormat,
-                    })}
-                  </Text>
-                  <Text color={"fg.subtle"}>
-                    {formatDate(new Date(), {
-                      variant: "fullMonth",
-                      prefixDateFormat: item.key as Type__DateFormat,
-                    })}
-                  </Text>
-                  <Text color={"fg.subtle"}>
-                    {formatDate(new Date(), {
-                      variant: "weekdayFullMonth",
-                      prefixDateFormat: item.key as Type__DateFormat,
-                    })}
-                  </Text>
-                </>
+                <Text color={"fg.subtle"}>
+                  {formatDate(new Date(), {
+                    variant: "weekdayFullMonth",
+                    prefixDateFormat: item.key as Type__DateFormat,
+                  })}
+                </Text>
               </CContainer>
             );
           })}

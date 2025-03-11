@@ -11,10 +11,7 @@ const formatDate = (
     withTime?: boolean;
     prefixDateFormat?: Type__DateFormat;
     prefixTimeZone?: string;
-  } = {
-    variant: "fullMonth",
-    withTime: false,
-  }
+  } = {}
 ) => {
   if (!date) return "";
 
