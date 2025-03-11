@@ -7,6 +7,7 @@ import RootPage from "@/pages/RootPage";
 import SettingsPage from "@/pages/SettingsPage";
 import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
 import TestPage from "@/pages/TestPage";
+import DisplaySettingsPage from "@/pages/settings/DisplaySettingsPage";
 
 export const ROUTES: Interface__Route[] = [
   {
@@ -46,6 +47,8 @@ export const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
     titleKey: "navs.helpCenter",
     element: <MerchantHelpCenterPage />,
   },
+
+  // Settings
   {
     path: "/settings",
     activePath: "/settings",
@@ -53,11 +56,18 @@ export const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
     element: <SettingsPage />,
   },
   {
-    path: "/settings/language",
+    path: "/settings/preference",
     activePath: "/settings",
     titleKey: "settings_navs.preference",
     backPath: "/settings",
     element: <PreferenceSettingsPage />,
+  },
+  {
+    path: "/settings/display",
+    activePath: "/settings",
+    titleKey: "settings_navs.display",
+    backPath: "/settings",
+    element: <DisplaySettingsPage />,
   },
   // {
   //   path: "/profile",

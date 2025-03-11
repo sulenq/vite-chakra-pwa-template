@@ -46,7 +46,7 @@ export const SETTINGS_NAVS = [
       {
         icon: IconLanguage,
         labelKey: "settings_navs.preference",
-        path: "/settings/language",
+        path: "/settings/preference",
       },
       {
         icon: IconShieldHalf,

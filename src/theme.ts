@@ -121,7 +121,7 @@ const customConfig = defineConfig({
           600: { value: "#0284C7" },
           700: { value: "#0369A1" },
           800: { value: "#075985" },
-          900: { value: "#0C4A6E" },
+          900: { value: "#083654" },
         },
         indigo: {
           50: { value: "#E8EAF6" },
@@ -169,7 +169,7 @@ const customConfig = defineConfig({
           600: { value: "#9770E6" },
           700: { value: "#7A5AB3" },
           800: { value: "#5E4380" },
-          900: { value: "#412D4D" },
+          900: { value: "#2A1E35" },
         },
         flamingoPink: {
           50: { value: "#FFEFF4" },
@@ -489,8 +489,8 @@ const customConfig = defineConfig({
           },
           contrast: {
             value: {
-              base: "{colors.light}",
-              _dark: "{colors.dark}",
+              base: "{colors.sky.50}",
+              _dark: "{colors.sky.900}",
             },
           },
           fg: {
@@ -636,7 +636,7 @@ const customConfig = defineConfig({
           contrast: {
             value: {
               base: "{colors.powderLavender.50}",
-              _dark: "{colors.dark}",
+              _dark: "{colors.powderLavender.900}",
             },
           },
           fg: {

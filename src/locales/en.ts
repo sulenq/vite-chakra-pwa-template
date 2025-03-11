@@ -1,10 +1,19 @@
 const translations = {
   "all": "All",
+  "auto_dark_mode_ui_settings": {
+    "label": "Adaptive dark mode",
+    "description": "Dark mode for UI, automatically activates at night"
+  },
   "back_online_toast": {
     "title": "Connection Recovered",
     "description": "You are back online."
   },
   "confirm": "Confirm",
+  "dark_mode_settings": "Dark Mode",
+  "dark_mode_ui_settings": {
+    "label": "Dark mode UI",
+    "description": "Dark mode for UI, defaults to system settings"
+  },
   "date_format_settings_title": "Date Format",
   "date_picker_default_placeholder": "Select date...",
   "date_picker_default_title": "Select Date",

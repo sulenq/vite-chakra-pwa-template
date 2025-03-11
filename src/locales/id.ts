@@ -1,10 +1,19 @@
 const translations = {
   "all": "Semua",
+  "auto_dark_mode_ui_settings": {
+    "label": "Mode gelap adaptif",
+    "description": "Mode gelap untuk UI, otomatis aktif saat malam hari"
+  },
   "back_online_toast": {
     "title": "Koneksi Pulih",
     "description": "Anda kembali online."
   },
   "confirm": "Konfirmasi",
+  "dark_mode_settings": "Mode Gelap",
+  "dark_mode_ui_settings": {
+    "label": "UI mode gelap",
+    "description": "Mode gelap untuk UI, default mengikuti system"
+  },
   "date_format_settings_title": "Format Tanggal",
   "date_picker_default_placeholder": "Pilih tanggal...",
   "date_picker_default_title": "Pilih Tanggal",

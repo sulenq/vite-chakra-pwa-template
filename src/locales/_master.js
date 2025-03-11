@@ -58,6 +58,31 @@ export const settings_navs = {
   },
 };
 
+// UI
+export const dark_mode_settings = {
+  id: "Mode Gelap",
+  en: "Dark Mode",
+};
+export const dark_mode_ui_settings = {
+  label: {
+    id: "UI mode gelap",
+    en: "Dark mode UI",
+  },
+  description: {
+    id: "Mode gelap untuk UI, default mengikuti system",
+    en: "Dark mode for UI, defaults to system settings",
+  },
+};
+export const auto_dark_mode_ui_settings = {
+  label: {
+    id: "Mode gelap adaptif",
+    en: "Adaptive dark mode",
+  },
+  description: {
+    id: "Mode gelap untuk UI, otomatis aktif saat malam hari",
+    en: "Dark mode for UI, automatically activates at night",
+  },
+};
 export const uom = {
   mass: {
     id: "Berat",

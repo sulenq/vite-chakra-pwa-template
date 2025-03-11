@@ -398,7 +398,7 @@ const PreferenceSettingsPage = () => {
   const { l } = useLang();
 
   return (
-    <SettingsNavsContainer align={"stretch"} activePath="/settings/language">
+    <SettingsNavsContainer align={"stretch"} activePath="/settings/preference">
       <CContainer gap={4}>
         {/* Language */}
         <Language />
