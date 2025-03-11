@@ -25,7 +25,13 @@ export default function BButton({
   const finalClassName = `${!unclicky ? "clicky" : ""} ${className}`.trim();
 
   return iconButton ? (
-    <IconButton ref={fRef} className={finalClassName} size={size} {...props}>
+    <IconButton
+      ref={fRef}
+      className={finalClassName}
+      size={size}
+      borderRadius={`${themeConfig.radii.component}`}
+      {...props}
+    >
       {children}
     </IconButton>
   ) : (
@@ -34,7 +40,7 @@ export default function BButton({
       className={finalClassName}
       fontWeight={"semibold"}
       size={size || MAIN_BUTTON_SIZE}
-      borderRadius={themeConfig.radii.component}
+      borderRadius={`${themeConfig.radii.component}`}
       _active={{
         bg:
           !props?.colorPalette &&
