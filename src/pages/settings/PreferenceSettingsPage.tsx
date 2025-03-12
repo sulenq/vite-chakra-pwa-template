@@ -219,6 +219,7 @@ const TimeZone = () => {
                   className="scrollY timezones-list"
                   style={{
                     paddingTop: "8px",
+                    // paddingBottom: "8px",
                     overflowX: "clip",
                   }}
                 />
