@@ -94,7 +94,7 @@ const translations = {
   "selected": "selected",
   "settings_navs": {
     "display": "Display",
-    "preference": "Preference",
+    "regional": "Regional",
     "permissions": "App Permissions",
     "report_problem": "Report a Problem",
     "terms_of_service": "Terms of Service",

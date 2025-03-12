@@ -36,9 +36,9 @@ export const settings_navs = {
     id: "Tampilan",
     en: "Display",
   },
-  preference: {
-    id: "Preferensi",
-    en: "Preference",
+  regional: {
+    id: "Regional",
+    en: "Regional",
   },
   permissions: {
     id: "Izn Aplikasi",

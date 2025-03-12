@@ -94,7 +94,7 @@ const translations = {
   "selected": "terpilih",
   "settings_navs": {
     "display": "Tampilan",
-    "preference": "Preferensi",
+    "regional": "Regional",
     "permissions": "Izn Aplikasi",
     "report_problem": "Laporkan Masalah",
     "terms_of_service": "Ketentuan Layanan",
