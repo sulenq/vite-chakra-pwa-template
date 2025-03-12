@@ -79,6 +79,7 @@ const translations = {
   "pay": "Bayar",
   "periode_picker_default_title": "Pilih Periode",
   "perma_delete_confirmation": "Aksi ini tidak dapat dibatalkan, harap hati-hati.",
+  "permissions_settings_helper_text": "Pengaturan izin aplikasi ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   "regional_settings_helper_text": "Pengaturan bahasa & wilayah ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   "religion": "Agama",
   "retry": "Muat ulang",
@@ -95,7 +96,7 @@ const translations = {
   "settings_navs": {
     "display": "Tampilan",
     "regional": "Regional",
-    "permissions": "Izn Aplikasi",
+    "permissions": "Izin Aplikasi",
     "report_problem": "Laporkan Masalah",
     "terms_of_service": "Ketentuan Layanan",
     "privacy_policy": "Kebijakan Privasi"

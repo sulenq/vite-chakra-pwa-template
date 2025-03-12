@@ -41,7 +41,7 @@ export const settings_navs = {
     en: "Regional",
   },
   permissions: {
-    id: "Izn Aplikasi",
+    id: "Izin Aplikasi",
     en: "App Permissions",
   },
   report_problem: {
@@ -59,6 +59,10 @@ export const settings_navs = {
 };
 
 // UI
+export const permissions_settings_helper_text = {
+  id: "Pengaturan izin aplikasi ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
+  en: "These app permissions settings are stored locally on your device and will not be synced with your account.",
+};
 export const display_settings_helper_text = {
   id: "Pengaturan tampilan ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   en: "These display settings are stored locally on your device and will not be synced with your account.",

@@ -8,6 +8,7 @@ import SettingsPage from "@/pages/SettingsPage";
 import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
 import TestPage from "@/pages/TestPage";
 import DisplaySettingsPage from "@/pages/settings/DisplaySettingsPage";
+import PermissionsSettingsPage from "@/pages/settings/PermissionsSettingsPage";
 
 export const ROUTES: Interface__Route[] = [
   {
@@ -56,6 +57,13 @@ export const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
     element: <SettingsPage />,
   },
   {
+    path: "/settings/display",
+    activePath: "/settings",
+    titleKey: "settings_navs.display",
+    backPath: "/settings",
+    element: <DisplaySettingsPage />,
+  },
+  {
     path: "/settings/regional",
     activePath: "/settings",
     titleKey: "settings_navs.regional",
@@ -63,11 +71,11 @@ export const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
     element: <RegionalSettingsPage />,
   },
   {
-    path: "/settings/display",
+    path: "/settings/permissions",
     activePath: "/settings",
-    titleKey: "settings_navs.display",
+    titleKey: "settings_navs.permissions",
     backPath: "/settings",
-    element: <DisplaySettingsPage />,
+    element: <PermissionsSettingsPage />,
   },
   // {
   //   path: "/profile",

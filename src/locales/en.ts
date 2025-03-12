@@ -79,6 +79,7 @@ const translations = {
   "pay": "Pay",
   "periode_picker_default_title": "Select Period",
   "perma_delete_confirmation": "This action cannot be undone, please be careful.",
+  "permissions_settings_helper_text": "These app permissions settings are stored locally on your device and will not be synced with your account.",
   "regional_settings_helper_text": "These language & region settings are stored locally on your device and will not be synced with your account.",
   "religion": "Religion",
   "retry": "Retry now",
