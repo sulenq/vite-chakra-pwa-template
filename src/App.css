@@ -13,9 +13,33 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-[role="group"]:hover .td-content-group-hover {
-  background-color: var(--d0) !important;
+/* Custom Start*/
+.timezones-list::-webkit-scrollbar-track {
+  height: 100px !important;
+  clip-path: inset(50px 0 50px 0) !important;
 }
+
+img[src^="/vectors/icons/hospital.svg"] {
+  transform: scale(0.5) translateY(80px);
+}
+
+a.leaflet-attribution-flag {
+  position: fixed !important;
+  top: 4px !important;
+  left: 4px !important;
+}
+
+img[alt="Google"] {
+  position: fixed !important;
+  top: 4px !important;
+  left: 4px !important;
+}
+
+.gmnoprint,
+.gm-style-cc {
+  display: none;
+}
+/* Custom Start End*/
 
 /* Color */
 :root {
@@ -67,6 +91,11 @@
   --reda: rgba(255, 109, 109, 0.12);
   --reda2: rgba(255, 109, 109, 0.2);
   --reda3: rgba(255, 109, 109, 0.2);
+}
+
+/* Group table */
+[role="group"]:hover .td-content-group-hover {
+  background-color: var(--d0) !important;
 }
 
 /* Smooth shadow */
@@ -708,30 +737,6 @@ button {
   min-height: 200px !important;
   max-height: 250px !important; */
 }
-
-/* Custom Start*/
-
-img[src^="/vectors/icons/hospital.svg"] {
-  transform: scale(0.5) translateY(80px);
-}
-
-a.leaflet-attribution-flag {
-  position: fixed !important;
-  top: 4px !important;
-  left: 4px !important;
-}
-
-img[alt="Google"] {
-  position: fixed !important;
-  top: 4px !important;
-  left: 4px !important;
-}
-
-.gmnoprint,
-.gm-style-cc {
-  display: none;
-}
-/* Custom Start End*/
 
 /* Media Querries */
 /* @media screen and (min-width: 768px) {

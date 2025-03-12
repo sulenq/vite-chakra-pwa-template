@@ -202,7 +202,7 @@ const TimeZone = () => {
           </CContainer>
         )}
 
-        <CContainer h="178px">
+        <CContainer h="178px" mb={2}>
           {fd.length === 0 ? (
             <FeedbackNotFound />
           ) : (
@@ -216,9 +216,9 @@ const TimeZone = () => {
                   rowCount={Math.ceil(fd.length / columnCount)}
                   rowHeight={40}
                   cellRenderer={cellRenderer}
-                  className="scrollY"
+                  className="scrollY timezones-list"
                   style={{
-                    padding: "8px 0",
+                    paddingTop: "8px",
                     overflowX: "clip",
                   }}
                 />
