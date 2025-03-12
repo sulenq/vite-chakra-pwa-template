@@ -1,5 +1,6 @@
 const translations = {
   "all": "All",
+  "ask": "Ask",
   "auto_dark_mode_ui_settings": {
     "label": "Adaptive dark mode",
     "description": "Dark mode for UI, automatically activates at night"
@@ -9,6 +10,14 @@ const translations = {
     "description": "You are back online."
   },
   "camera": "Camera",
+  "camera_fail_toast": {
+    "title": "Failed to Access Camera",
+    "description": "Check camera permission or ensure it's not in use by another app."
+  },
+  "camera_permissions_settings": {
+    "label": "Camera access",
+    "description": "Allow the app to use your device's camera for capturing photos or videos."
+  },
   "confirm": "Confirm",
   "dark_mode_settings_title": "Dark Mode",
   "dark_mode_ui_settings": {
@@ -39,6 +48,10 @@ const translations = {
   "language_settings_title": "Language",
   "last": "Last",
   "location": "Location",
+  "location_permissions_settings": {
+    "label": "Location access",
+    "description": "Allow the app to access your device's location for location-based services."
+  },
   "login_form": {
     "title": "Login to System",
     "description": "Enter your account details to continue."
@@ -53,6 +66,10 @@ const translations = {
   },
   "measurment_unit_format_settings_title": "Measurement Units Format",
   "mic": "Microphone",
+  "mic_permissions_settings": {
+    "label": "Microphone access",
+    "description": "Allow the app to use your device's microphone for recording audio or making calls."
+  },
   "month": "Month",
   "navs": {
     "home": "Home",
@@ -76,6 +93,10 @@ const translations = {
     "description": "Try to adjust the search."
   },
   "notifications": "Notifications",
+  "notifications_permissions_settings": {
+    "label": "Notifications access",
+    "description": "Allow the app to send notifications to keep you updated."
+  },
   "offline_disclosure": {
     "title": "Connection Lost",
     "description": "It looks like you are offline. Check your internet connection and try again."
@@ -83,7 +104,18 @@ const translations = {
   "pay": "Pay",
   "periode_picker_default_title": "Select Period",
   "perma_delete_confirmation": "This action cannot be undone, please be careful.",
+  "permissions_denied": "Denied",
+  "permissions_denied_helper": "Access has been denied. If you want to grant access again, go to",
+  "permissions_granted": "Allowed",
+  "permissions_granted_helper": "Access is already allowed. If you want to disable it, go to",
+  "permissions_settings": "Permissions settings",
   "permissions_settings_helper_text": "These app permissions settings are stored locally on your device and will not be synced with your account.",
+  "permissions_test_titles": {
+    "camera": "Camera Test",
+    "mic": "Camera Test",
+    "location": "Camera Test",
+    "notifications": "Camera Test"
+  },
   "regional_settings_helper_text": "These language & region settings are stored locally on your device and will not be synced with your account.",
   "religion": "Religion",
   "retry": "Retry now",
@@ -125,6 +157,7 @@ const translations = {
   "time_zone_settings_title": "Time Zone",
   "today": "Today",
   "tomorrow": "Tomorrow",
+  "try_label": "Try",
   "uom": {
     "mass": "Weight",
     "length": "Height",

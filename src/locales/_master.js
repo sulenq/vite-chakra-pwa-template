@@ -59,23 +59,108 @@ export const settings_navs = {
 };
 
 // UI
+export const try_label = {
+  id: "Coba",
+  en: "Try",
+};
+export const permissions_test_titles = {
+  camera: {
+    id: "Tes Kamera",
+    en: "Camera Test",
+  },
+  mic: {
+    id: "Tes Kamera",
+    en: "Camera Test",
+  },
+  location: {
+    id: "Tes Kamera",
+    en: "Camera Test",
+  },
+  notifications: {
+    id: "Tes Kamera",
+    en: "Camera Test",
+  },
+};
+export const permissions_granted_helper = {
+  id: "Akses sudah diizinkan. Jika ingin menonaktifkan, buka",
+  en: "Access is already allowed. If you want to disable it, go to",
+};
+export const permissions_denied_helper = {
+  id: "Akses telah ditolak. Jika ingin memberi akses kembali, buka",
+  en: "Access has been denied. If you want to grant access again, go to",
+};
+export const permissions_settings = {
+  id: "Pengaturan perizinan",
+  en: "Permissions settings",
+};
+export const ask = {
+  id: "Meminta",
+  en: "Ask",
+};
+export const permissions_granted = {
+  id: "Diizinkan",
+  en: "Allowed",
+};
+export const permissions_denied = {
+  id: "Ditolak",
+  en: "Denied",
+};
 export const camera = {
   id: "Kamera",
   en: "Camera",
+};
+export const camera_permissions_settings = {
+  label: {
+    id: "Akses kamera",
+    en: "Camera access",
+  },
+  description: {
+    id: "Izinkan aplikasi menggunakan kamera perangkat Anda untuk mengambil foto atau video.",
+    en: "Allow the app to use your device's camera for capturing photos or videos.",
+  },
 };
 export const mic = {
   id: "Mikrofon",
   en: "Microphone",
 };
+export const mic_permissions_settings = {
+  label: {
+    id: "Akses mikrofon",
+    en: "Microphone access",
+  },
+  description: {
+    id: "Izinkan aplikasi menggunakan mikrofon perangkat Anda untuk merekam audio atau melakukan panggilan.",
+    en: "Allow the app to use your device's microphone for recording audio or making calls.",
+  },
+};
 export const location = {
   id: "Lokasi",
   en: "Location",
+};
+export const location_permissions_settings = {
+  label: {
+    id: "Akses lokasi",
+    en: "Location access",
+  },
+  description: {
+    id: "Izinkan aplikasi mengakses lokasi perangkat Anda untuk memberikan layanan berbasis lokasi.",
+    en: "Allow the app to access your device's location for location-based services.",
+  },
 };
 export const notifications = {
   id: "Notifikasi",
   en: "Notifications",
 };
-
+export const notifications_permissions_settings = {
+  label: {
+    id: "Akses notifikasi",
+    en: "Notifications access",
+  },
+  description: {
+    id: "Izinkan aplikasi mengirim notifikasi agar Anda tetap mendapatkan informasi terbaru.",
+    en: "Allow the app to send notifications to keep you updated.",
+  },
+};
 export const permissions_settings_helper_text = {
   id: "Pengaturan izin aplikasi ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   en: "These app permissions settings are stored locally on your device and will not be synced with your account.",
@@ -402,6 +487,16 @@ export const delete_all_inbox_button = {
 };
 
 // Toasters
+export const camera_fail_toast = {
+  title: {
+    id: "Gagal Mengakses Kamera",
+    en: "Failed to Access Camera",
+  },
+  description: {
+    id: "Periksa izin kamera atau pastikan tidak digunakan aplikasi lain.",
+    en: "Check camera permission or ensure it's not in use by another app.",
+  },
+};
 export const no_auth_toast = {
   title: {
     id: "Tidak memiliki autentikasi",

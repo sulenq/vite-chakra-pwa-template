@@ -1,5 +1,6 @@
 const translations = {
   "all": "Semua",
+  "ask": "Meminta",
   "auto_dark_mode_ui_settings": {
     "label": "Mode gelap adaptif",
     "description": "Mode gelap untuk UI, otomatis aktif saat malam hari"
@@ -9,6 +10,14 @@ const translations = {
     "description": "Anda kembali online."
   },
   "camera": "Kamera",
+  "camera_fail_toast": {
+    "title": "Gagal Mengakses Kamera",
+    "description": "Periksa izin kamera atau pastikan tidak digunakan aplikasi lain."
+  },
+  "camera_permissions_settings": {
+    "label": "Akses kamera",
+    "description": "Izinkan aplikasi menggunakan kamera perangkat Anda untuk mengambil foto atau video."
+  },
   "confirm": "Konfirmasi",
   "dark_mode_settings_title": "Mode Gelap",
   "dark_mode_ui_settings": {
@@ -39,6 +48,10 @@ const translations = {
   "language_settings_title": "Bahasa",
   "last": "Terakhir",
   "location": "Lokasi",
+  "location_permissions_settings": {
+    "label": "Akses lokasi",
+    "description": "Izinkan aplikasi mengakses lokasi perangkat Anda untuk memberikan layanan berbasis lokasi."
+  },
   "login_form": {
     "title": "Login ke Sistem",
     "description": "Masukkan detail akun Anda untuk melanjutkan."
@@ -53,6 +66,10 @@ const translations = {
   },
   "measurment_unit_format_settings_title": "Format Satuan Pengukuran",
   "mic": "Mikrofon",
+  "mic_permissions_settings": {
+    "label": "Akses mikrofon",
+    "description": "Izinkan aplikasi menggunakan mikrofon perangkat Anda untuk merekam audio atau melakukan panggilan."
+  },
   "month": "Bulan",
   "navs": {
     "home": "Beranda",
@@ -76,6 +93,10 @@ const translations = {
     "description": "Cobalah untuk menyesuaikan pencarian."
   },
   "notifications": "Notifikasi",
+  "notifications_permissions_settings": {
+    "label": "Akses notifikasi",
+    "description": "Izinkan aplikasi mengirim notifikasi agar Anda tetap mendapatkan informasi terbaru."
+  },
   "offline_disclosure": {
     "title": "Koneksi Terputus",
     "description": "Sepertinya Anda sedang offline. Periksa koneksi internet Anda dan coba lagi."
@@ -83,7 +104,18 @@ const translations = {
   "pay": "Bayar",
   "periode_picker_default_title": "Pilih Periode",
   "perma_delete_confirmation": "Aksi ini tidak dapat dibatalkan, harap hati-hati.",
+  "permissions_denied": "Ditolak",
+  "permissions_denied_helper": "Akses telah ditolak. Jika ingin memberi akses kembali, buka",
+  "permissions_granted": "Diizinkan",
+  "permissions_granted_helper": "Akses sudah diizinkan. Jika ingin menonaktifkan, buka",
+  "permissions_settings": "Pengaturan perizinan",
   "permissions_settings_helper_text": "Pengaturan izin aplikasi ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
+  "permissions_test_titles": {
+    "camera": "Tes Kamera",
+    "mic": "Tes Kamera",
+    "location": "Tes Kamera",
+    "notifications": "Tes Kamera"
+  },
   "regional_settings_helper_text": "Pengaturan bahasa & wilayah ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   "religion": "Agama",
   "retry": "Muat ulang",
@@ -125,6 +157,7 @@ const translations = {
   "time_zone_settings_title": "Zona Waktu",
   "today": "Hari ini",
   "tomorrow": "Besok",
+  "try_label": "Coba",
   "uom": {
     "mass": "Berat",
     "length": "Tinggi",

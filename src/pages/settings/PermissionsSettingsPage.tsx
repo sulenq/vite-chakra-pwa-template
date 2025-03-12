@@ -1,25 +1,149 @@
 import BButton from "@/components/ui-custom/BButton";
 import CContainer from "@/components/ui-custom/CContainer";
+import {
+  DisclosureBody,
+  DisclosureContent,
+  DisclosureFooter,
+  DisclosureHeader,
+  DisclosureRoot,
+} from "@/components/ui-custom/Disclosure";
+import DisclosureHeaderContent from "@/components/ui-custom/DisclosureHeaderContent";
 import HelperText from "@/components/ui-custom/HelperText";
 import ItemContainer from "@/components/ui-custom/ItemContainer";
 import ItemHeaderContainer from "@/components/ui-custom/ItemHeaderContainer";
-import SelectInput from "@/components/ui-custom/SelectInput";
-import StringInput from "@/components/ui-custom/StringInput";
-import { useColorMode } from "@/components/ui/color-mode";
 import { Switch } from "@/components/ui/switch";
+import { toaster } from "@/components/ui/toaster";
 import SettingsItemContainer from "@/components/widget/SettingsItemContainer";
 import SettingsNavsContainer from "@/components/widget/SettingsNavsContainer";
+import useCameraPermission from "@/context/useCameraPermissions";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
-import { OPTIONS_RELIGION } from "@/gens/selectOptions";
-import { Center, HStack, Icon, SimpleGrid, Text } from "@chakra-ui/react";
-import { IconCamera, IconCheck, IconPalette } from "@tabler/icons-react";
-import { useState } from "react";
+import useBackOnClose from "@/hooks/useBackOnClose";
+import { startCamera, stopCamera } from "@/utils/camera";
+import { Badge, HStack, Icon, Text, useDisclosure } from "@chakra-ui/react";
+import { IconCamera } from "@tabler/icons-react";
+import { useRef } from "react";
 
 const Camera = () => {
   // Contexts
   const { themeConfig } = useThemeConfig();
   const { l } = useLang();
+  const { cameraPermissionsStatus } = useCameraPermission();
+
+  // Request permissions func
+  async function requestCameraMic() {
+    try {
+      const permission = await navigator.permissions.query({
+        name: "camera" as PermissionName,
+      });
+
+      if (permission.state === "granted") {
+        alert("Izin sudah diberikan. Kamera tidak akan langsung menyala.");
+        return;
+      }
+
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true,
+      });
+
+      stream.getTracks().forEach((track) => track.stop());
+    } catch (error) {
+      console.error("Akses ditolak:", error);
+    }
+  }
+
+  // Status helper text
+  const getBrowserSettingsLink = () => {
+    const userAgent = navigator.userAgent;
+    if (userAgent.includes("Chrome")) {
+      return "Buka Chrome → Settings → Privacy & Security → Site Settings → Camera";
+    } else if (userAgent.includes("Firefox")) {
+      return "Buka Firefox → Preferences → Privacy & Security → Permissions → Camera";
+    } else if (userAgent.includes("Edg")) {
+      return "Buka Edge → Settings → Cookies and site permissions → Camera";
+    }
+    return "Buka pengaturan browser untuk mengubah izin kamera.";
+  };
+
+  // Components
+  const Test = () => {
+    // Utils
+    const { open, onOpen, onClose } = useDisclosure();
+    function handleClose() {
+      stopCamera(videoRef, streamRef);
+      onClose();
+    }
+    useBackOnClose("camera-test", open, onOpen, handleClose);
+
+    // States, Refs
+    const videoRef = useRef<HTMLVideoElement | null>(null);
+    const streamRef = useRef<MediaStream | null>(null);
+
+    return (
+      <>
+        <BButton size={"xs"} variant={"outline"} onClick={onOpen}>
+          {l.try_label} {l.camera}
+        </BButton>
+
+        <DisclosureRoot open={open} lazyLoad size={"xs"}>
+          <DisclosureContent>
+            <DisclosureHeader>
+              <DisclosureHeaderContent title="Tes Kamera" />
+            </DisclosureHeader>
+
+            <DisclosureBody p={"0 !important"}>
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  paddingBottom: "100%",
+                  backgroundColor: "black",
+                }}
+              >
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  playsInline
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    transform: "scaleX(-1)", // Mirror
+                    objectFit: "cover",
+                  }}
+                />
+              </div>
+            </DisclosureBody>
+
+            <DisclosureFooter>
+              <BButton
+                variant="outline"
+                onClick={() => stopCamera(videoRef, streamRef)}
+              >
+                Tutup Kamera
+              </BButton>
+              <BButton
+                colorPalette={themeConfig.colorPalette}
+                onClick={() =>
+                  startCamera(videoRef, streamRef, () =>
+                    toaster.error({
+                      title: l.camera_fail_toast.title,
+                      description: l.camera_fail_toast.description,
+                    })
+                  )
+                }
+              >
+                Buka Kamera
+              </BButton>
+            </DisclosureFooter>
+          </DisclosureContent>
+        </DisclosureRoot>
+      </>
+    );
+  };
 
   return (
     <ItemContainer>
@@ -29,168 +153,48 @@ const Camera = () => {
             <IconCamera />
           </Icon>
           <Text fontWeight={"bold"}>{l.camera}</Text>
+          {cameraPermissionsStatus === "denied" && (
+            <Badge colorPalette={"red"}>{l.permissions_denied}</Badge>
+          )}
+          {cameraPermissionsStatus === "granted" && (
+            <Badge colorPalette={"green"}>{l.permissions_granted}</Badge>
+          )}
         </HStack>
+
+        <Test />
       </ItemHeaderContainer>
 
       <CContainer gap={4} py={3}>
+        {(cameraPermissionsStatus === "granted" ||
+          cameraPermissionsStatus === "denied") && (
+          <CContainer px={4}>
+            <Text>
+              {cameraPermissionsStatus === "granted"
+                ? l.permissions_granted_helper
+                : l.permissions_denied_helper}
+            </Text>
+            <Text>{getBrowserSettingsLink()}</Text>
+          </CContainer>
+        )}
+
         <SettingsItemContainer>
           <CContainer>
-            <Text>{l.dark_mode_ui_settings.label}</Text>
+            <Text>{l.camera_permissions_settings.label}</Text>
             <Text color={"fg.subtle"}>
-              {l.dark_mode_ui_settings.description}
+              {l.camera_permissions_settings.description}
             </Text>
           </CContainer>
 
-          {/* <Switch
-            checked={colorMode === "dark"}
-            onChange={toggleColorMode}
+          <Switch
+            checked={cameraPermissionsStatus === "granted"}
+            disabled={
+              cameraPermissionsStatus === "granted" ||
+              cameraPermissionsStatus === "denied"
+            }
+            onChange={requestCameraMic}
             colorPalette={themeConfig.colorPalette}
-          /> */}
+          />
         </SettingsItemContainer>
-      </CContainer>
-    </ItemContainer>
-  );
-};
-
-const Theme = () => {
-  // Contexts
-  const { themeConfig, setThemeConfig } = useThemeConfig();
-  const { l } = useLang();
-
-  // States, Refs
-  const colorPalettes = [
-    { palette: "p", primaryHex: "#0062FF" },
-
-    // Neutral & Dark Shades
-    { palette: "gray", primaryHex: "#1B1B1B" },
-    { palette: "brown", primaryHex: "#795548" },
-    { palette: "mocha", primaryHex: "#9F5D39" },
-    { palette: "caramel", primaryHex: "#C47B27" },
-    { palette: "cream", primaryHex: "#D7BF8C" },
-
-    // Reds & Pinks
-    { palette: "maroon", primaryHex: "#800000" },
-    { palette: "red", primaryHex: "#FF0000" },
-    { palette: "salmon", primaryHex: "#FF6242" },
-    { palette: "flamingoPink", primaryHex: "#FF478B" },
-    { palette: "bubblegumPink", primaryHex: "#FF4ABB" },
-    { palette: "pink", primaryHex: "#E91E63" },
-
-    // Oranges & Yellows
-    { palette: "orange", primaryHex: "#FF8E62" },
-    { palette: "pastelSalmon", primaryHex: "#FF8E62" },
-    { palette: "yellow", primaryHex: "#f6e05e" },
-
-    // Greens
-    { palette: "lime", primaryHex: "#CDDC39" },
-    { palette: "olive", primaryHex: "#879F30" },
-    { palette: "green", primaryHex: "#4CAF50" },
-    { palette: "jade", primaryHex: "#00A86B" },
-    { palette: "teal", primaryHex: "#009688" },
-
-    // Cyans & Blues
-    { palette: "kemenkes", primaryHex: "#16B3AC" },
-    { palette: "cyan", primaryHex: "#00BCD4" },
-    { palette: "sky", primaryHex: "#0EA5E9" },
-    { palette: "blue", primaryHex: "#2196F3" },
-    { palette: "sapphire", primaryHex: "#1939B7" },
-    { palette: "discord", primaryHex: "#5865F2" },
-    { palette: "indigo", primaryHex: "#3F51B5" },
-
-    // Purples & Lavenders
-    { palette: "lavender", primaryHex: "#7A42FF" },
-    { palette: "powderLavender", primaryHex: "#AB87FF" },
-    { palette: "purple", primaryHex: "#9C27B0" },
-  ];
-  const [select, setSelect] = useState<any>();
-
-  return (
-    <ItemContainer>
-      <ItemHeaderContainer>
-        <HStack>
-          <Icon maxW={"20px"}>
-            <IconPalette />
-          </Icon>
-          <Text fontWeight={"bold"}>{l.theme_settings_title}</Text>
-        </HStack>
-      </ItemHeaderContainer>
-
-      <CContainer gap={4} py={3} px={3}>
-        <SimpleGrid columns={[5, 10, null, null, 15]} gap={2}>
-          {colorPalettes.map((color, i) => {
-            const active = color.palette === themeConfig.colorPalette;
-
-            return (
-              <Center
-                key={i}
-                p={color.palette === themeConfig.colorPalette ? 1 : 0}
-                border={"2px solid"}
-                borderColor={
-                  color.palette === themeConfig.colorPalette
-                    ? themeConfig.primaryColor
-                    : `${color.palette}.500`
-                }
-                borderRadius={themeConfig.radii.component}
-                cursor={"pointer"}
-                onClick={() => {
-                  setThemeConfig({
-                    colorPalette: color.palette,
-                    primaryColor: `${color.palette}.500`,
-                    primaryColorHex: color.primaryHex,
-                  });
-                }}
-              >
-                <Center
-                  w={"full"}
-                  aspectRatio={1}
-                  borderRadius={
-                    color.palette === themeConfig.colorPalette ? 5 : 6
-                  }
-                  bg={`${color.palette}.500`}
-                >
-                  {active && (
-                    <Icon color={`${themeConfig.colorPalette}.contrast`}>
-                      <IconCheck />
-                    </Icon>
-                  )}
-                </Center>
-              </Center>
-            );
-          })}
-        </SimpleGrid>
-
-        {/* Example */}
-        <HStack wrap={"wrap"} gapY={4}>
-          <BButton
-            flex={"1 1 100px"}
-            colorPalette={themeConfig.colorPalette}
-            size={"md"}
-          >
-            Button
-          </BButton>
-          <BButton
-            flex={"1 1 100px"}
-            colorPalette={themeConfig.colorPalette}
-            size={"md"}
-            variant={"outline"}
-          >
-            Button
-          </BButton>
-          <StringInput
-            boxProps={{ flex: "1 1 100px" }}
-            placeholder="example@email.com"
-          />
-          <SelectInput
-            flex={"1 1 100px"}
-            name="select1"
-            title={l.religion}
-            initialOptions={OPTIONS_RELIGION}
-            onConfirm={(inputValue) => {
-              setSelect(inputValue);
-            }}
-            inputValue={select}
-          />
-        </HStack>
       </CContainer>
     </ItemContainer>
   );
@@ -204,8 +208,6 @@ const PermissionsSettingsPage = () => {
     <SettingsNavsContainer align={"stretch"} activePath="/settings/permissions">
       <CContainer gap={4}>
         <Camera />
-
-        <Theme />
       </CContainer>
 
       <HelperText px={2} mt={4}>
