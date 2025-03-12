@@ -8,6 +8,7 @@ const translations = {
     "title": "Koneksi Pulih",
     "description": "Anda kembali online."
   },
+  "camera": "Kamera",
   "confirm": "Konfirmasi",
   "dark_mode_settings_title": "Mode Gelap",
   "dark_mode_ui_settings": {
@@ -37,6 +38,7 @@ const translations = {
   "forgot_password": "Lupa password",
   "language_settings_title": "Bahasa",
   "last": "Terakhir",
+  "location": "Lokasi",
   "login_form": {
     "title": "Login ke Sistem",
     "description": "Masukkan detail akun Anda untuk melanjutkan."
@@ -50,6 +52,7 @@ const translations = {
     "description": "Pastikan tidak ada proses ke server sebelum logout dikonfirmasi untuk menghindari error autentikasi."
   },
   "measurment_unit_format_settings_title": "Format Satuan Pengukuran",
+  "mic": "Mikrofon",
   "month": "Bulan",
   "navs": {
     "home": "Beranda",
@@ -72,6 +75,7 @@ const translations = {
     "title": "Tidak ditemukan",
     "description": "Cobalah untuk menyesuaikan pencarian."
   },
+  "notifications": "Notifikasi",
   "offline_disclosure": {
     "title": "Koneksi Terputus",
     "description": "Sepertinya Anda sedang offline. Periksa koneksi internet Anda dan coba lagi."

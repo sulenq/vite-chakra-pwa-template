@@ -59,6 +59,23 @@ export const settings_navs = {
 };
 
 // UI
+export const camera = {
+  id: "Kamera",
+  en: "Camera",
+};
+export const mic = {
+  id: "Mikrofon",
+  en: "Microphone",
+};
+export const location = {
+  id: "Lokasi",
+  en: "Location",
+};
+export const notifications = {
+  id: "Notifikasi",
+  en: "Notifications",
+};
+
 export const permissions_settings_helper_text = {
   id: "Pengaturan izin aplikasi ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   en: "These app permissions settings are stored locally on your device and will not be synced with your account.",

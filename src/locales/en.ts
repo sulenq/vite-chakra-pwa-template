@@ -8,6 +8,7 @@ const translations = {
     "title": "Connection Recovered",
     "description": "You are back online."
   },
+  "camera": "Camera",
   "confirm": "Confirm",
   "dark_mode_settings_title": "Dark Mode",
   "dark_mode_ui_settings": {
@@ -37,6 +38,7 @@ const translations = {
   "forgot_password": "Forgot password",
   "language_settings_title": "Language",
   "last": "Last",
+  "location": "Location",
   "login_form": {
     "title": "Login to System",
     "description": "Enter your account details to continue."
@@ -50,6 +52,7 @@ const translations = {
     "description": "Make sure there is no process to the server before the logout is confirmed to avoid authentication errors."
   },
   "measurment_unit_format_settings_title": "Measurement Units Format",
+  "mic": "Microphone",
   "month": "Month",
   "navs": {
     "home": "Home",
@@ -72,6 +75,7 @@ const translations = {
     "title": "Not found",
     "description": "Try to adjust the search."
   },
+  "notifications": "Notifications",
   "offline_disclosure": {
     "title": "Connection Lost",
     "description": "It looks like you are offline. Check your internet connection and try again."
