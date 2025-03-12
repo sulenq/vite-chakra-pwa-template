@@ -1,5 +1,6 @@
 import BButton from "@/components/ui-custom/BButton";
 import CContainer from "@/components/ui-custom/CContainer";
+import HelperText from "@/components/ui-custom/HelperText";
 import ItemContainer from "@/components/ui-custom/ItemContainer";
 import ItemHeaderContainer from "@/components/ui-custom/ItemHeaderContainer";
 import SelectInput from "@/components/ui-custom/SelectInput";
@@ -224,6 +225,9 @@ const Theme = () => {
 };
 
 const DisplaySettingsPage = () => {
+  // Contexts
+  const { l } = useLang();
+
   return (
     <SettingsNavsContainer align={"stretch"} activePath="/settings/display">
       <CContainer gap={4}>
@@ -231,6 +235,10 @@ const DisplaySettingsPage = () => {
 
         <Theme />
       </CContainer>
+
+      <HelperText px={2} mt={4}>
+        {l.display_settings_helper_text}
+      </HelperText>
     </SettingsNavsContainer>
   );
 };

@@ -2,7 +2,7 @@ import MerchantHelpCenterPage from "@/pages/MerchantHelpCenterPage";
 import MerchantHomePage from "@/pages/MerchantHomePage";
 import MerchantInvoicePage from "@/pages/MerchantInvoicePage";
 import MerchantServicePage from "@/pages/MerchantServicePage";
-import PreferenceSettingsPage from "@/pages/settings/PreferenceSettingsPage";
+import RegionalSettingsPage from "@/pages/settings/RegionalSettingsPage";
 import RootPage from "@/pages/RootPage";
 import SettingsPage from "@/pages/SettingsPage";
 import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
@@ -60,7 +60,7 @@ export const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
     activePath: "/settings",
     titleKey: "settings_navs.preference",
     backPath: "/settings",
-    element: <PreferenceSettingsPage />,
+    element: <RegionalSettingsPage />,
   },
   {
     path: "/settings/display",

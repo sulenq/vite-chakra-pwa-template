@@ -59,6 +59,10 @@ export const settings_navs = {
 };
 
 // UI
+export const display_settings_helper_text = {
+  id: "Pengaturan tampilan ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
+  en: "These display settings are stored locally on your device and will not be synced with your account.",
+};
 export const theme_settings_title = {
   id: "Tema",
   en: "Theme",
@@ -341,7 +345,7 @@ export const settings_page = {
     en: "Please select the settings menu.",
   },
 };
-export const language_region_helper_text = {
+export const regional_settings_helper_text = {
   id: "Pengaturan bahasa & wilayah ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   en: "These language & region settings are stored locally on your device and will not be synced with your account.",
 };

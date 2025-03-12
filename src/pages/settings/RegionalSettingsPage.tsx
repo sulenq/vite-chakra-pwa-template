@@ -423,7 +423,7 @@ const UOMFormat = () => {
   );
 };
 
-const PreferenceSettingsPage = () => {
+const RegionalSettingsPage = () => {
   // Contexts
   const { l } = useLang();
 
@@ -447,10 +447,10 @@ const PreferenceSettingsPage = () => {
       </CContainer>
 
       <HelperText px={2} mt={4}>
-        {l.language_region_helper_text}
+        {l.regional_settings_helper_text}
       </HelperText>
     </SettingsNavsContainer>
   );
 };
 
-export default PreferenceSettingsPage;
+export default RegionalSettingsPage;

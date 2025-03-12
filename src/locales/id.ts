@@ -29,12 +29,12 @@ const translations = {
     "title": "Delete semua?",
     "description": "Delete semua inbox yang sudah dibaca."
   },
+  "display_settings_helper_text": "Pengaturan tampilan ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   "forbidden_feedback": {
     "title": "Tidak ada akses",
     "description": "Anda tidak memiliki izin untuk mengakses informasi ini."
   },
   "forgot_password": "Lupa password",
-  "language_region_helper_text": "Pengaturan bahasa & wilayah ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   "language_settings_title": "Bahasa",
   "last": "Terakhir",
   "login_form": {
@@ -79,6 +79,7 @@ const translations = {
   "pay": "Bayar",
   "periode_picker_default_title": "Pilih Periode",
   "perma_delete_confirmation": "Aksi ini tidak dapat dibatalkan, harap hati-hati.",
+  "regional_settings_helper_text": "Pengaturan bahasa & wilayah ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   "religion": "Agama",
   "retry": "Muat ulang",
   "retry_feedback": {

@@ -29,12 +29,12 @@ const translations = {
     "title": "Delete all?",
     "description": "Delete all of the read inboxes."
   },
+  "display_settings_helper_text": "These display settings are stored locally on your device and will not be synced with your account.",
   "forbidden_feedback": {
     "title": "No Access",
     "description": "You don't have permission to access this information."
   },
   "forgot_password": "Forgot password",
-  "language_region_helper_text": "These language & region settings are stored locally on your device and will not be synced with your account.",
   "language_settings_title": "Language",
   "last": "Last",
   "login_form": {
@@ -79,6 +79,7 @@ const translations = {
   "pay": "Pay",
   "periode_picker_default_title": "Select Period",
   "perma_delete_confirmation": "This action cannot be undone, please be careful.",
+  "regional_settings_helper_text": "These language & region settings are stored locally on your device and will not be synced with your account.",
   "religion": "Religion",
   "retry": "Retry now",
   "retry_feedback": {
