@@ -45,7 +45,7 @@ export const SETTINGS_NAVS = [
       },
       {
         icon: IconLanguage,
-        labelKey: "settings_navs.preference",
+        labelKey: "settings_navs.regional",
         path: "/settings/preference",
       },
       {

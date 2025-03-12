@@ -58,7 +58,7 @@ export const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
   {
     path: "/settings/preference",
     activePath: "/settings",
-    titleKey: "settings_navs.preference",
+    titleKey: "settings_navs.regional",
     backPath: "/settings",
     element: <RegionalSettingsPage />,
   },
