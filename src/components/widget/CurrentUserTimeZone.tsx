@@ -32,7 +32,7 @@ const CurrentUserTimeZone = () => {
           </Text>
         </CContainer>
 
-        <Link to={"/settings/preference"}>
+        <Link to={"/settings/regional"}>
           <BButton
             mt={3}
             variant={"outline"}

@@ -428,7 +428,7 @@ const RegionalSettingsPage = () => {
   const { l } = useLang();
 
   return (
-    <SettingsNavsContainer align={"stretch"} activePath="/settings/preference">
+    <SettingsNavsContainer align={"stretch"} activePath="/settings/regional">
       <CContainer gap={4}>
         {/* Language */}
         <Language />
