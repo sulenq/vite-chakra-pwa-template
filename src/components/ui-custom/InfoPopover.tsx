@@ -18,7 +18,7 @@ const InfoPopover = ({ children, ...props }: Props) => {
       <PopoverTrigger asChild>
         <BButton
           iconButton
-          size={"3xs"}
+          size={"2xs"}
           p={0}
           borderRadius={"full"}
           variant={"ghost"}
