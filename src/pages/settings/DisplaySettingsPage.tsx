@@ -8,7 +8,7 @@ import StringInput from "@/components/ui-custom/StringInput";
 import { useColorMode } from "@/components/ui/color-mode";
 import { Switch } from "@/components/ui/switch";
 import SettingsNavsContainer from "@/components/widget/SettingsNavsContainer";
-import ToggleSettingsContainer from "@/components/widget/ToggleSettingsContainer";
+import SettingsItemContainer from "@/components/widget/SettingsItemContainer";
 import useADM from "@/context/useADM";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
@@ -45,7 +45,7 @@ const DarkMode = () => {
 
       <CContainer gap={4} py={3}>
         {/* Manual Dark Mode Toggle */}
-        <ToggleSettingsContainer disabled={ADM === "true"}>
+        <SettingsItemContainer disabled={ADM === "true"}>
           <CContainer>
             <Text>{l.dark_mode_ui_settings.label}</Text>
             <Text color={"fg.subtle"}>
@@ -58,10 +58,10 @@ const DarkMode = () => {
             onChange={toggleColorMode}
             colorPalette={themeConfig.colorPalette}
           />
-        </ToggleSettingsContainer>
+        </SettingsItemContainer>
 
         {/* Adaptive Dark Mode Toggle */}
-        <ToggleSettingsContainer>
+        <SettingsItemContainer>
           <CContainer>
             <Text>{l.auto_dark_mode_ui_settings.label}</Text>
             <Text color={"fg.subtle"}>
@@ -74,7 +74,7 @@ const DarkMode = () => {
             onChange={handleAdaptiveToggle}
             colorPalette={themeConfig.colorPalette}
           />
-        </ToggleSettingsContainer>
+        </SettingsItemContainer>
       </CContainer>
     </ItemContainer>
   );

@@ -7,9 +7,8 @@ import SelectInput from "@/components/ui-custom/SelectInput";
 import StringInput from "@/components/ui-custom/StringInput";
 import { useColorMode } from "@/components/ui/color-mode";
 import { Switch } from "@/components/ui/switch";
+import SettingsItemContainer from "@/components/widget/SettingsItemContainer";
 import SettingsNavsContainer from "@/components/widget/SettingsNavsContainer";
-import ToggleSettingsContainer from "@/components/widget/ToggleSettingsContainer";
-import useADM from "@/context/useADM";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import { OPTIONS_RELIGION } from "@/gens/selectOptions";
@@ -21,16 +20,6 @@ const Camera = () => {
   // Contexts
   const { themeConfig } = useThemeConfig();
   const { l } = useLang();
-  const { colorMode, toggleColorMode } = useColorMode();
-  const { ADM, setADM } = useADM(); // Adaptive Dark Mode (Time-based)
-
-  const handleAdaptiveToggle = () => {
-    if (ADM === "true") {
-      setADM("false");
-    } else {
-      setADM("true");
-    }
-  };
 
   return (
     <ItemContainer>
@@ -39,13 +28,12 @@ const Camera = () => {
           <Icon maxW={"20px"}>
             <IconCamera />
           </Icon>
-          <Text fontWeight={"bold"}>{l.dark_mode_settings_title}</Text>
+          <Text fontWeight={"bold"}>{l.camera}</Text>
         </HStack>
       </ItemHeaderContainer>
 
       <CContainer gap={4} py={3}>
-        {/* Manual Dark Mode Toggle */}
-        <ToggleSettingsContainer disabled={ADM === "true"}>
+        <SettingsItemContainer>
           <CContainer>
             <Text>{l.dark_mode_ui_settings.label}</Text>
             <Text color={"fg.subtle"}>
@@ -53,28 +41,12 @@ const Camera = () => {
             </Text>
           </CContainer>
 
-          <Switch
+          {/* <Switch
             checked={colorMode === "dark"}
             onChange={toggleColorMode}
             colorPalette={themeConfig.colorPalette}
-          />
-        </ToggleSettingsContainer>
-
-        {/* Adaptive Dark Mode Toggle */}
-        <ToggleSettingsContainer>
-          <CContainer>
-            <Text>{l.auto_dark_mode_ui_settings.label}</Text>
-            <Text color={"fg.subtle"}>
-              {l.auto_dark_mode_ui_settings.description}
-            </Text>
-          </CContainer>
-
-          <Switch
-            checked={ADM === "true"}
-            onChange={handleAdaptiveToggle}
-            colorPalette={themeConfig.colorPalette}
-          />
-        </ToggleSettingsContainer>
+          /> */}
+        </SettingsItemContainer>
       </CContainer>
     </ItemContainer>
   );

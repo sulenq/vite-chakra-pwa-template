@@ -3,7 +3,7 @@ import { HStack, StackProps } from "@chakra-ui/react";
 interface Props extends StackProps {
   disabled?: boolean;
 }
-const ToggleSettingsContainer = ({ children, disabled, ...props }: Props) => {
+const SettingsItemContainer = ({ children, disabled, ...props }: Props) => {
   return (
     <HStack
       justify={"space-between"}
@@ -17,4 +17,4 @@ const ToggleSettingsContainer = ({ children, disabled, ...props }: Props) => {
   );
 };
 
-export default ToggleSettingsContainer;
+export default SettingsItemContainer;
