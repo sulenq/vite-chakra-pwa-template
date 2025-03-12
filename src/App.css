@@ -237,7 +237,7 @@ button {
 .scrollX::-webkit-scrollbar-thumb,
 .scrollY::-webkit-scrollbar-thumb {
   background-color: var(--d2);
-  border-radius: 100px;
+  /* border-radius: 100px; */
 }
 .scrollXkotak::-webkit-scrollbar-thumb,
 .scrollYkotak::-webkit-scrollbar-thumb {
