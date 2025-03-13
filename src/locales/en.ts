@@ -1,10 +1,10 @@
 const translations = {
+  "adaptive_dark_mode_ui_settings": {
+    "label": "Adaptive dark mode",
+    "description": "Automatically activates at night"
+  },
   "all": "All",
   "ask": "Ask",
-  "auto_dark_mode_ui_settings": {
-    "label": "Adaptive dark mode",
-    "description": "Dark mode for UI, automatically activates at night"
-  },
   "back_online_toast": {
     "title": "Connection Recovered",
     "description": "You are back online."

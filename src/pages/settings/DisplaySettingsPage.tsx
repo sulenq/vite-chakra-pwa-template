@@ -16,6 +16,7 @@ import { OPTIONS_RELIGION } from "@/gens/selectOptions";
 import { Center, HStack, Icon, SimpleGrid, Text } from "@chakra-ui/react";
 import { IconCheck, IconMoon2, IconPalette } from "@tabler/icons-react";
 import { useState } from "react";
+import formatTime from "@/utils/formatTime";
 
 const DarkMode = () => {
   // Contexts
@@ -63,9 +64,12 @@ const DarkMode = () => {
         {/* Adaptive Dark Mode Toggle */}
         <SettingsItemContainer>
           <CContainer>
-            <Text>{l.auto_dark_mode_ui_settings.label}</Text>
+            <Text>{l.adaptive_dark_mode_ui_settings.label}</Text>
             <Text color={"fg.subtle"}>
-              {l.auto_dark_mode_ui_settings.description}
+              {l.adaptive_dark_mode_ui_settings.description}{" "}
+              {`${formatTime("18:00", {
+                prefixTimeZone: "UTC",
+              })} - ${formatTime("06:00", { prefixTimeZone: "UTC" })}`}
             </Text>
           </CContainer>
 

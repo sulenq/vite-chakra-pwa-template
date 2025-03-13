@@ -195,14 +195,14 @@ export const dark_mode_ui_settings = {
     en: "Dark mode for UI, defaults to system settings",
   },
 };
-export const auto_dark_mode_ui_settings = {
+export const adaptive_dark_mode_ui_settings = {
   label: {
     id: "Mode gelap adaptif",
     en: "Adaptive dark mode",
   },
   description: {
-    id: "Mode gelap untuk UI, otomatis aktif saat malam hari",
-    en: "Dark mode for UI, automatically activates at night",
+    id: "Otomatis aktif saat malam hari",
+    en: "Automatically activates at night",
   },
 };
 export const uom = {

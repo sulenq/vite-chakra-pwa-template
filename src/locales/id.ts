@@ -1,10 +1,10 @@
 const translations = {
+  "adaptive_dark_mode_ui_settings": {
+    "label": "Mode gelap adaptif",
+    "description": "Otomatis aktif saat malam hari"
+  },
   "all": "Semua",
   "ask": "Meminta",
-  "auto_dark_mode_ui_settings": {
-    "label": "Mode gelap adaptif",
-    "description": "Mode gelap untuk UI, otomatis aktif saat malam hari"
-  },
   "back_online_toast": {
     "title": "Koneksi Pulih",
     "description": "Anda kembali online."
