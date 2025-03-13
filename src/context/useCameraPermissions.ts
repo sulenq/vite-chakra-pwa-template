@@ -29,7 +29,7 @@ const useCameraPermission = create<Props>((set) => {
         });
         set({ cameraPermissionsStatus: result.state });
       } catch (error) {
-        console.error("Gagal mendapatkan izin kamera:", error);
+        console.error(error);
         set({ cameraPermissionsStatus: "denied" });
       }
     },

@@ -18,6 +18,7 @@ import SettingsItemContainer from "@/components/widget/SettingsItemContainer";
 import SettingsNavsContainer from "@/components/widget/SettingsNavsContainer";
 import useCameraPermission from "@/context/useCameraPermissions";
 import useLang from "@/context/useLang";
+import useLocationPermissions from "@/context/useLocationPermissions";
 import useMicPermissions from "@/context/useMicPermissions";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
@@ -26,7 +27,7 @@ import getAddress from "@/utils/getAddress";
 import getLocation from "@/utils/getLocation";
 import { HStack, Icon, Text, useDisclosure } from "@chakra-ui/react";
 import { IconCamera, IconMapPin, IconMicrophone } from "@tabler/icons-react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 const Camera = () => {
   // Contexts
@@ -404,19 +405,7 @@ const Location = () => {
   // Contexts
   const { themeConfig } = useThemeConfig();
   const { l } = useLang();
-  const [locationStatus, setLocationStatus] = useState<PermissionState | null>(
-    null
-  );
-
-  // Permissions status
-  useEffect(() => {
-    if (!navigator.permissions) return;
-
-    navigator.permissions.query({ name: "geolocation" }).then((result) => {
-      setLocationStatus(result.state);
-      result.onchange = () => setLocationStatus(result.state);
-    });
-  }, []);
+  const { locationPermissionsStatus } = useLocationPermissions();
 
   // Request permissions func
   const requestLocationPermission = () => {
@@ -516,7 +505,7 @@ const Location = () => {
           size="xs"
           variant="outline"
           onClick={onOpen}
-          disabled={locationStatus !== "granted"}
+          disabled={locationPermissionsStatus !== "granted"}
         >
           {l.try_label} {l.location.toLowerCase()}
         </BButton>
@@ -593,19 +582,21 @@ const Location = () => {
           </CContainer>
 
           <Switch
-            checked={locationStatus === "granted"}
+            checked={locationPermissionsStatus === "granted"}
             disabled={
-              locationStatus === "granted" || locationStatus === "denied"
+              locationPermissionsStatus === "granted" ||
+              locationPermissionsStatus === "denied"
             }
             onChange={requestLocationPermission}
             colorPalette={themeConfig.colorPalette}
           />
         </SettingsItemContainer>
 
-        {(locationStatus === "granted" || locationStatus === "denied") && (
+        {(locationPermissionsStatus === "granted" ||
+          locationPermissionsStatus === "denied") && (
           <CContainer px={4}>
             <Text color={"fg.subtle"}>
-              {locationStatus === "granted"
+              {locationPermissionsStatus === "granted"
                 ? l.permissions_granted_helper
                 : l.permissions_denied_helper}
             </Text>

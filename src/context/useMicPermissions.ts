@@ -29,7 +29,7 @@ const useMicPermissions = create<Props>((set) => {
         });
         set({ micPermissionsStatus: result.state });
       } catch (error) {
-        console.error("Gagal mendapatkan izin kamera:", error);
+        console.error(error);
         set({ micPermissionsStatus: "denied" });
       }
     },
