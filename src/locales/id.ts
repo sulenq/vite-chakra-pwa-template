@@ -107,9 +107,9 @@ const translations = {
   "periode_picker_default_title": "Pilih Periode",
   "perma_delete_confirmation": "Aksi ini tidak dapat dibatalkan, harap hati-hati.",
   "permissions_denied": "Ditolak",
-  "permissions_denied_helper": "Akses telah ditolak. Jika ingin memberi akses kembali, buka",
+  "permissions_denied_helper": "Jika ingin memberi akses kembali, buka",
   "permissions_granted": "Diizinkan",
-  "permissions_granted_helper": "Akses sudah diizinkan. Jika ingin menonaktifkan, buka",
+  "permissions_granted_helper": "Jika ingin menonaktifkan, buka",
   "permissions_settings": "Pengaturan perizinan",
   "permissions_settings_helper_text": "Pengaturan izin aplikasi ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   "permissions_test_titles": {

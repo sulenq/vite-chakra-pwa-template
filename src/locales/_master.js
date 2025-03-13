@@ -90,12 +90,12 @@ export const permissions_test_titles = {
   },
 };
 export const permissions_granted_helper = {
-  id: "Akses sudah diizinkan. Jika ingin menonaktifkan, buka",
-  en: "Access is already allowed. If you want to disable it, go to",
+  id: "Jika ingin menonaktifkan, buka",
+  en: "If you want to disable it, go to",
 };
 export const permissions_denied_helper = {
-  id: "Akses telah ditolak. Jika ingin memberi akses kembali, buka",
-  en: "Access has been denied. If you want to grant access again, go to",
+  id: "Jika ingin memberi akses kembali, buka",
+  en: "If you want to grant access again, go to",
 };
 export const permissions_settings = {
   id: "Pengaturan perizinan",

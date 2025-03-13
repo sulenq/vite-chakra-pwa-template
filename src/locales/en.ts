@@ -107,9 +107,9 @@ const translations = {
   "periode_picker_default_title": "Select Period",
   "perma_delete_confirmation": "This action cannot be undone, please be careful.",
   "permissions_denied": "Denied",
-  "permissions_denied_helper": "Access has been denied. If you want to grant access again, go to",
+  "permissions_denied_helper": "If you want to grant access again, go to",
   "permissions_granted": "Allowed",
-  "permissions_granted_helper": "Access is already allowed. If you want to disable it, go to",
+  "permissions_granted_helper": "If you want to disable it, go to",
   "permissions_settings": "Permissions settings",
   "permissions_settings_helper_text": "These app permissions settings are stored locally on your device and will not be synced with your account.",
   "permissions_test_titles": {
