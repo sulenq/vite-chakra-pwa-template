@@ -1,12 +1,12 @@
 import {
   IconApps,
-  IconHelpCircle,
-  IconReceipt2,
-  IconSmartHome,
   IconDeviceDesktop,
   IconExclamationCircle,
   IconGavel,
+  IconHelpCircle,
+  IconHome,
   IconLanguage,
+  IconReceipt2,
   IconShieldHalf,
   IconShieldLock,
 } from "@tabler/icons-react";
@@ -15,7 +15,7 @@ export const NAVS = [
   {
     labelKey: "navs.home",
     path: "/home",
-    icon: IconSmartHome,
+    icon: IconHome,
   },
   {
     labelKey: "navs.invoice",

@@ -97,6 +97,8 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
     return (
       <>
         {NAVS.map((nav: any, i) => {
+          const active = activePath === nav.path;
+
           return (
             <Link key={i} to={nav.path}>
               <Tooltip
@@ -104,7 +106,7 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
                 positioning={{ placement: "right" }}
                 contentProps={{ ml: 2 }}
               >
-                <NavItemContainer active={activePath === nav.path}>
+                <NavItemContainer active={active}>
                   <FloatCounter
                     circleProps={{
                       h: "18px",
@@ -122,7 +124,12 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
                   </Icon>
 
                   {iss && (
-                    <HelperText lineHeight={1} mt={1} truncate>
+                    <HelperText
+                      color={active ? "" : "fg.muted"}
+                      lineHeight={1}
+                      mt={1}
+                      truncate
+                    >
                       {pluck(l, nav.labelKey)}
                     </HelperText>
                   )}
@@ -149,7 +156,12 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
               </Icon>
 
               {iss && (
-                <HelperText lineHeight={1} mt={1} truncate>
+                <HelperText
+                  color={activePath === "/settings" ? "" : "fg.muted"}
+                  lineHeight={1}
+                  mt={1}
+                  truncate
+                >
                   {pluck(l, "navs.settings")}
                 </HelperText>
               )}
@@ -258,7 +270,7 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
       {/* Sm screen nav */}
       {iss && (
         <HStack
-          h={"75px"}
+          h={"80px"}
           justify={"space-around"}
           pt={1}
           pb={6}
