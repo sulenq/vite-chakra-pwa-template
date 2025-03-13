@@ -11,14 +11,14 @@ const translations = {
   },
   "camera": "Kamera",
   "camera_fail_toast": {
-    "title": "Gagal Mengakses Kamera",
+    "title": "Gagal mengakses kamera",
     "description": "Periksa izin kamera atau pastikan tidak digunakan aplikasi lain."
   },
   "camera_permissions_settings": {
     "label": "Akses kamera",
     "description": "Izinkan aplikasi menggunakan kamera perangkat Anda untuk mengambil foto atau video."
   },
-  "chrome_settings_link": "Pengaturan → Privasi & Keamanan → Pengaturan Situs → Kamera",
+  "chrome_permissions_settings_link": "Pengaturan → Privasi & Keamanan → Pengaturan Situs → ",
   "close": "Tutup",
   "confirm": "Konfirmasi",
   "dark_mode_settings_title": "Mode Gelap",
@@ -36,6 +36,7 @@ const translations = {
     "description": "Tidak boleh melebihi rentang maksimum"
   },
   "date_range_picker_max_range_alert": "Maksimal rentang tanggal ${maxRange} hari",
+  "default_permissions_settings_link": "Buka pengaturan browser untuk mengubah izin.",
   "default_request_loading_message": {
     "title": "Memuat",
     "description": "Permintaan sedang diproses."
@@ -44,15 +45,14 @@ const translations = {
     "title": "Permintaan sukses",
     "description": "Proses berjalan tanpa kendala."
   },
-  "default_settings_link": "Buka pengaturan browser untuk mengubah izin kamera.",
   "delete_all_inbox_button": "Delete semua",
   "delete_all_inbox_disclosure": {
     "title": "Delete semua?",
     "description": "Delete semua inbox yang sudah dibaca."
   },
   "display_settings_helper_text": "Pengaturan tampilan ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
-  "edge_settings_link": "Pengaturan → Cookie dan izin situs → Kamera",
-  "firefox_settings_link": "Preferensi → Privasi & Keamanan → Izin → Kamera",
+  "edge_permissions_settings_link": "Pengaturan → Cookie dan izin situs → ",
+  "firefox_permissions_settings_link": "Preferensi → Privasi & Keamanan → Izin → ",
   "forbidden_feedback": {
     "title": "Tidak ada akses",
     "description": "Anda tidak memiliki izin untuk mengakses informasi ini."
@@ -91,9 +91,13 @@ const translations = {
   },
   "measurment_unit_format_settings_title": "Format Satuan Pengukuran",
   "mic": "Mikrofon",
+  "mic_fail_toast": {
+    "title": "Gagal mengakses mikrofon",
+    "description": "Periksa izin microfon atau pastikan tidak digunakan aplikasi lain."
+  },
   "mic_permissions_settings": {
     "label": "Akses mikrofon",
-    "description": "Izinkan aplikasi menggunakan mikrofon perangkat Anda untuk merekam audio atau melakukan panggilan."
+    "description": "Izinkan aplikasi menggunakan mikrofon perangkat Anda untuk merekam audio."
   },
   "month": "Bulan",
   "navs": {

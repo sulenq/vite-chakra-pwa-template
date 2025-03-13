@@ -11,14 +11,14 @@ const translations = {
   },
   "camera": "Camera",
   "camera_fail_toast": {
-    "title": "Failed to Access Camera",
+    "title": "Failed to access camera",
     "description": "Check camera permission or ensure it's not in use by another app."
   },
   "camera_permissions_settings": {
     "label": "Camera access",
     "description": "Allow the app to use your device's camera for capturing photos or videos."
   },
-  "chrome_settings_link": "Settings → Privacy & Security → Site Settings → Camera",
+  "chrome_permissions_settings_link": "Settings → Privacy & Security → Site Settings → ",
   "close": "Close",
   "confirm": "Confirm",
   "dark_mode_settings_title": "Dark Mode",
@@ -36,6 +36,7 @@ const translations = {
     "description": "Must not exceed the maximum range"
   },
   "date_range_picker_max_range_alert": "Maximum date range is ${maxRange} days",
+  "default_permissions_settings_link": "Open browser settings to change permissions.",
   "default_request_loading_message": {
     "title": "Loading",
     "description": "The request is being processed."
@@ -44,15 +45,14 @@ const translations = {
     "title": "Request successful",
     "description": "Process completed without issues."
   },
-  "default_settings_link": "Open browser settings to change camera permissions.",
   "delete_all_inbox_button": "Delete all",
   "delete_all_inbox_disclosure": {
     "title": "Delete all?",
     "description": "Delete all of the read inboxes."
   },
   "display_settings_helper_text": "These display settings are stored locally on your device and will not be synced with your account.",
-  "edge_settings_link": "Settings → Cookies and site permissions → Camera",
-  "firefox_settings_link": "Preferences → Privacy & Security → Permissions → Camera",
+  "edge_permissions_settings_link": "Settings → Cookies and site permissions → ",
+  "firefox_permissions_settings_link": "Preferences → Privacy & Security → Permissions → ",
   "forbidden_feedback": {
     "title": "No Access",
     "description": "You don't have permission to access this information."
@@ -91,9 +91,13 @@ const translations = {
   },
   "measurment_unit_format_settings_title": "Measurement Units Format",
   "mic": "Microphone",
+  "mic_fail_toast": {
+    "title": "Failed to access microphone",
+    "description": "Check microphone permission or ensure it's not in use by another app."
+  },
   "mic_permissions_settings": {
     "label": "Microphone access",
-    "description": "Allow the app to use your device's microphone for recording audio or making calls."
+    "description": "Allow the app to use your device's microphone for recording audio."
   },
   "month": "Month",
   "navs": {

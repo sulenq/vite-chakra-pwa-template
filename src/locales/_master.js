@@ -59,21 +59,21 @@ export const settings_navs = {
 };
 
 // UI
-export const chrome_settings_link = {
-  id: "Pengaturan → Privasi & Keamanan → Pengaturan Situs → Kamera",
-  en: "Settings → Privacy & Security → Site Settings → Camera",
+export const chrome_permissions_settings_link = {
+  id: "Pengaturan → Privasi & Keamanan → Pengaturan Situs → ",
+  en: "Settings → Privacy & Security → Site Settings → ",
 };
-export const firefox_settings_link = {
-  id: "Preferensi → Privasi & Keamanan → Izin → Kamera",
-  en: "Preferences → Privacy & Security → Permissions → Camera",
+export const firefox_permissions_settings_link = {
+  id: "Preferensi → Privasi & Keamanan → Izin → ",
+  en: "Preferences → Privacy & Security → Permissions → ",
 };
-export const edge_settings_link = {
-  id: "Pengaturan → Cookie dan izin situs → Kamera",
-  en: "Settings → Cookies and site permissions → Camera",
+export const edge_permissions_settings_link = {
+  id: "Pengaturan → Cookie dan izin situs → ",
+  en: "Settings → Cookies and site permissions → ",
 };
-export const default_settings_link = {
-  id: "Buka pengaturan browser untuk mengubah izin kamera.",
-  en: "Open browser settings to change camera permissions.",
+export const default_permissions_settings_link = {
+  id: "Buka pengaturan browser untuk mengubah izin.",
+  en: "Open browser settings to change permissions.",
 };
 export const open = {
   id: "Buka",
@@ -153,8 +153,8 @@ export const mic_permissions_settings = {
     en: "Microphone access",
   },
   description: {
-    id: "Izinkan aplikasi menggunakan mikrofon perangkat Anda untuk merekam audio atau melakukan panggilan.",
-    en: "Allow the app to use your device's microphone for recording audio or making calls.",
+    id: "Izinkan aplikasi menggunakan mikrofon perangkat Anda untuk merekam audio.",
+    en: "Allow the app to use your device's microphone for recording audio.",
   },
 };
 export const location = {
@@ -561,12 +561,22 @@ export const default_request_success_message = {
 };
 export const camera_fail_toast = {
   title: {
-    id: "Gagal Mengakses Kamera",
-    en: "Failed to Access Camera",
+    id: "Gagal mengakses kamera",
+    en: "Failed to access camera",
   },
   description: {
     id: "Periksa izin kamera atau pastikan tidak digunakan aplikasi lain.",
     en: "Check camera permission or ensure it's not in use by another app.",
+  },
+};
+export const mic_fail_toast = {
+  title: {
+    id: "Gagal mengakses mikrofon",
+    en: "Failed to access microphone",
+  },
+  description: {
+    id: "Periksa izin microfon atau pastikan tidak digunakan aplikasi lain.",
+    en: "Check microphone permission or ensure it's not in use by another app.",
   },
 };
 export const no_auth_toast = {

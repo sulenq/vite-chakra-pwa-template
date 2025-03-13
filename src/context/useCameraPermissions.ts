@@ -15,7 +15,6 @@ const useCameraPermission = create<Props>((set) => {
         initialStatus = result.state;
         set({ cameraPermissionsStatus: result.state });
 
-        // **Listener Global untuk auto-update saat izin berubah**
         result.onchange = () => set({ cameraPermissionsStatus: result.state });
       })
       .catch(() => set({ cameraPermissionsStatus: "denied" }));
