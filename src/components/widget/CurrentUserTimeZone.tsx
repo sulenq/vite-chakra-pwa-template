@@ -19,26 +19,28 @@ const CurrentUserTimeZone = () => {
   return (
     <PopoverRoot>
       <PopoverTrigger asChild>
-        <Tooltip content={l.time_zone}>
-          <BButton iconButton unclicky variant={"ghost"}>
-            <Icon>
-              <IconTimezone stroke={1.5} />
-            </Icon>
-          </BButton>
-        </Tooltip>
+        <div>
+          <Tooltip content={l.time_zone}>
+            <BButton iconButton unclicky variant="ghost">
+              <Icon>
+                <IconTimezone stroke={1.5} />
+              </Icon>
+            </BButton>
+          </Tooltip>
+        </div>
       </PopoverTrigger>
 
       <PopoverContent mr={2}>
         <CContainer px={1}>
-          <HelperText color={"fg.subtle"}>{l.current}</HelperText>
+          <HelperText color="fg.subtle">{l.current}</HelperText>
           <Text>{timeZone.key}</Text>
-          <Text color={"fg.subtle"}>
+          <Text color="fg.subtle">
             {timeZone.formattedOffset} ({timeZone.localAbbr})
           </Text>
         </CContainer>
 
-        <Link to={"/settings/regional"}>
-          <BButton mt={3} variant={"outline"} size={"sm"} w={"full"}>
+        <Link to="/settings/regional">
+          <BButton mt={3} variant="outline" size="sm" w="full">
             Change
           </BButton>
         </Link>
