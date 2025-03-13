@@ -503,6 +503,22 @@ export const religion = {
   id: "Agama",
   en: "Religion",
 };
+export const address_not_found = {
+  id: "Alamat tidak ditemukan",
+  en: "Address not found",
+};
+export const get = {
+  id: "Dapatkan",
+  en: "Get",
+};
+export const location_test_helper = {
+  id: "Klik dapatkan lokasi untuk mendapatkan data lokasi.",
+  en: "Click get location to get location data.",
+};
+export const address = {
+  id: "Alamat",
+  en: "Address",
+};
 
 // Widget
 export const delete_all_inbox_button = {
@@ -575,8 +591,38 @@ export const mic_fail_toast = {
     en: "Failed to access microphone",
   },
   description: {
-    id: "Periksa izin microfon atau pastikan tidak digunakan aplikasi lain.",
+    id: "Periksa izin mikrofon atau pastikan tidak digunakan aplikasi lain.",
     en: "Check microphone permission or ensure it's not in use by another app.",
+  },
+};
+export const location_fail_toast = {
+  title: {
+    id: "Gagal mendapatkan lokasi",
+    en: "Failed to get location",
+  },
+  description: {
+    id: "Periksa izin lokasi atau pastikan GPS diaktifkan.",
+    en: "Check location permission or ensure GPS is enabled.",
+  },
+};
+export const location_not_supported_toast = {
+  title: {
+    id: "Lokasi tidak didukung",
+    en: "Location not supported",
+  },
+  description: {
+    id: "Peramban atau perangkat ini tidak mendukung fitur lokasi.",
+    en: "This browser or device does not support location features.",
+  },
+};
+export const location_address_fail_toast = {
+  title: {
+    id: "Gagal mendapatkan alamat",
+    en: "Failed to get address",
+  },
+  description: {
+    id: "Periksa koneksi internet atau coba lagi nanti.",
+    en: "Check your internet connection or try again later.",
   },
 };
 export const no_auth_toast = {

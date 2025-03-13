@@ -22,6 +22,7 @@ import useMicPermissions from "@/context/useMicPermissions";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import { startCamera, stopCamera } from "@/utils/camera";
+import getAddress from "@/utils/getAddress";
 import getLocation from "@/utils/getLocation";
 import { HStack, Icon, Text, useDisclosure } from "@chakra-ui/react";
 import { IconCamera, IconMapPin, IconMicrophone } from "@tabler/icons-react";
@@ -249,7 +250,7 @@ const Microphone = () => {
   };
 
   // Components
-  const TestMic = () => {
+  const Test = () => {
     // States, Refs
     const [micOpen, setMicOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -357,7 +358,7 @@ const Microphone = () => {
           <Text fontWeight={"bold"}>{l.mic}</Text>
         </HStack>
 
-        <TestMic />
+        <Test />
       </ItemHeaderContainer>
 
       <CContainer gap={4} py={3}>
@@ -406,10 +407,6 @@ const Location = () => {
   const [locationStatus, setLocationStatus] = useState<PermissionState | null>(
     null
   );
-  const [coords, setCoords] = useState<{ lat: number; long: number } | null>(
-    null
-  );
-  const [address, setAddress] = useState<string | null>(null);
 
   // Permissions status
   useEffect(() => {
@@ -423,21 +420,42 @@ const Location = () => {
 
   // Request permissions func
   const requestLocationPermission = () => {
-    if (!navigator.geolocation) {
-      alert("Geolocation tidak didukung di browser ini.");
-      return;
-    }
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        setCoords({ lat: latitude, long: longitude });
-        fetchAddress(latitude, longitude);
-      },
-      (error) => {
-        console.error("Gagal mendapatkan lokasi:", error);
-      }
-    );
+    getLocation()
+      .then(() => {})
+      .catch((error) => {
+        console.error(error);
+        switch (error.code) {
+          case error.POSITION_UNAVAILABLE:
+            toaster.error({
+              title: l.location_not_supported_toast.title,
+              description: l.location_not_supported_toast.description,
+              action: {
+                label: "Close",
+                onClick: () => {},
+              },
+            });
+            break;
+          default:
+            toaster.error({
+              title: l.location_fail_toast.title,
+              description: l.location_fail_toast.description,
+              action: {
+                label: "Close",
+                onClick: () => {},
+              },
+            });
+            break;
+        }
+        toaster.error({
+          title: l.location_not_supported_toast.title,
+          description: l.location_not_supported_toast.description,
+          action: {
+            label: "Close",
+            onClick: () => {},
+          },
+        });
+        return;
+      });
   };
 
   // Status helper text
@@ -453,31 +471,89 @@ const Location = () => {
     return l.default_permissions_settings_link;
   };
 
-  // Get address
-  const fetchAddress = async (lat: number, lon: number) => {
-    try {
-      const res = await fetch(
-        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
-      );
-      const data = await res.json();
-      setAddress(data.display_name || "Alamat tidak ditemukan");
-    } catch (error) {
-      console.error("Gagal mendapatkan alamat:", error);
-      setAddress("Gagal mengambil alamat");
-    }
-  };
-  useEffect(() => {
-    if (!coords) {
+  // Components
+  const Test = () => {
+    // States, Refs
+    const [loading, setLoading] = useState(false);
+    const [center, setCenter] = useState<{ lat: number; long: number } | null>(
+      null
+    );
+    const [address, setAddress] = useState<string | null>(null);
+
+    // Utils
+    const { open, onOpen, onClose } = useDisclosure();
+    useBackOnClose("location-test", open, onOpen, onClose);
+
+    // Handle test
+    function startLocationTest() {
+      setLoading(true);
       getLocation().then(({ coords }) => {
-        setCoords({ lat: coords.latitude, long: coords.longitude });
+        setCenter({ lat: coords.latitude, long: coords.longitude });
+        getAddress(coords.latitude, coords.longitude)
+          .then((data) => {
+            setAddress(data.display_name || l.address_not_found);
+          })
+          .catch((error) => {
+            console.error("Gagal mendapatkan alamat:", error);
+            toaster.error({
+              title: l.location_address_fail_toast.title,
+              description: l.location_address_fail_toast.description,
+              action: {
+                label: "Close",
+                onClick: () => {},
+              },
+            });
+          })
+          .finally(() => {
+            setLoading(false);
+          });
       });
     }
-  }, [coords]);
-  useEffect(() => {
-    if (!address && coords) {
-      fetchAddress(coords.lat, coords.long);
-    }
-  }, [address]);
+
+    return (
+      <>
+        <BButton
+          size="xs"
+          variant="outline"
+          onClick={onOpen}
+          disabled={locationStatus !== "granted"}
+        >
+          {l.try_label} {l.location.toLowerCase()}
+        </BButton>
+
+        <DisclosureRoot open={open} lazyLoad size="xs">
+          <DisclosureContent>
+            <DisclosureHeader>
+              <DisclosureHeaderContent title={`${l.try_label} ${l.location}`} />
+            </DisclosureHeader>
+
+            <DisclosureBody>
+              {!address && <Text>{l.location_test_helper}</Text>}
+              {address && center && (
+                <CContainer gap={2}>
+                  <Text>Latitude: {center.lat}</Text>
+                  <Text>Longitude: {center.long}</Text>
+                  <Text>
+                    {l.address}: {address || "Loading..."}
+                  </Text>
+                </CContainer>
+              )}
+            </DisclosureBody>
+
+            <DisclosureFooter>
+              <BButton
+                colorPalette={themeConfig.colorPalette}
+                loading={loading}
+                onClick={startLocationTest}
+              >
+                {l.get} {l.location.toLowerCase()}
+              </BButton>
+            </DisclosureFooter>
+          </DisclosureContent>
+        </DisclosureRoot>
+      </>
+    );
+  };
 
   return (
     <ItemContainer>
@@ -488,6 +564,8 @@ const Location = () => {
           </Icon>
           <Text fontWeight={"bold"}>{l.location}</Text>
         </HStack>
+
+        <Test />
       </ItemHeaderContainer>
 
       <CContainer gap={4} py={3}>
@@ -519,14 +597,6 @@ const Location = () => {
             <Text color={"fg.subtle"}>
               {getBrowserSettingsLink()} {l.location}
             </Text>
-          </CContainer>
-        )}
-
-        {coords && (
-          <CContainer px={4}>
-            <Text>Latitude: {coords.lat}</Text>
-            <Text>Longitude: {coords.long}</Text>
-            <Text>Alamat: {address || "Loading..."}</Text>
           </CContainer>
         )}
       </CContainer>

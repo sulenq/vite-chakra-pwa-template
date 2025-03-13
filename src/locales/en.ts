@@ -3,6 +3,8 @@ const translations = {
     "label": "Adaptive dark mode",
     "description": "Automatically activates at night"
   },
+  "address": "Address",
+  "address_not_found": "Address not found",
   "all": "All",
   "ask": "Ask",
   "back_online_toast": {
@@ -58,13 +60,27 @@ const translations = {
     "description": "You don't have permission to access this information."
   },
   "forgot_password": "Forgot password",
+  "get": "Get",
   "language_settings_title": "Language",
   "last": "Last",
   "location": "Location",
+  "location_address_fail_toast": {
+    "title": "Failed to get address",
+    "description": "Check your internet connection or try again later."
+  },
+  "location_fail_toast": {
+    "title": "Failed to get location",
+    "description": "Check location permission or ensure GPS is enabled."
+  },
+  "location_not_supported_toast": {
+    "title": "Location not supported",
+    "description": "This browser or device does not support location features."
+  },
   "location_permissions_settings": {
     "label": "Location access",
     "description": "Allow the app to access your device's location for location-based services."
   },
+  "location_test_helper": "Click get location to get location data.",
   "login_form": {
     "title": "Login to System",
     "description": "Enter your account details to continue."

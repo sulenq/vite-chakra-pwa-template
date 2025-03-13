@@ -3,6 +3,8 @@ const translations = {
     "label": "Mode gelap adaptif",
     "description": "Otomatis aktif saat malam hari"
   },
+  "address": "Alamat",
+  "address_not_found": "Alamat tidak ditemukan",
   "all": "Semua",
   "ask": "Meminta",
   "back_online_toast": {
@@ -58,13 +60,27 @@ const translations = {
     "description": "Anda tidak memiliki izin untuk mengakses informasi ini."
   },
   "forgot_password": "Lupa password",
+  "get": "Dapatkan",
   "language_settings_title": "Bahasa",
   "last": "Terakhir",
   "location": "Lokasi",
+  "location_address_fail_toast": {
+    "title": "Gagal mendapatkan alamat",
+    "description": "Periksa koneksi internet atau coba lagi nanti."
+  },
+  "location_fail_toast": {
+    "title": "Gagal mendapatkan lokasi",
+    "description": "Periksa izin lokasi atau pastikan GPS diaktifkan."
+  },
+  "location_not_supported_toast": {
+    "title": "Lokasi tidak didukung",
+    "description": "Peramban atau perangkat ini tidak mendukung fitur lokasi."
+  },
   "location_permissions_settings": {
     "label": "Akses lokasi",
     "description": "Izinkan aplikasi mengakses lokasi perangkat Anda untuk memberikan layanan berbasis lokasi."
   },
+  "location_test_helper": "Klik dapatkan lokasi untuk mendapatkan data lokasi.",
   "login_form": {
     "title": "Login ke Sistem",
     "description": "Masukkan detail akun Anda untuk melanjutkan."
@@ -93,7 +109,7 @@ const translations = {
   "mic": "Mikrofon",
   "mic_fail_toast": {
     "title": "Gagal mengakses mikrofon",
-    "description": "Periksa izin microfon atau pastikan tidak digunakan aplikasi lain."
+    "description": "Periksa izin mikrofon atau pastikan tidak digunakan aplikasi lain."
   },
   "mic_permissions_settings": {
     "label": "Akses mikrofon",
