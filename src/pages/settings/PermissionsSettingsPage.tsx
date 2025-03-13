@@ -531,11 +531,26 @@ const Location = () => {
               {!address && <Text>{l.location_test_helper}</Text>}
               {address && center && (
                 <CContainer gap={2}>
-                  <Text>Latitude: {center.lat}</Text>
-                  <Text>Longitude: {center.long}</Text>
-                  <Text>
-                    {l.address}: {address || "Loading..."}
-                  </Text>
+                  <HStack align={"start"}>
+                    <Text w={"100px"} color={"fg.muted"} flexShrink={0}>
+                      Latitude
+                    </Text>
+                    <Text>{center.lat}</Text>
+                  </HStack>
+
+                  <HStack align={"start"}>
+                    <Text w={"100px"} color={"fg.muted"} flexShrink={0}>
+                      Longitude
+                    </Text>
+                    <Text>{center.long}</Text>
+                  </HStack>
+
+                  <HStack align={"start"}>
+                    <Text w={"100px"} color={"fg.muted"} flexShrink={0}>
+                      {l.address}
+                    </Text>
+                    <Text>{address}</Text>
+                  </HStack>
                 </CContainer>
               )}
             </DisclosureBody>
