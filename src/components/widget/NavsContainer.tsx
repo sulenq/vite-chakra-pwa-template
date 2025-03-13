@@ -24,6 +24,7 @@ import Logo from "../ui-custom/Logo";
 import { Tooltip } from "../ui/tooltip";
 import CurrentUserTimeZone from "./CurrentUserTimeZone";
 import MerchantInbox from "./Inbox";
+import BnwLogo from "../ui-custom/BnwLogo";
 
 interface Interface__NavItemContainer extends StackProps {
   active?: boolean;
@@ -186,7 +187,11 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
           borderColor={"border.muted"}
         >
           <Link to={"/"}>
-            <Logo size={16} color={themeConfig.primaryColorHex} />
+            {themeConfig.colorPalette === "gray" ? (
+              <BnwLogo />
+            ) : (
+              <Logo size={16} color={themeConfig.primaryColorHex} />
+            )}
           </Link>
 
           <VStack justify={"center"} flex={1}>

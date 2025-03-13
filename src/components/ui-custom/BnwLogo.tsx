@@ -12,7 +12,7 @@ const BnwLogo = ({ ...props }: Props) => {
       src={`${SVGS_PATH}/${
         colorMode === "dark" ? "logo_light" : "logo_dark"
       }.svg`}
-      h={"20px"}
+      h={"16px"}
       {...props}
     ></Image>
   );
