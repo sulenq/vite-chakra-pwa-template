@@ -24,6 +24,7 @@ import useTimeZone from "@/context/useTimeZone";
 import useUOM from "@/context/useUOM";
 import useScreen from "@/hooks/useScreen";
 import autoTimeZone from "@/utils/autoTimeZone";
+import capsFirstLetterEachWord from "@/utils/capsFirstLetterEachWord";
 import formatDate from "@/utils/formatDate";
 import formatTime from "@/utils/formatTime";
 import { makeTime } from "@/utils/getTime";
@@ -170,7 +171,7 @@ const TimeZone = () => {
               <IconTimezone />
             </Icon>
             <Text fontWeight="bold" whiteSpace={"nowrap"}>
-              {l.time_zone_settings_title}
+              {capsFirstLetterEachWord(l.timezone)}
             </Text>
           </HStack>
 

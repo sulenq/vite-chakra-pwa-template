@@ -14,6 +14,7 @@ import {
 } from "../ui-custom/Disclosure";
 import DisclosureHeaderContent from "../ui-custom/DisclosureHeaderContent";
 import FloatCounter from "../ui-custom/FloatCounter";
+import { Tooltip } from "../ui/tooltip";
 
 const Inbox = () => {
   // Contexts
@@ -25,17 +26,19 @@ const Inbox = () => {
 
   return (
     <>
-      <BButton iconButton unclicky variant={"ghost"} onClick={onOpen}>
-        <>
-          <FloatCounter circleProps={{ mt: "18px", mr: "18px" }}>
-            2
-          </FloatCounter>
+      <Tooltip content={"Inbox"}>
+        <BButton iconButton unclicky variant={"ghost"} onClick={onOpen}>
+          <>
+            <FloatCounter circleProps={{ mt: "18px", mr: "18px" }}>
+              2
+            </FloatCounter>
 
-          <Icon>
-            <IconInbox stroke={1.5} />
-          </Icon>
-        </>
-      </BButton>
+            <Icon>
+              <IconInbox stroke={1.5} />
+            </Icon>
+          </>
+        </BButton>
+      </Tooltip>
 
       <DisclosureRoot open={open} size={"xs"}>
         <DisclosureContent>

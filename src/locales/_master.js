@@ -59,6 +59,18 @@ export const settings_navs = {
 };
 
 // UI
+export const office = {
+  id: "Kantor",
+  en: "Office",
+};
+export const current = {
+  id: "Saat ini",
+  en: "Current",
+};
+export const time_zone = {
+  id: "Zona waktu",
+  en: "Time zone",
+};
 export const chrome_permissions_settings_link = {
   id: "Pengaturan → Privasi & Keamanan → Pengaturan Situs → ",
   en: "Settings → Privacy & Security → Site Settings → ",

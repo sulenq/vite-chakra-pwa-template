@@ -23,6 +23,7 @@ const translations = {
   "chrome_permissions_settings_link": "Settings → Privacy & Security → Site Settings → ",
   "close": "Close",
   "confirm": "Confirm",
+  "current": "Current",
   "dark_mode_settings_title": "Dark Mode",
   "dark_mode_ui_settings": {
     "label": "Dark mode UI",
@@ -142,6 +143,7 @@ const translations = {
     "label": "Notifications access",
     "description": "Allow the app to send notifications to keep you updated."
   },
+  "office": "Office",
   "offline_disclosure": {
     "title": "Connection Lost",
     "description": "It looks like you are offline. Check your internet connection and try again."
@@ -200,6 +202,7 @@ const translations = {
   "time_picker_default_title": "Select Time",
   "time_range_picker_default_placeholder": "Select time range...",
   "time_range_picker_default_title": "Select Time Range",
+  "time_zone": "Time zone",
   "time_zone_settings_title": "Time Zone",
   "today": "Today",
   "tomorrow": "Tomorrow",

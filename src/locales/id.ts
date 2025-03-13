@@ -23,6 +23,7 @@ const translations = {
   "chrome_permissions_settings_link": "Pengaturan → Privasi & Keamanan → Pengaturan Situs → ",
   "close": "Tutup",
   "confirm": "Konfirmasi",
+  "current": "Saat ini",
   "dark_mode_settings_title": "Mode Gelap",
   "dark_mode_ui_settings": {
     "label": "UI mode gelap",
@@ -142,6 +143,7 @@ const translations = {
     "label": "Akses notifikasi",
     "description": "Izinkan aplikasi mengirim notifikasi agar Anda tetap mendapatkan informasi terbaru."
   },
+  "office": "Kantor",
   "offline_disclosure": {
     "title": "Koneksi Terputus",
     "description": "Sepertinya Anda sedang offline. Periksa koneksi internet Anda dan coba lagi."
@@ -200,6 +202,7 @@ const translations = {
   "time_picker_default_title": "Pilih Waktu",
   "time_range_picker_default_placeholder": "Pilih rentang waktu...",
   "time_range_picker_default_title": "Pilih Rentang Waktu",
+  "time_zone": "Zona waktu",
   "time_zone_settings_title": "Zona Waktu",
   "today": "Hari ini",
   "tomorrow": "Besok",
