@@ -17,14 +17,15 @@ import { IconSettings } from "@tabler/icons-react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import BackButton from "../ui-custom/BackButton";
+import BnwLogo from "../ui-custom/BnwLogo";
 import CContainer from "../ui-custom/CContainer";
 import FloatCounter from "../ui-custom/FloatCounter";
 import Heading6 from "../ui-custom/Heading6";
+import HelperText from "../ui-custom/HelperText";
 import Logo from "../ui-custom/Logo";
 import { Tooltip } from "../ui/tooltip";
 import CurrentUserTimeZone from "./CurrentUserTimeZone";
 import MerchantInbox from "./Inbox";
-import BnwLogo from "../ui-custom/BnwLogo";
 
 interface Interface__NavItemContainer extends StackProps {
   active?: boolean;
@@ -74,7 +75,7 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
         transition={"200ms"}
         {...props}
       >
-        {active && <ActiveNavIndicator />}
+        {active && <ActiveNavIndicator bottom={[-2, null, 0]} />}
 
         {children}
       </VStack>
@@ -119,6 +120,12 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
                   <Icon {...nav?.iconProps}>
                     <nav.icon strokeWidth={1.5} size={iss ? 24 : 20} />
                   </Icon>
+
+                  {iss && (
+                    <HelperText lineHeight={1} mt={1} truncate>
+                      {pluck(l, nav.labelKey)}
+                    </HelperText>
+                  )}
                 </NavItemContainer>
               </Tooltip>
             </Link>
@@ -140,6 +147,12 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
               <Icon>
                 <IconSettings strokeWidth={1.5} size={iss ? 24 : 20} />
               </Icon>
+
+              {iss && (
+                <HelperText lineHeight={1} mt={1} truncate>
+                  {pluck(l, "navs.settings")}
+                </HelperText>
+              )}
             </NavItemContainer>
           </Tooltip>
         </Link>

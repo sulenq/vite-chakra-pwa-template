@@ -121,7 +121,7 @@ const translations = {
     "home": "Beranda",
     "invoice": "Tagihan",
     "services": "Layanan",
-    "helpCenter": "Pusat Bantuan",
+    "helpCenter": "Bantuan",
     "settings": "Pengaturan"
   },
   "next_month": "Bulan ini",

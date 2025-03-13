@@ -13,8 +13,8 @@ export const navs = {
     en: "Services",
   },
   helpCenter: {
-    id: "Pusat Bantuan",
-    en: "Help Center",
+    id: "Bantuan",
+    en: "Help",
   },
   settings: {
     id: "Pengaturan",

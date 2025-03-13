@@ -121,7 +121,7 @@ const translations = {
     "home": "Home",
     "invoice": "Invoice",
     "services": "Services",
-    "helpCenter": "Help Center",
+    "helpCenter": "Help",
     "settings": "Settings"
   },
   "next_month": "This month",
