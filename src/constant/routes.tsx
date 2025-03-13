@@ -9,6 +9,9 @@ import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
 import TestPage from "@/pages/TestPage";
 import DisplaySettingsPage from "@/pages/settings/DisplaySettingsPage";
 import PermissionsSettingsPage from "@/pages/settings/PermissionsSettingsPage";
+import ReportProblemPage from "@/pages/settings/ReportProblemPage";
+import TermsOfServicePage from "@/pages/settings/TermsOfServicePage";
+import PrivacyPolictPage from "@/pages/settings/PrivacyPolictPage";
 
 export const ROUTES: Interface__Route[] = [
   {
@@ -76,6 +79,27 @@ export const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
     titleKey: "settings_navs.permissions",
     backPath: "/settings",
     element: <PermissionsSettingsPage />,
+  },
+  {
+    path: "/settings/report-problem",
+    activePath: "/settings",
+    titleKey: "settings_navs.report_problem",
+    backPath: "/settings",
+    element: <ReportProblemPage />,
+  },
+  {
+    path: "/settings/terms-of-service",
+    activePath: "/settings",
+    titleKey: "settings_navs.terms_of_service",
+    backPath: "/settings",
+    element: <TermsOfServicePage />,
+  },
+  {
+    path: "/settings/privacy-policy",
+    activePath: "/settings",
+    titleKey: "settings_navs.privacy_policy",
+    backPath: "/settings",
+    element: <PrivacyPolictPage />,
   },
   // {
   //   path: "/profile",
