@@ -18,6 +18,7 @@ const translations = {
     "label": "Camera access",
     "description": "Allow the app to use your device's camera for capturing photos or videos."
   },
+  "close": "Close",
   "confirm": "Confirm",
   "dark_mode_settings_title": "Dark Mode",
   "dark_mode_ui_settings": {
@@ -101,6 +102,7 @@ const translations = {
     "title": "Connection Lost",
     "description": "It looks like you are offline. Check your internet connection and try again."
   },
+  "open": "Open",
   "pay": "Pay",
   "periode_picker_default_title": "Select Period",
   "perma_delete_confirmation": "This action cannot be undone, please be careful.",

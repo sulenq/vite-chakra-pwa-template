@@ -33,15 +33,6 @@ const Camera = () => {
   // Request permissions func
   async function requestCameraMic() {
     try {
-      const permission = await navigator.permissions.query({
-        name: "camera" as PermissionName,
-      });
-
-      if (permission.state === "granted") {
-        alert("Izin sudah diberikan. Kamera tidak akan langsung menyala.");
-        return;
-      }
-
       const stream = await navigator.mediaDevices.getUserMedia({
         video: true,
         audio: true,
@@ -83,13 +74,13 @@ const Camera = () => {
     return (
       <>
         <BButton size={"xs"} variant={"outline"} onClick={onOpen}>
-          {l.try_label} {l.camera}
+          {l.try_label} {l.camera.toLowerCase()}
         </BButton>
 
         <DisclosureRoot open={open} lazyLoad size={"xs"}>
           <DisclosureContent>
             <DisclosureHeader>
-              <DisclosureHeaderContent title="Tes Kamera" />
+              <DisclosureHeaderContent title={`${l.try_label} ${l.camera}`} />
             </DisclosureHeader>
 
             <DisclosureBody p={"0 !important"}>
@@ -123,7 +114,7 @@ const Camera = () => {
                 variant="outline"
                 onClick={() => stopCamera(videoRef, streamRef)}
               >
-                Tutup Kamera
+                {l.close} {l.camera.toLowerCase()}
               </BButton>
               <BButton
                 colorPalette={themeConfig.colorPalette}
@@ -132,11 +123,15 @@ const Camera = () => {
                     toaster.error({
                       title: l.camera_fail_toast.title,
                       description: l.camera_fail_toast.description,
+                      action: {
+                        label: "Close",
+                        onClick: () => {},
+                      },
                     })
                   )
                 }
               >
-                Buka Kamera
+                {l.open} {l.camera.toLowerCase()}
               </BButton>
             </DisclosureFooter>
           </DisclosureContent>

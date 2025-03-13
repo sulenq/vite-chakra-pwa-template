@@ -59,6 +59,14 @@ export const settings_navs = {
 };
 
 // UI
+export const open = {
+  id: "Buka",
+  en: "Open",
+};
+export const close = {
+  id: "Tutup",
+  en: "Close",
+};
 export const try_label = {
   id: "Coba",
   en: "Try",

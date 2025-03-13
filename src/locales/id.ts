@@ -18,6 +18,7 @@ const translations = {
     "label": "Akses kamera",
     "description": "Izinkan aplikasi menggunakan kamera perangkat Anda untuk mengambil foto atau video."
   },
+  "close": "Tutup",
   "confirm": "Konfirmasi",
   "dark_mode_settings_title": "Mode Gelap",
   "dark_mode_ui_settings": {
@@ -101,6 +102,7 @@ const translations = {
     "title": "Koneksi Terputus",
     "description": "Sepertinya Anda sedang offline. Periksa koneksi internet Anda dan coba lagi."
   },
+  "open": "Buka",
   "pay": "Bayar",
   "periode_picker_default_title": "Pilih Periode",
   "perma_delete_confirmation": "Aksi ini tidak dapat dibatalkan, harap hati-hati.",
