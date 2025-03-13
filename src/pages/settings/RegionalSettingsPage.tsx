@@ -171,7 +171,7 @@ const TimeZone = () => {
               <IconTimezone />
             </Icon>
             <Text fontWeight="bold" whiteSpace={"nowrap"}>
-              {capsFirstLetterEachWord(l.timezone)}
+              {capsFirstLetterEachWord(l.time_zone)}
             </Text>
           </HStack>
 
