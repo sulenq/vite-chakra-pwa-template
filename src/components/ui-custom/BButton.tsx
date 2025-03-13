@@ -52,7 +52,7 @@ const BButton = forwardRef<HTMLButtonElement, Props>(
             return "gray.muted";
         }
       }
-    }, [props.variant, props.colorPalette, themeConfig.colorPalette]);
+    }, [props.variant, props.colorPalette]);
 
     return iconButton ? (
       <IconButton
