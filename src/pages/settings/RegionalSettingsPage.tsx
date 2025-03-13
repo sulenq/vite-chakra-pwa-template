@@ -164,14 +164,17 @@ const TimeZone = () => {
     // <Profiler id="TimeZone" onRender={onRenderCallback}>
     <ItemContainer>
       <ItemHeaderContainer borderLess={iss} gap={2}>
-        <HStack wrap="wrap">
+        <HStack truncate>
           <HStack>
             <Icon maxW="20px">
               <IconTimezone />
             </Icon>
-            <Text fontWeight="bold">{l.time_zone_settings_title}</Text>
+            <Text fontWeight="bold" whiteSpace={"nowrap"}>
+              {l.time_zone_settings_title}
+            </Text>
           </HStack>
-          <Text color="fg.subtle">
+
+          <Text color="fg.subtle" truncate>
             {timeZone.key} {timeZone.formattedOffset} ({timeZone.localAbbr})
           </Text>
         </HStack>
