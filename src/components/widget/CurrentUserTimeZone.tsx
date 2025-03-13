@@ -1,15 +1,13 @@
-import { useThemeConfig } from "@/context/useThemeConfig";
 import useTimeZone from "@/context/useTimeZone";
 import { Icon, Text } from "@chakra-ui/react";
 import { IconTimezone } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import BButton from "../ui-custom/BButton";
-import { PopoverContent, PopoverRoot, PopoverTrigger } from "../ui/popover";
 import CContainer from "../ui-custom/CContainer";
+import { PopoverContent, PopoverRoot, PopoverTrigger } from "../ui/popover";
 
 const CurrentUserTimeZone = () => {
   // Contexts
-  const { themeConfig } = useThemeConfig();
   const { timeZone } = useTimeZone();
 
   // States, Refs
@@ -38,7 +36,7 @@ const CurrentUserTimeZone = () => {
             variant={"outline"}
             size={"sm"}
             w={"full"}
-            colorPalette={themeConfig.colorPalette}
+            // colorPalette={themeConfig.colorPalette}
           >
             Change
           </BButton>

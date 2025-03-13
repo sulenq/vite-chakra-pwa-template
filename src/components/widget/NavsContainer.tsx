@@ -219,7 +219,7 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
           borderBottom={iss ? "1px solid {colors.border.subtle}" : ""}
         >
           <HStack>
-            {backPath && <BackButton iconButton />}
+            {backPath && <BackButton iconButton backPath={backPath} />}
 
             <Heading6 fontWeight={"bold"} truncate>
               {title}
