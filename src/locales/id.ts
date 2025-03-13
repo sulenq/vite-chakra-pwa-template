@@ -18,6 +18,7 @@ const translations = {
     "label": "Akses kamera",
     "description": "Izinkan aplikasi menggunakan kamera perangkat Anda untuk mengambil foto atau video."
   },
+  "chrome_settings_link": "Pengaturan → Privasi & Keamanan → Pengaturan Situs → Kamera",
   "close": "Tutup",
   "confirm": "Konfirmasi",
   "dark_mode_settings_title": "Mode Gelap",
@@ -43,12 +44,15 @@ const translations = {
     "title": "Permintaan sukses",
     "description": "Proses berjalan tanpa kendala."
   },
+  "default_settings_link": "Buka pengaturan browser untuk mengubah izin kamera.",
   "delete_all_inbox_button": "Delete semua",
   "delete_all_inbox_disclosure": {
     "title": "Delete semua?",
     "description": "Delete semua inbox yang sudah dibaca."
   },
   "display_settings_helper_text": "Pengaturan tampilan ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
+  "edge_settings_link": "Pengaturan → Cookie dan izin situs → Kamera",
+  "firefox_settings_link": "Preferensi → Privasi & Keamanan → Izin → Kamera",
   "forbidden_feedback": {
     "title": "Tidak ada akses",
     "description": "Anda tidak memiliki izin untuk mengakses informasi ini."

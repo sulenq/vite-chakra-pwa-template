@@ -20,7 +20,7 @@ import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import { startCamera, stopCamera } from "@/utils/camera";
-import { Badge, HStack, Icon, Text, useDisclosure } from "@chakra-ui/react";
+import { HStack, Icon, Text, useDisclosure } from "@chakra-ui/react";
 import { IconCamera } from "@tabler/icons-react";
 import { useRef, useState } from "react";
 
@@ -48,13 +48,13 @@ const Camera = () => {
   const getBrowserSettingsLink = () => {
     const userAgent = navigator.userAgent;
     if (userAgent.includes("Chrome")) {
-      return "Buka Chrome → Settings → Privacy & Security → Site Settings → Camera";
+      return l.chrome_settings_link;
     } else if (userAgent.includes("Firefox")) {
-      return "Buka Firefox → Preferences → Privacy & Security → Permissions → Camera";
+      return l.firefox_settings_link;
     } else if (userAgent.includes("Edg")) {
-      return "Buka Edge → Settings → Cookies and site permissions → Camera";
+      return l.edge_settings_link;
     }
-    return "Buka pengaturan browser untuk mengubah izin kamera.";
+    return l.default_settings_link;
   };
 
   // Components
@@ -165,30 +165,12 @@ const Camera = () => {
             <IconCamera />
           </Icon>
           <Text fontWeight={"bold"}>{l.camera}</Text>
-          {cameraPermissionsStatus === "denied" && (
-            <Badge colorPalette={"red"}>{l.permissions_denied}</Badge>
-          )}
-          {cameraPermissionsStatus === "granted" && (
-            <Badge colorPalette={"green"}>{l.permissions_granted}</Badge>
-          )}
         </HStack>
 
         <Test />
       </ItemHeaderContainer>
 
       <CContainer gap={4} py={3}>
-        {(cameraPermissionsStatus === "granted" ||
-          cameraPermissionsStatus === "denied") && (
-          <CContainer px={4}>
-            <Text>
-              {cameraPermissionsStatus === "granted"
-                ? l.permissions_granted_helper
-                : l.permissions_denied_helper}
-            </Text>
-            <Text>{getBrowserSettingsLink()}</Text>
-          </CContainer>
-        )}
-
         <SettingsItemContainer>
           <CContainer>
             <Text>{l.camera_permissions_settings.label}</Text>
@@ -207,6 +189,18 @@ const Camera = () => {
             colorPalette={themeConfig.colorPalette}
           />
         </SettingsItemContainer>
+
+        {(cameraPermissionsStatus === "granted" ||
+          cameraPermissionsStatus === "denied") && (
+          <CContainer px={4}>
+            <Text color={"fg.subtle"}>
+              {cameraPermissionsStatus === "granted"
+                ? l.permissions_granted_helper
+                : l.permissions_denied_helper}
+            </Text>
+            <Text color={"fg.subtle"}>{getBrowserSettingsLink()}</Text>
+          </CContainer>
+        )}
       </CContainer>
     </ItemContainer>
   );

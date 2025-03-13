@@ -59,6 +59,22 @@ export const settings_navs = {
 };
 
 // UI
+export const chrome_settings_link = {
+  id: "Pengaturan → Privasi & Keamanan → Pengaturan Situs → Kamera",
+  en: "Settings → Privacy & Security → Site Settings → Camera",
+};
+export const firefox_settings_link = {
+  id: "Preferensi → Privasi & Keamanan → Izin → Kamera",
+  en: "Preferences → Privacy & Security → Permissions → Camera",
+};
+export const edge_settings_link = {
+  id: "Pengaturan → Cookie dan izin situs → Kamera",
+  en: "Settings → Cookies and site permissions → Camera",
+};
+export const default_settings_link = {
+  id: "Buka pengaturan browser untuk mengubah izin kamera.",
+  en: "Open browser settings to change camera permissions.",
+};
 export const open = {
   id: "Buka",
   en: "Open",
