@@ -32,15 +32,25 @@ const BButton = forwardRef<HTMLButtonElement, Props>(
 
     // Memoized Active Style
     const activeBg = useMemo(() => {
-      switch (props?.variant) {
-        default:
-          return `${props.colorPalette}.solid`;
-        case "ghost":
-        case "outline":
-          return `${props.colorPalette}.subtle`;
-        case "subtle":
-        case "surface":
-          return `${props.colorPalette}.muted`;
+      if (props.colorPalette) {
+        switch (props?.variant) {
+          default:
+            return `${props.colorPalette}.solid`;
+          case "ghost":
+          case "outline":
+            return `${props.colorPalette}.subtle`;
+          case "subtle":
+          case "surface":
+            return `${props.colorPalette}.muted`;
+        }
+      } else {
+        switch (props?.variant) {
+          default:
+            return "gray.subtle";
+          case "subtle":
+          case "surface":
+            return "gray.muted";
+        }
       }
     }, [props.variant, props.colorPalette, themeConfig.colorPalette]);
 
