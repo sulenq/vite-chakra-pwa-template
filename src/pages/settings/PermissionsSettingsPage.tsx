@@ -22,7 +22,7 @@ import useBackOnClose from "@/hooks/useBackOnClose";
 import { startCamera, stopCamera } from "@/utils/camera";
 import { Badge, HStack, Icon, Text, useDisclosure } from "@chakra-ui/react";
 import { IconCamera } from "@tabler/icons-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const Camera = () => {
   // Contexts
@@ -62,14 +62,16 @@ const Camera = () => {
     // Utils
     const { open, onOpen, onClose } = useDisclosure();
     function handleClose() {
-      stopCamera(videoRef, streamRef);
+      stopCamera(videoRef, streamRef, () => setCameraOpen(false));
       onClose();
     }
     useBackOnClose("camera-test", open, onOpen, handleClose);
 
     // States, Refs
+    const [cameraOpen, setCameraOpen] = useState(false);
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const streamRef = useRef<MediaStream | null>(null);
+    const [loading, setLoading] = useState<boolean>(false);
 
     return (
       <>
@@ -112,24 +114,39 @@ const Camera = () => {
             <DisclosureFooter>
               <BButton
                 variant="outline"
-                onClick={() => stopCamera(videoRef, streamRef)}
+                onClick={() =>
+                  stopCamera(videoRef, streamRef, () => setCameraOpen(false))
+                }
+                disabled={!cameraOpen}
               >
                 {l.close} {l.camera.toLowerCase()}
               </BButton>
               <BButton
                 colorPalette={themeConfig.colorPalette}
-                onClick={() =>
-                  startCamera(videoRef, streamRef, () =>
-                    toaster.error({
-                      title: l.camera_fail_toast.title,
-                      description: l.camera_fail_toast.description,
-                      action: {
-                        label: "Close",
-                        onClick: () => {},
+                disabled={cameraOpen}
+                loading={loading}
+                onClick={() => {
+                  setLoading(true);
+                  if (!loading) {
+                    startCamera(
+                      videoRef,
+                      streamRef,
+                      () => {
+                        setLoading(false);
+                        setCameraOpen(true);
                       },
-                    })
-                  )
-                }
+                      () =>
+                        toaster.error({
+                          title: l.camera_fail_toast.title,
+                          description: l.camera_fail_toast.description,
+                          action: {
+                            label: "Close",
+                            onClick: () => {},
+                          },
+                        })
+                    );
+                  }
+                }}
               >
                 {l.open} {l.camera.toLowerCase()}
               </BButton>

@@ -1,6 +1,7 @@
 export function startCamera(
   videoRef: React.RefObject<HTMLVideoElement>,
   streamRef: React.MutableRefObject<MediaStream | null>,
+  onOpen: () => void,
   onError: (error: Error) => void
 ) {
   navigator.mediaDevices
@@ -10,6 +11,7 @@ export function startCamera(
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
       }
+      onOpen();
     })
     .catch((error) => {
       onError(error);
@@ -19,7 +21,8 @@ export function startCamera(
 
 export function stopCamera(
   videoRef: React.RefObject<HTMLVideoElement>,
-  streamRef: React.MutableRefObject<MediaStream | null>
+  streamRef: React.MutableRefObject<MediaStream | null>,
+  onClose: () => void
 ) {
   if (streamRef.current) {
     streamRef.current.getTracks().forEach((track) => track.stop());
@@ -28,4 +31,5 @@ export function stopCamera(
   if (videoRef.current) {
     videoRef.current.srcObject = null;
   }
+  onClose();
 }
