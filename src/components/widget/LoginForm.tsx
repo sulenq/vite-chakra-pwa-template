@@ -27,6 +27,10 @@ const LoginForm = () => {
       title: l.login_loading_toast.title,
       description: l.login_loading_toast.description,
     },
+    successMessage: {
+      title: l.login_success_toast.title,
+      description: l.login_success_toast.description,
+    },
   });
   const navigate = useNavigate();
 

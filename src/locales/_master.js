@@ -495,6 +495,54 @@ export const delete_all_inbox_button = {
 };
 
 // Toasters
+export const login_loading_toast = {
+  title: {
+    id: "Login",
+    en: "Login",
+  },
+  description: {
+    id: "Memverifikasi kredensial.",
+    en: "Verifying credentials.",
+  },
+};
+export const login_success_toast = {
+  title: { id: "Login berhasil", en: "Login successful" },
+  description: { id: "Anda telah masuk.", en: "You are now logged in." },
+};
+export const logout_loading_toast = {
+  title: {
+    id: "Logout",
+    en: "Logout",
+  },
+  description: {
+    id: "Sedang memproses logout.",
+    en: "Processing logout.",
+  },
+};
+export const logout_success_toast = {
+  title: { id: "Logout berhasil", en: "Logout successful" },
+  description: { id: "Anda telah keluar.", en: "You are now logged out." },
+};
+export const default_request_loading_message = {
+  title: {
+    id: "Memuat",
+    en: "Loading",
+  },
+  description: {
+    id: "Permintaan sedang diproses.",
+    en: "The request is being processed.",
+  },
+};
+export const default_request_success_message = {
+  title: {
+    id: "Permintaan sukses",
+    en: "Request successful",
+  },
+  description: {
+    id: "Proses berjalan tanpa kendala.",
+    en: "Process completed without issues.",
+  },
+};
 export const camera_fail_toast = {
   title: {
     id: "Gagal Mengakses Kamera",
@@ -523,16 +571,6 @@ export const back_online_toast = {
   description: {
     id: "Anda kembali online.",
     en: "You are back online.",
-  },
-};
-export const login_loading_toast = {
-  title: {
-    id: "Login",
-    en: "Login",
-  },
-  description: {
-    id: "Memverifikasi kredensial.",
-    en: "Verifying credentials.",
   },
 };
 export const date_range_picker_error_toast = {

@@ -1,9 +1,10 @@
+import useLang from "@/context/useLang";
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toaster } from "../components/ui/toaster";
 import request from "../utils/request";
 import useIsSmScreenWidth from "./useIsSmScreenWidth";
-import { useNavigate } from "react-router-dom";
 
 interface Interface__Req {
   config: AxiosRequestConfig;
@@ -19,19 +20,35 @@ interface Props {
     title?: string;
     description?: string;
   };
+  successMessage?: {
+    title: string;
+    description: string;
+  };
   loginPath?: string;
 }
 const useRequest = ({
   showToast = true,
   loadingMessage,
+  successMessage,
   loginPath = "/",
 }: Props = {}) => {
-  // States
+  // Contexts
+  const { l } = useLang();
+
+  // States, Refs
   const [loading, setLoading] = useState<boolean>(false);
   const [status, setStatus] = useState<number | undefined>(undefined);
   const [response, setResponse] = useState<any>(undefined);
-  const [message, setMessage] = useState<any>(undefined);
   const [error, setError] = useState<boolean>(false);
+  const loadingMsg = loadingMessage || {
+    title: l.default_request_loading_message.title,
+    description: l.default_request_loading_message.description,
+  };
+  const successMsg = successMessage || {
+    title: l.default_request_success_message.title,
+    description: l.default_request_success_message.description,
+  };
+  // const [message, setMessage] = useState<any>(undefined);
 
   // Utils
   const abortControllerRef = useRef<AbortController | null>(null);
@@ -61,7 +78,6 @@ const useRequest = ({
           setStatus(r.status);
           if (r.status === 200 || r.status === 201) {
             setResponse(r);
-            setMessage(r?.data?.message);
             setLoading(false);
             if (onResolve?.onSuccess) {
               onResolve.onSuccess(r);
@@ -130,13 +146,8 @@ const useRequest = ({
           description: loadingMessage?.description ?? "Harap Menunggu",
         },
         success: {
-          title:
-            typeof message?.title === "string"
-              ? message?.title
-              : "Title's format isn't string",
-          description: message?.description
-            ? typeof message?.description === "string"
-            : "Description's format isn't string.",
+          title: successMsg.title,
+          description: successMsg.description,
           placement: iss ? "top" : "bottom-end",
           action: {
             label: "Close",
@@ -144,14 +155,8 @@ const useRequest = ({
           },
         },
         error: {
-          title:
-            typeof message?.title === "string"
-              ? message?.title
-              : "Title's format isn't string",
-          description: message?.description
-            ? typeof message?.description === "string"
-            : "Description's format isn't string.",
-
+          title: loadingMsg.title,
+          description: loadingMsg.description,
           placement: iss ? "top" : "bottom-end",
           action: {
             label: "Close",

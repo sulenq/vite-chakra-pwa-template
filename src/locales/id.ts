@@ -35,6 +35,14 @@ const translations = {
     "description": "Tidak boleh melebihi rentang maksimum"
   },
   "date_range_picker_max_range_alert": "Maksimal rentang tanggal ${maxRange} hari",
+  "default_request_loading_message": {
+    "title": "Memuat",
+    "description": "Permintaan sedang diproses."
+  },
+  "default_request_success_message": {
+    "title": "Permintaan sukses",
+    "description": "Proses berjalan tanpa kendala."
+  },
   "delete_all_inbox_button": "Delete semua",
   "delete_all_inbox_disclosure": {
     "title": "Delete semua?",
@@ -61,9 +69,21 @@ const translations = {
     "title": "Login",
     "description": "Memverifikasi kredensial."
   },
+  "login_success_toast": {
+    "title": "Login berhasil",
+    "description": "Anda telah masuk."
+  },
   "logout_disclosure": {
     "title": "Logout?",
     "description": "Pastikan tidak ada proses ke server sebelum logout dikonfirmasi untuk menghindari error autentikasi."
+  },
+  "logout_loading_toast": {
+    "title": "Logout",
+    "description": "Sedang memproses logout."
+  },
+  "logout_success_toast": {
+    "title": "Logout berhasil",
+    "description": "Anda telah keluar."
   },
   "measurment_unit_format_settings_title": "Format Satuan Pengukuran",
   "mic": "Mikrofon",

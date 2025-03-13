@@ -35,6 +35,14 @@ const translations = {
     "description": "Must not exceed the maximum range"
   },
   "date_range_picker_max_range_alert": "Maximum date range is ${maxRange} days",
+  "default_request_loading_message": {
+    "title": "Loading",
+    "description": "The request is being processed."
+  },
+  "default_request_success_message": {
+    "title": "Request successful",
+    "description": "Process completed without issues."
+  },
   "delete_all_inbox_button": "Delete all",
   "delete_all_inbox_disclosure": {
     "title": "Delete all?",
@@ -61,9 +69,21 @@ const translations = {
     "title": "Login",
     "description": "Verifying credentials."
   },
+  "login_success_toast": {
+    "title": "Login successful",
+    "description": "You are now logged in."
+  },
   "logout_disclosure": {
     "title": "Logout?",
     "description": "Make sure there is no process to the server before the logout is confirmed to avoid authentication errors."
+  },
+  "logout_loading_toast": {
+    "title": "Logout",
+    "description": "Processing logout."
+  },
+  "logout_success_toast": {
+    "title": "Logout successful",
+    "description": "You are now logged out."
   },
   "measurment_unit_format_settings_title": "Measurement Units Format",
   "mic": "Microphone",
