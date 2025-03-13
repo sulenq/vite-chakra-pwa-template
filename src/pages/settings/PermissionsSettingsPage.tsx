@@ -22,9 +22,10 @@ import useMicPermissions from "@/context/useMicPermissions";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import { startCamera, stopCamera } from "@/utils/camera";
+import getLocation from "@/utils/getLocation";
 import { HStack, Icon, Text, useDisclosure } from "@chakra-ui/react";
-import { IconCamera, IconMicrophone } from "@tabler/icons-react";
-import { useRef, useState } from "react";
+import { IconCamera, IconMapPin, IconMicrophone } from "@tabler/icons-react";
+import { useEffect, useRef, useState } from "react";
 
 const Camera = () => {
   // Contexts
@@ -204,7 +205,10 @@ const Camera = () => {
                 ? l.permissions_granted_helper
                 : l.permissions_denied_helper}
             </Text>
-            <Text color={"fg.subtle"}>{getBrowserSettingsLink()}</Text>
+            <Text color={"fg.subtle"}>
+              {getBrowserSettingsLink()}
+              {l.camera}
+            </Text>
           </CContainer>
         )}
       </CContainer>
@@ -384,7 +388,145 @@ const Microphone = () => {
                 ? l.permissions_granted_helper
                 : l.permissions_denied_helper}
             </Text>
-            <Text color={"fg.subtle"}>{getBrowserSettingsLink()}</Text>
+            <Text color={"fg.subtle"}>
+              {getBrowserSettingsLink()}
+              {l.mic}
+            </Text>
+          </CContainer>
+        )}
+      </CContainer>
+    </ItemContainer>
+  );
+};
+
+const Location = () => {
+  // Contexts
+  const { themeConfig } = useThemeConfig();
+  const { l } = useLang();
+  const [locationStatus, setLocationStatus] = useState<PermissionState | null>(
+    null
+  );
+  const [coords, setCoords] = useState<{ lat: number; long: number } | null>(
+    null
+  );
+  const [address, setAddress] = useState<string | null>(null);
+
+  // Permissions status
+  useEffect(() => {
+    if (!navigator.permissions) return;
+
+    navigator.permissions.query({ name: "geolocation" }).then((result) => {
+      setLocationStatus(result.state);
+      result.onchange = () => setLocationStatus(result.state);
+    });
+  }, []);
+
+  // Request permissions func
+  const requestLocationPermission = () => {
+    if (!navigator.geolocation) {
+      alert("Geolocation tidak didukung di browser ini.");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setCoords({ lat: latitude, long: longitude });
+        fetchAddress(latitude, longitude);
+      },
+      (error) => {
+        console.error("Gagal mendapatkan lokasi:", error);
+      }
+    );
+  };
+
+  // Status helper text
+  const getBrowserSettingsLink = () => {
+    const userAgent = navigator.userAgent;
+    if (userAgent.includes("Chrome")) {
+      return l.chrome_permissions_settings_link;
+    } else if (userAgent.includes("Firefox")) {
+      return l.firefox_permissions_settings_link;
+    } else if (userAgent.includes("Edg")) {
+      return l.edge_permissions_settings_link;
+    }
+    return l.default_permissions_settings_link;
+  };
+
+  // Get address
+  const fetchAddress = async (lat: number, lon: number) => {
+    try {
+      const res = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
+      );
+      const data = await res.json();
+      setAddress(data.display_name || "Alamat tidak ditemukan");
+    } catch (error) {
+      console.error("Gagal mendapatkan alamat:", error);
+      setAddress("Gagal mengambil alamat");
+    }
+  };
+  useEffect(() => {
+    if (!coords) {
+      getLocation().then(({ coords }) => {
+        setCoords({ lat: coords.latitude, long: coords.longitude });
+      });
+    }
+  }, [coords]);
+  useEffect(() => {
+    if (!address && coords) {
+      fetchAddress(coords.lat, coords.long);
+    }
+  }, [address]);
+
+  return (
+    <ItemContainer>
+      <ItemHeaderContainer>
+        <HStack>
+          <Icon maxW={"20px"}>
+            <IconMapPin />
+          </Icon>
+          <Text fontWeight={"bold"}>{l.location}</Text>
+        </HStack>
+      </ItemHeaderContainer>
+
+      <CContainer gap={4} py={3}>
+        <SettingsItemContainer>
+          <CContainer>
+            <Text>{l.location_permissions_settings.label}</Text>
+            <Text color={"fg.subtle"}>
+              {l.location_permissions_settings.description}
+            </Text>
+          </CContainer>
+
+          <Switch
+            checked={locationStatus === "granted"}
+            disabled={
+              locationStatus === "granted" || locationStatus === "denied"
+            }
+            onChange={requestLocationPermission}
+            colorPalette={themeConfig.colorPalette}
+          />
+        </SettingsItemContainer>
+
+        {(locationStatus === "granted" || locationStatus === "denied") && (
+          <CContainer px={4}>
+            <Text color={"fg.subtle"}>
+              {locationStatus === "granted"
+                ? l.permissions_granted_helper
+                : l.permissions_denied_helper}
+            </Text>
+            <Text color={"fg.subtle"}>
+              {getBrowserSettingsLink()} {l.location}
+            </Text>
+          </CContainer>
+        )}
+
+        {coords && (
+          <CContainer px={4}>
+            <Text>Latitude: {coords.lat}</Text>
+            <Text>Longitude: {coords.long}</Text>
+            <Text>Alamat: {address || "Loading..."}</Text>
           </CContainer>
         )}
       </CContainer>
@@ -402,6 +544,8 @@ const PermissionsSettingsPage = () => {
         <Camera />
 
         <Microphone />
+
+        <Location />
       </CContainer>
 
       <HelperText px={2} mt={4}>
