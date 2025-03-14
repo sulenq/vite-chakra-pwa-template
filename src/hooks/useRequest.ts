@@ -95,6 +95,10 @@ const useRequest = ({
                 toaster.error({
                   title: "Default error title",
                   description: "Default error description",
+                  action: {
+                    label: "Close",
+                    onClick: () => {},
+                  },
                 });
               }
               break;
@@ -104,6 +108,10 @@ const useRequest = ({
                   title: "Jaringan Error",
                   description:
                     "Gagal terhubung ke server. Cobalah periksa jaringan Anda.",
+                  action: {
+                    label: "Close",
+                    onClick: () => {},
+                  },
                 });
               }
               break;
