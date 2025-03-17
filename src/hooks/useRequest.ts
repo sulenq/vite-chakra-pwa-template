@@ -1,10 +1,9 @@
 import useLang from "@/context/useLang";
 import { AxiosRequestConfig, AxiosResponse } from "axios";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toaster } from "../components/ui/toaster";
 import request from "../utils/request";
-import useIsSmScreenWidth from "./useIsSmScreenWidth";
 
 interface Interface__Req {
   config: AxiosRequestConfig;
@@ -15,23 +14,32 @@ interface Interface__Req {
 }
 
 interface Props {
-  showToast?: boolean;
+  id: string;
+  showSuccessToast?: boolean;
+  showErrorToast?: boolean;
   loadingMessage?: {
     title?: string;
     description?: string;
   };
   successMessage?: {
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
+  };
+  errorMessage?: {
+    title?: string;
+    description?: string;
   };
   loginPath?: string;
 }
 const useRequest = ({
-  showToast = true,
+  id,
+  showSuccessToast = true,
+  showErrorToast = true,
   loadingMessage,
   successMessage,
+  errorMessage,
   loginPath = "/",
-}: Props = {}) => {
+}: Props) => {
   // Contexts
   const { l } = useLang();
 
@@ -40,19 +48,21 @@ const useRequest = ({
   const [status, setStatus] = useState<number | undefined>(undefined);
   const [response, setResponse] = useState<any>(undefined);
   const [error, setError] = useState<boolean>(false);
-  const loadingMsg = loadingMessage || {
-    title: l.default_request_loading_message.title,
-    description: l.default_request_loading_message.description,
+  const fLoadingMessage = {
+    title: loadingMessage?.title || l.default_request_loading_toast.title,
+    description:
+      loadingMessage?.description ||
+      l.default_request_loading_toast.description,
   };
-  const successMsg = successMessage || {
-    title: l.default_request_success_message.title,
-    description: l.default_request_success_message.description,
+  const fSuccessMessage = {
+    title: successMessage?.title || l.default_request_success_toast.title,
+    description:
+      successMessage?.description ||
+      l.default_request_success_toast.description,
   };
-  // const [message, setMessage] = useState<any>(undefined);
 
   // Utils
   const abortControllerRef = useRef<AbortController | null>(null);
-  const iss = useIsSmScreenWidth();
   const navigate = useNavigate();
 
   // Make request func
@@ -72,107 +82,104 @@ const useRequest = ({
     abortControllerRef.current = abortController;
 
     // Start request
-    const promise = new Promise<void>((resolve, reject) => {
-      request(config)
-        .then((r) => {
-          setStatus(r.status);
-          if (r.status === 200 || r.status === 201) {
-            setResponse(r);
+    request(config)
+      .then((r) => {
+        setStatus(r.status);
+        if (r.status === 200 || r.status === 201) {
+          setResponse(r);
+          setLoading(false);
+          if (onResolve?.onSuccess) {
+            onResolve.onSuccess(r);
+          }
+        }
+
+        showSuccessToast &&
+          toaster.update(id, {
+            type: "success",
+            title: fSuccessMessage.title,
+            description: fSuccessMessage.description,
+            action: {
+              label: "Close",
+              onClick: () => {},
+            },
+          });
+      })
+      .catch((e) => {
+        console.log(e);
+
+        switch (e.code) {
+          case "ERR_CANCELED":
+            setError(true);
             setLoading(false);
-            if (onResolve?.onSuccess) {
-              onResolve.onSuccess(r);
-            }
-          }
+            break;
+        }
 
-          resolve();
-        })
-        .catch((e) => {
-          console.log(e);
+        switch (e.status) {
+          case 401:
+          case 403:
+            // call logout func
+            navigate(loginPath);
+            break;
+          case 500:
+            navigate("/server-error");
+            break;
+          case 503:
+            navigate("/maintenance");
+            break;
+        }
 
-          switch (e.code) {
-            default:
-              if (!showToast) {
-                toaster.error({
-                  title: "Default error title",
-                  description: "Default error description",
-                  action: {
-                    label: "Close",
-                    onClick: () => {},
-                  },
-                });
-              }
-              break;
-            case "ERR_NETWORK":
-              if (!showToast) {
-                toaster.error({
-                  title: "Jaringan Error",
-                  description:
-                    "Gagal terhubung ke server. Cobalah periksa jaringan Anda.",
-                  action: {
-                    label: "Close",
-                    onClick: () => {},
-                  },
-                });
-              }
-              break;
-            case "ERR_CANCELED":
-              setError(true);
-              setLoading(false);
-              break;
-          }
-
+        const errorToast = () => {
           switch (e.status) {
             default:
-              break;
+              return {
+                title:
+                  errorMessage?.title || l.default_request_error_toast.title,
+                description:
+                  errorMessage?.description ||
+                  l.default_request_error_toast.description,
+              };
             case 401:
-              navigate(loginPath);
-              break;
-            case 500:
-              navigate("/server-error");
-              break;
-            case 503:
-              navigate("/maintenance");
-              break;
+              return {
+                title: l.error_401_toast.title,
+                description: l.error_401_toast.description,
+              };
+            case 403:
+              return {
+                title: l.error_403_toast.title,
+                description: l.error_403_toast.description,
+              };
           }
+        };
 
-          if (onResolve?.onError) {
-            onResolve.onError(e);
-          }
+        showErrorToast &&
+          toaster.update(id, {
+            type: "error",
+            ...errorToast(),
+            action: {
+              label: "Close",
+              onClick: () => {},
+            },
+          });
 
-          reject();
+        onResolve?.onError?.(e);
 
-          setStatus(e.response?.status);
-          setResponse(e.response);
-        })
-        .finally(() => {});
-    });
-
-    showToast &&
-      toaster.promise(promise, {
-        loading: {
-          title: loadingMessage?.title ?? "Loading...",
-          description: loadingMessage?.description ?? "Harap Menunggu",
-        },
-        success: {
-          title: successMsg.title,
-          description: successMsg.description,
-          placement: iss ? "top" : "bottom-end",
-          action: {
-            label: "Close",
-            onClick: () => {},
-          },
-        },
-        error: {
-          title: loadingMsg.title,
-          description: loadingMsg.description,
-          placement: iss ? "top" : "bottom-end",
-          action: {
-            label: "Close",
-            onClick: () => {},
-          },
-        },
+        setStatus(e.response?.status);
+        setResponse(e.response);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }
+
+  useEffect(() => {
+    if (loading) {
+      toaster.loading({
+        id: id,
+        title: fLoadingMessage.title,
+        description: fLoadingMessage.description,
+      });
+    }
+  }, [loading]);
 
   return {
     req,

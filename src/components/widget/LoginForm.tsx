@@ -23,13 +23,15 @@ const LoginForm = () => {
 
   // Utils
   const { req, loading } = useRequest({
+    id: "login",
     loadingMessage: {
-      title: l.login_loading_toast.title,
-      description: l.login_loading_toast.description,
+      ...l.login_loading_toast,
     },
     successMessage: {
-      title: l.login_success_toast.title,
-      description: l.login_success_toast.description,
+      ...l.login_success_toast,
+    },
+    errorMessage: {
+      ...l.login_wrong_credentials_toast,
     },
   });
   const navigate = useNavigate();

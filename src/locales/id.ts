@@ -40,11 +40,15 @@ const translations = {
   },
   "date_range_picker_max_range_alert": "Maksimal rentang tanggal ${maxRange} hari",
   "default_permissions_settings_link": "Buka pengaturan browser untuk mengubah izin.",
-  "default_request_loading_message": {
+  "default_request_error_toast": {
+    "title": "Terjadi kesalahan",
+    "description": "Permintaan tidak dapat diproses saat ini. Silakan coba lagi nanti."
+  },
+  "default_request_loading_toast": {
     "title": "Memuat",
     "description": "Permintaan sedang diproses."
   },
-  "default_request_success_message": {
+  "default_request_success_toast": {
     "title": "Permintaan sukses",
     "description": "Proses berjalan tanpa kendala."
   },
@@ -55,6 +59,22 @@ const translations = {
   },
   "display_settings_helper_text": "Pengaturan tampilan ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   "edge_permissions_settings_link": "Pengaturan → Cookie dan izin situs → ",
+  "error_400_toast": {
+    "title": "Permintaan tidak valid",
+    "description": "Server tidak dapat memproses permintaan karena kesalahan klien."
+  },
+  "error_401_toast": {
+    "title": "Tidak terautentikasi",
+    "description": "Anda harus masuk untuk mengakses sumber daya ini."
+  },
+  "error_403_toast": {
+    "title": "Akses ditolak",
+    "description": "Anda tidak memiliki izin untuk mengakses sumber daya ini."
+  },
+  "error_404_toast": {
+    "title": "Tidak ditemukan",
+    "description": "Sumber daya yang Anda cari tidak ditemukan."
+  },
   "firefox_permissions_settings_link": "Preferensi → Privasi & Keamanan → Izin → ",
   "forbidden_feedback": {
     "title": "Tidak ada akses",
@@ -93,6 +113,10 @@ const translations = {
   "login_success_toast": {
     "title": "Login berhasil",
     "description": "Anda telah masuk."
+  },
+  "login_wrong_credentials_toast": {
+    "title": "Login gagal",
+    "description": "Kredensial tidak valid."
   },
   "logout_disclosure": {
     "title": "Logout?",

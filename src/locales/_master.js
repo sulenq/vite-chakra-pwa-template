@@ -539,6 +539,34 @@ export const delete_all_inbox_button = {
 };
 
 // Toasters
+export const error_400_toast = {
+  title: { id: "Permintaan tidak valid", en: "Bad request" },
+  description: {
+    id: "Server tidak dapat memproses permintaan karena kesalahan klien.",
+    en: "The server could not process the request due to client error.",
+  },
+};
+export const error_401_toast = {
+  title: { id: "Tidak terautentikasi", en: "Unauthorized" },
+  description: {
+    id: "Anda harus masuk untuk mengakses sumber daya ini.",
+    en: "You must log in to access this resource.",
+  },
+};
+export const error_403_toast = {
+  title: { id: "Akses ditolak", en: "Forbidden" },
+  description: {
+    id: "Anda tidak memiliki izin untuk mengakses sumber daya ini.",
+    en: "You do not have permission to access this resource.",
+  },
+};
+export const error_404_toast = {
+  title: { id: "Tidak ditemukan", en: "Not Found" },
+  description: {
+    id: "Sumber daya yang Anda cari tidak ditemukan.",
+    en: "The resource you are looking for was not found.",
+  },
+};
 export const login_loading_toast = {
   title: {
     id: "Login",
@@ -552,6 +580,10 @@ export const login_loading_toast = {
 export const login_success_toast = {
   title: { id: "Login berhasil", en: "Login successful" },
   description: { id: "Anda telah masuk.", en: "You are now logged in." },
+};
+export const login_wrong_credentials_toast = {
+  title: { id: "Login gagal", en: "Login failed" },
+  description: { id: "Kredensial tidak valid.", en: "Invalid credentials." },
 };
 export const logout_loading_toast = {
   title: {
@@ -567,7 +599,7 @@ export const logout_success_toast = {
   title: { id: "Logout berhasil", en: "Logout successful" },
   description: { id: "Anda telah keluar.", en: "You are now logged out." },
 };
-export const default_request_loading_message = {
+export const default_request_loading_toast = {
   title: {
     id: "Memuat",
     en: "Loading",
@@ -577,7 +609,7 @@ export const default_request_loading_message = {
     en: "The request is being processed.",
   },
 };
-export const default_request_success_message = {
+export const default_request_success_toast = {
   title: {
     id: "Permintaan sukses",
     en: "Request successful",
@@ -585,6 +617,16 @@ export const default_request_success_message = {
   description: {
     id: "Proses berjalan tanpa kendala.",
     en: "Process completed without issues.",
+  },
+};
+export const default_request_error_toast = {
+  title: {
+    id: "Terjadi kesalahan",
+    en: "An error occurred",
+  },
+  description: {
+    id: "Permintaan tidak dapat diproses saat ini. Silakan coba lagi nanti.",
+    en: "The request could not be processed at this time. Please try again later.",
   },
 };
 export const camera_fail_toast = {

@@ -42,6 +42,8 @@ const BButton = forwardRef<HTMLButtonElement, Props>(
           case "subtle":
           case "surface":
             return `${props.colorPalette}.muted`;
+          case "plain":
+            return "";
         }
       } else {
         switch (props?.variant) {
@@ -50,6 +52,8 @@ const BButton = forwardRef<HTMLButtonElement, Props>(
           case "subtle":
           case "surface":
             return "gray.muted";
+          case "plain":
+            return "";
         }
       }
     }, [props.variant, props.colorPalette]);

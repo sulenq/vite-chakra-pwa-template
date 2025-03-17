@@ -40,11 +40,15 @@ const translations = {
   },
   "date_range_picker_max_range_alert": "Maximum date range is ${maxRange} days",
   "default_permissions_settings_link": "Open browser settings to change permissions.",
-  "default_request_loading_message": {
+  "default_request_error_toast": {
+    "title": "An error occurred",
+    "description": "The request could not be processed at this time. Please try again later."
+  },
+  "default_request_loading_toast": {
     "title": "Loading",
     "description": "The request is being processed."
   },
-  "default_request_success_message": {
+  "default_request_success_toast": {
     "title": "Request successful",
     "description": "Process completed without issues."
   },
@@ -55,6 +59,22 @@ const translations = {
   },
   "display_settings_helper_text": "These display settings are stored locally on your device and will not be synced with your account.",
   "edge_permissions_settings_link": "Settings → Cookies and site permissions → ",
+  "error_400_toast": {
+    "title": "Bad request",
+    "description": "The server could not process the request due to client error."
+  },
+  "error_401_toast": {
+    "title": "Unauthorized",
+    "description": "You must log in to access this resource."
+  },
+  "error_403_toast": {
+    "title": "Forbidden",
+    "description": "You do not have permission to access this resource."
+  },
+  "error_404_toast": {
+    "title": "Not Found",
+    "description": "The resource you are looking for was not found."
+  },
   "firefox_permissions_settings_link": "Preferences → Privacy & Security → Permissions → ",
   "forbidden_feedback": {
     "title": "No Access",
@@ -93,6 +113,10 @@ const translations = {
   "login_success_toast": {
     "title": "Login successful",
     "description": "You are now logged in."
+  },
+  "login_wrong_credentials_toast": {
+    "title": "Login failed",
+    "description": "Invalid credentials."
   },
   "logout_disclosure": {
     "title": "Logout?",
