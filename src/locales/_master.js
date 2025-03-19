@@ -59,6 +59,22 @@ export const settings_navs = {
 };
 
 // UI
+export const back_to_root = {
+  id: "Kembali ke halaman utama",
+  en: "Back to main page",
+};
+export const missing_page = {
+  id: "Halaman yang Anda cari tidak tersedia. Kemungkinan ada URL yang keliru atau halaman ini sudah tidak tersedia.",
+  en: "The page you are looking for is not available. There may be an incorrect URL or the page is no longer available.",
+};
+export const server_error_page = {
+  id: "Sistem kami saat ini sedang mengalami gangguan. Tim kami sedang bekerja untuk memperbaikinya.",
+  en: "Our system is currently experiencing an issue. Our team is working to fix it.",
+};
+export const maintenance_page = {
+  id: "Kami sedang melakukan pemeliharaan untuk memberikan layanan yang lebih baik. Mohon maaf atas ketidaknyamanannya. Silakan cek kembali nanti.",
+  en: "We are currently performing maintenance to provide better service. Sorry for the inconvenience. Please check back later.",
+};
 export const office = {
   id: "Kantor",
   en: "Office",

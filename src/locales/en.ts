@@ -11,6 +11,7 @@ const translations = {
     "title": "Connection Recovered",
     "description": "You are back online."
   },
+  "back_to_root": "Back to main page",
   "camera": "Camera",
   "camera_fail_toast": {
     "title": "Failed to access camera",
@@ -134,6 +135,7 @@ const translations = {
     "title": "Logout successful",
     "description": "You are now logged out."
   },
+  "maintenance_page": "We are currently performing maintenance to provide better service. Sorry for the inconvenience. Please check back later.",
   "measurment_unit_format_settings_title": "Measurement Units Format",
   "mic": "Microphone",
   "mic_fail_toast": {
@@ -144,6 +146,7 @@ const translations = {
     "label": "Microphone access",
     "description": "Allow the app to use your device's microphone for recording audio."
   },
+  "missing_page": "The page you are looking for is not available. There may be an incorrect URL or the page is no longer available.",
   "month": "Month",
   "navs": {
     "home": "Home",
@@ -205,6 +208,7 @@ const translations = {
   "select_input_default_placeholder": "Select...",
   "select_input_default_title": "Select",
   "selected": "selected",
+  "server_error_page": "Our system is currently experiencing an issue. Our team is working to fix it.",
   "settings_navs": {
     "display": "Display",
     "regional": "Regional",

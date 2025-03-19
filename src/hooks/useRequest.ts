@@ -135,11 +135,11 @@ const useRequest = ({
 
         const errorToast = () => {
           const statusCode = e.status;
-          const backendMessage = e.response?.data?.message;
+          const errorCase = e.response?.data?.case;
 
           if (errorMessage?.[statusCode]) {
-            if (backendMessage && errorMessage[statusCode][backendMessage]) {
-              return errorMessage[statusCode][backendMessage];
+            if (errorCase && errorMessage[statusCode][errorCase]) {
+              return errorMessage[statusCode][errorCase];
             }
             return (
               errorMessage[statusCode].default || {
@@ -147,24 +147,19 @@ const useRequest = ({
                 description: "Coba lagi nanti.",
               }
             );
-          }
-
-          if (e.code === "ERR_NETWORK") {
+          } else if (e.code === "ERR_NETWORK") {
             return l.error_network_toast;
-          }
-          if (statusCode === 401) {
+          } else if (statusCode === 401) {
             return {
               title: l.error_401_toast.title,
               description: l.error_401_toast.description,
             };
-          }
-          if (statusCode === 403) {
+          } else if (statusCode === 403) {
             return {
               title: l.error_403_toast.title,
               description: l.error_403_toast.description,
             };
-          }
-          if (statusCode === 500) {
+          } else if (statusCode === 500) {
             return {
               title: "Server Error",
               description: "Terjadi kesalahan pada server. Coba lagi nanti.",

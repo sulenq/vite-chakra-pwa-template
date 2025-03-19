@@ -11,6 +11,7 @@ const translations = {
     "title": "Koneksi Pulih",
     "description": "Anda kembali online."
   },
+  "back_to_root": "Kembali ke halaman utama",
   "camera": "Kamera",
   "camera_fail_toast": {
     "title": "Gagal mengakses kamera",
@@ -134,6 +135,7 @@ const translations = {
     "title": "Logout berhasil",
     "description": "Anda telah keluar."
   },
+  "maintenance_page": "Kami sedang melakukan pemeliharaan untuk memberikan layanan yang lebih baik. Mohon maaf atas ketidaknyamanannya. Silakan cek kembali nanti.",
   "measurment_unit_format_settings_title": "Format Satuan Pengukuran",
   "mic": "Mikrofon",
   "mic_fail_toast": {
@@ -144,6 +146,7 @@ const translations = {
     "label": "Akses mikrofon",
     "description": "Izinkan aplikasi menggunakan mikrofon perangkat Anda untuk merekam audio."
   },
+  "missing_page": "Halaman yang Anda cari tidak tersedia. Kemungkinan ada URL yang keliru atau halaman ini sudah tidak tersedia.",
   "month": "Bulan",
   "navs": {
     "home": "Beranda",
@@ -205,6 +208,7 @@ const translations = {
   "select_input_default_placeholder": "Pilih...",
   "select_input_default_title": "Pilih",
   "selected": "terpilih",
+  "server_error_page": "Sistem kami saat ini sedang mengalami gangguan. Tim kami sedang bekerja untuk memperbaikinya.",
   "settings_navs": {
     "display": "Tampilan",
     "regional": "Regional",

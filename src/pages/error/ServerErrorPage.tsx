@@ -1,4 +1,5 @@
 import BButton from "@/components/ui-custom/BButton";
+import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import { Text, VStack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
@@ -6,6 +7,7 @@ import { Link } from "react-router-dom";
 export default function ServerErrorPage() {
   const currentYear = new Date().getFullYear();
   const { themeConfig } = useThemeConfig();
+  const { l } = useLang();
 
   return (
     <VStack h={"100vh"} gap={0}>
@@ -15,13 +17,12 @@ export default function ServerErrorPage() {
         </Text>
 
         <Text textAlign={"center"} mb={4} maxW={"600px"} color={"fg.muted"}>
-          Sistem kami saat ini sedang mengalami gangguan. Tim kami sedang
-          bekerja untuk memperbaikinya.
+          {l.maintenance_page}
         </Text>
 
         <Link to={"/"}>
           <BButton w="full" colorPalette={themeConfig.colorPalette}>
-            Kembali ke halaman utama
+            {l.back_to_root}
           </BButton>
         </Link>
       </VStack>
