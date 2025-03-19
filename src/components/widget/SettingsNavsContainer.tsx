@@ -71,8 +71,8 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
           <CContainer
             bg={"body"}
             borderRadius={themeConfig.radii.container}
-            p={2}
             pt={3}
+            pb={2}
             gap={4}
             border={"1px solid"}
             borderColor={"border.subtle"}
@@ -80,46 +80,48 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
             overflowY={"auto"}
             maxH={"full"}
           >
-            {SETTINGS_NAVS.map((item, i) => {
-              return (
-                <CContainer key={i}>
-                  <Text fontWeight={"bold"} color={"fg.subtle"} mx={2} mb={2}>
-                    {pluck(l, item.groupLabelKey)}
-                  </Text>
+            <CContainer overflowY={"auto"} px={2}>
+              {SETTINGS_NAVS.map((item, i) => {
+                return (
+                  <CContainer key={i}>
+                    <Text fontWeight={"bold"} color={"fg.subtle"} mx={2} mb={2}>
+                      {pluck(l, item.groupLabelKey)}
+                    </Text>
 
-                  {item.list.map((nav, ii) => {
-                    const active = activePath === nav.path;
+                    {item.list.map((nav, ii) => {
+                      const active = activePath === nav.path;
 
-                    return (
-                      <Link key={ii} to={nav.path}>
-                        <BButton
-                          unclicky
-                          variant={"ghost"}
-                          w={"full"}
-                          justifyContent={"start"}
-                          px={2}
-                          position={"relative"}
-                        >
-                          {active && <ActiveNavIndicator />}
+                      return (
+                        <Link key={ii} to={nav.path}>
+                          <BButton
+                            unclicky
+                            variant={"ghost"}
+                            w={"full"}
+                            justifyContent={"start"}
+                            px={2}
+                            position={"relative"}
+                          >
+                            {active && <ActiveNavIndicator />}
 
-                          <Icon>
-                            <nav.icon />
-                          </Icon>
-
-                          {pluck(l, nav.labelKey)}
-
-                          {iss && (
-                            <Icon ml={"auto"}>
-                              <IconChevronRight />
+                            <Icon>
+                              <nav.icon />
                             </Icon>
-                          )}
-                        </BButton>
-                      </Link>
-                    );
-                  })}
-                </CContainer>
-              );
-            })}
+
+                            {pluck(l, nav.labelKey)}
+
+                            {iss && (
+                              <Icon ml={"auto"}>
+                                <IconChevronRight />
+                              </Icon>
+                            )}
+                          </BButton>
+                        </Link>
+                      );
+                    })}
+                  </CContainer>
+                );
+              })}
+            </CContainer>
           </CContainer>
         </CContainer>
       )}
