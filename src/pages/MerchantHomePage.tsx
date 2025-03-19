@@ -71,7 +71,9 @@ const Profile = ({ ...props }: StackProps) => {
           <Icon mb={"2px"}>
             <IconBuildingSkyscraper size={18} />
           </Icon>
-          <Text fontWeight={"bold"}>Profil</Text>
+          <Text fontWeight={"bold"} fontSize={"md"}>
+            Profil
+          </Text>
         </HStack>
 
         <BButton variant={"outline"} size={"xs"}>
@@ -95,7 +97,7 @@ const Profile = ({ ...props }: StackProps) => {
             <Text
               textAlign={iss ? "center" : ""}
               fontSize={"xl"}
-              fontWeight={"bold"}
+              fontSize={"md"}
               lineHeight={1.2}
               mb={1}
             >
@@ -206,7 +208,9 @@ const Activities = ({ ...props }: StackProps) => {
             <IconHistory size={20} />
           </Icon>
 
-          <Text fontWeight={"bold"}>Aktivitas</Text>
+          <Text fontWeight={"bold"} fontSize={"md"}>
+            Aktivitas
+          </Text>
         </HStack>
 
         <AllMerchantActivitiesDisclosure>
@@ -246,11 +250,13 @@ const CurrentInvoice = ({ ...props }: StackProps) => {
     <ItemContainer flex={0} {...props}>
       <ItemHeaderContainer>
         <HStack>
-          <Icon fontSize={"xl"}>
+          <Icon>
             <IconReceipt2 size={20} />
           </Icon>
 
-          <Text fontWeight={"bold"}>Tagihan Saat Ini</Text>
+          <Text fontWeight={"bold"} fontSize={"md"}>
+            Tagihan Saat Ini
+          </Text>
         </HStack>
 
         <Link to={"/payment"}>
@@ -470,11 +476,13 @@ const SubscriptionInfo = ({ ...props }: StackProps) => {
     <ItemContainer flex={"1 1 300px"} {...props}>
       <ItemHeaderContainer>
         <HStack>
-          <Icon fontSize={"xl"}>
-            <IconDiscount2 size={20} />
+          <Icon>
+            <IconDiscount2 size={22} />
           </Icon>
 
-          <Text fontWeight={"bold"}>Informasi Langganan</Text>
+          <Text fontWeight={"bold"} fontSize={"md"}>
+            Informasi Langganan
+          </Text>
         </HStack>
 
         <Link to={"/pricing"}>

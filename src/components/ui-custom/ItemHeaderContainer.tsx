@@ -12,7 +12,7 @@ const ItemHeaderContainer = ({
   return (
     <CContainer px={3} pt={2} pb={0}>
       <HStack
-        borderBottom={borderLess ? "" : "1px solid"}
+        // borderBottom={borderLess ? "" : "1px solid"}
         borderColor={borderLess ? "" : "border.muted"}
         justify={"space-between"}
         pb={borderLess ? 0 : 2}

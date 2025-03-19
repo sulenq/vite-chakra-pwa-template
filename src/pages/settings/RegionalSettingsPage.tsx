@@ -53,7 +53,9 @@ const Language = () => {
           <Icon maxW={"20px"}>
             <IconLanguage />
           </Icon>
-          <Text fontWeight={"bold"}>{l.language_settings_title}</Text>
+          <Text fontWeight={"bold"} fontSize={"md"}>
+            {l.language_settings_title}
+          </Text>
         </HStack>
       </ItemHeaderContainer>
 
@@ -170,7 +172,7 @@ const TimeZone = () => {
             <Icon maxW="20px">
               <IconTimezone />
             </Icon>
-            <Text fontWeight="bold" whiteSpace={"nowrap"}>
+            <Text fontWeight="bold" fontSize={"md"} whiteSpace={"nowrap"}>
               {capsFirstLetterEachWord(l.time_zone)}
             </Text>
           </HStack>
@@ -250,7 +252,9 @@ const DateFormat = () => {
           <Icon maxW={"20px"}>
             <IconCalendar />
           </Icon>
-          <Text fontWeight={"bold"}>{l.date_format_settings_title}</Text>
+          <Text fontWeight={"bold"} fontSize={"md"}>
+            {l.date_format_settings_title}
+          </Text>
         </HStack>
       </ItemHeaderContainer>
 
@@ -314,7 +318,9 @@ const TimeFormat = () => {
           <Icon maxW={"20px"}>
             <IconClock12 />
           </Icon>
-          <Text fontWeight={"bold"}>{l.time_format_settings_title}</Text>
+          <Text fontWeight={"bold"} fontSize={"md"}>
+            {l.time_format_settings_title}
+          </Text>
         </HStack>
       </ItemHeaderContainer>
 
@@ -372,7 +378,7 @@ const UOMFormat = () => {
           <Icon maxW={"20px"}>
             <IconRulerMeasure />
           </Icon>
-          <Text fontWeight={"bold"}>
+          <Text fontWeight={"bold"} fontSize={"md"}>
             {l.measurment_unit_format_settings_title}
           </Text>
         </HStack>
