@@ -238,7 +238,7 @@ const DisplaySettingsPage = () => {
 
   return (
     <SettingsNavsContainer align={"stretch"} activePath="/settings/display">
-      <CContainer gap={2}>
+      <CContainer gap={4}>
         <DarkMode />
 
         <Theme />
