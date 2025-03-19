@@ -24,7 +24,11 @@ const AuthMiddleware = ({
     useAuthMiddleware();
 
   // Utils
-  const { req, loading } = useRequest({ showToast: false });
+  const { req, loading } = useRequest({
+    id: "middleware",
+    showLoadingToast: false,
+    showSuccessToast: false,
+  });
   const navigate = useNavigate();
 
   // No auth token toast on 1st render

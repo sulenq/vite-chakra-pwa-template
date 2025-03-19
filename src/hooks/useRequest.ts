@@ -15,6 +15,7 @@ interface Interface__Req {
 
 interface Props {
   id: string;
+  showLoadingToast?: boolean;
   showSuccessToast?: boolean;
   showErrorToast?: boolean;
   loadingMessage?: {
@@ -33,6 +34,7 @@ interface Props {
 }
 const useRequest = ({
   id,
+  showLoadingToast = true,
   showSuccessToast = true,
   showErrorToast = true,
   loadingMessage,
@@ -152,8 +154,19 @@ const useRequest = ({
         };
 
         showErrorToast &&
+          showLoadingToast &&
           toaster.update(id, {
             type: "error",
+            ...errorToast(),
+            action: {
+              label: "Close",
+              onClick: () => {},
+            },
+          });
+
+        showErrorToast &&
+          !showLoadingToast &&
+          toaster.error({
             ...errorToast(),
             action: {
               label: "Close",
@@ -172,7 +185,7 @@ const useRequest = ({
   }
 
   useEffect(() => {
-    if (loading) {
+    if (loading && showLoadingToast) {
       toaster.loading({
         id: id,
         title: fLoadingMessage.title,
