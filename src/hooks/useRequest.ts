@@ -26,7 +26,13 @@ interface Props {
     title?: string;
     description?: string;
   };
-  errorMessage?: Record<number, { title: string; description: string }>;
+  errorMessage?: Record<
+    number,
+    Record<string, { title: string; description: string }> & {
+      default?: { title: string; description: string };
+    }
+  >;
+
   loginPath?: string;
 }
 const useRequest = ({
@@ -128,28 +134,48 @@ const useRequest = ({
         }
 
         const errorToast = () => {
-          if (errorMessage && errorMessage[e.status]) {
-            return errorMessage[e.status];
+          const statusCode = e.status;
+          const backendMessage = e.response?.data?.message;
+
+          if (errorMessage?.[statusCode]) {
+            if (backendMessage && errorMessage[statusCode][backendMessage]) {
+              return errorMessage[statusCode][backendMessage];
+            }
+            return (
+              errorMessage[statusCode].default || {
+                title: "Terjadi Kesalahan",
+                description: "Coba lagi nanti.",
+              }
+            );
           }
 
           if (e.code === "ERR_NETWORK") {
             return l.error_network_toast;
-          } else if (e.status === 401) {
+          }
+          if (statusCode === 401) {
             return {
               title: l.error_401_toast.title,
               description: l.error_401_toast.description,
             };
-          } else if (e.status === 403) {
+          }
+          if (statusCode === 403) {
             return {
               title: l.error_403_toast.title,
               description: l.error_403_toast.description,
             };
-          } else {
+          }
+          if (statusCode === 500) {
             return {
-              title: l.default_request_error_toast.title,
-              description: l.default_request_error_toast.description,
+              title: "Server Error",
+              description: "Terjadi kesalahan pada server. Coba lagi nanti.",
             };
           }
+
+          // Default error
+          return {
+            title: l.default_request_error_toast.title,
+            description: l.default_request_error_toast.description,
+          };
         };
 
         showErrorToast &&

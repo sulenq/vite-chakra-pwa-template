@@ -32,7 +32,9 @@ const LoginForm = () => {
     },
     errorMessage: {
       400: {
-        ...l.login_wrong_credentials_toast,
+        default: {
+          ...l.login_wrong_credentials_toast,
+        },
       },
     },
   });
