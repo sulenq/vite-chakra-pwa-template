@@ -75,6 +75,10 @@ const translations = {
     "title": "Not Found",
     "description": "The resource you are looking for was not found."
   },
+  "error_network_toast": {
+    "title": "Connection Issue",
+    "description": "Unable to connect to the server. Try again later."
+  },
   "firefox_permissions_settings_link": "Preferences → Privacy & Security → Permissions → ",
   "forbidden_feedback": {
     "title": "No Access",

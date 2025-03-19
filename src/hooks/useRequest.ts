@@ -131,25 +131,25 @@ const useRequest = ({
         }
 
         const errorToast = () => {
-          switch (e.status) {
-            default:
-              return {
-                title:
-                  errorMessage?.title || l.default_request_error_toast.title,
-                description:
-                  errorMessage?.description ||
-                  l.default_request_error_toast.description,
-              };
-            case 401:
-              return {
-                title: l.error_401_toast.title,
-                description: l.error_401_toast.description,
-              };
-            case 403:
-              return {
-                title: l.error_403_toast.title,
-                description: l.error_403_toast.description,
-              };
+          if (e.code === "ERR_NETWORK") {
+            return l.error_network_toast;
+          } else if (e.status === 401) {
+            return {
+              title: l.error_401_toast.title,
+              description: l.error_401_toast.description,
+            };
+          } else if (e.status === 403) {
+            return {
+              title: l.error_403_toast.title,
+              description: l.error_403_toast.description,
+            };
+          } else {
+            return {
+              title: errorMessage?.title || l.default_request_error_toast.title,
+              description:
+                errorMessage?.description ||
+                l.default_request_error_toast.description,
+            };
           }
         };
 

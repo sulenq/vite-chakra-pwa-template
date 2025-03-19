@@ -539,6 +539,13 @@ export const delete_all_inbox_button = {
 };
 
 // Toasters
+export const error_network_toast = {
+  title: { id: "Gangguan Koneksi", en: "Connection Issue" },
+  description: {
+    id: "Tidak dapat terhubung ke server. Coba lagi nanti.",
+    en: "Unable to connect to the server. Try again later.",
+  },
+};
 export const error_400_toast = {
   title: { id: "Permintaan tidak valid", en: "Bad request" },
   description: {
