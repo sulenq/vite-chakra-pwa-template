@@ -198,7 +198,9 @@ const TimePickerInput = ({
           <HStack w={"full"} justify={"space-between"}>
             {inputValue ? (
               <Text truncate>
-                {withSeconds ? inputValue : formatTime(inputValue)}
+                {withSeconds
+                  ? inputValue
+                  : formatTime(inputValue, { prefixTimeZone: "UTC" })}
               </Text>
             ) : (
               <Text
