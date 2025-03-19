@@ -97,7 +97,7 @@ const Profile = ({ ...props }: StackProps) => {
             <Text
               textAlign={iss ? "center" : ""}
               fontSize={"xl"}
-              fontSize={"md"}
+              fontWeight={"bold"}
               lineHeight={1.2}
               mb={1}
             >
