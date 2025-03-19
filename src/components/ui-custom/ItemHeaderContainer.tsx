@@ -2,20 +2,20 @@ import { HStack, StackProps } from "@chakra-ui/react";
 import CContainer from "../ui-custom/CContainer";
 
 interface Props extends StackProps {
-  borderLess?: boolean;
+  borderless?: boolean;
 }
 const ItemHeaderContainer = ({
   children,
-  borderLess = false,
+  borderless = false,
   ...props
 }: Props) => {
   return (
     <CContainer px={3} pt={2} pb={0}>
       <HStack
-        borderBottom={borderLess ? "" : "1px solid"}
-        borderColor={borderLess ? "" : "border.muted"}
+        borderBottom={"1px solid"}
+        borderColor={borderless ? "transparent" : "border.muted"}
         justify={"space-between"}
-        pb={borderLess ? 0 : 2}
+        pb={2}
         pl={1}
         gap={4}
         minH={"50px"}

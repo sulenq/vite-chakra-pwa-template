@@ -166,7 +166,7 @@ const TimeZone = () => {
   return (
     // <Profiler id="TimeZone" onRender={onRenderCallback}>
     <ItemContainer>
-      <ItemHeaderContainer borderLess={iss} gap={2}>
+      <ItemHeaderContainer borderless={iss} gap={2}>
         <HStack truncate>
           <HStack>
             <Icon maxW="20px">
