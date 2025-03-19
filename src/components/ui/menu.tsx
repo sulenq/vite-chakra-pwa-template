@@ -18,8 +18,6 @@ interface MenuContentProps extends ChakraMenu.ContentProps {
 export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(
   function MenuContent(props, ref) {
     // Contexts
-    const { themeConfig } = useThemeConfig();
-
     const { portalled = true, portalRef, ...rest } = props;
 
     return (
@@ -30,7 +28,7 @@ export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(
             bg={"darktrans"}
             backdropFilter={"blur(15px)"}
             boxShadow={"none"}
-            borderRadius={themeConfig.radii.container}
+            borderRadius={"10px"}
             border={"1px solid var(--d2)"}
             p={1}
             ref={ref}
