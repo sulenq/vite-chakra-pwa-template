@@ -439,7 +439,7 @@ const RegionalSettingsPage = () => {
 
   return (
     <SettingsNavsContainer align={"stretch"} activePath="/settings/regional">
-      <CContainer gap={4}>
+      <CContainer gap={2}>
         {/* Language */}
         <Language />
 
