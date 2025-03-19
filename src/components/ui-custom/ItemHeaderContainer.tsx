@@ -1,5 +1,5 @@
 import { HStack, StackProps } from "@chakra-ui/react";
-import CContainer from "../ui-custom/CContainer";
+import CContainer from "./CContainer";
 
 interface Props extends StackProps {
   borderless?: boolean;

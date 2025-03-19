@@ -1,5 +1,5 @@
 import { StackProps } from "@chakra-ui/react";
-import CContainer from "../ui-custom/CContainer";
+import CContainer from "./CContainer";
 import { useThemeConfig } from "@/context/useThemeConfig";
 
 interface Props extends StackProps {

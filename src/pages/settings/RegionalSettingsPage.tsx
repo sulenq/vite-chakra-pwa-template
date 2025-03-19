@@ -5,6 +5,7 @@ import FeedbackNotFound from "@/components/ui-custom/FeedbackNotFound";
 import HelperText from "@/components/ui-custom/HelperText";
 import ItemContainer from "@/components/ui-custom/ItemContainer";
 import ItemHeaderContainer from "@/components/ui-custom/ItemHeaderContainer";
+import ItemHeaderTitle from "@/components/ui-custom/ItemHeaderTitle";
 import SearchInput from "@/components/ui-custom/SearchInput";
 import SettingsNavsContainer from "@/components/widget/SettingsNavsContainer";
 import { DATE_FORMATS } from "@/constant/dateFormats";
@@ -30,7 +31,7 @@ import formatTime from "@/utils/formatTime";
 import { makeTime } from "@/utils/getTime";
 import pluck from "@/utils/pluck";
 import { TIME_ZONES } from "@/utils/timeZones";
-import { chakra, HStack, Icon, SimpleGrid, Text } from "@chakra-ui/react";
+import { chakra, HStack, SimpleGrid, Text } from "@chakra-ui/react";
 import {
   IconCalendar,
   IconClock12,
@@ -50,12 +51,8 @@ const Language = () => {
     <ItemContainer>
       <ItemHeaderContainer>
         <HStack>
-          <Icon maxW={"20px"}>
-            <IconLanguage />
-          </Icon>
-          <Text fontWeight={"bold"} fontSize={"md"}>
-            {l.language_settings_title}
-          </Text>
+          <IconLanguage size={20} />
+          <ItemHeaderTitle>{l.language_settings_title}</ItemHeaderTitle>
         </HStack>
       </ItemHeaderContainer>
 
@@ -169,12 +166,10 @@ const TimeZone = () => {
       <ItemHeaderContainer borderless={iss} gap={2}>
         <HStack truncate>
           <HStack>
-            <Icon maxW="20px">
-              <IconTimezone />
-            </Icon>
-            <Text fontWeight="bold" fontSize={"md"} whiteSpace={"nowrap"}>
+            <IconTimezone size={20} />
+            <ItemHeaderTitle>
               {capsFirstLetterEachWord(l.time_zone)}
-            </Text>
+            </ItemHeaderTitle>
           </HStack>
 
           <Text color="fg.subtle" truncate>
@@ -249,12 +244,8 @@ const DateFormat = () => {
     <ItemContainer>
       <ItemHeaderContainer>
         <HStack>
-          <Icon maxW={"20px"}>
-            <IconCalendar />
-          </Icon>
-          <Text fontWeight={"bold"} fontSize={"md"}>
-            {l.date_format_settings_title}
-          </Text>
+          <IconCalendar size={20} />
+          <ItemHeaderTitle>{l.date_format_settings_title}</ItemHeaderTitle>
         </HStack>
       </ItemHeaderContainer>
 
@@ -315,12 +306,8 @@ const TimeFormat = () => {
     <ItemContainer>
       <ItemHeaderContainer>
         <HStack>
-          <Icon maxW={"20px"}>
-            <IconClock12 />
-          </Icon>
-          <Text fontWeight={"bold"} fontSize={"md"}>
-            {l.time_format_settings_title}
-          </Text>
+          <IconClock12 size={20} />
+          <ItemHeaderTitle>{l.time_format_settings_title}</ItemHeaderTitle>
         </HStack>
       </ItemHeaderContainer>
 
@@ -375,12 +362,10 @@ const UOMFormat = () => {
     <ItemContainer>
       <ItemHeaderContainer>
         <HStack>
-          <Icon maxW={"20px"}>
-            <IconRulerMeasure />
-          </Icon>
-          <Text fontWeight={"bold"} fontSize={"md"}>
+          <IconRulerMeasure size={20} />
+          <ItemHeaderTitle>
             {l.measurment_unit_format_settings_title}
-          </Text>
+          </ItemHeaderTitle>
         </HStack>
       </ItemHeaderContainer>
 

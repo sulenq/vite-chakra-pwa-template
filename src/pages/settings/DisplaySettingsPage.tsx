@@ -17,6 +17,7 @@ import { Center, HStack, Icon, SimpleGrid, Text } from "@chakra-ui/react";
 import { IconCheck, IconMoon2, IconPalette } from "@tabler/icons-react";
 import { useState } from "react";
 import formatTime from "@/utils/formatTime";
+import ItemHeaderTitle from "@/components/ui-custom/ItemHeaderTitle";
 
 const DarkMode = () => {
   // Contexts
@@ -37,12 +38,8 @@ const DarkMode = () => {
     <ItemContainer>
       <ItemHeaderContainer>
         <HStack>
-          <Icon maxW={"20px"}>
-            <IconMoon2 />
-          </Icon>
-          <Text fontWeight={"bold"} fontSize={"md"}>
-            {l.dark_mode_settings_title}
-          </Text>
+          <IconMoon2 size={20} />
+          <ItemHeaderTitle>{l.dark_mode_settings_title}</ItemHeaderTitle>
         </HStack>
       </ItemHeaderContainer>
 
@@ -142,12 +139,8 @@ const Theme = () => {
     <ItemContainer>
       <ItemHeaderContainer>
         <HStack>
-          <Icon maxW={"20px"}>
-            <IconPalette />
-          </Icon>
-          <Text fontWeight={"bold"} fontSize={"md"}>
-            {l.theme_settings_title}
-          </Text>
+          <IconPalette size={20} />
+          <ItemHeaderTitle>{l.theme_settings_title}</ItemHeaderTitle>
         </HStack>
       </ItemHeaderContainer>
 
