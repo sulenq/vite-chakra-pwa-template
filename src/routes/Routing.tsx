@@ -1,12 +1,11 @@
 import NavsContainer from "@/components/widget/NavsContainer";
 import { PRIVATE_ROUTES, ROUTES } from "@/constant/routes";
+import useLang from "@/context/useLang";
 import MaintenancePage from "@/pages/error/MaintenancePage";
 import MissingPage from "@/pages/error/MissingPage";
 import ServerErrorPage from "@/pages/error/ServerErrorPage";
-import { Route, Routes } from "react-router-dom";
-import AuthMiddleware from "./AuthMiddleware";
-import useLang from "@/context/useLang";
 import pluck from "@/utils/pluck";
+import { Route, Routes } from "react-router-dom";
 
 const Routing = () => {
   // Contexts
@@ -19,20 +18,20 @@ const Routing = () => {
       ))}
 
       {PRIVATE_ROUTES.map(
-        ({ path, activePath, backPath, titleKey, permissions, element }) => (
+        ({ path, activePath, backPath, titleKey, element }) => (
           <Route
             key={path}
             path={path}
             element={
-              <AuthMiddleware allowedPermissions={permissions}>
-                <NavsContainer
-                  activePath={activePath}
-                  title={pluck(l, titleKey)}
-                  backPath={backPath}
-                >
-                  {element}
-                </NavsContainer>
-              </AuthMiddleware>
+              // <AuthMiddleware allowedPermissions={permissions}>
+              <NavsContainer
+                activePath={activePath}
+                title={pluck(l, titleKey)}
+                backPath={backPath}
+              >
+                {element}
+              </NavsContainer>
+              // </AuthMiddleware>
             }
           />
         )
