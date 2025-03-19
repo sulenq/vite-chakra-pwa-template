@@ -173,7 +173,9 @@ const Camera = () => {
           <Icon maxW={"20px"}>
             <IconCamera />
           </Icon>
-          <Text fontWeight={"bold"}>{l.camera}</Text>
+          <Text fontWeight={"bold"} fontSize={"md"}>
+            {l.camera}
+          </Text>
         </HStack>
 
         <Test />
@@ -356,7 +358,9 @@ const Microphone = () => {
           <Icon maxW={"20px"}>
             <IconMicrophone />
           </Icon>
-          <Text fontWeight={"bold"}>{l.mic}</Text>
+          <Text fontWeight={"bold"} fontSize={"md"}>
+            {l.mic}
+          </Text>
         </HStack>
 
         <Test />
@@ -566,7 +570,9 @@ const Location = () => {
           <Icon maxW={"20px"}>
             <IconMapPin />
           </Icon>
-          <Text fontWeight={"bold"}>{l.location}</Text>
+          <Text fontWeight={"bold"} fontSize={"md"}>
+            {l.location}
+          </Text>
         </HStack>
 
         <Test />

@@ -40,7 +40,9 @@ const DarkMode = () => {
           <Icon maxW={"20px"}>
             <IconMoon2 />
           </Icon>
-          <Text fontWeight={"bold"}>{l.dark_mode_settings_title}</Text>
+          <Text fontWeight={"bold"} fontSize={"md"}>
+            {l.dark_mode_settings_title}
+          </Text>
         </HStack>
       </ItemHeaderContainer>
 
@@ -143,7 +145,9 @@ const Theme = () => {
           <Icon maxW={"20px"}>
             <IconPalette />
           </Icon>
-          <Text fontWeight={"bold"}>{l.theme_settings_title}</Text>
+          <Text fontWeight={"bold"} fontSize={"md"}>
+            {l.theme_settings_title}
+          </Text>
         </HStack>
       </ItemHeaderContainer>
 
