@@ -622,7 +622,7 @@ const PermissionsSettingsPage = () => {
 
   return (
     <SettingsNavsContainer align={"stretch"} activePath="/settings/permissions">
-      <CContainer gap={4}>
+      <CContainer gap={2}>
         <Camera />
 
         <Microphone />
