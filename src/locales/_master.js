@@ -540,7 +540,7 @@ export const delete_all_inbox_button = {
 
 // Toasters
 export const error_network_toast = {
-  title: { id: "Gangguan Koneksi", en: "Connection Issue" },
+  title: { id: "Gangguan koneksi ke server", en: "Server connection problem" },
   description: {
     id: "Tidak dapat terhubung ke server. Coba lagi nanti.",
     en: "Unable to connect to the server. Try again later.",

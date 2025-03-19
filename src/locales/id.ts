@@ -76,7 +76,7 @@ const translations = {
     "description": "Sumber daya yang Anda cari tidak ditemukan."
   },
   "error_network_toast": {
-    "title": "Gangguan Koneksi",
+    "title": "Gangguan koneksi ke server",
     "description": "Tidak dapat terhubung ke server. Coba lagi nanti."
   },
   "firefox_permissions_settings_link": "Preferensi → Privasi & Keamanan → Izin → ",
