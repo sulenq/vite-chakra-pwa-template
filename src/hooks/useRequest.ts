@@ -26,10 +26,7 @@ interface Props {
     title?: string;
     description?: string;
   };
-  errorMessage?: {
-    title?: string;
-    description?: string;
-  };
+  errorMessage?: Record<number, { title: string; description: string }>;
   loginPath?: string;
 }
 const useRequest = ({
@@ -131,6 +128,10 @@ const useRequest = ({
         }
 
         const errorToast = () => {
+          if (errorMessage && errorMessage[e.status]) {
+            return errorMessage[e.status];
+          }
+
           if (e.code === "ERR_NETWORK") {
             return l.error_network_toast;
           } else if (e.status === 401) {
@@ -145,10 +146,8 @@ const useRequest = ({
             };
           } else {
             return {
-              title: errorMessage?.title || l.default_request_error_toast.title,
-              description:
-                errorMessage?.description ||
-                l.default_request_error_toast.description,
+              title: l.default_request_error_toast.title,
+              description: l.default_request_error_toast.description,
             };
           }
         };

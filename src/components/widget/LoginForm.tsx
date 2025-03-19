@@ -31,7 +31,9 @@ const LoginForm = () => {
       ...l.login_success_toast,
     },
     errorMessage: {
-      ...l.login_wrong_credentials_toast,
+      400: {
+        ...l.login_wrong_credentials_toast,
+      },
     },
   });
   const navigate = useNavigate();
