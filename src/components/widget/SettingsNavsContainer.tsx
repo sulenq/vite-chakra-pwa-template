@@ -73,14 +73,13 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
             borderRadius={themeConfig.radii.container}
             pt={3}
             pb={2}
-            gap={4}
             border={"1px solid"}
             borderColor={"border.subtle"}
             h={"fit"}
             overflowY={"auto"}
             maxH={"full"}
           >
-            <CContainer overflowY={"auto"} px={2}>
+            <CContainer overflowY={"auto"} px={2} gap={4}>
               {SETTINGS_NAVS.map((item, i) => {
                 return (
                   <CContainer key={i}>
