@@ -1,11 +1,16 @@
-import { Textarea as ChakraTextarea, TextareaProps } from "@chakra-ui/react";
+import { useThemeConfig } from "@/context/useThemeConfig";
+import {
+  Textarea as ChakraTextarea,
+  TextareaProps,
+  useFieldContext,
+} from "@chakra-ui/react";
 import { useCallback, useEffect, useRef } from "react";
 
 interface Props extends TextareaProps {
   name?: string;
   onChangeSetter?: (inputValue: string | undefined) => void;
   inputValue?: string | undefined;
-  isError?: boolean;
+  invalid?: boolean;
   placeholder?: string;
 }
 
@@ -13,12 +18,18 @@ export default function Textarea({
   name,
   onChangeSetter,
   inputValue,
-  isError,
+  invalid,
   placeholder,
   ...props
 }: Props) {
+  // Contexts
+  const { themeConfig } = useThemeConfig();
+  const fc = useFieldContext();
+
+  // States, Refs
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
+  // Utils
   const autoResize = useCallback(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
@@ -28,6 +39,7 @@ export default function Textarea({
     }
   }, [textareaRef]);
 
+  // Handle auto resize
   useEffect(() => {
     autoResize();
   }, [autoResize, inputValue]);
@@ -37,7 +49,11 @@ export default function Textarea({
       ref={textareaRef}
       minH={"80px"}
       name={name}
-      // fontSize={"16px !important"}
+      borderColor={fc?.invalid || invalid ? "border.error" : "border.muted"}
+      fontWeight={"medium"}
+      outline={"none !important"}
+      _focus={{ borderColor: themeConfig.primaryColor }}
+      borderRadius={themeConfig.radii.component}
       placeholder={placeholder || "Input text"}
       onChange={(e) => {
         onChangeSetter?.(e.target.value);
