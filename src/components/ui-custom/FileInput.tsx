@@ -32,7 +32,7 @@ const FileInput = ({
   initialFilepath,
   label,
   dropZone,
-  description = ".your-file-ext up to 5MB, maks. 1 berkas",
+  description = "size up to 10MB",
   maxFiles = 1,
   ...props
 }: Props) => {
@@ -65,7 +65,7 @@ const FileInput = ({
               <Icon>
                 <IconUpload />
               </Icon>{" "}
-              {label || "Unggah berkas"}
+              {label || "File upload"}
             </Button>
           </FileUploadTrigger>
         )}
