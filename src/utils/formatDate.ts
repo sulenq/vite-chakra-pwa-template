@@ -18,13 +18,11 @@ const formatDate = (
   const lang = localStorage.getItem("lang") || "id";
   const dateFormat =
     options.prefixDateFormat || localStorage.getItem("dateFormat") || "dmy";
-  const timeZone = options.prefixTimeZoneKey || userTimeZone().key;
-  let localDate;
-  if (timeZone.startsWith("Auto")) {
-    localDate = moment.tz(date, moment.tz.guess());
-  } else {
-    localDate = moment.tz(date, timeZone);
-  }
+  const timeZoneKey = options.prefixTimeZoneKey || userTimeZone().key;
+  const cleanedTimeZoneKey = timeZoneKey.includes("Auto (")
+    ? timeZoneKey.replace(/^Auto \(|\)$/g, "")
+    : timeZoneKey;
+  const localDate = moment.tz(date, cleanedTimeZoneKey);
   const day = localDate.date();
   const month = localDate.month();
   const year = localDate.year();
