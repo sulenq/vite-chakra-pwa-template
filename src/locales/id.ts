@@ -7,6 +7,7 @@ const translations = {
   "address_not_found": "Alamat tidak ditemukan",
   "all": "Semua",
   "ask": "Meminta",
+  "auto_time_zone": "Zona waktu auto",
   "back_online_toast": {
     "title": "Koneksi Pulih",
     "description": "Anda kembali online."
@@ -208,6 +209,7 @@ const translations = {
   "select_input_default_placeholder": "Pilih...",
   "select_input_default_title": "Pilih",
   "selected": "terpilih",
+  "selected_time_zone": "Zona waktu dipilih",
   "server_error_page": "Sistem kami saat ini sedang mengalami gangguan. Tim kami sedang bekerja untuk memperbaikinya.",
   "settings_navs": {
     "display": "Tampilan",

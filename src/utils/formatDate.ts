@@ -10,7 +10,7 @@ const formatDate = (
     variant?: Type__DateVariant;
     withTime?: boolean;
     prefixDateFormat?: Type__DateFormat;
-    prefixTimeZone?: string;
+    prefixTimeZoneKey?: string;
   } = {}
 ) => {
   if (!date) return "";
@@ -18,7 +18,7 @@ const formatDate = (
   const lang = localStorage.getItem("lang") || "id";
   const dateFormat =
     options.prefixDateFormat || localStorage.getItem("dateFormat") || "dmy";
-  const timeZone = options.prefixTimeZone || userTimeZone().key;
+  const timeZone = options.prefixTimeZoneKey || userTimeZone().key;
   let localDate;
   if (timeZone.startsWith("Auto")) {
     localDate = moment.tz(date, moment.tz.guess());

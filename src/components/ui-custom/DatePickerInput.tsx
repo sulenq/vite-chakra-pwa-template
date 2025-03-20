@@ -169,7 +169,7 @@ const DatePickerInput = ({
     selectedDates?.length > 0
       ? selectedDates
           .map((date) =>
-            formatDate(date, { prefixTimeZone: moment.tz.guess() })
+            formatDate(date, { prefixTimeZoneKey: moment.tz.guess() })
           )
           .join(", ")
       : finalPlaceholder;
@@ -178,7 +178,7 @@ const DatePickerInput = ({
     inputValue && inputValue?.length > 0
       ? inputValue
           .map((date) =>
-            formatDate(new Date(date), { prefixTimeZone: moment.tz.guess() })
+            formatDate(new Date(date), { prefixTimeZoneKey: moment.tz.guess() })
           )
           .join(", ")
       : finalPlaceholder;

@@ -1,5 +1,5 @@
 import useTimeZone from "@/context/useTimeZone";
-import { Icon, Text } from "@chakra-ui/react";
+import { HStack, Icon, Text } from "@chakra-ui/react";
 import { IconTimezone } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import BButton from "../ui-custom/BButton";
@@ -8,6 +8,9 @@ import { PopoverContent, PopoverRoot, PopoverTrigger } from "../ui/popover";
 import HelperText from "../ui-custom/HelperText";
 import useLang from "@/context/useLang";
 import { Tooltip } from "../ui/tooltip";
+import formatDate from "@/utils/formatDate";
+import autoTimeZone from "@/utils/autoTimeZone";
+import Clock from "./Clock";
 
 const CurrentUserTimeZone = () => {
   // Contexts
@@ -15,6 +18,7 @@ const CurrentUserTimeZone = () => {
   const { l } = useLang();
 
   // States, Refs
+  const autoTz = autoTimeZone();
 
   return (
     <PopoverRoot>
@@ -32,10 +36,30 @@ const CurrentUserTimeZone = () => {
 
       <PopoverContent mr={2}>
         <CContainer px={1}>
-          <HelperText color="fg.subtle">{l.current}</HelperText>
-          <Text>{timeZone.key}</Text>
-          <Text color="fg.subtle">
-            {timeZone.formattedOffset} ({timeZone.localAbbr})
+          <HelperText mb={1}>{l.selected_time_zone}</HelperText>
+
+          <HStack>
+            <Text>{formatDate(new Date())}</Text>
+            <Clock />
+          </HStack>
+
+          <Text color={"fg.muted"}>
+            {timeZone.key} {timeZone.formattedOffset} ({timeZone.localAbbr})
+          </Text>
+        </CContainer>
+
+        <CContainer px={1} mt={4}>
+          <HelperText mb={1}>{l.auto_time_zone}</HelperText>
+
+          <HStack>
+            <Text>
+              {formatDate(new Date(), { prefixTimeZoneKey: autoTz.key })}
+            </Text>
+            <Clock timeZoneKey={autoTimeZone().key} />
+          </HStack>
+
+          <Text color={"fg.muted"}>
+            {autoTz.key} {autoTz.formattedOffset} ({autoTz.localAbbr})
           </Text>
         </CContainer>
 

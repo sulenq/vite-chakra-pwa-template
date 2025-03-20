@@ -31,7 +31,7 @@ const PeriodPickerForDatePicker = ({
         <BButton w={"full"} variant={"outline"} size={"md"}>
           {`${formatDate(new Date(year, month), {
             variant: "monthYear",
-            prefixTimeZone: moment.tz.guess(),
+            prefixTimeZoneKey: moment.tz.guess(),
           })}`}
         </BButton>
       </PeriodPickerDisclosure>

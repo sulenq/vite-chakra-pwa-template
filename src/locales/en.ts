@@ -7,6 +7,7 @@ const translations = {
   "address_not_found": "Address not found",
   "all": "All",
   "ask": "Ask",
+  "auto_time_zone": "Auto time zone",
   "back_online_toast": {
     "title": "Connection Recovered",
     "description": "You are back online."
@@ -208,6 +209,7 @@ const translations = {
   "select_input_default_placeholder": "Select...",
   "select_input_default_title": "Select",
   "selected": "selected",
+  "selected_time_zone": "Selected time zone",
   "server_error_page": "Our system is currently experiencing an issue. Our team is working to fix it.",
   "settings_navs": {
     "display": "Display",

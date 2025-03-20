@@ -67,8 +67,8 @@ const DarkMode = () => {
             <Text color={"fg.subtle"}>
               {l.adaptive_dark_mode_ui_settings.description}{" "}
               {`${formatTime("18:00", {
-                prefixTimeZone: "UTC",
-              })} - ${formatTime("06:00", { prefixTimeZone: "UTC" })}`}
+                prefixTimeZoneKey: "UTC",
+              })} - ${formatTime("06:00", { prefixTimeZoneKey: "UTC" })}`}
             </Text>
           </CContainer>
 

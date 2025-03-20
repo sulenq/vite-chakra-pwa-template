@@ -7,7 +7,7 @@ export default function formatTime(
   options: {
     showSeconds?: boolean;
     prefixTimeFormat?: Type__TimeFormat;
-    prefixTimeZone?: string;
+    prefixTimeZoneKey?: string;
     withSuffix?: boolean;
   } = {}
 ): string {
@@ -16,8 +16,11 @@ export default function formatTime(
   const timeFormat =
     options.prefixTimeFormat || localStorage.getItem("timeFormat") || "24-hour";
 
-  const timeZone = options.prefixTimeZone || userTimeZone().key;
-  const offsetMs = getTzOffsetMs(timeZone);
+  const timeZoneKey = options.prefixTimeZoneKey || userTimeZone().key;
+  const cleanedTimeZoneKey = timeZoneKey.includes("Auto (")
+    ? timeZoneKey.replace(/^Auto \(|\)$/g, "")
+    : timeZoneKey;
+  const offsetMs = getTzOffsetMs(cleanedTimeZoneKey);
   const offsetHours = offsetMs / (1000 * 60 * 60);
 
   let [hh, mm, ss = "00"] = time.split(":").map(Number);

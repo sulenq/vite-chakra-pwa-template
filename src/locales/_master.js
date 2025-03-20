@@ -59,6 +59,14 @@ export const settings_navs = {
 };
 
 // UI
+export const selected_time_zone = {
+  id: "Zona waktu dipilih",
+  en: "Selected time zone",
+};
+export const auto_time_zone = {
+  id: "Zona waktu auto",
+  en: "Auto time zone",
+};
 export const back_to_root = {
   id: "Kembali ke halaman utama",
   en: "Back to main page",

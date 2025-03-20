@@ -200,7 +200,7 @@ const TimePickerInput = ({
               <Text truncate>
                 {withSeconds
                   ? inputValue
-                  : formatTime(inputValue, { prefixTimeZone: "UTC" })}
+                  : formatTime(inputValue, { prefixTimeZoneKey: "UTC" })}
               </Text>
             ) : (
               <Text

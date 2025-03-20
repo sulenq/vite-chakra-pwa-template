@@ -115,18 +115,18 @@ const DateRangePickerInput = ({
     selected?.from &&
     selected?.to &&
     `${formatDate(selected?.from, {
-      prefixTimeZone: moment.tz.guess(),
+      prefixTimeZoneKey: moment.tz.guess(),
     })} - ${formatDate(selected?.to, {
-      prefixTimeZone: moment.tz.guess(),
+      prefixTimeZoneKey: moment.tz.guess(),
     })} (${countDay(selected?.from, selected?.to)} hari)`;
 
   const renderValue =
     inputValue?.from &&
     inputValue?.to &&
     `${formatDate(inputValue?.from, {
-      prefixTimeZone: moment.tz.guess(),
+      prefixTimeZoneKey: moment.tz.guess(),
     })} - ${formatDate(inputValue?.to, {
-      prefixTimeZone: moment.tz.guess(),
+      prefixTimeZoneKey: moment.tz.guess(),
     })} (${countDay(inputValue?.from, inputValue?.to)} hari)`;
 
   // Utils
