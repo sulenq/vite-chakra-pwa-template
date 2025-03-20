@@ -282,7 +282,7 @@ const TimePickerInput = ({
                     border={"none !important"}
                     _focus={{ border: "none !important" }}
                   />
-                  <Text textAlign={"center"}>Jam</Text>
+                  {/* <Text textAlign={"center"}>Jam</Text> */}
                 </VStack>
 
                 <BButton
@@ -361,7 +361,7 @@ const TimePickerInput = ({
                     border={"none !important"}
                     _focus={{ border: "none !important" }}
                   />
-                  <Text textAlign={"center"}>Menit</Text>
+                  {/* <Text textAlign={"center"}>Menit</Text> */}
                 </VStack>
 
                 <BButton
@@ -442,7 +442,7 @@ const TimePickerInput = ({
                         border={"none !important"}
                         _focus={{ border: "none !important" }}
                       />
-                      <Text textAlign={"center"}>Detik</Text>
+                      {/* <Text textAlign={"center"}>Detik</Text> */}
                     </VStack>
 
                     <BButton
