@@ -1,9 +1,9 @@
 import NavsContainer from "@/components/widget/NavsContainer";
 import { PRIVATE_ROUTES, ROUTES } from "@/constant/routes";
 import useLang from "@/context/useLang";
-import MaintenancePage from "@/pages/error/MaintenancePage";
-import MissingPage from "@/pages/error/MissingPage";
-import ServerErrorPage from "@/pages/error/ServerErrorPage";
+import MaintenancePage from "@/pages/_error/MaintenancePage";
+import MissingPage from "@/pages/_error/MissingPage";
+import ServerErrorPage from "@/pages/_error/ServerErrorPage";
 import pluck from "@/utils/pluck";
 import { Route, Routes } from "react-router-dom";
 

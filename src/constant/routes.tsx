@@ -2,16 +2,16 @@ import MerchantHelpCenterPage from "@/pages/MerchantHelpCenterPage";
 import MerchantHomePage from "@/pages/MerchantHomePage";
 import MerchantInvoicePage from "@/pages/MerchantInvoicePage";
 import MerchantServicePage from "@/pages/MerchantServicePage";
-import RegionalSettingsPage from "@/pages/settings/RegionalSettingsPage";
+import RegionalSettingsPage from "@/pages/_settings/RegionalSettingsPage";
 import RootPage from "@/pages/RootPage";
 import SettingsPage from "@/pages/SettingsPage";
 import { Interface__PrivateRoute, Interface__Route } from "./interfaces";
 import TestPage from "@/pages/TestPage";
-import DisplaySettingsPage from "@/pages/settings/DisplaySettingsPage";
-import PermissionsSettingsPage from "@/pages/settings/PermissionsSettingsPage";
-import ReportProblemPage from "@/pages/settings/ReportProblemPage";
-import TermsOfServicePage from "@/pages/settings/TermsOfServicePage";
-import PrivacyPolictPage from "@/pages/settings/PrivacyPolictPage";
+import DisplaySettingsPage from "@/pages/_settings/DisplaySettingsPage";
+import PermissionsSettingsPage from "@/pages/_settings/PermissionsSettingsPage";
+import ReportProblemPage from "@/pages/_settings/ReportProblemPage";
+import TermsOfServicePage from "@/pages/_settings/TermsOfServicePage";
+import PrivacyPolictPage from "@/pages/_settings/PrivacyPolictPage";
 
 export const ROUTES: Interface__Route[] = [
   {
