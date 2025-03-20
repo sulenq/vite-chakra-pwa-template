@@ -43,7 +43,7 @@ const Inbox = () => {
 
       <DrawerRoot open={open} size={["sm", null, "xs"]}>
         <DrawerContent>
-          <DrawerHeader>
+          <DrawerHeader pt={5}>
             <DisclosureHeaderContent prefix="drawer" title="Inbox" />
           </DrawerHeader>
 
