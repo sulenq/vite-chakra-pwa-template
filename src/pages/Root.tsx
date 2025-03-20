@@ -1,4 +1,3 @@
-import LoginForm from "@/components/widget/LoginForm";
 import BackButton from "@/components/ui-custom/BackButton";
 import BButton from "@/components/ui-custom/BButton";
 import CContainer from "@/components/ui-custom/CContainer";
@@ -32,6 +31,7 @@ import SelectInput from "@/components/ui-custom/SelectInput";
 import StringInput from "@/components/ui-custom/StringInput";
 import TableComponent from "@/components/ui-custom/TableComponent";
 import TableFooterNoteContent from "@/components/ui-custom/TableFooterNoteContent";
+import TextRouterLink from "@/components/ui-custom/TextRouterLink";
 import TimePickerInput from "@/components/ui-custom/TimePickerInput";
 import TimeRangePickerInput from "@/components/ui-custom/TimeRangePickerInput";
 import TruncatedText from "@/components/ui-custom/TruncatedText";
@@ -74,15 +74,19 @@ import {
 import { Status } from "@/components/ui/status";
 import { toaster } from "@/components/ui/toaster";
 import { Tooltip } from "@/components/ui/tooltip";
+import LoginForm from "@/components/widget/LoginForm";
 import { Interface__Select } from "@/constant/interfaces";
+import useADM from "@/context/useADM";
+import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import { OPTIONS_RELIGION } from "@/gens/selectOptions";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import back from "@/utils/back";
-import formatDate from "@/utils/formatDateOld";
+import formatDate from "@/utils/formatDate";
 import formatNumber from "@/utils/formatNumber";
-import formatTimeFromDateFormat from "@/utils/formatTimeFromDateFormat";
+import formatTime from "@/utils/formatTime";
+import { makeTime } from "@/utils/getTime";
 import {
   Badge,
   Box,
@@ -110,9 +114,6 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
-import useLang from "@/context/useLang";
-import TextRouterLink from "@/components/ui-custom/TextRouterLink";
-import useADM from "@/context/useADM";
 
 const ThemeConfig = () => {
   const { themeConfig, setThemeConfig } = useThemeConfig();
@@ -1204,20 +1205,18 @@ const TableComponentDemo = () => {
       },
       {
         value: item.jam_masuk,
-        td: `${formatDate(
-          item.jam_masuk,
-          "basicShort"
-        )} -  ${formatTimeFromDateFormat(item.jam_masuk)}`,
+        td: `${formatDate(item.jam_masuk)} -  ${formatTime(
+          makeTime(item.jam_masuk)
+        )}`,
         dataType: "time" as "time",
       },
       {
         value: item.jam_masuk,
         td:
           item?.jam_masuk &&
-          `${formatDate(
-            item.jam_masuk,
-            "basicShort"
-          )} -  ${formatTimeFromDateFormat(item.jam_masuk)}`,
+          `${formatDate(item.jam_masuk)} -  ${formatTime(
+            makeTime(item.jam_masuk)
+          )}`,
         dataType: "time" as "time",
       },
     ],

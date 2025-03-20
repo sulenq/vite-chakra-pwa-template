@@ -7,7 +7,7 @@ import { Status } from "@/components/ui/status";
 import PageContainer from "@/components/widget/PageContainer";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import { BILLING_CYCLES } from "@/gens/pricing";
-import formatDate from "@/utils/formatDateOld";
+import formatDate from "@/utils/formatDate";
 import formatNumber from "@/utils/formatNumber";
 import { Text } from "@chakra-ui/react";
 import { IconCreditCardPay } from "@tabler/icons-react";
@@ -128,12 +128,20 @@ const MerchantInvoicePage = () => {
         },
         {
           value: item.merchant.subscription_start_date,
-          td: <Text>{formatDate(item.merchant.subscription_start_date)}</Text>,
+          td: (
+            <Text>
+              {formatDate(new Date(item.merchant.subscription_start_date))}
+            </Text>
+          ),
           dataType: "date",
         },
         {
           value: item.merchant.subscription_end_date,
-          td: <Text>{formatDate(item.merchant.subscription_end_date)}</Text>,
+          td: (
+            <Text>
+              {formatDate(new Date(item.merchant.subscription_end_date))}
+            </Text>
+          ),
           dataType: "date",
         },
         {

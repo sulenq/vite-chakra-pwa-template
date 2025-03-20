@@ -20,7 +20,6 @@ import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import useLang from "@/context/useLang";
 import formatCount from "@/utils/formatCount";
-import formatDate from "@/utils/formatDateOld";
 import formatNumber from "@/utils/formatNumber";
 import getUserFromLocalStorage from "@/utils/getUserFromLocalStorage";
 import {
@@ -47,6 +46,7 @@ import { Link } from "react-router-dom";
 import { BILLING_CYCLES } from "@/gens/pricing";
 import PageContainer from "@/components/widget/PageContainer";
 import { useColorModeValue } from "@/components/ui/color-mode";
+import formatDate from "@/utils/formatDate";
 
 const Profile = ({ ...props }: StackProps) => {
   // Contexts

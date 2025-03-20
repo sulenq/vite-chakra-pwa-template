@@ -1,7 +1,10 @@
 import { useThemeConfig } from "@/context/useThemeConfig";
+import { ACTIVITY_TYPES } from "@/gens/activityTypes";
 import useBackOnClose from "@/hooks/useBackOnClose";
-import formatDate from "@/utils/formatDateOld";
-import formatTimeFromDateFormat from "@/utils/formatTimeFromDateFormat";
+import formatDate from "@/utils/formatDate";
+import { makeTime } from "@/utils/getTime";
+import getTzOffsetMs from "@/utils/getTzOffsetMs";
+import userTimeZone from "@/utils/userTimeZone";
 import {
   HStack,
   StackProps,
@@ -19,7 +22,6 @@ import {
   DisclosureRoot,
 } from "../ui-custom/Disclosure";
 import DisclosureHeaderContent from "../ui-custom/DisclosureHeaderContent";
-import { ACTIVITY_TYPES } from "@/gens/activityTypes";
 
 const ActivityDetailItemContainer = ({ children, ...props }: StackProps) => {
   return (
@@ -76,7 +78,13 @@ const MerchantActivityItem = ({ item }: any) => {
           </Text>
         </HStack>
         <Text fontSize={"xs"} color={"fg.subtle"}>
-          {formatDate(item.created_at, "dmy-hm")}
+          {formatDate(
+            new Date(
+              new Date(item.created_at).getTime() +
+                getTzOffsetMs(userTimeZone().key)
+            )
+          )}{" "}
+          {makeTime(item.created_at)}
         </Text>
       </CContainer>
 
@@ -106,7 +114,7 @@ const MerchantActivityItem = ({ item }: any) => {
                 >
                   <ActivityDetailItemLabel>Waktu</ActivityDetailItemLabel>
                   <ActivityDetailItemLabel>
-                    {formatTimeFromDateFormat(item.created_at)}
+                    {makeTime(item.created_at)}
                   </ActivityDetailItemLabel>
                 </ActivityDetailItemContainer>
 

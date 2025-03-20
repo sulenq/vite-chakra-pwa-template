@@ -6,7 +6,7 @@ type FileValidation = (
   allowedExtensions?: string[]
 ) => yup.MixedSchema;
 
-const fileValidation: FileValidation = (maxSizeMB, allowedExtensions) =>
+const fileValidation: FileValidation = (maxSizeMB = 10, allowedExtensions) =>
   yup
     .mixed()
     .test("fileType", "Harus berupa file", (value) => {

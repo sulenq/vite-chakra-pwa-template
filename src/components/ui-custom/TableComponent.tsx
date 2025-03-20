@@ -6,10 +6,10 @@ import {
   Interface__TableComponent,
   Interface__TableFooterNote,
 } from "@/constant/interfaces";
+import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import useScreen from "@/hooks/useScreen";
-import formatDate from "@/utils/formatDateOld";
 import {
   Center,
   HStack,
@@ -40,7 +40,6 @@ import BButton from "./BButton";
 import CContainer from "./CContainer";
 import ConfirmationDisclosure from "./ConfirmationDisclosure";
 import NumberInput from "./NumberInput";
-import useLang from "@/context/useLang";
 
 const BatchOptions = ({
   selectedRows,
@@ -650,12 +649,8 @@ const TableComponent = ({
               : Number(bValue) - Number(aValue),
 
           date: (aValue, bValue, direction) => {
-            const dateA = new Date(
-              formatDate(aValue, "iso") as string
-            ).getTime();
-            const dateB = new Date(
-              formatDate(bValue, "iso") as string
-            ).getTime();
+            const dateA = new Date(aValue).getTime();
+            const dateB = new Date(bValue).getTime();
             return direction === "asc" ? dateA - dateB : dateB - dateA;
           },
 
