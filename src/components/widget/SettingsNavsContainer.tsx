@@ -110,7 +110,7 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
 
                             {iss && (
                               <Icon ml={"auto"}>
-                                <IconChevronRight />
+                                <IconChevronRight stroke={1.5} />
                               </Icon>
                             )}
                           </BButton>
