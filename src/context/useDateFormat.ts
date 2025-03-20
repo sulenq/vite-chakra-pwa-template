@@ -1,18 +1,19 @@
+import { Type__DateFormat } from "@/constant/types";
 import { create } from "zustand";
 
 const STORAGE_KEY = "dateFormat";
 const DEFAULT = "dmy";
 
 interface Props {
-  dateFormat: string;
-  setDateFormat: (newState: string) => void;
+  dateFormat: Type__DateFormat;
+  setDateFormat: (newState: Type__DateFormat) => void;
 }
 
 const useDateFormat = create<Props>((set) => {
-  const getStoredFormat = (): string => {
+  const getStoredFormat = (): Type__DateFormat => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) return stored;
+      if (stored) return stored as Type__DateFormat;
       localStorage.setItem(STORAGE_KEY, DEFAULT);
     } catch (error) {
       console.error("Failed to access dateFormat from localStorage:", error);

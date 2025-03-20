@@ -11,10 +11,12 @@ import { Tooltip } from "../ui/tooltip";
 import formatDate from "@/utils/formatDate";
 import autoTimeZone from "@/utils/autoTimeZone";
 import Clock from "./Clock";
+import useDateFormat from "@/context/useDateFormat";
 
 const CurrentUserTimeZone = () => {
   // Contexts
   const { timeZone } = useTimeZone();
+  const { dateFormat } = useDateFormat();
   const { l } = useLang();
 
   // States, Refs
@@ -55,7 +57,10 @@ const CurrentUserTimeZone = () => {
 
             <HStack>
               <Text>
-                {formatDate(new Date(), { prefixTimeZoneKey: autoTz.key })}
+                {formatDate(new Date(), {
+                  prefixTimeZoneKey: autoTz.key,
+                  prefixDateFormat: dateFormat,
+                })}
               </Text>
               <Clock timeZoneKey={autoTimeZone().key} />
             </HStack>
