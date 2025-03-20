@@ -5,7 +5,7 @@ import {
   Portal,
   useDrawerContext,
 } from "@chakra-ui/react";
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { CloseButton } from "./close-button";
 
 interface DrawerContentProps extends ChakraDrawer.ContentProps {
@@ -25,18 +25,31 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
       backdrop = true,
       ...rest
     } = props;
+
     // Contexts
     const { open } = useDrawerContext();
+
+    // State for debounce unmount
+    const [visible, setVisible] = useState(open);
 
     // Utils
     const handleBackOnDefaultPage = useBackOnDefaultPage();
 
+    useEffect(() => {
+      if (open) {
+        setVisible(true);
+      } else {
+        const timeout = setTimeout(() => setVisible(false), 300);
+        return () => clearTimeout(timeout);
+      }
+    }, [open]);
+
     return (
       <Portal disabled={!portalled} container={portalRef}>
-        {backdrop && (
+        {backdrop && visible && (
           <ChakraDrawer.Backdrop bg={"d1"} backdropFilter={"blur(5px)"} />
         )}
-        {open && (
+        {visible && (
           <ChakraDrawer.Positioner
             padding={offset}
             pointerEvents={"auto"}
@@ -49,9 +62,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
               ref={ref}
               justifyContent={"end"}
               shadow={"none"}
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
+              onClick={(e) => e.stopPropagation()}
               asChild={false}
               {...rest}
             >
