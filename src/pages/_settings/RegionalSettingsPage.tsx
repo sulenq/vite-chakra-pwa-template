@@ -261,7 +261,7 @@ const DateFormat = () => {
                 py={3}
                 borderRadius={themeConfig.radii.component}
                 onClick={() => {
-                  setDateFormat(item.key);
+                  setDateFormat(item.key as Type__DateFormat);
                 }}
                 cursor={"pointer"}
                 _hover={{ bg: "gray.subtle" }}
