@@ -20,8 +20,8 @@ const DEFAULT: ThemeConfigProps = {
   primaryColorHex: "#0062FF",
   logo: `${IMAGES_PATH}/logo_graphic.png`,
   radii: {
-    component: "lg",
-    container: "2xl",
+    component: "10px",
+    container: "14px",
   },
 };
 

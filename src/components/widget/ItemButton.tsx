@@ -4,7 +4,7 @@ import BButton from "../ui-custom/BButton";
 interface Props extends ButtonProps {}
 const ItemButton = ({ children, ...props }: Props) => {
   return (
-    <BButton size={"xs"} variant={"outline"} {...props}>
+    <BButton size={"xs"} variant={"outline"} borderRadius={"lg"} {...props}>
       {children}
     </BButton>
   );
