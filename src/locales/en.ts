@@ -200,6 +200,7 @@ const translations = {
   },
   "regional_settings_helper_text": "These language & region settings are stored locally on your device and will not be synced with your account.",
   "religion": "Religion",
+  "required_form": "Cannot be empty",
   "retry": "Retry now",
   "retry_feedback": {
     "title": "An Error Occurred",

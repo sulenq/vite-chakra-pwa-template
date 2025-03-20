@@ -59,6 +59,10 @@ export const settings_navs = {
 };
 
 // UI
+export const required_form = {
+  id: "Tidak boleh kosong",
+  en: "Cannot be empty",
+};
 export const delete_label = {
   id: "Hapus",
   en: "Delete",
