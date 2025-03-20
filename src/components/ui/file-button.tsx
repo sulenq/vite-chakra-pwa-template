@@ -14,6 +14,7 @@ import {
 import { IconUpload, IconX } from "@tabler/icons-react";
 import { forwardRef } from "react";
 import FileIcon from "../ui-custom/FileIcon";
+import { useThemeConfig } from "@/context/useThemeConfig";
 
 export interface FileUploadRootProps extends ChakraFileUpload.RootProps {
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
@@ -75,10 +76,19 @@ interface FileUploadItemProps extends VisibilityProps {
 }
 
 const FileUploadItem = (props: FileUploadItemProps) => {
+  // Contexts
+  const { themeConfig } = useThemeConfig();
+
   const { file, showSize, clearable } = props;
 
   return (
-    <ChakraFileUpload.Item file={file} pr={3} h={"54px"} bg={"body"}>
+    <ChakraFileUpload.Item
+      file={file}
+      pr={3}
+      h={"54px"}
+      bg={"body"}
+      borderRadius={themeConfig.radii.component}
+    >
       <ChakraFileUpload.ItemPreview asChild>
         <Icon fontSize={20} color="fg.muted">
           <FileIcon type={file.type} />
