@@ -19,6 +19,7 @@ const CurrentUserTimeZone = () => {
 
   // States, Refs
   const autoTz = autoTimeZone();
+  const userSelect = autoTz.key === timeZone.key;
 
   return (
     <PopoverRoot>
@@ -48,20 +49,22 @@ const CurrentUserTimeZone = () => {
           </Text>
         </CContainer>
 
-        <CContainer px={1} mt={4}>
-          <HelperText mb={1}>{l.auto_time_zone}</HelperText>
+        {!userSelect && (
+          <CContainer px={1} mt={4}>
+            <HelperText mb={1}>{l.auto_time_zone}</HelperText>
 
-          <HStack>
-            <Text>
-              {formatDate(new Date(), { prefixTimeZoneKey: autoTz.key })}
+            <HStack>
+              <Text>
+                {formatDate(new Date(), { prefixTimeZoneKey: autoTz.key })}
+              </Text>
+              <Clock timeZoneKey={autoTimeZone().key} />
+            </HStack>
+
+            <Text color={"fg.muted"}>
+              {autoTz.key} {autoTz.formattedOffset} ({autoTz.localAbbr})
             </Text>
-            <Clock timeZoneKey={autoTimeZone().key} />
-          </HStack>
-
-          <Text color={"fg.muted"}>
-            {autoTz.key} {autoTz.formattedOffset} ({autoTz.localAbbr})
-          </Text>
-        </CContainer>
+          </CContainer>
+        )}
 
         <Link to="/settings/regional">
           <BButton mt={3} variant="outline" size="sm" w="full">
