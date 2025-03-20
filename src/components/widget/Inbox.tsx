@@ -63,7 +63,7 @@ const Inbox = () => {
               id="loggingout"
               title={l.delete_all_inbox_disclosure.title}
               description={l.delete_all_inbox_disclosure.description}
-              confirmLabel="Delete"
+              confirmLabel={l.delete_label}
               confirmButtonProps={{ colorPalette: "red" }}
               confirmCallback={() => {}}
             >

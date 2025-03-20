@@ -59,6 +59,10 @@ export const settings_navs = {
 };
 
 // UI
+export const delete_label = {
+  id: "Hapus",
+  en: "Delete",
+};
 export const empty = {
   id: "Kosong",
   en: "Empty",
@@ -562,7 +566,7 @@ export const address = {
 
 // Widget
 export const delete_all_inbox_button = {
-  id: "Delete semua",
+  id: "Hapus semua",
   en: "Delete all",
 };
 

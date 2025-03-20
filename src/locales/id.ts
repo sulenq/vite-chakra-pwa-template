@@ -54,11 +54,12 @@ const translations = {
     "title": "Permintaan sukses",
     "description": "Proses berjalan tanpa kendala."
   },
-  "delete_all_inbox_button": "Delete semua",
+  "delete_all_inbox_button": "Hapus semua",
   "delete_all_inbox_disclosure": {
     "title": "Delete semua?",
     "description": "Delete semua inbox yang sudah dibaca."
   },
+  "delete_label": "Hapus",
   "display_settings_helper_text": "Pengaturan tampilan ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   "edge_permissions_settings_link": "Pengaturan → Cookie dan izin situs → ",
   "empty": "Kosong",
