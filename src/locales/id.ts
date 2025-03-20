@@ -7,7 +7,7 @@ const translations = {
   "address_not_found": "Alamat tidak ditemukan",
   "all": "Semua",
   "ask": "Meminta",
-  "auto_time_zone": "Zona waktu auto (current)",
+  "auto_time_zone": "Zona waktu saat ini (auto)",
   "back_online_toast": {
     "title": "Koneksi Pulih",
     "description": "Anda kembali online."

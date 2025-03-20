@@ -68,8 +68,8 @@ export const selected_time_zone = {
   en: "Selected time zone",
 };
 export const auto_time_zone = {
-  id: "Zona waktu auto (current)",
-  en: "Auto time zone (saat ini)",
+  id: "Zona waktu saat ini (auto)",
+  en: "Current time zone (auto)",
 };
 export const back_to_root = {
   id: "Kembali ke halaman utama",

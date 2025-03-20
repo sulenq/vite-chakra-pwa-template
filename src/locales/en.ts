@@ -7,7 +7,7 @@ const translations = {
   "address_not_found": "Address not found",
   "all": "All",
   "ask": "Ask",
-  "auto_time_zone": "Auto time zone (saat ini)",
+  "auto_time_zone": "Current time zone (auto)",
   "back_online_toast": {
     "title": "Connection Recovered",
     "description": "You are back online."
