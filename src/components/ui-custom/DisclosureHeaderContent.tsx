@@ -32,7 +32,7 @@ const DisclosureHeaderContent = ({
         <Text
           fontSize={"16px"}
           fontWeight={"semibold"}
-          ml={prefix ? [-1, null, 1] : ""}
+          ml={!prefix ? [-1, null, 1] : ""}
         >
           {title}
         </Text>
