@@ -124,16 +124,9 @@ export const MenuTriggerItem = forwardRef<HTMLDivElement, MenuTriggerItemProps>(
 
 export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
   function MenuItem(props, ref) {
-    // Contexts
-    const { themeConfig } = useThemeConfig();
-
     const { children, ...rest } = props;
     return (
-      <ChakraMenu.Item
-        ref={ref}
-        borderRadius={themeConfig.radii.component}
-        {...rest}
-      >
+      <ChakraMenu.Item ref={ref} borderRadius={"7px"} {...rest}>
         {children}
       </ChakraMenu.Item>
     );
