@@ -61,6 +61,7 @@ const translations = {
   },
   "display_settings_helper_text": "Pengaturan tampilan ini disimpan secara lokal di perangkat Anda dan tidak akan disinkronkan dengan akun Anda.",
   "edge_permissions_settings_link": "Pengaturan → Cookie dan izin situs → ",
+  "empty": "Kosong",
   "error_400_toast": {
     "title": "Permintaan tidak valid",
     "description": "Server tidak dapat memproses permintaan karena kesalahan klien."

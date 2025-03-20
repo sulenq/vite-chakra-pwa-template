@@ -59,6 +59,10 @@ export const settings_navs = {
 };
 
 // UI
+export const empty = {
+  id: "Kosong",
+  en: "Empty",
+};
 export const selected_time_zone = {
   id: "Zona waktu dipilih",
   en: "Selected time zone",

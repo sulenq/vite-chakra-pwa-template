@@ -61,6 +61,7 @@ const translations = {
   },
   "display_settings_helper_text": "These display settings are stored locally on your device and will not be synced with your account.",
   "edge_permissions_settings_link": "Settings → Cookies and site permissions → ",
+  "empty": "Empty",
   "error_400_toast": {
     "title": "Bad request",
     "description": "The server could not process the request due to client error."

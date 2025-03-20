@@ -1,19 +1,20 @@
-import useBackOnClose from "@/hooks/useBackOnClose";
 import useLang from "@/context/useLang";
+import useBackOnClose from "@/hooks/useBackOnClose";
 import { Icon, useDisclosure } from "@chakra-ui/react";
-import { IconInbox } from "@tabler/icons-react";
+import { IconInbox, IconInboxOff } from "@tabler/icons-react";
 import BackButton from "../ui-custom/BackButton";
 import BButton from "../ui-custom/BButton";
 import ConfirmationDisclosure from "../ui-custom/ConfirmationDisclosure";
-import {
-  DisclosureBody,
-  DisclosureContent,
-  DisclosureFooter,
-  DisclosureHeader,
-  DisclosureRoot,
-} from "../ui-custom/Disclosure";
 import DisclosureHeaderContent from "../ui-custom/DisclosureHeaderContent";
 import FloatCounter from "../ui-custom/FloatCounter";
+import {
+  DrawerBody,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerRoot,
+} from "../ui/drawer";
+import { EmptyState } from "../ui/empty-state";
 import { Tooltip } from "../ui/tooltip";
 
 const Inbox = () => {
@@ -40,15 +41,23 @@ const Inbox = () => {
         </BButton>
       </Tooltip>
 
-      <DisclosureRoot open={open} size={"xs"}>
-        <DisclosureContent>
-          <DisclosureHeader>
-            <DisclosureHeaderContent title="Inbox" />
-          </DisclosureHeader>
+      <DrawerRoot open={open} size={["sm", null, "xs"]}>
+        <DrawerContent>
+          <DrawerHeader>
+            <DisclosureHeaderContent prefix="drawer" title="Inbox" />
+          </DrawerHeader>
 
-          <DisclosureBody>List</DisclosureBody>
+          <DrawerBody display={"flex"}>
+            <EmptyState
+              icon={<IconInboxOff />}
+              title={`Inbox ${l.empty.toLowerCase()}`}
+              description={l.no_data_feedback.description}
+              maxW={"300px"}
+              m={"auto"}
+            />
+          </DrawerBody>
 
-          <DisclosureFooter>
+          <DrawerFooter>
             <BackButton />
             <ConfirmationDisclosure
               id="loggingout"
@@ -62,9 +71,9 @@ const Inbox = () => {
                 {l.delete_all_inbox_button}
               </BButton>
             </ConfirmationDisclosure>
-          </DisclosureFooter>
-        </DisclosureContent>
-      </DisclosureRoot>
+          </DrawerFooter>
+        </DrawerContent>
+      </DrawerRoot>
     </>
   );
 };
