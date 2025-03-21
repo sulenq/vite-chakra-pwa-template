@@ -19,10 +19,7 @@ const formatDate = (
   const dateFormat =
     options.prefixDateFormat || localStorage.getItem("dateFormat") || "dmy";
   const timeZoneKey = options.prefixTimeZoneKey || userTimeZone().key;
-  const cleanedTimeZoneKey = timeZoneKey.includes("Auto (")
-    ? timeZoneKey.replace(/^Auto \(|\)$/g, "")
-    : timeZoneKey;
-  const localDate = moment.tz(date, cleanedTimeZoneKey);
+  const localDate = moment.tz(date, timeZoneKey);
   const day = localDate.date();
   const month = localDate.month();
   const year = localDate.year();

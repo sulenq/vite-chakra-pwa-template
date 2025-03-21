@@ -17,10 +17,7 @@ export default function formatTime(
     options.prefixTimeFormat || localStorage.getItem("timeFormat") || "24-hour";
 
   const timeZoneKey = options.prefixTimeZoneKey || userTimeZone().key;
-  const cleanedTimeZoneKey = timeZoneKey.includes("Auto (")
-    ? timeZoneKey.replace(/^Auto \(|\)$/g, "")
-    : timeZoneKey;
-  const offsetMs = getTzOffsetMs(cleanedTimeZoneKey);
+  const offsetMs = getTzOffsetMs(timeZoneKey);
   const offsetHours = offsetMs / (1000 * 60 * 60);
 
   let [hh, mm, ss = "00"] = time.split(":").map(Number);

@@ -9,6 +9,7 @@ import useBackOnClose from "@/hooks/useBackOnClose";
 import back from "@/utils/back";
 import formatDate from "@/utils/formatDate";
 import getTzOffsetMs from "@/utils/getTzOffsetMs";
+import resetDateTime from "@/utils/resetDateTime";
 import userTimeZone from "@/utils/userTimeZone";
 import {
   HStack,
@@ -131,9 +132,7 @@ const DatePickerInput = ({
     inputValue
       ? inputValue.map(
           (item) =>
-            new Date(
-              new Date(item).getTime() - getTzOffsetMs(moment.tz.guess())
-            )
+            new Date(new Date(item).getTime() - getTzOffsetMs(userTz.key))
         )
       : []
   );
@@ -168,9 +167,7 @@ const DatePickerInput = ({
   const selectedRenderValue =
     selectedDates?.length > 0
       ? selectedDates
-          .map((date) =>
-            formatDate(date, { prefixTimeZoneKey: moment.tz.guess() })
-          )
+          .map((date) => formatDate(date, { prefixTimeZoneKey: userTz.key }))
           .join(", ")
       : finalPlaceholder;
 
@@ -178,7 +175,7 @@ const DatePickerInput = ({
     inputValue && inputValue?.length > 0
       ? inputValue
           .map((date) =>
-            formatDate(new Date(date), { prefixTimeZoneKey: moment.tz.guess() })
+            formatDate(new Date(date), { prefixTimeZoneKey: userTz.key })
           )
           .join(", ")
       : finalPlaceholder;
@@ -194,25 +191,26 @@ const DatePickerInput = ({
 
   // Preset setter
   function setSelectedToToday() {
-    const today = new Date();
+    const today = resetDateTime(new Date());
     setSelectedDates([today]);
     setDate(today);
     setMonth(today.getMonth());
     setYear(today.getFullYear());
   }
   function setSelectedToTomorrow() {
-    const today = new Date();
-    const tomorrow = new Date(today);
+    const today = resetDateTime(new Date());
+    const tomorrow = resetDateTime(new Date(today));
     tomorrow.setDate(today.getDate() + 1);
+
     setSelectedDates([tomorrow]);
     setDate(tomorrow);
     setMonth(tomorrow.getMonth());
     setYear(tomorrow.getFullYear());
   }
   function setSelectedToThisWeek() {
-    const today = new Date();
+    const today = resetDateTime(new Date());
     const dayOfWeek = today.getDay();
-    const startOfWeek = new Date(today);
+    const startOfWeek = resetDateTime(new Date(today));
 
     startOfWeek.setDate(
       today.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1)
@@ -220,7 +218,7 @@ const DatePickerInput = ({
 
     const selectedDates = [];
     for (let i = 0; i < 7; i++) {
-      const date = new Date(startOfWeek);
+      const date = resetDateTime(new Date(startOfWeek));
       date.setDate(startOfWeek.getDate() + i);
       selectedDates.push(date);
     }
@@ -231,13 +229,19 @@ const DatePickerInput = ({
     setYear(startOfWeek.getFullYear());
   }
   function setSelectedToThisMonth() {
-    const today = new Date();
-    const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-    const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+    const today = resetDateTime(new Date());
+    const startOfMonth = resetDateTime(
+      new Date(today.getFullYear(), today.getMonth(), 1)
+    );
+    const endOfMonth = resetDateTime(
+      new Date(today.getFullYear(), today.getMonth() + 1, 0)
+    );
 
     const selectedDates = [];
     for (let i = 1; i <= endOfMonth.getDate(); i++) {
-      selectedDates.push(new Date(today.getFullYear(), today.getMonth(), i));
+      selectedDates.push(
+        resetDateTime(new Date(today.getFullYear(), today.getMonth(), i))
+      );
     }
 
     setSelectedDates(selectedDates);
@@ -273,14 +277,14 @@ const DatePickerInput = ({
     if (!nonNullable || selectedDates.length > 0) {
       onConfirm?.(
         selectedDates.map((item) =>
-          new Date(
-            item.getTime() + getTzOffsetMs(moment.tz.guess())
-          ).toISOString()
+          new Date(item.getTime() + getTzOffsetMs(userTz.key)).toISOString()
         )
       );
       back();
     }
   }
+
+  console.log(selectedDates, inputValue);
 
   return (
     <>
@@ -295,7 +299,7 @@ const DatePickerInput = ({
             if (inputValue) {
               setSelectedDates(
                 inputValue.map(
-                  (item) => new Date(new Date(item).getTime() + offsetInMs)
+                  (item) => new Date(new Date(item).getTime() - offsetInMs)
                 )
               );
             }

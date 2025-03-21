@@ -15,7 +15,7 @@ const useTimeZone = create<Props>((set) => {
       const rawStored = localStorage.getItem(STORAGE_KEY);
       if (rawStored) {
         const parsed = JSON.parse(rawStored) as Type__TimeZoneObject;
-        return parsed.key.startsWith("Auto") ? autoTimeZone() : parsed;
+        return parsed.label.startsWith("Auto") ? autoTimeZone() : parsed;
       }
     } catch (error) {
       console.error("Failed to parse timezone from localStorage:", error);

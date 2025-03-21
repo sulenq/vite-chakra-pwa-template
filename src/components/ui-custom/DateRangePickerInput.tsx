@@ -67,7 +67,7 @@ const DateRangePickerInput = ({
   const finalPlaceholder =
     placeholder || l.date_range_picker_default_placeholder;
   const [date, setDate] = useState<Date>(
-    inputValue?.from || inputValue?.to || new Date()
+    new Date(inputValue?.from || inputValue?.to || Date.now())
   );
   const [month, setMonth] = useState<number>(date.getMonth());
   const [year, setYear] = useState<number>(date.getFullYear());
@@ -123,9 +123,9 @@ const DateRangePickerInput = ({
   const renderValue =
     inputValue?.from &&
     inputValue?.to &&
-    `${formatDate(inputValue?.from, {
+    `${formatDate(new Date(inputValue?.from), {
       prefixTimeZoneKey: moment.tz.guess(),
-    })} - ${formatDate(inputValue?.to, {
+    })} - ${formatDate(new Date(inputValue?.to), {
       prefixTimeZoneKey: moment.tz.guess(),
     })} (${countDay(inputValue?.from, inputValue?.to)} hari)`;
 
@@ -294,15 +294,18 @@ const DateRangePickerInput = ({
         from: new Date(
           new Date(selected?.from as any).getTime() +
             getTzOffsetMs(moment.tz.guess())
-        ),
+        ).toISOString(),
         to: new Date(
           new Date(selected?.to as any).getTime() +
             getTzOffsetMs(moment.tz.guess())
-        ),
+        ).toISOString(),
       });
       back();
     }
   }
+
+  console.log(selected);
+  console.log("iv", inputValue);
 
   return (
     <>

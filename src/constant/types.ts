@@ -4,6 +4,7 @@ export type Type__LanguageOptions = "id" | "en";
 
 export type Type__TimeZoneObject = {
   key: string;
+  label: string;
   offset: number;
   offsetMs: number;
   formattedOffset: string;
@@ -17,8 +18,8 @@ export type Type__DateFormat = "dmy" | "mdy" | "ymd";
 export type Type__DisclosureSizes = "xs" | "sm" | "md" | "lg" | "xl";
 
 export type Type__DateRange = {
-  from: Date | undefined;
-  to: Date | undefined;
+  from: Date | string | undefined;
+  to: Date | string | undefined;
 };
 
 export type Type__DateRangePresets =

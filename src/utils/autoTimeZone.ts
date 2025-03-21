@@ -3,7 +3,7 @@ import moment from "moment-timezone";
 
 const autoTimeZone = (): Type__TimeZoneObject => {
   const timeZone = moment.tz.guess();
-  const autoTimeZone = `Auto (${timeZone})`;
+  const autoTimeZoneLabel = `Auto (${timeZone})`;
   const offsetMinutes = moment.tz(timeZone).utcOffset();
   const offsetHours = offsetMinutes / 60;
   const formattedOffset = `UTC${offsetHours >= 0 ? "+" : ""}${String(
@@ -12,7 +12,8 @@ const autoTimeZone = (): Type__TimeZoneObject => {
   const abbreviation = moment.tz(timeZone).format("z");
 
   return {
-    key: autoTimeZone,
+    key: timeZone,
+    label: autoTimeZoneLabel,
     offset: offsetHours,
     offsetMs: offsetMinutes * 60 * 1000,
     formattedOffset,
