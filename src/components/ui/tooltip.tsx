@@ -16,7 +16,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       showArrow,
       children,
       disabled,
-      portalled,
+      portalled = true,
       content,
       contentProps,
       portalRef,
