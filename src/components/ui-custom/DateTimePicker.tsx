@@ -55,7 +55,10 @@ const DateTimePicker = ({
   // Handle onchange all
   useEffect(() => {
     if (date && time) {
-      onChangeSetter?.(makeDateTime(date[0], time).toISOString());
+      const dateTime = new Date(
+        makeDateTime(date[0], time).getTime() - userOffsetInMs + autoOffsetInMs
+      );
+      onChangeSetter?.(dateTime.toISOString());
     }
   }, [time]);
 
