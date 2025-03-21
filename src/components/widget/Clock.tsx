@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { Text } from "@chakra-ui/react";
+import { Text, TextProps } from "@chakra-ui/react";
 import useTimeZone from "@/context/useTimeZone";
 import formatTime from "@/utils/formatTime";
 import { makeTime } from "@/utils/getTime";
 import getTzOffsetMs from "@/utils/getTzOffsetMs";
 import autoTimeZone from "@/utils/autoTimeZone";
 
-interface Props {
+interface Props extends TextProps {
   timeZoneKey?: string;
 }
 const Clock = ({ timeZoneKey, ...props }: Props) => {

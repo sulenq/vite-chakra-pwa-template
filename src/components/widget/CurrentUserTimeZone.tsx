@@ -12,9 +12,11 @@ import formatDate from "@/utils/formatDate";
 import autoTimeZone from "@/utils/autoTimeZone";
 import Clock from "./Clock";
 import useDateFormat from "@/context/useDateFormat";
+import { useThemeConfig } from "@/context/useThemeConfig";
 
 const CurrentUserTimeZone = () => {
   // Contexts
+  const { themeConfig } = useThemeConfig();
   const { timeZone } = useTimeZone();
   const { dateFormat } = useDateFormat();
   const { l } = useLang();
@@ -37,13 +39,13 @@ const CurrentUserTimeZone = () => {
         </div>
       </PopoverTrigger>
 
-      <PopoverContent mr={2}>
+      <PopoverContent mr={2} borderRadius={themeConfig.radii.container}>
         <CContainer px={1}>
           <HelperText mb={1}>{l.selected_time_zone}</HelperText>
 
           <HStack>
-            <Text>{formatDate(new Date())}</Text>
-            <Clock />
+            <Text fontWeight={"medium"}>{formatDate(new Date())}</Text>
+            <Clock fontWeight={"medium"} />
           </HStack>
 
           <Text color={"fg.muted"}>
@@ -56,13 +58,13 @@ const CurrentUserTimeZone = () => {
             <HelperText mb={1}>{l.auto_time_zone}</HelperText>
 
             <HStack>
-              <Text>
+              <Text fontWeight={"medium"}>
                 {formatDate(new Date(), {
                   prefixTimeZoneKey: autoTz.key,
                   prefixDateFormat: dateFormat,
                 })}
               </Text>
-              <Clock timeZoneKey={autoTimeZone().key} />
+              <Clock fontWeight={"medium"} timeZoneKey={autoTimeZone().key} />
             </HStack>
 
             <Text color={"fg.muted"}>
