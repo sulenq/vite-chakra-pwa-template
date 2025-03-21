@@ -7,6 +7,7 @@ export const timeZones = () => {
 
     return {
       key: tz,
+      label: tz,
       offset: offsetMinutes,
       offsetMs: offsetMinutes * 60 * 1000,
       formattedOffset: `UTC${moment.tz(tz).format("Z")}`,
@@ -18,6 +19,7 @@ export const timeZones = () => {
 export const TIME_ZONES = [
   {
     key: "Africa/Abidjan",
+    label: "Africa/Abidjan",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -25,6 +27,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Accra",
+    label: "Africa/Accra",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -32,6 +35,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Addis_Ababa",
+    label: "Africa/Addis_Ababa",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -39,6 +43,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Algiers",
+    label: "Africa/Algiers",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -46,6 +51,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Asmara",
+    label: "Africa/Asmara",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -53,6 +59,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Asmera",
+    label: "Africa/Asmera",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -60,6 +67,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Bamako",
+    label: "Africa/Bamako",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -67,6 +75,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Bangui",
+    label: "Africa/Bangui",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -74,6 +83,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Banjul",
+    label: "Africa/Banjul",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -81,6 +91,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Bissau",
+    label: "Africa/Bissau",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -88,6 +99,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Blantyre",
+    label: "Africa/Blantyre",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -95,6 +107,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Brazzaville",
+    label: "Africa/Brazzaville",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -102,6 +115,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Bujumbura",
+    label: "Africa/Bujumbura",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -109,6 +123,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Cairo",
+    label: "Africa/Cairo",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -116,6 +131,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Casablanca",
+    label: "Africa/Casablanca",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -123,6 +139,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Ceuta",
+    label: "Africa/Ceuta",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -130,6 +147,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Conakry",
+    label: "Africa/Conakry",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -137,6 +155,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Dakar",
+    label: "Africa/Dakar",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -144,6 +163,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Dar_es_Salaam",
+    label: "Africa/Dar_es_Salaam",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -151,6 +171,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Djibouti",
+    label: "Africa/Djibouti",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -158,6 +179,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Douala",
+    label: "Africa/Douala",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -165,6 +187,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/El_Aaiun",
+    label: "Africa/El_Aaiun",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -172,6 +195,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Freetown",
+    label: "Africa/Freetown",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -179,6 +203,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Gaborone",
+    label: "Africa/Gaborone",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -186,6 +211,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Harare",
+    label: "Africa/Harare",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -193,6 +219,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Johannesburg",
+    label: "Africa/Johannesburg",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -200,6 +227,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Juba",
+    label: "Africa/Juba",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -207,6 +235,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Kampala",
+    label: "Africa/Kampala",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -214,6 +243,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Khartoum",
+    label: "Africa/Khartoum",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -221,6 +251,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Kigali",
+    label: "Africa/Kigali",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -228,6 +259,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Kinshasa",
+    label: "Africa/Kinshasa",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -235,6 +267,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Lagos",
+    label: "Africa/Lagos",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -242,6 +275,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Libreville",
+    label: "Africa/Libreville",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -249,6 +283,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Lome",
+    label: "Africa/Lome",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -256,6 +291,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Luanda",
+    label: "Africa/Luanda",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -263,6 +299,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Lubumbashi",
+    label: "Africa/Lubumbashi",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -270,6 +307,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Lusaka",
+    label: "Africa/Lusaka",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -277,6 +315,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Malabo",
+    label: "Africa/Malabo",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -284,6 +323,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Maputo",
+    label: "Africa/Maputo",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -291,6 +331,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Maseru",
+    label: "Africa/Maseru",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -298,6 +339,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Mbabane",
+    label: "Africa/Mbabane",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -305,6 +347,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Mogadishu",
+    label: "Africa/Mogadishu",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -312,6 +355,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Monrovia",
+    label: "Africa/Monrovia",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -319,6 +363,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Nairobi",
+    label: "Africa/Nairobi",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -326,6 +371,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Ndjamena",
+    label: "Africa/Ndjamena",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -333,6 +379,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Niamey",
+    label: "Africa/Niamey",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -340,6 +387,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Nouakchott",
+    label: "Africa/Nouakchott",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -347,6 +395,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Ouagadougou",
+    label: "Africa/Ouagadougou",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -354,6 +403,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Porto-Novo",
+    label: "Africa/Porto-Novo",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -361,6 +411,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Sao_Tome",
+    label: "Africa/Sao_Tome",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -368,6 +419,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Timbuktu",
+    label: "Africa/Timbuktu",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -375,6 +427,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Tripoli",
+    label: "Africa/Tripoli",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -382,6 +435,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Tunis",
+    label: "Africa/Tunis",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -389,6 +443,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Africa/Windhoek",
+    label: "Africa/Windhoek",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -396,6 +451,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Adak",
+    label: "America/Adak",
     offset: -540,
     offsetMs: -32400000,
     formattedOffset: "UTC-09:00",
@@ -403,6 +459,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Anchorage",
+    label: "America/Anchorage",
     offset: -480,
     offsetMs: -28800000,
     formattedOffset: "UTC-08:00",
@@ -410,6 +467,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Anguilla",
+    label: "America/Anguilla",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -417,6 +475,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Antigua",
+    label: "America/Antigua",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -424,6 +483,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Araguaina",
+    label: "America/Araguaina",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -431,6 +491,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Argentina/Buenos_Aires",
+    label: "America/Argentina/Buenos_Aires",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -438,6 +499,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Argentina/Catamarca",
+    label: "America/Argentina/Catamarca",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -445,6 +507,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Argentina/ComodRivadavia",
+    label: "America/Argentina/ComodRivadavia",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -452,6 +515,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Argentina/Cordoba",
+    label: "America/Argentina/Cordoba",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -459,6 +523,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Argentina/Jujuy",
+    label: "America/Argentina/Jujuy",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -466,6 +531,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Argentina/La_Rioja",
+    label: "America/Argentina/La_Rioja",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -473,6 +539,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Argentina/Mendoza",
+    label: "America/Argentina/Mendoza",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -480,6 +547,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Argentina/Rio_Gallegos",
+    label: "America/Argentina/Rio_Gallegos",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -487,6 +555,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Argentina/Salta",
+    label: "America/Argentina/Salta",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -494,6 +563,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Argentina/San_Juan",
+    label: "America/Argentina/San_Juan",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -501,6 +571,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Argentina/San_Luis",
+    label: "America/Argentina/San_Luis",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -508,6 +579,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Argentina/Tucuman",
+    label: "America/Argentina/Tucuman",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -515,6 +587,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Argentina/Ushuaia",
+    label: "America/Argentina/Ushuaia",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -522,6 +595,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Aruba",
+    label: "America/Aruba",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -529,6 +603,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Asuncion",
+    label: "America/Asuncion",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -536,6 +611,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Atikokan",
+    label: "America/Atikokan",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -543,6 +619,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Atka",
+    label: "America/Atka",
     offset: -540,
     offsetMs: -32400000,
     formattedOffset: "UTC-09:00",
@@ -550,6 +627,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Bahia",
+    label: "America/Bahia",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -557,6 +635,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Bahia_Banderas",
+    label: "America/Bahia_Banderas",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -564,6 +643,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Barbados",
+    label: "America/Barbados",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -571,6 +651,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Belem",
+    label: "America/Belem",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -578,6 +659,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Belize",
+    label: "America/Belize",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -585,6 +667,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Blanc-Sablon",
+    label: "America/Blanc-Sablon",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -592,6 +675,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Boa_Vista",
+    label: "America/Boa_Vista",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -599,6 +683,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Bogota",
+    label: "America/Bogota",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -606,6 +691,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Boise",
+    label: "America/Boise",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -613,6 +699,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Buenos_Aires",
+    label: "America/Buenos_Aires",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -620,6 +707,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Cambridge_Bay",
+    label: "America/Cambridge_Bay",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -627,6 +715,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Campo_Grande",
+    label: "America/Campo_Grande",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -634,6 +723,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Cancun",
+    label: "America/Cancun",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -641,6 +731,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Caracas",
+    label: "America/Caracas",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -648,6 +739,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Catamarca",
+    label: "America/Catamarca",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -655,6 +747,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Cayenne",
+    label: "America/Cayenne",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -662,6 +755,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Cayman",
+    label: "America/Cayman",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -669,6 +763,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Chicago",
+    label: "America/Chicago",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -676,6 +771,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Chihuahua",
+    label: "America/Chihuahua",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -683,6 +779,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Ciudad_Juarez",
+    label: "America/Ciudad_Juarez",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -690,6 +787,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Coral_Harbour",
+    label: "America/Coral_Harbour",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -697,6 +795,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Cordoba",
+    label: "America/Cordoba",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -704,6 +803,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Costa_Rica",
+    label: "America/Costa_Rica",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -711,6 +811,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Creston",
+    label: "America/Creston",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -718,6 +819,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Cuiaba",
+    label: "America/Cuiaba",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -725,6 +827,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Curacao",
+    label: "America/Curacao",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -732,6 +835,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Danmarkshavn",
+    label: "America/Danmarkshavn",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -739,6 +843,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Dawson",
+    label: "America/Dawson",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -746,6 +851,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Dawson_Creek",
+    label: "America/Dawson_Creek",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -753,6 +859,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Denver",
+    label: "America/Denver",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -760,6 +867,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Detroit",
+    label: "America/Detroit",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -767,6 +875,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Dominica",
+    label: "America/Dominica",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -774,6 +883,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Edmonton",
+    label: "America/Edmonton",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -781,6 +891,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Eirunepe",
+    label: "America/Eirunepe",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -788,6 +899,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/El_Salvador",
+    label: "America/El_Salvador",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -795,6 +907,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Ensenada",
+    label: "America/Ensenada",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -802,6 +915,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Fort_Nelson",
+    label: "America/Fort_Nelson",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -809,6 +923,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Fort_Wayne",
+    label: "America/Fort_Wayne",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -816,6 +931,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Fortaleza",
+    label: "America/Fortaleza",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -823,6 +939,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Glace_Bay",
+    label: "America/Glace_Bay",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -830,6 +947,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Godthab",
+    label: "America/Godthab",
     offset: -120,
     offsetMs: -7200000,
     formattedOffset: "UTC-02:00",
@@ -837,6 +955,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Goose_Bay",
+    label: "America/Goose_Bay",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -844,6 +963,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Grand_Turk",
+    label: "America/Grand_Turk",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -851,6 +971,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Grenada",
+    label: "America/Grenada",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -858,6 +979,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Guadeloupe",
+    label: "America/Guadeloupe",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -865,6 +987,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Guatemala",
+    label: "America/Guatemala",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -872,6 +995,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Guayaquil",
+    label: "America/Guayaquil",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -879,6 +1003,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Guyana",
+    label: "America/Guyana",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -886,6 +1011,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Halifax",
+    label: "America/Halifax",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -893,6 +1019,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Havana",
+    label: "America/Havana",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -900,6 +1027,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Hermosillo",
+    label: "America/Hermosillo",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -907,6 +1035,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Indiana/Indianapolis",
+    label: "America/Indiana/Indianapolis",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -914,6 +1043,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Indiana/Knox",
+    label: "America/Indiana/Knox",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -921,6 +1051,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Indiana/Marengo",
+    label: "America/Indiana/Marengo",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -928,6 +1059,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Indiana/Petersburg",
+    label: "America/Indiana/Petersburg",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -935,6 +1067,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Indiana/Tell_City",
+    label: "America/Indiana/Tell_City",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -942,6 +1075,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Indiana/Vevay",
+    label: "America/Indiana/Vevay",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -949,6 +1083,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Indiana/Vincennes",
+    label: "America/Indiana/Vincennes",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -956,6 +1091,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Indiana/Winamac",
+    label: "America/Indiana/Winamac",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -963,6 +1099,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Indianapolis",
+    label: "America/Indianapolis",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -970,6 +1107,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Inuvik",
+    label: "America/Inuvik",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -977,6 +1115,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Iqaluit",
+    label: "America/Iqaluit",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -984,6 +1123,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Jamaica",
+    label: "America/Jamaica",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -991,6 +1131,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Jujuy",
+    label: "America/Jujuy",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -998,6 +1139,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Juneau",
+    label: "America/Juneau",
     offset: -480,
     offsetMs: -28800000,
     formattedOffset: "UTC-08:00",
@@ -1005,6 +1147,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Kentucky/Louisville",
+    label: "America/Kentucky/Louisville",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1012,6 +1155,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Kentucky/Monticello",
+    label: "America/Kentucky/Monticello",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1019,6 +1163,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Knox_IN",
+    label: "America/Knox_IN",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -1026,6 +1171,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Kralendijk",
+    label: "America/Kralendijk",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1033,6 +1179,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/La_Paz",
+    label: "America/La_Paz",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1040,6 +1187,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Lima",
+    label: "America/Lima",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -1047,6 +1195,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Los_Angeles",
+    label: "America/Los_Angeles",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -1054,6 +1203,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Louisville",
+    label: "America/Louisville",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1061,6 +1211,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Lower_Princes",
+    label: "America/Lower_Princes",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1068,6 +1219,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Maceio",
+    label: "America/Maceio",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -1075,6 +1227,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Managua",
+    label: "America/Managua",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -1082,6 +1235,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Manaus",
+    label: "America/Manaus",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1089,6 +1243,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Marigot",
+    label: "America/Marigot",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1096,6 +1251,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Martinique",
+    label: "America/Martinique",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1103,6 +1259,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Matamoros",
+    label: "America/Matamoros",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -1110,6 +1267,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Mazatlan",
+    label: "America/Mazatlan",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -1117,6 +1275,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Mendoza",
+    label: "America/Mendoza",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -1124,6 +1283,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Menominee",
+    label: "America/Menominee",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -1131,6 +1291,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Merida",
+    label: "America/Merida",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -1138,6 +1299,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Metlakatla",
+    label: "America/Metlakatla",
     offset: -480,
     offsetMs: -28800000,
     formattedOffset: "UTC-08:00",
@@ -1145,6 +1307,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Mexico_City",
+    label: "America/Mexico_City",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -1152,6 +1315,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Miquelon",
+    label: "America/Miquelon",
     offset: -120,
     offsetMs: -7200000,
     formattedOffset: "UTC-02:00",
@@ -1159,6 +1323,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Moncton",
+    label: "America/Moncton",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -1166,6 +1331,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Monterrey",
+    label: "America/Monterrey",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -1173,6 +1339,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Montevideo",
+    label: "America/Montevideo",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -1180,6 +1347,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Montreal",
+    label: "America/Montreal",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1187,6 +1355,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Montserrat",
+    label: "America/Montserrat",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1194,6 +1363,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Nassau",
+    label: "America/Nassau",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1201,6 +1371,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/New_York",
+    label: "America/New_York",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1208,6 +1379,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Nipigon",
+    label: "America/Nipigon",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1215,6 +1387,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Nome",
+    label: "America/Nome",
     offset: -480,
     offsetMs: -28800000,
     formattedOffset: "UTC-08:00",
@@ -1222,6 +1395,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Noronha",
+    label: "America/Noronha",
     offset: -120,
     offsetMs: -7200000,
     formattedOffset: "UTC-02:00",
@@ -1229,6 +1403,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/North_Dakota/Beulah",
+    label: "America/North_Dakota/Beulah",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -1236,6 +1411,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/North_Dakota/Center",
+    label: "America/North_Dakota/Center",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -1243,6 +1419,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/North_Dakota/New_Salem",
+    label: "America/North_Dakota/New_Salem",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -1250,6 +1427,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Nuuk",
+    label: "America/Nuuk",
     offset: -120,
     offsetMs: -7200000,
     formattedOffset: "UTC-02:00",
@@ -1257,6 +1435,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Ojinaga",
+    label: "America/Ojinaga",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -1264,6 +1443,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Panama",
+    label: "America/Panama",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -1271,6 +1451,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Pangnirtung",
+    label: "America/Pangnirtung",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1278,6 +1459,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Paramaribo",
+    label: "America/Paramaribo",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -1285,6 +1467,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Phoenix",
+    label: "America/Phoenix",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -1292,6 +1475,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Port-au-Prince",
+    label: "America/Port-au-Prince",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1299,6 +1483,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Port_of_Spain",
+    label: "America/Port_of_Spain",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1306,6 +1491,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Porto_Acre",
+    label: "America/Porto_Acre",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -1313,6 +1499,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Porto_Velho",
+    label: "America/Porto_Velho",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1320,6 +1507,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Puerto_Rico",
+    label: "America/Puerto_Rico",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1327,6 +1515,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Punta_Arenas",
+    label: "America/Punta_Arenas",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -1334,6 +1523,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Rainy_River",
+    label: "America/Rainy_River",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -1341,6 +1531,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Rankin_Inlet",
+    label: "America/Rankin_Inlet",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -1348,6 +1539,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Recife",
+    label: "America/Recife",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -1355,6 +1547,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Regina",
+    label: "America/Regina",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -1362,6 +1555,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Resolute",
+    label: "America/Resolute",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -1369,6 +1563,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Rio_Branco",
+    label: "America/Rio_Branco",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -1376,6 +1571,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Rosario",
+    label: "America/Rosario",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -1383,6 +1579,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Santa_Isabel",
+    label: "America/Santa_Isabel",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -1390,6 +1587,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Santarem",
+    label: "America/Santarem",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -1397,6 +1595,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Santiago",
+    label: "America/Santiago",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -1404,6 +1603,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Santo_Domingo",
+    label: "America/Santo_Domingo",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1411,6 +1611,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Sao_Paulo",
+    label: "America/Sao_Paulo",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -1418,6 +1619,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Scoresbysund",
+    label: "America/Scoresbysund",
     offset: -120,
     offsetMs: -7200000,
     formattedOffset: "UTC-02:00",
@@ -1425,6 +1627,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Shiprock",
+    label: "America/Shiprock",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -1432,6 +1635,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Sitka",
+    label: "America/Sitka",
     offset: -480,
     offsetMs: -28800000,
     formattedOffset: "UTC-08:00",
@@ -1439,6 +1643,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/St_Barthelemy",
+    label: "America/St_Barthelemy",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1446,6 +1651,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/St_Johns",
+    label: "America/St_Johns",
     offset: -150,
     offsetMs: -9000000,
     formattedOffset: "UTC-02:30",
@@ -1453,6 +1659,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/St_Kitts",
+    label: "America/St_Kitts",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1460,6 +1667,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/St_Lucia",
+    label: "America/St_Lucia",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1467,6 +1675,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/St_Thomas",
+    label: "America/St_Thomas",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1474,6 +1683,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/St_Vincent",
+    label: "America/St_Vincent",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1481,6 +1691,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Swift_Current",
+    label: "America/Swift_Current",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -1488,6 +1699,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Tegucigalpa",
+    label: "America/Tegucigalpa",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -1495,6 +1707,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Thule",
+    label: "America/Thule",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -1502,6 +1715,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Thunder_Bay",
+    label: "America/Thunder_Bay",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1509,6 +1723,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Tijuana",
+    label: "America/Tijuana",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -1516,6 +1731,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Toronto",
+    label: "America/Toronto",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1523,6 +1739,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Tortola",
+    label: "America/Tortola",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1530,6 +1747,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Vancouver",
+    label: "America/Vancouver",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -1537,6 +1755,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Virgin",
+    label: "America/Virgin",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -1544,6 +1763,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Whitehorse",
+    label: "America/Whitehorse",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -1551,6 +1771,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Winnipeg",
+    label: "America/Winnipeg",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -1558,6 +1779,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Yakutat",
+    label: "America/Yakutat",
     offset: -480,
     offsetMs: -28800000,
     formattedOffset: "UTC-08:00",
@@ -1565,6 +1787,7 @@ export const TIME_ZONES = [
   },
   {
     key: "America/Yellowknife",
+    label: "America/Yellowknife",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -1572,6 +1795,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Antarctica/Casey",
+    label: "Antarctica/Casey",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -1579,6 +1803,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Antarctica/Davis",
+    label: "Antarctica/Davis",
     offset: 420,
     offsetMs: 25200000,
     formattedOffset: "UTC+07:00",
@@ -1586,6 +1811,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Antarctica/DumontDUrville",
+    label: "Antarctica/DumontDUrville",
     offset: 600,
     offsetMs: 36000000,
     formattedOffset: "UTC+10:00",
@@ -1593,6 +1819,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Antarctica/Macquarie",
+    label: "Antarctica/Macquarie",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -1600,6 +1827,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Antarctica/Mawson",
+    label: "Antarctica/Mawson",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -1607,6 +1835,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Antarctica/McMurdo",
+    label: "Antarctica/McMurdo",
     offset: 780,
     offsetMs: 46800000,
     formattedOffset: "UTC+13:00",
@@ -1614,6 +1843,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Antarctica/Palmer",
+    label: "Antarctica/Palmer",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -1621,6 +1851,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Antarctica/Rothera",
+    label: "Antarctica/Rothera",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -1628,6 +1859,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Antarctica/South_Pole",
+    label: "Antarctica/South_Pole",
     offset: 780,
     offsetMs: 46800000,
     formattedOffset: "UTC+13:00",
@@ -1635,6 +1867,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Antarctica/Syowa",
+    label: "Antarctica/Syowa",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -1642,6 +1875,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Antarctica/Troll",
+    label: "Antarctica/Troll",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -1649,6 +1883,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Antarctica/Vostok",
+    label: "Antarctica/Vostok",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -1656,6 +1891,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Arctic/Longyearbyen",
+    label: "Arctic/Longyearbyen",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -1663,6 +1899,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Aden",
+    label: "Asia/Aden",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -1670,6 +1907,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Almaty",
+    label: "Asia/Almaty",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -1677,6 +1915,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Amman",
+    label: "Asia/Amman",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -1684,6 +1923,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Anadyr",
+    label: "Asia/Anadyr",
     offset: 720,
     offsetMs: 43200000,
     formattedOffset: "UTC+12:00",
@@ -1691,6 +1931,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Aqtau",
+    label: "Asia/Aqtau",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -1698,6 +1939,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Aqtobe",
+    label: "Asia/Aqtobe",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -1705,6 +1947,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Ashgabat",
+    label: "Asia/Ashgabat",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -1712,6 +1955,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Ashkhabad",
+    label: "Asia/Ashkhabad",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -1719,6 +1963,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Atyrau",
+    label: "Asia/Atyrau",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -1726,6 +1971,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Baghdad",
+    label: "Asia/Baghdad",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -1733,6 +1979,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Bahrain",
+    label: "Asia/Bahrain",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -1740,6 +1987,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Baku",
+    label: "Asia/Baku",
     offset: 240,
     offsetMs: 14400000,
     formattedOffset: "UTC+04:00",
@@ -1747,6 +1995,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Bangkok",
+    label: "Asia/Bangkok",
     offset: 420,
     offsetMs: 25200000,
     formattedOffset: "UTC+07:00",
@@ -1754,6 +2003,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Barnaul",
+    label: "Asia/Barnaul",
     offset: 420,
     offsetMs: 25200000,
     formattedOffset: "UTC+07:00",
@@ -1761,6 +2011,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Beirut",
+    label: "Asia/Beirut",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -1768,6 +2019,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Bishkek",
+    label: "Asia/Bishkek",
     offset: 360,
     offsetMs: 21600000,
     formattedOffset: "UTC+06:00",
@@ -1775,6 +2027,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Brunei",
+    label: "Asia/Brunei",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -1782,6 +2035,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Calcutta",
+    label: "Asia/Calcutta",
     offset: 330,
     offsetMs: 19800000,
     formattedOffset: "UTC+05:30",
@@ -1789,6 +2043,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Chita",
+    label: "Asia/Chita",
     offset: 540,
     offsetMs: 32400000,
     formattedOffset: "UTC+09:00",
@@ -1796,6 +2051,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Choibalsan",
+    label: "Asia/Choibalsan",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -1803,6 +2059,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Chongqing",
+    label: "Asia/Chongqing",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -1810,6 +2067,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Chungking",
+    label: "Asia/Chungking",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -1817,6 +2075,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Colombo",
+    label: "Asia/Colombo",
     offset: 330,
     offsetMs: 19800000,
     formattedOffset: "UTC+05:30",
@@ -1824,6 +2083,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Dacca",
+    label: "Asia/Dacca",
     offset: 360,
     offsetMs: 21600000,
     formattedOffset: "UTC+06:00",
@@ -1831,6 +2091,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Damascus",
+    label: "Asia/Damascus",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -1838,6 +2099,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Dhaka",
+    label: "Asia/Dhaka",
     offset: 360,
     offsetMs: 21600000,
     formattedOffset: "UTC+06:00",
@@ -1845,6 +2107,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Dili",
+    label: "Asia/Dili",
     offset: 540,
     offsetMs: 32400000,
     formattedOffset: "UTC+09:00",
@@ -1852,6 +2115,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Dubai",
+    label: "Asia/Dubai",
     offset: 240,
     offsetMs: 14400000,
     formattedOffset: "UTC+04:00",
@@ -1859,6 +2123,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Dushanbe",
+    label: "Asia/Dushanbe",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -1866,6 +2131,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Famagusta",
+    label: "Asia/Famagusta",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -1873,6 +2139,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Gaza",
+    label: "Asia/Gaza",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -1880,6 +2147,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Harbin",
+    label: "Asia/Harbin",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -1887,6 +2155,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Hebron",
+    label: "Asia/Hebron",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -1894,6 +2163,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Ho_Chi_Minh",
+    label: "Asia/Ho_Chi_Minh",
     offset: 420,
     offsetMs: 25200000,
     formattedOffset: "UTC+07:00",
@@ -1901,6 +2171,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Hong_Kong",
+    label: "Asia/Hong_Kong",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -1908,6 +2179,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Hovd",
+    label: "Asia/Hovd",
     offset: 420,
     offsetMs: 25200000,
     formattedOffset: "UTC+07:00",
@@ -1915,6 +2187,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Irkutsk",
+    label: "Asia/Irkutsk",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -1922,6 +2195,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Istanbul",
+    label: "Asia/Istanbul",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -1929,6 +2203,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Jakarta",
+    label: "Asia/Jakarta",
     offset: 420,
     offsetMs: 25200000,
     formattedOffset: "UTC+07:00",
@@ -1936,6 +2211,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Jayapura",
+    label: "Asia/Jayapura",
     offset: 540,
     offsetMs: 32400000,
     formattedOffset: "UTC+09:00",
@@ -1943,6 +2219,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Jerusalem",
+    label: "Asia/Jerusalem",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -1950,6 +2227,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Kabul",
+    label: "Asia/Kabul",
     offset: 270,
     offsetMs: 16200000,
     formattedOffset: "UTC+04:30",
@@ -1957,6 +2235,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Kamchatka",
+    label: "Asia/Kamchatka",
     offset: 720,
     offsetMs: 43200000,
     formattedOffset: "UTC+12:00",
@@ -1964,6 +2243,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Karachi",
+    label: "Asia/Karachi",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -1971,6 +2251,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Kashgar",
+    label: "Asia/Kashgar",
     offset: 360,
     offsetMs: 21600000,
     formattedOffset: "UTC+06:00",
@@ -1978,6 +2259,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Kathmandu",
+    label: "Asia/Kathmandu",
     offset: 345,
     offsetMs: 20700000,
     formattedOffset: "UTC+05:45",
@@ -1985,6 +2267,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Katmandu",
+    label: "Asia/Katmandu",
     offset: 345,
     offsetMs: 20700000,
     formattedOffset: "UTC+05:45",
@@ -1992,6 +2275,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Khandyga",
+    label: "Asia/Khandyga",
     offset: 540,
     offsetMs: 32400000,
     formattedOffset: "UTC+09:00",
@@ -1999,6 +2283,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Kolkata",
+    label: "Asia/Kolkata",
     offset: 330,
     offsetMs: 19800000,
     formattedOffset: "UTC+05:30",
@@ -2006,6 +2291,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Krasnoyarsk",
+    label: "Asia/Krasnoyarsk",
     offset: 420,
     offsetMs: 25200000,
     formattedOffset: "UTC+07:00",
@@ -2013,6 +2299,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Kuala_Lumpur",
+    label: "Asia/Kuala_Lumpur",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -2020,6 +2307,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Kuching",
+    label: "Asia/Kuching",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -2027,6 +2315,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Kuwait",
+    label: "Asia/Kuwait",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -2034,6 +2323,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Macao",
+    label: "Asia/Macao",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -2041,6 +2331,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Macau",
+    label: "Asia/Macau",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -2048,6 +2339,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Magadan",
+    label: "Asia/Magadan",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -2055,6 +2347,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Makassar",
+    label: "Asia/Makassar",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -2062,6 +2355,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Manila",
+    label: "Asia/Manila",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -2069,6 +2363,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Muscat",
+    label: "Asia/Muscat",
     offset: 240,
     offsetMs: 14400000,
     formattedOffset: "UTC+04:00",
@@ -2076,6 +2371,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Nicosia",
+    label: "Asia/Nicosia",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -2083,6 +2379,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Novokuznetsk",
+    label: "Asia/Novokuznetsk",
     offset: 420,
     offsetMs: 25200000,
     formattedOffset: "UTC+07:00",
@@ -2090,6 +2387,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Novosibirsk",
+    label: "Asia/Novosibirsk",
     offset: 420,
     offsetMs: 25200000,
     formattedOffset: "UTC+07:00",
@@ -2097,6 +2395,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Omsk",
+    label: "Asia/Omsk",
     offset: 360,
     offsetMs: 21600000,
     formattedOffset: "UTC+06:00",
@@ -2104,6 +2403,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Oral",
+    label: "Asia/Oral",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -2111,6 +2411,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Phnom_Penh",
+    label: "Asia/Phnom_Penh",
     offset: 420,
     offsetMs: 25200000,
     formattedOffset: "UTC+07:00",
@@ -2118,6 +2419,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Pontianak",
+    label: "Asia/Pontianak",
     offset: 420,
     offsetMs: 25200000,
     formattedOffset: "UTC+07:00",
@@ -2125,6 +2427,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Pyongyang",
+    label: "Asia/Pyongyang",
     offset: 540,
     offsetMs: 32400000,
     formattedOffset: "UTC+09:00",
@@ -2132,6 +2435,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Qatar",
+    label: "Asia/Qatar",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -2139,6 +2443,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Qostanay",
+    label: "Asia/Qostanay",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -2146,6 +2451,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Qyzylorda",
+    label: "Asia/Qyzylorda",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -2153,6 +2459,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Rangoon",
+    label: "Asia/Rangoon",
     offset: 390,
     offsetMs: 23400000,
     formattedOffset: "UTC+06:30",
@@ -2160,6 +2467,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Riyadh",
+    label: "Asia/Riyadh",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -2167,6 +2475,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Saigon",
+    label: "Asia/Saigon",
     offset: 420,
     offsetMs: 25200000,
     formattedOffset: "UTC+07:00",
@@ -2174,6 +2483,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Sakhalin",
+    label: "Asia/Sakhalin",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -2181,6 +2491,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Samarkand",
+    label: "Asia/Samarkand",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -2188,6 +2499,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Seoul",
+    label: "Asia/Seoul",
     offset: 540,
     offsetMs: 32400000,
     formattedOffset: "UTC+09:00",
@@ -2195,6 +2507,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Shanghai",
+    label: "Asia/Shanghai",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -2202,6 +2515,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Singapore",
+    label: "Asia/Singapore",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -2209,6 +2523,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Srednekolymsk",
+    label: "Asia/Srednekolymsk",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -2216,6 +2531,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Taipei",
+    label: "Asia/Taipei",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -2223,6 +2539,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Tashkent",
+    label: "Asia/Tashkent",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -2230,6 +2547,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Tbilisi",
+    label: "Asia/Tbilisi",
     offset: 240,
     offsetMs: 14400000,
     formattedOffset: "UTC+04:00",
@@ -2237,6 +2555,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Tehran",
+    label: "Asia/Tehran",
     offset: 210,
     offsetMs: 12600000,
     formattedOffset: "UTC+03:30",
@@ -2244,6 +2563,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Tel_Aviv",
+    label: "Asia/Tel_Aviv",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -2251,6 +2571,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Thimbu",
+    label: "Asia/Thimbu",
     offset: 360,
     offsetMs: 21600000,
     formattedOffset: "UTC+06:00",
@@ -2258,6 +2579,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Thimphu",
+    label: "Asia/Thimphu",
     offset: 360,
     offsetMs: 21600000,
     formattedOffset: "UTC+06:00",
@@ -2265,6 +2587,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Tokyo",
+    label: "Asia/Tokyo",
     offset: 540,
     offsetMs: 32400000,
     formattedOffset: "UTC+09:00",
@@ -2272,6 +2595,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Tomsk",
+    label: "Asia/Tomsk",
     offset: 420,
     offsetMs: 25200000,
     formattedOffset: "UTC+07:00",
@@ -2279,6 +2603,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Ujung_Pandang",
+    label: "Asia/Ujung_Pandang",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -2286,6 +2611,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Ulaanbaatar",
+    label: "Asia/Ulaanbaatar",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -2293,6 +2619,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Ulan_Bator",
+    label: "Asia/Ulan_Bator",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -2300,6 +2627,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Urumqi",
+    label: "Asia/Urumqi",
     offset: 360,
     offsetMs: 21600000,
     formattedOffset: "UTC+06:00",
@@ -2307,6 +2635,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Ust-Nera",
+    label: "Asia/Ust-Nera",
     offset: 600,
     offsetMs: 36000000,
     formattedOffset: "UTC+10:00",
@@ -2314,6 +2643,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Vientiane",
+    label: "Asia/Vientiane",
     offset: 420,
     offsetMs: 25200000,
     formattedOffset: "UTC+07:00",
@@ -2321,6 +2651,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Vladivostok",
+    label: "Asia/Vladivostok",
     offset: 600,
     offsetMs: 36000000,
     formattedOffset: "UTC+10:00",
@@ -2328,6 +2659,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Yakutsk",
+    label: "Asia/Yakutsk",
     offset: 540,
     offsetMs: 32400000,
     formattedOffset: "UTC+09:00",
@@ -2335,6 +2667,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Yangon",
+    label: "Asia/Yangon",
     offset: 390,
     offsetMs: 23400000,
     formattedOffset: "UTC+06:30",
@@ -2342,6 +2675,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Yekaterinburg",
+    label: "Asia/Yekaterinburg",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -2349,6 +2683,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Asia/Yerevan",
+    label: "Asia/Yerevan",
     offset: 240,
     offsetMs: 14400000,
     formattedOffset: "UTC+04:00",
@@ -2356,6 +2691,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Atlantic/Azores",
+    label: "Atlantic/Azores",
     offset: -60,
     offsetMs: -3600000,
     formattedOffset: "UTC-01:00",
@@ -2363,6 +2699,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Atlantic/Bermuda",
+    label: "Atlantic/Bermuda",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -2370,6 +2707,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Atlantic/Canary",
+    label: "Atlantic/Canary",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -2377,6 +2715,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Atlantic/Cape_Verde",
+    label: "Atlantic/Cape_Verde",
     offset: -60,
     offsetMs: -3600000,
     formattedOffset: "UTC-01:00",
@@ -2384,6 +2723,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Atlantic/Faeroe",
+    label: "Atlantic/Faeroe",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -2391,6 +2731,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Atlantic/Faroe",
+    label: "Atlantic/Faroe",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -2398,6 +2739,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Atlantic/Jan_Mayen",
+    label: "Atlantic/Jan_Mayen",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -2405,6 +2747,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Atlantic/Madeira",
+    label: "Atlantic/Madeira",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -2412,6 +2755,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Atlantic/Reykjavik",
+    label: "Atlantic/Reykjavik",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -2419,6 +2763,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Atlantic/South_Georgia",
+    label: "Atlantic/South_Georgia",
     offset: -120,
     offsetMs: -7200000,
     formattedOffset: "UTC-02:00",
@@ -2426,6 +2771,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Atlantic/St_Helena",
+    label: "Atlantic/St_Helena",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -2433,6 +2779,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Atlantic/Stanley",
+    label: "Atlantic/Stanley",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -2440,6 +2787,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/ACT",
+    label: "Australia/ACT",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -2447,6 +2795,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Adelaide",
+    label: "Australia/Adelaide",
     offset: 630,
     offsetMs: 37800000,
     formattedOffset: "UTC+10:30",
@@ -2454,6 +2803,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Brisbane",
+    label: "Australia/Brisbane",
     offset: 600,
     offsetMs: 36000000,
     formattedOffset: "UTC+10:00",
@@ -2461,6 +2811,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Broken_Hill",
+    label: "Australia/Broken_Hill",
     offset: 630,
     offsetMs: 37800000,
     formattedOffset: "UTC+10:30",
@@ -2468,6 +2819,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Canberra",
+    label: "Australia/Canberra",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -2475,6 +2827,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Currie",
+    label: "Australia/Currie",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -2482,6 +2835,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Darwin",
+    label: "Australia/Darwin",
     offset: 570,
     offsetMs: 34200000,
     formattedOffset: "UTC+09:30",
@@ -2489,6 +2843,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Eucla",
+    label: "Australia/Eucla",
     offset: 525,
     offsetMs: 31500000,
     formattedOffset: "UTC+08:45",
@@ -2496,6 +2851,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Hobart",
+    label: "Australia/Hobart",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -2503,6 +2859,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/LHI",
+    label: "Australia/LHI",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -2510,6 +2867,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Lindeman",
+    label: "Australia/Lindeman",
     offset: 600,
     offsetMs: 36000000,
     formattedOffset: "UTC+10:00",
@@ -2517,6 +2875,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Lord_Howe",
+    label: "Australia/Lord_Howe",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -2524,6 +2883,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Melbourne",
+    label: "Australia/Melbourne",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -2531,6 +2891,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/NSW",
+    label: "Australia/NSW",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -2538,6 +2899,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/North",
+    label: "Australia/North",
     offset: 570,
     offsetMs: 34200000,
     formattedOffset: "UTC+09:30",
@@ -2545,6 +2907,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Perth",
+    label: "Australia/Perth",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -2552,6 +2915,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Queensland",
+    label: "Australia/Queensland",
     offset: 600,
     offsetMs: 36000000,
     formattedOffset: "UTC+10:00",
@@ -2559,6 +2923,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/South",
+    label: "Australia/South",
     offset: 630,
     offsetMs: 37800000,
     formattedOffset: "UTC+10:30",
@@ -2566,6 +2931,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Sydney",
+    label: "Australia/Sydney",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -2573,6 +2939,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Tasmania",
+    label: "Australia/Tasmania",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -2580,6 +2947,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Victoria",
+    label: "Australia/Victoria",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -2587,6 +2955,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/West",
+    label: "Australia/West",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -2594,6 +2963,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Australia/Yancowinna",
+    label: "Australia/Yancowinna",
     offset: 630,
     offsetMs: 37800000,
     formattedOffset: "UTC+10:30",
@@ -2601,6 +2971,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Brazil/Acre",
+    label: "Brazil/Acre",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -2608,6 +2979,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Brazil/DeNoronha",
+    label: "Brazil/DeNoronha",
     offset: -120,
     offsetMs: -7200000,
     formattedOffset: "UTC-02:00",
@@ -2615,6 +2987,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Brazil/East",
+    label: "Brazil/East",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -2622,6 +2995,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Brazil/West",
+    label: "Brazil/West",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -2629,6 +3003,7 @@ export const TIME_ZONES = [
   },
   {
     key: "CET",
+    label: "CET",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -2636,6 +3011,7 @@ export const TIME_ZONES = [
   },
   {
     key: "CST6CDT",
+    label: "CST6CDT",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -2643,6 +3019,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Canada/Atlantic",
+    label: "Canada/Atlantic",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -2650,6 +3027,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Canada/Central",
+    label: "Canada/Central",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -2657,6 +3035,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Canada/Eastern",
+    label: "Canada/Eastern",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -2664,6 +3043,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Canada/Mountain",
+    label: "Canada/Mountain",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -2671,6 +3051,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Canada/Newfoundland",
+    label: "Canada/Newfoundland",
     offset: -150,
     offsetMs: -9000000,
     formattedOffset: "UTC-02:30",
@@ -2678,6 +3059,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Canada/Pacific",
+    label: "Canada/Pacific",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -2685,6 +3067,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Canada/Saskatchewan",
+    label: "Canada/Saskatchewan",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -2692,6 +3075,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Canada/Yukon",
+    label: "Canada/Yukon",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -2699,6 +3083,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Chile/Continental",
+    label: "Chile/Continental",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -2706,6 +3091,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Chile/EasterIsland",
+    label: "Chile/EasterIsland",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -2713,6 +3099,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Cuba",
+    label: "Cuba",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -2720,6 +3107,7 @@ export const TIME_ZONES = [
   },
   {
     key: "EET",
+    label: "EET",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -2727,6 +3115,7 @@ export const TIME_ZONES = [
   },
   {
     key: "EST",
+    label: "EST",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -2734,6 +3123,7 @@ export const TIME_ZONES = [
   },
   {
     key: "EST5EDT",
+    label: "EST5EDT",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -2741,6 +3131,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Egypt",
+    label: "Egypt",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -2748,6 +3139,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Eire",
+    label: "Eire",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -2755,6 +3147,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT",
+    label: "Etc/GMT",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -2762,6 +3155,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT+0",
+    label: "Etc/GMT+0",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -2769,6 +3163,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT+1",
+    label: "Etc/GMT+1",
     offset: -60,
     offsetMs: -3600000,
     formattedOffset: "UTC-01:00",
@@ -2776,6 +3171,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT+10",
+    label: "Etc/GMT+10",
     offset: -600,
     offsetMs: -36000000,
     formattedOffset: "UTC-10:00",
@@ -2783,6 +3179,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT+11",
+    label: "Etc/GMT+11",
     offset: -660,
     offsetMs: -39600000,
     formattedOffset: "UTC-11:00",
@@ -2790,6 +3187,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT+12",
+    label: "Etc/GMT+12",
     offset: -720,
     offsetMs: -43200000,
     formattedOffset: "UTC-12:00",
@@ -2797,6 +3195,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT+2",
+    label: "Etc/GMT+2",
     offset: -120,
     offsetMs: -7200000,
     formattedOffset: "UTC-02:00",
@@ -2804,6 +3203,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT+3",
+    label: "Etc/GMT+3",
     offset: -180,
     offsetMs: -10800000,
     formattedOffset: "UTC-03:00",
@@ -2811,6 +3211,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT+4",
+    label: "Etc/GMT+4",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -2818,6 +3219,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT+5",
+    label: "Etc/GMT+5",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -2825,6 +3227,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT+6",
+    label: "Etc/GMT+6",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -2832,6 +3235,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT+7",
+    label: "Etc/GMT+7",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -2839,6 +3243,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT+8",
+    label: "Etc/GMT+8",
     offset: -480,
     offsetMs: -28800000,
     formattedOffset: "UTC-08:00",
@@ -2846,6 +3251,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT+9",
+    label: "Etc/GMT+9",
     offset: -540,
     offsetMs: -32400000,
     formattedOffset: "UTC-09:00",
@@ -2853,6 +3259,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT-0",
+    label: "Etc/GMT-0",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -2860,6 +3267,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT-1",
+    label: "Etc/GMT-1",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -2867,6 +3275,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT-10",
+    label: "Etc/GMT-10",
     offset: 600,
     offsetMs: 36000000,
     formattedOffset: "UTC+10:00",
@@ -2874,6 +3283,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT-11",
+    label: "Etc/GMT-11",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -2881,6 +3291,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT-12",
+    label: "Etc/GMT-12",
     offset: 720,
     offsetMs: 43200000,
     formattedOffset: "UTC+12:00",
@@ -2888,6 +3299,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT-13",
+    label: "Etc/GMT-13",
     offset: 780,
     offsetMs: 46800000,
     formattedOffset: "UTC+13:00",
@@ -2895,6 +3307,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT-14",
+    label: "Etc/GMT-14",
     offset: 840,
     offsetMs: 50400000,
     formattedOffset: "UTC+14:00",
@@ -2902,6 +3315,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT-2",
+    label: "Etc/GMT-2",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -2909,6 +3323,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT-3",
+    label: "Etc/GMT-3",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -2916,6 +3331,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT-4",
+    label: "Etc/GMT-4",
     offset: 240,
     offsetMs: 14400000,
     formattedOffset: "UTC+04:00",
@@ -2923,6 +3339,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT-5",
+    label: "Etc/GMT-5",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -2930,6 +3347,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT-6",
+    label: "Etc/GMT-6",
     offset: 360,
     offsetMs: 21600000,
     formattedOffset: "UTC+06:00",
@@ -2937,6 +3355,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT-7",
+    label: "Etc/GMT-7",
     offset: 420,
     offsetMs: 25200000,
     formattedOffset: "UTC+07:00",
@@ -2944,6 +3363,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT-8",
+    label: "Etc/GMT-8",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -2951,6 +3371,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT-9",
+    label: "Etc/GMT-9",
     offset: 540,
     offsetMs: 32400000,
     formattedOffset: "UTC+09:00",
@@ -2958,6 +3379,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/GMT0",
+    label: "Etc/GMT0",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -2965,6 +3387,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/Greenwich",
+    label: "Etc/Greenwich",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -2972,6 +3395,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/UCT",
+    label: "Etc/UCT",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -2979,6 +3403,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/UTC",
+    label: "Etc/UTC",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -2986,6 +3411,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/Universal",
+    label: "Etc/Universal",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -2993,6 +3419,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Etc/Zulu",
+    label: "Etc/Zulu",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -3000,6 +3427,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Amsterdam",
+    label: "Europe/Amsterdam",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3007,6 +3435,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Andorra",
+    label: "Europe/Andorra",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3014,6 +3443,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Astrakhan",
+    label: "Europe/Astrakhan",
     offset: 240,
     offsetMs: 14400000,
     formattedOffset: "UTC+04:00",
@@ -3021,6 +3451,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Athens",
+    label: "Europe/Athens",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3028,6 +3459,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Belfast",
+    label: "Europe/Belfast",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -3035,6 +3467,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Belgrade",
+    label: "Europe/Belgrade",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3042,6 +3475,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Berlin",
+    label: "Europe/Berlin",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3049,6 +3483,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Bratislava",
+    label: "Europe/Bratislava",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3056,6 +3491,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Brussels",
+    label: "Europe/Brussels",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3063,6 +3499,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Bucharest",
+    label: "Europe/Bucharest",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3070,6 +3507,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Budapest",
+    label: "Europe/Budapest",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3077,6 +3515,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Busingen",
+    label: "Europe/Busingen",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3084,6 +3523,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Chisinau",
+    label: "Europe/Chisinau",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3091,6 +3531,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Copenhagen",
+    label: "Europe/Copenhagen",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3098,6 +3539,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Dublin",
+    label: "Europe/Dublin",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -3105,6 +3547,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Gibraltar",
+    label: "Europe/Gibraltar",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3112,6 +3555,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Guernsey",
+    label: "Europe/Guernsey",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -3119,6 +3563,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Helsinki",
+    label: "Europe/Helsinki",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3126,6 +3571,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Isle_of_Man",
+    label: "Europe/Isle_of_Man",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -3133,6 +3579,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Istanbul",
+    label: "Europe/Istanbul",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -3140,6 +3587,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Jersey",
+    label: "Europe/Jersey",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -3147,6 +3595,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Kaliningrad",
+    label: "Europe/Kaliningrad",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3154,6 +3603,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Kiev",
+    label: "Europe/Kiev",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3161,6 +3611,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Kirov",
+    label: "Europe/Kirov",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -3168,6 +3619,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Kyiv",
+    label: "Europe/Kyiv",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3175,6 +3627,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Lisbon",
+    label: "Europe/Lisbon",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -3182,6 +3635,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Ljubljana",
+    label: "Europe/Ljubljana",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3189,6 +3643,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/London",
+    label: "Europe/London",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -3196,6 +3651,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Luxembourg",
+    label: "Europe/Luxembourg",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3203,6 +3659,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Madrid",
+    label: "Europe/Madrid",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3210,6 +3667,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Malta",
+    label: "Europe/Malta",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3217,6 +3675,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Mariehamn",
+    label: "Europe/Mariehamn",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3224,6 +3683,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Minsk",
+    label: "Europe/Minsk",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -3231,6 +3691,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Monaco",
+    label: "Europe/Monaco",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3238,6 +3699,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Moscow",
+    label: "Europe/Moscow",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -3245,6 +3707,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Nicosia",
+    label: "Europe/Nicosia",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3252,6 +3715,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Oslo",
+    label: "Europe/Oslo",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3259,6 +3723,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Paris",
+    label: "Europe/Paris",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3266,6 +3731,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Podgorica",
+    label: "Europe/Podgorica",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3273,6 +3739,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Prague",
+    label: "Europe/Prague",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3280,6 +3747,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Riga",
+    label: "Europe/Riga",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3287,6 +3755,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Rome",
+    label: "Europe/Rome",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3294,6 +3763,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Samara",
+    label: "Europe/Samara",
     offset: 240,
     offsetMs: 14400000,
     formattedOffset: "UTC+04:00",
@@ -3301,6 +3771,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/San_Marino",
+    label: "Europe/San_Marino",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3308,6 +3779,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Sarajevo",
+    label: "Europe/Sarajevo",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3315,6 +3787,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Saratov",
+    label: "Europe/Saratov",
     offset: 240,
     offsetMs: 14400000,
     formattedOffset: "UTC+04:00",
@@ -3322,6 +3795,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Simferopol",
+    label: "Europe/Simferopol",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -3329,6 +3803,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Skopje",
+    label: "Europe/Skopje",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3336,6 +3811,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Sofia",
+    label: "Europe/Sofia",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3343,6 +3819,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Stockholm",
+    label: "Europe/Stockholm",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3350,6 +3827,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Tallinn",
+    label: "Europe/Tallinn",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3357,6 +3835,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Tirane",
+    label: "Europe/Tirane",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3364,6 +3843,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Tiraspol",
+    label: "Europe/Tiraspol",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3371,6 +3851,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Ulyanovsk",
+    label: "Europe/Ulyanovsk",
     offset: 240,
     offsetMs: 14400000,
     formattedOffset: "UTC+04:00",
@@ -3378,6 +3859,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Uzhgorod",
+    label: "Europe/Uzhgorod",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3385,6 +3867,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Vaduz",
+    label: "Europe/Vaduz",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3392,6 +3875,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Vatican",
+    label: "Europe/Vatican",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3399,6 +3883,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Vienna",
+    label: "Europe/Vienna",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3406,6 +3891,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Vilnius",
+    label: "Europe/Vilnius",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3413,6 +3899,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Volgograd",
+    label: "Europe/Volgograd",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -3420,6 +3907,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Warsaw",
+    label: "Europe/Warsaw",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3427,6 +3915,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Zagreb",
+    label: "Europe/Zagreb",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3434,6 +3923,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Zaporozhye",
+    label: "Europe/Zaporozhye",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3441,6 +3931,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Europe/Zurich",
+    label: "Europe/Zurich",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3448,6 +3939,7 @@ export const TIME_ZONES = [
   },
   {
     key: "GB",
+    label: "GB",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -3455,6 +3947,7 @@ export const TIME_ZONES = [
   },
   {
     key: "GB-Eire",
+    label: "GB-Eire",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -3462,6 +3955,7 @@ export const TIME_ZONES = [
   },
   {
     key: "GMT",
+    label: "GMT",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -3469,6 +3963,7 @@ export const TIME_ZONES = [
   },
   {
     key: "GMT+0",
+    label: "GMT+0",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -3476,6 +3971,7 @@ export const TIME_ZONES = [
   },
   {
     key: "GMT-0",
+    label: "GMT-0",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -3483,6 +3979,7 @@ export const TIME_ZONES = [
   },
   {
     key: "GMT0",
+    label: "GMT0",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -3490,6 +3987,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Greenwich",
+    label: "Greenwich",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -3497,6 +3995,7 @@ export const TIME_ZONES = [
   },
   {
     key: "HST",
+    label: "HST",
     offset: -600,
     offsetMs: -36000000,
     formattedOffset: "UTC-10:00",
@@ -3504,6 +4003,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Hongkong",
+    label: "Hongkong",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -3511,6 +4011,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Iceland",
+    label: "Iceland",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -3518,6 +4019,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Indian/Antananarivo",
+    label: "Indian/Antananarivo",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -3525,6 +4027,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Indian/Chagos",
+    label: "Indian/Chagos",
     offset: 360,
     offsetMs: 21600000,
     formattedOffset: "UTC+06:00",
@@ -3532,6 +4035,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Indian/Christmas",
+    label: "Indian/Christmas",
     offset: 420,
     offsetMs: 25200000,
     formattedOffset: "UTC+07:00",
@@ -3539,6 +4043,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Indian/Cocos",
+    label: "Indian/Cocos",
     offset: 390,
     offsetMs: 23400000,
     formattedOffset: "UTC+06:30",
@@ -3546,6 +4051,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Indian/Comoro",
+    label: "Indian/Comoro",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -3553,6 +4059,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Indian/Kerguelen",
+    label: "Indian/Kerguelen",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -3560,6 +4067,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Indian/Mahe",
+    label: "Indian/Mahe",
     offset: 240,
     offsetMs: 14400000,
     formattedOffset: "UTC+04:00",
@@ -3567,6 +4075,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Indian/Maldives",
+    label: "Indian/Maldives",
     offset: 300,
     offsetMs: 18000000,
     formattedOffset: "UTC+05:00",
@@ -3574,6 +4083,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Indian/Mauritius",
+    label: "Indian/Mauritius",
     offset: 240,
     offsetMs: 14400000,
     formattedOffset: "UTC+04:00",
@@ -3581,6 +4091,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Indian/Mayotte",
+    label: "Indian/Mayotte",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -3588,6 +4099,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Indian/Reunion",
+    label: "Indian/Reunion",
     offset: 240,
     offsetMs: 14400000,
     formattedOffset: "UTC+04:00",
@@ -3595,6 +4107,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Iran",
+    label: "Iran",
     offset: 210,
     offsetMs: 12600000,
     formattedOffset: "UTC+03:30",
@@ -3602,6 +4115,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Israel",
+    label: "Israel",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3609,6 +4123,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Jamaica",
+    label: "Jamaica",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -3616,6 +4131,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Japan",
+    label: "Japan",
     offset: 540,
     offsetMs: 32400000,
     formattedOffset: "UTC+09:00",
@@ -3623,6 +4139,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Kwajalein",
+    label: "Kwajalein",
     offset: 720,
     offsetMs: 43200000,
     formattedOffset: "UTC+12:00",
@@ -3630,6 +4147,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Libya",
+    label: "Libya",
     offset: 120,
     offsetMs: 7200000,
     formattedOffset: "UTC+02:00",
@@ -3637,6 +4155,7 @@ export const TIME_ZONES = [
   },
   {
     key: "MET",
+    label: "MET",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -3644,6 +4163,7 @@ export const TIME_ZONES = [
   },
   {
     key: "MST",
+    label: "MST",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -3651,6 +4171,7 @@ export const TIME_ZONES = [
   },
   {
     key: "MST7MDT",
+    label: "MST7MDT",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -3658,6 +4179,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Mexico/BajaNorte",
+    label: "Mexico/BajaNorte",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -3665,6 +4187,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Mexico/BajaSur",
+    label: "Mexico/BajaSur",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -3672,6 +4195,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Mexico/General",
+    label: "Mexico/General",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -3679,6 +4203,7 @@ export const TIME_ZONES = [
   },
   {
     key: "NZ",
+    label: "NZ",
     offset: 780,
     offsetMs: 46800000,
     formattedOffset: "UTC+13:00",
@@ -3686,6 +4211,7 @@ export const TIME_ZONES = [
   },
   {
     key: "NZ-CHAT",
+    label: "NZ-CHAT",
     offset: 825,
     offsetMs: 49500000,
     formattedOffset: "UTC+13:45",
@@ -3693,6 +4219,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Navajo",
+    label: "Navajo",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -3700,6 +4227,7 @@ export const TIME_ZONES = [
   },
   {
     key: "PRC",
+    label: "PRC",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -3707,6 +4235,7 @@ export const TIME_ZONES = [
   },
   {
     key: "PST8PDT",
+    label: "PST8PDT",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -3714,6 +4243,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Apia",
+    label: "Pacific/Apia",
     offset: 780,
     offsetMs: 46800000,
     formattedOffset: "UTC+13:00",
@@ -3721,6 +4251,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Auckland",
+    label: "Pacific/Auckland",
     offset: 780,
     offsetMs: 46800000,
     formattedOffset: "UTC+13:00",
@@ -3728,6 +4259,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Bougainville",
+    label: "Pacific/Bougainville",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -3735,6 +4267,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Chatham",
+    label: "Pacific/Chatham",
     offset: 825,
     offsetMs: 49500000,
     formattedOffset: "UTC+13:45",
@@ -3742,6 +4275,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Chuuk",
+    label: "Pacific/Chuuk",
     offset: 600,
     offsetMs: 36000000,
     formattedOffset: "UTC+10:00",
@@ -3749,6 +4283,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Easter",
+    label: "Pacific/Easter",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -3756,6 +4291,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Efate",
+    label: "Pacific/Efate",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -3763,6 +4299,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Enderbury",
+    label: "Pacific/Enderbury",
     offset: 780,
     offsetMs: 46800000,
     formattedOffset: "UTC+13:00",
@@ -3770,6 +4307,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Fakaofo",
+    label: "Pacific/Fakaofo",
     offset: 780,
     offsetMs: 46800000,
     formattedOffset: "UTC+13:00",
@@ -3777,6 +4315,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Fiji",
+    label: "Pacific/Fiji",
     offset: 720,
     offsetMs: 43200000,
     formattedOffset: "UTC+12:00",
@@ -3784,6 +4323,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Funafuti",
+    label: "Pacific/Funafuti",
     offset: 720,
     offsetMs: 43200000,
     formattedOffset: "UTC+12:00",
@@ -3791,6 +4331,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Galapagos",
+    label: "Pacific/Galapagos",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -3798,6 +4339,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Gambier",
+    label: "Pacific/Gambier",
     offset: -540,
     offsetMs: -32400000,
     formattedOffset: "UTC-09:00",
@@ -3805,6 +4347,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Guadalcanal",
+    label: "Pacific/Guadalcanal",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -3812,6 +4355,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Guam",
+    label: "Pacific/Guam",
     offset: 600,
     offsetMs: 36000000,
     formattedOffset: "UTC+10:00",
@@ -3819,6 +4363,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Honolulu",
+    label: "Pacific/Honolulu",
     offset: -600,
     offsetMs: -36000000,
     formattedOffset: "UTC-10:00",
@@ -3826,6 +4371,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Johnston",
+    label: "Pacific/Johnston",
     offset: -600,
     offsetMs: -36000000,
     formattedOffset: "UTC-10:00",
@@ -3833,6 +4379,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Kanton",
+    label: "Pacific/Kanton",
     offset: 780,
     offsetMs: 46800000,
     formattedOffset: "UTC+13:00",
@@ -3840,6 +4387,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Kiritimati",
+    label: "Pacific/Kiritimati",
     offset: 840,
     offsetMs: 50400000,
     formattedOffset: "UTC+14:00",
@@ -3847,6 +4395,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Kosrae",
+    label: "Pacific/Kosrae",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -3854,6 +4403,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Kwajalein",
+    label: "Pacific/Kwajalein",
     offset: 720,
     offsetMs: 43200000,
     formattedOffset: "UTC+12:00",
@@ -3861,6 +4411,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Majuro",
+    label: "Pacific/Majuro",
     offset: 720,
     offsetMs: 43200000,
     formattedOffset: "UTC+12:00",
@@ -3868,6 +4419,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Marquesas",
+    label: "Pacific/Marquesas",
     offset: -570,
     offsetMs: -34200000,
     formattedOffset: "UTC-09:30",
@@ -3875,6 +4427,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Midway",
+    label: "Pacific/Midway",
     offset: -660,
     offsetMs: -39600000,
     formattedOffset: "UTC-11:00",
@@ -3882,6 +4435,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Nauru",
+    label: "Pacific/Nauru",
     offset: 720,
     offsetMs: 43200000,
     formattedOffset: "UTC+12:00",
@@ -3889,6 +4443,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Niue",
+    label: "Pacific/Niue",
     offset: -660,
     offsetMs: -39600000,
     formattedOffset: "UTC-11:00",
@@ -3896,6 +4451,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Norfolk",
+    label: "Pacific/Norfolk",
     offset: 720,
     offsetMs: 43200000,
     formattedOffset: "UTC+12:00",
@@ -3903,6 +4459,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Noumea",
+    label: "Pacific/Noumea",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -3910,6 +4467,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Pago_Pago",
+    label: "Pacific/Pago_Pago",
     offset: -660,
     offsetMs: -39600000,
     formattedOffset: "UTC-11:00",
@@ -3917,6 +4475,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Palau",
+    label: "Pacific/Palau",
     offset: 540,
     offsetMs: 32400000,
     formattedOffset: "UTC+09:00",
@@ -3924,6 +4483,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Pitcairn",
+    label: "Pacific/Pitcairn",
     offset: -480,
     offsetMs: -28800000,
     formattedOffset: "UTC-08:00",
@@ -3931,6 +4491,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Pohnpei",
+    label: "Pacific/Pohnpei",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -3938,6 +4499,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Ponape",
+    label: "Pacific/Ponape",
     offset: 660,
     offsetMs: 39600000,
     formattedOffset: "UTC+11:00",
@@ -3945,6 +4507,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Port_Moresby",
+    label: "Pacific/Port_Moresby",
     offset: 600,
     offsetMs: 36000000,
     formattedOffset: "UTC+10:00",
@@ -3952,6 +4515,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Rarotonga",
+    label: "Pacific/Rarotonga",
     offset: -600,
     offsetMs: -36000000,
     formattedOffset: "UTC-10:00",
@@ -3959,6 +4523,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Saipan",
+    label: "Pacific/Saipan",
     offset: 600,
     offsetMs: 36000000,
     formattedOffset: "UTC+10:00",
@@ -3966,6 +4531,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Samoa",
+    label: "Pacific/Samoa",
     offset: -660,
     offsetMs: -39600000,
     formattedOffset: "UTC-11:00",
@@ -3973,6 +4539,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Tahiti",
+    label: "Pacific/Tahiti",
     offset: -600,
     offsetMs: -36000000,
     formattedOffset: "UTC-10:00",
@@ -3980,6 +4547,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Tarawa",
+    label: "Pacific/Tarawa",
     offset: 720,
     offsetMs: 43200000,
     formattedOffset: "UTC+12:00",
@@ -3987,6 +4555,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Tongatapu",
+    label: "Pacific/Tongatapu",
     offset: 780,
     offsetMs: 46800000,
     formattedOffset: "UTC+13:00",
@@ -3994,6 +4563,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Truk",
+    label: "Pacific/Truk",
     offset: 600,
     offsetMs: 36000000,
     formattedOffset: "UTC+10:00",
@@ -4001,6 +4571,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Wake",
+    label: "Pacific/Wake",
     offset: 720,
     offsetMs: 43200000,
     formattedOffset: "UTC+12:00",
@@ -4008,6 +4579,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Wallis",
+    label: "Pacific/Wallis",
     offset: 720,
     offsetMs: 43200000,
     formattedOffset: "UTC+12:00",
@@ -4015,6 +4587,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Pacific/Yap",
+    label: "Pacific/Yap",
     offset: 600,
     offsetMs: 36000000,
     formattedOffset: "UTC+10:00",
@@ -4022,6 +4595,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Poland",
+    label: "Poland",
     offset: 60,
     offsetMs: 3600000,
     formattedOffset: "UTC+01:00",
@@ -4029,6 +4603,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Portugal",
+    label: "Portugal",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -4036,6 +4611,7 @@ export const TIME_ZONES = [
   },
   {
     key: "ROC",
+    label: "ROC",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -4043,6 +4619,7 @@ export const TIME_ZONES = [
   },
   {
     key: "ROK",
+    label: "ROK",
     offset: 540,
     offsetMs: 32400000,
     formattedOffset: "UTC+09:00",
@@ -4050,6 +4627,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Singapore",
+    label: "Singapore",
     offset: 480,
     offsetMs: 28800000,
     formattedOffset: "UTC+08:00",
@@ -4057,6 +4635,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Turkey",
+    label: "Turkey",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -4064,6 +4643,7 @@ export const TIME_ZONES = [
   },
   {
     key: "UCT",
+    label: "UCT",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -4071,6 +4651,7 @@ export const TIME_ZONES = [
   },
   {
     key: "US/Alaska",
+    label: "US/Alaska",
     offset: -480,
     offsetMs: -28800000,
     formattedOffset: "UTC-08:00",
@@ -4078,6 +4659,7 @@ export const TIME_ZONES = [
   },
   {
     key: "US/Aleutian",
+    label: "US/Aleutian",
     offset: -540,
     offsetMs: -32400000,
     formattedOffset: "UTC-09:00",
@@ -4085,6 +4667,7 @@ export const TIME_ZONES = [
   },
   {
     key: "US/Arizona",
+    label: "US/Arizona",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -4092,6 +4675,7 @@ export const TIME_ZONES = [
   },
   {
     key: "US/Central",
+    label: "US/Central",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -4099,6 +4683,7 @@ export const TIME_ZONES = [
   },
   {
     key: "US/East-Indiana",
+    label: "US/East-Indiana",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -4106,6 +4691,7 @@ export const TIME_ZONES = [
   },
   {
     key: "US/Eastern",
+    label: "US/Eastern",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -4113,6 +4699,7 @@ export const TIME_ZONES = [
   },
   {
     key: "US/Hawaii",
+    label: "US/Hawaii",
     offset: -600,
     offsetMs: -36000000,
     formattedOffset: "UTC-10:00",
@@ -4120,6 +4707,7 @@ export const TIME_ZONES = [
   },
   {
     key: "US/Indiana-Starke",
+    label: "US/Indiana-Starke",
     offset: -300,
     offsetMs: -18000000,
     formattedOffset: "UTC-05:00",
@@ -4127,6 +4715,7 @@ export const TIME_ZONES = [
   },
   {
     key: "US/Michigan",
+    label: "US/Michigan",
     offset: -240,
     offsetMs: -14400000,
     formattedOffset: "UTC-04:00",
@@ -4134,6 +4723,7 @@ export const TIME_ZONES = [
   },
   {
     key: "US/Mountain",
+    label: "US/Mountain",
     offset: -360,
     offsetMs: -21600000,
     formattedOffset: "UTC-06:00",
@@ -4141,6 +4731,7 @@ export const TIME_ZONES = [
   },
   {
     key: "US/Pacific",
+    label: "US/Pacific",
     offset: -420,
     offsetMs: -25200000,
     formattedOffset: "UTC-07:00",
@@ -4148,6 +4739,7 @@ export const TIME_ZONES = [
   },
   {
     key: "US/Samoa",
+    label: "US/Samoa",
     offset: -660,
     offsetMs: -39600000,
     formattedOffset: "UTC-11:00",
@@ -4155,6 +4747,7 @@ export const TIME_ZONES = [
   },
   {
     key: "UTC",
+    label: "UTC",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -4162,6 +4755,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Universal",
+    label: "Universal",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -4169,6 +4763,7 @@ export const TIME_ZONES = [
   },
   {
     key: "W-SU",
+    label: "W-SU",
     offset: 180,
     offsetMs: 10800000,
     formattedOffset: "UTC+03:00",
@@ -4176,6 +4771,7 @@ export const TIME_ZONES = [
   },
   {
     key: "WET",
+    label: "WET",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",
@@ -4183,6 +4779,7 @@ export const TIME_ZONES = [
   },
   {
     key: "Zulu",
+    label: "Zulu",
     offset: 0,
     offsetMs: 0,
     formattedOffset: "UTC+00:00",

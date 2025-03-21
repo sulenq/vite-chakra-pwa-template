@@ -148,7 +148,7 @@ const TimeZone = () => {
           w={"full"}
         >
           <Text fontWeight="bold" truncate>
-            {item.key}
+            {item.label}
           </Text>
           <Text color="fg.subtle">{item.formattedOffset}</Text>
           <Text color="fg.subtle" ml={-1}>
