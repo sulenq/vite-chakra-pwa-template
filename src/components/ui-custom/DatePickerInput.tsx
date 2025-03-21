@@ -284,8 +284,6 @@ const DatePickerInput = ({
     }
   }
 
-  console.log(selectedDates, inputValue);
-
   return (
     <>
       <Tooltip content={inputValue ? selectedRenderValue : finalPlaceholder}>
