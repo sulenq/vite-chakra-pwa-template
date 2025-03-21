@@ -67,7 +67,7 @@ const DateTimePicker = ({
       setTime(undefined);
     }
 
-    if (date && !time) {
+    if (date && !empty(date) && !time) {
       setTime("00:00:00");
     }
   }, [date]);
