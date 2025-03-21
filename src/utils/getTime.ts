@@ -21,9 +21,11 @@ export const getSeconds = (time: string | undefined | null): number => {
 
 // Make Time
 export const makeTime = (
-  input: Date | string | number,
+  input: Date | string | number | undefined,
   format: "HH:mm:ss" | "HH:mm" | "hh:mm A" = "HH:mm:ss"
 ): string => {
+  if (!input) return "";
+
   const date =
     typeof input === "string" || typeof input === "number"
       ? new Date(input)
