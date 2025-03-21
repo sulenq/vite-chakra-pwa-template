@@ -1,15 +1,15 @@
-import { Type__DisclosureSizes } from "@/constant/types";
-import autoTimeZone from "@/utils/autoTimeZone";
-import empty from "@/utils/empty";
-import { makeTime } from "@/utils/getTime";
-import makeDateTime from "@/utils/makeDateTime";
-import resetDateTime from "@/utils/resetDateTime";
-import userTimeZone from "@/utils/userTimeZone";
 import { Group, SimpleGrid } from "@chakra-ui/react";
-import moment from "moment-timezone";
 import { useEffect, useState } from "react";
 import DatePickerInput from "./DatePickerInput";
 import TimePickerInput from "./TimePickerInput";
+import { Type__DisclosureSizes } from "@/constant/types";
+import makeDateTime from "@/utils/makeDateTime";
+import moment from "moment-timezone";
+import userTimeZone from "@/utils/userTimeZone";
+import autoTimeZone from "@/utils/autoTimeZone";
+import { makeTime } from "@/utils/getTime";
+import resetDateTime from "@/utils/resetDateTime";
+import empty from "@/utils/empty";
 
 interface Props {
   id?: string;
@@ -62,6 +62,10 @@ const DateTimePicker = ({
   useEffect(() => {
     if (empty(date)) {
       setTime(undefined);
+    }
+
+    if (date && !time) {
+      setTime("00:00:00");
     }
   }, [date]);
 
