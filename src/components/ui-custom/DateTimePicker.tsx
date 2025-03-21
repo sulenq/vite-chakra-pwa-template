@@ -54,13 +54,13 @@ const DateTimePicker = ({
 
   // Handle onchange all
   useEffect(() => {
-    if (date && time) {
+    if (date && !empty(date) && time) {
       const dateTime = new Date(
         makeDateTime(date[0], time).getTime() - userOffsetInMs + autoOffsetInMs
       );
       onChangeSetter?.(dateTime.toISOString());
     }
-  }, [time]);
+  }, [date, time]);
 
   useEffect(() => {
     if (empty(date)) {
