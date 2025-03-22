@@ -1,42 +1,44 @@
 import * as yup from "yup";
 import JSZip from "jszip";
 
-type FileValidation = (
-  maxSizeMB?: number,
-  allowedExtensions?: string[]
-) => yup.MixedSchema;
+type FileValidationParams = {
+  maxSizeMB?: number;
+  allowedExtensions?: string[];
+  min?: number;
+};
 
-const fileValidation: FileValidation = (maxSizeMB = 10, allowedExtensions) =>
+const fileValidation = ({
+  maxSizeMB = 10,
+  allowedExtensions,
+  min = 0,
+}: FileValidationParams = {}): yup.MixedSchema =>
   yup
-    .mixed()
+    .mixed<File[]>()
+    .test("fileRequired", "File wajib diunggah", (value) => {
+      if (min > 0) {
+        return Array.isArray(value) && value.length >= min;
+      }
+      return true; // not required if `min = 0`
+    })
     .test("fileType", "Harus berupa file", (value) => {
-      // Pastikan 'value' adalah array dari File
-      return (
-        Array.isArray(value) && value.every((item) => item instanceof File)
-      );
+      if (!Array.isArray(value) || value.length === 0) return true;
+      return value.every((item) => item instanceof File);
     })
     .test("fileSize", "Ukuran file terlalu besar", (value) => {
-      if (maxSizeMB && value) {
+      if (!Array.isArray(value) || value.length === 0) return true;
+      if (maxSizeMB) {
         const maxSizeBytes = maxSizeMB * 1024 * 1024;
-        // Pastikan 'value' adalah array dari File
-        return (
-          Array.isArray(value) &&
-          value.every((file) => file.size <= maxSizeBytes)
-        );
+        return value.every((file) => file.size <= maxSizeBytes);
       }
       return true;
     })
     .test("fileExtension", "Ekstensi file tidak didukung", async (value) => {
-      if (allowedExtensions && value) {
-        // Pastikan 'value' adalah array dari File
-        return (
-          Array.isArray(value) &&
-          value.every((file) => {
-            const fileName = file.name;
-            const fileExtension = fileName.split(".").pop()?.toLowerCase();
-            return allowedExtensions.includes(fileExtension || "");
-          })
-        );
+      if (!Array.isArray(value) || value.length === 0) return true;
+      if (allowedExtensions) {
+        return value.every((file) => {
+          const fileExtension = file.name.split(".").pop()?.toLowerCase();
+          return allowedExtensions.includes(fileExtension || "");
+        });
       }
       return true;
     })
@@ -44,23 +46,23 @@ const fileValidation: FileValidation = (maxSizeMB = 10, allowedExtensions) =>
       "zipContents",
       "Isi .zip file tidak sesuai dengan kriteria",
       async (value) => {
-        if (Array.isArray(value)) {
-          for (const file of value) {
-            if (file.name.endsWith(".zip")) {
+        if (!Array.isArray(value) || value.length === 0) return true;
+        for (const file of value) {
+          if (file.name.endsWith(".zip")) {
+            try {
               const zip = await JSZip.loadAsync(file);
               const filesInZip = Object.keys(zip.files);
-              // Periksa isi ZIP, misalnya memastikan ZIP tidak kosong atau mengandung file yang tidak diinginkan
-              if (filesInZip.length === 0) {
-                return false; // ZIP kosong
-              }
-              // Contoh validasi isi ZIP, misalnya memastikan hanya ada file tertentu
+
+              if (filesInZip.length === 0) return false; // ZIP empty
+
               const hasValidFile = filesInZip.some((fileName) => {
                 const fileExtension = fileName.split(".").pop()?.toLowerCase();
                 return allowedExtensions?.includes(fileExtension || "");
               });
-              if (!hasValidFile) {
-                return false; // Tidak ada file yang sesuai dalam ZIP
-              }
+
+              if (!hasValidFile) return false; // no match file in ZIP
+            } catch (error) {
+              return false; // ZIP corrupt
             }
           }
         }
