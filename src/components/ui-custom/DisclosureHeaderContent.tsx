@@ -25,7 +25,7 @@ const DisclosureHeaderContent = ({
   }
 
   return (
-    <HStack justify={"space-between"}>
+    <HStack justify={"space-between"} mb={1}>
       {content ? (
         content
       ) : (
