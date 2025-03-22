@@ -1,4 +1,4 @@
-import { Group, SimpleGrid } from "@chakra-ui/react";
+import { Group, SimpleGrid, useFieldContext } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import DatePickerInput from "./DatePickerInput";
 import TimePickerInput from "./TimePickerInput";
@@ -10,6 +10,7 @@ import autoTimeZone from "@/utils/autoTimeZone";
 import { makeTime } from "@/utils/getTime";
 import resetDateTime from "@/utils/resetDateTime";
 import empty from "@/utils/empty";
+import { useThemeConfig } from "@/context/useThemeConfig";
 
 interface Props {
   id?: string;
@@ -25,6 +26,10 @@ const DateTimePicker = ({
   inputValue,
   size,
 }: Props) => {
+  // Contexts
+  const { themeConfig } = useThemeConfig();
+  const fc = useFieldContext();
+
   // States, Refs
   const userTz = userTimeZone();
   const autoTz = autoTimeZone();
@@ -73,7 +78,12 @@ const DateTimePicker = ({
   }, [date]);
 
   return (
-    <SimpleGrid columns={2} w={"full"}>
+    <SimpleGrid
+      columns={2}
+      w={"full"}
+      border={fc.invalid ? "1px solid {colors.border.error}" : ""}
+      borderRadius={themeConfig.radii.component}
+    >
       <Group attached mr={"-1px"}>
         <DatePickerInput
           id={`${id}-date-picker`}
@@ -83,6 +93,8 @@ const DateTimePicker = ({
           }}
           inputValue={date}
           size={size}
+          invalid={false}
+          borderColor={fc.invalid ? "transparent" : "border.muted"}
         />
 
         <TimePickerInput
@@ -95,6 +107,9 @@ const DateTimePicker = ({
           size={size}
           disabled={!!empty(date)}
           nonNullable
+          invalid={false}
+          borderColor={fc.invalid ? "transparent" : "border.muted"}
+          borderLeft={"1px solid {colors.border.muted} !important"}
         />
       </Group>
     </SimpleGrid>
