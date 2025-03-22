@@ -32,7 +32,7 @@ const DisclosureHeaderContent = ({
         <Text
           fontSize={"16px"}
           fontWeight={"semibold"}
-          ml={!prefix ? [-1, null, 1] : ""}
+          ml={!prefix ? [-1, null, 0] : ""}
         >
           {title}
         </Text>
@@ -48,7 +48,7 @@ const DisclosureHeaderContent = ({
                   top={"12px"}
                   right={"14px"}
                   onClick={handleBack}
-                  mt={"2px"}
+                  mt={"-5px"}
                   mr={"-6px"}
                 />
               )}
@@ -67,8 +67,8 @@ const DisclosureHeaderContent = ({
           {!prefix && (
             <DisclosureCloseTrigger
               borderRadius={"full"}
-              top={"12px"}
-              right={"14px"}
+              top={["12px", null, "9px"]}
+              right={["14px", null, "10px"]}
               onClick={handleBack}
             />
           )}

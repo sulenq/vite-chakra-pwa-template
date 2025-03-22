@@ -124,7 +124,7 @@ const DisclosureHeader = ({ children, ...props }: DisclosureHeaderProps) => {
       {children}
     </DrawerHeader>
   ) : (
-    <DialogHeader p={4} {...(props as DialogHeaderProps)}>
+    <DialogHeader px={4} py={3} {...(props as DialogHeaderProps)}>
       {children}
     </DialogHeader>
   );
@@ -149,9 +149,9 @@ const DisclosureBody = ({ children, ...props }: DisclosureBodyProps) => {
     </DrawerBody>
   ) : (
     <DialogBody
-      px={"5"}
+      px={4}
       pt={"0 !important"}
-      pb={`${props.pb ?? 5} !important`}
+      pb={`${props.pb ?? 4} !important`}
       className={finalClassName}
       overflowX={"clip"}
       {...(props as DialogBodyProps)}
