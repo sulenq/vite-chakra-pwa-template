@@ -124,7 +124,7 @@ const DisclosureHeader = ({ children, ...props }: DisclosureHeaderProps) => {
       {children}
     </DrawerHeader>
   ) : (
-    <DialogHeader px={4} py={3} {...(props as DialogHeaderProps)}>
+    <DialogHeader p={4} {...(props as DialogHeaderProps)}>
       {children}
     </DialogHeader>
   );

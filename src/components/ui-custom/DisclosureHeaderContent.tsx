@@ -48,7 +48,7 @@ const DisclosureHeaderContent = ({
                   top={"12px"}
                   right={"14px"}
                   onClick={handleBack}
-                  mt={"-5px"}
+                  mt={"-2px"}
                   mr={"-6px"}
                 />
               )}
@@ -56,7 +56,7 @@ const DisclosureHeaderContent = ({
               {prefix === "drawer" && (
                 <DrawerCloseTrigger
                   borderRadius={"full"}
-                  top={"12px"}
+                  top={3}
                   right={"14px"}
                   onClick={handleBack}
                 />
@@ -67,7 +67,7 @@ const DisclosureHeaderContent = ({
           {!prefix && (
             <DisclosureCloseTrigger
               borderRadius={"full"}
-              top={["12px", null, "9px"]}
+              top={3}
               right={["14px", null, "10px"]}
               onClick={handleBack}
             />
