@@ -479,7 +479,13 @@ const TimePickerInput = ({
             <BButton
               variant={"outline"}
               onClick={() => {
-                if (selected && hours === 0 && minutes === 0 && seconds === 0) {
+                if (
+                  !nonNullable &&
+                  selected &&
+                  hours === 0 &&
+                  minutes === 0 &&
+                  seconds === 0
+                ) {
                   setSelected(undefined);
                   setHours(0);
                   setMinutes(0);
@@ -492,7 +498,11 @@ const TimePickerInput = ({
                 }
               }}
             >
-              {selected && hours === 0 && minutes === 0 && seconds === 0
+              {selected &&
+              hours === 0 &&
+              minutes === 0 &&
+              seconds === 0 &&
+              !nonNullable
                 ? "Clear"
                 : "Reset"}
             </BButton>

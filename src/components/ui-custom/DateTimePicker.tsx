@@ -94,6 +94,7 @@ const DateTimePicker = ({
           inputValue={time}
           size={size}
           disabled={!!empty(date)}
+          nonNullable
         />
       </Group>
     </SimpleGrid>
