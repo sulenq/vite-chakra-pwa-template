@@ -3,9 +3,12 @@ import { Type__DateFormat, Type__DateVariant } from "@/constant/types";
 import { WEEKDAYS_0_BASED } from "@/constant/weekdays";
 import moment from "moment-timezone";
 import userTimeZone from "./userTimeZone";
+import dateObject from "./dateObject";
+import getTzOffsetMs from "./getTzOffsetMs";
+import autoTimeZone from "./autoTimeZone";
 
 const formatDate = (
-  date?: Date,
+  date?: Date | string | undefined,
   options: {
     variant?: Type__DateVariant;
     withTime?: boolean;
@@ -15,11 +18,19 @@ const formatDate = (
 ) => {
   if (!date) return "";
 
+  let finalDate;
+  const autoTzOffset = getTzOffsetMs(autoTimeZone().key);
+  if (!dateObject(date)) {
+    finalDate = new Date(new Date(date).getTime() - autoTzOffset);
+  } else {
+    finalDate = date;
+  }
+
   const lang = localStorage.getItem("lang") || "id";
   const dateFormat =
     options.prefixDateFormat || localStorage.getItem("dateFormat") || "dmy";
   const timeZoneKey = options.prefixTimeZoneKey || userTimeZone().key;
-  const localDate = moment.tz(date, timeZoneKey);
+  const localDate = moment.tz(finalDate, timeZoneKey);
   const day = localDate.date();
   const month = localDate.month();
   const year = localDate.year();
