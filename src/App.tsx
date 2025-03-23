@@ -12,6 +12,7 @@ import useLang from "./context/useLang";
 import { useThemeConfig } from "./context/useThemeConfig";
 import useADM from "./context/useADM";
 import { useColorMode } from "./components/ui/color-mode";
+import useScrollEffect from "./hooks/useScrollEffect";
 
 const EndpointWrapper = ({ children }: { children: React.ReactNode }) => {
   // Contexts
