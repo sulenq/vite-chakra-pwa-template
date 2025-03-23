@@ -23,7 +23,7 @@ export const PRESET_DONUT_CHART_TOOLTIP = {
 
 export const PRESET_LINE_CHART = {
   type: "monotone" as CurveType,
-  stroke: 2,
+  strokeWidth: 2,
 };
 
 export const PRESET_DOUGHNUT_CHART = {
