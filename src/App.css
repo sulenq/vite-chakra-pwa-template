@@ -253,25 +253,25 @@ button {
 .noScroll::-webkit-scrollbar {
   display: none;
 }
+/* WebKit (Chrome, Edge, Safari) */
 .scrollX::-webkit-scrollbar {
   height: 6px;
+}
+.scrollY::-webkit-scrollbar {
+  width: 6px;
 }
 .scrollX::-webkit-scrollbar-corner,
 .scrollY::-webkit-scrollbar-corner {
   background: transparent !important;
 }
-.scrollY::-webkit-scrollbar {
-  width: 6px;
-}
 .scrollX::-webkit-scrollbar-thumb,
 .scrollY::-webkit-scrollbar-thumb {
-  background-color: var(--d2);
-  /* border-radius: 100px; */
+  background-color: transparent;
+  transition: background-color 0.3s;
 }
-.scrollXkotak::-webkit-scrollbar-thumb,
-.scrollYkotak::-webkit-scrollbar-thumb {
+.scrollX.scrolling::-webkit-scrollbar-thumb,
+.scrollY.scrolling::-webkit-scrollbar-thumb {
   background-color: var(--d2);
-  border-radius: 0px !important;
 }
 .scrollX::-webkit-scrollbar-thumb:hover,
 .scrollY::-webkit-scrollbar-thumb:hover {
@@ -282,34 +282,16 @@ button {
   background-color: transparent;
   border-radius: 0 0 8px 8px;
 }
-.scrollXbig::-webkit-scrollbar {
-  height: 12px !important;
+/* Non-webkit (Firefox??) */
+.scrollX.firefox,
+.scrollY.firefox {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s;
 }
-.scrollXbig::-webkit-scrollbar-corner,
-.scrollYbig::-webkit-scrollbar-corner {
-  background: transparent !important;
-}
-.scrollYbig::-webkit-scrollbar {
-  width: 12px !important;
-}
-.scrollXbig::-webkit-scrollbar-thumb,
-.scrollYbig::-webkit-scrollbar-thumb {
-  background-color: var(--d3);
-  border-radius: 100px;
-}
-.scrollXbigkotak::-webkit-scrollbar-thumb,
-.scrollYbigkotak::-webkit-scrollbar-thumb {
-  background-color: var(--d2);
-  border-radius: 0px !important;
-}
-.scrollXbig::-webkit-scrollbar-thumb:hover,
-.scrollYbig::-webkit-scrollbar-thumb:hover {
-  background-color: var(--d3);
-}
-.scrollXbig::-webkit-scrollbar-track,
-.scrollYbig::-webkit-scrollbar-track {
-  background-color: var(--d1) !important;
-  border-radius: 0 0 8px 8px;
+.scrollX.firefox.scrolling,
+.scrollY.firefox.scrolling {
+  scrollbar-color: var(--d2) transparent;
 }
 
 /* Ckahra UI */

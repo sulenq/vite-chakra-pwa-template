@@ -74,6 +74,9 @@ function App() {
     setOffline(true);
   }
 
+  // Handle scroll style
+  useScrollEffect();
+
   // Handle offline online
   useEffect(() => {
     // Tambahkan event listener
