@@ -75,7 +75,7 @@ const CurrentUserTimeZone = () => {
 
         <Link to="/settings/regional">
           <BButton mt={3} variant="outline" size="sm" w="full">
-            Change
+            {l.change}
           </BButton>
         </Link>
       </PopoverContent>

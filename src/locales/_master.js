@@ -59,6 +59,10 @@ export const settings_navs = {
 };
 
 // UI
+export const change = {
+  id: "Ganti",
+  en: "Change",
+};
 export const required_form = {
   id: "Tidak boleh kosong",
   en: "Cannot be empty",

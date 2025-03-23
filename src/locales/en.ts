@@ -22,6 +22,7 @@ const translations = {
     "label": "Camera access",
     "description": "Allow the app to use your device's camera for capturing photos or videos."
   },
+  "change": "Change",
   "chrome_permissions_settings_link": "Settings → Privacy & Security → Site Settings → ",
   "close": "Close",
   "confirm": "Confirm",
