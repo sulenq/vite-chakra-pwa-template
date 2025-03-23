@@ -195,7 +195,12 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
   };
 
   return (
-    <Stack flexDir={iss ? "column" : "row"} h={"100dvh"} gap={0}>
+    <Stack
+      flexDir={iss ? "column" : "row"}
+      h={"100dvh"}
+      gap={0}
+      overflowX={"clip"}
+    >
       {/* Lg screen nav */}
       {!iss && (
         <VStack
@@ -204,8 +209,9 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
           px={2}
           pt={5}
           pb={4}
-          overflowY={"auto"}
-          overflowX={"hidden"}
+          overflowX={"clip"}
+          overflowY={"scroll"}
+          mr={"-6px"}
           className="scrollY"
           bg={"body"}
           borderRight={"1px solid"}
@@ -234,9 +240,8 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
         fRef={containerRef}
         position={"relative"}
         flex={1}
-        className="scrollY"
         overflowY={"scroll"}
-        mr={"-6px"}
+        className="scrollY"
         overflowX={"clip"}
         bg={"bgContent"}
       >
