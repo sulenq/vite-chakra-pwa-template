@@ -15,7 +15,7 @@ import ItemHeaderContainer from "@/components/ui-custom/ItemHeaderContainer";
 import { Avatar } from "@/components/ui/avatar";
 import AllMerchantActivitiesDisclosure from "@/components/widget/AllMerchantActivitiesDisclosure";
 import MerchantActivityItem from "@/components/widget/MerchantActivityItem";
-import { SVGS_PATH } from "@/constant/path";
+import { SVGS_PATH } from "@/constant/paths";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import useLang from "@/context/useLang";

@@ -11,7 +11,7 @@ import Heading3 from "@/components/ui-custom/Heading3";
 import HScroll from "@/components/ui-custom/HScroll";
 import { Rating } from "@/components/ui/rating";
 import PageContainer from "@/components/widget/PageContainer";
-import { IMAGES_PATH } from "@/constant/path";
+import { IMAGES_PATH } from "@/constant/paths";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import {

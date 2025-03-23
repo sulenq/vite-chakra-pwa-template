@@ -1,4 +1,4 @@
-import { IMAGES_PATH } from "@/constant/path";
+import { IMAGES_PATH } from "@/constant/paths";
 import { create } from "zustand";
 
 const STORAGE_KEY = "themeConfig";
