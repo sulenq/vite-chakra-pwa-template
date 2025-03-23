@@ -1228,7 +1228,7 @@ const TableComponentDemo = () => {
   const [search, setSearch] = useState("");
 
   return (
-    <>
+    <CContainer>
       <HScroll px={4} pb={4}>
         <SearchInput
           onChangeSetter={(input) => {
@@ -1243,6 +1243,7 @@ const TableComponentDemo = () => {
       </HScroll>
 
       <TableComponent
+        maxH={"500px"}
         ths={ths}
         tds={tds}
         originalData={data}
@@ -1358,7 +1359,7 @@ const TableComponentDemo = () => {
           </TableFooterNoteContent>
         }
       />
-    </>
+    </CContainer>
   );
 };
 

@@ -1,4 +1,9 @@
+import { SETTINGS_NAVS } from "@/constant/navs";
+import useLang from "@/context/useLang";
+import { useThemeConfig } from "@/context/useThemeConfig";
+import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import { useSettingsContent } from "@/hooks/useSettingsContent";
+import pluck from "@/utils/pluck";
 import {
   Circle,
   CircleProps,
@@ -7,15 +12,10 @@ import {
   StackProps,
   Text,
 } from "@chakra-ui/react";
-import CContainer from "../ui-custom/CContainer";
-import { SETTINGS_NAVS } from "@/constant/navs";
+import { IconChevronRight } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import BButton from "../ui-custom/BButton";
-import { IconChevronRight } from "@tabler/icons-react";
-import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
-import useLang from "@/context/useLang";
-import pluck from "@/utils/pluck";
-import { useThemeConfig } from "@/context/useThemeConfig";
+import CContainer from "../ui-custom/CContainer";
 import PageContainer from "./PageContainer";
 
 interface Props extends StackProps {
@@ -79,7 +79,13 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
             overflowY={"auto"}
             maxH={"full"}
           >
-            <CContainer overflowY={"auto"} px={2} gap={4}>
+            <CContainer
+              overflowY={"scroll"}
+              className="scrollY"
+              mr={"-6px"}
+              px={2}
+              gap={4}
+            >
               {SETTINGS_NAVS.map((item, i) => {
                 return (
                   <CContainer key={i}>
@@ -130,6 +136,7 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
         display={iss && settingsRoute ? "none" : "flex"}
         overflowY={"auto"}
         maxH={"full"}
+        className="scrollY"
       >
         {children}
       </PageContainer>

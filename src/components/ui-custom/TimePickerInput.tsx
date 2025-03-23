@@ -184,7 +184,7 @@ const TimePickerInput = ({
           unclicky
           variant={"ghost"}
           border={"1px solid"}
-          borderColor={fc?.invalid || invalid ? "border.error" : "border.muted"}
+          borderColor={invalid ?? fc?.invalid ? "border.error" : "border.muted"}
           onClick={() => {
             if (inputValue) {
               setSelected(inputValue);
@@ -226,12 +226,7 @@ const TimePickerInput = ({
             />
           </DisclosureHeader>
 
-          <DisclosureBody
-            className="scrollY"
-            pt={0}
-            // overflowY={"auto"}
-            // maxH={DRAWER_BODY_MAXH}
-          >
+          <DisclosureBody>
             <HStack
               justify={"space-between"}
               gap={1}

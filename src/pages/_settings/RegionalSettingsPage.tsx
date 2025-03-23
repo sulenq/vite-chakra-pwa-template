@@ -136,7 +136,7 @@ const TimeZone = () => {
         style={{
           ...style,
           paddingLeft: itemIndex % 2 === 0 || iss ? "8px" : "",
-          paddingRight: itemIndex % 2 === 0 && !iss ? "" : "14px",
+          paddingRight: itemIndex % 2 === 0 && !iss ? "" : "8px",
         }}
       >
         <BButton

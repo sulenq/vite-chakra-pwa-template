@@ -234,7 +234,9 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
         fRef={containerRef}
         position={"relative"}
         flex={1}
-        overflowY={"auto"}
+        className="scrollY"
+        overflowY={"scroll"}
+        mr={"-6px"}
         overflowX={"clip"}
         bg={"bgContent"}
       >

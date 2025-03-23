@@ -710,12 +710,11 @@ const TableComponent = ({
       {/* Table content */}
       <CContainer
         minW={"full"}
-        // borderTop={"1px solid"}
-        // borderBottom={"1px solid"}
         borderColor={"border.muted"}
-        // borderRadius={6}
-        overflow={"auto"}
         className="scrollX scrollY"
+        overflow={"scroll"}
+        mr={"-6px"}
+        mb={"-6px"}
         flex={1}
         {...props}
       >

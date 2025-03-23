@@ -315,7 +315,7 @@ const DateRangePickerInput = ({
           unclicky
           variant={"ghost"}
           border={"1px solid"}
-          borderColor={fc?.invalid || invalid ? "border.error" : "border.muted"}
+          borderColor={invalid ?? fc?.invalid ? "border.error" : "border.muted"}
           onClick={() => {
             if (inputValue) {
               setSelected({
@@ -364,7 +364,7 @@ const DateRangePickerInput = ({
             />
           </DisclosureHeader>
 
-          <DisclosureBody className="scrollY" pt={0}>
+          <DisclosureBody>
             {maxRange && (
               <Alert
                 variant={"surface"}

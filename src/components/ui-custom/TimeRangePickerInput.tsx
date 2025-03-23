@@ -261,7 +261,7 @@ const TimeRangePickerInput = ({
           unclicky
           variant={"ghost"}
           border={"1px solid"}
-          borderColor={fc?.invalid || invalid ? "border.error" : "border.muted"}
+          borderColor={invalid ?? fc?.invalid ? "border.error" : "border.muted"}
           onClick={() => {
             if (inputValue) {
               setSelected(inputValue);
@@ -299,12 +299,7 @@ const TimeRangePickerInput = ({
             />
           </DisclosureHeader>
 
-          <DisclosureBody
-            className="scrollY"
-            pt={0}
-            // overflowY={"auto"}
-            // maxH={DRAWER_BODY_MAXH}
-          >
+          <DisclosureBody>
             <Stack
               gap={5}
               align={"stretch"}
