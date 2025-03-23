@@ -1,6 +1,6 @@
-import { MONTHS } from "@/constant/months";
-import { Type__DateFormat, Type__DateVariant } from "@/constant/types";
-import { WEEKDAYS_0_BASED } from "@/constant/weekdays";
+import { MONTHS } from "@/constants/months";
+import { Type__DateFormat, Type__DateVariant } from "@/constants/types";
+import { WEEKDAYS_0_BASED } from "@/constants/weekdays";
 import moment from "moment-timezone";
 import userTimeZone from "./userTimeZone";
 import dateObject from "./dateObject";

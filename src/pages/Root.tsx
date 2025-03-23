@@ -75,7 +75,7 @@ import { Status } from "@/components/ui/status";
 import { toaster } from "@/components/ui/toaster";
 import { Tooltip } from "@/components/ui/tooltip";
 import LoginForm from "@/components/widget/LoginForm";
-import { Interface__Select } from "@/constant/interfaces";
+import { Interface__Select } from "@/constants/interfaces";
 import useADM from "@/context/useADM";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";

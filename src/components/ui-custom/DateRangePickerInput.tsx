@@ -1,5 +1,5 @@
-import { WEEKDAYS } from "@/constant/weekdays";
-import { Interface__DateRangePicker } from "@/constant/interfaces";
+import { WEEKDAYS } from "@/constants/weekdays";
+import { Interface__DateRangePicker } from "@/constants/interfaces";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
@@ -37,7 +37,7 @@ import {
 } from "./Disclosure";
 import DisclosureHeaderContent from "./DisclosureHeaderContent";
 import PeriodPickerForDatePicker from "./PeriodPickerForDatePicker";
-import { Type__DateRange } from "@/constant/types";
+import { Type__DateRange } from "@/constants/types";
 import interpolate from "@/utils/interpolate";
 import moment from "moment-timezone";
 import userTimeZone from "@/utils/userTimeZone";

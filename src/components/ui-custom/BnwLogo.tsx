@@ -1,6 +1,6 @@
 import { Image, ImageProps } from "@chakra-ui/react";
 import { useColorMode } from "../ui/color-mode";
-import { SVGS_PATH } from "@/constant/paths";
+import { SVGS_PATH } from "@/constants/paths";
 
 interface Props extends ImageProps {}
 

@@ -8,15 +8,15 @@ import ItemHeaderContainer from "@/components/ui-custom/ItemHeaderContainer";
 import ItemHeaderTitle from "@/components/ui-custom/ItemHeaderTitle";
 import SearchInput from "@/components/ui-custom/SearchInput";
 import SettingsNavsContainer from "@/components/widget/SettingsNavsContainer";
-import { DATE_FORMATS } from "@/constant/dateFormats";
-import { LANGUAGES } from "@/constant/languages";
-import { TIME_FORMATS } from "@/constant/timeFormats";
+import { DATE_FORMATS } from "@/constants/dateFormats";
+import { LANGUAGES } from "@/constants/languages";
+import { TIME_FORMATS } from "@/constants/timeFormats";
 import {
   Type__DateFormat,
   Type__LanguageOptions,
   Type__TimeFormat,
-} from "@/constant/types";
-import { UOM_FORMATS } from "@/constant/uomFormats";
+} from "@/constants/types";
+import { UOM_FORMATS } from "@/constants/uomFormats";
 import useDateFormat from "@/context/useDateFormat";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";

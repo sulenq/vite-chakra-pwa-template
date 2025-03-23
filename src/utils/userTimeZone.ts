@@ -1,4 +1,4 @@
-import { Type__TimeZoneObject } from "@/constant/types";
+import { Type__TimeZoneObject } from "@/constants/types";
 import autoTimeZone from "./autoTimeZone";
 
 const userTimeZone = (): Type__TimeZoneObject => {

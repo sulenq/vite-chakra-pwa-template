@@ -2,7 +2,7 @@ import { Group, SimpleGrid, useFieldContext } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import DatePickerInput from "./DatePickerInput";
 import TimePickerInput from "./TimePickerInput";
-import { Type__DisclosureSizes } from "@/constant/types";
+import { Type__DisclosureSizes } from "@/constants/types";
 import makeDateTime from "@/utils/makeDateTime";
 import moment from "moment-timezone";
 import userTimeZone from "@/utils/userTimeZone";

@@ -1,4 +1,4 @@
-import { Interface__Divider } from "@/constant/interfaces";
+import { Interface__Divider } from "@/constants/interfaces";
 import { Box } from "@chakra-ui/react";
 
 const Divider = ({ dir = "horizontal", ...props }: Interface__Divider) => {

@@ -1,7 +1,7 @@
 import {
   Interface__Select,
   Interface__SelectOption,
-} from "@/constant/interfaces";
+} from "@/constants/interfaces";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";

@@ -1,8 +1,8 @@
 import {
   Interface__DatePicker,
   Interface__SelectedDateList,
-} from "@/constant/interfaces";
-import { WEEKDAYS } from "@/constant/weekdays";
+} from "@/constants/interfaces";
+import { WEEKDAYS } from "@/constants/weekdays";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";

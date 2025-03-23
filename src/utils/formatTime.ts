@@ -1,4 +1,4 @@
-import { Type__TimeFormat } from "@/constant/types";
+import { Type__TimeFormat } from "@/constants/types";
 import userTimeZone from "./userTimeZone";
 import getTzOffsetMs from "./getTzOffsetMs";
 

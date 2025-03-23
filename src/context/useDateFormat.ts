@@ -1,4 +1,4 @@
-import { Type__DateFormat } from "@/constant/types";
+import { Type__DateFormat } from "@/constants/types";
 import { create } from "zustand";
 
 const STORAGE_KEY = "dateFormat";

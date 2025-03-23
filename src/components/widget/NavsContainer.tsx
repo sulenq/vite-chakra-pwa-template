@@ -1,4 +1,4 @@
-import { NAVS } from "@/constant/navs";
+import { NAVS } from "@/constants/navs";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useCallBackOnNavigate from "@/hooks/useCallBackOnNavigate";

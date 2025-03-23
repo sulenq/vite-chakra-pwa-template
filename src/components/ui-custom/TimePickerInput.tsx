@@ -1,4 +1,4 @@
-import { Interface__TimePicker } from "@/constant/interfaces";
+import { Interface__TimePicker } from "@/constants/interfaces";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useScreen from "@/hooks/useScreen";

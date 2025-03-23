@@ -5,7 +5,7 @@ import {
   Interface__RowOptions,
   Interface__TableComponent,
   Interface__TableFooterNote,
-} from "@/constant/interfaces";
+} from "@/constants/interfaces";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";

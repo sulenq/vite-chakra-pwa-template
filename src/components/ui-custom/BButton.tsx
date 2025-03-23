@@ -1,5 +1,5 @@
 import { Button, ButtonProps } from "@/components/ui/button";
-import { MAIN_BUTTON_SIZE } from "@/constant/sizes";
+import { MAIN_BUTTON_SIZE } from "@/constants/sizes";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import { IconButton } from "@chakra-ui/react";
 import { useMemo, forwardRef } from "react";

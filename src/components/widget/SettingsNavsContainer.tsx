@@ -1,4 +1,4 @@
-import { SETTINGS_NAVS } from "@/constant/navs";
+import { SETTINGS_NAVS } from "@/constants/navs";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
