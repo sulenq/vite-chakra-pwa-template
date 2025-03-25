@@ -185,8 +185,6 @@ const SelectInput = ({
     }
   };
 
-  console.log(props.size);
-
   return (
     <>
       <Tooltip
