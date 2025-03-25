@@ -18,8 +18,9 @@ const DoughnutChartTooltipContent = ({ active, payload }: any) => {
               // color={item.payload.fill}
             >
               {`${item.name}: ${item.value.toLocaleString()} ${
-                item.payload.percentage &&
-                `(${item.payload.percentage.toFixed(0)}%)`
+                item.payload.percentage
+                  ? `(${item.payload.percentage.toFixed(0)}%)`
+                  : ""
               }`}
             </Text>
           );
