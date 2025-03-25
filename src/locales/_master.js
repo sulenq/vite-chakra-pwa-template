@@ -282,10 +282,6 @@ export const uom = {
     id: "Panjang",
     en: "Length",
   },
-  length: {
-    id: "Tinggi",
-    en: "Height",
-  },
   volume: {
     id: "Volume",
     en: "Volume",
