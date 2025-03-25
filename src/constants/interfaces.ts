@@ -38,7 +38,7 @@ export interface Interface__SelectOption {
 }
 export interface Interface__Select extends ButtonProps {
   id?: string;
-  name: string;
+  name?: string;
   title?: string;
   onConfirm?: (inputValue: Interface__SelectOption[] | undefined) => void;
   inputValue?: Interface__SelectOption[] | undefined;
