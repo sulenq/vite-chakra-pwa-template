@@ -99,7 +99,7 @@ export interface Interface__TimePicker extends ButtonProps {
   placeholder?: string;
   nonNullable?: boolean;
   invalid?: boolean;
-  size?: Type__DisclosureSizes;
+  disclosureSize?: Type__DisclosureSizes;
 }
 
 // Time Range Picker
@@ -113,7 +113,7 @@ export interface Interface__TimeRangePicker extends ButtonProps {
   placeholder?: string;
   nonNullable?: boolean;
   invalid?: boolean;
-  size?: Type__DisclosureSizes;
+  disclosureSize?: Type__DisclosureSizes;
 }
 
 // Table Component

@@ -47,7 +47,7 @@ const TimeRangePickerInput = ({
   placeholder,
   nonNullable,
   invalid,
-  size = withSeconds ? "xl" : "lg",
+  disclosureSize = withSeconds ? "xl" : "lg",
   ...props
 }: Interface__TimeRangePicker) => {
   // Contexts
@@ -291,7 +291,7 @@ const TimeRangePickerInput = ({
         </BButton>
       </Tooltip>
 
-      <DisclosureRoot open={open} size={size}>
+      <DisclosureRoot open={open} size={disclosureSize}>
         <DisclosureContent>
           <DisclosureHeader>
             <DisclosureHeaderContent

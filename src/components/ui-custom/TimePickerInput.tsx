@@ -42,7 +42,7 @@ const TimePickerInput = ({
   placeholder,
   nonNullable,
   invalid,
-  size = withSeconds ? "sm" : "xs",
+  disclosureSize = withSeconds ? "sm" : "xs",
   ...props
 }: Interface__TimePicker) => {
   // Contexts
@@ -218,7 +218,7 @@ const TimePickerInput = ({
         </BButton>
       </Tooltip>
 
-      <DisclosureRoot open={open} size={size}>
+      <DisclosureRoot open={open} size={disclosureSize}>
         <DisclosureContent>
           <DisclosureHeader>
             <DisclosureHeaderContent

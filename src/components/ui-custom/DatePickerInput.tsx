@@ -110,7 +110,7 @@ const DatePickerInput = ({
   placeholder,
   nonNullable,
   invalid,
-  size = "xs",
+  disclosureSize = "xs",
   multiple,
   ...props
 }: Interface__DatePicker) => {
@@ -328,7 +328,7 @@ const DatePickerInput = ({
         </BButton>
       </Tooltip>
 
-      <DisclosureRoot open={open} size={size}>
+      <DisclosureRoot open={open} size={disclosureSize}>
         <DisclosureContent>
           <DisclosureHeader>
             <DisclosureHeaderContent

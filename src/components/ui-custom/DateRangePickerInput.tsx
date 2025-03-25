@@ -52,7 +52,7 @@ const DateRangePickerInput = ({
   placeholder,
   nonNullable,
   invalid,
-  size = "xs",
+  disclosureSize = "xs",
   preset = ["thisWeek", "thisMonth"],
   maxRange,
   ...props
@@ -356,7 +356,7 @@ const DateRangePickerInput = ({
         </BButton>
       </Tooltip>
 
-      <DisclosureRoot open={open} size={size}>
+      <DisclosureRoot open={open} size={disclosureSize}>
         <DisclosureContent>
           <DisclosureHeader>
             <DisclosureHeaderContent

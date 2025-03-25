@@ -45,7 +45,7 @@ const SelectInput = ({
   invalid,
   nonNullable = false,
   multiple = false,
-  size = "xs",
+  disclosureSize = "xs",
   fetch,
   ...props
 }: Interface__Select) => {
@@ -185,6 +185,8 @@ const SelectInput = ({
     }
   };
 
+  console.log(props.size);
+
   return (
     <>
       <Tooltip
@@ -234,7 +236,7 @@ const SelectInput = ({
         </BButton>
       </Tooltip>
 
-      <DisclosureRoot open={open} size={size} lazyMount>
+      <DisclosureRoot open={open} size={disclosureSize} lazyMount>
         <DisclosureContent>
           <DisclosureHeader>
             <DisclosureHeaderContent
