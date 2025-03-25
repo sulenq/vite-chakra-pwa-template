@@ -17,7 +17,7 @@ const ItemHeaderContainer = ({
         justify={"space-between"}
         pb={2}
         pl={1}
-        gap={4}
+        // gap={4}
         minH={"50px"}
         wrap={"wrap"}
         {...props}
