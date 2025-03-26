@@ -163,24 +163,9 @@ const SelectInput = ({
   };
 
   // Handle confirm
-  const confirmSelected = () => {
-    let confirmable = false;
-    if (!nonNullable) {
-      confirmable = true;
-    } else {
-      if (selected) {
-        confirmable = true;
-      }
-    }
-
-    if (confirmable) {
-      if (onConfirm) {
-        if (selected) {
-          onConfirm(selected);
-        } else {
-          onConfirm(undefined);
-        }
-      }
+  const onConfirmSelected = () => {
+    if (!nonNullable || selected) {
+      onConfirm?.(selected ?? undefined);
       back();
     }
   };
@@ -346,8 +331,9 @@ const SelectInput = ({
                 Clear
               </BButton>
               <BButton
-                onClick={confirmSelected}
+                onClick={onConfirmSelected}
                 colorPalette={themeConfig.colorPalette}
+                disabled={nonNullable && !selected}
               >
                 {l.confirm}
               </BButton>
