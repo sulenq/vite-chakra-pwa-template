@@ -5,6 +5,7 @@ import {
   AbsoluteCenter,
   Menu as ChakraMenu,
   MenuItemProps,
+  MenuRootProps,
   Portal,
 } from "@chakra-ui/react";
 import { forwardRef } from "react";
@@ -133,9 +134,19 @@ export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
   }
 );
 
+export const MenuRoot = forwardRef<HTMLDivElement, MenuRootProps>(
+  function MenuRoot(props) {
+    const { children, ...rest } = props;
+    return (
+      <ChakraMenu.Root positioning={{ hideWhenDetached: true }} {...rest}>
+        {children}
+      </ChakraMenu.Root>
+    );
+  }
+);
+
 export const MenuRadioItemGroup = ChakraMenu.RadioItemGroup;
 export const MenuContextTrigger = ChakraMenu.ContextTrigger;
-export const MenuRoot = ChakraMenu.Root;
 export const MenuSeparator = ChakraMenu.Separator;
 
 export const MenuItemText = ChakraMenu.ItemText;
