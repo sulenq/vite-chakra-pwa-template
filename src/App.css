@@ -253,6 +253,12 @@ button {
 .noScroll::-webkit-scrollbar {
   display: none;
 }
+.scrollX {
+  overflow-x: scroll;
+}
+.scrollY {
+  overflow-y: scroll;
+}
 /* WebKit (Chrome, Edge, Safari) */
 .scrollX::-webkit-scrollbar {
   height: 6px;

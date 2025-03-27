@@ -41,7 +41,6 @@ const HScroll = ({ fRef, children, ...props }: Props) => {
   return (
     <HStack
       ref={hStackRef}
-      overflowX="auto"
       overflowY="hidden"
       w="full"
       className={`scrollX ${props.className}`}
