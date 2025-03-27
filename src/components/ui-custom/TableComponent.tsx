@@ -55,7 +55,7 @@ const BatchOptions = ({
   const { themeConfig } = useThemeConfig();
 
   return (
-    <MenuRoot lazyMount positioning={{ hideWhenDetached: true }}>
+    <MenuRoot lazyMount closeOnSelect={false}>
       <MenuTrigger
         asChild
         // borderRadius={"full"}
@@ -178,7 +178,7 @@ const RowOptions = ({
   tableRef,
 }: Interface__RowOptions) => {
   return (
-    <MenuRoot lazyMount positioning={{ hideWhenDetached: true }}>
+    <MenuRoot lazyMount closeOnSelect={false}>
       <MenuTrigger asChild aria-label="row options">
         <BButton iconButton unclicky variant={"ghost"} size={"xs"}>
           <Icon fontSize={"lg !important"}>
