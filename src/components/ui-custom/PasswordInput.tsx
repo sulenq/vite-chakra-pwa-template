@@ -21,7 +21,7 @@ export default function PasswordInput({
   isError,
   placeholder = "********",
   boxProps,
-  invalid = false,
+  invalid,
   ...props
 }: Props) {
   const [showPassword, setShowPassword] = useState<boolean>(false);
