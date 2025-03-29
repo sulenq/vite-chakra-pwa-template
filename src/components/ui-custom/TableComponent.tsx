@@ -178,7 +178,7 @@ const RowOptions = ({
   tableRef,
 }: Interface__RowOptions) => {
   return (
-    <MenuRoot lazyMount closeOnSelect={false}>
+    <MenuRoot lazyMount>
       <MenuTrigger asChild aria-label="row options">
         <BButton iconButton unclicky variant={"ghost"} size={"xs"}>
           <Icon fontSize={"lg !important"}>
