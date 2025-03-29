@@ -4,7 +4,7 @@ import useBackOnClose from "@/hooks/useBackOnClose";
 import useScreen from "@/hooks/useScreen";
 import back from "@/utils/back";
 import formatTime from "@/utils/formatTime";
-import { getHours, getMinutes, getSeconds } from "@/utils/getTime";
+import { getHours, getMinutes, getSeconds } from "@/utils/time";
 import {
   HStack,
   Icon,

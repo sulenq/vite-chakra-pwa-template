@@ -7,7 +7,7 @@ import makeDateTime from "@/utils/makeDateTime";
 import moment from "moment-timezone";
 import userTimeZone from "@/utils/userTimeZone";
 import autoTimeZone from "@/utils/autoTimeZone";
-import { makeTime } from "@/utils/getTime";
+import { makeTime } from "@/utils/time";
 import resetDateTime from "@/utils/resetDateTime";
 import empty from "@/utils/empty";
 import { useThemeConfig } from "@/context/useThemeConfig";

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Text, TextProps } from "@chakra-ui/react";
 import useTimeZone from "@/context/useTimeZone";
 import formatTime from "@/utils/formatTime";
-import { makeTime } from "@/utils/getTime";
+import { makeTime } from "@/utils/time";
 import getTzOffsetMs from "@/utils/getTzOffsetMs";
 import autoTimeZone from "@/utils/autoTimeZone";
 

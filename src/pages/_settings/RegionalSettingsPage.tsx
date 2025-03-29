@@ -28,7 +28,7 @@ import autoTimeZone from "@/utils/autoTimeZone";
 import capsFirstLetterEachWord from "@/utils/capsFirstLetterEachWord";
 import formatDate from "@/utils/formatDate";
 import formatTime from "@/utils/formatTime";
-import { makeTime } from "@/utils/getTime";
+import { makeTime } from "@/utils/time";
 import pluck from "@/utils/pluck";
 import { TIME_ZONES } from "@/utils/timeZones";
 import { chakra, HStack, SimpleGrid, Text } from "@chakra-ui/react";

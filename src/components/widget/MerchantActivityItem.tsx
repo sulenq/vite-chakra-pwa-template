@@ -2,7 +2,7 @@ import { useThemeConfig } from "@/context/useThemeConfig";
 import { ACTIVITY_TYPES } from "@/gens/activityTypes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import formatDate from "@/utils/formatDate";
-import { makeTime } from "@/utils/getTime";
+import { makeTime } from "@/utils/time";
 import getTzOffsetMs from "@/utils/getTzOffsetMs";
 import userTimeZone from "@/utils/userTimeZone";
 import {

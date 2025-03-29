@@ -6,7 +6,7 @@ import back from "@/utils/back";
 import formatDuration from "@/utils/formatDuration";
 import formatTime from "@/utils/formatTime";
 import getSecondsDurationFromTimeRange from "@/utils/getSecondsDurationFromTimeRange";
-import { getHours, getMinutes, getSeconds } from "@/utils/getTime";
+import { getHours, getMinutes, getSeconds } from "@/utils/time";
 import {
   Center,
   HStack,

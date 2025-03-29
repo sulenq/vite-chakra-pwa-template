@@ -86,7 +86,7 @@ import back from "@/utils/back";
 import formatDate from "@/utils/formatDate";
 import formatNumber from "@/utils/formatNumber";
 import formatTime from "@/utils/formatTime";
-import { makeTime } from "@/utils/getTime";
+import { makeTime } from "@/utils/time";
 import {
   Badge,
   Box,
