@@ -106,10 +106,18 @@ function App() {
       setColorMode(hour >= 18 || hour < 6 ? "dark" : "light"); // Dark mode 18:00 ~ 06:00
     };
 
-    updateDarkMode();
-    const interval = setInterval(updateDarkMode, 60000);
+    const hour = new Date().getHours();
+    if (hour >= 18 || hour < 6) {
+      setColorMode("dark");
+    } else {
+      setColorMode("light");
+    }
 
-    return () => clearInterval(interval);
+    // Check only at 18:00 and 06:00
+    const nextCheckTime = hour >= 18 || hour < 6 ? 24 - hour + 6 : 18 - hour;
+    const timeout = setTimeout(updateDarkMode, nextCheckTime * 60 * 60 * 1000); // Set the next check time
+
+    return () => clearTimeout(timeout);
   }, [ADM, setColorMode]);
 
   return (
