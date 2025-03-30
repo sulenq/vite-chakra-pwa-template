@@ -78,7 +78,7 @@ const SelectedDateList = ({
             <DisclosureHeaderContent title="Tanggal dipilih" />
           </DisclosureHeader>
           <DisclosureBody>
-            <CContainer px={2} pt={1}>
+            <CContainer px={2} pl={4} pt={1}>
               <ListRoot gap={2}>
                 {selectedDates.map((item, i) => {
                   return (
