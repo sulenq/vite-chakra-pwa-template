@@ -137,7 +137,11 @@ export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
 export const MenuRoot = (props: MenuRootProps) => {
   const { children, ...rest } = props;
   return (
-    <ChakraMenu.Root positioning={{ hideWhenDetached: true }} {...rest}>
+    <ChakraMenu.Root
+      positioning={{ hideWhenDetached: true }}
+      unmountOnExit={false}
+      {...rest}
+    >
       {children}
     </ChakraMenu.Root>
   );
