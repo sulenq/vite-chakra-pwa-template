@@ -84,6 +84,7 @@ const translations = {
     "title": "Server connection problem",
     "description": "Unable to connect to the server. Try again later."
   },
+  "file_dropzone_label": "Drag and drop/click to upload files",
   "firefox_permissions_settings_link": "Preferences → Privacy & Security → Permissions → ",
   "forbidden_feedback": {
     "title": "No Access",
@@ -247,7 +248,7 @@ const translations = {
   "try_label": "Try",
   "uom": {
     "mass": "Weight",
-    "length": "Height",
+    "length": "Length",
     "volume": "Volume",
     "temperature": "Temperature",
     "area": "Area",

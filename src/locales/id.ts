@@ -84,6 +84,7 @@ const translations = {
     "title": "Gangguan koneksi ke server",
     "description": "Tidak dapat terhubung ke server. Coba lagi nanti."
   },
+  "file_dropzone_label": "Drag and drop/klik untuk unggah berkas",
   "firefox_permissions_settings_link": "Preferensi → Privasi & Keamanan → Izin → ",
   "forbidden_feedback": {
     "title": "Tidak ada akses",
@@ -247,7 +248,7 @@ const translations = {
   "try_label": "Coba",
   "uom": {
     "mass": "Berat",
-    "length": "Tinggi",
+    "length": "Panjang",
     "volume": "Volume",
     "temperature": "Suhu",
     "area": "Luas",

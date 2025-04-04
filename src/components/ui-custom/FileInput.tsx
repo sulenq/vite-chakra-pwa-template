@@ -8,6 +8,7 @@ import {
   FileUploadTrigger,
 } from "../ui/file-button";
 import BButton from "./BButton";
+import useLang from "@/context/useLang";
 
 interface Props extends FileUploadRootProps {
   name?: string;
@@ -36,6 +37,10 @@ const FileInput = ({
   maxFiles = 1,
   ...props
 }: Props) => {
+  // Contexts
+  const { l } = useLang();
+
+  // Utils
   const handleFileChange = (details: any) => {
     if (onChangeSetter) {
       onChangeSetter(
@@ -58,6 +63,7 @@ const FileInput = ({
           <FileUploadDropzone
             borderColor={invalid ? "fg.error" : ""}
             description={description}
+            label={l.file_dropzone_label}
           />
         ) : (
           <FileUploadTrigger asChild borderColor={invalid ? "fg.error" : ""}>
