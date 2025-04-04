@@ -9,12 +9,14 @@ interface Props extends ButtonProps {
   children?: any;
   iconButton?: boolean;
   backPath?: string;
+  aoc?: () => void;
 }
 
 const BackButton = ({
   children,
   iconButton = false,
   backPath,
+  aoc,
   ...props
 }: Props) => {
   const navigate = useNavigate();
@@ -27,6 +29,7 @@ const BackButton = ({
       back();
       handleBackOnDefaultPage();
     }
+    aoc?.();
   }
 
   if (iconButton)
