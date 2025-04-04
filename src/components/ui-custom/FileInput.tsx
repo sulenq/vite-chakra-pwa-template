@@ -23,20 +23,23 @@ interface Props extends FileUploadRootProps {
   description?: string;
   maxFiles?: number;
 }
-const FileInput = ({
-  name,
-  onChangeSetter,
-  inputValue,
-  accept,
-  invalid,
-  placeholder,
-  initialFilepath,
-  label,
-  dropZone,
-  description = "size up to 10 MB",
-  maxFiles = 1,
-  ...props
-}: Props) => {
+const FileInput = (props: Props) => {
+  // Props
+  const {
+    name,
+    onChangeSetter,
+    inputValue,
+    accept,
+    invalid,
+    placeholder,
+    initialFilepath,
+    label,
+    dropZone,
+    description = `size up to 10 MB, max ${props.maxFiles} file(s)`,
+    maxFiles = 1,
+    ...restProps
+  } = props;
+
   // Contexts
   const { l } = useLang();
 
@@ -57,6 +60,7 @@ const FileInput = ({
       onFileChange={handleFileChange}
       maxFiles={maxFiles}
       {...props}
+      {...restProps}
     >
       <>
         {dropZone ? (

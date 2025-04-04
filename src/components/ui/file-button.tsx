@@ -84,15 +84,14 @@ const FileUploadItem = (props: FileUploadItemProps) => {
   return (
     <ChakraFileUpload.Item
       file={file}
-      pr={3}
+      py={2}
       h={"54px"}
       bg={"body"}
       borderRadius={themeConfig.radii.component}
     >
       <ChakraFileUpload.ItemPreview asChild>
         <Icon fontSize={20} color="fg.muted">
-          <FileIcon type={file.type} />
-          {/* <File /> */}
+          <FileIcon mimeType={file.type} />
         </Icon>
       </ChakraFileUpload.ItemPreview>
 
@@ -111,8 +110,8 @@ const FileUploadItem = (props: FileUploadItemProps) => {
             variant="ghost"
             color="fg.muted"
             size="xs"
-            mt={"-6px"}
-            mr={"-2px"}
+            h={"32px"}
+            mr={-2}
           >
             <IconX />
           </IconButton>
