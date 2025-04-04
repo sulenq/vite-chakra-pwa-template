@@ -11,16 +11,16 @@ import {
 import { forwardRef } from "react";
 
 interface Props extends IconProps {
-  type?: string;
+  mimeType?: string;
   iconProps?: any;
 }
 
 const FileIcon = forwardRef<SVGSVGElement, Props>(
-  ({ type, iconProps, ...props }, ref) => {
+  ({ mimeType, iconProps, ...props }, ref) => {
     let iconColor = "current";
     let IconComponent;
 
-    switch (type?.toLowerCase()) {
+    switch (mimeType?.toLowerCase()) {
       default:
         IconComponent = IconFile;
         break;
