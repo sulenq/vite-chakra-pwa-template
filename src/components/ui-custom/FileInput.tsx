@@ -19,7 +19,7 @@ interface Props extends FileUploadRootProps {
   placeholder?: string;
   initialFilepath?: string;
   label?: string;
-  dropZone?: boolean;
+  dropzine?: boolean;
   description?: string;
   maxFiles?: number;
 }
@@ -34,7 +34,7 @@ const FileInput = (props: Props) => {
     placeholder,
     initialFilepath,
     label,
-    dropZone,
+    dropzine,
     description = `size up to 10 MB, max ${props.maxFiles} file(s)`,
     maxFiles = 1,
     ...restProps
@@ -63,7 +63,7 @@ const FileInput = (props: Props) => {
       {...restProps}
     >
       <>
-        {dropZone ? (
+        {dropzine ? (
           <FileUploadDropzone
             borderColor={invalid ? "fg.error" : ""}
             description={description}
