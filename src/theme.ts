@@ -487,16 +487,41 @@ const customConfig = defineConfig({
         yellow: {
           solid: {
             value: {
-              base: "{colors.yellow.500}",
-              _dark: "{colors.yellow.500}",
+              base: "{colors.yellow.500} !important",
+              _dark: "{colors.yellow.400} !important",
             },
           },
-          contrast: { value: "#000000" },
-          fg: { value: "{colors.yellow.900}" },
-          muted: { value: "{colors.yellow.300}" },
-          subtle: { value: "{colors.yellow.200}" },
-          emphasized: { value: "{colors.yellow.400}" },
-          focusRing: { value: "{colors.yellow.600}" },
+          contrast: {
+            value: {
+              base: "{colors.yellow.800} !important",
+              _dark: "{colors.yellow.900} !important",
+            },
+          },
+          fg: {
+            value: {
+              base: "{colors.yellow.600} !important",
+              _dark: "{colors.yellow.300} !important",
+            },
+          },
+          muted: {
+            value: {
+              base: "{colors.yellow.200} !important",
+              _dark: "{colors.yellow.800} !important",
+            },
+          },
+          subtle: {
+            value: {
+              base: "{colors.yellow.100} !important",
+              _dark: "{colors.yellow.900} !important",
+            },
+          },
+          emphasized: { value: "{colors.yellow.300} !important" },
+          focusRing: {
+            value: {
+              base: "{colors.yellow.500} !important",
+              _dark: "{colors.yellow.900} !important",
+            },
+          },
         },
         lime: {
           solid: {
@@ -665,32 +690,27 @@ const customConfig = defineConfig({
           },
           fg: {
             value: {
-              base: "{colors.sky.900}",
-              _dark: "{colors.sky.200}",
+              base: "{colors.sky.600}",
+              _dark: "{colors.sky.300}",
             },
           },
           muted: {
-            value: {
-              base: "{colors.sky.300}",
-              _dark: "{colors.sky.700}",
-            },
-          },
-          subtle: {
             value: {
               base: "{colors.sky.200}",
               _dark: "{colors.sky.800}",
             },
           },
-          emphasized: {
+          subtle: {
             value: {
-              base: "{colors.sky.400}",
-              _dark: "{colors.sky.600}",
+              base: "{colors.sky.100}",
+              _dark: "{colors.sky.900}",
             },
           },
+          emphasized: { value: "{colors.sky.300}" },
           focusRing: {
             value: {
-              base: "{colors.sky.600}",
-              _dark: "{colors.sky.300}",
+              base: "{colors.sky.500}",
+              _dark: "{colors.sky.900}",
             },
           },
         },
