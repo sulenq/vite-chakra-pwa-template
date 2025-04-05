@@ -127,7 +127,7 @@ export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
   function MenuItem(props, ref) {
     const { children, ...rest } = props;
     return (
-      <ChakraMenu.Item ref={ref} borderRadius={"7px"} {...rest}>
+      <ChakraMenu.Item gap={4} ref={ref} borderRadius={"7px"} {...rest}>
         {children}
       </ChakraMenu.Item>
     );
