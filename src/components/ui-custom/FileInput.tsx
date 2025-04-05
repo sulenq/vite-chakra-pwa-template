@@ -59,7 +59,6 @@ const FileInput = (props: Props) => {
       alignItems="stretch"
       onFileChange={handleFileChange}
       maxFiles={maxFiles}
-      {...props}
       {...restProps}
     >
       <>
