@@ -115,7 +115,6 @@ function App() {
     }
   }, []);
   useEffect(() => {
-    console.log("ADM", ADM);
     if (ADM === "true") {
       updateDarkMode();
     }
