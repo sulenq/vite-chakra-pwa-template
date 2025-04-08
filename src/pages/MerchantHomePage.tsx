@@ -43,7 +43,7 @@ import {
   IconX,
 } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
-import { BILLING_CYCLES } from "@/gens/pricing";
+import { BILLING_CYCLES } from "@/static/pricing";
 import PageContainer from "@/components/widget/PageContainer";
 import { useColorModeValue } from "@/components/ui/color-mode";
 import formatDate from "@/utils/formatDate";

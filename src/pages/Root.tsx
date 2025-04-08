@@ -79,7 +79,7 @@ import { Interface__Select } from "@/constants/interfaces";
 import useADM from "@/context/useADM";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
-import { OPTIONS_RELIGION } from "@/gens/selectOptions";
+import { OPTIONS_RELIGION } from "@/static/selectOptions";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import back from "@/utils/back";

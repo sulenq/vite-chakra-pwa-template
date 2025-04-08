@@ -6,7 +6,7 @@ import TableComponent from "@/components/ui-custom/TableComponent";
 import { Status } from "@/components/ui/status";
 import PageContainer from "@/components/widget/PageContainer";
 import { useThemeConfig } from "@/context/useThemeConfig";
-import { BILLING_CYCLES } from "@/gens/pricing";
+import { BILLING_CYCLES } from "@/static/pricing";
 import formatDate from "@/utils/formatDate";
 import formatNumber from "@/utils/formatNumber";
 import { Text } from "@chakra-ui/react";

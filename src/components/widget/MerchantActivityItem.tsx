@@ -1,5 +1,5 @@
 import { useThemeConfig } from "@/context/useThemeConfig";
-import { ACTIVITY_TYPES } from "@/gens/activityTypes";
+import { ACTIVITY_TYPES } from "@/static/activityTypes";
 import useBackOnClose from "@/hooks/useBackOnClose";
 import formatDate from "@/utils/formatDate";
 import { makeTime } from "@/utils/time";
