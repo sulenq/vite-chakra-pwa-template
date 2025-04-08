@@ -52,8 +52,6 @@ const ManualDarkModeSetting = () => {
     }, 100);
   }, [colorMode]);
 
-  console.log(active, colorMode, ADM);
-
   return (
     <SettingsItemContainer disabled={ADM === "true"}>
       <CContainer>
