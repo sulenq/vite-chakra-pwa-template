@@ -97,26 +97,27 @@ function App() {
     }
   }, [firstRender]);
 
-  // Handle adaptive dark mode
+  // Handle adaptive dark mode (ADM)
   useEffect(() => {
-    if (ADM === "false") return;
+    if (ADM === "true") {
+      const updateDarkMode = () => {
+        const hour = new Date().getHours();
+        setColorMode(hour >= 18 || hour < 6 ? "dark" : "light");
+        console.log("jalan");
+      };
 
-    const updateDarkMode = () => {
-      const hour = new Date().getHours();
-      setColorMode(hour >= 18 || hour < 6 ? "dark" : "light");
-    };
+      updateDarkMode();
 
-    updateDarkMode();
+      const interval = setInterval(() => {
+        const hour = new Date().getHours();
+        if (hour === 6 || hour === 18) {
+          updateDarkMode();
+        }
+      }, 60 * 1000);
 
-    const interval = setInterval(() => {
-      const hour = new Date().getHours();
-      if (hour === 6 || hour === 18) {
-        updateDarkMode();
-      }
-    }, 60 * 1000);
-
-    return () => clearInterval(interval);
-  }, [ADM, setColorMode]);
+      return () => clearInterval(interval);
+    }
+  }, [ADM]);
 
   return (
     <ChakraProvider value={theme}>
