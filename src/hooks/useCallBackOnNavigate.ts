@@ -1,15 +1,16 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 const useCallBackOnNavigate = (callback: () => void) => {
   const location = useLocation();
-  const prevPathname = useRef<string | undefined>();
-
+  const [prevPathnameState, setPrevPathnameState] = useState<string | null>(
+    null
+  );
   useEffect(() => {
-    if (prevPathname.current !== location.pathname) {
+    if (prevPathnameState !== location.pathname) {
       callback();
-      prevPathname.current = location.pathname;
     }
+    setPrevPathnameState(location.pathname);
   }, [callback, location]);
 };
 
