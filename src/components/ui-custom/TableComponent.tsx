@@ -353,9 +353,6 @@ const PageControl = ({
   const { themeConfig } = useThemeConfig();
   const { l } = useLang();
 
-  // Utils
-  const iss = useIsSmScreenWidth();
-
   const formik = useFormik({
     validateOnChange: false,
     initialValues: {
@@ -377,7 +374,6 @@ const PageControl = ({
           type: "error",
           title: `Lompat Page Gagal`,
           description: `Input harus lebih dari 0 dan kurang dari/sama dengan halaman terakhir`,
-          placement: iss ? "top" : "bottom-end",
           action: {
             label: "Close",
             onClick: () => {},
