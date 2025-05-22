@@ -517,13 +517,14 @@ const TableComponent = ({
   footerContainerProps,
   ...props
 }: Interface__TableComponent) => {
-  // SX
-  const thHeight = "48px";
-  const thWidth = "52.4px";
-  const thBg = "body";
-  const borderColor = "border.subtle";
+  // Hooks
+  const iss = useIsSmScreenWidth();
+  const { sh } = useScreen();
 
-  // States, Refs
+  // Refs
+  const tableRef = useRef(null);
+
+  // States
   const { themeConfig } = useThemeConfig();
   const tableHeader = columnsConfig
     ? columnsConfig.map((columnIndex) => ths[columnIndex])
@@ -547,58 +548,6 @@ const TableComponent = ({
     sortColumnIndex: initialSortColumnIndex || undefined,
     direction: initialSortOrder || "asc",
   });
-
-  // Utils
-  const iss = useIsSmScreenWidth();
-  const { sh } = useScreen();
-
-  // Column filter
-  useEffect(() => {
-    const newOriginalDataState = columnsConfig
-      ? tds.map((data) => {
-          const filteredColumns = columnsConfig.map(
-            (columnIndex) => data.columnsFormat[columnIndex]
-          );
-          return { ...data, columnsFormat: filteredColumns };
-        })
-      : [...tds];
-    setOriginalDataState([...newOriginalDataState]); // Save real data when first render
-  }, [tds, columnsConfig]);
-
-  // Row click
-  const handleRowClick = (rowData: any) => {
-    if (rowClick) {
-      rowClick(rowData);
-    }
-  };
-
-  // Batch options
-  const handleSelectAllRows = (isChecked: boolean) => {
-    setSelectAllRows(!selectAllRows);
-    if (!isChecked) {
-      const allIds = tds.map((row) => row.id);
-      setSelectedRows(allIds);
-    } else {
-      setSelectedRows([]);
-    }
-  };
-  const toggleRowSelection = (rowId: number) => {
-    setSelectedRows((prevSelected) => {
-      const isSelected = prevSelected.includes(rowId);
-
-      if (isSelected) {
-        setSelectAllRows(false);
-        return prevSelected.filter((id) => id !== rowId);
-      } else {
-        if (tds.length === selectedRows.length + 1) {
-          setSelectAllRows(true);
-        }
-        return [...prevSelected, rowId];
-      }
-    });
-  };
-
-  // Sort
   const sort = (columnIndex: number) => {
     setSortConfig((prevConfig) => {
       if (prevConfig.sortColumnIndex === columnIndex) {
@@ -689,14 +638,61 @@ const TableComponent = ({
       </Icon>
     );
   };
-
-  const tableRef = useRef(null);
-
   const dataToMap =
     sortConfig.sortColumnIndex !== null &&
     sortConfig.sortColumnIndex !== undefined
       ? sortedData()
       : originalDataState;
+
+  // Column filter
+  useEffect(() => {
+    const newOriginalDataState = columnsConfig
+      ? tds.map((data) => {
+          const filteredColumns = columnsConfig.map(
+            (columnIndex) => data.columnsFormat[columnIndex]
+          );
+          return { ...data, columnsFormat: filteredColumns };
+        })
+      : [...tds];
+    setOriginalDataState([...newOriginalDataState]); // Save real data when first render
+  }, [tds, columnsConfig]);
+
+  // Utils
+  function handleRowClick(rowData: any) {
+    if (rowClick) {
+      rowClick(rowData);
+    }
+  }
+  function handleSelectAllRows(isChecked: boolean) {
+    setSelectAllRows(!selectAllRows);
+    if (!isChecked) {
+      const allIds = tds.map((row) => row.id);
+      setSelectedRows(allIds);
+    } else {
+      setSelectedRows([]);
+    }
+  }
+  function toggleRowSelection(rowId: number) {
+    setSelectedRows((prevSelected) => {
+      const isSelected = prevSelected.includes(rowId);
+
+      if (isSelected) {
+        setSelectAllRows(false);
+        return prevSelected.filter((id) => id !== rowId);
+      } else {
+        if (tds.length === selectedRows.length + 1) {
+          setSelectAllRows(true);
+        }
+        return [...prevSelected, rowId];
+      }
+    });
+  }
+
+  // SX
+  const thHeight = "48px";
+  const thWidth = "52.4px";
+  const thBg = "body";
+  const borderColor = "border.subtle";
 
   return (
     <CContainer
@@ -705,12 +701,14 @@ const TableComponent = ({
     >
       {/* Table content */}
       <CContainer
+        borderBottom={"1px solid"}
+        borderColor={borderColor}
         minW={"full"}
-        borderColor={"border.muted"}
         className="scrollX scrollY"
         overflow={"scroll"}
-        mr={"-6px"}
         mb={"-6px"}
+        // mr={"-6px"}
+
         flex={1}
         {...props}
       >
@@ -821,16 +819,11 @@ const TableComponent = ({
                 <Table.Row
                   key={rowIndex}
                   role="group"
-                  // transition={"500ms"}
                   onClick={() => {
                     handleRowClick(row);
                   }}
                   cursor={rowClick ? "pointer" : "auto"}
                   px={2}
-                  borderBottom={
-                    rowIndex !== dataToMap.length - 1 ? "1px solid" : ""
-                  }
-                  borderColor={borderColor}
                   position={"relative"}
                   bg={"body"}
                   {...trBodyProps}
@@ -849,8 +842,11 @@ const TableComponent = ({
                         className={rowClick && "td-content-group-hover"}
                         h={"48px"}
                         px={"10px"}
-                        // transition={"500ms"}
                         cursor={"pointer"}
+                        borderBottom={
+                          rowIndex !== dataToMap.length - 1 ? "1px solid" : ""
+                        }
+                        borderColor={borderColor}
                         onClick={(e) => {
                           e.stopPropagation();
                           toggleRowSelection(row.id);
@@ -878,7 +874,10 @@ const TableComponent = ({
                         py={3}
                         px={4}
                         h={"48px"}
-                        // transition={"500ms"}
+                        borderBottom={
+                          rowIndex !== dataToMap.length - 1 ? "1px solid" : ""
+                        }
+                        borderColor={borderColor}
                         {...col?.wrapperProps}
                       >
                         {typeof col?.td === "string" ||
@@ -905,7 +904,10 @@ const TableComponent = ({
                         h={"48px"}
                         className={rowClick && "td-content-group-hover"}
                         px={"10px"}
-                        // transition={"500ms"}
+                        borderBottom={
+                          rowIndex !== dataToMap.length - 1 ? "1px solid" : ""
+                        }
+                        borderColor={borderColor}
                         onClick={(e) => {
                           e.stopPropagation();
                         }}
