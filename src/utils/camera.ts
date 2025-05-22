@@ -15,7 +15,7 @@ export function startCamera(
     })
     .catch((error) => {
       onError(error);
-      console.error("Gagal mengakses kamera:", error);
+      console.error("Failed to access camera:", error);
     });
 }
 
