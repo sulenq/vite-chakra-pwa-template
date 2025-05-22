@@ -706,7 +706,7 @@ const TableComponent = ({
         minW={"full"}
         className="scrollX scrollY"
         overflow={"scroll"}
-        mb={"-6px"}
+        // mb={"-6px"}
         // mr={"-6px"}
 
         flex={1}

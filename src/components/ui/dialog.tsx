@@ -28,7 +28,10 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
     return (
       <Portal disabled={!portalled} container={portalRef}>
         {backdrop && (
-          <ChakraDialog.Backdrop bg={"d1"} backdropFilter={"blur(5px)"} />
+          <ChakraDialog.Backdrop
+          // bg={"d1"}
+          // backdropFilter={"blur(5px)"}
+          />
         )}
         <ChakraDialog.Positioner
           pointerEvents="auto"

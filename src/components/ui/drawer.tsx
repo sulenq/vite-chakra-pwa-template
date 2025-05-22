@@ -47,7 +47,10 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
     return (
       <Portal disabled={!portalled} container={portalRef}>
         {backdrop && visible && (
-          <ChakraDrawer.Backdrop bg={"d1"} backdropFilter={"blur(5px)"} />
+          <ChakraDrawer.Backdrop
+          // bg={"d1"}
+          //  backdropFilter={"blur(5px)"}
+          />
         )}
         {visible && (
           <ChakraDrawer.Positioner

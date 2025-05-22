@@ -12,8 +12,8 @@ const customConfig = defineConfig({
   theme: {
     tokens: {
       colors: {
-        light: { value: "#fff" },
-        dark: { value: "#101010" },
+        light: { value: "#FAFAFA" },
+        dark: { value: "#151515" },
         darktrans: { value: "#252525df" },
         d0: { value: "#8a8a8a09" },
         d1: { value: "#7e7e7e08" },
@@ -298,13 +298,13 @@ const customConfig = defineConfig({
           subtle: {
             value: {
               base: "#f5f5f5 !important",
-              _dark: "#151515 !important",
+              _dark: "#1b1b1b !important",
             },
           },
           muted: {
             value: {
               base: "#EBEBEC !important",
-              _dark: "#1B1B1E !important",
+              _dark: "#202020 !important",
             },
           },
         },
