@@ -79,13 +79,7 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
             overflowY={"auto"}
             maxH={"full"}
           >
-            <CContainer
-              overflowY={"scroll"}
-              className="scrollY"
-              mr={"-6px"}
-              px={2}
-              gap={4}
-            >
+            <CContainer overflowY={"auto"} className="scrollY" px={2} gap={4}>
               {SETTINGS_NAVS.map((item, i) => {
                 return (
                   <CContainer key={i}>
@@ -115,7 +109,7 @@ const SettingsNavsContainer = ({ children, activePath, ...props }: Props) => {
                             {pluck(l, nav.labelKey)}
 
                             {iss && (
-                              <Icon ml={"auto"}>
+                              <Icon ml={"auto"} mr={"-4px"}>
                                 <IconChevronRight stroke={1.5} />
                               </Icon>
                             )}
