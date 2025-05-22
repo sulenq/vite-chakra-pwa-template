@@ -20,6 +20,7 @@ export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(
   function MenuContent(props, ref) {
     // Contexts
     const { portalled = true, portalRef, ...rest } = props;
+    const { themeConfig } = useThemeConfig();
 
     return (
       <Portal disabled={!portalled} container={portalRef}>
@@ -29,7 +30,7 @@ export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(
             bg={"darktrans"}
             backdropFilter={"blur(15px)"}
             boxShadow={"none"}
-            borderRadius={"10px"}
+            borderRadius={themeConfig.radii.container}
             border={"1px solid var(--d2)"}
             p={1}
             ref={ref}
@@ -126,8 +127,15 @@ export const MenuTriggerItem = forwardRef<HTMLDivElement, MenuTriggerItemProps>(
 export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
   function MenuItem(props, ref) {
     const { children, ...rest } = props;
+    const { themeConfig } = useThemeConfig();
+
     return (
-      <ChakraMenu.Item gap={4} ref={ref} borderRadius={"7px"} {...rest}>
+      <ChakraMenu.Item
+        gap={4}
+        ref={ref}
+        borderRadius={themeConfig.radii.component}
+        {...rest}
+      >
         {children}
       </ChakraMenu.Item>
     );

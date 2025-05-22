@@ -12,15 +12,16 @@ import PasswordInput from "../ui-custom/PasswordInput";
 import StringInput from "../ui-custom/StringInput";
 import TextRouterLink from "../ui-custom/TextRouterLink";
 import { Field } from "../ui/field";
+import useAuthMiddleware from "@/context/useAuthMiddleware";
 
 const LoginForm = () => {
   // Contexts
   const { l } = useLang();
-  // const { setAuthToken, setPermissions } = useAuthMiddleware();
+  const { setAuthToken, setPermissions } = useAuthMiddleware();
   const { themeConfig } = useThemeConfig();
 
   // Utils
-  const { loading } = useRequest({
+  const { req, loading } = useRequest({
     id: "login",
     loadingMessage: {
       ...l.login_loading_toast,
@@ -49,48 +50,48 @@ const LoginForm = () => {
       identifier: yup.string().required(l.required_form),
       password: yup.string().required(l.required_form),
     }),
-    onSubmit: () => {
-      // const payload = {
-      //   email: values.identifier,
-      //   password: values.password,
-      // };
-      // const config = {
-      //   method: "post",
-      //   url: `/login`,
-      //   data: payload,
-      // };
-      // req({
-      //   config,
-      //   onResolve: {
-      //     onSuccess: (r: any) => {
-      //       //! Dummy
-      //       const dummy_user = {
-      //         name: "Sulenq Wazawsky",
-      //         avatar: "https://bit.ly/sage-adebayo",
-      //         email: "sulengpol@gmail.com",
-      //         subscriptions: [
-      //           {
-      //             id: 1,
-      //             name: "HRIS",
-      //             pricing: {
-      //               id: 1,
-      //               name: "Essential",
-      //             },
-      //           },
-      //         ],
-      //         permissions: [], // number array
-      //       };
-      //       localStorage.setItem("__auth_token", r.data.token);
-      //       localStorage.setItem(
-      //         "__user_data",
-      //         r.data.data?.user || JSON.stringify(dummy_user)
-      //       );
-      //       setAuthToken(r.data.token);
-      //       setPermissions(r.data.user.permission ?? []);
-      //       navigate("/home");
-      //     },
-      //   },
-      // });
+    onSubmit: (values) => {
+      const payload = {
+        email: values.identifier,
+        password: values.password,
+      };
+      const config = {
+        method: "post",
+        url: `/login`,
+        data: payload,
+      };
+      req({
+        config,
+        onResolve: {
+          onSuccess: (r: any) => {
+            //! Dummy
+            const dummy_user = {
+              name: "Sulenq Wazawsky",
+              avatar: "https://bit.ly/sage-adebayo",
+              email: "sulengpol@gmail.com",
+              subscriptions: [
+                {
+                  id: 1,
+                  name: "HRIS",
+                  pricing: {
+                    id: 1,
+                    name: "Essential",
+                  },
+                },
+              ],
+              permissions: [], // number array
+            };
+            localStorage.setItem("__auth_token", r.data.token);
+            localStorage.setItem(
+              "__user_data",
+              r.data.data?.user || JSON.stringify(dummy_user)
+            );
+            setAuthToken(r.data.token);
+            setPermissions(r.data.user.permission ?? []);
+            navigate("/profile");
+          },
+        },
+      });
       navigate("/profile");
     },
   });
