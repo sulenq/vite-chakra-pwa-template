@@ -25,6 +25,8 @@ import NavLink from "../ui-custom/NavLink";
 import { Tooltip } from "../ui/tooltip";
 import CurrentUserTimeZone from "./CurrentUserTimeZone";
 import MerchantInbox from "./Inbox";
+import { ColorModeButton } from "../ui/color-mode";
+import useADM from "@/context/useADM";
 
 const ActiveNavIndicator = ({ ...props }: CircleProps) => {
   // Contexts
@@ -78,8 +80,6 @@ const NavList = (props: any) => {
 
   // Contexts
   const { l } = useLang();
-
-  console.log(activePath);
 
   return (
     <>
@@ -199,6 +199,7 @@ const NavContainer = (props: any) => {
 
   // Contexts
   const { themeConfig } = useThemeConfig();
+  const { ADM } = useADM();
 
   // States, Refs
   const containerRef = useRef<HTMLDivElement>(null);
@@ -272,8 +273,10 @@ const NavContainer = (props: any) => {
             </Heading6>
           </HStack>
 
+          {/* Quick Settings */}
           <HStack flexShrink={0} gap={0}>
-            {/* <ColorModeButton fontSize={"1.1rem"} /> */}
+            <ColorModeButton fontSize={"1.1rem"} disabled={ADM === "true"} />
+
             <CurrentUserTimeZone />
 
             <MerchantInbox />

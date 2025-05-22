@@ -44,7 +44,7 @@ const Camera = () => {
 
       stream.getTracks().forEach((track) => track.stop());
     } catch (error) {
-      console.error("Akses ditolak:", error);
+      console.error("Access denied:", error);
     }
   }
 
@@ -144,7 +144,8 @@ const Camera = () => {
                         setLoading(false);
                         setCameraOpen(true);
                       },
-                      () =>
+                      () => {
+                        setLoading(false);
                         toaster.error({
                           title: l.camera_fail_toast.title,
                           description: l.camera_fail_toast.description,
@@ -152,7 +153,8 @@ const Camera = () => {
                             label: "Close",
                             onClick: () => {},
                           },
-                        })
+                        });
+                      }
                     );
                   }
                 }}

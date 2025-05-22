@@ -39,7 +39,11 @@ const CurrentUserTimeZone = () => {
         </div>
       </PopoverTrigger>
 
-      <PopoverContent mr={2} borderRadius={themeConfig.radii.container}>
+      <PopoverContent
+        mr={2}
+        w={"240px"}
+        borderRadius={themeConfig.radii.container}
+      >
         <CContainer px={1}>
           <HelperText mb={1}>{l.selected_time_zone}</HelperText>
 
