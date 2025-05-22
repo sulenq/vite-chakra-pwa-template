@@ -304,9 +304,6 @@ const DateRangePickerInput = ({
     }
   }
 
-  console.log(selected);
-  console.log("iv", inputValue);
-
   return (
     <>
       <Tooltip content={inputValue ? renderValue : finalPlaceholder}>
