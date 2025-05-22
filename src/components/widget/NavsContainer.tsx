@@ -87,7 +87,7 @@ const NavList = (props: any) => {
         const active = activePath === nav.path;
 
         return (
-          <NavLink key={i} to={nav.path}>
+          <NavLink key={i} align={"center"} to={nav.path}>
             <Tooltip
               content={pluck(l, nav.labelKey)}
               positioning={{ placement: "right" }}
@@ -140,7 +140,7 @@ const NavList2 = (props: any) => {
 
   return (
     <>
-      <NavLink to={"/settings"}>
+      <NavLink to={"/settings"} align={"center"}>
         <Tooltip
           content={l.navs.settings}
           positioning={{ placement: "right" }}
