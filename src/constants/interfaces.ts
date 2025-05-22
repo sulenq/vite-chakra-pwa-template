@@ -158,7 +158,6 @@ export interface Interface__TableComponent extends StackProps {
   setLimitControl?: Dispatch<number>;
   footerContainerProps?: SimpleGridProps;
 }
-
 export interface Interface__RowOptions {
   rowData: any;
   rowOptions: Type__TableOptions;

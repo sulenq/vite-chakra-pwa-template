@@ -1,7 +1,6 @@
 import { NAVS } from "@/constants/navs";
 import useLang from "@/context/useLang";
 import { useThemeConfig } from "@/context/useThemeConfig";
-import useCallBackOnNavigate from "@/hooks/useCallBackOnNavigate";
 import useIsSmScreenWidth from "@/hooks/useIsSmScreenWidth";
 import pluck from "@/utils/pluck";
 import {
@@ -10,7 +9,6 @@ import {
   HStack,
   Icon,
   Stack,
-  StackProps,
   VStack,
 } from "@chakra-ui/react";
 import { IconSettings } from "@tabler/icons-react";
@@ -23,176 +21,187 @@ import FloatCounter from "../ui-custom/FloatCounter";
 import Heading6 from "../ui-custom/Heading6";
 import HelperText from "../ui-custom/HelperText";
 import Logo from "../ui-custom/Logo";
+import NavLink from "../ui-custom/NavLink";
 import { Tooltip } from "../ui/tooltip";
 import CurrentUserTimeZone from "./CurrentUserTimeZone";
 import MerchantInbox from "./Inbox";
 
-interface Interface__NavItemContainer extends StackProps {
-  active?: boolean;
-}
-
-interface Props {
-  children?: any;
-  title?: string;
-  backPath?: string;
-  activePath?: string;
-}
-const NavContainer = ({ children, title, backPath, activePath }: Props) => {
+const ActiveNavIndicator = ({ ...props }: CircleProps) => {
   // Contexts
   const { themeConfig } = useThemeConfig();
+
+  return (
+    <Circle
+      w={"12px"}
+      h={"2px"}
+      bg={themeConfig.primaryColor}
+      position={"absolute"}
+      bottom={0}
+      {...props}
+    />
+  );
+};
+
+const NavItemContainer = (props: any) => {
+  // Props
+  const { children, active, ...restProps } = props;
+
+  // Contexts
+  const { themeConfig } = useThemeConfig();
+
+  return (
+    <VStack
+      gap={0}
+      w={"40px"}
+      h={"40px"}
+      justify={"center"}
+      position={"relative"}
+      color={active ? "fg" : "fg.muted"}
+      _hover={{ bg: "bg.muted" }}
+      borderRadius={themeConfig.radii.component}
+      transition={"200ms"}
+      {...restProps}
+    >
+      {active && <ActiveNavIndicator bottom={[-2, null, 0]} />}
+
+      {children}
+    </VStack>
+  );
+};
+
+const NavList = (props: any) => {
+  // Props
+  const { activePath } = props;
+
+  // Hooks
+  const iss = useIsSmScreenWidth();
+
+  // Contexts
   const { l } = useLang();
+
+  console.log(activePath);
+
+  return (
+    <>
+      {NAVS.map((nav: any, i) => {
+        const active = activePath === nav.path;
+
+        return (
+          <NavLink key={i} to={nav.path}>
+            <Tooltip
+              content={pluck(l, nav.labelKey)}
+              positioning={{ placement: "right" }}
+              contentProps={{ ml: 2 }}
+            >
+              <NavItemContainer active={active}>
+                <FloatCounter
+                  circleProps={{
+                    h: "18px",
+                    fontSize: "xs",
+                    mt: "18px",
+                    mr: "18px",
+                  }}
+                  display={"none"}
+                >
+                  2
+                </FloatCounter>
+
+                <Icon {...nav?.iconProps}>
+                  <nav.icon strokeWidth={1.5} size={iss ? 24 : 20} />
+                </Icon>
+
+                {iss && (
+                  <HelperText
+                    color={active ? "" : "fg.muted"}
+                    lineHeight={1}
+                    mt={1}
+                    truncate
+                  >
+                    {pluck(l, nav.labelKey)}
+                  </HelperText>
+                )}
+              </NavItemContainer>
+            </Tooltip>
+          </NavLink>
+        );
+      })}
+    </>
+  );
+};
+const NavList2 = (props: any) => {
+  // Props
+  const { activePath } = props;
+
+  // Hooks
+  const iss = useIsSmScreenWidth();
+
+  // Contexts
+  const { l } = useLang();
+
+  return (
+    <>
+      <NavLink to={"/settings"}>
+        <Tooltip
+          content={l.navs.settings}
+          positioning={{ placement: "right" }}
+          contentProps={{ ml: 2 }}
+        >
+          <NavItemContainer active={activePath === "/settings"}>
+            <Icon>
+              <IconSettings strokeWidth={1.5} size={iss ? 24 : 20} />
+            </Icon>
+
+            {iss && (
+              <HelperText
+                color={activePath === "/settings" ? "" : "fg.muted"}
+                lineHeight={1}
+                mt={1}
+                truncate
+              >
+                {pluck(l, "navs.settings")}
+              </HelperText>
+            )}
+          </NavItemContainer>
+        </Tooltip>
+      </NavLink>
+
+      {/* {!iss && <Separator w={"full"} mb={2} />}
+
+      <Link to={"/profile"}>
+        <Center
+          w={"40px"}
+          h={"40px"}
+          borderRadius={"full"}
+          borderColor={themeConfig.primaryColor}
+          position={"relative"}
+        >
+          {activePath === "/profile" && <ActiveNavIndicator />}
+
+          <Avatar
+            name="Jolitos Kurniawan"
+            cursor={"pointer"}
+            size={"xs"}
+            w={"28px"}
+            h={"28px"}
+          />
+        </Center>
+      </Link> */}
+    </>
+  );
+};
+
+const NavContainer = (props: any) => {
+  // Props
+  const { children, title, backPath, activePath } = props;
+
+  // Hooks
+  const iss = useIsSmScreenWidth();
+
+  // Contexts
+  const { themeConfig } = useThemeConfig();
 
   // States, Refs
   const containerRef = useRef<HTMLDivElement>(null);
-
-  // Utils
-  useCallBackOnNavigate(() => {
-    if (containerRef.current) {
-      containerRef.current.scrollTop = 0;
-    }
-  });
-  const iss = useIsSmScreenWidth();
-
-  // Components
-  const NavItemContainer = ({
-    children,
-    active,
-    ...props
-  }: Interface__NavItemContainer) => {
-    // Contexts
-    const { themeConfig } = useThemeConfig();
-
-    return (
-      <VStack
-        gap={0}
-        w={"40px"}
-        h={"40px"}
-        justify={"center"}
-        position={"relative"}
-        color={active ? "fg" : "fg.muted"}
-        _hover={{ bg: "bg.muted" }}
-        borderRadius={themeConfig.radii.component}
-        transition={"200ms"}
-        {...props}
-      >
-        {active && <ActiveNavIndicator bottom={[-2, null, 0]} />}
-
-        {children}
-      </VStack>
-    );
-  };
-  const ActiveNavIndicator = ({ ...props }: CircleProps) => {
-    return (
-      <Circle
-        w={"12px"}
-        h={"2px"}
-        bg={themeConfig.primaryColor}
-        position={"absolute"}
-        bottom={0}
-        {...props}
-      />
-    );
-  };
-  const NavList = () => {
-    return (
-      <>
-        {NAVS.map((nav: any, i) => {
-          const active = activePath === nav.path;
-
-          return (
-            <Link key={i} to={nav.path}>
-              <Tooltip
-                content={pluck(l, nav.labelKey)}
-                positioning={{ placement: "right" }}
-                contentProps={{ ml: 2 }}
-              >
-                <NavItemContainer active={active}>
-                  <FloatCounter
-                    circleProps={{
-                      h: "18px",
-                      fontSize: "xs",
-                      mt: "18px",
-                      mr: "18px",
-                    }}
-                    display={"none"}
-                  >
-                    2
-                  </FloatCounter>
-
-                  <Icon {...nav?.iconProps}>
-                    <nav.icon strokeWidth={1.5} size={iss ? 24 : 20} />
-                  </Icon>
-
-                  {iss && (
-                    <HelperText
-                      color={active ? "" : "fg.muted"}
-                      lineHeight={1}
-                      mt={1}
-                      truncate
-                    >
-                      {pluck(l, nav.labelKey)}
-                    </HelperText>
-                  )}
-                </NavItemContainer>
-              </Tooltip>
-            </Link>
-          );
-        })}
-      </>
-    );
-  };
-  const NavList2 = () => {
-    return (
-      <>
-        <Link to={"/settings"}>
-          <Tooltip
-            content={l.navs.settings}
-            positioning={{ placement: "right" }}
-            contentProps={{ ml: 2 }}
-          >
-            <NavItemContainer active={activePath === "/settings"}>
-              <Icon>
-                <IconSettings strokeWidth={1.5} size={iss ? 24 : 20} />
-              </Icon>
-
-              {iss && (
-                <HelperText
-                  color={activePath === "/settings" ? "" : "fg.muted"}
-                  lineHeight={1}
-                  mt={1}
-                  truncate
-                >
-                  {pluck(l, "navs.settings")}
-                </HelperText>
-              )}
-            </NavItemContainer>
-          </Tooltip>
-        </Link>
-
-        {/* {!iss && <Separator w={"full"} mb={2} />}
-
-        <Link to={"/profile"}>
-          <Center
-            w={"40px"}
-            h={"40px"}
-            borderRadius={"full"}
-            borderColor={themeConfig.primaryColor}
-            position={"relative"}
-          >
-            {activePath === "/profile" && <ActiveNavIndicator />}
-
-            <Avatar
-              name="Jolitos Kurniawan"
-              cursor={"pointer"}
-              size={"xs"}
-              w={"28px"}
-              h={"28px"}
-            />
-          </Center>
-        </Link> */}
-      </>
-    );
-  };
 
   return (
     <Stack
@@ -226,11 +235,11 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
           </Link>
 
           <VStack justify={"center"} flex={1}>
-            <NavList />
+            <NavList activePath={activePath} />
           </VStack>
 
           <VStack mt={"auto"}>
-            <NavList2 />
+            <NavList2 activePath={activePath} />
           </VStack>
         </VStack>
       )}
@@ -289,9 +298,9 @@ const NavContainer = ({ children, title, backPath, activePath }: Props) => {
           position={"sticky"}
           bottom={0}
         >
-          <NavList />
+          <NavList activePath={activePath} />
 
-          <NavList2 />
+          <NavList2 activePath={activePath} />
         </HStack>
       )}
     </Stack>

@@ -226,9 +226,7 @@ const Theme = () => {
                 <Center
                   w={"full"}
                   aspectRatio={1}
-                  borderRadius={
-                    color.palette === themeConfig.colorPalette ? 5 : 6
-                  }
+                  borderRadius={4}
                   bg={`${color.palette}.500`}
                 >
                   {active && (
