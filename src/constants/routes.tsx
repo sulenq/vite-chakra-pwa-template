@@ -19,11 +19,6 @@ export const ROUTES: Interface__Route[] = [
     activePath: "/",
     element: <RootPage />,
   },
-  {
-    path: "/test",
-    activePath: "/test",
-    element: <TestPage />,
-  },
 ];
 
 export const PRIVATE_ROUTES: Interface__PrivateRoute[] = [
