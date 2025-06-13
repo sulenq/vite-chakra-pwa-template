@@ -35,7 +35,8 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
         )}
         <ChakraDialog.Positioner
           pointerEvents="auto"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             back();
             handleBackOnDefaultPage();
           }}

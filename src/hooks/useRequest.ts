@@ -1,6 +1,6 @@
 import useLang from "@/context/useLang";
 import { AxiosRequestConfig, AxiosResponse } from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toaster } from "../components/ui/toaster";
 import request from "../utils/request";
@@ -45,10 +45,13 @@ const useRequest = ({
   errorMessage,
   loginPath = "/",
 }: Props) => {
+  //  Hooks
+  const navigate = useNavigate();
+
   // Contexts
   const { l } = useLang();
 
-  // States, Refs
+  // States
   const [loading, setLoading] = useState<boolean>(false);
   const [status, setStatus] = useState<number | undefined>(undefined);
   const [response, setResponse] = useState<any>(undefined);
@@ -66,12 +69,18 @@ const useRequest = ({
       l.default_request_success_toast.description,
   };
 
-  // Utils
+  // Refs
   const abortControllerRef = useRef<AbortController | null>(null);
-  const navigate = useNavigate();
 
   // Make request func
   function req({ config, onResolve }: Interface__Req) {
+    showLoadingToast &&
+      toaster.loading({
+        id: id,
+        title: fLoadingMessage.title,
+        description: fLoadingMessage.description,
+      });
+
     if (!loading) setLoading(true);
     if (error) setError(false);
     if (status) setStatus(undefined);
@@ -99,6 +108,7 @@ const useRequest = ({
         }
 
         showSuccessToast &&
+          showLoadingToast &&
           toaster.update(id, {
             type: "success",
             title: fSuccessMessage.title,
@@ -111,10 +121,10 @@ const useRequest = ({
       })
       .catch((e) => {
         console.log(e);
+        setError(true);
 
         switch (e.code) {
           case "ERR_CANCELED":
-            setError(true);
             setLoading(false);
             break;
         }
@@ -204,15 +214,15 @@ const useRequest = ({
       });
   }
 
-  useEffect(() => {
-    if (loading && showLoadingToast) {
-      toaster.loading({
-        id: id,
-        title: fLoadingMessage.title,
-        description: fLoadingMessage.description,
-      });
-    }
-  }, [loading]);
+  // useEffect(() => {
+  //   if (loading && showLoadingToast) {
+  //     toaster.loading({
+  //       id: id,
+  //       title: fLoadingMessage.title,
+  //       description: fLoadingMessage.description,
+  //     });
+  //   }
+  // }, [loading, response, error]);
 
   return {
     req,

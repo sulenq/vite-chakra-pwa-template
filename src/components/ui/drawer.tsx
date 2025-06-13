@@ -56,7 +56,8 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
           <ChakraDrawer.Positioner
             padding={offset}
             pointerEvents={"auto"}
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               back();
               handleBackOnDefaultPage();
             }}
